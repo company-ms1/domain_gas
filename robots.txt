@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gasfree4you.com/sitemap.xml
