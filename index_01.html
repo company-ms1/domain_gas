@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GasFree4uCOM — TRON Energy Top‑Up • 2.9 TRX = 65,000 energy</title>
+  <meta name="description" content="GasFree4uCOM — instant TRON energy delegation. Active wallet: 2.9 TRX vs 13.5 TRX. New/No‑USDT: 5.8 TRX vs 27 TRX. Send TRX, get energy in ~1 minute." />
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root{
+      --bg: #0b1020; --card:#0f152a; --muted:#8ea1b2; --text:#eaf2ff;
+      --accent:#6ee7ff; --accent2:#7df1b7; --border:rgba(255,255,255,.08);
+      --danger:#ff6b6b; --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    @media(prefers-color-scheme:light){
+      :root{ --bg:#f7fafc; --card:#ffffff; --muted:#5b7083; --text:#0b1020; --accent:#007aff; --accent2:#16a34a; --border:rgba(15,21,42,.08); --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; }
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text);
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.12), transparent 60%),
+                  radial-gradient(1000px 600px at -10% 110%, rgba(125,241,183,.12), transparent 60%), var(--bg);
+    }
+    a{color:var(--accent)}
+    .container{max-width:1080px; margin:0 auto; padding:24px}
+    header{display:flex; align-items:center; gap:16px; justify-content:space-between; padding:10px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:42px; height:42px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
+    .tag{font-size:12px; opacity:.8}
+
+    .lang{display:flex; gap:8px; align-items:center}
+    .flag{width:28px; height:20px; border-radius:3px; border:1px solid var(--border); cursor:pointer; display:inline-block; overflow:hidden}
+    .flag svg{display:block; width:100%; height:100%}
+    .active{outline:2px solid var(--accent)}
+
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center; padding:24px 0}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+
+    .title{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 10px; letter-spacing:-.02em}
+    .subtitle{font-size:16px; color:var(--muted); margin:0 0 18px}
+    .panel{background:var(--card); border:1px solid var(--border); border-radius:20px; box-shadow:var(--shadow)}
+    .address{padding:16px; display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center}
+    .addr-box{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace; padding:12px 14px; border-radius:14px; background:rgba(255,255,255,.04); border:1px dashed var(--border); overflow:auto; white-space:nowrap}
+    .addr-side{display:grid; gap:8px; justify-items:end}
+    .btn{appearance:none; cursor:pointer; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; font-weight:600}
+    .btn:hover{transform:translateY(-1px)}
+
+    .controls{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:12px 0}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.04)}
+    .chip .val{font-weight:700}
+
+    .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+    @media (max-width:700px){.grid{grid-template-columns:1fr}}
+    .card{padding:18px; position:relative; display:flex; flex-direction:column; gap:8px}
+
+    /* Polished badges */
+    .badge{position:absolute; top:-10px; left:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; font-weight:800; font-size:12px; padding:6px 12px; border-radius:999px; box-shadow:var(--shadow); border:none}
+
+    .price{font-size:28px; font-weight:800; margin:8px 0 2px}
+    .usd{font-size:14px; opacity:.9}
+    .energy{font-size:14px; color:var(--muted)}
+    .savings{margin-top:4px; font-weight:700; color:var(--accent2)}
+    .cta{display:flex; gap:10px; flex-wrap:wrap}
+    .cta .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
+    .steps{margin-top:18px; padding:10px 16px 16px}
+    .steps ol{margin:6px 0 0 18px}
+    .hint{font-size:13px; color:var(--muted); margin-top:6px}
+    .note{display:flex; gap:10px; align-items:flex-start; padding:14px; border-radius:14px; background:rgba(125,241,183,.08); border:1px solid var(--border); margin-top:12px}
+
+    .compare{margin-top:22px; overflow:auto}
+    table{width:100%; border-collapse:separate; border-spacing:0; min-width:660px}
+    th,td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--border)}
+    th{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted)}
+    .save{font-weight:700; color:var(--accent2)}
+    footer{margin:32px 0 12px; color:var(--muted); font-size:13px}
+
+    /* QR */
+    .qr{width:140px; height:140px; background:#fff; padding:8px; border-radius:12px; display:block; box-shadow:var(--shadow); border:1px solid var(--border); object-fit:contain}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">⚡️</div>
+        <div>
+          <h1 class="tag" style="margin:0">GasFree4uCOM</h1>
+          <div class="tag" data-i18n="tagline">TRON Energy Top‑Up</div>
+        </div>
+      </div>
+      <div class="lang" aria-label="Language switcher">
+        <div class="flag active" data-lang="en" title="English" aria-label="English">
+          <!-- UK flag -->
+          <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v40 h60 v-40 z"/></clipPath><clipPath id="t"><path d="M30,20 h30 v20 z v-40 z h-60 z v40 z h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v40 h60 v-40 z" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4" clip-path="url(#t)"/><path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+        </div>
+        <div class="flag" data-lang="ru" title="Русский" aria-label="Русский">
+          <!-- Russia flag -->
+          <svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="2" fill="#fff"/><rect width="3" height="1.333" y="0.333" fill="#0039A6"/><rect width="3" height="0.666" y="1.333" fill="#D52B1E"/></svg>
+        </div>
+        <div class="flag" data-lang="zh" title="中文" aria-label="中文">
+          <!-- China flag -->
+          <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#EE1C25"/><polygon points="5,2 6,5 9,5 6.5,7 7.5,10 5,8.5 2.5,10 3.5,7 1,5 4,5" fill="#FFEE58"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h2 class="title" data-i18n="title">TRON Energy at a fixed price — just send TRX</h2>
+        <p class="subtitle" data-i18n="subtitle">Two transparent options. Energy is valid for up to 1 hour or until the first transfer.</p>
+
+        <div class="panel address" role="group" aria-label="Deposit address">
+          <div class="addr-box" id="addressBox" title="Send TRX from the wallet that needs energy.">TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN</div>
+          <div class="addr-side">
+            <img id="qrImg" class="qr" alt="QR code" aria-label="QR code for the address" />
+            <button class="btn" id="copyBtn" data-i18n="copyAddr">Copy address</button>
+          </div>
+        </div>
+        <div class="controls">
+          <span class="chip" title="Live TRX/USDT price">
+            <span data-i18n="trxPrice">TRX price:</span>
+            <b id="trxPrice">—</b>
+          </span>
+          <span class="chip" title="Typical fee for active wallet">
+            <span>Active fee:</span>
+            <span class="val">13.5 TRX</span>
+          </span>
+          <span class="chip" title="Typical fee for new/no‑USDT wallet">
+            <span>New/No‑USDT fee:</span>
+            <span class="val">27 TRX</span>
+          </span>
+        </div>
+
+        <div class="note" role="note">
+          <div>✅</div>
+          <div data-i18n="mechanics"><b>Mechanics:</b> You send a fixed TRX amount → we delegate energy to your address → you make a transfer without TRX fee. For wallets with no USDT or not activated, use the 130,000 energy package.</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="panel card" aria-label="Active wallet package">
+          <div class="badge" data-i18n="badge1">⭐ Best value (Active)</div>
+          <div class="price">2.9 TRX</div>
+          <div class="usd" id="p29usd">≈ —</div>
+          <div class="energy" data-i18n="pack1">65,000 energy • ~1 transfer</div>
+          <div class="savings" id="s29"> </div>
+          <div class="hint" data-i18n="pack1Hint">Compare to 13.5 TRX without energy.</div>
+          <div class="cta" style="margin-top:6px">
+            <button class="btn primary" data-copy="2.9" data-i18n="copy29">Amount: 2.9 TRX</button>
+            <button class="btn" data-copy="TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN" data-i18n="copyAddress">Address</button>
+          </div>
+        </div>
+        <div class="panel card" aria-label="New wallet package">
+          <div class="badge" data-i18n="badge2">🆕 New/No‑USDT</div>
+          <div class="price">5.8 TRX</div>
+          <div class="usd" id="p58usd">≈ —</div>
+          <div class="energy" data-i18n="pack2">130,000 energy • 1 transfer</div>
+          <div class="savings" id="s58"> </div>
+          <div class="hint" data-i18n="pack2Hint">Compare to 27 TRX without energy.</div>
+          <div class="cta" style="margin-top:6px">
+            <button class="btn primary" data-copy="5.8" data-i18n="copy58">Amount: 5.8 TRX</button>
+            <button class="btn" data-copy="TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN" data-i18n="copyAddress">Address</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="compare">
+      <h3 style="margin:22px 0 10px" data-i18n="savings">Your savings</h3>
+      <div class="panel" style="padding:8px 12px">
+        <table aria-label="Cost comparison">
+          <thead>
+            <tr>
+              <th data-i18n="scenario">Scenario</th>
+              <th data-i18n="without">Without energy</th>
+              <th data-i18n="with">With GasFree4uCOM</th>
+              <th data-i18n="save">Savings</th>
+              <th data-i18n="saveUSD">Savings (USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="activeWallet">Active wallet</td>
+              <td>13.5 TRX</td>
+              <td>2.9 TRX</td>
+              <td class="save">≈ <span id="sv29">10.6</span> TRX</td>
+              <td class="save">≈ <span id="sv29usd">—</span></td>
+            </tr>
+            <tr>
+              <td data-i18n="noUsdt">New/No‑USDT wallet</td>
+              <td>27 TRX</td>
+              <td>5.8 TRX</td>
+              <td class="save">≈ <span id="sv58">21.2</span> TRX</td>
+              <td class="save">≈ <span id="sv58usd">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="hint" data-i18n="footnote">*Savings depend on TRON network conditions and transfer type.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> GasFree4uCOM • <span data-i18n="footer">Transparent TRON energy delegation. This is not a financial intermediary; you send TRX to an on‑chain address and receive a temporary energy delegation.</span></div>
+    </footer>
+  </div>
+
+  <script>
+    // i18n dictionary
+    const I18N = {
+      en: {
+        tagline: "TRON Energy Top‑Up",
+        title: "TRON Energy at a fixed price — just send TRX",
+        subtitle: "Two transparent options. Energy is valid for up to 1 hour or until the first transfer.",
+        copyAddr: "Copy address",
+        mechanics: "<b>Mechanics:</b> You send a fixed TRX amount → we delegate energy to your address → you make a transfer without TRX fee. For wallets with no USDT or not activated, use the 130,000 energy package.",
+        badge1: "⭐ Best value (Active)",
+        pack1: "65,000 energy • ~1 transfer",
+        pack1Hint: "Compare to 13.5 TRX without energy.",
+        badge2: "🆕 New/No‑USDT",
+        pack2: "130,000 energy • 1 transfer",
+        pack2Hint: "Compare to 27 TRX without energy.",
+        copyAddress: "Address",
+        copy29: "Amount: 2.9 TRX",
+        copy58: "Amount: 5.8 TRX",
+        trxPrice: "TRX price:",
+        savings: "Your savings",
+        scenario: "Scenario",
+        without: "Without energy",
+        with: "With GasFree4uCOM",
+        save: "Savings",
+        saveUSD: "Savings (USD)",
+        activeWallet: "Active wallet",
+        noUsdt: "New/No‑USDT wallet",
+        footnote: "*Savings depend on TRON network conditions and transfer type.",
+        footer: "Transparent TRON energy delegation. This is not a financial intermediary; you send TRX to an on‑chain address and receive a temporary energy delegation."
+      },
+      ru: {
+        tagline: "Делегация энергии TRON",
+        title: "Энергия TRON по фиксированной цене — просто отправьте TRX",
+        subtitle: "Два прозрачных пакета. Энергия действует до 1 часа или до первого перевода.",
+        copyAddr: "Скопировать адрес",
+        mechanics: "<b>Механика:</b> Вы отправляете фиксированную сумму TRX → мы делегируем energy на ваш адрес → вы совершаете перевод без комиссии TRX. Для неактивированных/без USDT кошельков используйте пакет 130,000 energy.",
+        badge1: "⭐ Лучший выбор (Активный)",
+        pack1: "65,000 energy • ≈1 перевод",
+        pack1Hint: "Сравнение: 13.5 TRX без энергии.",
+        badge2: "🆕 Новый/без USDT",
+        pack2: "130,000 energy • 1 перевод",
+        pack2Hint: "Сравнение: 27 TRX без энергии.",
+        copyAddress: "Адрес",
+        copy29: "Сумма: 2.9 TRX",
+        copy58: "Сумма: 5.8 TRX",
+        trxPrice: "Курс TRX:",
+        savings: "Сколько вы экономите",
+        scenario: "Сценарий",
+        without: "Без энергии",
+        with: "С GasFree4uCOM",
+        save: "Экономия",
+        saveUSD: "Экономия (USD)",
+        activeWallet: "Активный кошелёк",
+        noUsdt: "Новый/без USDT",
+        footnote: "*Экономия зависит от нагрузки сети TRON и типа перевода.",
+        footer: "Прозрачная делегация энергии TRON. Это не финансовый посредник; вы отправляете TRX на on‑chain адрес и получаете временную делегацию энергии."
+      },
+      zh: {
+        tagline: "TRON 能量充值",
+        title: "固定价格的 TRON 能量 — 只需发送 TRX",
+        subtitle: "两种透明套餐。能量最多有效 1 小时或至首次转账。",
+        copyAddr: "复制地址",
+        mechanics: "<b>机制：</b> 发送固定数量 TRX → 我们向您的地址委托能量 → 您进行免 TRX 手续费的转账。无 USDT/未激活的钱包请选择 130,000 energy 套餐。",
+        badge1: "⭐ 最佳选择（已激活）",
+        pack1: "65,000 energy • ≈1 次转账",
+        pack1Hint: "对比：无能量需 13.5 TRX。",
+        badge2: "🆕 新钱包/无 USDT",
+        pack2: "130,000 energy • 1 次转账",
+        pack2Hint: "对比：无能量需 27 TRX。",
+        copyAddress: "地址",
+        copy29: "金额：2.9 TRX",
+        copy58: "金额：5.8 TRX",
+        trxPrice: "TRX 价格:",
+        savings: "节省对比",
+        scenario: "场景",
+        without: "无能量",
+        with: "使用 GasFree4uCOM",
+        save: "节省",
+        saveUSD: "节省 (USD)",
+        activeWallet: "已激活钱包",
+        noUsdt: "新钱包/无 USDT",
+        footnote: "*节省取决于 TRON 网络状况与转账类型。",
+        footer: "透明的 TRON 能量委托。本站非金融中介；您向链上地址发送 TRX 并获得临时能量委托。"
+      }
+    };
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copy
+    function copy(text, el){
+      navigator.clipboard.writeText(text).then(()=>{ if(el){ const old=el.textContent; el.textContent='✓'; el.disabled=true; setTimeout(()=>{el.textContent=old; el.disabled=false}, 900);} }).catch(()=> alert('Copy manually: '+text));
+    }
+    document.getElementById('copyBtn').addEventListener('click', (e)=> copy(document.getElementById('addressBox').textContent.trim(), e.target));
+    document.querySelectorAll('[data-copy]').forEach(btn=> btn.addEventListener('click', (e)=> copy(btn.getAttribute('data-copy'), e.target)) );
+
+    // Language switcher
+    const flags = document.querySelectorAll('.flag');
+    function setLang(lang){
+      document.documentElement.lang = lang;
+      flags.forEach(f=> f.classList.toggle('active', f.dataset.lang===lang));
+      document.querySelectorAll('[data-i18n]').forEach(node=>{
+        const key=node.getAttribute('data-i18n');
+        node.innerHTML = I18N[lang][key] ?? node.innerHTML;
+      });
+    }
+    flags.forEach(f=> f.addEventListener('click', ()=> { setLang(f.dataset.lang); recalc(); }));
+
+    // QR
+    const address = document.getElementById('addressBox').textContent.trim();
+    document.getElementById('qrImg').src = 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' + encodeURIComponent(address);
+
+    // Live price + savings
+    const chipPrice = document.getElementById('trxPrice');
+    const p29usd = document.getElementById('p29usd');
+    const p58usd = document.getElementById('p58usd');
+    const sv29usd = document.getElementById('sv29usd');
+    const sv58usd = document.getElementById('sv58usd');
+
+    let price = null; // TRX in USD
+    function fmtUSD(v){ return (v==null||isNaN(v)) ? '—' : ('$' + v.toFixed(2)); }
+
+    function recalc(){
+      const sv29trx = 13.5 - 2.9; // active
+      const sv58trx = 27 - 5.8;   // new/no-USDT
+      if(price){
+        p29usd.textContent = '≈ ' + fmtUSD(2.9*price);
+        p58usd.textContent = '≈ ' + fmtUSD(5.8*price);
+        sv29usd.textContent = fmtUSD(sv29trx*price);
+        sv58usd.textContent = fmtUSD(sv58trx*price);
+      }
+    }
+
+    fetch('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT')
+      .then(r=>r.json())
+      .then(d=>{ price = parseFloat(d.price); chipPrice.textContent = '$'+price.toFixed(4); recalc(); })
+      .catch(()=>{ price = null; chipPrice.textContent = '—'; recalc(); });
+
+    // Default
+    setLang('en');
+    recalc();
+  </script>
+</body>
+</html>
