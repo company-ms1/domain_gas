@@ -96,6 +96,39 @@
 
     /* QR */
     .qr{width:140px; height:140px; background:#fff; padding:8px; border-radius:12px; display:block; box-shadow:var(--shadow); border:1px solid var(--border); object-fit:contain}
+ 
+.faq { margin-top: 22px; padding: 14px 16px; }
+.faq-title { margin: 6px 0 10px; font-size: 18px; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  margin: 10px 0;
+  overflow: hidden;
+}
+.faq-item[open] { background: rgba(125,241,183,.06); }
+.faq-q {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: '▸';
+  float: right;
+  transition: transform .2s ease;
+  opacity: .8;
+}
+.faq-item[open] .faq-q::after { transform: rotate(90deg); }
+.faq-a {
+  padding: 0 14px 14px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.faq .faq-a ul { margin: 8px 0 0 18px; }
+    
   </style>
 </head>
 <body>
@@ -221,6 +254,74 @@
       </div>
     </section>
 
+<section id="faq" class="panel faq">
+  <h3 class="faq-title" data-i18n="faqTitle">FAQ — GasFree4uCOM</h3>
+
+  <details class="faq-item">
+    <summary class="faq-q"><span data-i18n="q1">❓ What is GasFree4uCOM?</span></summary>
+    <div class="faq-a" data-i18n="a1">
+      GasFree4uCOM is a cryptocurrency service that instantly delegates TRON network energy to your wallet. 
+      Energy is used instead of TRX for paying transaction fees. 
+      With GasFree4uCOM, you can send TRC20 tokens (like USDT) at a fraction of the normal cost by renting energy for just the time you need. 
+      No registration is required — just send TRX to our service address, and we delegate the energy back to you automatically.
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q"><span data-i18n="q2">💰 How much can I save?</span></summary>
+    <div class="faq-a" data-i18n="a2">
+      Normally, sending USDT on TRON costs about 13.5 TRX if your wallet is active or 27 TRX if it's new or has no USDT.
+      With GasFree4uCOM, you pay only 2.9 TRX for an active wallet or 5.8 TRX for a new one — that's up to 80% savings!
+      <br><br><strong>Example:</strong><br>
+      • Active wallet → <u>Save 10.6 TRX</u> per transfer.<br>
+      • New wallet / no USDT → <u>Save 21.2 TRX</u> per transfer.<br>
+      These savings compound if you make many transactions.
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q"><span data-i18n="q3">⚡ How fast will I get the energy?</span></summary>
+    <div class="faq-a" data-i18n="a3">
+      We process energy delegation automatically. After you send TRX to our address, your wallet will receive energy within ~1 minute.
+      Energy remains valid for up to 1 hour or until your first transfer, whichever comes first.
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q"><span data-i18n="q4">🔒 Is it safe to use?</span></summary>
+    <div class="faq-a" data-i18n="a4">
+      Yes. We never ask for private keys or seed phrases. You only send TRX to a public on-chain address. 
+      The network confirms your payment, then our system delegates the purchased energy to the sender’s wallet.
+      You can verify everything in a TRON explorer such as <a href="https://tronscan.org" target="_blank" rel="noopener">TronScan</a>.
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q"><span data-i18n="q5">🌍 Who is this for?</span></summary>
+    <div class="faq-a" data-i18n="a5">
+      Anyone with a TRON wallet: traders, frequent USDT senders, or new wallets without USDT/energy. 
+      It’s ideal when you need a one-off transfer without paying the full network fee in TRX.
+      <ul>
+        <li>USDT/TRC20 transfers on TRON</li>
+        <li>Wallets with zero energy or bandwidth</li>
+        <li>First activation / new wallets</li>
+        <li>Reducing TRX costs for frequent transfers</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q"><span data-i18n="q6">📜 How to use GasFree4uCOM step-by-step?</span></summary>
+    <div class="faq-a" data-i18n="a6">
+      1) Open your TRON wallet app.<br>
+      2) Send exactly 2.9 TRX (active wallet) or 5.8 TRX (new/no-USDT) to: <code>TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN</code>.<br>
+      3) Wait up to 1 minute.<br>
+      4) You’ll receive delegated energy to the <u>sender</u> address.<br>
+      5) Make your transfer — energy covers the fee. Valid up to 1 hour or until the first transfer.
+    </div>
+  </details>
+</section>
+    
     <footer>
       <div>© <span id="year"></span> GasFree4youCOM • <span data-i18n="footer">Transparent TRON energy delegation. This is not a financial intermediary; you send TRX to an on‑chain address and receive a temporary energy delegation.</span></div>
     </footer>
@@ -436,5 +537,52 @@
   ]
 }
 </script>
+  <script>
+(function () {
+  if (typeof I18N === 'undefined') return;
+
+  // EN
+  I18N.en = Object.assign(I18N.en || {}, {
+    faqTitle: "FAQ — GasFree4uCOM",
+    q1: "❓ What is GasFree4uCOM?",
+    a1: "GasFree4uCOM is a cryptocurrency service that instantly delegates TRON network energy to your wallet. Energy is used instead of TRX for paying transaction fees. With GasFree4uCOM, you can send TRC20 tokens (like USDT) at a fraction of the normal cost by renting energy only when you need it. No registration is required — just send TRX to our service address, and we delegate the energy back automatically.",
+    q2: "💰 How much can I save?",
+    a2: "Normally, sending USDT on TRON costs about 13.5 TRX (active wallet) or 27 TRX (new wallet or no USDT). With GasFree4uCOM you pay only 2.9 TRX or 5.8 TRX — up to ~80% savings. Example: Active wallet → save 10.6 TRX per transfer. New wallet/no USDT → save 21.2 TRX per transfer. Savings compound if you make multiple transfers.",
+    q3: "⚡ How fast will I get the energy?",
+    a3: "Delegation is automatic. After you send TRX to our address, your wallet receives energy within ~1 minute. The energy remains valid for up to 1 hour or until your first transfer (whichever comes first).",
+    q4: "🔒 Is it safe to use?",
+    a4: "Yes. We never ask for private keys or seed phrases. You only send TRX to a public on-chain address; the network confirms the payment, and our system delegates the purchased energy to the sender address. You can verify operations on explorers like TronScan.",
+    q5: "🌍 Who is this for?",
+    a5: "For anyone with a TRON wallet — especially if you need to send USDT/TRC20 with minimal fees, activate a new wallet, or reduce TRX costs for frequent transfers. It’s perfect for one-off transactions without paying the full fee in TRX.",
+    q6: "📜 How to use GasFree4uCOM step-by-step?",
+    a6: "1) Open your TRON wallet. 2) Send exactly 2.9 TRX (active) or 5.8 TRX (new/no-USDT) to: TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN. 3) Wait up to 1 minute. 4) Energy is delegated to the sender address. 5) Make your transfer; energy covers the fee for up to 1 hour or until the first transfer."
+  });
+
+  // RU
+  I18N.ru = Object.assign(I18N.ru || {}, {
+    faqTitle: "FAQ — GasFree4uCOM",
+    q1: "❓ Что такое GasFree4uCOM?",
+    a1: "GasFree4uCOM — это сервис мгновенной делегации энергии сети TRON на ваш кошелёк. Энергия используется вместо TRX для оплаты сетевой комиссии. Вы можете отправлять USDT (TRC20) почти без затрат, «арендуя» энергию только на нужный момент. Регистрация не требуется — просто отправьте TRX на сервисный адрес, и мы автоматически делегируем энергию на адрес отправителя.",
+    q2: "💰 Сколько я сэкономлю?",
+    a2: "Обычно перевод на TRON стоит ~13.5 TRX (активный кошелёк) или 27 TRX (новый/без USDT). С GasFree4uCOM вы платите лишь 2.9 TRX или 5.8 TRX — экономия до ~80%. Пример: Активный кошелёк → экономия 10.6 TRX за перевод. Новый/без USDT → экономия 21.2 TRX за перевод. Если переводов несколько, экономия суммируется.",
+    q3: "⚡ Как быстро придёт энергия?",
+    a3: "Делегация выполняется автоматически. После отправки TRX на наш адрес энергия поступит на ваш кошелёк примерно за 1 минуту. Энергия действует до 1 часа или до первого перевода (что наступит раньше).",
+    q4: "🔒 Это безопасно?",
+    a4: "Да. Мы не просим приватные ключи и seed-фразы. Вы лишь отправляете TRX на публичный on-chain адрес; сеть подтверждает платёж, после чего система делегирует купленную энергию на адрес отправителя. Все операции можно проверить в блокчейн-обозревателе TronScan.",
+    q5: "🌍 Кому подойдёт?",
+    a5: "Любому владельцу TRON-кошелька: для переводов USDT/TRC20 с минимальными расходами, активации нового кошелька или снижения затрат TRX при частых переводах. Отлично подходит, когда нужен разовый перевод без полной комиссии TRX.",
+    q6: "📜 Как пользоваться пошагово?",
+    a6: "1) Откройте TRON-кошелёк. 2) Отправьте ровно 2.9 TRX (активный) или 5.8 TRX (новый/без USDT) на адрес: TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN. 3) Подождите до 1 минуты. 4) Энергия делегируется на адрес отправителя. 5) Совершите перевод — энергия покрывает комиссию до 1 часа или до первого перевода."
+  });
+
+  // ZH
+  I18N.zh = Object.assign(I18N.zh || {}, {
+    faqTitle: "常见问题 — GasFree4uCOM",
+    q1: "❓ 什么是 GasFree4uCOM？",
+    a1: "GasFree4uCOM 是一个即时 TRON 能量委托服务。能量用于支付链上手续费，替代 TRX 消耗。通过按需“租用”能量，你可以用更低成本发送 TRC20（如 USDT）。无需注册—只需向服务地址发送 TRX，我们会自动把能量委托回你的钱包。",
+    q2: "💰 我能节省多少？",
+    a2: "在 TRON 上发送 USDT，活跃钱包通常约 13.5 TRX，新的/无 USDT 的钱包约 27 TRX。使用 GasFree4uCOM 只需 2.9 TRX 或 5.8 TRX，节省可达 ~80%。示例：活跃钱包 → 每次节省 10.6 TRX；新钱包/无 USDT → 每次节省 21.2 TRX。多次转账节省更多。",
+    q3: "⚡ 多久能收到能量？",
+    a3: "我们自动处理委托。发送 TRX 后约 1 分钟内，能量会委
 </body>
 </html>
