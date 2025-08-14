@@ -119,6 +119,8 @@
           <span class="chip" title="Live TRX/USDT price">
             <span data-i18n="trxPrice">TRX price:</span>
             <b id="trxPrice">—</b>
+            <button class="btn" id="refreshPrice" title="Refresh" style="padding:6px 10px">↻</button>
+            <input id="manualPrice" type="number" step="0.0001" min="0" placeholder="0.0900" style="display:none;width:96px; border-radius:10px; border:1px solid var(--border); padding:6px 8px; background:rgba(255,255,255,.08); color:var(--text)">
           </span>
           <span class="chip" title="Typical fee for active wallet">
             <span>Active fee:</span>
@@ -142,7 +144,7 @@
           <div class="price">2.9 TRX</div>
           <div class="usd" id="p29usd">≈ —</div>
           <div class="energy" data-i18n="pack1">65,000 energy • ~1 transfer</div>
-          <div class="savings" id="s29"> </div>
+          <div class="savings" id="s29"></div>
           <div class="hint" data-i18n="pack1Hint">Compare to 13.5 TRX without energy.</div>
           <div class="cta" style="margin-top:6px">
             <button class="btn primary" data-copy="2.9" data-i18n="copy29">Amount: 2.9 TRX</button>
@@ -154,7 +156,7 @@
           <div class="price">5.8 TRX</div>
           <div class="usd" id="p58usd">≈ —</div>
           <div class="energy" data-i18n="pack2">130,000 energy • 1 transfer</div>
-          <div class="savings" id="s58"> </div>
+          <div class="savings" id="s58"></div>
           <div class="hint" data-i18n="pack2Hint">Compare to 27 TRX without energy.</div>
           <div class="cta" style="margin-top:6px">
             <button class="btn primary" data-copy="5.8" data-i18n="copy58">Amount: 5.8 TRX</button>
@@ -294,56 +296,92 @@
 
     // Copy
     function copy(text, el){
-      navigator.clipboard.writeText(text).then(()=>{ if(el){ const old=el.textContent; el.textContent='✓'; el.disabled=true; setTimeout(()=>{el.textContent=old; el.disabled=false}, 900);} }).catch(()=> alert('Copy manually: '+text));
+      navigator.clipboard.writeText(text).then(function(){
+        if(el){ var old=el.textContent; el.textContent='✓'; el.disabled=true; setTimeout(function(){ el.textContent=old; el.disabled=false; }, 900); }
+      }).catch(function(){ alert('Copy manually: '+text); });
     }
-    document.getElementById('copyBtn').addEventListener('click', (e)=> copy(document.getElementById('addressBox').textContent.trim(), e.target));
-    document.querySelectorAll('[data-copy]').forEach(btn=> btn.addEventListener('click', (e)=> copy(btn.getAttribute('data-copy'), e.target)) );
+    document.getElementById('copyBtn').addEventListener('click', function(e){ copy(document.getElementById('addressBox').textContent.trim(), e.target); });
+    document.querySelectorAll('[data-copy]').forEach(function(btn){ btn.addEventListener('click', function(e){ copy(btn.getAttribute('data-copy'), e.target); }); });
 
     // Language switcher
-    const flags = document.querySelectorAll('.flag');
+    var flags = document.querySelectorAll('.flag');
     function setLang(lang){
       document.documentElement.lang = lang;
-      flags.forEach(f=> f.classList.toggle('active', f.dataset.lang===lang));
-      document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const key=node.getAttribute('data-i18n');
-        node.innerHTML = I18N[lang][key] ?? node.innerHTML;
+      flags.forEach(function(f){ f.classList.toggle('active', f.dataset.lang===lang); });
+      document.querySelectorAll('[data-i18n]').forEach(function(node){
+        var key=node.getAttribute('data-i18n');
+        node.innerHTML = (I18N[lang] && I18N[lang][key]) ? I18N[lang][key] : node.innerHTML;
       });
+      recalc();
     }
-    flags.forEach(f=> f.addEventListener('click', ()=> { setLang(f.dataset.lang); recalc(); }));
+    flags.forEach(function(f){ f.addEventListener('click', function(){ setLang(f.dataset.lang); }); });
 
-    // QR
-    const address = document.getElementById('addressBox').textContent.trim();
-    document.getElementById('qrImg').src = 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' + encodeURIComponent(address);
+    // QR via external endpoint (robust and lightweight)
+    var address = document.getElementById('addressBox').textContent.trim();
+    function renderQR(addr){
+      var el = document.getElementById('qrImg');
+      if(!el) return;
+      var url = 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' + encodeURIComponent(addr);
+      el.src = url;
+      el.onerror = function(){ el.alt = 'QR error'; };
+    }
 
-    // Live price + savings
-    const chipPrice = document.getElementById('trxPrice');
-    const p29usd = document.getElementById('p29usd');
-    const p58usd = document.getElementById('p58usd');
-    const sv29usd = document.getElementById('sv29usd');
-    const sv58usd = document.getElementById('sv58usd');
+    // Price + savings
+    var chipPrice = document.getElementById('trxPrice');
+    var p29usd = document.getElementById('p29usd');
+    var p58usd = document.getElementById('p58usd');
+    var sv29usd = document.getElementById('sv29usd');
+    var sv58usd = document.getElementById('sv58usd');
+    var price = null; // TRX in USD
 
-    let price = null; // TRX in USD
     function fmtUSD(v){ return (v==null||isNaN(v)) ? '—' : ('$' + v.toFixed(2)); }
 
     function recalc(){
-      const sv29trx = 13.5 - 2.9; // active
-      const sv58trx = 27 - 5.8;   // new/no-USDT
+      var lang = document.documentElement.lang || 'en';
+      var sv29trx = 13.5 - 2.9; // active
+      var sv58trx = 27 - 5.8;   // new/no-USDT
       if(price){
         p29usd.textContent = '≈ ' + fmtUSD(2.9*price);
         p58usd.textContent = '≈ ' + fmtUSD(5.8*price);
-        sv29usd.textContent = fmtUSD(sv29trx*price);
-        sv58usd.textContent = fmtUSD(sv58trx*price);
+        if(sv29usd) sv29usd.textContent = fmtUSD(sv29trx*price);
+        if(sv58usd) sv58usd.textContent = fmtUSD(sv58trx*price);
       }
+      var label = (I18N[lang] && I18N[lang].save) ? I18N[lang].save : 'Savings';
+      var card29 = document.getElementById('s29');
+      var card58 = document.getElementById('s58');
+      if(card29){ card29.textContent = label + ': ' + sv29trx.toFixed(1) + ' TRX' + (price? ' (≈ ' + fmtUSD(sv29trx*price) + ')' : ''); }
+      if(card58){ card58.textContent = label + ': ' + sv58trx.toFixed(1) + ' TRX' + (price? ' (≈ ' + fmtUSD(sv58trx*price) + ')' : ''); }
     }
 
-    fetch('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT')
-      .then(r=>r.json())
-      .then(d=>{ price = parseFloat(d.price); chipPrice.textContent = '$'+price.toFixed(4); recalc(); })
-      .catch(()=>{ price = null; chipPrice.textContent = '—'; recalc(); });
+    function fetchWithTimeout(resource, options){
+      var timeout = (options && options.timeout) ? options.timeout : 6000;
+      var controller = new AbortController();
+      var id = setTimeout(function(){ controller.abort(); }, timeout);
+      return fetch(resource, Object.assign({}, options, { signal: controller.signal }))
+        .then(function(response){ clearTimeout(id); return response; })
+        .catch(function(err){ clearTimeout(id); throw err; });
+    }
 
-    // Default
+    function loadPrice(){
+      fetchWithTimeout('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT', { timeout: 5000 })
+        .then(function(r){ return r.json(); })
+        .then(function(d){ var p = parseFloat(d.price); if(!isNaN(p)){ price=p; chipPrice.textContent='$'+price.toFixed(4); recalc(); } else { throw new Error('NaN'); } })
+        .catch(function(){
+          fetchWithTimeout('https://api.coingecko.com/api/v3/simple/price?ids=tron&vs_currencies=usd', { timeout: 5000 })
+            .then(function(r2){ return r2.json(); })
+            .then(function(d2){ var p2 = parseFloat(d2 && d2.tron && d2.tron.usd); if(!isNaN(p2)){ price=p2; chipPrice.textContent='$'+price.toFixed(4); recalc(); } else { throw new Error('NaN2'); } })
+            .catch(function(){ price=0.0900; chipPrice.textContent='$'+price.toFixed(4)+' *'; recalc(); var m=document.getElementById('manualPrice'); if(m){ m.style.display='inline-block'; m.value=price.toFixed(4); m.addEventListener('input', function(){ var v=parseFloat(m.value); if(!isNaN(v)){ price=v; chipPrice.textContent='$'+price.toFixed(4)+' *'; recalc(); } }); } });
+        });
+    }
+
+    // Init
+    document.getElementById('year').textContent = new Date().getFullYear();
     setLang('en');
+    renderQR(address);
+    loadPrice();
     recalc();
+    var refreshBtn = document.getElementById('refreshPrice');
+    if(refreshBtn){ refreshBtn.addEventListener('click', function(){ chipPrice.textContent='…'; loadPrice(); }); }
   </script>
 </body>
 </html>
