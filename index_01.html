@@ -1,139 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
-<meta name="theme-color" content="#F5C400">
-  <meta name="google-site-verification" content="EtP2q_VfUH7z_w7ELuA2yYSY8lpjOvFV-0rwvxvpljI" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GasFree4uCOM — TRON Energy Top‑Up • 2.9 TRX = 65,000 energy</title>
-  <meta name="description" content="GasFree4uCOM — instant TRON energy delegation. Active wallet: 2.9 TRX vs 13.5 TRX. New/No‑USDT: 5.8 TRX vs 27 TRX. Send TRX, get energy in ~1 minute." />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <meta name="theme-color" content="#F5C400">
+
+  <title>GasFree4uCOM — TRON Energy Top-Up • 2.9 TRX = 65,000 energy</title>
+  <meta name="description" content="GasFree4uCOM — instant TRON energy delegation. Active wallet: 2.9 TRX vs 13.5 TRX. New/No-USDT: 5.8 TRX vs 27 TRX. Send TRX, get energy in ~1 minute." />
   <meta name="color-scheme" content="light dark">
-  <!-- Primary Meta Tags -->
-<title>GasFree4uCOM — Save on TRON Energy Transfers</title>
-<meta name="description" content="GasFree4uCOM — instant TRON energy delegation. 2.9 TRX vs 13.5 TRX, 5.8 TRX vs 27 TRX. Save up to 80% on TRON transaction fees by sending TRX and getting instant energy." />
-<meta name="keywords" content="GasFree4uCOM, TRON Energy, TRON Energy rental, cheap TRON energy, TRX transaction fee, TRON bandwidth, TRC20 transfer, TRX delegation" />
-<meta name="robots" content="index, follow" />
+  <meta name="keywords" content="GasFree4uCOM, TRON Energy, TRON Energy rental, cheap TRON energy, TRX transaction fee, TRON bandwidth, TRC20 transfer, TRX delegation" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gasfree4you.com/" />
+  <meta property="og:title" content="GasFree4uCOM — Save on TRON Energy Transfers" />
+  <meta property="og:description" content="Instant TRON energy delegation at the best price. 2.9 TRX vs 13.5 TRX and 5.8 TRX vs 27 TRX." />
+  <meta property="og:image" content="https://gasfree4you.com/images/preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://gasfree4you.com/" />
+  <meta name="twitter:title" content="GasFree4uCOM — Save on TRON Energy Transfers" />
+  <meta name="twitter:description" content="Instant TRON energy delegation at the best price." />
+  <meta name="twitter:image" content="https://gasfree4you.com/images/preview.jpg" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://gasfree4you.com/" />
-<meta property="og:title" content="GasFree4uCOM — Save on TRON Energy Transfers" />
-<meta property="og:description" content="Instant TRON energy delegation at the best price. 2.9 TRX vs 13.5 TRX and 5.8 TRX vs 27 TRX." />
-<meta property="og:image" content="https://gasfree4you.com/images/preview.jpg" />
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://gasfree4you.com/" />
-<meta name="twitter:title" content="GasFree4uCOM — Save on TRON Energy Transfers" />
-<meta name="twitter:description" content="Instant TRON energy delegation at the best price." />
-<meta name="twitter:image" content="https://gasfree4you.com/images/preview.jpg" />
-  
   <style>
     :root{
-      --bg: #0b1020; --card:#0f152a; --muted:#8ea1b2; --text:#eaf2ff;
+      --bg:#0b1020; --card:#0f152a; --muted:#8ea1b2; --text:#eaf2ff;
       --accent:#6ee7ff; --accent2:#7df1b7; --border:rgba(255,255,255,.08);
       --danger:#ff6b6b; --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+      --radius:20px;
     }
     @media(prefers-color-scheme:light){
       :root{ --bg:#f7fafc; --card:#ffffff; --muted:#5b7083; --text:#0b1020; --accent:#007aff; --accent2:#16a34a; --border:rgba(15,21,42,.08); --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; }
     }
+
     *{box-sizing:border-box}
-    body{margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text);
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text);
       background: radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.12), transparent 60%),
                   radial-gradient(1000px 600px at -10% 110%, rgba(125,241,183,.12), transparent 60%), var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    a{color:var(--accent)}
-    .container{max-width:1080px; margin:0 auto; padding:24px}
-    header{display:flex; align-items:center; gap:16px; justify-content:space-between; padding:10px 0}
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{width:42px; height:42px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
-    .tag{font-size:12px; opacity:.8}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .container{max-width:1040px; margin:0 auto; padding:20px 20px 28px}
+    @media (min-width:480px){ .container{ padding:24px } }
+    @media (min-width:1024px){ .container{ padding:28px } }
+
+    header{display:flex; align-items:center; gap:14px; justify-content:space-between; padding:6px 0}
+    .brand{display:flex; align-items:center; gap:10px; min-width:0}
+    .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800; flex:0 0 auto}
+    .tag{font-size:12px; opacity:.9; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
 
     .lang{display:flex; gap:8px; align-items:center}
-    .flag{width:28px; height:20px; border-radius:3px; border:1px solid var(--border); cursor:pointer; display:inline-block; overflow:hidden}
+    .flag{width:36px; height:26px; border-radius:6px; border:1px solid var(--border); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; overflow:hidden; touch-action:manipulation}
+    .flag:active{transform:scale(.98)}
     .flag svg{display:block; width:100%; height:100%}
     .active{outline:2px solid var(--accent)}
 
-    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center; padding:24px 0}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    .hero{display:grid; grid-template-columns:1.05fr .95fr; gap:18px; align-items:start; padding:18px 0}
+    @media (max-width:900px){ .hero{grid-template-columns:1fr; gap:16px} }
 
-    .title{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 10px; letter-spacing:-.02em}
-    .subtitle{font-size:16px; color:var(--muted); margin:0 0 18px}
-    .panel{background:var(--card); border:1px solid var(--border); border-radius:20px; box-shadow:var(--shadow)}
-    .address{padding:16px; display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center}
-    .addr-box{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace; padding:12px 14px; border-radius:14px; background:rgba(255,255,255,.04); border:1px dashed var(--border); overflow:auto; white-space:nowrap}
+    .title{font-size:clamp(24px,5.5vw,42px); line-height:1.15; margin:0 0 8px; letter-spacing:-.02em}
+    .subtitle{font-size:15px; color:var(--muted); margin:0 0 14px}
+
+    .panel{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .address{padding:12px; display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center}
+    .addr-box{font:600 14px/1.4 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',monospace; padding:10px 12px; border-radius:14px; background:rgba(255,255,255,.04); border:1px dashed var(--border); overflow:auto; white-space:nowrap}
     .addr-side{display:grid; gap:8px; justify-items:end}
-    .btn{appearance:none; cursor:pointer; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; font-weight:600}
+    .btn{appearance:none; cursor:pointer; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; font-weight:700; letter-spacing:.2px}
     .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
 
-    .controls{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:12px 0}
-    .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.04)}
-    .chip .val{font-weight:700}
+    @media (max-width:560px){
+      .address{grid-template-columns:1fr; padding:12px}
+      .addr-side{justify-items:stretch}
+      .btn{width:100%}
+    }
 
-    .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
-    @media (max-width:700px){.grid{grid-template-columns:1fr}}
-    .card{padding:18px; position:relative; display:flex; flex-direction:column; gap:8px}
+    .controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:10px 0}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.04); font-size:14px}
+    .chip .val{font-weight:800}
 
-    /* Polished badges */
-    .badge{position:absolute; top:-10px; left:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; font-weight:800; font-size:12px; padding:6px 12px; border-radius:999px; box-shadow:var(--shadow); border:none}
+    .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+    .card{padding:16px; position:relative; display:flex; flex-direction:column; gap:8px}
 
-    .price{font-size:28px; font-weight:800; margin:8px 0 2px}
-    .usd{font-size:14px; opacity:.9}
+    .badge{position:absolute; top:-10px; left:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; font-weight:900; font-size:12px; padding:6px 10px; border-radius:999px; box-shadow:var(--shadow); border:none}
+
+    .price{font-size:26px; font-weight:900; margin:6px 0 0}
+    .usd{font-size:13px; opacity:.9}
     .energy{font-size:14px; color:var(--muted)}
-    .savings{margin-top:4px; font-weight:700; color:var(--accent2)}
-    .cta{display:flex; gap:10px; flex-wrap:wrap}
+    .savings{margin-top:2px; font-weight:800; color:var(--accent2)}
+    .cta{display:flex; gap:8px; flex-wrap:wrap}
     .cta .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
-    .steps{margin-top:18px; padding:10px 16px 16px}
+    @media (max-width:560px){ .cta .btn{width:100%} }
+
+    .steps{margin-top:14px; padding:10px 14px 14px}
     .steps ol{margin:6px 0 0 18px}
     .hint{font-size:13px; color:var(--muted); margin-top:6px}
-    .note{display:flex; gap:10px; align-items:flex-start; padding:14px; border-radius:14px; background:rgba(125,241,183,.08); border:1px solid var(--border); margin-top:12px}
+    .note{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:14px; background:rgba(125,241,183,.08); border:1px solid var(--border); margin-top:10px}
 
-    .compare{margin-top:22px; overflow:auto}
-    table{width:100%; border-collapse:separate; border-spacing:0; min-width:660px}
-    th,td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--border)}
-    th{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted)}
-    .save{font-weight:700; color:var(--accent2)}
-    footer{margin:32px 0 12px; color:var(--muted); font-size:13px}
+    .compare{margin-top:18px}
+    .compare .panel{padding:6px 8px}
+    .table-wrap{overflow:auto; border-radius:12px}
+    table{width:100%; border-collapse:separate; border-spacing:0; min-width:620px}
+    th,td{padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); font-size:14px}
+    th{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); position:sticky; top:0; background:var(--card); z-index:1}
+    .save{font-weight:800; color:var(--accent2)}
+    footer{margin:28px 0 12px; color:var(--muted); font-size:13px}
 
-    /* QR */
-    .qr{width:140px; height:140px; background:#fff; padding:8px; border-radius:12px; display:block; box-shadow:var(--shadow); border:1px solid var(--border); object-fit:contain}
- 
-.faq { margin-top: 22px; padding: 14px 16px; }
-.faq-title { margin: 6px 0 10px; font-size: 18px; }
-.faq-item {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: rgba(255,255,255,.03);
-  margin: 10px 0;
-  overflow: hidden;
-}
-.faq-item[open] { background: rgba(125,241,183,.06); }
-.faq-q {
-  list-style: none;
-  cursor: pointer;
-  padding: 12px 14px;
-  font-weight: 700;
-}
-.faq-q::-webkit-details-marker { display: none; }
-.faq-q::after {
-  content: '▸';
-  float: right;
-  transition: transform .2s ease;
-  opacity: .8;
-}
-.faq-item[open] .faq-q::after { transform: rotate(90deg); }
-.faq-a {
-  padding: 0 14px 14px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
-}
-.faq .faq-a ul { margin: 8px 0 0 18px; }
-    
+    .qr{width:120px; height:120px; background:#fff; padding:8px; border-radius:12px; display:block; box-shadow:var(--shadow); border:1px solid var(--border); object-fit:contain}
+    @media (max-width:560px){ .qr{width:96px; height:96px} }
+
+    .faq { margin-top: 18px; padding: 12px 14px; }
+    .faq-title { margin: 6px 0 8px; font-size: 18px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; background: rgba(255,255,255,.03); margin: 8px 0; overflow: hidden }
+    .faq-item[open] { background: rgba(125,241,183,.06); }
+    .faq-q { list-style: none; cursor: pointer; padding: 12px 14px; font-weight: 800 }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after { content: '▸'; float: right; transition: transform .2s ease; opacity: .8 }
+    .faq-item[open] .faq-q::after { transform: rotate(90deg) }
+    .faq-a { padding: 0 14px 12px; color: var(--muted); font-size: 14px; line-height: 1.55 }
+    .faq .faq-a ul { margin: 8px 0 0 18px }
   </style>
 </head>
 <body>
@@ -143,22 +135,19 @@
         <div class="logo" aria-hidden="true">⚡️</div>
         <div>
           <h1 class="tag" style="margin:0">GasFree4uCOM</h1>
-          <div class="tag" data-i18n="tagline">TRON Energy Top‑Up</div>
+          <div class="tag" data-i18n="tagline">TRON Energy Top-Up</div>
         </div>
       </div>
       <div class="lang" aria-label="Language switcher">
-        <div class="flag active" data-lang="en" title="English" aria-label="English">
-          <!-- UK flag -->
+        <button class="flag active" data-lang="en" title="English" aria-label="English">
           <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v40 h60 v-40 z"/></clipPath><clipPath id="t"><path d="M30,20 h30 v20 z v-40 z h-60 z v40 z h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v40 h60 v-40 z" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4" clip-path="url(#t)"/><path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
-        </div>
-        <div class="flag" data-lang="ru" title="Русский" aria-label="Русский">
-          <!-- Russia flag -->
+        </button>
+        <button class="flag" data-lang="ru" title="Русский" aria-label="Русский">
           <svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="2" fill="#fff"/><rect width="3" height="1.333" y="0.333" fill="#0039A6"/><rect width="3" height="0.666" y="1.333" fill="#D52B1E"/></svg>
-        </div>
-        <div class="flag" data-lang="zh" title="中文" aria-label="中文">
-          <!-- China flag -->
+        </button>
+        <button class="flag" data-lang="zh" title="中文" aria-label="中文">
           <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#EE1C25"/><polygon points="5,2 6,5 9,5 6.5,7 7.5,10 5,8.5 2.5,10 3.5,7 1,5 4,5" fill="#FFEE58"/></svg>
-        </div>
+        </button>
       </div>
     </header>
 
@@ -174,19 +163,20 @@
             <button class="btn" id="copyBtn" data-i18n="copyAddr">Copy address</button>
           </div>
         </div>
+
         <div class="controls">
           <span class="chip" title="Live TRX/USDT price">
             <span data-i18n="trxPrice">TRX price:</span>
             <b id="trxPrice">—</b>
             <button class="btn" id="refreshPrice" title="Refresh" style="padding:6px 10px">↻</button>
-            <input id="manualPrice" type="number" step="0.0001" min="0" placeholder="0.0900" style="display:none;width:96px; border-radius:10px; border:1px solid var(--border); padding:6px 8px; background:rgba(255,255,255,.08); color:var(--text)">
+            <input id="manualPrice" aria-label="Manual TRX price" type="number" step="0.0001" min="0" placeholder="0.0900" style="display:none;width:104px; border-radius:10px; border:1px solid var(--border); padding:6px 8px; background:rgba(255,255,255,.08); color:var(--text)">
           </span>
           <span class="chip" title="Typical fee for active wallet">
             <span>Active fee:</span>
             <span class="val">13.5 TRX</span>
           </span>
-          <span class="chip" title="Typical fee for new/no‑USDT wallet">
-            <span>New/No‑USDT fee:</span>
+          <span class="chip" title="Typical fee for new/no-USDT wallet">
+            <span>New/No-USDT fee:</span>
             <span class="val">27 TRX</span>
           </span>
         </div>
@@ -210,8 +200,9 @@
             <button class="btn" data-copy="TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN" data-i18n="copyAddress">Address</button>
           </div>
         </div>
+
         <div class="panel card" aria-label="New wallet package">
-          <div class="badge" data-i18n="badge2">🆕 New/No‑USDT</div>
+          <div class="badge" data-i18n="badge2">🆕 New/No-USDT</div>
           <div class="price">5.8 TRX</div>
           <div class="usd" id="p58usd">≈ —</div>
           <div class="energy" data-i18n="pack2">130,000 energy • 1 transfer</div>
@@ -226,109 +217,111 @@
     </section>
 
     <section class="compare">
-      <h3 style="margin:22px 0 10px" data-i18n="savings">Your savings</h3>
-      <div class="panel" style="padding:8px 12px">
-        <table aria-label="Cost comparison">
-          <thead>
-            <tr>
-              <th data-i18n="scenario">Scenario</th>
-              <th data-i18n="without">Without energy</th>
-              <th data-i18n="with">With GasFree4uCOM</th>
-              <th data-i18n="save">Savings</th>
-              <th data-i18n="saveUSD">Savings (USD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-i18n="activeWallet">Active wallet</td>
-              <td>13.5 TRX</td>
-              <td>2.9 TRX</td>
-              <td class="save">≈ <span id="sv29">10.6</span> TRX</td>
-              <td class="save">≈ <span id="sv29usd">—</span></td>
-            </tr>
-            <tr>
-              <td data-i18n="noUsdt">New/No‑USDT wallet</td>
-              <td>27 TRX</td>
-              <td>5.8 TRX</td>
-              <td class="save">≈ <span id="sv58">21.2</span> TRX</td>
-              <td class="save">≈ <span id="sv58usd">—</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <h3 style="margin:16px 0 8px" data-i18n="savings">Your savings</h3>
+      <div class="panel">
+        <div class="table-wrap" aria-label="Cost comparison">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="scenario">Scenario</th>
+                <th data-i18n="without">Without energy</th>
+                <th data-i18n="with">With GasFree4uCOM</th>
+                <th data-i18n="save">Savings</th>
+                <th data-i18n="saveUSD">Savings (USD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="activeWallet">Active wallet</td>
+                <td>13.5 TRX</td>
+                <td>2.9 TRX</td>
+                <td class="save">≈ <span id="sv29">10.6</span> TRX</td>
+                <td class="save">≈ <span id="sv29usd">—</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="noUsdt">New/No-USDT wallet</td>
+                <td>27 TRX</td>
+                <td>5.8 TRX</td>
+                <td class="save">≈ <span id="sv58">21.2</span> TRX</td>
+                <td class="save">≈ <span id="sv58usd">—</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="hint" data-i18n="footnote">*Savings depend on TRON network conditions and transfer type.</div>
       </div>
     </section>
 
-<section id="faq" class="panel faq">
-  <h3 class="faq-title" data-i18n="faqTitle">FAQ — GasFree4uCOM</h3>
+    <section id="faq" class="panel faq">
+      <h3 class="faq-title" data-i18n="faqTitle">FAQ — GasFree4uCOM</h3>
 
-  <details class="faq-item">
-    <summary class="faq-q"><span data-i18n="q1">❓ What is GasFree4uCOM?</span></summary>
-    <div class="faq-a" data-i18n="a1">
-      GasFree4uCOM is a cryptocurrency service that instantly delegates TRON network energy to your wallet. 
-      Energy is used instead of TRX for paying transaction fees. 
-      With GasFree4uCOM, you can send TRC20 tokens (like USDT) at a fraction of the normal cost by renting energy for just the time you need. 
-      No registration is required — just send TRX to our service address, and we delegate the energy back to you automatically.
-    </div>
-  </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span data-i18n="q1">❓ What is GasFree4uCOM?</span></summary>
+        <div class="faq-a" data-i18n="a1">
+          GasFree4uCOM is a cryptocurrency service that instantly delegates TRON network energy to your wallet.
+          Energy is used instead of TRX for paying transaction fees.
+          With GasFree4uCOM, you can send TRC20 tokens (like USDT) at a fraction of the normal cost by renting energy for just the time you need.
+          No registration is required — just send TRX to our service address, and we delegate the energy back to you automatically.
+        </div>
+      </details>
 
-  <details class="faq-item">
-    <summary class="faq-q"><span data-i18n="q2">💰 How much can I save?</span></summary>
-    <div class="faq-a" data-i18n="a2">
-      Normally, sending USDT on TRON costs about 13.5 TRX if your wallet is active or 27 TRX if it's new or has no USDT.
-      With GasFree4uCOM, you pay only 2.9 TRX for an active wallet or 5.8 TRX for a new one — that's up to 80% savings!
-      <br><br><strong>Example:</strong><br>
-      • Active wallet → <u>Save 10.6 TRX</u> per transfer.<br>
-      • New wallet / no USDT → <u>Save 21.2 TRX</u> per transfer.<br>
-      These savings compound if you make many transactions.
-    </div>
-  </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span data-i18n="q2">💰 How much can I save?</span></summary>
+        <div class="faq-a" data-i18n="a2">
+          Normally, sending USDT on TRON costs about 13.5 TRX if your wallet is active or 27 TRX if it's new or has no USDT.
+          With GasFree4uCOM, you pay only 2.9 TRX for an active wallet or 5.8 TRX for a new one — that's up to 80% savings!
+          <br><br><strong>Example:</strong><br>
+          • Active wallet → <u>Save 10.6 TRX</u> per transfer.<br>
+          • New wallet / no USDT → <u>Save 21.2 TRX</u> per transfer.<br>
+          These savings compound if you make many transactions.
+        </div>
+      </details>
 
-  <details class="faq-item">
-    <summary class="faq-q"><span data-i18n="q3">⚡ How fast will I get the energy?</span></summary>
-    <div class="faq-a" data-i18n="a3">
-      We process energy delegation automatically. After you send TRX to our address, your wallet will receive energy within ~1 minute.
-      Energy remains valid for up to 1 hour or until your first transfer, whichever comes first.
-    </div>
-  </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span data-i18n="q3">⚡ How fast will I get the energy?</span></summary>
+        <div class="faq-a" data-i18n="a3">
+          We process energy delegation automatically. After you send TRX to our address, your wallet will receive energy within ~1 minute.
+          Energy remains valid for up to 1 hour or until your first transfer, whichever comes first.
+        </div>
+      </details>
 
-  <details class="faq-item">
-    <summary class="faq-q"><span data-i18n="q4">🔒 Is it safe to use?</span></summary>
-    <div class="faq-a" data-i18n="a4">
-      Yes. We never ask for private keys or seed phrases. You only send TRX to a public on-chain address. 
-      The network confirms your payment, then our system delegates the purchased energy to the sender’s wallet.
-      You can verify everything in a TRON explorer such as <a href="https://tronscan.org" target="_blank" rel="noopener">TronScan</a>.
-    </div>
-  </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span data-i18n="q4">🔒 Is it safe to use?</span></summary>
+        <div class="faq-a" data-i18n="a4">
+          Yes. We never ask for private keys or seed phrases. You only send TRX to a public on-chain address.
+          The network confirms your payment, then our system delegates the purchased energy to the sender’s wallet.
+          You can verify everything in a TRON explorer such as <a href="https://tronscan.org" target="_blank" rel="noopener">TronScan</a>.
+        </div>
+      </details>
 
-  <details class="faq-item">
-    <summary class="faq-q"><span data-i18n="q5">🌍 Who is this for?</span></summary>
-    <div class="faq-a" data-i18n="a5">
-      Anyone with a TRON wallet: traders, frequent USDT senders, or new wallets without USDT/energy. 
-      It’s ideal when you need a one-off transfer without paying the full network fee in TRX.
-      <ul>
-        <li>USDT/TRC20 transfers on TRON</li>
-        <li>Wallets with zero energy or bandwidth</li>
-        <li>First activation / new wallets</li>
-        <li>Reducing TRX costs for frequent transfers</li>
-      </ul>
-    </div>
-  </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span data-i18n="q5">🌍 Who is this for?</span></summary>
+        <div class="faq-a" data-i18n="a5">
+          Anyone with a TRON wallet: traders, frequent USDT senders, or new wallets without USDT/energy.
+          It’s ideal when you need a one-off transfer without paying the full network fee in TRX.
+          <ul>
+            <li>USDT/TRC20 transfers on TRON</li>
+            <li>Wallets with zero energy or bandwidth</li>
+            <li>First activation / new wallets</li>
+            <li>Reducing TRX costs for frequent transfers</li>
+          </ul>
+        </div>
+      </details>
 
-  <details class="faq-item">
-    <summary class="faq-q"><span data-i18n="q6">📜 How to use GasFree4uCOM step-by-step?</span></summary>
-    <div class="faq-a" data-i18n="a6">
-      1) Open your TRON wallet app.<br>
-      2) Send exactly 2.9 TRX (active wallet) or 5.8 TRX (new/no-USDT) to: <code>TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN</code>.<br>
-      3) Wait up to 1 minute.<br>
-      4) You’ll receive delegated energy to the <u>sender</u> address.<br>
-      5) Make your transfer — energy covers the fee. Valid up to 1 hour or until the first transfer.
-    </div>
-  </details>
-</section>
-    
+      <details class="faq-item">
+        <summary class="faq-q"><span data-i18n="q6">📜 How to use GasFree4uCOM step-by-step?</span></summary>
+        <div class="faq-a" data-i18n="a6">
+          1) Open your TRON wallet app.<br>
+          2) Send exactly 2.9 TRX (active wallet) or 5.8 TRX (new/no-USDT) to: <code>TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN</code>.<br>
+          3) Wait up to 1 minute.<br>
+          4) You’ll receive delegated energy to the <u>sender</u> address.<br>
+          5) Make your transfer — energy covers the fee. Valid up to 1 hour or until the first transfer.
+        </div>
+      </details>
+    </section>
+
     <footer>
-      <div>© <span id="year"></span> GasFree4uCOM • <span data-i18n="footer">Transparent TRON energy delegation. This is not a financial intermediary; you send TRX to an on‑chain address and receive a temporary energy delegation.</span></div>
+      <div>© <span id="year"></span> GasFree4uCOM • <span data-i18n="footer">Transparent TRON energy delegation. This is not a financial intermediary; you send TRX to an on-chain address and receive a temporary energy delegation.</span></div>
     </footer>
   </div>
 
@@ -336,7 +329,7 @@
     // i18n dictionary
     const I18N = {
       en: {
-        tagline: "TRON Energy Top‑Up",
+        tagline: "TRON Energy Top-Up",
         title: "TRON Energy at a fixed price — just send TRX",
         subtitle: "Two transparent options. Energy is valid for up to 1 hour or until the first transfer.",
         copyAddr: "Copy address",
@@ -344,7 +337,7 @@
         badge1: "⭐ Best value (Active)",
         pack1: "65,000 energy • ~1 transfer",
         pack1Hint: "Compare to 13.5 TRX without energy.",
-        badge2: "🆕 New/No‑USDT",
+        badge2: "🆕 New/No-USDT",
         pack2: "130,000 energy • 1 transfer",
         pack2Hint: "Compare to 27 TRX without energy.",
         copyAddress: "Address",
@@ -358,9 +351,9 @@
         save: "Savings",
         saveUSD: "Savings (USD)",
         activeWallet: "Active wallet",
-        noUsdt: "New/No‑USDT wallet",
+        noUsdt: "New/No-USDT wallet",
         footnote: "*Savings depend on TRON network conditions and transfer type.",
-        footer: "Transparent TRON energy delegation. This is not a financial intermediary; you send TRX to an on‑chain address and receive a temporary energy delegation."
+        footer: "Transparent TRON energy delegation. This is not a financial intermediary; you send TRX to an on-chain address and receive a temporary energy delegation."
       },
       ru: {
         tagline: "Делегация энергии TRON",
@@ -387,7 +380,7 @@
         activeWallet: "Активный кошелёк",
         noUsdt: "Новый/без USDT",
         footnote: "*Экономия зависит от нагрузки сети TRON и типа перевода.",
-        footer: "Прозрачная делегация энергии TRON. Это не финансовый посредник; вы отправляете TRX на on‑chain адрес и получаете временную делегацию энергии."
+        footer: "Прозрачная делегация энергии TRON. Это не финансовый посредник; вы отправляете TRX на on-chain адрес и получаете временную делегацию энергии."
       },
       zh: {
         tagline: "TRON 能量充值",
@@ -443,7 +436,7 @@
     }
     flags.forEach(function(f){ f.addEventListener('click', function(){ setLang(f.dataset.lang); }); });
 
-    // QR via external endpoint (robust and lightweight)
+    // QR
     var address = document.getElementById('addressBox').textContent.trim();
     function renderQR(addr){
       var el = document.getElementById('qrImg');
@@ -502,7 +495,6 @@
     }
 
     // Init
-    document.getElementById('year').textContent = new Date().getFullYear();
     setLang('en');
     renderQR(address);
     loadPrice();
@@ -510,84 +502,14 @@
     var refreshBtn = document.getElementById('refreshPrice');
     if(refreshBtn){ refreshBtn.addEventListener('click', function(){ chipPrice.textContent='…'; loadPrice(); }); }
   </script>
+
+  <!-- FAQ Schema -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is GasFree4uCOM?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "GasFree4uCOM is a service for instant TRON energy delegation. Save up to 80% on fees."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much can I save?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typical TRON transfer costs 13.5 TRX or 27 TRX. GasFree4uCOM costs only 2.9 TRX or 5.8 TRX."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How fast will I get the energy?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Within 1 minute after sending TRX, your wallet will receive energy."
-      }
-    }
-  ]
-}
-</script>
-  <script>
-(function () {
-  if (typeof I18N === 'undefined') return;
-
-  // EN
-  I18N.en = Object.assign(I18N.en || {}, {
-    faqTitle: "FAQ — GasFree4uCOM",
-    q1: "❓ What is GasFree4uCOM?",
-    a1: "GasFree4uCOM is a cryptocurrency service that instantly delegates TRON network energy to your wallet. Energy is used instead of TRX for paying transaction fees. With GasFree4uCOM, you can send TRC20 tokens (like USDT) at a fraction of the normal cost by renting energy only when you need it. No registration is required — just send TRX to our service address, and we delegate the energy back automatically.",
-    q2: "💰 How much can I save?",
-    a2: "Normally, sending USDT on TRON costs about 13.5 TRX (active wallet) or 27 TRX (new wallet or no USDT). With GasFree4uCOM you pay only 2.9 TRX or 5.8 TRX — up to ~80% savings. Example: Active wallet → save 10.6 TRX per transfer. New wallet/no USDT → save 21.2 TRX per transfer. Savings compound if you make multiple transfers.",
-    q3: "⚡ How fast will I get the energy?",
-    a3: "Delegation is automatic. After you send TRX to our address, your wallet receives energy within ~1 minute. The energy remains valid for up to 1 hour or until your first transfer (whichever comes first).",
-    q4: "🔒 Is it safe to use?",
-    a4: "Yes. We never ask for private keys or seed phrases. You only send TRX to a public on-chain address; the network confirms the payment, and our system delegates the purchased energy to the sender address. You can verify operations on explorers like TronScan.",
-    q5: "🌍 Who is this for?",
-    a5: "For anyone with a TRON wallet — especially if you need to send USDT/TRC20 with minimal fees, activate a new wallet, or reduce TRX costs for frequent transfers. It’s perfect for one-off transactions without paying the full fee in TRX.",
-    q6: "📜 How to use GasFree4uCOM step-by-step?",
-    a6: "1) Open your TRON wallet. 2) Send exactly 2.9 TRX (active) or 5.8 TRX (new/no-USDT) to: TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN. 3) Wait up to 1 minute. 4) Energy is delegated to the sender address. 5) Make your transfer; energy covers the fee for up to 1 hour or until the first transfer."
-  });
-
-  // RU
-  I18N.ru = Object.assign(I18N.ru || {}, {
-    faqTitle: "FAQ — GasFree4uCOM",
-    q1: "❓ Что такое GasFree4uCOM?",
-    a1: "GasFree4uCOM — это сервис мгновенной делегации энергии сети TRON на ваш кошелёк. Энергия используется вместо TRX для оплаты сетевой комиссии. Вы можете отправлять USDT (TRC20) почти без затрат, «арендуя» энергию только на нужный момент. Регистрация не требуется — просто отправьте TRX на сервисный адрес, и мы автоматически делегируем энергию на адрес отправителя.",
-    q2: "💰 Сколько я сэкономлю?",
-    a2: "Обычно перевод на TRON стоит ~13.5 TRX (активный кошелёк) или 27 TRX (новый/без USDT). С GasFree4uCOM вы платите лишь 2.9 TRX или 5.8 TRX — экономия до ~80%. Пример: Активный кошелёк → экономия 10.6 TRX за перевод. Новый/без USDT → экономия 21.2 TRX за перевод. Если переводов несколько, экономия суммируется.",
-    q3: "⚡ Как быстро придёт энергия?",
-    a3: "Делегация выполняется автоматически. После отправки TRX на наш адрес энергия поступит на ваш кошелёк примерно за 1 минуту. Энергия действует до 1 часа или до первого перевода (что наступит раньше).",
-    q4: "🔒 Это безопасно?",
-    a4: "Да. Мы не просим приватные ключи и seed-фразы. Вы лишь отправляете TRX на публичный on-chain адрес; сеть подтверждает платёж, после чего система делегирует купленную энергию на адрес отправителя. Все операции можно проверить в блокчейн-обозревателе TronScan.",
-    q5: "🌍 Кому подойдёт?",
-    a5: "Любому владельцу TRON-кошелька: для переводов USDT/TRC20 с минимальными расходами, активации нового кошелька или снижения затрат TRX при частых переводах. Отлично подходит, когда нужен разовый перевод без полной комиссии TRX.",
-    q6: "📜 Как пользоваться пошагово?",
-    a6: "1) Откройте TRON-кошелёк. 2) Отправьте ровно 2.9 TRX (активный) или 5.8 TRX (новый/без USDT) на адрес: TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN. 3) Подождите до 1 минуты. 4) Энергия делегируется на адрес отправителя. 5) Совершите перевод — энергия покрывает комиссию до 1 часа или до первого перевода."
-  });
-
-  // ZH
-  I18N.zh = Object.assign(I18N.zh || {}, {
-    faqTitle: "常见问题 — GasFree4uCOM",
-    q1: "❓ 什么是 GasFree4uCOM？",
-    a1: "GasFree4uCOM 是一个即时 TRON 能量委托服务。能量用于支付链上手续费，替代 TRX 消耗。通过按需“租用”能量，你可以用更低成本发送 TRC20（如 USDT）。无需注册—只需向服务地址发送 TRX，我们会自动把能量委托回你的钱包。",
-    q2: "💰 我能节省多少？",
-    a2: "在 TRON 上发送 USDT，活跃钱包通常约 13.5 TRX，新的/无 USDT 的钱包约 27 TRX。使用 GasFree4uCOM 只需 2.9 TRX 或 5.8 TRX，节省可达 ~80%。示例：活跃钱包 → 每次节省 10.6 TRX；新钱包/无 USDT → 每次节省 21.2 TRX。多次转账节省更多。",
-    q3: "⚡ 多久能收到能量？",
-    a3: "我们自动处理委托。发送 TRX 后约 1 分钟内，能量会委
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is GasFree4uCOM?","acceptedAnswer":{"@type":"Answer","text":"GasFree4uCOM is a service for instant TRON energy delegation. Save up to 80% on fees."}},
+    {"@type":"Question","name":"How much can I save?","acceptedAnswer":{"@type":"Answer","text":"Typical TRON transfer costs 13.5 TRX or 27 TRX. GasFree4uCOM costs only 2.9 TRX or 5.8 TRX."}},
+    {"@type":"Question","name":"How fast will I get the energy?","acceptedAnswer":{"@type":"Answer","text":"Within 1 minute after sending TRX, your wallet will receive energy."}}
+  ]}
+  </script>
 </body>
 </html>
