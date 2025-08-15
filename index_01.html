@@ -126,6 +126,32 @@
     .faq-item[open] .faq-q::after { transform: rotate(90deg) }
     .faq-a { padding: 0 14px 12px; color: var(--muted); font-size: 14px; line-height: 1.55 }
     .faq .faq-a ul { margin: 8px 0 0 18px }
+
+     /* footer */
+    .footer{background:linear-gradient(0deg,rgba(255,255,255,0.02),transparent),var(--card); border-top:1px solid var(--line); margin-top:18px}
+    .footer .foot-grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr); padding:18px 14px}
+    .footer .col{grid-column:span 12}
+    @media (min-width:860px){ .footer .col.span4{grid-column:span 4}.footer .col.span3{grid-column:span 3}.footer .col.span5{grid-column:span 5} }
+    .brand{display:flex; align-items:center; gap:10px}
+    .brand .dot{width:30px; height:30px; border-radius:50%; background:var(--elev); display:inline-flex; align-items:center; justify-content:center; font-weight:800}
+    .brand .name{font-weight:800; letter-spacing:.2px}
+    .foot-list{list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px}
+    .foot-list a{color:var(--text); text-decoration:none}
+    .foot-list a:hover{color:var(--accent)}
+    .badge-muted{display:inline-block; padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px}
+    .social{display:flex; gap:10px; margin-top:10px}
+    .social a{display:inline-flex; width:34px; height:34px; border-radius:10px; border:1px solid var(--line); align-items:center; justify-content:center; background:var(--elev); text-decoration:none}
+    .social a:hover{border-color:var(--accent); box-shadow:0 0 0 5px var(--ring)}
+    .foot-bottom{border-top:1px dashed var(--line); padding:10px 14px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .foot-bottom small{color:var(--muted)}
+    .foot-links{display:flex; gap:14px; flex-wrap:wrap}
+    .foot-item{display:flex; align-items:center; gap:8px}
+    .foot-item svg{width:16px; height:16px; opacity:.8}
+    .foot-links a{display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--muted)}
+    .foot-links a:hover{color:var(--text)}
+      .list{margin:8px 0; padding-left:18px}
+    .list li{margin:6px 0; color:var(--text)}
+    
   </style>
 </head>
 <body>
@@ -514,5 +540,53 @@
     {"@type":"Question","name":"How fast will I get the energy?","acceptedAnswer":{"@type":"Answer","text":"Within 1 minute after sending TRX, your wallet will receive energy."}}
   ]}
   </script>
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="wrap foot-grid">
+      <div class="col span4">
+        <div class="brand"><span class="dot">⚡</span><div><div class="name">RentTRX</div><div class="badge-muted">TRX Energy · Zero-fee transfers</div></div></div>
+        <p class="subtitle" style="margin-top:8px">Buy TRX Energy for <b>2.9 TRX</b> (has USDT) or <b>5.8 TRX</b> (no USDT). Energy applies to <b>one transfer</b>. Instant activation.</p>
+        <div class="social" aria-label="Social links">
+          <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">💬</a>
+          <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener" title="Support" aria-label="Support">🛟</a>
+        </div>
+      </div>
+      <div class="col span3">
+        <h4 style="margin:0 0 8px">Contacts</h4>
+        <ul class="foot-list">
+          <li>Telegram: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
+          <li>Support: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
+          <li>Website: <a href="https://renttrx.vercel.app" target="_blank" rel="noopener">renttrx.vercel.app</a></li>
+        </ul>
+      </div>
+      <div class="col span3">
+        <h4 style="margin:0 0 8px">Quick links</h4>
+        <ul class="foot-list">
+          <li><a href="#top">Calculator</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="#instTariffs">Tariffs</a></li>
+          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</a></li>
+        </ul>
+      </div>
+      <div class="col span5">
+        <h4 style="margin:0 0 8px">Legal</h4>
+        <p class="subtitle" style="margin:8px 0">RentTRX is an energy rental service for the TRON network. We do not custody user funds and are not affiliated with TRON Foundation. Usage of blockchain networks involves risk.</p>
+        <ul class="foot-list">
+          <li><a class="foot-item" href="/terms.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5"/></svg><span>Terms of Service</span></a></li>
+          <li><a class="foot-item" href="/privacy.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l8 4v6c0 5-3.5 9.7-8 10-4.5-.3-8-5-8-10V6l8-4z"/></svg><span>Privacy Policy</span></a></li>
+          <li><a class="foot-item" href="/refund.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 6V3l-4 4l4 4V8c2.8 0 5 2.2 5 5c0 2.2-1.4 4.1-3.4 4.7l-.6 2C16.7 19 19 16.3 19 13c0-3.9-3.1-7-7-7z"/></svg><span>Refund Policy</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© <span id="y"></span> RentTRX. All rights reserved.</small>
+      <div class="foot-links" aria-label="Footer links">
+        <a href="/terms.html" aria-label="Terms"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5"/></svg><span>Terms</span></a>
+        <a href="/privacy.html" aria-label="Privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l8 4v6c0 5-3.5 9.7-8 10-4.5-.3-8-5-8-10V6l8-4z"/></svg><span>Privacy</span></a>
+        <a href="/refund.html" aria-label="Refunds"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 6V3l-4 4l4 4V8c2.8 0 5 2.2 5 5c0 2.2-1.4 4.1-3.4 4.7l-.6 2C16.7 19 19 16.3 19 13c0-3.9-3.1-7-7-7z"/></svg><span>Refunds</span></a>
+      </div>
+    </div>
+  </footer>
+  
 </body>
 </html>
