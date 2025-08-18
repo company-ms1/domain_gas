@@ -23,6 +23,7 @@
       :root{ --bg:#f7fafc; --card:#ffffff; --muted:#5b7083; --text:#0b1020; --accent:#007aff; --accent2:#16a34a; --border:rgba(15,21,42,.08); --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; --line:rgba(15,21,42,.12); --elev:#fff; --ring:rgba(0,122,255,.25); }
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text);
       background: radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.12), transparent 60%),
@@ -33,41 +34,77 @@
     a:hover{text-decoration:underline}
 
     .container{max-width:1040px; margin:0 auto; padding:20px 20px 28px}
-    header{display:flex; align-items:center; gap:14px; justify-content:space-between; padding:6px 0}
-    .brand{display:flex; align-items:center; gap:10px}
-    .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
-    .tag{font-size:12px; opacity:.9}
+    @media (max-width:640px){ .container{ padding:14px 14px 22px } }
 
-    .btn{appearance:none; cursor:pointer; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; font-weight:700; letter-spacing:.2px}
+    /* Sticky header that wraps nicely on mobile */
+    header{
+      position:sticky; top:0; z-index:20;
+      background:linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)), var(--bg);
+      backdrop-filter:saturate(140%) blur(6px);
+      margin:0 -20px; padding:6px 20px;  /* stretch to edges */
+      display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      border-bottom:1px solid var(--border);
+    }
+    @media (max-width:640px){ header{ margin:0 -14px; padding:8px 14px } }
+
+    .brand{display:flex; align-items:center; gap:10px; min-width:0}
+    .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800; flex:0 0 auto}
+    .tag{font-size:12px; opacity:.9; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
+
+    .btn{appearance:none; cursor:pointer; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; font-weight:700; letter-spacing:.2px; line-height:1}
     .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
+    @media (max-width:420px){
+      .btn{padding:12px 14px; border-radius:12px}
+    }
 
-    .lang{display:flex; gap:8px; align-items:center}
-    .flag{width:36px; height:26px; border-radius:6px; border:1px solid var(--border); cursor:pointer; overflow:hidden}
+    .crumbs{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .lang{display:flex; gap:8px; align-items:center; position:relative}
+    .lang .btn{position:relative; z-index:2}  /* ensure API/Back above flags if they wrap */
+    .flag{width:36px; height:26px; border-radius:6px; border:1px solid var(--border); cursor:pointer; overflow:hidden; display:inline-flex}
     .flag:active{transform:scale(.98)}
     .flag svg{display:block; width:100%; height:100%}
     .active{outline:2px solid var(--accent)}
-    .crumbs{display:flex; gap:10px; align-items:center}
+    @media (max-width:420px){
+      .flag{width:30px; height:22px; border-radius:5px}
+    }
 
-    .hero{display:grid; grid-template-columns:1fr; gap:12px; padding:12px 0}
-    .title{font-size:clamp(24px,5.5vw,42px); line-height:1.15; margin:0}
-    .subtitle{color:var(--muted); margin:2px 0 0}
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1fr; gap:8px; padding:12px 0}
+    .title{font-size:clamp(22px,6.5vw,40px); line-height:1.15; margin:0}
+    .subtitle{color:var(--muted); margin:0}
 
+    /* Cards/sections */
     .panel{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
     .section{padding:16px}
+    @media (max-width:640px){ .section{ padding:14px } }
+
     .grid{display:grid; gap:14px; grid-template-columns:repeat(2,1fr)}
     @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
     h3{margin:0 0 8px}
     .list{margin:8px 0; padding-left:18px}
     .list li{margin:6px 0}
+
     code,pre{font:600 13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
     pre{background:rgba(255,255,255,.05); border:1px dashed var(--border); padding:12px; border-radius:14px; overflow:auto}
+    /* Wrap code on very narrow screens for readability */
+    @media (max-width:560px){
+      pre{white-space:pre-wrap; word-break:break-word}
+    }
+
     .note{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:14px; background:rgba(125,241,183,.08); border:1px solid var(--border); margin-top:10px}
     .foot{margin-top:18px; color:var(--muted); font-size:13px}
+
+    /* Space between stacked header rows on mobile */
+    @media (max-width:640px){
+      header .brand{flex:1 1 auto}
+      header .crumbs{flex:1 1 100%}
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
+    <header id="top">
       <div class="brand">
         <div class="logo" aria-hidden="true">⚡️</div>
         <div>
@@ -76,9 +113,9 @@
         </div>
       </div>
 
-      <nav class="crumbs">
+      <nav class="crumbs" aria-label="Top navigation">
         <a href="/" class="btn">← <span data-i18n="back">Back</span></a>
-        <a href="/api.html" class="btn primary">API</a>
+        <a href="/api.html" class="btn primary" style="position:relative;z-index:3">API</a>
         <div class="lang" aria-label="Language switcher">
           <button class="flag active" data-lang="en" title="English" aria-label="English">
             <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v40 h60 v-40 z"/></clipPath><clipPath id="t"><path d="M30,20 h30 v20 z v-40 z h-60 z v40 z h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v40 h60 v-40 z" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4" clip-path="url(#t)"/><path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
