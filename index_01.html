@@ -167,6 +167,10 @@
       .list{margin:8px 0; padding-left:18px}
     .list li{margin:6px 0; color:var(--text)}
     .crumbs{display:flex; gap:10px; align-items:center}
+      /* фиксим перекрытие API кнопки флагами */
+.lang { position: relative; gap: 10px; }
+.lang .btn { position: relative; z-index: 2; }   /* API */
+.flag { position: relative; z-index: 1; }        /* флаги ниже */
   </style>
 </head>
 <body>
