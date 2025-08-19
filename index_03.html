@@ -527,17 +527,6 @@
     }
     function setActiveFlag(){ document.querySelectorAll('.flag-btn').forEach(b=> b.setAttribute('aria-pressed', b.dataset.lang===lang ? 'true' : 'false')); }
 
-      // поддерживаемые языки
-const SUPPORTED = ['en','ru','zh'];
-
-// определяем язык браузера
-let browserLang = (navigator.language || 'en').slice(0,2).toLowerCase();
-
-// если язык поддерживается — берём его, иначе fallback на английский
-let lang = SUPPORTED.includes(browserLang) ? browserLang : 'en';
-
-// если раньше сохраняли выбор — используем его
-lang = localStorage.getItem('energy_lang') || lang;
 
     // Курс TRX
     async function fetchTrxRate(){
