@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Аренда энергии за TRX — RentTRX</title>
+  <meta name="description" content="Аренда энергии TRON (TRX) для переводов USDT без комиссий. Энергия действует только на 1 перевод (после первого перевода отзывается)." />
+  <meta name="theme-color" content="#0a0c12">
+
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103710831', 'ym');
+
+    ym(103710831, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103710831" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  
+  <!-- Analytics (как было) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSLELTPNPT"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-QSLELTPNPT');</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N8Z4SMVJ');</script>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8Z4SMVJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17462758132"></script>
+  <script>function gtag_report_conversion(url){var cb=function(){if(typeof url!=='undefined')window.location=url};try{gtag('event','conversion',{send_to:'AW-17462758132/KNmRCJKGiIQbEPSV8oZB',value:1.0,currency:'USD',event_callback:cb});}catch(e){}return false;}</script>
+
+  <style>
+    :root{
+      --bg:#0a0c12; --card:#171b24; --elev:#0f141d;
+      --text:#f0f4fb; --muted:#c4ccda; --line:#2a3242;
+      --accent:#6aa1ff; --accent2:#2b89ff; --ring:rgba(106,161,255,.4);
+      --good:#20d490; --good2:#5fe3b6; --warn:#ffd27a;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background: radial-gradient(900px 700px at 85% -10%, rgba(106,161,255,.12), transparent 60%), var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,"Noto Color Emoji","Apple Color Emoji","Segoe UI Emoji";-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .wrap{max-width:980px; margin:20px auto 34px; padding:0 14px}
+    .top{display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:6px; flex-wrap:wrap}
+    .title{margin:0; font-weight:800; letter-spacing:.2px; font-size:clamp(22px,4vw,34px)}
+    .subtitle{margin:6px 0 0; color:var(--muted); font-size:14px}
+
+    .top-right{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .how-btn{display:inline-flex; align-items:center; gap:8px;padding:8px 12px; border-radius:10px; border:1px solid var(--line);background:linear-gradient(180deg,var(--elev),#101622); color:var(--text);font-weight:700; text-decoration:none}
+    .how-btn:hover{border-color:var(--accent); box-shadow:0 0 0 5px var(--ring)}
+
+    .flags{display:flex; gap:8px; align-items:center}
+    .flag-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:34px; border-radius:10px; border:1px solid var(--line);background:linear-gradient(180deg,var(--elev),#101622); cursor:pointer; font-size:18px; transition:.15s; color:var(--text)}
+    .flag-btn[aria-pressed="true"]{border-color:var(--accent); box-shadow:0 0 0 5px var(--ring)}
+
+    .buybar{display:flex; gap:10px; align-items:center; justify-content:space-between;background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#071635; padding:10px 12px; border-radius:12px; margin:10px 0 12px;box-shadow:0 6px 20px rgba(79,140,255,.25); font-weight:700}
+
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 10px}
+    .badge{font-size:12px; color:var(--text); background:#0f1b2e; border:1px solid #345; padding:6px 10px; border-radius:999px}
+
+    .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.2)}
+
+    /* CALC compact */
+    .calc{display:grid; grid-template-columns:1.05fr .95fr; gap:14px}
+    @media (max-width:760px){ .calc{grid-template-columns:1fr; gap:12px} }
+
+    label{display:block; font-weight:700; margin:2px 0 8px}
+
+    /* Segmented control (chips) */
+    .seg{display:inline-flex; gap:6px; padding:6px; border:1px solid var(--line); border-radius:12px; background:#0c1422}
+    .seg-option{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; border:1px solid #2a3a4a; cursor:pointer; font-weight:800; color:#e8f1ff; background:#0f1b2e; transition:.15s}
+    .seg-option .ico{font-size:16px; opacity:1}
+    .seg-option.active{background:linear-gradient(180deg,#6aa1ff,#2b89ff); color:#06121f; border-color:#6aa1ff; box-shadow:0 0 0 4px rgba(106,161,255,.35)}
+    .seg-option:not(.active):hover{border-color:#4f78d6}
+    .seg-option:focus-visible{outline:2px solid #6aa1ff; outline-offset:2px}
+
+    /* Savings card */
+    .savecard{padding:16px; border-radius:14px; background:linear-gradient(135deg, rgba(32,212,144,.14), rgba(106,161,255,.14)); border:1px solid #25493e}
+    .save-top{display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap}
+    .save-title{font-weight:900; letter-spacing:.2px}
+    .save-vals{display:flex; align-items:baseline; gap:10px}
+    .save-vals .now{font-size:clamp(20px,2.6vw,26px); font-weight:900}
+    .save-vals .base{color:var(--muted)}
+    .save-vals .base s{opacity:.95}
+    .save-badge{background: #4caf50; color:#071b10; font-size:.82em; font-weight:900; padding:3px 7px; border-radius:6px; align-self:center}
+    .save-line{margin:10px 0 8px; height:18px; border-radius:999px; background:#0f1b2e; border:1px solid #2a3a4a; overflow:hidden}
+    .save-line-in{height:100%; width:0%; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; font-size:12px; font-weight:900; color:#06170d; background:linear-gradient(90deg, var(--good), var(--good2))}
+    .save-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .save-pill{background:#0f1b2e; border:1px solid #2a3a4a; border-radius:12px; padding:8px 10px; display:flex; align-items:baseline; justify-content:space-between}
+    .save-pill .name{color:var(--muted)}
+    .save-pill .val{font-weight:900}
+
+    .kpis{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .kpi{padding:10px; border:1px dashed var(--line); border-radius:12px}
+    .kpi .name{color:var(--muted); font-size:13px}
+    .kpi .val{font-weight:800; margin-top:4px}
+
+    .note{margin-top:8px; color:var(--muted); font-size:12px}
+
+    .btn{display:inline-flex; gap:10px; align-items:center; justify-content:center; padding:11px 14px; border-radius:12px; border:1px solid #2b89ff;background:linear-gradient(180deg,var(--accent),var(--accent2)); color:#071635; font-weight:900; cursor:pointer; transition:.15s}
+    .btn:active{transform:scale(.98)}
+
+    /* modal */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; padding:16px; z-index:20}
+    .modal.open{display:flex}
+    .modal .box{max-width:520px; width:100%; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; position:relative}
+    .modal .close{position:absolute; right:10px; top:10px; border:1px solid var(--line); background:var(--elev); border-radius:10px; padding:6px 10px; cursor:pointer; color:var(--text)}
+    .code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#0d1420; border:1px solid #3a455a; border-radius:12px; padding:10px 12px}
+    .warn{background:#201600; border:1px solid var(--warn); color:var(--warn); padding:10px 12px; border-radius:12px; margin:10px 0}
+    .qr{display:flex; justify-content:center; margin:12px 0}
+    .copybtn{margin-left:8px; border:1px solid var(--line); background:transparent; border-radius:10px; padding:6px 10px; color:var(--text); cursor:pointer}
+
+    /* footer */
+    .footer{background:linear-gradient(0deg,rgba(255,255,255,0.02),transparent),var(--card); border-top:1px solid var(--line); margin-top:18px}
+    .footer .foot-grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr); padding:18px 14px}
+    .footer .col{grid-column:span 12}
+    @media (min-width:860px){ .footer .col.span4{grid-column:span 4}.footer .col.span3{grid-column:span 3}.footer .col.span5{grid-column:span 5} }
+    .brand{display:flex; align-items:center; gap:10px}
+    .brand .dot{width:30px; height:30px; border-radius:50%; background:var(--elev); display:inline-flex; align-items:center; justify-content:center; font-weight:800}
+    .brand .name{font-weight:800; letter-spacing:.2px}
+    .foot-list{list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px}
+    .foot-list a{color:var(--text); text-decoration:none}
+    .foot-list a:hover{color:var(--accent)}
+    .badge-muted{display:inline-block; padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px}
+    .social{display:flex; gap:10px; margin-top:10px}
+    .social a{display:inline-flex; width:34px; height:34px; border-radius:10px; border:1px solid var(--line); align-items:center; justify-content:center; background:var(--elev); text-decoration:none}
+    .social a:hover{border-color:var(--accent); box-shadow:0 0 0 5px var(--ring)}
+    .foot-bottom{border-top:1px dashed var(--line); padding:10px 14px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .foot-bottom small{color:var(--muted)}
+    .foot-links{display:flex; gap:14px; flex-wrap:wrap}
+    .foot-item{display:flex; align-items:center; gap:8px}
+    .foot-item svg{width:16px; height:16px; opacity:.8}
+    .foot-links a{display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--muted)}
+    .foot-links a:hover{color:var(--text)}
+      .list{margin:8px 0; padding-left:18px}
+    .list li{margin:6px 0; color:var(--text)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1 class="title" data-i18n="title">Аренда энергии за TRX</h1>
+        <p class="subtitle" data-i18n="subtitle">Энергия действует только на <b>1 перевод</b>. Переводы USDT без комиссий TRX.</p>
+      </div>
+      <div class="top-right">
+        <a class="how-btn" href="how-it-works.html" id="howLink" data-i18n="how_link">Как это работает</a>
+        <div class="flags" role="group" aria-label="Language">
+          <button class="flag-btn" data-lang="ru" aria-pressed="true"  title="Русский">🇷🇺</button>
+          <button class="flag-btn" data-lang="en" aria-pressed="false" title="English">🇬🇧</button>
+          <button class="flag-btn" data-lang="zh" aria-pressed="false" title="中文">🇨🇳</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="buybar"><div id="buyInfo">💡 Здесь можно <b>не только рассчитать</b> стоимость энергии TRON, но и <b>купить её прямо сейчас</b> по выгодной цене!</div></div>
+
+    <div class="badges">
+      <span class="badge" data-i18n="badge_price">2.9 TRX = 1 перевод (есть USDT) · 5.8 TRX = 1 перевод (нет USDT)</span>
+      <span class="badge" data-i18n="badge_base">Рынок: 13.5 TRX (есть USDT) · 27 TRX (нет USDT)</span>
+    </div>
+
+    <!-- КАЛЬКУЛЯТОР (компакт) -->
+    <div class="card calc">
+      <div>
+        <label data-i18n="label_wallet">Кошелёк получателя</label>
+        <div id="usdtState" class="seg" role="group" aria-label="USDT on wallet?" style="margin-bottom:10px">
+          <button type="button" class="seg-option active" data-v="has"><span class="ico">💰</span><span data-i18n="has_usdt">Есть USDT</span></button>
+          <button type="button" class="seg-option" data-v="none"><span class="ico">🚫</span><span data-i18n="no_usdt">Нет USDT</span></button>
+        </div>
+        <div class="note" data-i18n="note_no_usdt">Если на кошельке <b>нет</b> USDT — на 1 перевод нужно ~130 000 энергии.</div>
+        <div class="note" data-i18n="tx_note" style="margin-top:6px">Фиксировано: сеть отзывает энергию сразу после первого перевода.</div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" id="buyBtn" data-i18n="buy_btn">Купить энергию TRON</button>
+        </div>
+        <p class="note" id="rateInfo" data-i18n="price_note" style="margin-top:10px">Цена указана за 1 перевод. Курс TRX обновляется автоматически.</p>
+      </div>
+      <div>
+        <div class="savecard" aria-live="polite">
+          <div class="save-top">
+            <div class="save-title" data-i18n="total_to_pay">Итого к оплате</div>
+            <div class="save-vals">
+              <div class="now" id="k_total">2.90 TRX</div>
+              <span class="save-badge" id="saveBadge">% </span>
+              <div class="base"><s id="k_totalBase">13.50 TRX</s></div>
+            </div>
+          </div>
+          <div class="save-line" aria-hidden="true"><div id="saveBarIn" class="save-line-in">—</div></div>
+          <div class="save-grid">
+            <div class="save-pill">
+              <div class="name" data-i18n="you_save_trx">Экономия (TRX)</div>
+              <div class="val" id="k_saveTrx">10.60 TRX</div>
+            </div>
+            <div class="save-pill">
+              <div class="name" data-i18n="you_save_usd">Экономия (USD)</div>
+              <div class="val" id="k_saveUsd">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpis" style="margin-top:10px">
+          <div class="kpi">
+            <div class="name" data-i18n="price_per">Цена за 1 перевод</div>
+            <div id="k_pp" class="val">2.90 TRX</div>
+          </div>
+          <div class="kpi">
+            <div class="name" data-i18n="energy_per">Энергии на 1 перевод</div>
+            <div id="k_energyPer" class="val">65 000</div>
+          </div>
+          <div class="kpi">
+            <div class="name" data-i18n="energy_total">Нужно энергии (всего)</div>
+            <div id="k_energyTotal" class="val">65 000</div>
+          </div>
+          <div class="kpi">
+            <div class="name" data-i18n="rent_1h">Действует</div>
+            <div class="val" data-i18n="rent_1h_val">до 1 часа или до 1 перевода</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Инструкция -->
+    <div class="card inst" style="margin-top:12px">
+      <h3 data-i18n="inst_title">Инструкция </h3>
+      <p data-i18n="inst_tariffs_title"><b>💰 Тарифы:</b></p>
+      <p style="margin-top:-6px" id="instTariffs"></p>
+      <p id="instMax"></p>
+      <p data-i18n="inst_addr_title">📬 <b>Адрес для перевода:</b></p>
+      <div class="codebox">
+        <code id="payAddr">TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN</code>
+        <button class="copybtn" id="copyBtn" title="Copy" data-i18n="copy">Скопировать</button>
+      </div>
+      <p id="instHowTitle" style="margin-top:10px"></p>
+      <ol class="list" id="instSteps"></ol>
+      <p id="instFinal"></p>
+    </div>
+  </div>
+
+  <!-- Модальное окно оплаты -->
+  <div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="box">
+      <button class="close" id="mClose" aria-label="Закрыть">✕</button>
+      <h3 id="mTitle" style="margin:0 0 6px;font-size:20px;font-weight:800" data-i18n="pay_title">Оплата заказа</h3>
+      <p class="subtitle" id="mSub"><span data-i18n="pay_sub">Переведите</span> <b id="mAmount">—</b> <span data-i18n="pay_sub2">на адрес ниже. Укажите точную сумму.</span></p>
+      <div class="qr"><img id="mQR" alt="QR для оплаты" width="200" height="200" loading="lazy"></div>
+      <div style="display:flex;align-items:center;gap:8px;margin:6px 0">
+        <div class="code" id="mAddr" style="flex:1;overflow:auto">—</div>
+        <button class="copybtn" id="copyAddr" data-i18n="copy">Скопировать</button>
+      </div>
+      <div class="warn" data-i18n="warn_text">Внимание! Переведите <b>именно эту сумму</b>. После оплаты энергия отправится на тот <b>кошелёк, с которого пришли TRX</b>.</div>
+      <div class="row" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" id="paidBtn" data-i18n="paid_btn">Я оплатил</button>
+        <button class="btn btn-secondary" id="mClose2" data-i18n="cancel_btn">Отмена</button>
+      </div>
+      <p class="note" style="margin-top:12px" id="mOrderMeta"></p>
+    </div>
+  </div>
+
+  <!-- WAIT MODAL -->
+  <div class="modal" id="waitModal" role="dialog" aria-modal="true" aria-labelledby="wTitle">
+    <div class="box" style="text-align:center">
+      <button class="close" id="wClose" aria-label="Закрыть">✕</button>
+      <h3 id="wTitle" style="margin:0 0 16px;font-size:20px;font-weight:800" data-i18n="wait_title">Платёж в обработке</h3>
+      <svg width="160" height="160" viewBox="0 0 120 120" aria-hidden="true" style="opacity:.9">
+        <circle cx="60" cy="60" r="54" fill="#9aa3b2"/>
+        <circle cx="60" cy="60" r="44" fill="none" stroke="#fff" stroke-width="8"/>
+        <circle cx="60" cy="60" r="34" fill="#9aa3b2"/>
+        <path d="M60 30v32h24" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <p id="waitMsg1" class="subtitle" style="margin:16px 0 6px" data-i18n="wait_line1">Ожидайте пополнения энергии в течение <b>1 минуты</b>.</p>
+      <p class="note" id="waitCountdownWrap" style="margin-top:8px;display:none">
+        <span data-i18n="wait_left">Осталось</span> <b id="waitCountdown">60</b> <span data-i18n="wait_sec">сек.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ЛОГИКА -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const I18N = {
+      ru: {title:"Аренда энергии за TRX",subtitle:"Энергия действует только на <b>1 перевод</b>. Переводы USDT без комиссий TRX.",how_link:"Как это работает",buy_info:"💡 Здесь можно <b>не только рассчитать</b> стоимость энергии TRON, но и <b>купить её прямо сейчас</b> по выгодной цене!",badge_price:"2.9 TRX = 1 перевод (есть USDT) · 5.8 TRX = 1 перевод (нет USDT)",badge_base:"Рынок: 13.5 TRX (есть USDT) · 27 TRX (нет USDT)",label_tx:"Количество транзакций",tx_note:"Фиксировано: сеть отзывает энергию сразу после первого перевода.",label_wallet:"Кошелёк получателя",has_usdt:"Есть USDT",no_usdt:"Нет USDT",note_no_usdt:"Если на кошельке <b>нет</b> USDT — на 1 перевод нужно ~130 000 энергии.",hint_1h:"Только 1 перевод",rent_1h:"Действует",rent_1h_val:"до 1 часа или до 1 перевода",energy_per:"Энергии на 1 перевод",energy_total:"Нужно энергии (всего)",price_per:"Цена за 1 перевод",total_to_pay:"Итого к оплате",you_save_trx:"Экономия (TRX)",you_save_usd:"Экономия (USD)",price_note:"Цена указана за 1 перевод. Курс TRX обновляется автоматически.",buy_btn:"Купить энергию TRON",inst_title:"Инструкция ",inst_tariffs_title:"💰 <b>Тарифы:</b>",inst_tariffs:["2.9 TRX = 1 бесплатный перевод (активированный кошелёк)","5.8 TRX = 1 бесплатный перевод (неактивированный кошелёк)"],inst_max:"⚡ <b>Отправьте TRX на адрес ниже — энергия придёт на <i>1 перевод</i>.</b>",inst_addr_title:"📬 <b>Адрес для перевода:</b>",inst_how_title:"🛠 <i>Инструкция:</i>",inst_steps:["💳 Отправьте <b>TRX</b> с того кошелька, на который хотите получить энергию","⏳ Ожидайте зачисления энергии (обычно <b>1–2 минуты</b>)","🎯 Энергия будет израсходована <b>на первый перевод</b> и затем отозвана"],inst_final:"🔥 Сэкономьте TRX на комиссии!",copy:"Скопировать",copied:"Скопировано!",pay_title:"Оплата заказа", pay_sub:"Переведите", pay_sub2:"на адрес ниже. Укажите точную сумму.",warn_text:"Внимание! Переведите <b>именно эту сумму</b>. Энергия придёт на <b>тот же кошелёк</b>.",paid_btn:"Я оплатил", cancel_btn:"Отмена",order_meta_prefix:"Заказ",credit_note:"Энергия будет начислена на адрес, с которого пришли TRX.",wait_title:"Платёж в обработке",wait_line1:"Ожидайте пополнения энергии в течение <b>1 минуты</b>.",wait_left:"Осталось",wait_sec:"сек."},
+      en:{title:"Rent TRX Energy",subtitle:"Energy is valid for <b>one transfer</b> only. USDT transfers with no TRX fees.",how_link:"How it works",buy_info:"💡 Here you can <b>not only calculate</b> TRON energy cost, but also <b>buy it right now</b> at a great price!",badge_price:"2.9 TRX = 1 transfer (has USDT) · 5.8 TRX = 1 transfer (no USDT)",badge_base:"Market: 13.5 TRX (has USDT) · 27 TRX (no USDT)",label_tx:"Number of transfers",tx_note:"Fixed to 1: the network revokes energy right after the first transfer.",label_wallet:"Recipient wallet",has_usdt:"Has USDT",no_usdt:"No USDT",note_no_usdt:"If the wallet has <b>no</b> USDT, ~130,000 energy is needed per transfer.",hint_1h:"One transfer only",rent_1h:"Validity",rent_1h_val:"up to 1 hour or until the 1st transfer",energy_per:"Energy per transfer",energy_total:"Total energy needed",price_per:"Price per transfer",total_to_pay:"Total to pay",you_save_trx:"You save (TRX)",you_save_usd:"You save (USD)",price_note:"Price shown for one transfer. TRX price updates automatically.",buy_btn:"Buy TRON Energy",inst_title:"Guide ",inst_tariffs_title:"💰 <b>Tariffs:</b>",inst_tariffs:["2.9 TRX = 1 free transfer (activated wallet)","5.8 TRX = 1 free transfer (non-activated wallet)"],inst_max:"⚡ <b>Send TRX to the address below — energy will arrive for <i>one transfer</i>.</b>",inst_addr_title:"📬 <b>Transfer address:</b>",inst_how_title:"🛠 <i>How it works:</i>",inst_steps:["💳 Send <b>TRX</b> from the wallet that should receive energy","⏳ Wait for credit (usually <b>1–2 minutes</b>)","🎯 Energy will be used on the <b>first transfer</b> and then revoked"],inst_final:"🔥 Save your TRX on fees!",copy:"Copy",copied:"Copied!",pay_title:"Payment", pay_sub:"Send", pay_sub2:"to the address below. Send the exact amount.",warn_text:"Important! Send the <b>exact</b> amount. Energy credits to the <b>same wallet</b>.",paid_btn:"I’ve paid", cancel_btn:"Cancel",order_meta_prefix:"Order",credit_note:"Energy will be credited to the address you pay from.",wait_title:"Payment is processing",wait_line1:"Please wait up to <b>1 minute</b> for energy to arrive.",wait_left:"Left",wait_sec:"sec"},
+      zh:{title:"租用 TRX 能量",subtitle:"能量仅适用于<b>一次转账</b>。USDT 转账几乎无 TRX 手续费。",how_link:"它是如何工作的",buy_info:"💡 在这里您<b>不仅可以计算</b> TRON 能量价格，还能<b>立刻购买</b>！",badge_price:"2.9 TRX = 1 次（钱包有 USDT）· 5.8 TRX = 1 次（钱包无 USDT）",badge_base:"市场：13.5 TRX（有 USDT）· 27 TRX（无 USDT）",label_tx:"转账次数",tx_note:"固定为 1：网络在第一次转账后会收回能量。",label_wallet:"接收钱包",has_usdt:"有 USDT",no_usdt:"没有 USDT",note_no_usdt:"若钱包<b>没有</b>USDT，每次约需 130,000 能量。",hint_1h:"仅一次转账",rent_1h:"有效期",rent_1h_val:"最多 1 小时或直到完成第 1 次转账",energy_per:"每次所需能量",energy_total:"总共所需能量",price_per:"单次价格",total_to_pay:"应付总额",you_save_trx:"节省 (TRX)",you_save_usd:"节省 (USD)",price_note:"价格为一次转账。TRX 价格自动更新。",buy_btn:"购买 TRON 能量",inst_title:"使用说明（如 Telegram 机器人）",inst_tariffs_title:"💰 <b>资费：</b>",inst_tariffs:["2.9 TRX = 1 次免费转账（已激活）","5.8 TRX = 1 次免费转账（未激活）"],inst_max:"⚡ <b>向下方地址转入 TRX —— 将发放<i>一次转账</i>所需能量。</b>",inst_addr_title:"📬 <b>转账地址：</b>",inst_how_title:"🛠 <i>操作步骤：</i>",inst_steps:["💳 使用需接收能量的钱包发送 <b>TRX</b>","⏳ 等待入账（通常<b>1–2 分钟</b>）","🎯 能量将用于<b>第一次转账</b>，随后回收"],inst_final:"🔥 把握机会，节省 TRX！",copy:"复制地址",copied:"已复制！",pay_title:"支付", pay_sub:"请转账", pay_sub2:"至下方地址。务必发送精确金额。",warn_text:"重要！请发送<b>精确</b>金额。能量将发放到<b>同一付款钱包</b>。",paid_btn:"我已支付", cancel_btn:"取消",order_meta_prefix:"订单",credit_note:"能量将发放到您付款所用的钱包地址。",wait_title:"支付处理中",wait_line1:"请等待最多<b>1 分钟</b>完成入账。",wait_left:"剩余",wait_sec:"秒"}
+    };
+
+    const $ = id => document.getElementById(id);
+    let lang = localStorage.getItem('energy_lang') || 'ru';
+
+    // === цены/энергия ===
+    const PAY_TO_ADDRESS="TS72Kv1sn58WwzFW5RPWykfYXF93YQmzkN"; // замени при необходимости
+    const PRICE_PER_TX={has:2.9, none:5.8};        // 6 TRX если на кошельке нет USDT
+    const PRICE_BASE   ={has:13.5, none:27.0};     // «своими TRX»: 27 TRX когда нет USDT
+    const ENERGY_PER_TX={has:65000, none:130000};
+
+    // KPI элементы
+    const k_energyPer=$('k_energyPer'),k_energyTot=$('k_energyTotal'),
+          k_pricePer=$('k_pp'),k_total=$('k_total'),k_totalBase=$('k_totalBase'),
+          k_saveTrx=$('k_saveTrx'),k_saveUsd=$('k_saveUsd'),
+          saveBarIn=$('saveBarIn'), saveBadge=$('saveBadge');
+
+    let TRX_USD = null;
+
+    function nf(num, d=2){
+      const loc = lang==='en'?'en-US':lang==='zh'?'zh-CN':'ru-RU';
+      return new Intl.NumberFormat(loc,{minimumFractionDigits:d,maximumFractionDigits:d}).format(num);
+    }
+    function ni(num){
+      const loc = lang==='en'?'en-US':lang==='zh'?'zh-CN':'ru-RU';
+      return new Intl.NumberFormat(loc).format(num);
+    }
+
+    function compute(){
+      const ePer = ENERGY_PER_TX[st.usdt];
+      const pp   = PRICE_PER_TX[st.usdt];
+      const base = PRICE_BASE[st.usdt];
+
+      const totalOur  = pp;
+      const totalBase = base;
+      const saveTRX   = Math.max(totalBase - totalOur, 0);
+      const saveUSD   = (TRX_USD ? saveTRX * TRX_USD : null);
+
+      // UI
+      k_energyPer.textContent = ni(ePer);
+      k_energyTot.textContent = ni(ePer);
+      k_pricePer.textContent  = `${nf(pp,2)} TRX`;
+      k_total.textContent     = `${nf(totalOur,2)} TRX`;
+      k_totalBase.textContent = `${nf(totalBase,2)} TRX`;
+      k_saveTrx.textContent   = `${nf(saveTRX,2)} TRX`;
+      k_saveUsd.textContent   = (saveUSD!=null) ? `$${nf(saveUSD,2)}` : '—';
+
+      const pct = totalBase>0 ? Math.round((saveTRX/totalBase)*100) : 0;
+      const pctClamped = Math.max(0, Math.min(100, pct));
+      saveBarIn.style.width = pctClamped + '%';
+      saveBarIn.textContent = (lang==='ru' ? `Экономия ${pctClamped}%` : (lang==='zh' ? `节省 ${pctClamped}%` : `Save ${pctClamped}%`));
+      saveBadge.textContent = `${pctClamped}%`;
+    }
+
+    // i18n
+    function t(key){ return (I18N[lang] && I18N[lang][key]) || key; }
+    function applyText(){
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key=el.getAttribute('data-i18n');
+        if (I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
+      });
+      // тарифы/шаги
+      const tset = I18N[lang];
+      const instTariffs = document.getElementById('instTariffs'); if (instTariffs) instTariffs.innerHTML = (tset.inst_tariffs?.[0]||'') + '<br>' + (tset.inst_tariffs?.[1]||'');
+      const instMax = document.getElementById('instMax'); if (instMax) instMax.innerHTML = tset.inst_max || '';
+      const instHowTitle = document.getElementById('instHowTitle'); if (instHowTitle) instHowTitle.innerHTML = tset.inst_how_title || '';
+      const instFinal = document.getElementById('instFinal'); if (instFinal) instFinal.innerHTML = tset.inst_final || '';
+      const ol = document.getElementById('instSteps'); if(ol){ ol.innerHTML=''; (tset.inst_steps||[]).forEach(s=>{ const li=document.createElement('li'); li.innerHTML=s; ol.appendChild(li); }); }
+      document.getElementById('buyInfo').innerHTML = tset.buy_info || '';
+      document.documentElement.lang = lang;
+      const how = document.getElementById('howLink'); if (how) how.textContent = t('how_link');
+      compute();
+    }
+    function setActiveFlag(){ document.querySelectorAll('.flag-btn').forEach(b=> b.setAttribute('aria-pressed', b.dataset.lang===lang ? 'true' : 'false')); }
+
+    // Курс TRX (для $ экономии)
+    async function fetchTrxRate(){
+      try{
+        const res = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT', { cache:'no-store' });
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const data = await res.json();
+        if (data && data.price){ TRX_USD = Number(data.price); compute(); }
+      }catch(e){ /* ignore */ }
+    }
+
+    // Переключатель USDT есть/нет
+    const st={tx:1, usdt:'has'}; // 1 перевод
+    document.getElementById('usdtState').addEventListener('click',e=>{
+      const b=e.target.closest('.seg-option'); if(!b) return;
+      st.usdt=b.dataset.v; document.querySelectorAll('#usdtState .seg-option').forEach(c=>c.classList.toggle('active', c.dataset.v===b.dataset.v));
+      compute();
+    });
+
+    // Переключение языка (флаги)
+    function bindFlagClicks(){
+      document.querySelectorAll('.flag-btn').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault();
+          e.stopPropagation();
+          const newLang = btn.dataset.lang;
+          if(!newLang || !I18N[newLang]) return;
+          lang = newLang;
+          localStorage.setItem('energy_lang', lang);
+          setActiveFlag();
+          applyText();
+          compute();
+        });
+      });
+    }
+
+    // Модалка оплаты
+    const mAmount=$('mAmount'), mAddr=$('mAddr'), mQR=$('mQR'), mOrderMeta=$('mOrderMeta'),
+          modal=$('payModal');
+    function openModal(){
+      const ePer=ENERGY_PER_TX[st.usdt], totalTRX=PRICE_PER_TX[st.usdt];
+      mAmount.textContent=`${nf(totalTRX,2)} TRX`; mAddr.textContent=PAY_TO_ADDRESS;
+      const memo = encodeURIComponent(`TRON ENERGY | tx:1 | e/tx:${ePer}`);
+      const uri = `${PAY_TO_ADDRESS}?amount=${(totalTRX).toFixed(6)}&memo=${memo}`;
+      mQR.src=`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(uri)}`;
+      mOrderMeta.textContent = `${t('order_meta_prefix')}: 1 · ${st.usdt==='has'?t('has_usdt'):t('no_usdt')}`;
+      modal.classList.add('open');
+    }
+    function closeModal(){ modal.classList.remove('open'); }
+
+    document.getElementById('buyBtn').addEventListener('click', openModal);
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    document.getElementById('mClose2').addEventListener('click', closeModal);
+    document.getElementById('copyAddr').addEventListener('click',async()=>{
+      try{await navigator.clipboard.writeText(PAY_TO_ADDRESS);document.getElementById('copyAddr').textContent=t('copied');setTimeout(()=>document.getElementById('copyAddr').textContent=t('copy'),1200);}catch(_){}}
+    );
+
+    // Копирование адреса в инструкции + конверсия
+    document.addEventListener('click',async(e)=>{
+      if(e.target && e.target.id==='copyBtn'){
+        const addr=document.getElementById('payAddr').textContent.trim();
+        try{ await navigator.clipboard.writeText(addr); e.target.textContent=t('copied'); setTimeout(()=>e.target.textContent=t('copy'),1400);}
+        catch(_){} finally{ try{gtag_report_conversion()}catch(_){} }
+      }
+    });
+
+    // WAIT POPUP
+    const waitModal=document.getElementById('waitModal'), waitCountdownWrap=document.getElementById('waitCountdownWrap'), waitCountdown=document.getElementById('waitCountdown');
+    let waitTimer=null;
+    function openWait(seconds=60){
+      waitCountdownWrap.style.display='block';
+      let left=seconds; waitCountdown.textContent=left;
+      waitModal.classList.add('open');
+      clearInterval(waitTimer);
+      waitTimer = setInterval(()=>{
+        left -= 1;
+        if (left<=0){ clearInterval(waitTimer); closeWait(); }
+        else{ waitCountdown.textContent=left; }
+      },1000);
+    }
+    function closeWait(){ clearInterval(waitTimer); waitModal.classList.remove('open'); }
+    document.getElementById('wClose').addEventListener('click', closeWait);
+
+    document.getElementById('paidBtn').addEventListener('click',()=>{ try{ gtag_report_conversion?.(); }catch(_){ } closeModal(); openWait(60); });
+
+    // init
+    bindFlagClicks();
+    setActiveFlag(); applyText(); compute();
+    fetchTrxRate();
+    setInterval(fetchTrxRate, 60_000);
+  });
+  </script>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="wrap foot-grid">
+      <div class="col span4">
+        <div class="brand"><span class="dot">⚡</span><div><div class="name">RentTRX</div><div class="badge-muted">TRX Energy · Zero-fee transfers</div></div></div>
+        <p class="subtitle" style="margin-top:8px">Buy TRX Energy for <b>2.9 TRX</b> (has USDT) or <b>5.8 TRX</b> (no USDT). Energy applies to <b>one transfer</b>. Instant activation.</p>
+        <div class="social" aria-label="Social links">
+          <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">💬</a>
+          <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener" title="Support" aria-label="Support">🛟</a>
+        </div>
+      </div>
+      <div class="col span3">
+        <h4 style="margin:0 0 8px">Contacts</h4>
+        <ul class="foot-list">
+          <li>Telegram: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
+          <li>Support: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
+          <li>Website: <a href="https://renttrx.vercel.app" target="_blank" rel="noopener">renttrx.vercel.app</a></li>
+        </ul>
+      </div>
+      <div class="col span3">
+        <h4 style="margin:0 0 8px">Quick links</h4>
+        <ul class="foot-list">
+          <li><a href="#top">Calculator</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="#instTariffs">Tariffs</a></li>
+          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</a></li>
+        </ul>
+      </div>
+      <div class="col span5">
+        <h4 style="margin:0 0 8px">Legal</h4>
+        <p class="subtitle" style="margin:8px 0">RentTRX is an energy rental service for the TRON network. We do not custody user funds and are not affiliated with TRON Foundation. Usage of blockchain networks involves risk.</p>
+        <ul class="foot-list">
+          <li><a class="foot-item" href="/terms.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5"/></svg><span>Terms of Service</span></a></li>
+          <li><a class="foot-item" href="/privacy.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l8 4v6c0 5-3.5 9.7-8 10-4.5-.3-8-5-8-10V6l8-4z"/></svg><span>Privacy Policy</span></a></li>
+          <li><a class="foot-item" href="/refund.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 6V3l-4 4l4 4V8c2.8 0 5 2.2 5 5c0 2.2-1.4 4.1-3.4 4.7l-.6 2C16.7 19 19 16.3 19 13c0-3.9-3.1-7-7-7z"/></svg><span>Refund Policy</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© <span id="y"></span> RentTRX. All rights reserved.</small>
+      <div class="foot-links" aria-label="Footer links">
+        <a href="/terms.html" aria-label="Terms"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5"/></svg><span>Terms</span></a>
+        <a href="/privacy.html" aria-label="Privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l8 4v6c0 5-3.5 9.7-8 10-4.5-.3-8-5-8-10V6l8-4z"/></svg><span>Privacy</span></a>
+        <a href="/refund.html" aria-label="Refunds"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 6V3l-4 4l4 4V8c2.8 0 5 2.2 5 5c0 2.2-1.4 4.1-3.4 4.7l-.6 2C16.7 19 19 16.3 19 13c0-3.9-3.1-7-7-7z"/></svg><span>Refunds</span></a>
+      </div>
+    </div>
+  </footer>
+  <script>(function(){try{document.getElementById('y').textContent=new Date().getFullYear()}catch(_){}})();</script>
+</body>
+</html>
