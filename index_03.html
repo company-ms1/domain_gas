@@ -2,24 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GasFree4you — TRON Energy for zero-fee transfers</title>
+  <meta name="description" content="Buy TRON energy for 2.9–5.8 TRX and send USDT/TRC20 without TRX fees. One package per transfer.">
 
-  <title>Аренда энергии TRON — GasFree4you</title>
-  <meta name="description" content="GasFree4you: аренда энергии TRON (TRX) для переводов USDT/TRC20 без комиссии TRX. Энергия действует на один перевод и отзывается после использования." />
-  <link rel="canonical" href="https://gasfree4you.com/">
-
-  <!-- OpenGraph / Twitter -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="GasFree4you — энергия TRON для переводов без комиссии">
-  <meta property="og:description" content="Купите энергию TRON за 2.9–5.8 TRX и отправляйте USDT/TRC20 без комиссии TRX. Энергия на один перевод.">
+  <meta property="og:title" content="GasFree4you — TRON Energy for zero-fee transfers">
+  <meta property="og:description" content="Buy TRON energy for 2.9–5.8 TRX and send USDT/TRC20 without TRX fees. One package per transfer.">
   <meta property="og:image" content="/og.png">
   <meta property="og:url" content="https://gasfree4you.com/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="GasFree4you — энергия TRON для переводов без комиссии">
-  <meta name="twitter:description" content="Энергия TRON за 2.9–5.8 TRX вместо 13.5–27 TRX. Быстро, выгодно, безопасно.">
-  <meta name="theme-color" content="#0b1020">
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="twitter:title" content="GasFree4you — TRON Energy for zero-fee transfers">
+  <meta name="twitter:description" content="TRON energy for 2.9–5.8 TRX instead of 13.5–27 TRX. Fast, cost-effective, safe.">
+  <meta name="twitter:image" content="/og.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <meta name="theme-color" content="#F5C400">
 
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -302,6 +308,17 @@
     </div>
   </div>
 
+  <!-- WAIT MODAL -->
+<div class="modal" id="waitModal"
+     style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;z-index:30">
+  <div class="card" style="max-width:480px;width:100%;text-align:center;position:relative">
+    <button class="btn" id="wClose" aria-label="Close" style="position:absolute;right:10px;top:10px">✕</button>
+    <h3 class="title" style="margin:0 0 10px;font-size:20px">Processing payment</h3>
+    <p class="subtitle" style="margin:0 0 6px">Please wait, energy will be credited soon.</p>
+    <p class="subtitle" id="wCountdownWrap" style="margin:6px 0 0">Time left: <b id="waitCountdown">60</b> sec</p>
+  </div>
+</div>
+
   <footer class="footer" role="contentinfo">
     <div class="wrap foot-grid">
       <div class="col span4">
@@ -577,6 +594,43 @@
     document.getElementById('copyAddr').addEventListener('click',async()=>{
       try{await navigator.clipboard.writeText(PAY_TO_ADDRESS);document.getElementById('copyAddr').textContent=t('copied');setTimeout(()=>document.getElementById('copyAddr').textContent=t('copy'),1200);}catch(e){}
     });
+
+
+    // === WAIT modal logic + "I've paid" button ===
+const waitModal = document.getElementById('waitModal');
+const waitCountdownEl = document.getElementById('waitCountdown');
+let waitTimer = null;
+
+function openWait(seconds = 60){
+  if(!waitModal) return;
+  let left = seconds;
+  waitCountdownEl.textContent = left;
+  waitModal.style.display = 'flex';
+  clearInterval(waitTimer);
+  waitTimer = setInterval(()=>{
+    left -= 1;
+    if(left <= 0){
+      clearInterval(waitTimer);
+      closeWait();
+    }else{
+      waitCountdownEl.textContent = left;
+    }
+  }, 1000);
+}
+function closeWait(){
+  if(waitModal) waitModal.style.display = 'none';
+  clearInterval(waitTimer);
+}
+
+// навешиваем клик на "Я оплатил"
+document.getElementById('paidBtn')?.addEventListener('click', () => {
+  try { gtag_report_conversion?.(); } catch(_) {}
+  closeModal();          // закрыть окно оплаты
+  openWait(60);          // открыть ожидалку на 60 сек
+});
+
+// крестик в ожидалке
+document.getElementById('wClose')?.addEventListener('click', closeWait);
 
     // Копирование адреса из инструкции
     document.addEventListener('click',async(e)=>{
