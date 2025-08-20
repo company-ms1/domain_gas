@@ -328,7 +328,7 @@
     var sc = (scenarioSel && scenarioSel.value) || 'active';
 
     var without = (sc==='active') ? 13.5 : 27.0;
-    var withSrv = (sc==='active') ? 2.9 : 5.8;
+    var withSrv = (sc==='active') ? 3 : 6;
     var save = without - withSrv;
 
     if(kWithoutVal) kWithoutVal.textContent = fmt(without,1) + ' TRX';
