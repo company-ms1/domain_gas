@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GasFree4youCOM — Как работает делегирование энергии TRON</title>
-<meta name="description" content="Понятно о делегировании энергии TRON: как это работает, почему существует, сколько стоит и сколько вы экономите."/>
+<title data-i18n-head="title">GasFree4youCOM — Как работает делегирование энергии TRON</title>
+<meta name="description" content="Понятно о делегировании энергии TRON: как это работает, почему существует, сколько стоит и сколько вы экономите." data-i18n-head="desc"/>
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
@@ -20,14 +20,15 @@
   @media(prefers-color-scheme:light){
     :root{ --bg:#f7fafc; --card:#ffffff; --muted:#5b7083; --text:#0b1020; --accent:#007aff; --accent2:#16a34a; --border:rgba(15,21,42,.08); --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; --ring:rgba(0,122,255,.20); }
   }
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
 
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
-    margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial; color:var(--text);
+    margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial; color:var(--text);
     background:
-      radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.12), transparent 60%),
-      radial-gradient(1000px 600px at -10% 110%, rgba(125,241,183,.12), transparent 60%),
+      radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.10), transparent 60%),
+      radial-gradient(1000px 600px at -10% 110%, rgba(125,241,183,.10), transparent 60%),
       var(--bg);
     -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   }
@@ -51,6 +52,7 @@
   .btn{appearance:none; cursor:pointer; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; font-weight:700; letter-spacing:.2px; line-height:1}
   .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
   .btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
+  .btn[disabled]{opacity:.6; cursor:not-allowed}
 
   .lang{display:flex; gap:8px; align-items:center}
   .flag{width:36px; height:26px; border-radius:6px; border:1px solid var(--border); cursor:pointer; overflow:hidden; display:inline-flex}
@@ -58,67 +60,72 @@
   .flag.active{outline:2px solid var(--accent)}
   @media (max-width:420px){ .flag{width:30px; height:22px} }
 
-  .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:16px; align-items:center; padding:18px 0}
+  /* HERO */
+  .hero{display:grid; grid-template-columns:1.05fr .95fr; gap:18px; align-items:center; padding:20px 0}
   @media (max-width:900px){ .hero{grid-template-columns:1fr} }
-  .title{font-size:clamp(22px,6vw,40px); line-height:1.15; margin:0}
-  .subtitle{color:var(--muted); margin:6px 0 0}
+  .title{font-size:clamp(22px,6vw,40px); line-height:1.15; margin:0 0 6px}
+  .subtitle{color:var(--muted); margin:6px 0 12px}
 
   .panel{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
   .section{padding:16px}
   @media (max-width:640px){ .section{ padding:14px } }
 
-  .grid{display:grid; gap:14px; grid-template-columns:repeat(2,1fr)}
-  @media (max-width:900px){ .grid{grid-template-columns:1fr} }
-
-  /* Steps animation */
+  /* Steps */
   .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
   @media (max-width:900px){ .steps{grid-template-columns:1fr} }
   .step{position:relative; padding:16px; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,.03)}
-  .step h4{margin:0 0 6px}
+  .step h4{margin:0 0 8px}
+  .num{display:inline-grid; place-items:center; width:28px; height:28px; border-radius:999px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; font-weight:900; margin-right:8px}
   .arrow{display:none}
   @media (min-width:901px){
-    .arrow{
-      display:block; position:absolute; top:50%; right:-10px; transform:translateY(-50%);
-      width:20px; height:20px; border-right:3px solid var(--accent); border-top:3px solid var(--accent); rotate:45deg;
-      animation:pulse 1.8s infinite ease-in-out;
-    }
+    .arrow{display:block; position:absolute; top:50%; right:-10px; transform:translateY(-50%); width:20px; height:20px; border-right:3px solid var(--accent); border-top:3px solid var(--accent); rotate:45deg; animation:pulse 1.8s infinite ease-in-out}
     .step:last-child .arrow{display:none}
   }
-  @keyframes pulse{
-    0%,100%{opacity:.3; transform:translateY(-50%) translateX(0)}
-    50%{opacity:1; transform:translateY(-50%) translateX(6px)}
-  }
+  @keyframes pulse{0%,100%{opacity:.3; transform:translateY(-50%) translateX(0)} 50%{opacity:1; transform:translateY(-50%) translateX(6px)}}
 
   /* Energy beam */
-  .beam{
-    margin-top:10px; height:8px; border-radius:999px; background:linear-gradient(90deg, rgba(110,231,255,.2), rgba(125,241,183,.2));
-    overflow:hidden; border:1px solid var(--border)
+  .beam{margin-top:10px; height:8px; border-radius:999px; background:linear-gradient(90deg, rgba(110,231,255,.2), rgba(125,241,183,.2)); overflow:hidden; border:1px solid var(--border)}
+  .beam::before{content:""; display:block; height:100%; width:30%; background:linear-gradient(90deg, var(--accent), var(--accent2)); filter:blur(1px); animation:flow 2.2s linear infinite}
+  @keyframes flow{0%{margin-left:-30%} 100%{margin-left:100%}}
+
+/* Video block — mobile-first, vertical video */
+.video-section{padding:16px}
+.video{position:relative; width:100%; aspect-ratio:9/16; border:1px solid var(--border);
+  border-radius:var(--radius); background:#000; box-shadow:var(--shadow); overflow:hidden; margin:0 auto}
+.video iframe{position:absolute; inset:0; width:100%; height:100%; display:block; border:0}
+
+/* На широких экранах делаем комфортную ширину, чтобы «столб» не был слишком высоким */
+@media (min-width:901px){
+  .video{max-width:420px}
+}
+.divider{height:1px; background:var(--border); margin:6px 0 10px}
+
+  /* On mobile the card is full width by default, no max-width clamps */
+  @media (max-width:900px){
+    .video-col{order:1}
   }
-  .beam::before{
-    content:""; display:block; height:100%; width:30%;
-    background:linear-gradient(90deg, var(--accent), var(--accent2));
-    filter:blur(1px); animation:flow 2.2s linear infinite;
-  }
-  @keyframes flow{ 0%{margin-left:-30%} 100%{margin-left:100%} }
+
+  .divider{height:1px; background:var(--border); margin:6px 0 10px}
 
   /* Calc */
   .calc{display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:start}
   @media (max-width:700px){ .calc{grid-template-columns:1fr} }
   .field{display:grid; gap:6px}
-  .input, .select{
-    width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--border);
-    background:rgba(255,255,255,.06); color:var(--text); font-weight:700
-  }
+  .input, .select{width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:var(--text); font-weight:700}
   .kpi{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
   @media (max-width:700px){ .kpi{grid-template-columns:1fr 1fr} }
   .k{padding:12px; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,.03)}
   .k .v{font-size:22px; font-weight:900}
   .k.save{background:linear-gradient(0deg, rgba(125,241,183,.08), transparent)}
   .glow{animation:glow 2.2s ease-in-out infinite}
-  @keyframes glow{ 0%,100%{box-shadow:0 0 0 rgba(0,0,0,0)} 50%{box-shadow:0 0 0 6px var(--ring)} }
+  @keyframes glow{0%,100%{box-shadow:0 0 0 rgba(0,0,0,0)} 50%{box-shadow:0 0 0 6px var(--ring)}}
 
   .note{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:14px; background:rgba(125,241,183,.08); border:1px solid var(--border); margin-top:10px}
   .foot{margin-top:18px; color:var(--muted); font-size:13px}
+
+  /* TronScan block */
+  .tronscan{display:flex; align-items:center; gap:10px; padding:12px; border:1px dashed var(--border); border-radius:14px; background:rgba(110,231,255,.06); margin:12px 0}
+  .tronscan strong{font-weight:800}
 </style>
 </head>
 <body>
@@ -147,44 +154,69 @@
     </header>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Text column -->
       <div>
-        <h2 class="title" data-i18n="title">Как работает делегирование энергии TRON</h2>
+        <h2 id="hero-title" class="title" data-i18n="title">Как работает делегирование энергии TRON</h2>
         <p class="subtitle" data-i18n="subtitle">Коротко о механике, ценах и том, почему это выгодно для частых переводов USDT/TRC20.</p>
+
         <div class="note">
-          <div>ℹ️</div>
-          <div data-i18n="why">
-            Энергия появляется, когда держатели замораживают (stake) TRX и поддерживают сеть. Эти ресурсы можно временно делегировать тем, кому они нужны «прямо сейчас» — поэтому переводы выходят дешевле, чем платить TRX-комиссией.
+          <div aria-hidden="true">ℹ️</div>
+          <div data-i18n="why">Энергия появляется, когда держатели замораживают (stake) TRX и поддерживают сеть. Эти ресурсы можно временно делегировать тем, кому они нужны «прямо сейчас» — поэтому переводы выходят дешевле, чем платить TRX-комиссией.</div>
+        </div>
+
+        <div class="tronscan">
+          <div>🔗</div>
+          <div>
+            <strong data-i18n="tsTitle">Реальные примеры</strong> — <span data-i18n="tsText">смотрите на</span>
+            <a href="https://tronscan.org/" target="_blank" rel="noopener">TronScan</a>.
           </div>
         </div>
       </div>
-      <div class="panel section">
-        <h3 style="margin:0 0 8px" data-i18n="stepsTitle">3 шага — и перевод без комиссии TRX</h3>
-        <div class="steps">
-          <div class="step">
-            <h4 data-i18n="s1">1) Вы отправляете фиксированный TRX</h4>
-            <div data-i18n="s1t">Оплачиваете пакет энергии на сервисный адрес.</div>
-            <div class="beam"></div>
-            <div class="arrow"></div>
-          </div>
-          <div class="step">
-            <h4 data-i18n="s2">2) Мы делегируем энергию</h4>
-            <div data-i18n="s2t">Энергия прилетает на адрес отправителя в ~1 минуту.</div>
-            <div class="beam"></div>
-            <div class="arrow"></div>
-          </div>
-          <div class="step">
-            <h4 data-i18n="s3">3) Вы делаете перевод</h4>
-            <div data-i18n="s3t">Комиссию покрывает энергия. Действует до часа или до 1-й операции.</div>
-            <div class="beam"></div>
-          </div>
+
+
+    </section>
+
+    <!-- STEPS -->
+    <section class="panel section" aria-labelledby="stepsTitle">
+      <h3 id="stepsTitle" style="margin:0 0 8px" data-i18n="stepsTitle">3 шага — и перевод без комиссии TRX</h3>
+      <div class="steps">
+        <div class="step">
+          <h4><span class="num">1</span><span data-i18n="s1">Вы отправляете фиксированный TRX</span></h4>
+          <div data-i18n="s1t">Оплачиваете пакет энергии на сервисный адрес.</div>
+          <div class="beam"></div>
+          <div class="arrow" aria-hidden="true"></div>
+        </div>
+        <div class="step">
+          <h4><span class="num">2</span><span data-i18n="s2">Мы делегируем энергию</span></h4>
+          <div data-i18n="s2t">Энергия прилетает на адрес отправителя в ~1 минуту.</div>
+          <div class="beam"></div>
+          <div class="arrow" aria-hidden="true"></div>
+        </div>
+        <div class="step">
+          <h4><span class="num">3</span><span data-i18n="s3">Вы делаете перевод</span></h4>
+          <div data-i18n="s3t">Комиссию покрывает энергия. Действует до часа или до 1-й операции.</div>
+          <div class="beam"></div>
         </div>
       </div>
     </section>
-
+<!-- VIDEO (3-й блок) -->
+<section class="panel section video-section" aria-labelledby="videoTitle">
+  <h3 id="videoTitle" style="margin:0 0 8px" data-i18n="videoTitle">Видео-инструкция (1 мин)</h3>
+  <div class="video" role="region" aria-label="Instructional video">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/ndOdqMUKleI"
+      title="TRON Energy — how it works"
+      loading="lazy"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
     <!-- CALC -->
-    <section class="panel section">
-      <h3 style="margin:0 0 10px" data-i18n="calcTitle">Калькулятор выгоды</h3>
+    <section class="panel section" aria-labelledby="calcTitle">
+      <h3 id="calcTitle" style="margin:0 0 10px" data-i18n="calcTitle">Калькулятор выгоды</h3>
       <div class="calc">
         <div class="field">
           <label for="scenario" data-i18n="scLabel">Сценарий</label>
@@ -195,7 +227,7 @@
         </div>
         <div class="field">
           <label for="price" data-i18n="prLabel">Курс TRX (USD)</label>
-          <input id="price" type="number" step="0.0001" min="0" class="input" placeholder="0.0900"/>
+          <input id="price" type="number" step="0.0001" min="0" class="input" placeholder="0.0900" inputmode="decimal"/>
         </div>
       </div>
 
@@ -218,21 +250,15 @@
     </section>
 
     <!-- WHY EXISTS -->
-    <section class="panel section">
-      <h3 style="margin:0 0 8px" data-i18n="existTitle">Почему эта возможность существует</h3>
+    <section class="panel section" aria-labelledby="existTitle">
+      <h3 id="existTitle" style="margin:0 0 8px" data-i18n="existTitle">Почему эта возможность существует</h3>
       <div class="grid">
         <div>
-          <p data-i18n="exist1">
-            TRON мотивирует держателей замораживать TRX ради безопасности и пропускной способности сети. За это сеть выдаёт ресурсы — энергию и bandwidth.
-          </p>
-          <p data-i18n="exist2">
-            Делегирование позволяет тем, у кого есть избыток ресурсов, делиться ими (получая вознаграждение), а активным отправителям — платить существенно меньше за переводы.
-          </p>
+          <p data-i18n="exist1">TRON мотивирует держателей замораживать TRX ради безопасности и пропускной способности сети. За это сеть выдаёт ресурсы — энергию и bandwidth.</p>
+          <p data-i18n="exist2">Делегирование позволяет тем, у кого есть избыток ресурсов, делиться ими (получая вознаграждение), а активным отправителям — платить существенно меньше за переводы.</p>
         </div>
         <div>
-          <p data-i18n="exist3">
-            В результате вы меняете «дорогую разовую комиссию TRX» на дешёвый целевой ресурс — энергию, уже добытую за счёт стейка. Это честный рыночный механизм поверх правил сети.
-          </p>
+          <p data-i18n="exist3">В результате вы меняете «дорогую разовую комиссию TRX» на дешёвый целевой ресурс — энергию, уже добытую за счёт стейка. Это честный рыночный механизм поверх правил сети.</p>
           <a class="btn primary" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="ctaTalk">Обсудить подключение в Telegram</a>
         </div>
       </div>
@@ -247,10 +273,13 @@
   // ===== I18N =====
   var I18N = {
     ru:{
+      head:{ title:"GasFree4youCOM — Как работает делегирование энергии TRON",
+             desc:"Понятно о делегировании энергии TRON: как это работает, почему существует, сколько стоит и сколько вы экономите." },
       tagline:"Делегация энергии TRON",
       back:"Назад", cta:"Публичные тарифы",
       title:"Как работает делегирование энергии TRON",
       subtitle:"Коротко о механике, ценах и том, почему это выгодно для частых переводов USDT/TRC20.",
+      videoTitle:"Видео-инструкция (1 мин)",
       why:"Энергия появляется, когда держатели замораживают (stake) TRX и поддерживают сеть. Эти ресурсы можно временно делегировать тем, кому они нужны «прямо сейчас» — поэтому переводы выходят дешевле, чем платить TRX-комиссией.",
       stepsTitle:"3 шага — и перевод без комиссии TRX",
       s1:"1) Вы отправляете фиксированный TRX", s1t:"Оплачиваете пакет энергии на сервисный адрес.",
@@ -266,13 +295,17 @@
       exist1:"TRON мотивирует держателей замораживать TRX ради безопасности и пропускной способности сети. За это сеть выдаёт ресурсы — энергию и bandwidth.",
       exist2:"Делегирование позволяет тем, у кого есть избыток ресурсов, делиться ими (получая вознаграждение), а активным отправителям — платить существенно меньше за переводы.",
       exist3:"В результате вы меняете «дорогую разовую комиссию TRX» на дешёвый целевой ресурс — энергию, уже добытую за счёт стейка. Это честный рыночный механизм поверх правил сети.",
-      ctaTalk:"Обсудить подключение в Telegram"
+      ctaTalk:"Обсудить подключение в Telegram",
+      tsTitle:"Реальные примеры", tsText:"смотрите на"
     },
     en:{
+      head:{ title:"GasFree4youCOM — How TRON Energy Delegation Works",
+             desc:"A clear explainer of TRON Energy: how it works, why it exists, the cost, and how much you save." },
       tagline:"TRON Energy Top-Up",
       back:"Back", cta:"Public pricing",
       title:"How TRON Energy Delegation Works",
       subtitle:"A short explainer on mechanics, pricing, and why it’s perfect for frequent USDT/TRC20 transfers.",
+      videoTitle:"Video Tutorial (1 min)",
       why:"Energy appears when holders stake TRX to support the network. These resources can be delegated to those who need them right now — making transfers cheaper than paying the TRX fee directly.",
       stepsTitle:"3 steps — zero TRX fee on transfer",
       s1:"1) You send a fixed TRX amount", s1t:"Pay for an energy package to our service address.",
@@ -288,18 +321,22 @@
       exist1:"TRON incentivizes staking TRX for security and throughput. The network issues resources — energy and bandwidth — in return.",
       exist2:"Delegation lets resource holders share them (and be rewarded) while active senders pay far less for transfers.",
       exist3:"You replace an expensive one-off TRX fee with a cheaper targeted resource — energy — minted by staking. A fair market layer atop network rules.",
-      ctaTalk:"Talk in Telegram"
+      ctaTalk:"Talk in Telegram",
+      tsTitle:"See real examples", tsText:"on"
     },
     zh:{
+      head:{ title:"GasFree4youCOM — TRON 能量委托如何运作",
+             desc:"清晰说明 TRON 能量：工作原理、存在原因、成本与可节省的费用。" },
       tagline:"TRON 能量充值",
       back:"返回", cta:"公开价格",
       title:"TRON 能量委托是如何工作的",
       subtitle:"简明说明其机制、费用，以及为何非常适合高频 USDT/TRC20 转账。",
-      why:"当持币者质押 TRX 支持网络时会产生“能量”。这些资源可以委托给当下需要的人——转账成本因此低于直接支付 TRX 手续费。",
-      stepsTitle:"3 步完成——转账零 TRX 手续费",
-      s1:"1) 发送固定数量 TRX", s1t:"向服务地址支付能量套餐。",
+      videoTitle:"一分钟教程视频",
+      why:"当持币者质押 TRX 支持网络时会产生能量。资源可委托给当下需要的人，从而比直接支付 TRX 手续费更便宜。",
+      stepsTitle:"三步完成——转账零 TRX 手续费",
+      s1:"1) 发送固定数量 TRX", s1t:"向服务地址购买能量套餐。",
       s2:"2) 我们委托能量", s2t:"约 1 分钟内能量到达发送地址。",
-      s3:"3) 完成转账", s3t:"手续费由能量承担。有效期至首次操作或约 1 小时。",
+      s3:"3) 完成转账", s3t:"手续费由能量承担；有效期至首次操作或约 1 小时。",
       calcTitle:"节省计算器",
       scLabel:"场景",
       scActive:"已激活钱包（无能量约需 13.5 TRX）",
@@ -307,10 +344,11 @@
       prLabel:"TRX 价格（美元）",
       kWithout:"无能量", kWith:"使用本服务", kSave:"节省",
       existTitle:"为何存在这种机制",
-      exist1:"TRON 鼓励质押 TRX 以提升安全与吞吐率，网络因此发放资源（能量与带宽）。",
-      exist2:"委托让资源拥有者分享资源并获得回报；而高频发送者以更低成本完成转账。",
-      exist3:"你用更便宜、定向的“能量”替代昂贵的单次 TRX 手续费——能量来自质押。这是建立在网络规则之上的公平市场机制。",
-      ctaTalk:"Telegram 联系"
+      exist1:"TRON 鼓励质押 TRX 以提升安全与吞吐率，网络因此发放能量与带宽。",
+      exist2:"委托让资源拥有者分享资源并获益；高频发送者能以更低成本完成转账。",
+      exist3:"你用更便宜、定向的“能量”替代昂贵的单次 TRX 手续费——能量来自质押。它是遵循网络规则的公平市场机制。",
+      ctaTalk:"Telegram 联系",
+      tsTitle:"真实示例", tsText:"见"
     }
   };
 
@@ -328,7 +366,7 @@
     var sc = (scenarioSel && scenarioSel.value) || 'active';
 
     var without = (sc==='active') ? 13.5 : 27.0;
-    var withSrv = (sc==='active') ? 3 : 6;
+    var withSrv = (sc==='active') ? 2.9 : 5.8;
     var save = without - withSrv;
 
     if(kWithoutVal) kWithoutVal.textContent = fmt(without,1) + ' TRX';
@@ -347,7 +385,6 @@
     }
   }
 
-  // Try to fetch price (best-effort, no crash if blocked by CORS/No-HTTPS in file mode)
   function tryFetchPrice(){
     var url1 = 'https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT';
     var url2 = 'https://api.coingecko.com/api/v3/simple/price?ids=tron&vs_currencies=usd';
@@ -366,6 +403,15 @@
   }
 
   // ===== Language =====
+  function setHead(lang){
+    var t = document.querySelector('[data-i18n-head="title"]');
+    var d = document.querySelector('[data-i18n-head="desc"]');
+    if(I18N[lang] && I18N[lang].head){
+      if(t) t.textContent = I18N[lang].head.title;
+      if(d) d.setAttribute('content', I18N[lang].head.desc);
+    }
+  }
+
   function setLang(lang){
     document.documentElement.lang = lang;
     var flags = document.querySelectorAll('.flag');
@@ -379,11 +425,11 @@
       var key = node.getAttribute('data-i18n');
       if(I18N[lang] && I18N[lang][key]) node.textContent = I18N[lang][key];
     }
+    setHead(lang);
     try{ localStorage.setItem('lang', lang); }catch(e){}
   }
 
   (function init(){
-    // bind refs
     priceInput = document.getElementById('price');
     scenarioSel = document.getElementById('scenario');
     kWithoutVal = document.getElementById('kWithoutVal');
@@ -402,9 +448,7 @@
       flags[i].addEventListener('click', function(){ setLang(this.getAttribute('data-lang')); });
     }
 
-    // default values
     recalc();
-    // fetch price async
     tryFetchPrice();
 
     var y = document.getElementById('y');
