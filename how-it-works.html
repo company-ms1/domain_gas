@@ -441,7 +441,12 @@
     if(scenarioSel){ scenarioSel.addEventListener('change', recalc); }
 
     var saved = null; try{ saved = localStorage.getItem('lang'); }catch(e){}
-    setLang(saved || 'ru');
+    if(!saved){
+      var nav = (navigator.language||'').slice(0,2).toLowerCase();
+      saved = ['ru','en','zh'].indexOf(nav)>=0 ? nav : 'en';
+      try{ localStorage.setItem('lang', saved); }catch(e){}
+    }
+    setLang(saved);
 
     var flags = document.querySelectorAll('.flag');
     for(var i=0;i<flags.length;i++){

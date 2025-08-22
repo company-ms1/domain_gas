@@ -393,10 +393,16 @@ POST https://your.app/hooks/gasfree
         const key=node.getAttribute('data-i18n');
         if(I18N[lang] && I18N[lang][key]) node.textContent = I18N[lang][key];
       });
+      try{ localStorage.setItem('lang', lang); }catch(e){}
+    }
+    function detectLang(){
+      const nav = (navigator.language||'').slice(0,2).toLowerCase();
+      return ['ru','en','zh'].includes(nav) ? nav : 'en';
     }
     document.querySelectorAll('.flag').forEach(f=>f.addEventListener('click',()=>setLang(f.dataset.lang)));
     document.getElementById('y').textContent = new Date().getFullYear();
-    setLang('en');
+    const savedLang = localStorage.getItem('lang');
+    setLang(savedLang || detectLang());
   </script>
 </body>
 </html>
