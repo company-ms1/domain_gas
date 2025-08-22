@@ -4,8 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>GasFree4you.com — TRON Energy for zero-fee transfers</title>
-  <meta name="description" content="GasFree4you.com (often searched as 'gasfree4ucom'): TRON energy for USDT/TRC20 zero-fee transfers. One-transfer energy.">
+  <!-- SEO: добавили обе опечатки в тайтл/дескрипшен -->
+  <title>GasFree4you.com — TRON Energy for zero-fee transfers (often searched as “gasfree4ucom” or “fasfree4ucom”)</title>
+  <meta name="description" content="GasFree4you.com — TRON energy for USDT/TRC20 zero-fee transfers. People sometimes search 'gasfree4ucom' or 'fasfree4ucom' (other services with similar conditions). You’re free to buy TRON energy anywhere.">
   <link rel="canonical" href="https://gasfree4you.com/">
   <meta name="robots" content="index,follow">
 
@@ -16,6 +17,7 @@
   <meta property="og:image" content="/og.png">
   <meta property="og:url" content="https://gasfree4you.com/">
   <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
   <meta property="og:locale:alternate" content="zh_CN">
 
   <!-- Twitter -->
@@ -130,9 +132,6 @@
     @keyframes pulseWidth{ from{filter:saturate(1)} to{filter:saturate(1.4)} }
 
     .beam{margin-top:10px; height:8px; border-radius:999px; background:linear-gradient(90deg, rgba(110,231,255,.2), rgba(125,241,183,.2)); overflow:hidden; border:1px solid var(--border)}
-    .beam::before{content:""; display:block; height:100%; width:30%; background:linear-gradient(90deg, var(--accent), var(--accent2)); filter:blur(1px); animation:flow 2.2s linear infinite}
-    @keyframes flow{0%{margin-left:-30%}100%{margin-left:100%}}
-
     .faq{margin-top:16px}
     .faq h3{margin:0 0 8px}
     details{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin:8px 0; transition:box-shadow .2s}
@@ -152,7 +151,6 @@
     .foot-links{display:flex; gap:14px; flex-wrap:wrap}
     .foot-links a{display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--muted)}
 
-    /* mini SEO note */
     .seo-inline{
       margin:16px 0 4px;
       font-size:13px;
@@ -160,6 +158,7 @@
       border-left:3px solid var(--border);
       padding:6px 10px;
     }
+    .typos{font-size:13px;color:var(--muted);margin:6px 0 14px}
   </style>
 </head>
 <body>
@@ -271,10 +270,12 @@
       </details>
     </section>
 
-    <!-- Mini SEO note -->
+    <!-- Mini SEO note (видимая короткая подсказка) -->
     <p class="seo-inline" data-i18n="seo_inline">
-      <strong>GasFree4you.com</strong> — если встретите запрос <em>gasfree4ucom</em>, это обычная опечатка и тоже про нас.
+      <strong>GasFree4you.com</strong> — если встретите запрос <em>gasfree4ucom</em> или <em>fasfree4ucom</em>, это другие сервисы с похожими условиями. Энергию TRON можно купить в любом месте.
     </p>
+    <!-- Небольшой список вариантов написания, чтобы заякорить запросы -->
+    <p class="typos" data-i18n="typos_line">Also searched as: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.</p>
 
     <!-- FAQ -->
     <section class="faq" id="faq">
@@ -299,9 +300,10 @@
         <summary data-i18n="q5">Есть ли API и UI-консоль?</summary>
         <p data-i18n="a5">Да. Доступны UI для массовой раздачи энергии и REST API для полной автоматизации. Нажмите кнопку «API» вверху.</p>
       </details>
+      <!-- SEO-FAQ по опечаткам: теперь включает fasfree4ucom -->
       <details>
-        <summary data-i18n="q6">Я искал «gasfree4ucom» — это вы?</summary>
-        <p data-i18n="a6">Да. Многие вводят домен с опечаткой <em>gasfree4ucom</em>. Правильный адрес — <a href="https://gasfree4you.com">GasFree4you.com</a>. Оба запроса относятся к нашему сервису.</p>
+        <summary data-i18n="q6">Я искал «gasfree4ucom» или «fasfree4ucom» — это вы?</summary>
+        <p data-i18n="a6">Нет. Это другие сервисы с похожими условиями. Энергию TRON можно купить там, где вам удобно — у нас или в любом другом месте.</p>
       </details>
     </section>
   </main>
@@ -390,8 +392,27 @@
     </div>
   </footer>
 
-  <!-- JSON-LD placeholder (rebuilt in JS by language) -->
+  <!-- JSON-LD FAQ (перестраивается JS по языку) -->
   <script type="application/ld+json" id="faq-json"></script>
+
+  <!-- JSON-LD Organization: alternateName с опечатками -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"GasFree4you",
+    "url":"https://gasfree4you.com/",
+    "alternateName": ["Gas Free 4 U Com", "gasfree4ucom", "fasfree4ucom"],
+    "sameAs": ["https://t.me/saving_trx_bot"]
+  }
+  </script>
+
+  <!-- Небольшой noscript-текст, чтобы роботы без JS видели опечатки естественно -->
+  <noscript>
+    <p style="padding:8px 12px;font-size:13px;color:#6b7280">
+      GasFree4you.com — TRON energy rental. Some users search for “gasfree4ucom” or “fasfree4ucom” (different services with similar conditions). You’re free to buy TRON energy anywhere.
+    </p>
+  </noscript>
 
   <script>
   // === I18N ===
@@ -431,8 +452,8 @@
         a4:"Для обменников, кошельков, OTC и сервисов с частыми переводами USDT/TRC20, а также для частных пользователей.",
         q5:"Есть ли API и UI-консоль?",
         a5:"Да. Есть UI для массовой раздачи и REST API. Жмите «API» в шапке.",
-        q6: "Я видел «gasfree4ucom» — это вы?",
-        a6: "Нет. «gasfree4ucom» — это другой сервис с похожими условиями. Энергию TRON можно купить там, где вам удобно — у нас или в любом другом месте.",
+        q6:"Я искал «gasfree4ucom» или «fasfree4ucom» — это вы?",
+        a6:"Нет. Это другие сервисы с похожими условиями. Энергию TRON можно купить там, где вам удобно — у нас или в любом другом месте.",
         biz_title:"Партнёрам и большим объёмам",
         biz_q1:"Большие объёмы и хотите экономить больше?",
         biz_a1:"Свяжитесь с нами в <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> — предложим индивидуальные условия.",
@@ -443,8 +464,9 @@
         biz_q4:"Есть аудитория и хотите помочь ей экономить и зарабатывать?",
         biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Свяжитесь с нами</a> — у нас есть партнёрская программа.",
         meta_title:"Аренда энергии TRON — GasFree4you",
-        meta_desc:"GasFree4you.com (часто ищут как «gasfree4ucom»): энергия TRON для переводов USDT/TRC20 с почти нулевой комиссией TRX. Энергия на один перевод.",
-        seo_inline:"<strong>GasFree4you.com</strong> — если встретили <em>gasfree4ucom</em>, это другой сервис с похожими условиями. Энергию TRON можно купить в любом месте, где вам удобно."
+        meta_desc:"GasFree4you.com — энергия TRON для переводов USDT/TRC20 с почти нулевой комиссией TRX. Часто ищут «gasfree4ucom» или «fasfree4ucom» (другие сервисы с похожими условиями).",
+        seo_inline:"<strong>GasFree4you.com</strong> — если встретите запрос <em>gasfree4ucom</em> или <em>fasfree4ucom</em>, это другие сервисы с похожими условиями. Энергию TRON можно купить в любом месте.",
+        typos_line:"Также ищут: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>."
       },
       en:{
         tagline:"TRON Energy · Zero-fee transfers", how_link:"How it works", faq_btn:"FAQ",
@@ -480,8 +502,8 @@
         a4:"Exchangers, wallets, OTC desks, and services with frequent USDT/TRC20 transfers — and power users.",
         q5:"API & UI console?",
         a5:"Yes. UI for bulk distribution and a REST API. See the “API” button above.",
-        q6: "I saw “gasfree4ucom” — is that you?",
-        a6: "No. “gasfree4ucom” is a different service with similar conditions. You’re free to buy TRON energy wherever you prefer — from us or anywhere else." ,
+        q6:"I searched “gasfree4ucom” or “fasfree4ucom” — is that you?",
+        a6:"No. Those are different services with similar conditions. You’re free to buy TRON energy wherever you prefer — from us or anywhere else.",
         biz_title:"For volumes and partners",
         biz_q1:"Large volumes and want to save more?",
         biz_a1:"Contact us on <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> for custom rates.",
@@ -491,9 +513,10 @@
         biz_a3:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Contact us</a> and we’ll help you launch.",
         biz_q4:"Have an audience and want to help them save and earn?",
         biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Get in touch</a> — partner program available.",
-          meta_title:"Rent TRON Energy — GasFree4you",
-        meta_desc:"GasFree4you.com (often searched as 'gasfree4ucom'): TRON energy for USDT/TRC20 zero-fee transfers. One-transfer energy.",
-        seo_inline:"<strong>GasFree4you.com</strong> — if you saw <em>gasfree4ucom</em>, note that it’s a different service with similar conditions. You are free to buy TRON energy anywhere."
+        meta_title:"Rent TRON Energy — GasFree4you",
+        meta_desc:"GasFree4you.com — TRON energy for USDT/TRC20 zero-fee transfers. People sometimes search 'gasfree4ucom' or 'fasfree4ucom' (other services with similar conditions).",
+        seo_inline:"<strong>GasFree4you.com</strong> — if you see <em>gasfree4ucom</em> or <em>fasfree4ucom</em>, note these are different services with similar conditions. You’re free to buy TRON energy anywhere.",
+        typos_line:"Also searched as: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>."
       },
       zh:{
         tagline:"TRON 能量 · 零手续费转账", how_link:"它是如何工作的", faq_btn:"常见问题",
@@ -529,8 +552,8 @@
         a4:"兑换所、钱包、OTC 以及高频 USDT/TRC20 转账的服务或用户。",
         q5:"是否提供 API 和控制台？",
         a5:"提供。上方点击“API”。",
-        q6: "我看到“gasfree4ucom”，是你们吗？",
-        a6: "不是。“gasfree4ucom”是另一个与我们条件相似的服务。TRON 能量可在任意平台购买——可以选择我们，也可以选择其他渠道。",
+        q6:"我搜到“gasfree4ucom”或“fasfree4ucom”，是你们吗？",
+        a6:"不是。它们是与我们条件相似的其他服务。TRON 能量可在任意平台购买——可以选择我们，也可以选择其他渠道。",
         biz_title:"更多场景与合作",
         biz_q1:"大额需求想节省更多？",
         biz_a1:"通过 <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> 联系我们，可获得定制价格。",
@@ -541,8 +564,9 @@
         biz_q4:"有自己的用户想帮他们省钱并赚钱？",
         biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>联系我们</a>——提供合作计划。",
         meta_title:"租用 TRON 能量 — GasFree4you",
-        meta_desc:"GasFree4you.com（有时被写成“gasfree4ucom”）：用于 USDT/TRC20 的 TRON 能量，几乎零 TRX 手续费，一次性转账能量。",
-       seo_inline:"<strong>GasFree4you.com</strong> —— 如果你看到 <em>gasfree4ucom</em>，那是另一个有类似条件的服务。TRON 能量可在任何地方购买，自由选择。"
+        meta_desc:"GasFree4you.com — 用于 USDT/TRC20 的 TRON 能量。有人会搜索“gasfree4ucom”或“fasfree4ucom”（其他有类似条件的服务）。",
+        seo_inline:"<strong>GasFree4you.com</strong> —— 如果你看到 <em>gasfree4ucom</em> 或 <em>fasfree4ucom</em>，那是其他有类似条件的服务。TRON 能量可在任何地方购买，自由选择。",
+        typos_line:"常见搜索：<em>gasfree4ucom</em>、<em>fasfree4ucom</em>、<em>gas free 4 u com</em>。"
       }
     };
 
@@ -552,10 +576,7 @@
       return ['ru','en','zh'].includes(nav) ? nav : 'en';
     }
     let lang = localStorage.getItem('lang');
-    if(!lang){
-      lang = detectLang();
-      try{ localStorage.setItem('lang', lang); }catch(e){}
-    }
+    if(!lang){ lang = detectLang(); try{ localStorage.setItem('lang', lang); }catch(e){} }
 
     // Константы
     const PAY_TO_ADDRESS="TDmt2ieRw2YsvTERcQmth3H4kCHqsPHArp";
@@ -596,41 +617,37 @@
       saveBadge.textContent = pct + '%';
     }
 
-    // I18N helpers
     function t(key){ return (I18N[lang] && I18N[lang][key]) || key; }
     function applyText(){
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key=el.getAttribute('data-i18n');
         if (I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
       });
-      // Списки
+      // списки в инструкции (если есть)
       const tset = I18N[lang];
       const instTariffs = $('instTariffs'); if (instTariffs) instTariffs.innerHTML = (tset.inst_tariffs?.[0]||'') + '<br>' + (tset.inst_tariffs?.[1]||'');
       const instMax = $('instMax'); if (instMax) instMax.innerHTML = tset.inst_max || '';
       const instHowTitle = $('instHowTitle'); if (instHowTitle) instHowTitle.innerHTML = tset.inst_how_title || '';
       const instFinal = $('instFinal'); if (instFinal) instFinal.innerHTML = tset.inst_final || '';
       const ol = $('instSteps'); if(ol){ ol.innerHTML=''; (tset.inst_steps||[]).forEach(s=>{ const li=document.createElement('li'); li.innerHTML=s; ol.appendChild(li); }); }
-      // Обновление тайтла/дескрипшена
+      // тайтл/мета по языку
       document.title = tset.meta_title || document.title;
       const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', tset.meta_desc || md.getAttribute('content'));
       document.documentElement.lang = lang;
-      // mini SEO inline
+      // мини-блоки
       const seoInline = document.querySelector('.seo-inline'); if (seoInline) seoInline.innerHTML = t('seo_inline');
+      const typosLine = document.querySelector('.typos'); if (typosLine) typosLine.innerHTML = t('typos_line');
       compute();
 
-      // === Rebuild FAQ JSON-LD from I18N ===
+      // FAQ JSON-LD
       (function rebuildFAQSchema(){
-        const tset = I18N[lang];
-        const qaPairs = [
-          ["q1","a1"],["q2","a2"],["q3","a3"],["q4","a4"],["q5","a5"],["q6","a6"]
-        ].filter(([q,a]) => tset[q] && tset[a]);
-
+        const qaPairs = [["q1","a1"],["q2","a2"],["q3","a3"],["q4","a4"],["q5","a5"],["q6","a6"]]
+          .filter(([q,a]) => tset[q] && tset[a]);
         const mainEntity = qaPairs.map(([q,a]) => ({
           "@type":"Question",
           "name": (tset[q]+"").replace(/<[^>]*>/g,""),
           "acceptedAnswer": {"@type":"Answer","text": tset[a]}
         }));
-
         const schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity": mainEntity};
         const el = document.getElementById('faq-json');
         if(el){ el.textContent = JSON.stringify(schema); }
