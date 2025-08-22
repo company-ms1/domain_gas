@@ -499,8 +499,15 @@
     };
 
     const $ = id => document.getElementById(id);
-    // По умолчанию пусть будет RU (соответствует активной кнопке)
-    let lang = localStorage.getItem('energy_lang') || 'ru';
+    function detectLang(){
+      const nav = (navigator.language || '').slice(0,2).toLowerCase();
+      return ['ru','en','zh'].includes(nav) ? nav : 'en';
+    }
+    let lang = localStorage.getItem('lang');
+    if(!lang){
+      lang = detectLang();
+      try{ localStorage.setItem('lang', lang); }catch(e){}
+    }
 
     // Константы
     const PAY_TO_ADDRESS="TDmt2ieRw2YsvTERcQmth3H4kCHqsPHArp";
@@ -609,7 +616,7 @@
           const newLang = btn.dataset.lang;
           if(!newLang || !I18N[newLang]) return;
           lang = newLang;
-          localStorage.setItem('energy_lang', lang);
+          try{ localStorage.setItem('lang', lang); }catch(e){}
           setActiveFlag(); applyText();
         });
       });
