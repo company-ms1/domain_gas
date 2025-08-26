@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200" style="background:#0b1020">
   <style>
-    text{font-family:Arial, sans-serif;font-size:14px;fill:#000}
+    text{font-family:Arial, sans-serif;font-size:14px;fill:#eaf2ff}
     .icon{font-size:20px}
-    .person{fill:#fff;stroke:#000;stroke-width:1}
+    .person{fill:#0f152a;stroke:#6ee7ff;stroke-width:2}
   </style>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L10,3 L0,6 Z" fill="#000" />
+      <path d="M0,0 L10,3 L0,6 Z" fill="#6ee7ff" />
     </marker>
   </defs>
   <circle cx="120" cy="100" r="40" class="person"/>
   <text x="105" y="107">You</text>
   <circle cx="480" cy="100" r="40" class="person"/>
   <text x="460" y="107">Others</text>
-  <path d="M160,80 C260,20 340,20 440,80" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M160,80 C260,20 340,20 440,80" stroke="#6ee7ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
   <text x="250" y="40">Delegate Resources</text>
-  <path d="M440,120 C340,180 260,180 160,120" stroke="#000" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M440,120 C340,180 260,180 160,120" stroke="#6ee7ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
   <text x="250" y="190">Reclaim Resources</text>
 </svg>

@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title data-i18n-head="title">GasFree4you — TRON Energy for Business</title>
   <meta name="description" content="Dashboard, API and automated TRON energy top-ups for businesses" data-i18n-head="desc"/>
-  <meta name="theme-color" content="#F5C400">
+  <meta name="theme-color" content="#0b1020">
   <link rel="icon" type="image/png" href="/favicon.png">
   <style>
     :root{
@@ -47,26 +46,45 @@
     .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
     .name{font-weight:800; letter-spacing:.2px}
     .tag{font-size:12px; opacity:.85}
-    .title{margin:0; font-weight:800; letter-spacing:.2px; font-size:clamp(22px,4.8vw,34px)}
-    .subtitle{margin:6px 0 0; color:var(--muted); font-size:14px}
 
     .top-right{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-    .btn{display:inline-flex; gap:8px; align-items:center; justify-content:center; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); font-weight:800; letter-spacing:.2px; cursor:pointer}
+    .btn{display:inline-flex; gap:8px; align-items:center; justify-content:center; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.06)); color:var(--text); font-weight:800; letter-spacing:.2px; cursor:pointer; transition:background .2s,transform .2s}
     .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
+    .btn:hover{transform:translateY(-2px)}
     .btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
     .flags{display:flex; gap:8px; align-items:center}
     .flag-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:34px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(180deg,var(--elev),#101622); cursor:pointer; font-size:18px; color:var(--text)}
     .flag-btn[aria-pressed="true"]{outline:2px solid var(--accent)}
 
-    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+    .title{margin:0; font-weight:800; letter-spacing:.2px; font-size:clamp(22px,4.8vw,34px)}
+    .subtitle{margin:6px 0 0; color:var(--muted); font-size:14px}
 
-    .disc-table{width:100%; border-collapse:collapse; margin-top:8px}
-    .disc-table th, .disc-table td{padding:8px 12px; text-align:left}
-    .disc-table th{background:var(--card); border-bottom:1px solid var(--border)}
-    .disc-table tr:not(:last-child) td{border-bottom:1px solid var(--border)}
-    .disc-table tr:nth-child(even){background:rgba(255,255,255,.03)}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin-top:16px; transition:transform .3s, box-shadow .3s; opacity:0; animation:fadeUp .6s ease forwards}
+    .card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.4)}
+    .card:nth-of-type(1){animation-delay:.1s}
+    .card:nth-of-type(2){animation-delay:.2s}
+    .card:nth-of-type(3){animation-delay:.3s}
+    .card:nth-of-type(4){animation-delay:.4s}
+    .diagram{display:block; max-width:480px; width:100%; margin:12px auto; background:var(--elev); border:1px solid var(--border); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.4); padding:10px; transition:transform .3s}
+    .diagram:hover{transform:scale(1.03)}
+    @keyframes fadeUp{from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)}}
 
-    #savingsChart{max-width:600px; margin:20px auto 0; height:300px}
+    table{width:100%; border-collapse:collapse; border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:8px}
+    th,td{padding:10px 14px; border-bottom:1px solid var(--border)}
+    th{text-align:left; background:var(--elev)}
+    tr:last-child td{border-bottom:none}
+    tbody tr:nth-child(even){background:var(--elev)}
+
+    .footer{background:linear-gradient(0deg,rgba(255,255,255,0.02),transparent),var(--card); border-top:1px solid var(--border); margin-top:18px}
+    .footer .foot-grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr); padding:18px 16px}
+    .footer .col{grid-column:span 12}
+    @media (min-width:860px){ .footer .col.span4{grid-column:span 4}.footer .col.span3{grid-column:span 3}.footer .col.span5{grid-column:span 5} }
+    .foot-list{list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px}
+    .foot-list a{color:var(--text); text-decoration:none}
+    .foot-list a:hover{color:var(--accent)}
+    .foot-bottom{border-top:1px dashed var(--border); padding:10px 16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .foot-links{display:flex; gap:14px; flex-wrap:wrap}
+    .foot-links a{display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--muted)}
   </style>
 </head>
 <body>
@@ -76,21 +94,22 @@
         <div class="logo" aria-hidden="true">⚡️</div>
         <div>
           <div class="name">GasFree4you</div>
-          <div class="tag" data-i18n="tagline">TRON Energy · Zero-fee transfers</div>
+          <div class="tag" data-i18n="biz_tagline">TRON Energy for Business</div>
         </div>
       </div>
       <div class="top-right">
         <a class="btn" href="how-it-works.html" data-i18n="how_link">How it works</a>
         <a class="btn primary" href="/api.html">API</a>
         <div class="flags" role="group" aria-label="Language">
-          <button class="flag-btn" data-lang="ru" aria-pressed="false" title="Русский">🇷🇺</button>
           <button class="flag-btn" data-lang="en" aria-pressed="true" title="English">🇬🇧</button>
+          <button class="flag-btn" data-lang="ru" aria-pressed="false" title="Русский">🇷🇺</button>
           <button class="flag-btn" data-lang="zh" aria-pressed="false" title="中文">🇨🇳</button>
         </div>
       </div>
     </div>
   </header>
-  <main class="wrap">
+
+  <main class="wrap" id="top">
     <h1 class="title" data-i18n="h1">TRON Energy for Business</h1>
 
     <section class="card">
@@ -105,8 +124,11 @@
     <section class="card">
       <h2 data-i18n="benefit_title">Why delegate energy</h2>
       <p data-i18n="benefit_text">A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.</p>
-      <h3 data-i18n="chart_title">Energy savings</h3>
-      <canvas id="savingsChart"></canvas>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="chart_title">Energy savings</h2>
+      <canvas id="savingsChart" height="200"></canvas>
     </section>
 
     <section class="card">
@@ -115,130 +137,190 @@
         <li data-i18n="stake1">By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.</li>
         <li data-i18n="stake2">You may delegate idle resources to others and can reclaim the resources anytime.</li>
       </ul>
-      <img src="images/stake.svg" alt="Stake TRX diagram">
-      <img src="images/delegate.svg" alt="Delegate resources diagram">
+      <img src="images/stake.svg" alt="Stake TRX diagram" class="diagram">
+      <img src="images/delegate.svg" alt="Delegate resources diagram" class="diagram">
     </section>
 
     <section class="card">
       <h2 data-i18n="discount_title">Volume discounts</h2>
-      <table class="disc-table">
-        <tr><th data-i18n="vol_header">Volume per month</th><th data-i18n="disc_header">Discount</th></tr>
-        <tr><td>&ge;10</td><td>2%</td></tr>
-        <tr><td>&ge;50</td><td>5%</td></tr>
-        <tr><td>&ge;100</td><td>10%</td></tr>
+      <table>
+        <thead>
+          <tr><th data-i18n="vol_header">Volume per month</th><th data-i18n="disc_header">Discount</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>&ge;10</td><td>2%</td></tr>
+          <tr><td>&ge;50</td><td>5%</td></tr>
+          <tr><td>&ge;100</td><td>10%</td></tr>
+        </tbody>
       </table>
     </section>
   </main>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-const I18N = {
-  en:{
-    head:{title:"GasFree4you — TRON Energy for Business",desc:"Dashboard, API and automated TRON energy top-ups for businesses"},
-    h1:"TRON Energy for Business",
-    tagline:"TRON Energy · Zero-fee transfers",
-    how_link:"How it works",
-    feat_title:"Our capabilities",
-    feat1:"Energy distribution dashboard",
-    feat2:"API for integration into existing systems",
-    feat3:"Maintaining constant energy levels on wallets so you don’t have to think about delegation",
-    benefit_title:"Why delegate energy",
-    benefit_text:"A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.",
-    chart_title:"Energy savings",
-    chart_market:"Market cost",
-    chart_service:"Our service",
-    chart_with_usdt:"Recipient has USDT",
-    chart_without_usdt:"Recipient no USDT",
-    stake_title:"Staking facts",
-    stake1:"By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.",
-    stake2:"You may delegate idle resources to others and can reclaim the resources anytime.",
-    discount_title:"Volume discounts",
-    vol_header:"Volume per month",
-    disc_header:"Discount"
-  },
-  ru:{
-    head:{title:"GasFree4you — Энергия TRON для бизнеса",desc:"Кабинет, API и автоматическое поддержание энергии для компаний"},
-    h1:"Энергия TRON для бизнеса",
-    tagline:"Энергия TRON · Переводы без комиссии",
-    how_link:"Как это работает",
-    feat_title:"Наши возможности",
-    feat1:"Кабинет для распределения энергии",
-    feat2:"API для встраивания в существующие системы",
-    feat3:"Поддержание постоянного уровня энергии на кошельках, чтобы не думать о делегировании",
-    benefit_title:"Выгода от делегирования энергии",
-    benefit_text:"Для одного перевода нужно 13 TRX если на кошельке получателя есть USDT или 27 TRX если нет. С нашим сервисом цена будет 3 TRX и 6 TRX соответственно. 1 TRX = 0.35 USDT.",
-    chart_title:"Экономия энергии",
-    chart_market:"Рыночная цена",
-    chart_service:"Наш сервис",
-    chart_with_usdt:"У получателя есть USDT",
-    chart_without_usdt:"У получателя нет USDT",
-    stake_title:"Информация о стейкинге",
-    stake1:"Замораживая TRX, вы получаете бесплатные ресурсы сети для покрытия комиссии. Использованные ресурсы со временем восстанавливаются.",
-    stake2:"Вы можете делегировать свободные ресурсы другим и забрать их обратно в любое время.",
-    discount_title:"Система скидок",
-    vol_header:"Объём в месяц",
-    disc_header:"Скидка"
-  },
-  zh:{
-    head:{title:"GasFree4you — 面向企业的 TRON 能量",desc:"面板、API 和自动能量补充"},
-    h1:"适用于企业的 TRON 能量",
-    tagline:"TRON 能量 · 零手续费转账",
-    how_link:"工作原理",
-    feat_title:"我们的能力",
-    feat1:"用于分配能量的控制面板",
-    feat2:"可嵌入现有系统的 API",
-    feat3:"保持钱包能量恒定，无需再考虑委托",
-    benefit_title:"使用能量委托的优势",
-    benefit_text:"一次转账通常需要 13 TRX（若收款钱包已有 USDT）或 27 TRX（否则）。通过我们的服务仅需 3 TRX 或 6 TRX。1 TRX = 0.35 USDT。",
-    chart_title:"能量节省",
-    chart_market:"市场价格",
-    chart_service:"我们的服务",
-    chart_with_usdt:"收款方有 USDT",
-    chart_without_usdt:"收款方没有 USDT",
-    stake_title:"质押信息",
-    stake1:"质押 TRX 可获得免费资源以支付交易费用，消耗的资源会在一段时间后恢复。",
-    stake2:"可将空闲资源委托给他人，并可随时收回。",
-    discount_title:"折扣体系",
-    vol_header:"每月数量",
-    disc_header:"折扣"
-  }
-};
-let savingsChart;
-function renderChart(dict){
-  const ctx=document.getElementById('savingsChart').getContext('2d');
-  if(savingsChart) savingsChart.destroy();
-  savingsChart=new Chart(ctx,{
-    type:'bar',
-    data:{
-      labels:[dict.chart_with_usdt, dict.chart_without_usdt],
-      datasets:[
-        {label:dict.chart_market, data:[13,27], backgroundColor:'rgba(110,231,255,0.5)', borderColor:'rgba(110,231,255,1)', borderWidth:1},
-        {label:dict.chart_service, data:[3,6], backgroundColor:'rgba(125,241,183,0.5)', borderColor:'rgba(125,241,183,1)', borderWidth:1}
-      ]
+
+  <footer class="footer" role="contentinfo">
+    <div class="wrap foot-grid">
+      <div class="col span4">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">⚡</div>
+          <div>
+            <div class="name">GasFree4you</div>
+            <div class="tag">TRON Energy · Zero-fee transfers</div>
+          </div>
+        </div>
+        <p class="subtitle" style="margin-top:8px">3 TRX при наличии USDT или 6 TRX без USDT. Энергия на <b>1 перевод</b>. Моментальное начисление.</p>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <a class="btn" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn" href="/api.html">API</a>
+        </div>
+      </div>
+      <div class="col span3">
+        <h4 style="margin:0 0 8px">Контакты</h4>
+        <ul class="foot-list">
+          <li>Telegram: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
+          <li>Support: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
+          <li>Сайт: <a href="https://gasfree4you.com" target="_blank" rel="noopener">gasfree4you.com</a></li>
+        </ul>
+      </div>
+      <div class="col span3">
+        <h4 style="margin:0 0 8px">Навигация</h4>
+        <ul class="foot-list">
+          <li><a href="#top">Калькулятор</a></li>
+          <li><a href="how-it-works.html">Как это работает</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Наверх ↑</a></li>
+        </ul>
+      </div>
+      <div class="col span5">
+        <h4 style="margin:0 0 8px">Юридическая информация</h4>
+        <p class="subtitle" style="margin:8px 0">GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.</p>
+        <ul class="foot-list">
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/refund.html">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© <span id="y"></span> GasFree4you. All rights reserved.</small>
+      <div class="foot-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/refund.html">Refunds</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  const I18N = {
+    en:{
+      head:{title:"GasFree4you — TRON Energy for Business",desc:"Dashboard, API and automated TRON energy top-ups for businesses"},
+      biz_tagline:"TRON Energy for Business",
+      how_link:"How it works",
+      h1:"TRON Energy for Business",
+      feat_title:"Our capabilities",
+      feat1:"Energy distribution dashboard",
+      feat2:"API for integration into existing systems",
+      feat3:"Maintaining constant energy levels on wallets so you don’t have to think about delegation",
+      benefit_title:"Why delegate energy",
+      benefit_text:"A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.",
+      chart_title:"Energy savings",
+      chart_regular:"Without service",
+      chart_service:"With GasFree4you",
+      stake_title:"Staking facts",
+      stake1:"By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.",
+      stake2:"You may delegate idle resources to others and can reclaim the resources anytime.",
+      discount_title:"Volume discounts",
+      vol_header:"Volume per month",
+      disc_header:"Discount"
     },
-    options:{responsive:true, scales:{y:{beginAtZero:true}}}
-  });
-}
-function setLang(l){
-  const dict=I18N[l]||I18N.en;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const key=el.getAttribute('data-i18n');
-    if(dict[key]) el.textContent=dict[key];
-  });
-  const head=dict.head||{};
-  if(head.title) document.title=head.title;
-  if(head.desc) document.querySelector('meta[name="description"]').setAttribute('content',head.desc);
-  document.documentElement.lang=l;
-  document.querySelectorAll('.flag-btn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false'));
-  renderChart(dict);
-  try{localStorage.setItem('biz_lang',l);}catch(e){}
-}
-function init(){
-  const saved=localStorage.getItem('biz_lang');
-  const lang=saved&&I18N[saved]?saved:'en';
-  setLang(lang);
-  document.querySelectorAll('.flag-btn').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
-}
-init();
-</script>
+    ru:{
+      head:{title:"GasFree4you — Энергия TRON для бизнеса",desc:"Кабинет, API и автоматическое поддержание энергии для компаний"},
+      biz_tagline:"Энергия TRON для бизнеса",
+      how_link:"Как это работает",
+      h1:"Энергия TRON для бизнеса",
+      feat_title:"Наши возможности",
+      feat1:"Кабинет для распределения энергии",
+      feat2:"API для встраивания в существующие системы",
+      feat3:"Поддержание постоянного уровня энергии на кошельках, чтобы не думать о делегировании",
+      benefit_title:"Выгода от делегирования энергии",
+      benefit_text:"Для одного перевода нужно 13 TRX если на кошельке получателя есть USDT или 27 TRX если нет. С нашим сервисом цена будет 3 TRX и 6 TRX соответственно. 1 TRX = 0.35 USDT.",
+      chart_title:"График экономии",
+      chart_regular:"Без сервиса",
+      chart_service:"С GasFree4you",
+      stake_title:"Информация о стейкинге",
+      stake1:"Замораживая TRX, вы получаете бесплатные ресурсы сети для покрытия комиссии. Использованные ресурсы со временем восстанавливаются.",
+      stake2:"Вы можете делегировать свободные ресурсы другим и забрать их обратно в любое время.",
+      discount_title:"Система скидок",
+      vol_header:"Объём в месяц",
+      disc_header:"Скидка"
+    },
+    zh:{
+      head:{title:"GasFree4you — 面向企业的 TRON 能量",desc:"面板、API 和自动能量补充"},
+      biz_tagline:"面向企业的 TRON 能量",
+      how_link:"如何运作",
+      h1:"用于企业的 TRON 能量",
+      feat_title:"我们的能力",
+      feat1:"用于分配能量的控制面板",
+      feat2:"可嵌入现有系统的 API",
+      feat3:"保持钱包能量恒定，无需再考虑委托",
+      benefit_title:"使用能量委托的优势",
+      benefit_text:"一次转账通常需要 13 TRX（若收款钱包已有 USDT）或 27 TRX（否则）。通过我们的服务仅需 3 TRX 或 6 TRX。1 TRX = 0.35 USDT。",
+      chart_title:"节省图表",
+      chart_regular:"未使用服务",
+      chart_service:"使用 GasFree4you",
+      stake_title:"质押信息",
+      stake1:"质押 TRX 可获得免费资源以支付交易费用，消耗的资源会在一段时间后恢复。",
+      stake2:"可将空闲资源委托给他人，并可随时收回。",
+      discount_title:"折扣体系",
+      vol_header:"每月数量",
+      disc_header:"折扣"
+    }
+  };
+  let chart;
+  function renderChart(lang){
+    const labels=[1,10,50,100];
+    const regular=labels.map(n=>n*13);
+    const service=labels.map(n=>n*3);
+    const ctx=document.getElementById('savingsChart').getContext('2d');
+    if(chart) chart.destroy();
+    chart=new Chart(ctx,{
+      type:'line',
+      data:{
+        labels:labels,
+        datasets:[
+          {label:I18N[lang].chart_regular,data:regular,borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent'),backgroundColor:'rgba(110,231,255,.3)',tension:.1},
+          {label:I18N[lang].chart_service,data:service,borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent2'),backgroundColor:'rgba(125,241,183,.3)',tension:.1}
+        ]
+      },
+      options:{
+        responsive:true,
+        scales:{y:{beginAtZero:true,title:{display:true,text:'TRX'}}},
+        plugins:{legend:{labels:{color: getComputedStyle(document.documentElement).getPropertyValue('--text')}}}
+      }
+    });
+  }
+  function setLang(l){
+    const dict=I18N[l]||I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key=el.getAttribute('data-i18n');
+      if(dict[key]) el.textContent=dict[key];
+    });
+    const head=dict.head||{};
+    if(head.title) document.title=head.title;
+    if(head.desc) document.querySelector('meta[name="description"]').setAttribute('content',head.desc);
+    document.documentElement.lang=l;
+    document.querySelectorAll('.flag-btn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false'));
+    try{localStorage.setItem('biz_lang',l);}catch(e){}
+    renderChart(l);
+  }
+  function init(){
+    const saved=localStorage.getItem('biz_lang');
+    const lang=saved&&I18N[saved]?saved:'en';
+    setLang(lang);
+    document.querySelectorAll('.flag-btn').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
+  }
+  document.getElementById('y').textContent=new Date().getFullYear();
+  init();
+  </script>
 </body>
 </html>
