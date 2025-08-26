@@ -65,7 +65,14 @@
     .card:nth-of-type(2){animation-delay:.2s}
     .card:nth-of-type(3){animation-delay:.3s}
     .card:nth-of-type(4){animation-delay:.4s}
-    .diagram{display:block; max-width:480px; width:100%; margin:12px auto; background:var(--elev); border:1px solid var(--border); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.4); padding:10px; transition:transform .3s}
+    .feat-grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:8px}
+    .feat-item{background:var(--elev); border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow:var(--shadow)}
+    .benefit-grid{display:grid; gap:16px; align-items:center; grid-template-columns:1fr}
+    @media(min-width:700px){.benefit-grid{grid-template-columns:1fr 1fr}}
+    .benefit-grid canvas{width:100%; background:var(--elev); border:1px solid var(--border); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.4); padding:10px}
+    .stake-grid{display:grid; gap:16px; align-items:center; grid-template-columns:1fr}
+    @media(min-width:700px){.stake-grid{grid-template-columns:1fr 1fr}}
+    .diagram{display:block; width:100%; background:var(--elev); border:1px solid var(--border); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.4); padding:10px; transition:transform .3s; margin-top:8px}
     .diagram:hover{transform:scale(1.03)}
     @keyframes fadeUp{from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)}}
 
@@ -114,43 +121,46 @@
 
     <section class="card">
       <h2 data-i18n="feat_title">Our capabilities</h2>
-      <ul>
-        <li data-i18n="feat1">Energy distribution dashboard</li>
-        <li data-i18n="feat2">API for integration into existing systems</li>
-        <li data-i18n="feat3">Maintaining constant energy levels on wallets so you don’t have to think about delegation</li>
-      </ul>
+      <div class="feat-grid">
+        <div class="feat-item" data-i18n="feat1">Energy distribution dashboard</div>
+        <div class="feat-item" data-i18n="feat2">API for integration into existing systems</div>
+        <div class="feat-item" data-i18n="feat3">Maintaining constant energy levels on wallets so you don’t have to think about delegation</div>
+      </div>
     </section>
 
     <section class="card">
       <h2 data-i18n="benefit_title">Why delegate energy</h2>
-      <p data-i18n="benefit_text">A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.</p>
-    </section>
-
-    <section class="card">
-      <h2 data-i18n="chart_title">Energy savings</h2>
-      <canvas id="savingsChart" height="200"></canvas>
+      <div class="benefit-grid">
+        <p data-i18n="benefit_text">A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.</p>
+        <canvas id="savingsChart" height="200"></canvas>
+      </div>
     </section>
 
     <section class="card">
       <h2 data-i18n="stake_title">Staking facts</h2>
-      <ul>
-        <li data-i18n="stake1">By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.</li>
-        <li data-i18n="stake2">You may delegate idle resources to others and can reclaim the resources anytime.</li>
-      </ul>
-      <img src="images/stake.svg" alt="Stake TRX diagram" class="diagram">
-      <img src="images/delegate.svg" alt="Delegate resources diagram" class="diagram">
+      <div class="stake-grid">
+        <div>
+          <p data-i18n="stake1">By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.</p>
+          <p data-i18n="stake2">You may delegate idle resources to others and can reclaim the resources anytime.</p>
+          <p><a href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener" data-i18n="stake_link">More about staking on TRONSCAN</a></p>
+        </div>
+        <div>
+          <img src="images/stake.svg" alt="Stake TRX diagram" class="diagram">
+          <img src="images/delegate.svg" alt="Delegate resources diagram" class="diagram">
+        </div>
+      </div>
     </section>
 
     <section class="card">
       <h2 data-i18n="discount_title">Volume discounts</h2>
       <table>
         <thead>
-          <tr><th data-i18n="vol_header">Volume per month</th><th data-i18n="disc_header">Discount</th></tr>
+          <tr><th data-i18n="vol_header">Volume per month</th><th data-i18n="disc_header">Discount</th><th data-i18n="price_header">Price TRX</th></tr>
         </thead>
         <tbody>
-          <tr><td>&ge;10</td><td>2%</td></tr>
-          <tr><td>&ge;50</td><td>5%</td></tr>
-          <tr><td>&ge;100</td><td>10%</td></tr>
+          <tr><td>&ge;10</td><td>2%</td><td>2.94 TRX</td></tr>
+          <tr><td>&ge;50</td><td>5%</td><td>2.85 TRX</td></tr>
+          <tr><td>&ge;100</td><td>10%</td><td>2.70 TRX</td></tr>
         </tbody>
       </table>
     </section>
@@ -163,48 +173,48 @@
           <div class="logo" aria-hidden="true">⚡</div>
           <div>
             <div class="name">GasFree4you</div>
-            <div class="tag">TRON Energy · Zero-fee transfers</div>
+            <div class="tag" data-i18n="foot_tagline">TRON Energy · Zero-fee transfers</div>
           </div>
         </div>
-        <p class="subtitle" style="margin-top:8px">3 TRX при наличии USDT или 6 TRX без USDT. Энергия на <b>1 перевод</b>. Моментальное начисление.</p>
+        <p class="subtitle" style="margin-top:8px" data-i18n="foot_desc">3 TRX with USDT or 6 TRX without USDT. Energy for 1 transfer. Instant delivery.</p>
         <div style="display:flex; gap:10px; margin-top:8px">
-          <a class="btn" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">Telegram</a>
-          <a class="btn" href="/api.html">API</a>
+          <a class="btn" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="foot_telegram_btn">Telegram</a>
+          <a class="btn" href="/api.html" data-i18n="foot_api_btn">API</a>
         </div>
       </div>
       <div class="col span3">
-        <h4 style="margin:0 0 8px">Контакты</h4>
+        <h4 style="margin:0 0 8px" data-i18n="foot_contacts">Contacts</h4>
         <ul class="foot-list">
-          <li>Telegram: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
-          <li>Support: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
-          <li>Сайт: <a href="https://gasfree4you.com" target="_blank" rel="noopener">gasfree4you.com</a></li>
+          <li><span data-i18n="contact_telegram">Telegram</span>: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
+          <li><span data-i18n="contact_support">Support</span>: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
+          <li><span data-i18n="contact_site">Website</span>: <a href="https://gasfree4you.com" target="_blank" rel="noopener">gasfree4you.com</a></li>
         </ul>
       </div>
       <div class="col span3">
-        <h4 style="margin:0 0 8px">Навигация</h4>
+        <h4 style="margin:0 0 8px" data-i18n="foot_nav">Navigation</h4>
         <ul class="foot-list">
-          <li><a href="#top">Калькулятор</a></li>
-          <li><a href="how-it-works.html">Как это работает</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Наверх ↑</a></li>
+          <li><a href="#top" data-i18n="foot_calc">Calculator</a></li>
+          <li><a href="how-it-works.html" data-i18n="foot_how">How it works</a></li>
+          <li><a href="#" data-i18n="foot_faq">FAQ</a></li>
+          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-i18n="foot_top">Back to top ↑</a></li>
         </ul>
       </div>
       <div class="col span5">
-        <h4 style="margin:0 0 8px">Юридическая информация</h4>
-        <p class="subtitle" style="margin:8px 0">GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.</p>
+        <h4 style="margin:0 0 8px" data-i18n="foot_legal">Legal information</h4>
+        <p class="subtitle" style="margin:8px 0" data-i18n="legal_desc">GasFree4you is a TRON energy delegation service. We do not store your funds and are not affiliated with TRON Foundation. Using blockchain involves risks.</p>
         <ul class="foot-list">
-          <li><a href="/terms.html">Terms of Service</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/refund.html">Refund Policy</a></li>
+          <li><a href="/terms.html" data-i18n="terms_link">Terms of Service</a></li>
+          <li><a href="/privacy.html" data-i18n="privacy_link">Privacy Policy</a></li>
+          <li><a href="/refund.html" data-i18n="refund_link">Refund Policy</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <small>© <span id="y"></span> GasFree4you. All rights reserved.</small>
+      <small>© <span id="y"></span> GasFree4you. <span data-i18n="foot_all">All rights reserved.</span></small>
       <div class="foot-links">
-        <a href="/terms.html">Terms</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/refund.html">Refunds</a>
+        <a href="/terms.html" data-i18n="terms_link">Terms of Service</a>
+        <a href="/privacy.html" data-i18n="privacy_link">Privacy Policy</a>
+        <a href="/refund.html" data-i18n="refund_link">Refund Policy</a>
       </div>
     </div>
   </footer>
@@ -223,15 +233,35 @@
       feat3:"Maintaining constant energy levels on wallets so you don’t have to think about delegation",
       benefit_title:"Why delegate energy",
       benefit_text:"A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.",
-      chart_title:"Energy savings",
       chart_regular:"Without service",
       chart_service:"With GasFree4you",
       stake_title:"Staking facts",
       stake1:"By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.",
       stake2:"You may delegate idle resources to others and can reclaim the resources anytime.",
+      stake_link:"More about staking on TRONSCAN",
       discount_title:"Volume discounts",
       vol_header:"Volume per month",
-      disc_header:"Discount"
+      disc_header:"Discount",
+      price_header:"Price TRX",
+      foot_tagline:"TRON Energy · Zero-fee transfers",
+      foot_desc:"3 TRX with USDT or 6 TRX without USDT. Energy for 1 transfer. Instant delivery.",
+      foot_telegram_btn:"Telegram",
+      foot_api_btn:"API",
+      foot_contacts:"Contacts",
+      contact_telegram:"Telegram",
+      contact_support:"Support",
+      contact_site:"Website",
+      foot_nav:"Navigation",
+      foot_calc:"Calculator",
+      foot_how:"How it works",
+      foot_faq:"FAQ",
+      foot_top:"Back to top ↑",
+      foot_legal:"Legal information",
+      legal_desc:"GasFree4you is a TRON energy delegation service. We do not store your funds and are not affiliated with TRON Foundation. Using blockchain involves risks.",
+      terms_link:"Terms of Service",
+      privacy_link:"Privacy Policy",
+      refund_link:"Refund Policy",
+      foot_all:"All rights reserved."
     },
     ru:{
       head:{title:"GasFree4you — Энергия TRON для бизнеса",desc:"Кабинет, API и автоматическое поддержание энергии для компаний"},
@@ -244,15 +274,35 @@
       feat3:"Поддержание постоянного уровня энергии на кошельках, чтобы не думать о делегировании",
       benefit_title:"Выгода от делегирования энергии",
       benefit_text:"Для одного перевода нужно 13 TRX если на кошельке получателя есть USDT или 27 TRX если нет. С нашим сервисом цена будет 3 TRX и 6 TRX соответственно. 1 TRX = 0.35 USDT.",
-      chart_title:"График экономии",
       chart_regular:"Без сервиса",
       chart_service:"С GasFree4you",
       stake_title:"Информация о стейкинге",
       stake1:"Замораживая TRX, вы получаете бесплатные ресурсы сети для покрытия комиссии. Использованные ресурсы со временем восстанавливаются.",
       stake2:"Вы можете делегировать свободные ресурсы другим и забрать их обратно в любое время.",
+      stake_link:"Подробнее о стейкинге на TRONSCAN",
       discount_title:"Система скидок",
       vol_header:"Объём в месяц",
-      disc_header:"Скидка"
+      disc_header:"Скидка",
+      price_header:"Цена в TRX",
+      foot_tagline:"Энергия TRON · Переводы без комиссий",
+      foot_desc:"3 TRX при наличии USDT или 6 TRX без USDT. Энергия на 1 перевод. Моментальное начисление.",
+      foot_telegram_btn:"Telegram",
+      foot_api_btn:"API",
+      foot_contacts:"Контакты",
+      contact_telegram:"Telegram",
+      contact_support:"Поддержка",
+      contact_site:"Сайт",
+      foot_nav:"Навигация",
+      foot_calc:"Калькулятор",
+      foot_how:"Как это работает",
+      foot_faq:"FAQ",
+      foot_top:"Наверх ↑",
+      foot_legal:"Юридическая информация",
+      legal_desc:"GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.",
+      terms_link:"Пользовательское соглашение",
+      privacy_link:"Политика конфиденциальности",
+      refund_link:"Политика возврата",
+      foot_all:"Все права защищены."
     },
     zh:{
       head:{title:"GasFree4you — 面向企业的 TRON 能量",desc:"面板、API 和自动能量补充"},
@@ -265,15 +315,35 @@
       feat3:"保持钱包能量恒定，无需再考虑委托",
       benefit_title:"使用能量委托的优势",
       benefit_text:"一次转账通常需要 13 TRX（若收款钱包已有 USDT）或 27 TRX（否则）。通过我们的服务仅需 3 TRX 或 6 TRX。1 TRX = 0.35 USDT。",
-      chart_title:"节省图表",
       chart_regular:"未使用服务",
       chart_service:"使用 GasFree4you",
       stake_title:"质押信息",
       stake1:"质押 TRX 可获得免费资源以支付交易费用，消耗的资源会在一段时间后恢复。",
       stake2:"可将空闲资源委托给他人，并可随时收回。",
+      stake_link:"在 TRONSCAN 了解更多质押信息",
       discount_title:"折扣体系",
       vol_header:"每月数量",
-      disc_header:"折扣"
+      disc_header:"折扣",
+      price_header:"价格(TRX)",
+      foot_tagline:"TRON 能量 · 零手续费转账",
+      foot_desc:"若有 USDT 为 3 TRX，无 USDT 为 6 TRX。单笔转账能量，立即到账。",
+      foot_telegram_btn:"Telegram",
+      foot_api_btn:"API",
+      foot_contacts:"联系方式",
+      contact_telegram:"Telegram",
+      contact_support:"客服",
+      contact_site:"网站",
+      foot_nav:"导航",
+      foot_calc:"计算器",
+      foot_how:"如何运作",
+      foot_faq:"常见问题",
+      foot_top:"返回顶部 ↑",
+      foot_legal:"法律信息",
+      legal_desc:"GasFree4you 是 TRON 能量委托服务。我们不存储您的资金且与 TRON 基金会无关联。使用区块链存在风险。",
+      terms_link:"服务条款",
+      privacy_link:"隐私政策",
+      refund_link:"退款政策",
+      foot_all:"版权所有。"
     }
   };
   let chart;
