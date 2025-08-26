@@ -88,6 +88,14 @@
       background:linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)), var(--bg);
       border-bottom:1px solid var(--border);
     }
+
+        .client-savings{margin:40px 0;text-align:center}
+    .stake-grid{display:flex;flex-direction:column;gap:16px;max-width:800px;margin:20px auto 0}
+    .stake-item{flex:1}
+    .stake-icon{font-size:32px;margin-bottom:8px}
+    @media (min-width:600px){.stake-grid{flex-direction:row}}
+
+    
     .top{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:10px 0}
     .brand{display:flex; align-items:center; gap:10px; min-width:0}
     .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
@@ -339,6 +347,23 @@
     </div>
   </div>
 
+    <section class="client-savings">
+    <h3 data-i18n="stake_title">Staking benefits (official TRON info)</h3>
+    <div class="stake-grid">
+      <div class="stake-item card">
+        <div class="stake-icon">🔋</div>
+        <h4 data-i18n="stake_p1_title">Get Resources for Free Transactions</h4>
+        <p data-i18n="stake_p1_text">By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.</p>
+      </div>
+      <div class="stake-item card">
+        <div class="stake-icon">🤝</div>
+        <h4 data-i18n="stake_p2_title">Delegate Idle Resources to Others</h4>
+        <p data-i18n="stake_p2_text">You may delegate idle resources to others and can reclaim the resources anytime.</p>
+      </div>
+    </div>
+    <p class="stake-source"><a href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener" data-i18n="stake_source">Source: tronscan.org</a></p>
+  </section>
+
   <footer class="footer" role="contentinfo">
     <div class="wrap foot-grid">
       <div class="col span4">
@@ -466,7 +491,13 @@
         meta_title:"Аренда энергии TRON — GasFree4you",
         meta_desc:"GasFree4you.com — энергия TRON для переводов USDT/TRC20 с почти нулевой комиссией TRX. Часто ищут «gasfree4ucom» или «fasfree4ucom» (другие сервисы с похожими условиями).",
         seo_inline:"<strong>GasFree4you.com</strong> — если встретите запрос <em>gasfree4ucom</em> или <em>fasfree4ucom</em>, это другие сервисы с похожими условиями. Энергию TRON можно купить в любом месте.",
-        typos_line:"Также ищут: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>."
+        typos_line:"Также ищут: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.",
+        stake_title:"Преимущества стейкинга (официальные данные TRON)",
+        stake_p1_title:"Получите ресурсы для бесплатных транзакций",
+        stake_p1_text:"Стейкая TRX, вы получаете бесплатные ресурсы сети для покрытия комиссий. Использованные ресурсы восстанавливаются через некоторое время.",
+        stake_p2_title:"Делегируйте неиспользуемые ресурсы другим",
+        stake_p2_text:"Вы можете делегировать свободные ресурсы другим и в любой момент забрать их обратно.",
+        stake_source:"Источник: tronscan.org"
       },
       en:{
         tagline:"TRON Energy · Zero-fee transfers", how_link:"How it works", faq_btn:"FAQ",
@@ -516,7 +547,13 @@
         meta_title:"Rent TRON Energy — GasFree4you",
         meta_desc:"GasFree4you.com — TRON energy for USDT/TRC20 zero-fee transfers. People sometimes search 'gasfree4ucom' or 'fasfree4ucom' (other services with similar conditions).",
         seo_inline:"<strong>GasFree4you.com</strong> — if you see <em>gasfree4ucom</em> or <em>fasfree4ucom</em>, note these are different services with similar conditions. You’re free to buy TRON energy anywhere.",
-        typos_line:"Also searched as: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>."
+        typos_line:"Also searched as: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.",
+         stake_title:"Staking benefits (official TRON info)",
+        stake_p1_title:"Get Resources for Free Transactions",
+        stake_p1_text:"By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.",
+        stake_p2_title:"Delegate Idle Resources to Others",
+        stake_p2_text:"You may delegate idle resources to others and can reclaim the resources anytime.",
+        stake_source:"Source: tronscan.org"
       },
       zh:{
         tagline:"TRON 能量 · 零手续费转账", how_link:"它是如何工作的", faq_btn:"常见问题",
@@ -566,7 +603,13 @@
         meta_title:"租用 TRON 能量 — GasFree4you",
         meta_desc:"GasFree4you.com — 用于 USDT/TRC20 的 TRON 能量。有人会搜索“gasfree4ucom”或“fasfree4ucom”（其他有类似条件的服务）。",
         seo_inline:"<strong>GasFree4you.com</strong> —— 如果你看到 <em>gasfree4ucom</em> 或 <em>fasfree4ucom</em>，那是其他有类似条件的服务。TRON 能量可在任何地方购买，自由选择。",
-        typos_line:"常见搜索：<em>gasfree4ucom</em>、<em>fasfree4ucom</em>、<em>gas free 4 u com</em>。"
+        typos_line:"常见搜索：<em>gasfree4ucom</em>、<em>fasfree4ucom</em>、<em>gas free 4 u com</em>。",
+        stake_title:"质押优势（TRON 官方）",
+        stake_p1_title:"获取免费交易资源",
+        stake_p1_text:"质押 TRX 可获得免费的网络资源，用于支付交易费用。使用的资源会在一段时间后自动恢复。",
+        stake_p2_title:"将闲置资源委托给他人",
+        stake_p2_text:"您可以将闲置资源委托给他人，并随时收回。",
+        stake_source:"来源：tronscan.org"
       }
     };
 
