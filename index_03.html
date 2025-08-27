@@ -643,6 +643,48 @@
       }
     };
 
+
+  // ===== Service energy counter (random 10–30s tick, -65,000, daily reset) =====
+    const START_ENERGY = 1335568252; // 1,335,568,252
+    const STEP = 65000;
+    const energyEl = document.getElementById('energyNum');
+
+   function readState(){
+      try{ return JSON.parse(localStorage.getItem('gf4y_energy')||'null'); }catch(e){ return null; }
+    }
+    function writeState(obj){ try{ localStorage.setItem('gf4y_energy', JSON.stringify(obj)); }catch(e){} }
+
+    function resetDaily(){
+      const today = new Date().toISOString().slice(0,10);
+      const state = { val: START_ENERGY, date: today };
+      writeState(state);
+      return state;
+    }
+
+    function initEnergy(){
+      let st = readState();
+      const today = new Date().toISOString().slice(0,10);
+      if(!st || st.date!==today){ st = resetDaily(); }
+      energyEl.textContent = ni(st.val);
+      return st;
+    }
+
+    function tickEnergy(){
+      let st = readState();
+      const today = new Date().toISOString().slice(0,10);
+      if(!st || st.date!==today){ st = resetDaily(); }
+      st.val = Math.max(0, st.val - STEP);
+      writeState(st);
+      energyEl.textContent = ni(st.val);
+      scheduleNextTick();
+    }
+
+    function scheduleNextTick(){
+      const delay = (10 + Math.random()*20) * 1000; // 10–30s
+      setTimeout(tickEnergy, delay);
+    }
+    
+    
     const $ = id => document.getElementById(id);
     function detectLang(){
       const nav = (navigator.language || '').slice(0,2).toLowerCase();
@@ -799,48 +841,6 @@
     function closeWait(){ if(waitModal) waitModal.style.display = 'none'; clearInterval(waitTimer); }
     document.getElementById('paidBtn')?.addEventListener('click', () => { try { gtag_report_conversion?.(); } catch(_) {} closeModal(); openWait(60); });
     document.getElementById('wClose')?.addEventListener('click', closeWait);
-
-
-     // ===== Service energy counter (random 10–30s tick, -65,000, daily reset) =====
-    const START_ENERGY = 1335568252; // 1,335,568,252
-    const STEP = 65000;
-    const energyEl = document.getElementById('energyNum');
-
-   function readState(){
-      try{ return JSON.parse(localStorage.getItem('gf4y_energy')||'null'); }catch(e){ return null; }
-    }
-    function writeState(obj){ try{ localStorage.setItem('gf4y_energy', JSON.stringify(obj)); }catch(e){} }
-
-    function resetDaily(){
-      const today = new Date().toISOString().slice(0,10);
-      const state = { val: START_ENERGY, date: today };
-      writeState(state);
-      return state;
-    }
-
-    function initEnergy(){
-      let st = readState();
-      const today = new Date().toISOString().slice(0,10);
-      if(!st || st.date!==today){ st = resetDaily(); }
-      energyEl.textContent = ni(st.val);
-      return st;
-    }
-
-    function tickEnergy(){
-      let st = readState();
-      const today = new Date().toISOString().slice(0,10);
-      if(!st || st.date!==today){ st = resetDaily(); }
-      st.val = Math.max(0, st.val - STEP);
-      writeState(st);
-      energyEl.textContent = ni(st.val);
-      scheduleNextTick();
-    }
-
-    function scheduleNextTick(){
-      const delay = (10 + Math.random()*20) * 1000; // 10–30s
-      setTimeout(tickEnergy, delay);
-    }
-
 
     
     // Init
