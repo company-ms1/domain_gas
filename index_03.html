@@ -167,6 +167,17 @@
       padding:6px 10px;
     }
     .typos{font-size:13px;color:var(--muted);margin:6px 0 14px}
+
+
+       /* ===== Service status strip ===== */
+    .statusline{position:sticky;top:48px;z-index:59;display:flex;justify-content:center;padding:2px 0;background:transparent;color:var(--text);font-weight:600}
+    .status-inner{display:inline-flex;align-items:center;gap:8px;font-size:13px;border:1px solid var(--border);border-radius:8px;padding:2px 8px;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:#16c784;box-shadow:0 0 6px #16c784}
+    .status-text{font-size:13px}
+    .status-energy{margin-left:10px;display:flex;align-items:center;gap:4px;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+    .status-energy .num{font-weight:700;font-size:13px}
+    .status-energy small{opacity:.7;font-size:12px}
+    
   </style>
 </head>
 <body>
@@ -189,6 +200,19 @@
         </div>
       </div>
     </div>
+        <!-- Service status line: ONLINE + available energy dynamic counter -->
+    <div class="statusline">
+      <div class="wrap" style="display:flex; align-items:center; gap:10px">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text" id="svcText" data-i18n="svc_online">Service is online</span>
+        <div class="status-energy" aria-live="polite">
+          <small data-i18n="svc_avail">Available energy</small>
+          <span class="num" id="energyNum">1,335,568,252</span>
+          <small>⚙️</small>
+        </div>
+      </div>
+    </div>
+    
   </header>
 
   <main class="wrap" id="top">
@@ -497,7 +521,9 @@
         stake_p1_text:"Стейкая TRX, вы получаете бесплатные ресурсы сети для покрытия комиссий. Использованные ресурсы восстанавливаются через некоторое время.",
         stake_p2_title:"Делегируйте неиспользуемые ресурсы другим",
         stake_p2_text:"Вы можете делегировать свободные ресурсы другим и в любой момент забрать их обратно.",
-        stake_source:"Источник: tronscan.org"
+        stake_source:"Источник: tronscan.org",
+              svc_online:"Service is online",
+        svc_avail:"Available energy"
       },
       en:{
         tagline:"TRON Energy · Zero-fee transfers", how_link:"How it works", faq_btn:"FAQ",
@@ -553,7 +579,9 @@
         stake_p1_text:"By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.",
         stake_p2_title:"Delegate Idle Resources to Others",
         stake_p2_text:"You may delegate idle resources to others and can reclaim the resources anytime.",
-        stake_source:"Source: tronscan.org"
+        stake_source:"Source: tronscan.org",
+        svc_online:"Сервис онлайн",
+        svc_avail:"Доступная энергия"
       },
       zh:{
         tagline:"TRON 能量 · 零手续费转账", how_link:"它是如何工作的", faq_btn:"常见问题",
@@ -609,7 +637,9 @@
         stake_p1_text:"质押 TRX 可获得免费的网络资源，用于支付交易费用。使用的资源会在一段时间后自动恢复。",
         stake_p2_title:"将闲置资源委托给他人",
         stake_p2_text:"您可以将闲置资源委托给他人，并随时收回。",
-        stake_source:"来源：tronscan.org"
+        stake_source:"来源：tronscan.org",
+                svc_online:"服务在线",
+        svc_avail:"可用能量"
       }
     };
 
@@ -770,11 +800,56 @@
     document.getElementById('paidBtn')?.addEventListener('click', () => { try { gtag_report_conversion?.(); } catch(_) {} closeModal(); openWait(60); });
     document.getElementById('wClose')?.addEventListener('click', closeWait);
 
+
+     // ===== Service energy counter (random 10–30s tick, -65,000, daily reset) =====
+    const START_ENERGY = 1335568252; // 1,335,568,252
+    const STEP = 65000;
+    const energyEl = document.getElementById('energyNum');
+
+   function readState(){
+      try{ return JSON.parse(localStorage.getItem('gf4y_energy')||'null'); }catch(e){ return null; }
+    }
+    function writeState(obj){ try{ localStorage.setItem('gf4y_energy', JSON.stringify(obj)); }catch(e){} }
+
+    function resetDaily(){
+      const today = new Date().toISOString().slice(0,10);
+      const state = { val: START_ENERGY, date: today };
+      writeState(state);
+      return state;
+    }
+
+    function initEnergy(){
+      let st = readState();
+      const today = new Date().toISOString().slice(0,10);
+      if(!st || st.date!==today){ st = resetDaily(); }
+      energyEl.textContent = ni(st.val);
+      return st;
+    }
+
+    function tickEnergy(){
+      let st = readState();
+      const today = new Date().toISOString().slice(0,10);
+      if(!st || st.date!==today){ st = resetDaily(); }
+      st.val = Math.max(0, st.val - STEP);
+      writeState(st);
+      energyEl.textContent = ni(st.val);
+      scheduleNextTick();
+    }
+
+    function scheduleNextTick(){
+      const delay = (10 + Math.random()*20) * 1000; // 10–30s
+      setTimeout(tickEnergy, delay);
+    }
+
+
+    
     // Init
     bindFlagClicks(); setActiveFlag(); applyText(); compute();
     fetchTrxRate(); setInterval(fetchTrxRate, 60_000);
     document.getElementById('y').textContent = new Date().getFullYear();
   });
+
+
   </script>
 </body>
 </html>
