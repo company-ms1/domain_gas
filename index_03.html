@@ -68,7 +68,7 @@
         --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; --ring:rgba(0,122,255,.25);
       }
     }
-    *{box-sizing:border-box}
+    *{box-sizing:unset}
     body{
       margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
       color:var(--text);
@@ -95,7 +95,7 @@
     .stake-icon{font-size:32px;margin-bottom:8px}
     @media (min-width:600px){.stake-grid{flex-direction:row}}
 
-    
+
     .top{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:10px 0}
     .brand{display:flex; align-items:center; gap:10px; min-width:0}
     .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
@@ -148,17 +148,6 @@
     summary::-webkit-details-marker{display:none}
     .faq p{margin:8px 0 0; color:var(--text)}
 
-    .footer{background:linear-gradient(0deg,rgba(255,255,255,0.02),transparent),var(--card); border-top:1px solid var(--border); margin-top:18px}
-    .footer .foot-grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr); padding:18px 16px}
-    .footer .col{grid-column:span 12}
-    @media (min-width:860px){ .footer .col.span4{grid-column:span 4}.footer .col.span3{grid-column:span 3}.footer .col.span5{grid-column:span 5} }
-    .foot-list{list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px}
-    .foot-list a{color:var(--text); text-decoration:none}
-    .foot-list a:hover{color:var(--accent)}
-    .foot-bottom{border-top:1px dashed var(--border); padding:10px 16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between}
-    .foot-links{display:flex; gap:14px; flex-wrap:wrap}
-    .foot-links a{display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--muted)}
-
     .seo-inline{
       margin:16px 0 4px;
       font-size:13px;
@@ -177,7 +166,7 @@
     .status-energy{margin-left:10px;display:flex;align-items:center;gap:4px;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
     .status-energy .num{font-weight:700;font-size:13px}
     .status-energy small{opacity:.7;font-size:12px}
-    
+
     /* Footer fix */
     .footer{background:var(--card);border-top:1px solid var(--border);margin-top:24px}
     .footer .foot-grid{display:flex;flex-wrap:wrap;gap:20px;padding:20px 16px}
@@ -188,7 +177,58 @@
     .foot-list a:hover{color:var(--accent)}
     .foot-bottom{border-top:1px dashed var(--border);padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted)}
     .foot-links{display:flex;gap:10px;flex-wrap:wrap}
-    
+
+    /* ===== Fancy, but subtle animations ===== */
+@media (prefers-reduced-motion:no-preference){
+  /* вход элементов */
+  .reveal{opacity:0; transform:translateY(12px); will-change:opacity,transform;}
+  .reveal.in{animation:revealUp .6s cubic-bezier(.22,.61,.36,1) forwards}
+  @keyframes revealUp{to{opacity:1; transform:translateY(0)}}
+
+  /* лёгкий параллакс подсветки на карточках при ховере */
+  .card{transition:transform .35s ease, box-shadow .35s ease}
+  .card:hover{transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04)}
+
+  /* кнопки — пружинка */
+  .btn{transition:transform .08s ease, box-shadow .2s ease}
+  .btn:active{transform:translateY(1px) scale(.98)}
+
+  /* статус-точка — «дышит» */
+  .status-dot{animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 6px rgba(22,199,132,.9), 0 0 0 0 rgba(22,199,132,.25)}
+    50%{box-shadow:0 0 10px rgba(22,199,132,1), 0 0 0 10px rgba(22,199,132,0)}
+  }
+
+  /* сияние в прогресс-линии экономии */
+  .save-line-in{position:relative; overflow:hidden}
+  .save-line-in::after{
+    content:""; position:absolute; inset:0 -40%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:translateX(-60%); animation:shine 1.8s ease-in-out infinite;
+  }
+  @keyframes shine{50%{transform:translateX(60%)}}
+
+  /* модалки — мягкий scale-in */
+  .modal .card{opacity:0; transform:translateY(10px) scale(.98)}
+  .modal[style*="display: flex"] .card{animation:modalIn .28s ease forwards}
+  @keyframes modalIn{to{opacity:1; transform:translateY(0) scale(1)}}
+}
+
+/* чёткая анимация табличных цифр */
+.num, .val{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+
+.seg-option{position:relative; overflow:hidden}
+.seg-option.active::after{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(120px 60px at var(--x,50%) var(--y,50%), rgba(255,255,255,.18), transparent 60%);
+  pointer-events:none;
+  animation:segGlow .9s ease-out;
+}
+@keyframes segGlow{from{opacity:.9} to{opacity:0}}
+/* ===== Modal offset fix ===== */
+    .modal{align-items:flex-start !important; padding-top:210px !important;} /* смещаем модалку ниже */
+
   </style>
 </head>
 <body>
@@ -226,19 +266,19 @@
 
   <main class="wrap" id="top">
     <div style="margin-top:10px">
-      <h1 class="title" data-i18n="title">Аренда энергии TRON</h1>
-      <p class="subtitle" data-i18n="subtitle">Энергия действует только на <b>1 перевод</b>. Переводы USDT/TRC20 без комиссии TRX.</p>
+      <h1 class="title reveal" data-i18n="title">Аренда энергии TRON</h1>
+      <p class="subtitle reveal" data-i18n="subtitle">Энергия действует только на <b>1 перевод</b>. Переводы USDT/TRC20 без комиссии TRX.</p>
     </div>
 
-    <div class="buybar"><div id="buyInfo" data-i18n="buy_info">💡 Здесь можно <b>не только рассчитать</b> стоимость энергии TRON, но и <b>купить её прямо сейчас</b> по выгодной цене!</div></div>
+    <div class="buybar reveal"><div id="buyInfo" data-i18n="buy_info">💡 Здесь можно <b>не только рассчитать</b> стоимость энергии TRON, но и <b>купить её прямо сейчас</b> по выгодной цене!</div></div>
 
-    <div class="badges">
+   <div class="badges reveal">
       <span class="badge" data-i18n="badge_price">3 TRX = 1 перевод (есть USDT) · 6 TRX = 1 перевод (нет USDT)</span>
       <span class="badge" data-i18n="badge_base">Рынок: 13.5 TRX (есть USDT) · 27 TRX (нет USDT)</span>
     </div>
 
     <!-- КАЛЬКУЛЯТОР -->
-    <section class="card calc" aria-label="Калькулятор энергии">
+    <section class="card calc reveal" aria-label="Калькулятор энергии">
       <div>
         <label data-i18n="label_wallet">Кошелёк получателя</label>
         <div id="usdtState" class="seg" role="group" aria-label="USDT on wallet?" style="margin-bottom:10px">
@@ -276,6 +316,7 @@
             <div class="kpi">
               <div class="name" data-i18n="energy_per">Энергии на 1 перевод</div>
               <div id="k_energyPer" class="val">65 000</div>
+              <div class="note" id="k_usdSave" style="font-size:12px;color:var(--muted)"></div>
             </div>
             <div class="kpi">
               <div class="name" data-i18n="energy_total">Нужно энергии (всего)</div>
@@ -291,7 +332,7 @@
     </section>
 
     <!-- Partner block -->
-    <section class="faq" id="biz">
+   <section class="faq reveal" id="biz">
       <h3 class="title" style="font-size:22px" data-i18n="biz_title">Партнёрам и большим объёмам</h3>
       <details>
         <summary data-i18n="biz_q1">Большие объёмы и хотите экономить больше?</summary>
@@ -399,7 +440,7 @@
 
   <footer class="footer" role="contentinfo">
     <div class="wrap foot-grid">
-      <div class="col span4">
+      <div class="col">
         <div class="brand">
           <div class="logo" aria-hidden="true">⚡</div>
           <div>
@@ -407,45 +448,41 @@
             <div class="tag">TRON Energy · Zero-fee transfers</div>
           </div>
         </div>
-        <p class="subtitle" style="margin-top:8px">3 TRX при наличии USDT или 6 TRX без USDT. Энергия на <b>1 перевод</b>. Моментальное начисление.</p>
-        <div style="display:flex; gap:10px; margin-top:8px">
-          <a class="btn" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">Telegram</a>
-          <a class="btn" href="/api.html">API</a>
-        </div>
+        <p class="subtitle" data-i18n="footer_desc">3 TRX при наличии USDT или 6 TRX без USDT. Энергия на <b>1 перевод</b>. Моментальное начисление.</p>
       </div>
-      <div class="col span3">
-        <h4 style="margin:0 0 8px">Контакты</h4>
+      <div class="col">
+        <h4 data-i18n="footer_contacts_title">Контакты</h4>
         <ul class="foot-list">
           <li>Telegram: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
           <li>Support: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
-          <li>Сайт: <a href="https://gasfree4you.com" target="_blank" rel="noopener">gasfree4you.com</a></li>
+          <li><a href="https://gasfree4you.com" target="_blank" rel="noopener" data-i18n="footer_site">Наш сайт</a></li>
         </ul>
       </div>
-      <div class="col span3">
-        <h4 style="margin:0 0 8px">Навигация</h4>
+      <div class="col">
+        <h4 data-i18n="footer_nav_title">Навигация</h4>
         <ul class="foot-list">
-          <li><a href="#top">Калькулятор</a></li>
-          <li><a href="how-it-works.html">Как это работает</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Наверх ↑</a></li>
+          <li><a href="#top" data-i18n="footer_nav_calc">Калькулятор</a></li>
+          <li><a href="how-it-works.html" data-i18n="footer_nav_how">Как это работает</a></li>
+          <li><a href="#faq" data-i18n="footer_nav_faq">FAQ</a></li>
+          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-i18n="footer_nav_top">Наверх ↑</a></li>
         </ul>
       </div>
-      <div class="col span5">
-        <h4 style="margin:0 0 8px">Юридическая информация</h4>
-        <p class="subtitle" style="margin:8px 0">GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.</p>
+      <div class="col">
+        <h4 data-i18n="footer_legal_title">Юридическая информация</h4>
+        <p class="subtitle" style="margin:8px 0" data-i18n="footer_legal_desc">GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.</p>
         <ul class="foot-list">
-          <li><a href="/terms.html">Terms of Service</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-          <li><a href="/refund.html">Refund Policy</a></li>
+          <li><a href="/terms.html" data-i18n="footer_terms">Terms of Service</a></li>
+          <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy Policy</a></li>
+          <li><a href="/refund.html" data-i18n="footer_refund">Refund Policy</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <small>© <span id="y"></span> GasFree4you. All rights reserved.</small>
+      <small>© <span id="y"></span> GasFree4you. <span data-i18n="footer_rights">Все права защищены.</span></small>
       <div class="foot-links">
-        <a href="/terms.html">Terms</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/refund.html">Refunds</a>
+        <a href="/terms.html" data-i18n="footer_terms">Terms</a>
+        <a href="/privacy.html" data-i18n="footer_privacy">Privacy</a>
+        <a href="/refund.html" data-i18n="footer_refund">Refunds</a>
       </div>
     </div>
   </footer>
@@ -532,7 +569,23 @@
         stake_p2_text:"Вы можете делегировать свободные ресурсы другим и в любой момент забрать их обратно.",
         stake_source:"Источник: tronscan.org",
         svc_online:"Сервис онлайн",
-        svc_avail:"Доступная энергия"
+        svc_avail:"Доступная энергия",
+          footer_desc: "3 TRX при наличии USDT или 6 TRX без USDT. Энергия на <b>1 перевод</b>. Моментальное начисление.",
+    footer_contacts_title: "Контакты",
+    footer_site: "Наш сайт",
+    footer_nav_title: "Навигация",
+    footer_nav_calc: "Калькулятор",
+    footer_nav_how: "Как это работает",
+    footer_nav_faq: "FAQ",
+    footer_nav_top: "Наверх ↑",
+    footer_legal_title: "Юридическая информация",
+    footer_legal_desc: "GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.",
+    footer_terms: "Условия использования",
+    footer_privacy: "Политика конфиденциальности",
+    footer_refund: "Политика возврата",
+    footer_rights: "Все права защищены.",
+            energy_per: "Энергии на 1 перевод",
+  usd_saving: "Экономия ≈ {x} USDT"
       },
       en:{
         tagline:"TRON Energy · Zero-fee transfers", how_link:"How it works", faq_btn:"FAQ",
@@ -590,7 +643,23 @@
         stake_p2_text:"You may delegate idle resources to others and can reclaim the resources anytime.",
         stake_source:"Source: tronscan.org",
         svc_online:"Service is online",
-        svc_avail:"Available energy"
+        svc_avail:"Available energy",
+              footer_desc: "3 TRX if USDT is present or 6 TRX if no USDT. Energy for <b>1 transfer</b>. Instant crediting.",
+    footer_contacts_title: "Contacts",
+    footer_site: "Our website",
+    footer_nav_title: "Navigation",
+    footer_nav_calc: "Calculator",
+    footer_nav_how: "How it works",
+    footer_nav_faq: "FAQ",
+    footer_nav_top: "Back to top ↑",
+    footer_legal_title: "Legal Information",
+    footer_legal_desc: "GasFree4you is a TRON energy delegation service. We do not store your funds and are not affiliated with TRON Foundation. Using blockchain involves risks.",
+    footer_terms: "Terms of Service",
+    footer_privacy: "Privacy Policy",
+    footer_refund: "Refund Policy",
+    footer_rights: "All rights reserved.",
+            energy_per: "Energy per transfer",
+  usd_saving: "Saving ≈ {x} USDT"
       },
       zh:{
         tagline:"TRON 能量 · 零手续费转账", how_link:"它是如何工作的", faq_btn:"常见问题",
@@ -648,7 +717,23 @@
         stake_p2_text:"您可以将闲置资源委托给他人，并随时收回。",
         stake_source:"来源：tronscan.org",
                 svc_online:"服务在线",
-        svc_avail:"可用能量"
+        svc_avail:"可用能量",
+              footer_desc: "3 TRX（钱包有 USDT）或 6 TRX（无 USDT）。<b>一次转账</b>所需能量。即时到账。",
+    footer_contacts_title: "联系方式",
+    footer_site: "我们的网站",
+    footer_nav_title: "导航",
+    footer_nav_calc: "计算器",
+    footer_nav_how: "如何运作",
+    footer_nav_faq: "常见问题",
+    footer_nav_top: "回到顶部 ↑",
+    footer_legal_title: "法律信息",
+    footer_legal_desc: "GasFree4you 是 TRON 能量委托服务。我们不存储您的资金，也未与 TRON 基金会关联。使用区块链存在风险。",
+    footer_terms: "服务条款",
+    footer_privacy: "隐私政策",
+    footer_refund: "退款政策",
+    footer_rights: "版权所有。",
+            energy_per: "每次所需能量",
+  usd_saving: "节省 ≈ {x} USDT"
       }
     };
 
@@ -670,6 +755,19 @@
       return state;
     }
 
+    function animateNumber(el, from, to, dur = 600){
+  if(!el) return;
+  const start = performance.now();
+  function step(ts){
+    const p = Math.min(1, (ts - start)/dur);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = Math.round(from + (to - from) * eased);
+    el.textContent = ni(val);
+    if(p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
     function initEnergy(){
       let st = readState();
       const today = new Date().toISOString().slice(0,10);
@@ -678,22 +776,23 @@
       return st;
     }
 
-    function tickEnergy(){
-      let st = readState();
-      const today = new Date().toISOString().slice(0,10);
-      if(!st || st.date!==today){ st = resetDaily(); }
-      st.val = Math.max(0, st.val - STEP);
-      writeState(st);
-      energyEl.textContent = ni(st.val);
-      scheduleNextTick();
-    }
+function tickEnergy(){
+  let st = readState();
+  const today = new Date().toISOString().slice(0,10);
+  if(!st || st.date!==today){ st = resetDaily(); }
+  const from = st.val;
+  st.val = Math.max(0, st.val - STEP);
+  writeState(st);
+  animateNumber(energyEl, from, st.val, 620);
+  scheduleNextTick();
+}
 
     function scheduleNextTick(){
       const delay = (10 + Math.random()*20) * 1000; // 10–30s
       setTimeout(tickEnergy, delay);
     }
-    
-    
+
+
     const $ = id => document.getElementById(id);
     function detectLang(){
       const nav = (navigator.language || '').slice(0,2).toLowerCase();
@@ -737,8 +836,15 @@
       k_totalBase.textContent = nf(base,2) + ' TRX';
       const pct = base>0 ? Math.round((save/base)*100) : 0;
       saveBarIn.style.width = pct + '%';
+      // animate width change smoothly
+saveBarIn.style.transition = 'width .5s cubic-bezier(.22,.61,.36,1)';
       saveBarIn.textContent = (lang==='ru' ? `Экономия ${pct}%` : lang==='zh' ? `节省 ${pct}%` : `Save ${pct}%`);
       saveBadge.textContent = pct + '%';
+      // экономия в USDT
+const rate = TRX_USD || 0.35; // фолбэк на случай, если курс ещё не пришёл
+ const usdSave = (save * rate).toFixed(2);
+ const saveLine = t('usd_saving').replace('{x}', usdSave);
+ document.getElementById('k_usdSave').textContent = saveLine;
     }
 
     function t(key){ return (I18N[lang] && I18N[lang][key]) || key; }
@@ -782,13 +888,15 @@
     }
 
     // Курс TRX
-    async function fetchTrxRate(){
-      try{
-        const r = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT',{cache:'no-store'});
-        if(!r.ok) throw 0; const d = await r.json();
-        TRX_USD = Number(d.price)||null;
-      }catch(_){}
-    }
+async function fetchTrxRate(){
+  try{
+    const r = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT', {cache:'no-store'});
+    if(!r.ok) throw 0;
+    const d = await r.json();
+    const newRate = Number(d.price) || null;
+    if(newRate && newRate !== TRX_USD){ TRX_USD = newRate; compute(); }
+  }catch(_){}
+}
 
     // Переключатель USDT
     document.getElementById('usdtState').addEventListener('click', e=>{
@@ -796,6 +904,13 @@
       st.usdt=b.dataset.v; document.querySelectorAll('#usdtState .seg-option').forEach(c=>c.classList.toggle('active', c.dataset.v===b.dataset.v));
       compute();
     });
+
+    document.getElementById('usdtState').addEventListener('mousemove', e=>{
+  const t = e.target.closest('.seg-option'); if(!t) return;
+  const r = t.getBoundingClientRect();
+  t.style.setProperty('--x', (e.clientX - r.left)+'px');
+  t.style.setProperty('--y', (e.clientY - r.top)+'px');
+});
 
     // Флаги
     function bindFlagClicks(){
@@ -818,7 +933,7 @@
       mAmount.textContent = nf(totalTRX,2) + ' TRX';
       mAddr.textContent   = PAY_TO_ADDRESS;
       const memo = encodeURIComponent(`TRON ENERGY | tx:1 | e/tx:${ePer}`);
-      const uri = `${PAY_TO_ADDRESS}?amount=${(totalTRX).toFixed(6)}&memo=${memo}`;
+      const uri = `${PAY_TO_ADDRESS}`;
       mQR.src=`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(uri)}`;
       mOrderMeta.textContent = (I18N[lang].order_meta_prefix||'Order') + `: 1 · ` + (st.usdt==='has'?t('has_usdt'):t('no_usdt'));
       modal.style.display='flex';
@@ -851,11 +966,44 @@
     document.getElementById('paidBtn')?.addEventListener('click', () => { try { gtag_report_conversion?.(); } catch(_) {} closeModal(); openWait(60); });
     document.getElementById('wClose')?.addEventListener('click', closeWait);
 
-    
+// ===== Reveal on scroll (IntersectionObserver) =====
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries, obs)=>{
+    for(const e of entries){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    }
+  }, {root:null, rootMargin:'0px 0px -10% 0px', threshold: .12});
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+})();
+
+
     // Init
-    bindFlagClicks(); setActiveFlag(); applyText(); compute();
-    fetchTrxRate(); setInterval(fetchTrxRate, 60_000);
-    document.getElementById('y').textContent = new Date().getFullYear();
+// Init
+bindFlagClicks(); setActiveFlag(); applyText(); compute();
+
+// 👉 стартуем счётчик энергии
+initEnergy();
+scheduleNextTick();
+
+// опционально: ночной сброс к стартовому значению (проверяем раз в минуту)
+setInterval(()=>{
+  const st = readState();
+  const today = new Date().toISOString().slice(0,10);
+if(!st || st.date !== today){
+   const ns = resetDaily();
+   if(energyEl){
+     const curr = Number((energyEl.textContent||'').replace(/[^\d]/g,'')) || 0;
+     animateNumber(energyEl, curr, ns.val, 700);
+   }
+ }
+}, 60_000);
+
+fetchTrxRate(); setInterval(fetchTrxRate, 60_000);
+document.getElementById('y').textContent = new Date().getFullYear();
   });
 
 
