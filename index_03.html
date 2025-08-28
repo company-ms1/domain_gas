@@ -210,9 +210,49 @@
   @keyframes shine{50%{transform:translateX(60%)}}
 
   /* модалки — мягкий scale-in */
-  .modal .card{opacity:0; transform:translateY(10px) scale(.98)}
-  .modal[style*="display: flex"] .card{animation:modalIn .28s ease forwards}
-  @keyframes modalIn{to{opacity:1; transform:translateY(0) scale(1)}}
+/* Оверлей: скролл всего оверлея + безопасная высота на мобильных */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;                 /* включается JS-ом */
+  justify-content:center;
+  align-items:flex-start;       /* открывать чуть ниже */
+  padding:calc(env(safe-area-inset-top, 0) + 72px) 16px 24px;
+  overflow:auto;                /* если карточка выше окна — скроллим оверлей */
+  z-index:30;
+}
+
+/* Карточка: ограничиваем высоту и даём внутренний скролл */
+.modal .card{
+  box-sizing:border-box;
+  width:min(520px, 100%);
+  max-height:calc(100dvh - 120px);  /* ✅ не выше экрана */
+  overflow:auto;                    /* ✅ прокрутка внутри */
+  -webkit-overflow-scrolling:touch; /* плавный скролл iOS */
+  margin:auto;                      /* центр при высоком контенте */
+}
+
+/* Крестик всегда доступен */
+.modal .card .btn#mClose{
+  position:sticky; top:8px; right:10px; float:right; z-index:1;
+}
+
+/* QR и картинки — резиновые */
+.modal .card img{max-width:100%; height:auto}
+
+
+
+/* Ряд кнопок — переносится, чтобы не уезжать за край */
+#payModal .btn, #waitModal .btn{flex:1 1 auto}
+#payModal .card > div[style*="margin-top:10px"]{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Заголовки/подписи — не выходят за края на узких экранах */
+.modal .subtitle, .modal .title{word-wrap:break-word; overflow-wrap:anywhere}
+
+/* Если хочешь открывать модалку «ниже», а не по центру — уже ок:
+   align-items:flex-start + padding сверху. Для центрирования верни align-items:center */
+
 }
 
 /* чёткая анимация табличных цифр */
@@ -228,7 +268,15 @@
 @keyframes segGlow{from{opacity:.9} to{opacity:0}}
 /* ===== Modal offset fix ===== */
     .modal{align-items:flex-start !important; padding-top:210px !important;} /* смещаем модалку ниже */
-
+@media (max-width:820px){
+  .mobile-after-save{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+    margin-top:16px;
+  }
+}
   </style>
 </head>
 <body>
@@ -286,7 +334,7 @@
           <button type="button" class="seg-option" data-v="none"><span>🚫</span><span data-i18n="no_usdt">Нет USDT</span></button>
         </div>
         <div class="note" style="color:var(--muted)" data-i18n="note_no_usdt">Если на кошельке <b>нет</b> USDT — на 1 перевод нужно ~130 000 энергии.</div>
-        <div class="note" style="margin-top:6px;color:var(--muted)" data-i18n="tx_note">Фиксировано: сеть отзывает энергию сразу после первого перевода.</div>
+
 
         <div class="beam" aria-hidden="true"></div>
 
@@ -1004,6 +1052,41 @@ if(!st || st.date !== today){
 
 fetchTrxRate(); setInterval(fetchTrxRate, 60_000);
 document.getElementById('y').textContent = new Date().getFullYear();
+
+// --- Move Buy+FAQ buttons and rateInfo under savecard on mobile ---
+(function(){
+  const MOBILE_W = 820;
+  const savecard = document.querySelector('.calc .savecard');
+  const btnWrap = document.querySelector('#buyBtn')?.parentElement;
+  const rateInfo = document.getElementById('rateInfo');
+
+  if(!savecard || !btnWrap || !rateInfo) return;
+
+  // создаём плейсхолдер, чтобы вернуть на место при десктопе
+  const btnPlaceholder = document.createComment('btns-original-place');
+  btnWrap.parentNode.insertBefore(btnPlaceholder, btnWrap.nextSibling);
+
+  const ratePlaceholder = document.createComment('rate-original-place');
+  rateInfo.parentNode.insertBefore(ratePlaceholder, rateInfo.nextSibling);
+
+  function moveElems(){
+    if(window.innerWidth <= MOBILE_W){
+      savecard.insertAdjacentElement('afterend', btnWrap);
+      btnWrap.insertAdjacentElement('afterend', rateInfo);
+      btnWrap.classList.add('mobile-after-save');
+    } else {
+      btnPlaceholder.parentNode.insertBefore(btnWrap, btnPlaceholder.nextSibling);
+      ratePlaceholder.parentNode.insertBefore(rateInfo, ratePlaceholder.nextSibling);
+      btnWrap.classList.remove('mobile-after-save');
+    }
+  }
+
+  moveElems();
+  window.addEventListener('resize', moveElems);
+  window.addEventListener('orientationchange', moveElems);
+})();
+
+
   });
 
 
