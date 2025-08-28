@@ -192,7 +192,7 @@
   </style>
 </head>
 <body>
-  <header>
+ <header>
     <div class="wrap top">
       <div class="brand">
         <div class="logo" aria-hidden="true">⚡️</div>
@@ -211,19 +211,17 @@
         </div>
       </div>
     </div>
-        <!-- Service status line: ONLINE + available energy dynamic counter -->
+    <!-- Service status line -->
     <div class="statusline">
-      <div class="wrap" style="display:flex; align-items:center; gap:10px">
-        <span class="status-dot" aria-hidden="true"></span>
+      <div class="status-inner">
+        <span class="status-dot"></span>
         <span class="status-text" id="svcText" data-i18n="svc_online">Service is online</span>
         <div class="status-energy" aria-live="polite">
           <small data-i18n="svc_avail">Available energy</small>
           <span class="num" id="energyNum">1,335,568,252</span>
-          <small>⚙️</small>
         </div>
       </div>
     </div>
-    
   </header>
 
   <main class="wrap" id="top">
