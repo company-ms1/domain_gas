@@ -19,6 +19,7 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ru_RU">
   <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="id_ID">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -277,6 +278,78 @@
     margin-top:16px;
   }
 }
+
+   /* Language select – pretty chip */
+.lang-wrap{position:relative; display:inline-flex; align-items:center}
+
+/* декоративная «глобус»-иконка слева */
+.lang-wrap::before{
+  content:"🌐";
+  position:absolute; left:10px; pointer-events:none;
+  font-size:14px; opacity:.9; transform:translateY(1px);
+}
+
+/* сам select */
+.lang-select{
+  appearance:none; -webkit-appearance:none; -moz-appearance:none;
+  padding:10px 40px 10px 32px;               /* место под глобус и стрелку */
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)), /* глянец */
+    var(--elev);
+  color:var(--text);
+  font-weight:800; letter-spacing:.2px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:transform .08s ease, box-shadow .25s ease, border-color .2s ease, background .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* кастомная стрелка */
+.lang-select{
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23AFC6DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  background-size:14px;
+}
+
+/* hover/active */
+.lang-select:hover{
+  border-color:rgba(110,231,255,.45);
+  box-shadow:0 8px 26px rgba(110,231,255,.18), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.lang-select:active{ transform:translateY(1px) scale(.99); }
+
+/* focus ring */
+.lang-select:focus{ outline:none; }
+.lang-select:focus-visible{
+  box-shadow:0 0 0 6px var(--ring), var(--shadow);
+  border-color:transparent;
+}
+
+/* опции (некоторые браузеры игнорят, но не вредно) */
+.lang-select option{
+  background:var(--card); color:var(--text);
+}
+
+/* светлая тема — чуть больше контраста и синее свечение */
+@media (prefers-color-scheme:light){
+  .lang-select{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.85), rgba(240,242,255,.75)),
+      var(--card);
+    border-color:rgba(15,21,42,.12);
+  }
+  .lang-select:hover{ box-shadow:0 10px 26px rgba(0,122,255,.12), inset 0 1px 0 #fff; }
+}
+
+/* компактнее на очень узких экранах */
+@media (max-width:420px){
+  .lang-select{ padding:8px 36px 8px 30px; border-radius:10px; }
+  .lang-wrap::before{ left:9px; font-size:13px; }
+}
   </style>
 </head>
 <body>
@@ -292,11 +365,14 @@
       <div class="top-right">
         <a class="btn" href="how-it-works.html" id="howLink" data-i18n="how_link">Как это работает</a>
         <a class="btn primary" href="/api.html">API</a>
-        <div class="flags" role="group" aria-label="Language">
-          <button class="flag-btn" data-lang="ru" aria-pressed="true"  title="Русский">🇷🇺</button>
-          <button class="flag-btn" data-lang="en" aria-pressed="false" title="English">🇬🇧</button>
-          <button class="flag-btn" data-lang="zh" aria-pressed="false" title="中文">🇨🇳</button>
-        </div>
+<label class="lang-wrap" for="langSelect" aria-label="Language" title="Language">
+  <select id="langSelect" class="lang-select">
+    <option value="ru">Русский</option>
+    <option value="en">English</option>
+    <option value="zh">中文</option>
+    <option value="id">Bahasa Indonesia</option>
+  </select>
+</label>
       </div>
     </div>
     <!-- Service status line -->
@@ -782,7 +858,89 @@
     footer_rights: "版权所有。",
             energy_per: "每次所需能量",
   usd_saving: "节省 ≈ {x} USDT"
-      }
+      },
+
+  id:{
+    tagline:"TRON Energy · Transfer tanpa biaya TRX",
+    how_link:"Cara kerja",
+    faq_btn:"FAQ",
+    title:"Sewa Energi TRON",
+    subtitle:"Energi berlaku untuk <b>1 transfer</b>. Transfer USDT/TRC20 tanpa biaya TRX.",
+    buy_info:"💡 Di sini kamu bisa <b>hitung biaya</b> dan <b>langsung beli energi</b> dengan harga terbaik!",
+    badge_price:"3 TRX = 1 transfer (ada USDT) · 6 TRX = 1 transfer (tanpa USDT)",
+    badge_base:"Pasar: 13.5 TRX (ada USDT) · 27 TRX (tanpa USDT)",
+    label_wallet:"Dompet penerima",
+    has_usdt:"Ada USDT",
+    no_usdt:"Tanpa USDT",
+    note_no_usdt:"Jika dompet <b>tanpa</b> USDT — perlu ~130.000 energi per transfer.",
+    tx_note:"Tetap: energi ditarik setelah transfer pertama.",
+    buy_btn:"Beli Energi TRON",
+    price_note:"Harga per 1 transfer. Kurs TRX diperbarui otomatis.",
+    total_to_pay:"Total bayar",
+    price_per:"Harga per transfer",
+    energy_per:"Energi per transfer",
+    energy_total:"Total energi dibutuhkan",
+    rent_1h:"Masa berlaku",
+    rent_1h_val:"hingga 1 jam atau sampai transfer pertama",
+    copy:"Salin",
+    copied:"Tersalin!",
+    pay_title:"Pembayaran",
+    pay_sub:"Kirim",
+    pay_sub2:"ke alamat di bawah. Kirim jumlah yang tepat.",
+    warn_text:"Penting! Kirim <b>jumlah yang tepat</b>. Energi akan dikreditkan ke <b>dompet yang sama</b>.",
+    paid_btn:"Saya sudah bayar",
+    cancel_btn:"Batal",
+    order_meta_prefix:"Order",
+    q1:"Mengapa sewa energi TRON?",
+    a1:"Staker TRX mencetak sumber daya jaringan (energi). Delegasi memungkinkan pengirim aktif membayar lebih murah dari biaya TRX standar.",
+    q2:"Berapa banyak transfer per paket?",
+    a2:"Satu transfer; energi ditarik setelah operasi pertama atau saat timeout (hingga satu jam).",
+    q3:"Apakah aman?",
+    a3:"Kami hanya mendelegasikan energi; tidak pernah mengakses kunci Anda. Anda hanya mengirim TRX untuk membayar paket.",
+    q4:"Untuk siapa layanan ini?",
+    a4:"Exchanger, dompet, OTC, dan layanan dengan transfer USDT/TRC20 yang sering — juga untuk pengguna power.",
+    q5:"Apakah ada API & UI?",
+    a5:"Ya. UI untuk distribusi massal dan REST API. Klik tombol “API” di atas.",
+    q6:"Saya mencari “gasfree4ucom” atau “fasfree4ucom” — apakah itu kalian?",
+    a6:"Bukan. Itu layanan lain dengan syarat serupa. Anda bebas membeli energi TRON di mana saja — di sini atau tempat lain.",
+    biz_title:"Untuk volume & mitra",
+    biz_q1:"Volume besar dan ingin lebih hemat?",
+    biz_a1:"Hubungi kami di <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> untuk harga khusus.",
+    biz_q2:"Perlu membagikan energi ke dompet lain?",
+    biz_a2:"Kami punya UI dan API. <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Hubungi kami</a>.",
+    biz_q3:"Ingin membangun bisnis sendiri?",
+    biz_a3:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Kontak</a> kami — kami bantu mulai.",
+    biz_q4:"Punya audiens dan ingin bantu mereka hemat & dapat penghasilan?",
+    biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Hubungi</a> — ada program kemitraan.",
+    meta_title:"Sewa Energi TRON — GasFree4you",
+    meta_desc:"GasFree4you.com — energi TRON untuk transfer USDT/TRC20 tanpa biaya TRX. Sebagian orang mencari 'gasfree4ucom' atau 'fasfree4ucom' (layanan lain dengan syarat serupa).",
+    seo_inline:"<strong>GasFree4you.com</strong> — jika melihat <em>gasfree4ucom</em> atau <em>fasfree4ucom</em>, itu layanan lain dengan syarat serupa. Anda bebas membeli energi TRON di mana saja.",
+    typos_line:"Juga dicari sebagai: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.",
+    stake_title:"Manfaat staking (info resmi TRON)",
+    stake_p1_title:"Dapatkan Sumber Daya untuk Transaksi Gratis",
+    stake_p1_text:"Dengan staking TRX, Anda memperoleh sumber daya jaringan untuk menutup biaya transaksi. Sumber daya akan pulih setelah periode tertentu.",
+    stake_p2_title:"Delegasikan Sumber Daya Menganggur",
+    stake_p2_text:"Anda bisa mendelegasikan sumber daya menganggur ke orang lain dan menariknya kapan saja.",
+    stake_source:"Sumber: tronscan.org",
+    svc_online:"Layanan online",
+    svc_avail:"Energi tersedia",
+    footer_desc:"3 TRX jika ada USDT atau 6 TRX jika tanpa USDT. Energi untuk <b>1 transfer</b>. Kredit instan.",
+    footer_contacts_title:"Kontak",
+    footer_site:"Situs kami",
+    footer_nav_title:"Navigasi",
+    footer_nav_calc:"Kalkulator",
+    footer_nav_how:"Cara kerja",
+    footer_nav_faq:"FAQ",
+    footer_nav_top:"Ke atas ↑",
+    footer_legal_title:"Informasi hukum",
+    footer_legal_desc:"GasFree4you adalah layanan delegasi energi TRON. Kami tidak menyimpan dana Anda dan tidak berafiliasi dengan TRON Foundation. Penggunaan blockchain mengandung risiko.",
+    footer_terms:"Ketentuan Layanan",
+    footer_privacy:"Kebijakan Privasi",
+    footer_refund:"Kebijakan Refund",
+    footer_rights:"Hak cipta dilindungi.",
+    usd_saving:"Hemat ≈ {x} USDT"
+  }
+
     };
 
 
@@ -842,10 +1000,10 @@ function tickEnergy(){
 
 
     const $ = id => document.getElementById(id);
-    function detectLang(){
-      const nav = (navigator.language || '').slice(0,2).toLowerCase();
-      return ['ru','en','zh'].includes(nav) ? nav : 'en';
-    }
+function detectLang(){
+  const nav = (navigator.language || '').slice(0,2).toLowerCase();
+  return ['ru','en','zh','id'].includes(nav) ? nav : 'en';
+}
     let lang = localStorage.getItem('lang');
     if(!lang){ lang = detectLang(); try{ localStorage.setItem('lang', lang); }catch(e){} }
 
@@ -931,9 +1089,7 @@ const rate = TRX_USD || 0.35; // фолбэк на случай, если кур
         if(el){ el.textContent = JSON.stringify(schema); }
       })();
     }
-    function setActiveFlag(){
-      document.querySelectorAll('.flag-btn').forEach(b=> b.setAttribute('aria-pressed', b.dataset.lang===lang ? 'true' : 'false'));
-    }
+
 
     // Курс TRX
 async function fetchTrxRate(){
@@ -961,18 +1117,22 @@ async function fetchTrxRate(){
 });
 
     // Флаги
-    function bindFlagClicks(){
-      document.querySelectorAll('.flag-btn').forEach(btn=>{
-        btn.addEventListener('click', (e)=>{
-          e.preventDefault();
-          const newLang = btn.dataset.lang;
-          if(!newLang || !I18N[newLang]) return;
-          lang = newLang;
-          try{ localStorage.setItem('lang', lang); }catch(e){}
-          setActiveFlag(); applyText();
-        });
-      });
-    }
+  function setActiveLang(){
+  const sel = document.getElementById('langSelect');
+  if(sel) sel.value = lang;
+}
+function bindLangSelect(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=>{
+    const newLang = sel.value;
+    if(!I18N[newLang]) return;
+    lang = newLang;
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+    setActiveLang();
+    applyText();
+  });
+}
 
     // Модалка оплаты
     const modal=document.getElementById('payModal'), mAmount=$('mAmount'), mAddr=$('mAddr'), mQR=$('mQR'), mOrderMeta=$('mOrderMeta');
@@ -1031,7 +1191,7 @@ async function fetchTrxRate(){
 
     // Init
 // Init
-bindFlagClicks(); setActiveFlag(); applyText(); compute();
+bindLangSelect(); setActiveLang(); applyText(); compute();
 
 // 👉 стартуем счётчик энергии
 initEnergy();
