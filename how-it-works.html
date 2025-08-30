@@ -369,20 +369,75 @@
       exist3:"你用更便宜、定向的“能量”替代昂贵的单次 TRX 手续费——能量来自质押。它是遵循网络规则的公平市场机制。",
       ctaTalk:"Telegram 联系",
       tsTitle:"真实示例", tsText:"见"
-    }
+    },
+     id:{
+    head:{ title:"GasFree4youCOM — Cara Kerja Delegasi Energi TRON",
+           desc:"Penjelasan singkat tentang energi TRON: cara kerja, alasan ada, biaya, dan berapa banyak yang bisa dihemat." },
+    tagline:"Top-up Energi TRON",
+    back:"Kembali", cta:"Harga publik",
+    title:"Cara Kerja Delegasi Energi TRON",
+    subtitle:"Ringkas tentang mekanisme, harga, dan mengapa cocok untuk transfer USDT/TRC20 yang sering.",
+    videoTitle:"Video tutorial (1 menit)",
+    why:"Energi muncul saat pemegang TRX melakukan staking untuk mendukung jaringan. Sumber daya ini bisa didelegasikan ke yang membutuhkannya sekarang — membuat transfer lebih murah daripada membayar biaya TRX langsung.",
+    stepsTitle:"3 langkah — tanpa biaya TRX",
+    s1:"1) Anda mengirim TRX tetap", s1t:"Bayar paket energi ke alamat layanan kami.",
+    s2:"2) Kami mendelegasikan energi", s2t:"Energi masuk ke alamat pengirim ~1 menit.",
+    s3:"3) Anda melakukan transfer", s3t:"Biaya ditanggung energi. Berlaku hingga 1 jam atau sampai transfer pertama.",
+    calcTitle:"Kalkulator penghematan",
+    scLabel:"Skenario",
+    scActive:"Dompet aktif (biasanya 6.5 TRX tanpa energi)",
+    scNew:"Dompet baru/tanpa USDT (biasanya 13 TRX tanpa energi)",
+    prLabel:"Harga TRX (USD)",
+    kWithout:"Tanpa energi", kWith:"Dengan layanan kami", kSave:"Hemat",
+    existTitle:"Mengapa ini ada",
+    exist1:"TRON memberi insentif staking TRX demi keamanan & throughput; jaringan mengeluarkan sumber daya — energi & bandwidth.",
+    exist2:"Delegasi memungkinkan pemilik sumber daya berbagi (dan mendapat imbalan) sementara pengirim aktif membayar jauh lebih murah.",
+    exist3:"Anda mengganti biaya TRX sekali pakai yang mahal dengan sumber daya terarah yang lebih murah — energi — yang dicetak lewat staking.",
+    ctaTalk:"Hubungi via Telegram",
+    tsTitle:"Contoh nyata", tsText:"di"
+  },
+
+  tr:{
+    head:{ title:"GasFree4youCOM — TRON Enerji Delegasyonu Nasıl Çalışır",
+           desc:"TRON enerjisi için kısa açıklama: nasıl çalışır, neden vardır, maliyet ve ne kadar tasarruf edersiniz." },
+    tagline:"TRON Enerji Yükleme",
+    back:"Geri", cta:"Genel fiyatlar",
+    title:"TRON Enerji Delegasyonu Nasıl Çalışır",
+    subtitle:"Mekanizma, fiyatlandırma ve sık USDT/TRC20 transferleri için neden ideal olduğuna dair kısa açıklama.",
+    videoTitle:"Video anlatım (1 dk)",
+    why:"Enerji, sahipler TRX’i stake edip ağı desteklediğinde ortaya çıkar. Bu kaynaklar o anda ihtiyacı olana devredilebilir — TRX ücretini doğrudan ödemekten daha ucuza transfer yapmanızı sağlar.",
+    stepsTitle:"3 adım — TRX ücreti yok",
+    s1:"1) Sabit miktarda TRX gönderirsiniz", s1t:"Hizmet adresimize enerji paketinin ödemesini yapın.",
+    s2:"2) Enerjiyi delege ederiz", s2t:"Enerji ~1 dakika içinde gönderici adresine ulaşır.",
+    s3:"3) Transferi yaparsınız", s3t:"Ücret enerjiyle karşılanır. 1 saat veya ilk işleme kadar geçerlidir.",
+    calcTitle:"Tasarruf hesaplayıcı",
+    scLabel:"Senaryo",
+    scActive:"Etkin cüzdan (enerjisiz genelde 6.5 TRX)",
+    scNew:"Yeni/USDT yok (enerjisiz genelde 13 TRX)",
+    prLabel:"TRX fiyatı (USD)",
+    kWithout:"Enerjisiz", kWith:"Servis ile", kSave:"Tasarruf",
+    existTitle:"Neden böyle bir imkân var",
+    exist1:"TRON, güvenlik ve kapasite için TRX stake etmeyi teşvik eder; ağ bunun karşılığında enerji ve bandwidth üretir.",
+    exist2:"Delegasyon, kaynağı olanların paylaşmasını (ödüllendirilerek) sağlar; aktif gönderenler çok daha az ücret öder.",
+    exist3:"Pahalı tek seferlik TRX ücretini, staking ile üretilen daha ucuz hedef kaynağa — enerjiye — dönüştürürsünüz.",
+    ctaTalk:"Telegram’da konuşalım",
+    tsTitle:"Gerçek örnekler", tsText:"— bakın:"
+  }
   };
 
 
 // === ЯЗЫКОВЫЕ ВИДЕО (замените ID на свои при наличии)
 var VIDEO_BY_LANG = {
-  ru: "0UjZWMVsyts",       // пример: RU
-  en: "jijrpdw8JQ4",       // пример: EN
-  zh: "jijrpdw8JQ4"        // пример: ZH
+  ru: "0UjZWMVsyts",
+  en: "jijrpdw8JQ4",
+  zh: "jijrpdw8JQ4",
+  id: "jijrpdw8JQ4", // временно тот же ролик
+  tr: "jijrpdw8JQ4"  // временно тот же ролик
 };
 // Общие параметры для YouTube
 function ytSrc(id, lang){
-  // lang используется для интерфейса и субтитров
-  var hl = (lang === 'zh') ? 'zh-CN' : (lang === 'ru' ? 'ru' : 'en');
+  var map = { zh:'zh-CN', ru:'ru', id:'id', tr:'tr', en:'en' };
+  var hl = map[lang] || 'en';
   return "https://www.youtube-nocookie.com/embed/" + id +
          "?modestbranding=1&rel=0&playsinline=1&cc_lang_pref=" + hl + "&hl=" + hl;
 }
@@ -485,12 +540,13 @@ function setVideo(lang){
     if(priceInput){ priceInput.addEventListener('input', recalc); }
     if(scenarioSel){ scenarioSel.addEventListener('change', recalc); }
 
-    var saved = null; try{ saved = localStorage.getItem('lang'); }catch(e){}
-    if(!saved){
-      var nav = (navigator.language||'').slice(0,2).toLowerCase();
-      saved = ['ru','en','zh'].indexOf(nav)>=0 ? nav : 'en';
-      try{ localStorage.setItem('lang', saved); }catch(e){}
-    }
+var saved = null; try{ saved = localStorage.getItem('lang'); }catch(e){}
+if(!saved){
+  var nav = (navigator.language||'').slice(0,2).toLowerCase();
+  var supported = ['ru','en','zh','id','tr'];
+  saved = supported.indexOf(nav) >= 0 ? nav : 'en';
+  try{ localStorage.setItem('lang', saved); }catch(e){}
+}
     setLang(saved);
 
     var flags = document.querySelectorAll('.flag');
