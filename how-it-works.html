@@ -221,8 +221,8 @@
         <div class="field">
           <label for="scenario" data-i18n="scLabel">Сценарий</label>
           <select id="scenario" class="select">
-            <option value="active" selected data-i18n="scActive">Активный кошелёк (обычно 13.5 TRX без энергии)</option>
-            <option value="new" data-i18n="scNew">Новый/без USDT (обычно 27 TRX без энергии)</option>
+            <option value="active" selected data-i18n="scActive">Активный кошелёк (обычно 6.5 TRX без энергии)</option>
+            <option value="new" data-i18n="scNew">Новый/без USDT (обычно 13 TRX без энергии)</option>
           </select>
         </div>
         <div class="field">
@@ -287,8 +287,8 @@
       s3:"3) Вы делаете перевод", s3t:"Комиссию покрывает энергия. Действует до часа или до 1-й операции.",
       calcTitle:"Калькулятор выгоды",
       scLabel:"Сценарий",
-      scActive:"Активный кошелёк (обычно 13.5 TRX без энергии)",
-      scNew:"Новый/без USDT (обычно 27 TRX без энергии)",
+      scActive:"Активный кошелёк (обычно 6.5 TRX без энергии)",
+      scNew:"Новый/без USDT (обычно 13 TRX без энергии)",
       prLabel:"Курс TRX (USD)",
       kWithout:"Без энергии", kWith:"С сервисом", kSave:"Экономия",
       existTitle:"Почему эта возможность существует",
@@ -313,8 +313,8 @@
       s3:"3) You make the transfer", s3t:"The fee is covered by energy. Valid up to an hour or until the first operation.",
       calcTitle:"Savings calculator",
       scLabel:"Scenario",
-      scActive:"Active wallet (typically 13.5 TRX without energy)",
-      scNew:"New/no-USDT wallet (typically 27 TRX without energy)",
+      scActive:"Active wallet (typically 6.5 TRX without energy)",
+      scNew:"New/no-USDT wallet (typically 13 TRX without energy)",
       prLabel:"TRX price (USD)",
       kWithout:"Without energy", kWith:"With our service", kSave:"Savings",
       existTitle:"Why this exists",
@@ -339,8 +339,8 @@
       s3:"3) 完成转账", s3t:"手续费由能量承担；有效期至首次操作或约 1 小时。",
       calcTitle:"节省计算器",
       scLabel:"场景",
-      scActive:"已激活钱包（无能量约需 13.5 TRX）",
-      scNew:"新钱包/无 USDT（无能量约需 27 TRX）",
+      scActive:"已激活钱包（无能量约需 6.5 TRX）",
+      scNew:"新钱包/无 USDT（无能量约需 13 TRX）",
       prLabel:"TRX 价格（美元）",
       kWithout:"无能量", kWith:"使用本服务", kSave:"节省",
       existTitle:"为何存在这种机制",
@@ -365,7 +365,7 @@
     var price = parseFloat(priceInput && priceInput.value);
     var sc = (scenarioSel && scenarioSel.value) || 'active';
 
-    var without = (sc==='active') ? 13.5 : 27.0;
+    var without = (sc==='active') ? 6.5 : 13.0;
     var withSrv = (sc==='active') ? 3 : 6;
     var save = without - withSrv;
 
