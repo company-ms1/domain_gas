@@ -204,14 +204,15 @@
 <section class="panel section video-section" aria-labelledby="videoTitle">
   <h3 id="videoTitle" style="margin:0 0 8px" data-i18n="videoTitle">Видео-инструкция (1 мин)</h3>
   <div class="video" role="region" aria-label="Instructional video">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/jijrpdw8JQ4"
-      title="TRON Energy — how it works"
-      loading="lazy"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
+<iframe
+  id="ytFrame"
+  src="https://www.youtube-nocookie.com/embed/jijrpdw8JQ4"
+  title="TRON Energy — how it works"
+  loading="lazy"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
   </div>
 </section>
     <!-- CALC -->
@@ -352,6 +353,30 @@
     }
   };
 
+<script>
+// === ЯЗЫКОВЫЕ ВИДЕО (замените ID на свои при наличии)
+var VIDEO_BY_LANG = {
+  ru: "0UjZWMVsyts",       // пример: RU
+  en: "jijrpdw8JQ4",       // пример: EN
+  zh: "jijrpdw8JQ4"        // пример: ZH
+};
+// Общие параметры для YouTube
+function ytSrc(id, lang){
+  // lang используется для интерфейса и субтитров
+  var hl = (lang === 'zh') ? 'zh-CN' : (lang === 'ru' ? 'ru' : 'en');
+  return "https://www.youtube-nocookie.com/embed/" + id +
+         "?modestbranding=1&rel=0&playsinline=1&cc_lang_pref=" + hl + "&hl=" + hl;
+}
+
+function setVideo(lang){
+  var f = document.getElementById('ytFrame');
+  if(!f) return;
+  var id = VIDEO_BY_LANG[lang] || VIDEO_BY_LANG.en || "jijrpdw8JQ4";
+  // Чтобы точно сбросить воспроизведение — пересобираем src
+  f.src = ytSrc(id, lang);
+}
+</script>
+  
   // ===== Calculator logic =====
   var priceInput = null, scenarioSel = null;
   var kWithoutVal = null, kWithVal = null, kSaveVal = null, usdLine = null;
@@ -426,6 +451,7 @@
       if(I18N[lang] && I18N[lang][key]) node.textContent = I18N[lang][key];
     }
     setHead(lang);
+      setVideo(lang); // <-- добавили
     try{ localStorage.setItem('lang', lang); }catch(e){}
   }
 
