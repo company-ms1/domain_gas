@@ -1090,14 +1090,15 @@ function detectLang(){
 }
 
     const urlLang = new URLSearchParams(location.search).get('lang');
+
+    
+    let lang = localStorage.getItem('lang');
+    if(!lang){ lang = detectLang(); try{ localStorage.setItem('lang', lang); }catch(e){} }
 if (urlLang && ['ru','en','zh','id','tr'].includes(urlLang)) {
   lang = urlLang;
   localStorage.setItem('lang', lang);
 }
     
-    let lang = localStorage.getItem('lang');
-    if(!lang){ lang = detectLang(); try{ localStorage.setItem('lang', lang); }catch(e){} }
-
     // Константы
     const PAY_TO_ADDRESS="TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX";
     const PRICE_PER_TX={has:3, none:6};
