@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"/>
+  <title>Sewa TRON Energy — Bayar 3 TRX Bukan 6.4 TRX</title>
+  <meta name="description" content="Sewa TRON Energy hanya dengan mengirim TRX ke alamat layanan. Biaya kirim USDT turun hingga 50%. Cepat, aman, on-chain.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f1b; --card:#14172a; --muted:#9aa3b2; --text:#e7ecf3;
+      --brand:#6ee7ff; --brand2:#8b5cf6; --ok:#22c55e; --warn:#f59e0b;
+      --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
+      color:var(--text);background:radial-gradient(1200px 600px at 10% -10%, #1b2143 0%, #0d0f1a 60%), var(--bg);
+      -webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1000px;margin:0 auto;padding:20px 16px 90px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:16px}
+    .title{font-size:28px;line-height:1.15;margin:6px 0 10px;font-weight:800}
+    .subtitle{color:var(--muted);font-size:15px;margin:0 0 14px}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(110,231,255,.15);color:#cffafe;font-weight:700;font-size:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:14px 18px;border-radius:14px;font-weight:800;letter-spacing:.2px;border:none;cursor:pointer;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b1020;box-shadow:0 12px 28px rgba(110,231,255,.18), inset 0 1px 0 rgba(255,255,255,.35);
+      transition:transform .15s ease,filter .15s ease}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+    .btn:active{transform:none}
+    .btn.outline{background:transparent;border:1px solid rgba(188,215,255,.25);color:#cfe4ff;box-shadow:none}
+    .hero{padding:22px 16px;background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(110,231,255,.18)),var(--card)}
+    .grid{display:grid;gap:12px}
+    .addr{display:grid;gap:10px;margin-top:8px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+    .addr-line{display:flex;gap:8px;align-items:stretch}
+    .addr-box{flex:1;padding:12px;border-radius:12px;background:#0d1123;border:1px solid rgba(255,255,255,.09);word-break:break-all}
+    .copy{min-width:120px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .chip{padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-weight:600;font-size:12px}
+    .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .kpi .chip{font-size:13px}
+    .section{margin-top:16px}
+    .calc{display:grid;gap:12px}
+    .calc label{font-size:12px;color:var(--muted)}
+    .calc input{width:100%;padding:12px;border-radius:12px;background:#0d1123;color:var(--text);border:1px solid rgba(255,255,255,.08);outline:none}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .res{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .pill{background:rgba(34,197,94,.12);color:#b7f7c9;border:1px solid rgba(34,197,94,.25);padding:10px 12px;border-radius:12px;font-weight:800;text-align:center}
+    .pill.warn{background:rgba(245,158,11,.12);color:#ffe8b7;border-color:rgba(245,158,11,.25)}
+    .steps{display:grid;gap:12px}
+    .step{display:flex;gap:12px;padding:12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .muted{color:var(--muted)}
+    footer{margin:24px 0 110px;color:var(--muted);font-size:12px}
+    .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:12px 14px;
+      background:linear-gradient(0deg,rgba(10,12,22,.95),rgba(10,12,22,.6) 60%,transparent);backdrop-filter:saturate(120%) blur(6px)}
+    .sticky .btn{flex:1}
+    @media(max-width:860px){.title{font-size:24px}.row2,.res{grid-template-columns:1fr}.wrap{padding-bottom:120px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- HERO with direct send instruction -->
+    <header class="card hero">
+      <span class="badge">⚡ Sewa Energy sekarang — cukup kirim TRX</span>
+      <h1 class="title">Bayar <span style="background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent">3 TRX</span> bukan 6.4 TRX per transfer USDT</h1>
+      <p class="subtitle">Cara tercepat: kirim sejumlah <b>TRX</b> ke alamat layanan kami di jaringan <b>TRON</b>. Energy akan didelegasikan ke alamatmu secara otomatis.</p>
+
+      <div class="addr card pad">
+        <b>Alamat layanan (TRON):</b>
+        <div class="addr-line">
+          <div id="addr" class="addr-box mono" aria-label="Alamat layanan">
+            TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX
+          </div>
+          <button id="copyBtn" class="btn copy" aria-label="Salin alamat">Salin alamat</button>
+        </div>
+        <div class="chips">
+          <div class="chip">🔗 Jaringan: TRON (TRX / TRC-20)</div>
+          <div class="chip">🧾 Tanpa memo / tag</div>
+          <div class="chip">⏱ Proses &lt; 10 detik</div>
+        </div>
+        <div class="kpi">
+          <div class="chip">💡 Contoh: 10–20 TRX cukup untuk mulai</div>
+          <div class="chip">🔒 100% on-chain, transparan</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn" href="#calc">🧮 Hitung hemat</a>
+          <a class="btn outline" href="https://t.me/saving_trx_bot?start=propeller_id" target="_blank" rel="noopener">🚀 Buka bot Telegram</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <div class="card pad">
+        <h3 style="margin:0 0 10px">Bagaimana alurnya?</h3>
+        <div class="steps">
+          <div class="step"><div>①</div><div><b>Kirim TRX ke alamat layanan di atas</b><br><span class="muted">Tidak perlu registrasi. Cukup kirim TRX dari dompetmu.</span></div></div>
+          <div class="step"><div>②</div><div><b>Kami mendelegasikan Energy ke alamatmu</b><br><span class="muted">Energy menutupi biaya gas, sehingga TRX yang dibayar per transfer turun signifikan.</span></div></div>
+          <div class="step"><div>③</div><div><b>Kirim USDT TRC-20 seperti biasa</b><br><span class="muted">Contoh biaya: <b>6.4 ➝ 3 TRX</b> per transfer (bisa bervariasi tergantung harga Energy).</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section id="calc" class="section">
+      <div class="card pad">
+        <h3 style="margin:0 0 8px">Kalkulator Hemat</h3>
+        <div class="calc">
+          <div class="row2">
+            <div>
+              <label>Transfer per hari</label>
+              <input id="txCount" type="number" inputmode="numeric" min="1" value="20">
+            </div>
+            <div>
+              <label>Harga TRX (USD)</label>
+              <input id="trxPrice" type="number" step="0.001" min="0" value="0.13">
+            </div>
+          </div>
+          <div class="row2">
+            <div>
+              <label>Biaya tanpa layanan (TRX)</label>
+              <input id="feeNo" type="number" step="0.1" value="6.4">
+            </div>
+            <div>
+              <label>Biaya dengan layanan (TRX)</label>
+              <input id="feeYes" type="number" step="0.1" value="3">
+            </div>
+          </div>
+          <div class="res">
+            <div class="pill" id="saveDay">Hemat / hari: 0 TRX</div>
+            <div class="pill warn" id="saveMonth">Hemat / bulan: $0</div>
+          </div>
+          <button class="btn" id="recalc" style="width:100%;margin-top:4px">Hitung ulang</button>
+          <p class="muted" style="margin:8px 0 0;font-size:12px">Perkiraan untuk 30 hari. Angka hanya simulasi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECOND CTA -->
+    <section class="section">
+      <div class="card pad" style="text-align:center">
+        <h3 style="margin:0 0 8px">Butuh panduan otomatis?</h3>
+        <p class="muted" style="margin:0 0 12px">Gunakan bot kami untuk instruksi langkah demi langkah.</p>
+        <a class="btn" href="https://t.me/saving_trx_bot?start=propeller_id" target="_blank" rel="noopener">🚀 Buka bot Telegram</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Energy Rental. Semua merek dagang adalah milik pemiliknya masing-masing.</p>
+      <p>Disclaimer: Layanan ini hanya menyediakan delegasi Energy di jaringan TRON. Bukan layanan keuangan, kustodian, atau pertukaran aset. Pengguna bertanggung jawab atas kepatuhan lokal.</p>
+    </footer>
+  </div>
+
+  <!-- Sticky bar -->
+  <div class="sticky">
+    <a class="btn" href="https://t.me/saving_trx_bot?start=propeller_id" target="_blank" rel="noopener">🚀 Bot Telegram</a>
+    <button class="btn outline" id="copyBtn2">📋 Salin alamat</button>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // copy helpers
+    const addrText = 'TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX';
+    function copy(addr){
+      try{
+        navigator.clipboard.writeText(addr);
+        alert('Alamat disalin: ' + addr);
+      }catch(e){
+        // fallback
+        const t = document.createElement('textarea');
+        t.value = addr; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+        alert('Alamat disalin: ' + addr);
+      }
+    }
+    document.getElementById('copyBtn').addEventListener('click', ()=>copy(addrText));
+    document.getElementById('copyBtn2').addEventListener('click', ()=>copy(addrText));
+
+    // calculator
+    const els = {
+      txCount: document.getElementById('txCount'),
+      trxPrice: document.getElementById('trxPrice'),
+      feeNo: document.getElementById('feeNo'),
+      feeYes: document.getElementById('feeYes'),
+      saveDay: document.getElementById('saveDay'),
+      saveMonth: document.getElementById('saveMonth'),
+      recalc: document.getElementById('recalc')
+    };
+    function fmt(n,d=2){return Number(n).toFixed(d)}
+    function recalc(){
+      const tx = Math.max(0, Number(els.txCount.value||0));
+      const price = Math.max(0, Number(els.trxPrice.value||0));
+      const feeNo = Math.max(0, Number(els.feeNo.value||0));
+      const feeYes = Math.max(0, Number(els.feeYes.value||0));
+      const savePerTx = Math.max(0, feeNo - feeYes);
+      const saveTRXDay = savePerTx * tx;
+      const saveTRXMonth = saveTRXDay * 30;
+      els.saveDay.textContent = `Hemat / hari: ${fmt(saveTRXDay,1)} TRX`;
+      els.saveMonth.textContent = `Hemat / bulan: ${fmt(saveTRXMonth,1)} TRX (~$${fmt(saveTRXMonth*price)})`;
+    }
+    ['input','change'].forEach(ev=>{
+      Object.values({a:els.txCount,b:els.trxPrice,c:els.feeNo,d:els.feeYes}).forEach(el=>el.addEventListener(ev,recalc));
+    });
+    els.recalc.addEventListener('click', recalc);
+    recalc();
+  </script>
+</body>
+</html>
