@@ -95,9 +95,38 @@
           <div class="chip">🧾 Tanpa memo / tag</div>
           <div class="chip">⏱ Proses &lt; 10 detik</div>
         </div>
-        <div class="kpi">
+        <style>
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+.tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 17, 35, 0.95);
+  color: #e7ecf3;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+.tooltip:hover::after {
+  opacity: 1;
+}
+</style>
+
+<div class="kpi">
   <div class="chip">💡 3 TRX cukup untuk mulai</div>
-  <div class="chip">🔸 6 TRX jika wallet belum punya USDT</div>
+  <div class="chip tooltip" data-tip="Perlu 6 TRX untuk mengaktifkan wallet baru tanpa USDT.">
+    🔸 6 TRX jika wallet belum punya USDT
+  </div>
   <div class="chip">🔒 100% on-chain, transparan</div>
 </div>
         <p style="margin-top:10px;color:#facc15;font-weight:600;font-size:14px">
