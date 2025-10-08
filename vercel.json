@@ -10,6 +10,11 @@
       "has": [{ "type": "host", "value": "gasfree4you.com" }],
       "destination": "/index_03.html"
     },
+        {
+      "source": "/",
+      "has": [{ "type": "host", "value": "ph.gasfree4you.com" }],
+      "destination": "/ph.html"
+    },
     {
       "source": "/(.*)",
       "destination": "/index_03.html"
