@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"/>
+  <title>Umarkila ng TRON Energy — 3 TRX lang, hindi 6.4 TRX</title>
+  <meta name="description" content="Umarkila ng TRON Energy sa pamamagitan lang ng pagpapadala ng TRX sa service address. Bawas hanggang 50% sa gastos ng USDT transfer. Mabilis, ligtas, on-chain.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0e0f1b; --card:#14172a; --muted:#9aa3b2; --text:#e7ecf3;
+      --brand:#6ee7ff; --brand2:#8b5cf6; --ok:#22c55e; --warn:#f59e0b;
+      --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
+      color:var(--text);background:radial-gradient(1200px 600px at 10% -10%, #1b2143 0%, #0d0f1a 60%), var(--bg);
+      -webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1000px;margin:0 auto;padding:20px 16px 90px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:16px}
+    .title{font-size:28px;line-height:1.15;margin:6px 0 10px;font-weight:800}
+    .subtitle{color:var(--muted);font-size:15px;margin:0 0 14px}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(110,231,255,.15);color:#cffafe;font-weight:700;font-size:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:14px 18px;border-radius:14px;font-weight:800;letter-spacing:.2px;border:none;cursor:pointer;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b1020;box-shadow:0 12px 28px rgba(110,231,255,.18), inset 0 1px 0 rgba(255,255,255,.35);
+      transition:transform .15s ease,filter .15s ease}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+    .btn:active{transform:none}
+    .btn.outline{background:transparent;border:1px solid rgba(188,215,255,.25);color:#cfe4ff;box-shadow:none}
+    .hero{padding:22px 16px;background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(110,231,255,.18)),var(--card)}
+    .grid{display:grid;gap:12px}
+    .addr{display:grid;gap:10px;margin-top:8px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+    .addr-line{display:flex;gap:8px;align-items:stretch}
+    .addr-box{flex:1;padding:12px;border-radius:12px;background:#0d1123;border:1px solid rgba(255,255,255,.09);word-break:break-all}
+    .copy{min-width:120px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .chip{padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-weight:600;font-size:12px}
+    .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .kpi .chip{font-size:13px}
+    .section{margin-top:16px}
+    .calc{display:grid;gap:12px}
+    .calc label{font-size:12px;color:var(--muted)}
+    .calc input{width:100%;padding:12px;border-radius:12px;background:#0d1123;color:var(--text);border:1px solid rgba(255,255,255,.08);outline:none}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .res{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .pill{background:rgba(34,197,94,.12);color:#b7f7c9;border:1px solid rgba(34,197,94,.25);padding:10px 12px;border-radius:12px;font-weight:800;text-align:center}
+    .pill.warn{background:rgba(245,158,11,.12);color:#ffe8b7;border-color:rgba(245,158,11,.25)}
+    .steps{display:grid;gap:12px}
+    .step{display:flex;gap:12px;padding:12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .muted{color:var(--muted)}
+    footer{margin:24px 0 110px;color:var(--muted);font-size:12px}
+    .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:12px 14px;
+      background:linear-gradient(0deg,rgba(10,12,22,.95),rgba(10,12,22,.6) 60%,transparent);backdrop-filter:saturate(120%) blur(6px)}
+    .sticky .btn{flex:1}
+    @media(max-width:860px){.title{font-size:24px}.row2,.res{grid-template-columns:1fr}.wrap{padding-bottom:120px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- HERO with direct send instruction -->
+    <header class="card hero">
+      <span class="badge">⚡ Umupa ng Energy ngayon — magpadala lang ng TRX</span>
+      <h1 class="title">Magbayad ng <span style="background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent">3 TRX</span>, hindi 6.4 TRX sa bawat USDT transfer</h1>
+      <p class="subtitle">Pinakamadaling paraan: magpadala ng <b>TRX</b> sa service address namin sa <b>TRON</b> network. Awtomatikong ide-delegate ang Energy sa wallet mo.</p>
+
+      <div class="addr card pad">
+        <b>Address ng serbisyo (TRON):</b>
+        <div class="addr-line">
+          <div id="addr" class="addr-box mono" aria-label="Service address">
+            TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX
+          </div>
+          <button id="copyBtn" class="btn copy" aria-label="Kopyahin ang address">Kopyahin ang address</button>
+        </div>
+        <div class="chips">
+          <div class="chip">🔗 Network: TRON (TRX / TRC-20)</div>
+          <div class="chip">🧾 Walang memo / tag</div>
+          <div class="chip">⏱ Proseso &lt; 10 segundo</div>
+        </div>
+        <div class="kpi">
+          <div class="chip">💡 Halimbawa: sapat na ang 10–20 TRX para makapagsimula</div>
+          <div class="chip">🔒 100% on-chain, transparent</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn" href="#calc">🧮 Kalkulahin ang tipid</a>
+          <a class="btn outline" href="https://t.me/saving_trx_bot?start=propeller_id" target="_blank" rel="noopener">🚀 Buksan ang Telegram bot</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <div class="card pad">
+        <h3 style="margin:0 0 10px">Paano gumagana?</h3>
+        <div class="steps">
+          <div class="step"><div>①</div><div><b>Magpadala ng TRX sa service address sa itaas</b><br><span class="muted">Walang kailangan na rehistro. Diretso mula sa wallet mo.</span></div></div>
+          <div class="step"><div>②</div><div><b>Ide-delegate namin ang Energy sa address mo</b><br><span class="muted">Sinasalo ng Energy ang gas fee, kaya mas mababa ang binabayarang TRX kada transfer.</span></div></div>
+          <div class="step"><div>③</div><div><b>Magpadala ng USDT TRC-20 gaya ng dati</b><br><span class="muted">Halimbawang gastos: <b>6.4 ➝ 3 TRX</b> bawat transfer (maaaring magbago depende sa presyo ng Energy).</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section id="calc" class="section">
+      <div class="card pad">
+        <h3 style="margin:0 0 8px">Kalkulador ng Tipid</h3>
+        <div class="calc">
+          <div class="row2">
+            <div>
+              <label>Bilang ng transfer bawat araw</label>
+              <input id="txCount" type="number" inputmode="numeric" min="1" value="20">
+            </div>
+            <div>
+              <label>Presyo ng TRX (USD)</label>
+              <input id="trxPrice" type="number" step="0.01" min="0" value="0.33">
+            </div>
+          </div>
+          <div class="row2">
+            <div>
+              <label>Gastos nang walang serbisyo (TRX)</label>
+              <input id="feeNo" type="number" step="0.1" value="6.4">
+            </div>
+            <div>
+              <label>Gastos gamit ang serbisyo (TRX)</label>
+              <input id="feeYes" type="number" step="0.1" value="3">
+            </div>
+          </div>
+          <div class="res">
+            <div class="pill" id="saveDay">Tipid/araw: 0 TRX</div>
+            <div class="pill warn" id="saveMonth">Tipid/buwan: $0</div>
+          </div>
+          <button class="btn" id="recalc" style="width:100%;margin-top:4px">Kalkulahin muli</button>
+          <p class="muted" style="margin:8px 0 0;font-size:12px">Tantiya para sa 30 araw. Para sa simulasyon lang ang mga numero.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECOND CTA -->
+    <section class="section">
+      <div class="card pad" style="text-align:center">
+        <h3 style="margin:0 0 8px">Kailangan ng awtomatikong gabay?</h3>
+        <p class="muted" style="margin:0 0 12px">Gamitin ang bot namin para sa step-by-step na instruksyon.</p>
+        <a class="btn" href="https://t.me/saving_trx_bot?start=propeller_id" target="_blank" rel="noopener">🚀 Buksan ang Telegram bot</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Energy Rental. Ang lahat ng trademark ay pag-aari ng kani-kanilang may-ari.</p>
+      <p>Paalaala: Nagbibigay lang ang serbisyong ito ng delegation ng Energy sa TRON network. Hindi ito financial service, custodian, o asset exchange. Responsibilidad ng gumagamit ang pagsunod sa lokal na regulasyon.</p>
+    </footer>
+  </div>
+
+  <!-- Sticky bar -->
+  <div class="sticky">
+    <a class="btn" href="https://t.me/saving_trx_bot?start=propeller_id" target="_blank" rel="noopener">🚀 Telegram bot</a>
+    <button class="btn outline" id="copyBtn2">📋 Kopyahin ang address</button>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // copy helpers
+    const addrText = 'TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX';
+    function copy(addr){
+      try{
+        navigator.clipboard.writeText(addr);
+        alert('Address nakopya: ' + addr);
+      }catch(e){
+        // fallback
+        const t = document.createElement('textarea');
+        t.value = addr; document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+        alert('Address nakopya: ' + addr);
+      }
+    }
+    document.getElementById('copyBtn').addEventListener('click', ()=>copy(addrText));
+    document.getElementById('copyBtn2').addEventListener('click', ()=>copy(addrText));
+
+    // calculator
+    const els = {
+      txCount: document.getElementById('txCount'),
+      trxPrice: document.getElementById('trxPrice'),
+      feeNo: document.getElementById('feeNo'),
+      feeYes: document.getElementById('feeYes'),
+      saveDay: document.getElementById('saveDay'),
+      saveMonth: document.getElementById('saveMonth'),
+      recalc: document.getElementById('recalc')
+    };
+    function fmt(n,d=2){return Number(n).toFixed(d)}
+    function recalc(){
+      const tx = Math.max(0, Number(els.txCount.value||0));
+      const price = Math.max(0, Number(els.trxPrice.value||0));
+      const feeNo = Math.max(0, Number(els.feeNo.value||0));
+      const feeYes = Math.max(0, Number(els.feeYes.value||0));
+      const savePerTx = Math.max(0, feeNo - feeYes);
+      const saveTRXDay = savePerTx * tx;
+      const saveTRXMonth = saveTRXDay * 30;
+      els.saveDay.textContent = `Tipid/araw: ${fmt(saveTRXDay,1)} TRX`;
+      els.saveMonth.textContent = `Tipid/buwan: $${fmt(saveTRXMonth*price)} (~${fmt(saveTRXMonth,1)} TRX)`;
+    }
+    ['input','change'].forEach(ev=>{
+      Object.values({a:els.txCount,b:els.trxPrice,c:els.feeNo,d:els.feeYes}).forEach(el=>el.addEventListener(ev,recalc));
+    });
+    els.recalc.addEventListener('click', recalc);
+    recalc();
+  </script>
+</body>
+</html>
