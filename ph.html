@@ -124,6 +124,27 @@ html, body { overflow-x: hidden; }
 @media (max-width: 340px) {
   .sticky .btn { font-size: 14px; letter-spacing: 0; }
 }
+    /* --- Smaller copy button on small screens --- */
+@media (max-width: 480px) {
+  /* уменьшаем только outline-кнопку */
+  .sticky .btn.outline {
+    flex: 0 0 42%;              /* уже, чем основная кнопка */
+    font-size: 14px;
+    padding: 8px 6px;
+    min-height: 40px;
+  }
+  .sticky .btn:not(.outline) {
+    flex: 1 1 58%;              /* основная кнопка шире */
+  }
+}
+
+@media (max-width: 360px) {
+  .sticky .btn.outline {
+    font-size: 13px;
+    padding: 7px 5px;
+    min-height: 38px;
+  }
+}
   </style>
 </head>
 <body>
