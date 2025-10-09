@@ -75,39 +75,58 @@
     /* --- Sticky bar: mobile-safe --- */
 html, body { overflow-x: hidden; } /* страховка от горизонтального скролла */
 
-.sticky{
-  position:fixed;left:0;right:0;bottom:0;z-index:50;
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-  background:linear-gradient(0deg,rgba(10,12,22,.95),rgba(10,12,22,.6) 60%,transparent);
-  backdrop-filter:saturate(120%) blur(6px);
-  box-sizing:border-box;max-width:100%;
+/* --- Sticky bar: adaptive two buttons --- */
+html, body { overflow-x: hidden; }
+
+.sticky {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  background: linear-gradient(0deg, rgba(10,12,22,.95), rgba(10,12,22,.6) 60%, transparent);
+  backdrop-filter: saturate(120%) blur(6px);
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
-.sticky .btn{
-  flex:1 1 0;                 /* равномерно делят строку */
-  min-width:0;                /* позволяют ужаться */
-  max-width:100%;
-  white-space:nowrap;         /* не переносят длинные подписи */
-  overflow:hidden;text-overflow:ellipsis;
-  min-height:44px;padding:12px 14px;font-size:16px;line-height:1.15;
+.sticky .btn {
+  flex: 1 1 50%;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  min-height: 46px;
+  padding: 12px 10px;
 }
 
-/* контент не перекрывается панелью (1 ряд кнопок) */
-.wrap{ padding-bottom:132px; }
+/* немного места под панель */
+.wrap { padding-bottom: 132px; }
 
-/* Узкие экраны: складываем кнопки в ДВЕ строки без переполнения */
-@media (max-width: 480px){
-  .sticky{ flex-wrap:wrap; gap:8px;
-           padding:8px 10px calc(10px + env(safe-area-inset-bottom)); }
-  .sticky .btn{ flex:1 1 100%; min-height:42px; padding:10px 12px; font-size:15px; }
-  /* больше места под панель (2 ряда) */
-  .wrap{ padding-bottom:176px; }
+/* 🔹 узкие экраны — чуть меньше шрифт, но всё ещё 2 кнопки в ряд */
+@media (max-width: 420px) {
+  .sticky { gap: 6px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); }
+  .sticky .btn {
+    font-size: 15px;
+    padding: 10px 8px;
+    min-height: 44px;
+  }
+  .wrap { padding-bottom: 140px; }
 }
 
-/* Очень узкие (≤340px) — чуть меньше шрифт */
-@media (max-width: 340px){
-  .sticky .btn{ font-size:14px; }
+/* 🔹 сверхузкие (320px и меньше) — автоужимание текста */
+@media (max-width: 340px) {
+  .sticky .btn {
+    font-size: 14px;
+    letter-spacing: 0;
+  }
 }
   </style>
 </head>
