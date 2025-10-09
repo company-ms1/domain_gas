@@ -74,6 +74,8 @@
     @media(max-width:860px){.title{font-size:24px}.row2,.res{grid-template-columns:1fr}.wrap{padding-bottom:120px}}
     /* --- Sticky bar: adaptive two buttons --- */
 html, body { overflow-x: hidden; }
+/* --- Sticky bar: adaptive two buttons (PH) --- */
+html, body { overflow-x: hidden; }
 
 .sticky {
   position: fixed;
@@ -98,16 +100,16 @@ html, body { overflow-x: hidden; }
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
   min-height: 46px;
   padding: 12px 10px;
 }
 
-/* немного места под панель */
+/* место под панель */
 .wrap { padding-bottom: 132px; }
 
-/* 🔹 узкие экраны — чуть меньше шрифт, но всё ещё 2 кнопки в ряд */
+/* узкие экраны — остаются 2 кнопки в ряд, только компактнее */
 @media (max-width: 420px) {
   .sticky { gap: 6px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); }
   .sticky .btn {
@@ -118,12 +120,9 @@ html, body { overflow-x: hidden; }
   .wrap { padding-bottom: 140px; }
 }
 
-/* 🔹 сверхузкие (320px и меньше) — автоужимание текста */
+/* сверхузкие (≤340px) — ещё компактнее шрифт */
 @media (max-width: 340px) {
-  .sticky .btn {
-    font-size: 14px;
-    letter-spacing: 0;
-  }
+  .sticky .btn { font-size: 14px; letter-spacing: 0; }
 }
   </style>
 </head>
