@@ -124,25 +124,33 @@ html, body { overflow-x: hidden; }
 @media (max-width: 340px) {
   .sticky .btn { font-size: 14px; letter-spacing: 0; }
 }
-    /* --- Smaller copy button on small screens --- */
+ /* --- Smaller "copy" button near wallet address on mobile --- */
 @media (max-width: 480px) {
-  /* уменьшаем только outline-кнопку */
-  .sticky .btn.outline {
-    flex: 0 0 42%;              /* уже, чем основная кнопка */
-    font-size: 14px;
-    padding: 8px 6px;
-    min-height: 40px;
+  .addr-line {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
   }
-  .sticky .btn:not(.outline) {
-    flex: 1 1 58%;              /* основная кнопка шире */
+  .copy {
+    min-width: auto;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .addr-box {
+    font-size: 13px;
+    padding: 10px;
+    word-break: break-all;
   }
 }
 
 @media (max-width: 360px) {
-  .sticky .btn.outline {
+  .copy {
     font-size: 13px;
-    padding: 7px 5px;
-    min-height: 38px;
+    padding: 8px 10px;
+  }
+  .addr-box {
+    font-size: 12px;
   }
 }
   </style>
