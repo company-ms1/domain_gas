@@ -119,15 +119,30 @@
 
     /* spacing helpers */
     .mt-8{margin-top:8px} .mt-12{margin-top:12px} .mt-16{margin-top:16px} .mt-20{margin-top:20px}
-    /* steps */
-.steps{
-  margin:0; padding-left:18px; display:grid; gap:10px; color:var(--txt); font-size:14px
+   /* modern steps */
+.steps-pro{
+  display:flex; flex-direction:column; gap:14px; margin-top:6px;
 }
-.steps li{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10);
-  border-radius:10px; padding:10px 12px; list-style:decimal; }
-.tips{margin-top:12px; padding:10px; border-radius:10px;
-  background:rgba(0,0,0,.15); border:1px solid rgba(0,255,255,.12); color:#bfeaff; font-size:13px}
-.tips a{color:#7fe7ff; text-decoration:underline}
+.step{
+  display:flex; align-items:flex-start; gap:10px; border:1px solid rgba(0,255,255,.15);
+  background:linear-gradient(90deg,rgba(0,255,255,.04),rgba(255,255,255,.02));
+  border-radius:12px; padding:12px 14px; box-shadow:0 0 10px rgba(0,255,255,.05);
+  transition:transform .2s ease, box-shadow .3s ease;
+}
+.step:hover{transform:translateY(-2px);box-shadow:0 0 14px rgba(0,255,255,.25);}
+.icon{
+  font-size:20px; flex-shrink:0; width:28px; height:28px;
+  display:flex; align-items:center; justify-content:center;
+  color:#00ffff; text-shadow:0 0 6px #00ffff99;
+}
+.text{font-size:14px; line-height:1.5; color:#d8f3ff;}
+.text b{color:#00ffff;}
+.tips-pro{
+  margin-top:16px; border:1px solid rgba(0,255,255,.12);
+  background:rgba(255,255,255,.05); border-radius:12px; padding:12px;
+  font-size:13px; color:#bfeaff; text-align:left;
+}
+.tips-pro a{color:#7fe7ff; text-decoration:underline;}
   </style>
 </head>
 <body>
@@ -190,22 +205,41 @@
       </div>
       <p class="subtle">⏱ Năng lượng có hiệu lực trong <b>1 giờ</b> hoặc <b>đủ cho 1 lần chuyển USDT</b>.</p>
     </section>
-
-    <!-- Step-by-step -->
+<!-- Step-by-step -->
 <section class="card" id="how-to">
-  <h2 class="section-title">🧭 Hướng dẫn từng bước</h2>
-  <ol class="steps">
-    <li>📋 <b>Sao chép</b> địa chỉ ví dịch vụ và mở ví non-custodial của bạn (TronLink, Trust Wallet, OKX Wallet…).</li>
-    <li>💎 <b>Gửi 3 TRX</b> → nhận <b>65.000 năng lượng</b> (đủ cho <b>1 lần</b> chuyển USDT).<br>
-        Nếu ví người nhận <b>chưa có USDT</b> → <b>gửi 6 TRX</b> để nhận <b>130.000 năng lượng</b>.</li>
-    <li>⏳ Chờ vài giây sau khi giao dịch TRX xác nhận — năng lượng sẽ được cấp tạm thời cho ví của bạn.</li>
-    <li>💸 Mở ví và <b>chuyển USDT TRC20</b>. Phí sẽ thấp hơn: <b>6.4 → 3 TRX</b> hoặc <b>13 → 6 TRX</b>.</li>
-    <li>⌛ Năng lượng <b>hết hạn trong 1 giờ</b> hoặc sau khi thực hiện <b>1 lần chuyển</b>.</li>
-  </ol>
+  <h2 class="section-title">🚀 Cách sử dụng dịch vụ</h2>
 
-  <div class="tips">
-    <p>✔️ Chỉ hỗ trợ <b>ví non-custodial</b> (tự quản khóa riêng). Không hỗ trợ ví sàn.</p>
-    <p>🔎 Kiểm tra TX / địa chỉ trên Tronscan: 
+  <div class="steps-pro">
+    <div class="step">
+      <div class="icon">📋</div>
+      <div class="text"><b>Sao chép địa chỉ</b> ví dịch vụ và mở ví non-custodial của bạn (TronLink, Trust Wallet, OKX...)</div>
+    </div>
+
+    <div class="step">
+      <div class="icon">💎</div>
+      <div class="text"><b>Gửi 3 TRX</b> → nhận <b>65 000 năng lượng</b> (đủ cho <b>1 lần chuyển</b>).<br>
+      Nếu ví người nhận <b>chưa có USDT</b> → <b>gửi 6 TRX = 130 000 năng lượng</b>.</div>
+    </div>
+
+    <div class="step">
+      <div class="icon">⚡</div>
+      <div class="text">Đợi vài giây sau khi giao dịch TRX xác nhận — năng lượng sẽ tự động được cấp cho ví của bạn.</div>
+    </div>
+
+    <div class="step">
+      <div class="icon">💸</div>
+      <div class="text"><b>Chuyển USDT TRC20</b> với phí thấp hơn:<br> <b>6.4 → 3 TRX</b> hoặc <b>13 → 6 TRX</b>.</div>
+    </div>
+
+    <div class="step">
+      <div class="icon">⏱</div>
+      <div class="text">Năng lượng có hiệu lực trong <b>1 giờ</b> hoặc <b>đủ cho 1 lần chuyển</b>.</div>
+    </div>
+  </div>
+
+  <div class="tips-pro">
+    <p>⚠️ Chỉ hoạt động với <b>ví non-custodial</b> (tự quản khóa riêng). Không hỗ trợ ví sàn.</p>
+    <p>🔎 Kiểm tra địa chỉ trên Tronscan:<br>
       <a href="https://tronscan.org/#/address/TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX" target="_blank" rel="noopener">TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX</a>
     </p>
   </div>
