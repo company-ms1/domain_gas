@@ -16,6 +16,11 @@
       "destination": "/ph.html"
     },
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "vn.gasfree4you.com" }],
+      "destination": "/vn.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index_03.html"
     }
