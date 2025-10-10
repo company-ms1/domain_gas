@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#0b101b"/>
+  <title>USDT TRC20 Ücretini %50 Azalt — TRON Enerji Kirala</title>
+  <meta name="description" content="TRON enerji kiralayarak USDT TRC20 transfer ücretini %50 azalt. 3 TRX → 65.000 enerji (1 transfer için yeterli). Alıcı cüzdanda USDT yoksa: 6 TRX → 130.000 enerji. Sadece non-custodial cüzdanlar için.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Yandex.Metrika -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104596167', 'ym');
+    ym(104596167, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/104596167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika -->
+
+  <style>
+    :root{
+      --c1:#00eaff; --c2:#00ffff; --bg:#0b101b; --txt:#d6eaff; --muted:#9ec7da;
+      --card-bg: rgba(255,255,255,.05); --card-br: 14px; --gap: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#fff; background:radial-gradient(1200px 600px at 30% -10%, #16213a 0%, #0b101b 60%, #070a12 100%);
+      overflow-x:hidden;
+    }
+    .wrap{max-width:760px; margin:0 auto; padding:20px 14px 110px; display:flex; flex-direction:column; gap: var(--gap);}
+    header{text-align:center}
+    .brand{font-weight:800; font-size:clamp(20px,5vw,28px); color:var(--c1); text-shadow:0 0 10px #00eaff55,0 0 20px #00eaff33}
+    .tagline{margin-top:6px; color:#cfeeff; font-size:14px}
+    .card{
+      background:var(--card-bg); border:1px solid rgba(0,255,255,.14);
+      border-radius:var(--card-br); padding:18px; backdrop-filter:blur(8px);
+      box-shadow:0 8px 28px rgba(0,0,0,.25);
+    }
+    .section-title{margin:0 0 12px; font-weight:800; font-size:16px; color:var(--c2); text-align:center;}
+    .divider{height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent); margin:14px 0}
+
+    /* table */
+    .table{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:center}
+    .th{
+      padding:12px 10px;border-radius:10px;text-align:center;font-weight:800;
+      color:#001018;background:linear-gradient(90deg,#00e0ff,#0078ff);
+    }
+    .td{
+      padding:12px 10px;border-radius:10px;text-align:center;font-weight:700;
+      background:rgba(255,255,255,.06);
+    }
+    .td.alt{background:rgba(255,255,255,.10)}
+    .better{color:#00ffff;font-weight:900}
+    .save-note{margin-top:8px;text-align:center;color:#9fe9ff;font-size:13px}
+
+    /* gauge */
+    .gauge{margin-top:14px;padding:14px;border:1px solid rgba(0,255,255,.12);
+      border-radius:12px;background:rgba(0,0,0,.15);}
+    .g-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:#aee8ff;font-size:13px}
+    .g-percent{font-size:22px;font-weight:800;color:#00ffff;text-shadow:0 0 10px #00ffff66}
+    .g-bar{position:relative;height:20px;border-radius:12px;background:rgba(255,255,255,.1);overflow:hidden}
+    .g-fill{position:absolute;left:0;top:0;height:100%;width:0%;
+      background:linear-gradient(90deg,#00e0ff,#00ffff);box-shadow:0 0 20px #00ffff99;border-radius:12px;transition:width 1.4s ease}
+    .legend{display:flex;justify-content:space-around;margin-top:12px;font-size:12.5px;color:#bfeaff}
+    .legend .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06)}
+    .dot1,.dot2{width:10px;height:10px;border-radius:50%}
+    .dot1{background:#66bfff}.dot2{background:#00ffff}
+
+    /* wallet */
+    .wallet{font-size:15px;word-break:break-all;color:var(--c1);font-weight:800;letter-spacing:.3px;text-align:center}
+    .actions{display:flex;gap:10px;margin-top:12px}
+    .btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:13px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:800;
+      box-shadow:0 8px 20px rgba(0,144,255,.3);}
+    .btn.primary{background:linear-gradient(90deg,#00e0ff,#0090ff);color:#001018}
+    .btn.secondary{background:rgba(255,255,255,.08);color:#e9f8ff;border:1px solid rgba(255,255,255,.16)}
+    .subtle{margin-top:8px;text-align:center;font-size:13px;color:#a8d8ee}
+
+    /* sticky */
+    .sticky{position:fixed;left:0;right:0;bottom:0;padding:12px;z-index:50;
+      background:linear-gradient(0deg,rgba(7,10,18,.95),rgba(7,10,18,.6));backdrop-filter:blur(10px);
+      border-top:1px solid rgba(0,255,255,.12);}
+    .sticky-in{max-width:760px;margin:0 auto;display:flex;gap:10px}
+    .sticky .btn{padding:14px 16px}
+    footer{max-width:760px;margin:16px auto 90px;padding:0 14px;color:#cbe2f0;font-size:12.5px;text-align:center}
+    footer a{color:#7fe7ff;text-decoration:underline}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">⚡ USDT TRC20 Ücretini %50 Azalt</div>
+      <div class="tagline">TRON <b>enerjisi kiralayarak</b> transfer ücretini düşür.</div>
+    </header>
+
+    <!-- Compare -->
+    <section class="card">
+      <h2 class="section-title">💸 Ücret Karşılaştırması</h2>
+      <div class="table">
+        <div class="th">Normal</div>
+        <div class="th">Hizmet ile</div>
+        <div class="td alt">6.4 TRX</div>
+        <div class="td better">3 TRX</div>
+        <div class="td alt">13 TRX</div>
+        <div class="td better">6 TRX</div>
+      </div>
+      <p class="save-note">💰 Her transferde yaklaşık %50 tasarruf</p>
+      <div class="divider"></div>
+      <div class="gauge">
+        <div class="g-top">
+          <span>Hizmetle tasarruf oranı</span>
+          <span class="g-percent" id="gPercent">0%</span>
+        </div>
+        <div class="g-bar">
+          <div class="g-fill" id="gFill"></div>
+        </div>
+        <div class="legend">
+          <span class="pill"><span class="dot1"></span>Normal: 6.4 / 13 TRX</span>
+          <span class="pill"><span class="dot2"></span>Hizmet: 3 / 6 TRX</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wallet -->
+    <section class="card">
+      <h2 class="section-title">📬 Hizmet Cüzdanı</h2>
+      <div class="wallet" id="wallet">TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX</div>
+      <div class="actions">
+        <button class="btn primary" onclick="copyWallet()">📋 Adresi Kopyala</button>
+        <a class="btn secondary" href="https://tronscan.org/#/address/TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX" target="_blank">🔎 Tronscan</a>
+      </div>
+      <p class="subtle">⏱ Enerji <b>1 saat</b> geçerlidir veya <b>1 transfer</b> için yeterlidir.</p>
+    </section>
+
+    <!-- Info -->
+    <section class="card">
+      <h2 class="section-title">🔋 TRON Enerjisi Nedir?</h2>
+      <p>TRON ağı üzerindeki işlemlerde ücretleri düşüren bir kaynak. Normalde enerji elde etmek için TRX stake edilir.</p>
+      <p>Bu hizmet sayesinde enerji <b>geçici olarak kiralanır</b> — staking gerekmez, hem zaman hem maliyet kazancı sağlar.</p>
+      <p>3 TRX gönder → <b>65.000 enerji</b> al (1 transfer için). Eğer alıcı cüzdanda USDT yoksa → <b>6 TRX = 130.000 enerji</b>.</p>
+      <p>Yalnızca <b>non-custodial</b> (kendi anahtarına sahip) cüzdanlarla çalışır.</p>
+    </section>
+
+    <!-- Social -->
+    <section class="card">
+      <h2 class="section-title">📣 Güncellemeler ve API</h2>
+      <p>Yeni duyurular ve ipuçları için Telegram kanalını takip et:</p>
+      <p><a href="https://t.me/+Jo9qMKi0MxtkNWMy" target="_blank" style="color:#7fe7ff;text-decoration:underline">t.me/+Jo9qMKi0MxtkNWMy</a></p>
+      <p><b>API</b> erişimi Telegram bot üzerinden sağlanır: <a href="https://t.me/saving_trx_bot" target="_blank" style="color:#7fe7ff;text-decoration:underline">@saving_trx_bot</a></p>
+    </section>
+  </div>
+
+  <!-- sticky -->
+  <div class="sticky">
+    <div class="sticky-in">
+      <button class="btn primary" onclick="copyWallet()">📋 Adresi Kopyala</button>
+      <a class="btn secondary" href="https://t.me/saving_trx_bot" target="_blank">🤖 API / Bot</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Hizmet tamamen <b>on-chain</b> çalışır. USDT’nizi saklamaz, yalnızca TRON enerji kiralama yoluyla TRC20 transfer ücretlerini azaltır.</p>
+    <p>Tronscan adresi: <a href="https://tronscan.org/#/address/TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX" target="_blank">TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX</a></p>
+  </footer>
+
+  <script>
+    function copyWallet(){
+      const addr=document.getElementById('wallet').innerText.trim();
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(addr).then(()=>toast('✅ Adres kopyalandı'));
+      }else{
+        const ta=document.createElement('textarea'); ta.value=addr; document.body.appendChild(ta); ta.select();
+        try{document.execCommand('copy'); toast('✅ Adres kopyalandı');}catch(e){alert('Kopyalamak için uzun basın');}
+        ta.remove();
+      }
+    }
+    function toast(msg){
+      const t=document.createElement('div');
+      t.textContent=msg;
+      t.style.position='fixed';t.style.left='50%';t.style.bottom='76px';t.style.transform='translateX(-50%)';
+      t.style.background='rgba(0,0,0,.7)';t.style.color='#fff';t.style.padding='10px 14px';
+      t.style.borderRadius='10px';t.style.fontWeight='700';t.style.zIndex='9999';
+      document.body.appendChild(t);setTimeout(()=>t.remove(),1500);
+    }
+
+    const fill=document.getElementById("gFill");
+    const gPercent=document.getElementById("gPercent");
+    let cur=0,target=55;
+    function animateGauge(){
+      cur+=(target-cur)*0.07;
+      if(target-cur<0.2)cur=target;
+      fill.style.width=cur+"%";
+      gPercent.textContent=Math.round(cur*0.925)+"%";
+      if(cur<target)requestAnimationFrame(animateGauge);
+    }
+    requestAnimationFrame(animateGauge);
+  </script>
+</body>
+</html>
