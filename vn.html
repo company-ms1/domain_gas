@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#0b101b"/>
+  <title>Tiết kiệm phí USDT TRC20 — Thuê năng lượng TRON</title>
+  <meta name="description" content="Dịch vụ giúp tiết kiệm phí chuyển USDT trên mạng TRC20 bằng cách thuê năng lượng TRON. 3 TRX → 65 000 năng lượng (đủ cho 1 lần chuyển). Nếu ví nhận chưa có USDT: 6 TRX → 130 000 năng lượng. Chỉ cho ví non-custodial.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --c1:#00eaff; --c2:#00ffff; --bg:#0b101b; --txt:#d6eaff; --muted:#9ec7da;
+      --card-bg: rgba(255,255,255,.05); --card-br: 14px; --gap: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#fff; background:radial-gradient(1200px 600px at 30% -10%, #16213a 0%, #0b101b 60%, #070a12 100%);
+      overflow-x:hidden;
+    }
+    .wrap{max-width:760px; margin:0 auto; padding:20px 14px 110px; display:flex; flex-direction:column; gap: var(--gap);}
+    header{padding:8px 0 2px; text-align:center}
+    .brand{font-weight:800; font-size:clamp(20px,5vw,28px); color:var(--c1); text-shadow:0 0 10px #00eaff55,0 0 20px #00eaff33}
+    .tagline{margin-top:6px; color:#cfeeff; font-size:14px}
+    .card{
+      background:var(--card-bg); border:1px solid rgba(0,255,255,.14);
+      border-radius:var(--card-br); padding:18px; backdrop-filter:blur(8px);
+      box-shadow:0 8px 28px rgba(0,0,0,.25);
+    }
+    .card + .card{margin-top:0} /* мы уже используем gap контейнера */
+
+    .section-title{
+      margin:0 0 12px; font-weight:800; font-size:16px; color:var(--c2); text-align:center;
+    }
+    .divider{height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent); margin:14px 0}
+
+    /* compare table */
+    .table{
+      display:grid; gap:10px;
+      grid-template-columns: 1fr 1fr;
+      align-items:center;
+    }
+    .th{
+      padding:12px 10px; border-radius:10px; text-align:center; font-weight:800;
+      color:#001018; background:linear-gradient(90deg,#00e0ff,#0078ff);
+    }
+    .td{
+      padding:12px 10px; border-radius:10px; text-align:center; font-weight:700;
+      background:rgba(255,255,255,.06);
+    }
+    .td.alt{background:rgba(255,255,255,.10)}
+    .better{color:#00ffff; font-weight:900}
+    .save-note{margin-top:8px; text-align:center; color:#9fe9ff; font-size:13px}
+
+    /* savings gauge (informative) */
+    .gauge{
+      margin-top:14px; padding:14px; border:1px solid rgba(0,255,255,.12);
+      border-radius:12px; background:rgba(0,0,0,.15);
+    }
+    .g-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; color:#aee8ff; font-size:13px}
+    .g-percent{font-size:22px; font-weight:800; color:#00ffff; text-shadow:0 0 10px #00ffff66}
+    .g-bar{position:relative; height:18px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; border:1px solid rgba(255,255,255,.15)}
+    .g-fill{position:absolute; left:0; top:0; height:100%; width:0%;
+      background:linear-gradient(90deg,#00e0ff,#00ffff); box-shadow:0 0 16px #00ffff55 inset, 0 0 10px #00eaff55;
+      transition:width 1.4s cubic-bezier(.22,.8,.2,1);
+    }
+    .g-ticks{position:relative; height:16px; margin-top:6px; display:flex; justify-content:space-between; color:#aee8ff; font-size:12px}
+    .tick{position:relative; flex:1; text-align:center}
+    .tick::before{
+      content:""; position:absolute; left:50%; top:-6px; width:1px; height:6px; background:rgba(255,255,255,.25); transform:translateX(-50%);
+    }
+    .legend{display:flex; justify-content:space-between; gap:10px; margin-top:10px; font-size:12.5px; color:#bfeaff}
+    .legend .pill{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.06)}
+    .dot1,.dot2{width:10px; height:10px; border-radius:50%}
+    .dot1{background:#66bfff} /* bình thường */
+    .dot2{background:#00ffff} /* dịch vụ */
+
+    /* wallet & actions */
+    .wallet{font-size:15px; word-break:break-all; color:var(--c1); font-weight:800; letter-spacing:.3px; text-align:center}
+    .actions{display:flex; gap:10px; margin-top:12px}
+    .btn{
+      flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:13px 14px; border-radius:12px; border:none; cursor:pointer;
+      font-weight:800; box-shadow:0 8px 20px rgba(0,144,255,.3);
+    }
+    .btn.primary{background:linear-gradient(90deg,#00e0ff,#0090ff); color:#001018}
+    .btn.secondary{background:rgba(255,255,255,.08); color:#e9f8ff; border:1px solid rgba(255,255,255,.16); box-shadow:none}
+    .subtle{margin-top:8px; text-align:center; font-size:13px; color:#a8d8ee}
+
+    /* lists */
+    .list{display:grid; gap:10px}
+    .li{padding:12px; border-radius:10px; background:rgba(255,255,255,.06); color:var(--txt); font-size:14px}
+
+    /* sticky bar */
+    .sticky{
+      position:fixed; left:0; right:0; bottom:0; padding:12px; z-index:50;
+      background:linear-gradient(0deg,rgba(7,10,18,.95),rgba(7,10,18,.6)); backdrop-filter:blur(10px);
+      border-top:1px solid rgba(0,255,255,.12);
+    }
+    .sticky-in{max-width:760px; margin:0 auto; display:flex; gap:10px}
+    .sticky .btn{padding:14px 16px}
+
+    /* footer */
+    footer{max-width:760px; margin:16px auto 90px; padding:0 14px; color:#cbe2f0; font-size:12.5px; text-align:center}
+    footer a{color:#7fe7ff; text-decoration:underline}
+
+    /* spacing helpers */
+    .mt-8{margin-top:8px} .mt-12{margin-top:12px} .mt-16{margin-top:16px} .mt-20{margin-top:20px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">⚡ Dịch vụ tiết kiệm phí USDT trên mạng TRC20</div>
+      <div class="tagline">Giảm phí chuyển bằng cách <b>thuê năng lượng TRON</b> thay vì tự stake.</div>
+    </header>
+
+    <!-- Compare -->
+    <section class="card">
+      <h2 class="section-title">💸 So sánh chi phí chuyển USDT</h2>
+
+      <div class="table" role="table" aria-label="Bảng so sánh chi phí">
+        <div class="th" role="columnheader">Bình thường</div>
+        <div class="th" role="columnheader">Với dịch vụ</div>
+
+        <div class="td alt" role="cell">6.4 TRX</div>
+        <div class="td better" role="cell">3 TRX</div>
+
+        <div class="td alt" role="cell">13 TRX</div>
+        <div class="td better" role="cell">6 TRX</div>
+      </div>
+
+      <p class="save-note">💰 Tiết kiệm ~50% cho mỗi giao dịch</p>
+
+      <div class="divider"></div>
+
+      <!-- Savings gauge -->
+<!-- Savings gauge -->
+<div class="gauge" aria-label="Thước đo tiết kiệm">
+  <div class="g-top">
+    <span>Tiết kiệm khi dùng dịch vụ</span>
+    <span class="g-percent" id="gPercent">0%</span>
+  </div>
+
+  <div class="g-bar" style="border:none; background:rgba(255,255,255,.1); height:20px; border-radius:12px; overflow:visible;">
+    <div class="g-fill" id="gFill"
+         style="position:absolute; left:0; top:0; height:100%;
+                width:0%; background:linear-gradient(90deg,#00e0ff,#00ffff);
+                border-radius:12px; box-shadow:0 0 20px #00ffff99;">
+    </div>
+
+  </div>
+
+  <div class="legend" style="margin-top:12px; justify-content:space-around;">
+    <span class="pill"><span class="dot1"></span>Bình thường: 6.4 / 13 TRX</span>
+    <span class="pill"><span class="dot2"></span>Dịch vụ: 3 / 6 TRX</span>
+  </div>
+</div>
+    </section>
+
+    <!-- Wallet -->
+    <section class="card">
+      <h2 class="section-title">📬 Địa chỉ ví dịch vụ</h2>
+      <div class="wallet" id="wallet">TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX</div>
+      <div class="actions">
+        <button class="btn primary" onclick="copyWallet()">📋 Sao chép địa chỉ</button>
+        <a class="btn secondary" href="https://tronscan.org/#/address/TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX" target="_blank" rel="noopener">🔎 Tronscan</a>
+      </div>
+      <p class="subtle">⏱ Năng lượng có hiệu lực trong <b>1 giờ</b> hoặc <b>đủ cho 1 lần chuyển USDT</b>.</p>
+    </section>
+
+    <!-- How it helps -->
+    <section class="card">
+      <h2 class="section-title">🔋 Năng lượng TRON là gì?</h2>
+      <div class="list">
+        <div class="li">Năng lượng là tài nguyên giảm phí giao dịch trên TRON. Được tạo khi người dùng <i>đóng băng (stake)</i> TRX.</div>
+        <div class="li">Với dịch vụ này, bạn <b>thuê tạm thời</b> năng lượng — không cần tự stake, tiết kiệm thời gian & chi phí.</div>
+        <div class="li">Gửi <b>3 TRX</b> → nhận <b>65 000 năng lượng</b> (đủ cho 1 lần chuyển). Nếu ví người nhận <b>chưa có USDT</b> → cần <b>130 000 năng lượng (6 TRX)</b>.</div>
+        <div class="li">Phù hợp <b>chỉ với ví non-custodial</b> (ví tự quản). Không hỗ trợ ví bị quản lý bởi bên thứ ba.</div>
+      </div>
+    </section>
+
+    <!-- Social / CTA -->
+    <section class="card">
+      <h2 class="section-title">📣 Cập nhật & API</h2>
+      <div class="list">
+        <div class="li">Theo dõi kênh Telegram để nhận thông báo và mẹo tiết kiệm: <br>
+          <a href="https://t.me/+Jo9qMKi0MxtkNWMy" target="_blank" rel="noopener" style="color:#7fe7ff;text-decoration:underline">t.me/+Jo9qMKi0MxtkNWMy</a>
+        </div>
+        <div class="li"><b>API</b> được cung cấp thông qua Telegram Bot: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" style="color:#7fe7ff;text-decoration:underline">@saving_trx_bot</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- sticky actions -->
+  <div class="sticky">
+    <div class="sticky-in">
+      <button class="btn primary" onclick="copyWallet()">📋 Sao chép</button>
+      <a class="btn secondary" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">🤖 API / Bot</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Hoạt động 100% on-chain. Dịch vụ được thiết kế <b>để tiết kiệm phí USDT TRC20</b> bằng năng lượng TRON tạm thời.</p>
+    <p>Ví dụ địa chỉ trên Tronscan: <a href="https://tronscan.org/#/address/TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX" target="_blank" rel="noopener">TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX</a></p>
+  </footer>
+
+  <script>
+    function copyWallet(){
+      const addr=document.getElementById('wallet').innerText.trim();
+      if(navigator.clipboard&&window.isSecureContext){
+        navigator.clipboard.writeText(addr).then(()=>toast('✅ Đã sao chép địa chỉ'));
+      }else{
+        const ta=document.createElement('textarea'); ta.value=addr; document.body.appendChild(ta); ta.select();
+        try{document.execCommand('copy'); toast('✅ Đã sao chép địa chỉ');}catch(e){alert('Hãy chạm và giữ để sao chép');}
+        ta.remove();
+      }
+    }
+    function toast(msg){
+      const t=document.createElement('div');
+      t.textContent=msg;
+      t.style.position='fixed'; t.style.left='50%'; t.style.bottom='76px'; t.style.transform='translateX(-50%)';
+      t.style.background='rgba(0,0,0,.7)'; t.style.color='#fff'; t.style.padding='10px 14px'; t.style.borderRadius='10px';
+      t.style.fontWeight='700'; t.style.boxShadow='0 8px 20px rgba(0,0,0,.35)'; t.style.zIndex='9999';
+      document.body.appendChild(t); setTimeout(()=>t.remove(),1500);
+    }
+
+
+
+      const fill = document.getElementById("gFill");
+  const gPercent = document.getElementById("gPercent");
+  const labelTip = document.getElementById("labelTip");
+  let cur = 0, target = 55; // визуальная ширина 80% = 50% восприятия
+  function animateGauge(){
+    cur += (target - cur) * 0.07;
+    if (target - cur < 0.2) cur = target;
+    fill.style.width = cur + "%";
+    gPercent.textContent = Math.round(cur * 0.925) + "%"; // пересчёт чтобы показать 50%
+    if (cur < target){
+      requestAnimationFrame(animateGauge);
+    } else {
+      labelTip.style.opacity = "1";
+    }
+  }
+  requestAnimationFrame(animateGauge);
+
+
+
+  </script>
+</body>
+</html>
