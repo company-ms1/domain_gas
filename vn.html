@@ -119,6 +119,15 @@
 
     /* spacing helpers */
     .mt-8{margin-top:8px} .mt-12{margin-top:12px} .mt-16{margin-top:16px} .mt-20{margin-top:20px}
+    /* steps */
+.steps{
+  margin:0; padding-left:18px; display:grid; gap:10px; color:var(--txt); font-size:14px
+}
+.steps li{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10);
+  border-radius:10px; padding:10px 12px; list-style:decimal; }
+.tips{margin-top:12px; padding:10px; border-radius:10px;
+  background:rgba(0,0,0,.15); border:1px solid rgba(0,255,255,.12); color:#bfeaff; font-size:13px}
+.tips a{color:#7fe7ff; text-decoration:underline}
   </style>
 </head>
 <body>
@@ -181,6 +190,26 @@
       </div>
       <p class="subtle">⏱ Năng lượng có hiệu lực trong <b>1 giờ</b> hoặc <b>đủ cho 1 lần chuyển USDT</b>.</p>
     </section>
+
+    <!-- Step-by-step -->
+<section class="card" id="how-to">
+  <h2 class="section-title">🧭 Hướng dẫn từng bước</h2>
+  <ol class="steps">
+    <li>📋 <b>Sao chép</b> địa chỉ ví dịch vụ và mở ví non-custodial của bạn (TronLink, Trust Wallet, OKX Wallet…).</li>
+    <li>💎 <b>Gửi 3 TRX</b> → nhận <b>65.000 năng lượng</b> (đủ cho <b>1 lần</b> chuyển USDT).<br>
+        Nếu ví người nhận <b>chưa có USDT</b> → <b>gửi 6 TRX</b> để nhận <b>130.000 năng lượng</b>.</li>
+    <li>⏳ Chờ vài giây sau khi giao dịch TRX xác nhận — năng lượng sẽ được cấp tạm thời cho ví của bạn.</li>
+    <li>💸 Mở ví và <b>chuyển USDT TRC20</b>. Phí sẽ thấp hơn: <b>6.4 → 3 TRX</b> hoặc <b>13 → 6 TRX</b>.</li>
+    <li>⌛ Năng lượng <b>hết hạn trong 1 giờ</b> hoặc sau khi thực hiện <b>1 lần chuyển</b>.</li>
+  </ol>
+
+  <div class="tips">
+    <p>✔️ Chỉ hỗ trợ <b>ví non-custodial</b> (tự quản khóa riêng). Không hỗ trợ ví sàn.</p>
+    <p>🔎 Kiểm tra TX / địa chỉ trên Tronscan: 
+      <a href="https://tronscan.org/#/address/TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX" target="_blank" rel="noopener">TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX</a>
+    </p>
+  </div>
+</section>
 
     <!-- How it helps -->
     <section class="card">
