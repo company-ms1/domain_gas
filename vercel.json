@@ -6,7 +6,7 @@
       "destination": "/id.html"
     },
     {
-      "source": "/",
+      "source": "/:path((?!api|_next|.*\\..*).*)",
       "has": [{ "type": "host", "value": "gasfree4you.com" }],
       "destination": "/index_03.html"
     },
