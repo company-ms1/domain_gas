@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Energy API — Docs (EN/RU)</title>
+  <meta name="description" content="Energy API documentation with interactive Python examples. EN/RU bilingual page." />
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root{
+      --bg:#0b1020; --card:#0e1426; --muted:#8aa0b4; --text:#edf6ff; --accent:#6ee7ff; --accent2:#7df1b7; --border:rgba(255,255,255,.12);
+      --radius:18px; --shadow:0 10px 24px rgba(0,0,0,.35); --good:#16a34a; --warn:#eab308; --bad:#ef4444;
+      --ring:rgba(110,231,255,.28);
+    }
+    @media(prefers-color-scheme:light){
+      :root{ --bg:#f7fafc; --card:#fff; --muted:#5b7083; --text:#0b1020; --accent:#007aff; --accent2:#16a34a; --border:rgba(2,6,23,.10); --shadow:0 8px 18px rgba(2,6,23,.08); --ring:rgba(0,122,255,.25)}
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; background:var(--bg); color:var(--text)}
+    .wrap{max-width:1080px; margin:0 auto; padding:20px}
+    header{display:flex; gap:12px; align-items:center; justify-content:space-between; padding:10px 0; position:sticky; top:0; background:linear-gradient(0deg,rgba(0,0,0,.06),rgba(0,0,0,.06)); backdrop-filter:blur(8px); z-index:5}
+    .hgroup h1{margin:0; font-size:clamp(22px,5vw,34px)}
+    .hgroup p{margin:.25rem 0 0; color:var(--muted)}
+    .lang, .actions{display:flex; gap:8px}
+    .btn{appearance:none; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; border-radius:999px; cursor:pointer; font-weight:700}
+    .btn.primary{background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#001b1b; border:none}
+    .btn.ghost{background:transparent}
+    .btn:focus{outline:2px solid var(--ring); outline-offset:2px}
+
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px; margin:12px 0}
+    h2,h3{margin:.2rem 0 .6rem}
+    .muted{color:var(--muted)}
+
+    code,pre{font:600 13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    pre{background:rgba(255,255,255,.05); border:1px dashed var(--border); padding:12px; border-radius:14px; overflow:auto; position:relative}
+    pre .toolbar{position:absolute; top:8px; right:8px; display:flex; gap:6px}
+    .tool{font:12px/1 ui-monospace,monospace; padding:6px 8px; border-radius:8px; border:1px solid var(--border); background:rgba(0,0,0,.2); cursor:pointer}
+
+    table{width:100%; border-collapse:collapse; font-size:14px}
+    th,td{border-bottom:1px solid var(--border); padding:8px 6px; text-align:left; vertical-align:top}
+    th{opacity:.8}
+
+    .grid{display:grid; gap:12px; grid-template-columns:1.2fr .8fr}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
+    .pill{display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid var(--border); font-size:12px}
+    .get{background:rgba(110,231,255,.12)} .post{background:rgba(125,241,183,.12)}
+
+    .callout{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:14px; border:1px solid var(--border); background:rgba(110,231,255,.08)}
+    .callout.warn{background:rgba(234,179,8,.10)}
+    .callout.good{background:rgba(22,163,74,.10)}
+
+    details{border:1px solid var(--border); border-radius:14px; padding:10px 12px; background:rgba(255,255,255,.04)}
+    details summary{cursor:pointer; font-weight:700; outline:none}
+    details[open]{background:rgba(255,255,255,.06)}
+
+    mark{background:linear-gradient(90deg, rgba(110,231,255,.35), rgba(125,241,183,.35)); padding:0 .2em; border-radius:.25em}
+
+    .toc{position:sticky; top:70px; z-index:4; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:14px; padding:12px}
+    .toc a{display:block; margin:6px 0; color:var(--text); opacity:.9; text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+    .toc .endpoint{display:block; font-weight:700; margin-top:6px}
+.toc .desc{display:block; font-size:12px; color:var(--muted); margin:2px 0 8px}
+
+    .foot{margin:20px 0; font-size:13px; color:var(--muted)}
+
+      /* ===== Mobile tweaks (≤900px) ===== */
+@media (max-width: 900px){
+  .wrap{ padding:14px }
+  header{ gap:10px; flex-wrap:wrap; padding:8px 0 }
+  .actions{ width:100%; justify-content:space-between; gap:6px; flex-wrap:wrap }
+  .lang .btn{ padding:10px 12px }
+  .btn{ padding:12px 14px }
+  .btn.ghost{ border-radius:12px }
+
+  .grid{ grid-template-columns:1fr !important } /* контент одной колонкой */
+  .card{ padding:14px; margin:10px 0 }
+  h2{ font-size:clamp(18px, 5vw, 22px) }
+  .muted{ font-size:14px }
+
+  pre{ font-size:12px; padding:10px; border-radius:12px }
+  pre .toolbar{ top:6px; right:6px }
+  .tool{ padding:6px 8px; border-radius:10px }
+
+  table{ display:block; overflow:auto; -webkit-overflow-scrolling:touch }
+  th,td{ white-space:nowrap; padding:8px 10px; font-size:13px }
+
+  details{ padding:8px 10px; border-radius:12px }
+  details summary{ padding:6px 0; font-size:14px }
+
+  /* TOC превращаем в выезжающую панель снизу */
+  .toc{
+    position:fixed; left:0; right:0; bottom:-70vh;
+    top:auto; max-height:70vh; overflow:auto;
+    margin:0; border-top-left-radius:16px; border-top-right-radius:16px;
+    border-bottom-left-radius:0; border-bottom-right-radius:0;
+    padding:12px 14px; transition:bottom .25s ease;
+    background:var(--card);
+  }
+  .toc.open{ bottom:0 }
+  .toc .endpoint{ margin-top:10px }
+  .toc .desc{ font-size:12px; line-height:1.35 }
+
+  /* Кнопка открытия TOC (плавающая) */
+  .toc-fab{
+    position:fixed; right:14px; bottom:14px; z-index:6;
+    border:1px solid var(--border);
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    color:#001b1b; border-radius:999px; padding:12px 14px; font-weight:800;
+    box-shadow:var(--shadow); cursor:pointer;
+  }
+
+  /* Чуть больше пространства под панель */
+  body{ padding-bottom:64px }
+}
+
+/* Не даём контенту прилипать под плавающую кнопку на очень маленьких экранах */
+@media (max-width: 380px){
+  body{ padding-bottom:80px }
+}
+      .bolt{ color: var(--accent); flex:0 0 auto }
+@media (max-width:700px){ .bolt{ width:18px; height:18px } }
+      @media (max-width:700px){
+  .actions{ gap:6px; flex-wrap:wrap }
+  .actions .btn{ padding:10px 12px }
+}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="hgroup">
+<h1 id="t-title" class="with-logo">
+  <div class="logo" aria-hidden="true">⚡️</div>
+  Energy API — Documentation
+</h1>
+  <svg class="bolt" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="currentColor"/>
+  </svg>
+  Energy API — Documentation
+</h1>
+        <p id="t-sub" class="muted">Interactive Python examples • Auth via <code>X-API-Key</code> • Issued in Telegram: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></p>
+      </div>
+<div class="actions">
+  <div class="lang">
+    <button class="btn" data-lang="en">EN</button>
+    <button class="btn" data-lang="ru">RU</button>
+  </div>
+
+  <a class="btn primary" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">🤖 Open bot</a>
+  <a class="btn ghost" href="/" rel="noopener">🏠 Home</a>
+</div>
+    </header>
+
+    <div class="grid" style="grid-template-columns: 1fr 280px; align-items:start">
+      <div>
+        <div class="card callout good" id="t-start">
+          <div>✅</div>
+          <div id="t-start-text">Start in 30 seconds: set <mark>X-API-Key</mark>, use <mark>https://YOUR_API_URL</mark>, run the Python snippets below.</div>
+        </div>
+
+        <div class="card">
+          <strong id="t-baseurl-label">Base URL</strong>
+          <pre><code id="t-baseurl">https://YOUR_API_URL</code><div class="toolbar"><button class="tool" data-copy="#t-baseurl">Copy</button></div></pre>
+          <div class="muted" id="t-auth-note">All requests require header <code>X-API-Key: &lt;YOUR_KEY&gt;</code>. Use <mark>Idempotency-Key</mark> for POSTs.</div>
+        </div>
+
+        <!-- /v1/me/balance -->
+        <section class="card" id="sec-balance">
+          <h2><span class="pill get">GET</span> <code>/v1/me/balance</code></h2>
+          <p id="t-balance-desc" class="muted">Get current balance in SUN and TRX.</p>
+          <details open>
+            <summary>Python</summary>
+<pre><code id="ex-balance">import requests
+
+BASE_URL = "https://YOUR_API_URL"
+API_KEY = "YOUR_API_KEY"
+
+r = requests.get(
+    f"{BASE_URL}/v1/me/balance",
+    headers={"X-API-Key": API_KEY},
+    timeout=15
+)
+print(r.status_code)
+print(r.json())
+</code><div class="toolbar"><button class="tool" data-copy="#ex-balance">Copy</button></div></pre>
+          </details>
+          <details>
+            <summary>Response schema</summary>
+<pre><code>{
+  "balance_sun": 123456789,
+  "balance_trx": 123.456789
+}</code></pre>
+          </details>
+        </section>
+
+        <!-- /v1/me/transactions -->
+        <section class="card" id="sec-trans">
+          <h2><span class="pill get">GET</span> <code>/v1/me/transactions</code></h2>
+          <p id="t-trans-desc" class="muted">List recent transactions (top-ups, energy orders, etc.).</p>
+          <details open>
+            <summary>Python</summary>
+<pre><code id="ex-trans">import requests
+
+BASE_URL = "https://YOUR_API_URL"
+API_KEY = "YOUR_API_KEY"
+
+params = {"limit": 50}  # 1..500, default 50
+r = requests.get(
+    f"{BASE_URL}/v1/me/transactions",
+    headers={"X-API-Key": API_KEY},
+    params=params,
+    timeout=20
+)
+print(r.status_code)
+for item in r.json():
+    print(item["id"], item["kind"], item["status"], item.get("energy"))
+</code><div class="toolbar"><button class="tool" data-copy="#ex-trans">Copy</button></div></pre>
+          </details>
+          <details>
+            <summary>Response example</summary>
+<pre><code>[
+  {
+    "id": 1,
+    "kind": "ORDER",
+    "amount": 65000,
+    "wallet": "TX...",
+    "energy": 65000,
+    "status": "DONE",
+    "balance_before": 123456,
+    "balance_after": 58456,
+    "created_at": "2025-01-01T12:00:00Z"
+  }
+]</code></pre>
+          </details>
+        </section>
+
+        <!-- /v1/order -->
+        <section class="card" id="sec-order">
+          <h2><span class="pill post">POST</span> <code>/v1/order</code></h2>
+          <p id="t-order-desc" class="muted">Create energy order for a TRON wallet.</p>
+          <div class="callout warn" id="t-idem-note">⚠️ Use <mark>Idempotency-Key</mark> to avoid duplicate orders on retries.</div>
+          <details open>
+            <summary>Python</summary>
+<pre><code id="ex-order">import requests
+import uuid
+
+BASE_URL = "https://YOUR_API_URL"
+API_KEY = "YOUR_API_KEY"
+
+payload = {
+    "wallet": "TX12345678901234567890123456789012",  # 34 chars, starts with 'T'
+    "energy": 65000  # or 130000
+}
+
+headers = {
+    "X-API-Key": API_KEY,
+    "Idempotency-Key": str(uuid.uuid4()),  # optional but recommended
+    "Content-Type": "application/json"
+}
+
+r = requests.post(
+    f"{BASE_URL}/v1/order",
+    headers=headers,
+    json=payload,
+    timeout=20
+)
+print(r.status_code)
+print(r.json())
+</code><div class="toolbar"><button class="tool" data-copy="#ex-order">Copy</button></div></pre>
+          </details>
+          <details>
+            <summary>200 Response</summary>
+<pre><code>{
+  "ok": true,
+  "balance_sun_after": 999999,
+  "balance_trx_after": 999.999,
+  "price_trx": 2.9,
+  "price_currency": "TRX",
+  "external_status_code": 200,
+  "external_order_id": null,
+  "external_body": null,
+  "tx_id": 12345
+}</code></pre>
+          </details>
+        </section>
+
+        <!-- /v1/me/profile -->
+        <section class="card" id="sec-profile">
+          <h2><span class="pill get">GET</span> <code>/v1/me/profile</code></h2>
+          <p id="t-prof-desc" class="muted">Get client profile and balances.</p>
+          <details>
+            <summary>Python</summary>
+<pre><code id="ex-prof">import requests
+
+BASE_URL = "https://YOUR_API_URL"
+API_KEY = "YOUR_API_KEY"
+
+r = requests.get(
+    f"{BASE_URL}/v1/me/profile",
+    headers={"X-API-Key": API_KEY},
+    timeout=15
+)
+print(r.json())
+</code><div class="toolbar"><button class="tool" data-copy="#ex-prof">Copy</button></div></pre>
+          </details>
+          <details>
+            <summary>200 Response</summary>
+<pre><code>{
+  "api_key": "...",
+  "name": "Partner A",
+  "description": "OTC desk",
+  "balance_sun": 123456789,
+  "balance_trx": 123.456789,
+  "deposit_address": "TX..."
+}</code></pre>
+          </details>
+        </section>
+
+        <!-- /v1/me/tariffs -->
+        <section class="card" id="sec-tariffs">
+          <h2><span class="pill get">GET</span> <code>/v1/me/tariffs</code></h2>
+          <p id="t-tariff-desc" class="muted">Get current tariffs for energy packages.</p>
+          <details>
+            <summary>Python</summary>
+<pre><code id="ex-tariff">import requests
+
+BASE_URL = "https://YOUR_API_URL"
+API_KEY = "YOUR_API_KEY"
+
+r = requests.get(
+    f"{BASE_URL}/v1/me/tariffs",
+    headers={"X-API-Key": API_KEY},
+    timeout=15
+)
+print(r.json())
+</code><div class="toolbar"><button class="tool" data-copy="#ex-tariff">Copy</button></div></pre>
+          </details>
+          <details>
+            <summary>200 Response</summary>
+<pre><code>{
+  "65000": 2.9,
+  "130000": 5.8
+}</code></pre>
+          </details>
+        </section>
+
+
+
+        <div class="foot" id="t-foot">© 2025 Energy API • Access & keys issued via Telegram: @saving_trx_bot</div>
+      </div>
+<aside class="toc"  id="toc">
+  <strong id="t-toc">On this page</strong>
+
+  <a class="endpoint" href="#sec-balance">/v1/me/balance</a>
+  <small class="desc" id="d-balance"></small>
+
+  <a class="endpoint" href="#sec-trans">/v1/me/transactions</a>
+  <small class="desc" id="d-trans"></small>
+
+  <a class="endpoint" href="#sec-order">/v1/order</a>
+  <small class="desc" id="d-order"></small>
+
+  <a class="endpoint" href="#sec-profile">/v1/me/profile</a>
+  <small class="desc" id="d-profile"></small>
+
+  <a class="endpoint" href="#sec-tariffs">/v1/me/tariffs</a>
+  <small class="desc" id="d-tariffs"></small>
+</aside>
+        <button class="toc-fab" id="tocToggle" aria-expanded="false" aria-controls="toc">
+  ☰ Endpoints
+</button>
+    </div>
+  </div>
+
+<script>
+  const T = {
+    en: {
+    dBalance: "Return current balance in SUN/TRX.",
+dTrans:   "List recent operations: top-ups, energy orders, etc.",
+dOrder:   "Create an energy order (use Idempotency-Key).",
+dProfile: "Get your profile, balances and deposit address.",
+dTariffs: "Current prices for 65k / 130k energy packages.",
+      title: "Energy API — Documentation",
+      sub: "Interactive Python examples • Auth via X-API-Key • Issued in Telegram: @saving_trx_bot",
+      startText: "Start in 30 seconds: set X-API-Key, use https://YOUR_API_URL, run the Python snippets below.",
+      baseurlLabel: "Base URL",
+      authNote: "All requests require header X-API-Key: <YOUR_KEY>. Use Idempotency-Key for POSTs.",
+      balanceDesc: "Get current balance in SUN and TRX.",
+      transDesc: "List recent transactions (top-ups, energy orders, etc.).",
+      orderDesc: "Create energy order for a TRON wallet.",
+      idemNote: "Use Idempotency-Key to avoid duplicate orders on retries.",
+      profDesc: "Get client profile and balances.",
+      tariffDesc: "Get current tariffs for energy packages.",
+      qrDesc: "Get deposit QR for topping up your balance.",
+      qrNote: "Response may be an image (QR PNG) or JSON payload depending on server implementation.",
+      toc: "On this page",
+      foot: "© 2025 Energy API • Access & keys issued via Telegram: @saving_trx_bot"
+    },
+    ru: {
+    dBalance: "Возвращает текущий баланс в SUN/TRX.",
+dTrans:   "Список последних операций: пополнения, заказы энергии и т.д.",
+dOrder:   "Создать заказ энергии (используйте Idempotency-Key).",
+dProfile: "Профиль, балансы и адрес для пополнения.",
+dTariffs: "Текущие цены для пакетов 65k / 130k энергии.",
+      title: "Energy API — Документация",
+      sub: "Интерактивные примеры на Python • Авторизация X-API-Key • Ключи выдаёт Telegram: @saving_trx_bot",
+      startText: "Старт за 30 секунд: укажите X-API-Key, используйте https://YOUR_API_URL, запускайте примеры ниже.",
+      baseurlLabel: "Базовый URL",
+      authNote: "Все запросы требуют заголовок X-API-Key: <YOUR_KEY>. Для POST используйте Idempotency-Key.",
+      balanceDesc: "Текущий баланс в SUN и TRX.",
+      transDesc: "Список последних операций (пополнения, заказы энергии и т.д.).",
+      orderDesc: "Создать заказ на делегацию энергии для TRON-кошелька.",
+      idemNote: "Используйте Idempotency-Key, чтобы избежать дублей при повторах.",
+      profDesc: "Профиль клиента и балансы.",
+      tariffDesc: "Текущие тарифы на пакеты энергии.",
+      qrDesc: "Получить QR для пополнения баланса.",
+      qrNote: "Ответ может быть PNG-изображением (QR) или JSON — зависит от реализации.",
+      toc: "На странице",
+      foot: "© 2025 Energy API • Доступ и ключи выдаёт Telegram: @saving_trx_bot"
+    }
+  };
+
+  function setLang(lang){
+    const t = T[lang] || T.en;
+    document.documentElement.lang = lang;
+    document.getElementById('t-title').textContent = t.title;
+    document.getElementById('t-sub').textContent = t.sub;
+    document.getElementById('t-start-text').textContent = t.startText;
+    document.getElementById('t-baseurl-label').textContent = t.baseurlLabel;
+    document.getElementById('t-auth-note').innerHTML = t.authNote.replace(/X-API-Key/g,'<mark>X-API-Key</mark>').replace(/Idempotency-Key/g,'<mark>Idempotency-Key</mark>');
+    document.getElementById('t-balance-desc').textContent = t.balanceDesc;
+    document.getElementById('t-trans-desc').textContent = t.transDesc;
+    document.getElementById('t-order-desc').textContent = t.orderDesc;
+    document.getElementById('t-idem-note').innerHTML = (lang==='ru'? '⚠️ ' : '⚠️ ') + t.idemNote.replace(/Idempotency-Key/g,'<mark>Idempotency-Key</mark>');
+    document.getElementById('t-prof-desc').textContent = t.profDesc;
+    document.getElementById('t-tariff-desc').textContent = t.tariffDesc;
+    document.getElementById('t-qr-desc').textContent = t.qrDesc;
+    document.getElementById('t-qr-note').textContent = t.qrNote;
+    document.getElementById('t-toc').textContent = t.toc;
+    document.getElementById('t-foot').textContent = t.foot;
+    document.getElementById('d-balance').textContent = t.dBalance;
+document.getElementById('d-trans').textContent   = t.dTrans;
+document.getElementById('d-order').textContent   = t.dOrder;
+document.getElementById('d-profile').textContent = t.dProfile;
+document.getElementById('d-tariffs').textContent = t.dTariffs;
+    try{ localStorage.setItem('api_doc_lang', lang);}catch(e){}
+  }
+document.querySelectorAll('details').forEach(d => d.open = false);
+
+  document.querySelectorAll('[data-lang]').forEach(b=>{
+    b.addEventListener('click', ()=> setLang(b.dataset.lang));
+  });
+
+  // Copy buttons for any element referenced by selector in data-copy
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-copy]');
+    if(!btn) return;
+    const sel = btn.getAttribute('data-copy');
+    const el = document.querySelector(sel);
+    if(!el) return;
+    const text = el.textContent;
+    navigator.clipboard.writeText(text).then(()=>{
+      const old = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(()=> btn.textContent = old, 1200);
+    });
+  });
+
+  // Expand/Collapse all <details>
+  document.getElementById('btn-expand').addEventListener('click', ()=>{
+    document.querySelectorAll('details').forEach(d=> d.open = true);
+  });
+  document.getElementById('btn-collapse').addEventListener('click', ()=>{
+    document.querySelectorAll('details').forEach(d=> d.open = false);
+  });
+
+  const saved = localStorage.getItem('api_doc_lang') || 'en';
+  setLang(saved);
+</script>
+<script>
+function setLang(lang){
+  const t = (T[lang] || T.en);
+  document.documentElement.lang = lang;
+
+  const $ = id => document.getElementById(id);
+  const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
+  const setHTML = (id, html) => { const el = $(id); if (el) el.innerHTML = html; };
+
+  setText('t-title', t.title);
+  setHTML('t-sub', t.sub);
+  setText('t-start-text', t.startText);
+  setText('t-baseurl-label', t.baseurlLabel);
+  setHTML('t-auth-note', t.authNote
+    .replace(/X-API-Key/g,'<mark>X-API-Key</mark>')
+    .replace(/Idempotency-Key/g,'<mark>Idempotency-Key</mark>')
+  );
+  setText('t-balance-desc', t.balanceDesc);
+  setText('t-trans-desc',   t.transDesc);
+  setText('t-order-desc',   t.orderDesc);
+  setHTML('t-idem-note', '⚠️ ' + t.idemNote.replace(/Idempotency-Key/g,'<mark>Idempotency-Key</mark>'));
+  setText('t-prof-desc',    t.profDesc);
+  setText('t-tariff-desc',  t.tariffDesc);
+  setText('t-qr-desc',      t.qrDesc);
+  setText('t-qr-note',      t.qrNote);
+  setText('t-toc',          t.toc);
+  setText('t-foot',         t.foot);
+
+  // Описания в левом меню — обновятся только если узлы существуют
+  setText('d-balance', t.dBalance);
+  setText('d-trans',   t.dTrans);
+  setText('d-order',   t.dOrder);
+  setText('d-profile', t.dProfile);
+  setText('d-tariffs', t.dTariffs);
+
+  try { localStorage.setItem('api_doc_lang', lang); } catch(e){}
+}
+
+// если вдруг кнопок нет на момент привязки — это не упадёт
+document.querySelectorAll('[data-lang]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const lang = b.dataset.lang;
+    setLang(lang);
+    try { localStorage.setItem('api_doc_lang', lang); } catch(e){}
+    document.querySelectorAll('[data-lang]').forEach(x=>x.classList.remove('primary'));
+    b.classList.add('primary');
+  });
+});
+
+// безопасные слушатели
+document.getElementById('btn-expand')?.addEventListener('click', ()=>{
+  document.querySelectorAll('details').forEach(d=> d.open = true);
+});
+document.getElementById('btn-collapse')?.addEventListener('click', ()=>{
+  document.querySelectorAll('details').forEach(d=> d.open = false);
+});
+
+// запуск после построения DOM
+window.addEventListener('DOMContentLoaded', ()=>{
+  const saved = localStorage.getItem('api_doc_lang') || 'en';
+  setLang(saved);
+});
+
+    // TOC drawer (mobile)
+const toc = document.getElementById('toc');
+const tocBtn = document.getElementById('tocToggle');
+if (toc && tocBtn){
+  const closeToc = () => { toc.classList.remove('open'); tocBtn.setAttribute('aria-expanded','false'); };
+  const openToc  = () => { toc.classList.add('open'); tocBtn.setAttribute('aria-expanded','true'); };
+
+  tocBtn.addEventListener('click', ()=>{
+    toc.classList.toggle('open');
+    tocBtn.setAttribute('aria-expanded', toc.classList.contains('open') ? 'true' : 'false');
+  });
+
+  // Закрываем, если кликнули по ссылке в TOC
+  toc.addEventListener('click', (e)=>{
+    if (e.target.closest('a')) closeToc();
+  });
+
+  // Смах вниз — закрыть (немного UX)
+  let startY = null;
+  toc.addEventListener('touchstart', e=>{ startY = e.touches[0].clientY; }, {passive:true});
+  toc.addEventListener('touchmove', e=>{
+    if (startY===null) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 40) closeToc();
+  }, {passive:true});
+}
+    document.querySelectorAll('[data-lang]').forEach(x=>x.classList.remove('active'));
+b.classList.add('active');
+
+</script>
+</body>
+</html>
