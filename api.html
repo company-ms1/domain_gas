@@ -4,40 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>GasFree4youCOM — API & Partnership</title>
-  <meta name="description" content="GasFree4youCOM API & Partnership: integrate TRON energy delegation into your product. For exchanges, crypto wallets, and high-frequency senders." />
+  <title>GasFree4youCOM — API & Dashboard</title>
+  <meta name="description" content="GasFree4youCOM API & Dashboard: integrate TRON energy delegation and manage usage via dashboard. For exchanges, crypto wallets, and high-frequency senders." />
   <meta name="color-scheme" content="light dark">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
-  <meta name="theme-color" content="#F5C400">
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103986368', 'ym');
+  <meta name="theme-color" content="#4fd1c5">
 
-    ym(103986368, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/103986368" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
   <style>
     :root{
-      --bg:#0b1020; --card:#0f152a; --muted:#8ea1b2; --text:#eaf2ff;
-      --accent:#6ee7ff; --accent2:#7df1b7; --border:rgba(255,255,255,.08);
-      --danger:#ff6b6b; --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
-      --radius:20px; --line:rgba(255,255,255,.1); --elev:rgba(255,255,255,.03); --ring:rgba(110,231,255,.25);
+      --bg:#0b1020; --card:#0e1426; --muted:#8aa0b4; --text:#edf6ff;
+      --accent:#6ee7ff; --accent2:#7df1b7; --border:rgba(255,255,255,.10);
+      --danger:#ff6b6b; --shadow:0 12px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+      --radius:22px; --line:rgba(255,255,255,.12); --elev:rgba(255,255,255,.04); --ring:rgba(110,231,255,.28);
     }
     @media(prefers-color-scheme:light){
-      :root{ --bg:#f7fafc; --card:#ffffff; --muted:#5b7083; --text:#0b1020; --accent:#007aff; --accent2:#16a34a; --border:rgba(15,21,42,.08); --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; --line:rgba(15,21,42,.12); --elev:#fff; --ring:rgba(0,122,255,.25); }
+      :root{ --bg:#f7fafc; --card:#ffffff; --muted:#5b7083; --text:#0b1020; --accent:#007aff; --accent2:#16a34a; --border:rgba(15,21,42,.10); --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; --line:rgba(15,21,42,.10); --elev:#fff; --ring:rgba(0,122,255,.25); }
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text);
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial; color:var(--text);
       background: radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.12), transparent 60%),
                   radial-gradient(1000px 600px at -10% 110%, rgba(125,241,183,.12), transparent 60%), var(--bg);
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
@@ -48,42 +36,43 @@
     .container{max-width:1040px; margin:0 auto; padding:20px 20px 28px}
     @media (max-width:640px){ .container{ padding:14px 14px 22px } }
 
-    /* Sticky header that wraps nicely on mobile */
+    /* Sticky, softer header */
     header{
       position:sticky; top:0; z-index:20;
-      background:linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)), var(--bg);
-      backdrop-filter:saturate(140%) blur(6px);
-      margin:0 -20px; padding:6px 20px;  /* stretch to edges */
+      background:linear-gradient(0deg,rgba(0,0,0,.06),rgba(0,0,0,.06)), var(--bg);
+      backdrop-filter:saturate(140%) blur(8px);
+      margin:0 -20px; padding:10px 20px;
       display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
       border-bottom:1px solid var(--border);
     }
-    @media (max-width:640px){ header{ margin:0 -14px; padding:8px 14px } }
+    @media (max-width:640px){ header{ margin:0 -14px; padding:10px 14px } }
 
-    .brand{display:flex; align-items:center; gap:10px; min-width:0}
-    .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800; flex:0 0 auto}
-    .tag{font-size:12px; opacity:.9; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
+    .brand{display:flex; align-items:center; gap:12px; min-width:0}
+    .logo{width:42px; height:42px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800; flex:0 0 auto}
+    .tag{font-size:12px; opacity:.95; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
 
-    .btn{appearance:none; cursor:pointer; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:10px 14px; font-weight:700; letter-spacing:.2px; line-height:1}
+    .btn{appearance:none; cursor:pointer; border-radius:999px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); padding:11px 16px; font-weight:700; letter-spacing:.2px; line-height:1}
     .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
-    @media (max-width:420px){
-      .btn{padding:12px 14px; border-radius:12px}
-    }
+    .btn.ghost{background:transparent}
+    .btn:focus{outline:2px solid var(--ring); outline-offset:2px}
+    @media (max-width:420px){ .btn{padding:12px 14px} }
 
     .crumbs{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
     .lang{display:flex; gap:8px; align-items:center; position:relative}
-    .lang .btn{position:relative; z-index:2}  /* ensure API/Back above flags if they wrap */
-    .flag{width:36px; height:26px; border-radius:6px; border:1px solid var(--border); cursor:pointer; overflow:hidden; display:inline-flex}
+    .lang .btn{position:relative; z-index:2}
+    .flag{width:36px; height:26px; border-radius:8px; border:1px solid var(--border); cursor:pointer; overflow:hidden; display:inline-flex}
     .flag:active{transform:scale(.98)}
     .flag svg{display:block; width:100%; height:100%}
     .active{outline:2px solid var(--accent)}
-    @media (max-width:420px){
-      .flag{width:30px; height:22px; border-radius:5px}
-    }
+    @media (max-width:420px){ .flag{width:30px; height:22px} }
 
     /* Hero */
-    .hero{display:grid; grid-template-columns:1fr; gap:8px; padding:12px 0}
-    .title{font-size:clamp(22px,6.5vw,40px); line-height:1.15; margin:0}
+    .hero{display:grid; grid-template-columns:1fr; gap:10px; padding:16px 0}
+    .title{font-size:clamp(24px,6.2vw,42px); line-height:1.15; margin:0}
     .subtitle{color:var(--muted); margin:0}
+
+    /* Friendly highlight bar */
+    .highlight{display:flex; align-items:center; gap:10px; padding:12px 14px; background:var(--elev); border:1px solid var(--border); border-radius:16px}
 
     /* Cards/sections */
     .panel{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
@@ -99,12 +88,9 @@
 
     code,pre{font:600 13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
     pre{background:rgba(255,255,255,.05); border:1px dashed var(--border); padding:12px; border-radius:14px; overflow:auto}
-    /* Wrap code on very narrow screens for readability */
-    @media (max-width:560px){
-      pre{white-space:pre-wrap; word-break:break-word}
-    }
+    @media (max-width:560px){ pre{white-space:pre-wrap; word-break:break-word} }
 
-    .note{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:14px; background:rgba(125,241,183,.08); border:1px solid var(--border); margin-top:10px}
+    .note{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:14px; background:rgba(125,241,183,.10); border:1px solid var(--border); margin-top:10px}
     .foot{margin-top:18px; color:var(--muted); font-size:13px}
 
     /* Space between stacked header rows on mobile */
@@ -126,8 +112,8 @@
       </div>
 
       <nav class="crumbs" aria-label="Top navigation">
-        <a href="/" class="btn">← <span data-i18n="back">Back</span></a>
-        <a href="/api.html" class="btn primary" style="position:relative;z-index:3">API</a>
+        <a href="/" class="btn ghost">← <span data-i18n="back">Back</span></a>
+        <a href="https://t.me/saving_trx_bot" class="btn primary" target="_blank" rel="noopener" style="position:relative;z-index:3" data-i18n="openBot">Open Telegram Bot</a>
         <div class="lang" aria-label="Language switcher">
           <button class="flag active" data-lang="en" title="English" aria-label="English">
             <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v40 h60 v-40 z"/></clipPath><clipPath id="t"><path d="M30,20 h30 v20 z v-40 z h-60 z v40 z h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v40 h60 v-40 z" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4" clip-path="url(#t)"/><path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
@@ -146,7 +132,12 @@
     <section class="hero">
       <h2 class="title" data-i18n="title">API & Partnership</h2>
       <p class="subtitle" data-i18n="subtitle">Integrate TRON energy delegation into your product.</p>
+      <div class="highlight" role="note">
+        <span>🤖</span>
+        <div data-i18n="botLine">Access to the dashboard (personal cabinet) and API is issued via the Telegram bot <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a>.</div>
+      </div>
     </section>
+
 
     <!-- Who + Features -->
     <section class="panel section">
@@ -165,11 +156,12 @@
             <li data-i18n="feat1">UI interface for convenient energy distribution across multiple wallets</li>
             <li data-i18n="feat2">External REST API for full automation</li>
             <li data-i18n="feat3">Balance in TRX converted into internal points, transparent ledger</li>
-            <li data-i18n="feat4">Bulk actions, CSV, and optional webhooks</li>
+            <li data-i18n="feat4">Bulk actions via API and optional webhooks</li>
           </ul>
         </div>
       </div>
     </section>
+
 
     <!-- How it works -->
     <section class="panel section">
@@ -185,59 +177,24 @@
         <div data-i18n="howNote">Energy is temporary and intended to cover the fee; typical package is 65,000–130,000 energy per transfer depending on the scenario.</div>
       </div>
     </section>
-
+      <!-- Dashboard Preview -->
+<section class="panel section" style="text-align:center">
+  <h3 data-i18n="dashPreviewTitle">Dashboard Preview</h3>
+  <p data-i18n="dashPreviewText">Here’s how the GasFree4you dashboard looks — simple, clear, and mobile-friendly.</p>
+  <img src="/dash.png" alt="GasFree4you Dashboard Screenshot"
+       style="max-width:100%; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.35); margin-top:12px;">
+</section>
     <!-- Integration -->
-    <section class="panel section">
-      <h3 data-i18n="integrTitle">Integration options</h3>
-      <div class="grid">
-        <div>
-          <h4 data-i18n="uiTitle">1) UI Console</h4>
-          <p data-i18n="uiText">Web interface to bulk-distribute energy to many wallets, monitor consumption, and export logs.</p>
-        </div>
-        <div>
-          <h4 data-i18n="apiTitle2">2) REST API</h4>
-          <p data-i18n="apiText">Use secure token-based calls to automate delegation from your backend.</p>
 
-<pre><code>// Request example
-POST /v1/energy/delegate
-Authorization: Bearer &lt;API_KEY&gt;
-Content-Type: application/json
-
-{
-  "to": "TSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "package": "65000"   // or 130000
-}
-
-// Response example
-200 OK
-{
-  "status": "ok",
-  "tx_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "energy": 65000,
-  "expires_in_sec": 3600
-}</code></pre>
-
-<pre><code>// Balance
-GET /v1/balance
-Authorization: Bearer &lt;API_KEY&gt;
-
-// Webhook (optional)
-POST https://your.app/hooks/gasfree
-{ "event": "delegated", "to": "TS...", "energy": 65000, "ts": 1723880000 }
-</code></pre>
-          <p class="foot" data-i18n="apiNote">Endpoints and tokens are issued individually after onboarding.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- Top-ups & accounting -->
     <section class="panel section">
       <h3 data-i18n="pricingTitle">Top-ups & accounting</h3>
       <ul class="list">
-        <li data-i18n="acc1">Minimum initial top-up: <b>100 TRX</b>.</li>
+        <li data-i18n="acc1">Minimum to start: <b>from 3 TRX</b>.</li>
         <li data-i18n="acc2">TRX top-ups convert 1:1 into internal points; points are used to pay for energy packages.</li>
         <li data-i18n="acc3">Detailed ledger available in UI (incoming TRX, conversions, energy spends).</li>
-        <li data-i18n="acc4">Bulk actions supported via CSV or API.</li>
+        <li data-i18n="acc4">Bulk operations supported via API.</li>
       </ul>
     </section>
 
@@ -245,13 +202,12 @@ POST https://your.app/hooks/gasfree
     <section class="panel section">
       <h3 data-i18n="startTitle">How to start</h3>
       <ol class="list">
-        <li data-i18n="st1">Contact us in Telegram to receive your partner address and API key.</li>
-        <li data-i18n="st2">Send a test top-up (≥ 100 TRX) — the system will credit points.</li>
-        <li data-i18n="st3">Connect your webhook (optional) and test a delegation.</li>
+        <li data-i18n="st1">Open the Telegram bot to receive your partner address and API key.</li>
+        <li data-i18n="st2">Send a small test top-up (≥ 3 TRX) — the system will credit points.</li>
         <li data-i18n="st4">Go live and automate distribution.</li>
       </ol>
       <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
-        <a class="btn primary" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="cta1">Apply on Telegram</a>
+        <a class="btn primary" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="cta1">Open Telegram bot</a>
         <a class="btn" href="/" data-i18n="cta2">See public pricing</a>
       </div>
     </section>
@@ -276,8 +232,13 @@ POST https://your.app/hooks/gasfree
       en: {
         tagline: "TRON Energy Top-Up",
         back: "Back",
-        title: "API & Partnership",
-        subtitle: "Integrate TRON energy delegation into your product.",
+        openBot: "Open Telegram Bot",
+title: "API & Dashboard",
+subtitle: "Integrate TRON energy delegation and manage usage via dashboard.",
+        botLine: "Access to the dashboard (personal cabinet) and API is issued via the Telegram bot @saving_trx_bot.",
+ dashPreviewTitle: "Dashboard Preview",
+dashPreviewText: "Here’s how the GasFree4you dashboard looks — simple, clear, and mobile-friendly.",
+
         whoTitle: "Who we work with",
         who1: "Exchanges and OTC desks (“обменники”)",
         who2: "Crypto wallets and custodial services",
@@ -286,7 +247,7 @@ POST https://your.app/hooks/gasfree
         feat1: "UI interface for convenient energy distribution across multiple wallets",
         feat2: "External REST API for full automation",
         feat3: "Balance in TRX converted into internal points, transparent ledger",
-        feat4: "Bulk actions, CSV, and optional webhooks",
+        feat4: "Bulk actions via API and optional webhooks",
         howTitle: "How it works",
         how1: "You top up your balance in TRX to a dedicated address.",
         how2: "TRX is converted into internal points. Points pay for delegated energy packages.",
@@ -295,21 +256,22 @@ POST https://your.app/hooks/gasfree
         howNote: "Energy is temporary and intended to cover the fee; typical package is 65,000–130,000 energy per transfer depending on the scenario.",
         integrTitle: "Integration options",
         uiTitle: "1) UI Console",
-        uiText: "Web interface to bulk-distribute energy to many wallets, monitor consumption, and export logs.",
+        uiText: "Web interface to bulk-distribute energy to many wallets and monitor consumption.",
         apiTitle2: "2) REST API",
         apiText: "Use secure token-based calls to automate delegation from your backend.",
-        apiNote: "Endpoints and tokens are issued individually after onboarding.",
+        apiNote: "Endpoints and tokens are issued individually via the Telegram bot after onboarding.",
+        botNote: "Get dashboard & API access in Telegram: @saving_trx_bot.",
         pricingTitle: "Top-ups & accounting",
-        acc1: "Minimum initial top-up: 100 TRX.",
+        acc1: "Minimum to start: from 3 TRX.",
         acc2: "TRX top-ups convert 1:1 into internal points; points are used to pay for energy packages.",
         acc3: "Detailed ledger available in UI (incoming TRX, conversions, energy spends).",
-        acc4: "Bulk actions supported via CSV or API.",
+        acc4: "Bulk operations supported via API.",
         startTitle: "How to start",
-        st1: "Contact us in Telegram to receive your partner address and API key.",
-        st2: "Send a test top-up (≥ 100 TRX) — the system will credit points.",
-        st3: "Connect your webhook (optional) and test a delegation.",
+        st1: "Open the Telegram bot to receive your partner address and API key.",
+        st2: "Send a small test top-up (≥ 3 TRX) — the system will credit points.",
+        st3: "(Optional) Connect a webhook and test a delegation.",
         st4: "Go live and automate distribution.",
-        cta1: "Apply on Telegram",
+        cta1: "Open Telegram bot",
         cta2: "See public pricing",
         disclaimerTitle: "Disclaimer",
         disclaimerText: "Client deposits TRX to a designated address. Deposited TRX is converted into internal points, which can be used to pay for delegated energy. Points have no standalone monetary value outside the service."
@@ -317,8 +279,12 @@ POST https://your.app/hooks/gasfree
       ru: {
         tagline: "Делегация энергии TRON",
         back: "Назад",
-        title: "API и партнёрство",
-        subtitle: "Встроите делегацию энергии TRON в свой продукт.",
+        openBot: "Открыть Telegram-бота",
+title: "API и личный кабинет",
+subtitle: "Подключите делегацию энергии TRON и управляйте ею в личном кабинете.",
+dashPreviewTitle: "Пример личного кабинета",
+dashPreviewText: "Так выглядит личный кабинет GasFree4you — просто, понятно и удобно с телефона.",
+        botLine: "Доступ к личному кабинету и API выдаётся через Telegram-бота @saving_trx_bot.",
         whoTitle: "Кто наши клиенты",
         who1: "Обменники и OTC-сервисы",
         who2: "Криптокошельки и кастодиальные платформы",
@@ -327,7 +293,7 @@ POST https://your.app/hooks/gasfree
         feat1: "UI-интерфейс для удобного распределения энергии по множеству кошельков",
         feat2: "Внешний REST API для полной автоматизации",
         feat3: "Баланс в TRX конвертируется во внутренние баллы, прозрачный учёт",
-        feat4: "Массовые операции, CSV и опциональные вебхуки",
+        feat4: "Массовые операции через API и опциональные вебхуки",
         howTitle: "Как это работает",
         how1: "Вы пополняете баланс в TRX на выделенный адрес.",
         how2: "TRX конвертируется во внутренние баллы. Баллами оплачиваются пакеты энергии.",
@@ -336,21 +302,22 @@ POST https://your.app/hooks/gasfree
         howNote: "Энергия временная и покрывает комиссию; типичный пакет 65,000–130,000 energy на перевод.",
         integrTitle: "Варианты интеграции",
         uiTitle: "1) UI-консоль",
-        uiText: "Веб-интерфейс для массового распределения энергии, мониторинга и экспорта логов.",
+        uiText: "Веб-интерфейс для массового распределения энергии и мониторинга расхода.",
         apiTitle2: "2) REST API",
         apiText: "Безопасные вызовы по токену для автоматизации делегации со стороны вашего бэкенда.",
-        apiNote: "Эндпойнты и токены выдаются индивидуально после онбординга.",
+        apiNote: "Эндпойнты и токены выдаются индивидуально через Telegram-бота после онбординга.",
+        botNote: "Доступ к кабинету и API — в Telegram: @saving_trx_bot.",
         pricingTitle: "Пополнения и учёт",
-        acc1: "Минимальный стартовый взнос: 100 TRX.",
+        acc1: "Стартовый взнос: от 3 TRX.",
         acc2: "Пополнения TRX конвертируются 1:1 во внутренние баллы; баллы списываются за пакеты энергии.",
         acc3: "Подробный журнал в UI (входящие TRX, конвертации, списания энергии).",
-        acc4: "Массовые операции поддерживаются через CSV или API.",
+        acc4: "Массовые операции поддерживаются через API.",
         startTitle: "Как начать",
-        st1: "Свяжитесь с нами в Telegram — получите партнёрский адрес и API-ключ.",
-        st2: "Сделайте тестовое пополнение (≥ 100 TRX) — система начислит баллы.",
-        st3: "Подключите вебхук (необязательно) и протестируйте делегацию.",
+        st1: "Откройте Telegram-бота, получите партнёрский адрес и API‑ключ.",
+        st2: "Сделайте тестовое пополнение (≥ 3 TRX) — система начислит баллы.",
+        st3: "(Необязательно) Подключите вебхук и протестируйте делегацию.",
         st4: "Запускайте и автоматизируйте распределение.",
-        cta1: "Подать заявку в Telegram",
+        cta1: "Открыть Telegram-бота",
         cta2: "Публичные тарифы",
         disclaimerTitle: "Дисклеймер",
         disclaimerText: "Клиент вносит TRX на указанный адрес. Внесённые TRX конвертируются во внутренние баллы, которыми можно оплачивать делегированную энергию. Баллы не имеют самостоятельной денежной ценности вне сервиса."
@@ -358,8 +325,12 @@ POST https://your.app/hooks/gasfree
       zh: {
         tagline: "TRON 能量充值",
         back: "返回",
-        title: "API 与合作",
-        subtitle: "将 TRON 能量委托集成到您的产品中。",
+        openBot: "打开 Telegram 机器人",
+title: "API 与控制面板",
+subtitle: "集成 TRON 能量委托并通过控制面板轻松管理。",
+dashPreviewTitle: "控制面板预览",
+dashPreviewText: "GasFree4you 控制面板界面 — 简洁、清晰、适配移动端。",
+        botLine: "个人面板与 API 的访问均通过 Telegram 机器人 @saving_trx_bot 发放。",
         whoTitle: "适用客户",
         who1: "兑换所与 OTC 平台",
         who2: "加密钱包与托管服务",
@@ -368,7 +339,7 @@ POST https://your.app/hooks/gasfree
         feat1: "提供 UI 界面，可便捷地为多个钱包分配能量",
         feat2: "提供外部 REST API 以实现自动化",
         feat3: "TRX 余额按 1:1 转为平台积分，账本透明",
-        feat4: "支持批量操作、CSV 与可选回调",
+        feat4: "支持通过 API 的批量操作与可选回调",
         howTitle: "工作流程",
         how1: "您向专用地址充值 TRX。",
         how2: "TRX 转换为内部积分，积分用于支付能量套餐。",
@@ -377,21 +348,22 @@ POST https://your.app/hooks/gasfree
         howNote: "能量为临时性质，仅用于覆盖手续费；典型套餐为每笔 65,000–130,000 energy。",
         integrTitle: "对接方式",
         uiTitle: "1) 可视化控制台",
-        uiText: "可批量为多个钱包分配能量，监控消耗并导出日志。",
+        uiText: "可批量为多个钱包分配能量并监控消耗。",
         apiTitle2: "2) REST API",
         apiText: "使用基于令牌的安全调用，从您的后台自动化委托。",
-        apiNote: "端点与令牌在完成对接后单独发放。",
+        apiNote: "端点与令牌在完成对接后将通过 Telegram 机器人单独发放。",
+        botNote: "在 Telegram 获取面板与 API 访问：@saving_trx_bot。",
         pricingTitle: "充值与记账",
-        acc1: "最低首充：100 TRX。",
+        acc1: "起步最低：3 TRX 起。",
         acc2: "TRX 按 1:1 转为内部积分；积分用于支付能量套餐。",
         acc3: "UI 提供明细账本（入账 TRX、转换、能量消耗）。",
-        acc4: "支持 CSV 或 API 的批量操作。",
+        acc4: "支持通过 API 的批量操作。",
         startTitle: "接入步骤",
-        st1: "通过 Telegram 联系我们以获取合作地址与 API Key。",
-        st2: "完成测试充值（≥ 100 TRX）— 系统将记入积分。",
-        st3: "配置回调（可选）并测试一次委托。",
+        st1: "打开 Telegram 机器人获取合作地址与 API Key。",
+        st2: "完成测试充值（≥ 3 TRX）— 系统将记入积分。",
+        st3: "（可选）配置回调并测试一次委托。",
         st4: "正式上线并自动化分配。",
-        cta1: "在 Telegram 申请",
+        cta1: "打开 Telegram 机器人",
         cta2: "查看公开价格",
         disclaimerTitle: "声明",
         disclaimerText: "客户将 TRX 充值至指定地址。充值的 TRX 转换为平台内部积分，用于支付能量委托。积分在本服务之外不具备独立货币价值。"
@@ -403,7 +375,7 @@ POST https://your.app/hooks/gasfree
       document.querySelectorAll('.flag').forEach(f => f.classList.toggle('active', f.dataset.lang===lang));
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key=node.getAttribute('data-i18n');
-        if(I18N[lang] && I18N[lang][key]) node.textContent = I18N[lang][key];
+        if(I18N[lang] && I18N[lang][key]) node.innerHTML = I18N[lang][key];
       });
       try{ localStorage.setItem('lang', lang); }catch(e){}
     }
