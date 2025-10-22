@@ -181,30 +181,8 @@
 <section class="panel section" style="text-align:center">
   <h3 data-i18n="dashPreviewTitle">Dashboard Preview</h3>
   <p data-i18n="dashPreviewText">Here’s how the GasFree4you dashboard looks — simple, clear, and mobile-friendly.</p>
-<picture>
-  <!-- Мобайл ≤ 900px: своя, более компактная картинка -->
-  <source
-    media="(max-width: 900px)"
-    srcset="/dash-mobile.webp 1x, /dash-mobile@2x.webp 2x"
-    type="image/webp" />
-
-  <!-- Десктоп > 900px: большая картинка -->
-  <source
-    media="(min-width: 901px)"
-    srcset="/dash-desktop.webp 1x, /dash-desktop@2x.webp 2x"
-    type="image/webp" />
-
-  <!-- Fallback для браузеров без WebP -->
-  <img
-    src="https://www.gasfree4you.com/dash.png"
-    srcset="/dash-desktop.png 1x, /dash-desktop@2x.png 2x"
-    sizes="(max-width: 900px) 100vw, 800px"
-    alt="GasFree4you Dashboard Screenshot"
-    loading="lazy"
-    decoding="async"
-    width="1200" height="700"
-    style="max-width:100%; height:auto; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.35); margin-top:12px;">
-</picture>
+  <img src="/dash.png" alt="GasFree4you Dashboard Screenshot"
+       style="max-width:100%; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.35); margin-top:12px;">
 </section>
     <!-- Integration -->
 
