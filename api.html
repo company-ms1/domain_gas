@@ -181,8 +181,11 @@
 <section class="panel section" style="text-align:center">
   <h3 data-i18n="dashPreviewTitle">Dashboard Preview</h3>
   <p data-i18n="dashPreviewText">Here’s how the GasFree4you dashboard looks — simple, clear, and mobile-friendly.</p>
-  <img src="/dash.png" alt="GasFree4you Dashboard Screenshot"
-       style="max-width:100%; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.35); margin-top:12px;">
+<picture>
+  <source media="(max-width:900px)" srcset="/dash-mobile.png">
+  <source media="(min-width:901px)" srcset="/dash.png">
+  <img src="/dash.png" alt="Dashboard" style="max-width:100%; border-radius:20px;">
+</picture>
 </section>
     <!-- Integration -->
 
