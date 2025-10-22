@@ -26,7 +26,7 @@
       "destination": "/tr.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/:path((?!api|_next|.*\\..*).*)",
       "destination": "/index_03.html"
     }
   ]
