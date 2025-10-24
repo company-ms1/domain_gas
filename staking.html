@@ -179,6 +179,67 @@
   main.wrap > .hero > .card,
   main.wrap > .section .card{ margin:10px 12px; }
 }
+
+    /* ==== MOBILE ULTRA FULL-WIDTH + BIG TYPE (strong overrides) ==== */
+@media (max-width: 768px){
+
+  /* 0) Базовая типографика побольше */
+  html, body { font-size: 18px !important; line-height: 1.6 !important; }
+
+  /* 1) Контейнеры — убираем max-width/поля, делаем 100% ширины */
+  .wrap { max-width: 100% !important; width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  main.wrap { padding: 0 !important; }
+
+  /* Шапка/футер — оставляем небольшой внутренний отступ */
+  .header .wrap,
+  .footer .wrap { padding: 12px 16px !important; }
+
+  /* 2) Секции и герой — без внешних отступов, карточки «full-bleed» */
+  .hero,
+  .section,
+  .section.alt { padding: 0 !important; }
+
+  /* каждая карточка тянется на всю ширину, без боковых полей у контейнера */
+  .hero .card,
+  .section .card,
+  .section.alt .card {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
+    padding: 16px !important; /* внутренний паддинг самой карточки */
+  }
+
+  /* 3) Любые грида — строго 1 колонка на мобилке */
+  .grid-4, .grid-3, .grid-2, .kpis, .stats {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* 4) Крупнее заголовки и текст */
+  .h1 { font-size: clamp(28px, 8vw, 36px) !important; line-height: 1.2 !important; }
+  h2 { font-size: 22px !important; }
+  .sub, .muted, p, li { font-size: 16px !important; }
+  .kpi .v, .stat .v { font-size: 24px !important; }
+
+  /* 5) Кнопки и поля — большие тап-зоны, на всю ширину */
+  .buttons { gap: 10px !important; }
+  .buttons .btn,
+  .mobile-cta .btn,
+  .btn { width: 100% !important; justify-content: center !important; padding: 14px 16px !important; font-size: 16px !important; }
+  .field { padding: 12px !important; border-radius: 14px !important; }
+  .field input { min-height: 56px !important; font-size: 18px !important; }
+
+  /* 6) Нижняя фиксированная панель — включаем, даём место контенту */
+  .mobile-cta { display: flex !important; gap: 10px !important; }
+  body { padding-bottom: 84px !important; } /* чтобы CTA не перекрывала контент */
+}
+
+/* Экстрамалые экраны: аккуратнее с паддингами */
+@media (max-width: 380px){
+  .header .wrap, .footer .wrap { padding: 10px 12px !important; }
+  .hero .card, .section .card, .section.alt .card { padding: 14px !important; }
+}
   </style>
 </head>
 <body>
