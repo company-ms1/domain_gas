@@ -3,102 +3,127 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title data-i18n="meta.title">TRON TRX Staking — +5.62% on top of network yield | Energy HUB</title>
-  <meta name="description" content="Honest TRON (TRX) staking: target +5.62% yearly on top of TRON network yield. Only Energy is delegated. Daily payouts to your wallet. No guarantees; figure is reviewed and depends on demand." data-i18n="meta.description">
+  <title data-i18n="meta.title">TRON TRX Staking — ≈12.53% yearly total | Energy HUB</title>
+  <meta name="description" content="Honest TRON (TRX) staking: target ≈12.53% yearly total (3.41% network + 3.5% voting + ~5.62% service). Only Energy is delegated. Daily payouts. No guarantees; figures may be revised." data-i18n="meta.description">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b1020">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
     :root{
-      --bg:#0b1020;--bg-alt:#0a0f1e;--card:#0e1426;--muted:#8aa0b4;--text:#eaf2ff;
+      --bg:#0b1020;--bg-alt:#0a0f1e;--card:#0d1324;--muted:#9bb0c4;--text:#f1f6ff;
       --accent:#6dd6ff;--ok:#00d68f;--warn:#ffd166;--border:rgba(255,255,255,.10);
-      --shadow:0 8px 28px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.03) inset;
+      --shadow:0 20px 60px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.04) inset;
       --ring:0 0 0 2px rgba(109,214,255,.18);
-      --alert:#122034;--alert-border:#2b6cb0;
+      --alert:#0f1b31;--alert-border:#2b6cb0;
+      --gold:#f5d074; --gold-2:#caa650; --glow:0 0 40px rgba(245,208,116,.15);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    html,body{margin:0;padding:0;background:
+      radial-gradient(1200px 600px at 10% -10%,rgba(109,214,255,.10),transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%,rgba(0,214,143,.10),transparent 60%),
+      var(--bg);
+      color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     a{color:var(--accent);text-decoration:none}
-    .wrap{max-width:1160px;margin:0 auto;padding:20px}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);margin:28px 0}
+    .wrap{max-width:1240px;margin:0 auto;padding:22px}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);margin:34px 0}
+
+    /* Premium frame */
+    .frame{position:relative;border-radius:22px;padding:1px;background:
+      linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02));
+      box-shadow:var(--glow)}
+    .frame>.in{background:linear-gradient(180deg,rgba(18,24,45,.85),rgba(9,14,28,.85));backdrop-filter:blur(8px);
+      border-radius:21px;border:1px solid rgba(255,255,255,.06)}
+
     /* Header */
-    .header{position:sticky;top:0;background:rgba(9,14,28,.7);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--border);z-index:10}
+    .header{position:sticky;top:0;background:rgba(9,14,28,.6);backdrop-filter:saturate(160%) blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.08);z-index:10}
     .nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:800}
-    .logo{font-size:30px;line-height:1}
-    .links{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    .links .btn{padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0b1122;font-size:14px;line-height:1}
-    .links .cta{background:var(--accent);color:#0b1020;border:none;box-shadow:var(--shadow)}
+    .brand{display:flex;gap:12px;align-items:center;font-weight:900;letter-spacing:.3px}
+    .logo{font-size:28px;line-height:1;background:linear-gradient(180deg,#fff,#bfe9ff);
+      -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 18px rgba(109,214,255,.25))}
+    .brand span{font-weight:900}
+    .links{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .links .btn{padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#0b1122;font-size:14px;line-height:1}
+    .links .cta{background:linear-gradient(180deg,var(--gold),var(--gold-2));color:#1a1202;border:none;box-shadow:0 8px 24px rgba(245,208,116,.25)}
     .lang{display:flex;gap:6px;align-items:center;margin-left:6px}
-    .lang button{padding:6px 8px;border:1px solid var(--border);background:#0b1122;color:var(--text);border-radius:8px;font-size:13px;cursor:pointer}
+    .lang button{padding:6px 8px;border:1px solid var(--border);background:#0b1122;color:var(--text);border-radius:10px;font-size:13px;cursor:pointer}
     .lang button[aria-pressed="true"]{outline:0;box-shadow:var(--ring);border-color:rgba(109,214,255,.4)}
     @media (max-width:760px){
-      .links .btn{padding:7px 8px;font-size:13px;border-radius:9px}
+      .links .btn{padding:8px 10px;font-size:13px;border-radius:10px}
       .links{gap:6px}
       .lang{margin-top:6px}
     }
-    /* Sections */
-    .section{padding:48px 0}
-    .section.alt{background:var(--bg-alt)}
-    .section h2{font-size:28px;margin:0 0 14px}
-    .section .lead{color:var(--muted);margin:0 0 16px}
-    /* Alert */
-    .alert{display:flex;gap:10px;align-items:flex-start;background:var(--alert);border:1px solid var(--alert-border);border-left:4px solid var(--warn);border-radius:12px;padding:12px;margin:14px 0}
-    .alert b{color:#fff}
+
     /* Hero */
-    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:36px 0}
-    .h1{font-size:42px;line-height:1.2;margin:0 0 12px}
-    .h1 .rate{color:var(--ok)}
-    .sub{color:var(--muted);margin:6px 0 16px}
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:38px 0}
+    .h1{font-size:46px;line-height:1.15;margin:0 0 10px;letter-spacing:.2px}
+    .h1 .rate{background:linear-gradient(180deg,#00d68f,#5cf7c3);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{color:var(--muted);margin:6px 0 18px}
     .buttons{display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid var(--border);color:var(--text);background:#0b1122;box-shadow:var(--shadow)}
-    .btn.primary{background:var(--ok);color:#00261c;border:none}
+    .btn.primary{background:linear-gradient(180deg,var(--gold),var(--gold-2));color:#1b1304;border:none}
+    .badge{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:4px solid var(--gold);border-radius:14px;padding:12px 14px}
+
+    /* TRUST STRIP */
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .trust .t{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:14px;padding:14px;display:flex;align-items:center;gap:10px}
+    .trust .k{font-weight:800;font-size:18px}
+    .trust small{color:var(--muted)}
+    .gold{color:var(--gold)}
+
+    /* STAT CARDS */
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .stat{position:relative;border-radius:16px;padding:16px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.10);box-shadow:var(--glow)}
+    .stat .h{font-size:13px;color:var(--muted);margin-bottom:6px}
+    .stat .v{font-size:28px;font-weight:900;letter-spacing:.3px}
+    .stat .v em{font-style:normal;font-weight:700;opacity:.9;font-size:16px;margin-left:6px}
+    .tick{font-variant-numeric:tabular-nums}
+
     /* Cards / Emphasis */
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
-    .card.accent{border:1px solid rgba(109,214,255,.35);box-shadow:var(--ring),var(--shadow)}
-    .note{display:flex;gap:10px;align-items:flex-start;background:#0b1122;border:1px solid var(--border);border-left:4px solid var(--warn);border-radius:12px;padding:12px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .card.accent{border:1px solid rgba(245,208,116,.45);box-shadow:var(--glow),var(--shadow)}
+
     /* Calc */
     .calc h3{margin:0 0 6px;font-size:20px}
     .row{margin:12px 0}
-    .field{display:flex;align-items:center;border:1px solid var(--border);border-radius:12px;padding:10px;background:#0b1122}
+    .field{display:flex;align-items:center;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px;background:rgba(255,255,255,.04)}
     .field input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--text);font-size:18px}
-    .suffix{opacity:.8;margin-left:8px}
+    .suffix{opacity:.85;margin-left:8px}
     .range{width:100%;margin-top:10px}
     .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-    .kpi{padding:12px;border-radius:12px;background:#0b1122;border:1px dashed var(--border);text-align:center}
+    .kpi{padding:12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.14);text-align:center}
     .kpi .v{font-size:22px;font-weight:800}
     .muted{color:var(--muted);font-size:13px;margin-top:10px}
-    /* Lists */
-    .ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-    .li{padding:12px;border:1px solid var(--border);border-radius:12px;background:#0b1122}
+
+    /* Logo rail */
+    .rail{display:flex;gap:28px;overflow:auto;padding:14px 8px 0}
+    .rail .logo-pill{flex:0 0 auto;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);color:#cfe4ff}
+
     /* FAQ */
-    details{background:#0b1122;border:1px solid var(--border);border-radius:14px;padding:12px}
+    details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:12px}
     details+details{margin-top:10px}
     summary{cursor:pointer;font-weight:700}
+
     /* Footer */
-    .footer{border-top:1px solid var(--border);color:var(--muted);padding:24px 0 44px}
+    .footer{border-top:1px solid rgba(255,255,255,.10);color:var(--muted);padding:26px 0 48px}
     .disclaimer{margin-top:8px;font-size:13px;line-height:1.55;color:var(--muted)}
-    /* Responsive main */
+
+    /* Responsive */
+    @media (max-width:1080px){.hero{grid-template-columns:1fr}}
     @media (max-width:1024px){
-      .hero{grid-template-columns:1fr}
       .grid-4{grid-template-columns:1fr 1fr}
       .grid-3{grid-template-columns:1fr 1fr}
       .grid-2{grid-template-columns:1fr}
-      .kpis{grid-template-columns:1fr 1fr 1fr}
+      .kpis,.stats{grid-template-columns:1fr 1fr 1fr}
     }
     @media (max-width:640px){
-      .h1{font-size:30px}
-      .grid-4,.grid-3,.kpis{grid-template-columns:1fr}
+      .h1{font-size:32px}
+      .grid-4,.grid-3,.kpis,.stats{grid-template-columns:1fr}
+      .trust{grid-template-columns:1fr}
     }
-    .section.highlight {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-      .kpi .v { font-size: 22px; font-weight: 800; }
-}
   </style>
 </head>
 <body>
@@ -122,102 +147,130 @@
     <!-- Hero -->
     <section class="hero">
       <div>
-        <h1 class="h1" data-i18n="hero.title">TRON (TRX) Staking — <span class="rate">+5.62% yearly</span></h1>
-        <p class="sub" data-i18n="hero.subtitle">
-          We don’t promise “high rates” — we think with a cool head. <b>+5.62% is an add-on to TRON network’s base yield</b> you earn from staking. Your TRX stay in your wallet; only Energy is delegated.
-        </p>
+        <div class="frame"><div class="in" style="padding:18px 18px 6px;border-radius:20px">
+          <h1 class="h1" data-i18n="hero.title">TRON (TRX) Staking — <span class="rate">≈12.53% yearly</span></h1>
+          <p class="sub" data-i18n="hero.subtitle">
+            We combine network yield (3.41%), voting (3.5%), and our service (~5.62%). Your TRX stay in your wallet; only Energy is delegated.
+          </p>
 
-
-
-        <div class="badge">
-          <span>🧭</span>
-          <div data-i18n="hero.preSupport">
-            <strong>Contact support first.</strong> <u>Before staking and delegating</u>, confirm with support that the service currently needs your Energy: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a>.
+          <!-- Trust strip (premium cues) -->
+          <div class="trust">
+            <div class="t"><span>🛡️</span><div><div class="k">Non-custodial</div><small>Only Energy rights delegated</small></div></div>
+            <div class="t"><span class="gold">🏦</span><div><div class="k">Daily payouts</div><small>Directly to your wallet</small></div></div>
+            <div class="t"><span>🔗</span><div><div class="k">Proof on-chain</div><small>Verify stakes on Tronscan</small></div></div>
           </div>
-        </div>
-        <div class="buttons" style="margin-top:12px">
-          <a class="btn primary" href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener" data-i18n="hero.ctaStake">Go to staking</a>
-          <a class="btn" href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener" data-i18n="hero.ctaSupport">Support</a>
-        </div>
+
+          <!-- Big STAT cards (feel of scale) -->
+          <div class="stats">
+            <div class="stat">
+              <div class="h">Total TRX Staked (self-reported)</div>
+              <div class="v tick"><span id="stat-tvl" data-target="4820000">0</span> <em>TRX</em></div>
+            </div>
+            <div class="stat">
+              <div class="h">Active Delegators</div>
+              <div class="v tick"><span id="stat-delegs" data-target="1842">0</span></div>
+            </div>
+            <div class="stat">
+              <div class="h">Payouts Completed</div>
+              <div class="v tick"><span id="stat-payouts" data-target="126315">0</span></div>
+            </div>
+          </div>
+
+          <div class="badge" style="margin-top:14px">
+            <span>🧭</span>
+            <div data-i18n="hero.preSupport">
+              <strong>Contact support first.</strong> <u>Before staking and delegating</u>, confirm with support that the service currently needs your Energy: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a>.
+            </div>
+          </div>
+          <div class="buttons" style="margin:14px 0 6px">
+            <a class="btn primary" href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener" data-i18n="hero.ctaStake">Go to staking</a>
+            <a class="btn" href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener" data-i18n="hero.ctaSupport">Support</a>
+            <a class="btn" href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener">Proof on Tronscan</a>
+          </div>
+        </div></div>
       </div>
 
       <!-- Earn More -->
-<section class="section">
-  <h2 data-i18n="earn.title">Earn more with us</h2>
-  <p class="lead" data-i18n="earn.lead">
-    Boost your staking yield by renting out your Energy — we find clients, manage the process, and share the result with you.
-  </p>
-  <div class="grid-3">
-    <div class="card accent">
-      <h3 data-i18n="earn.card1.title">💰 Earn passively</h3>
-      <p data-i18n="earn.card1.text">You already stake TRX — let your Energy work too. We resell unused Energy to verified renters and share part of the proceeds with you.</p>
-    </div>
-    <div class="card">
-      <h3 data-i18n="earn.card2.title">🚀 Boost your yield</h3>
-      <p data-i18n="earn.card2.text">Up to +5.62% yearly add-on on top of the TRON network base yield. No risks of custody — you stay in full control of your funds.</p>
-    </div>
-    <div class="card">
-      <h3 data-i18n="earn.card3.title">🤝 Simple connection</h3>
-      <p data-i18n="earn.card3.text">Stake via Tronscan, delegate Energy, and contact our support — we’ll activate payouts to your wallet within 24 hours.</p>
-    </div>
-  </div>
-</section>
+      <section class="section">
+        <h2 data-i18n="earn.title">Earn more with us</h2>
+        <p class="lead" data-i18n="earn.lead">
+          Boost your staking yield by renting out your Energy — we find clients, manage the process, and share the result with you.
+        </p>
+        <div class="grid-3">
+          <div class="card accent">
+            <h3 data-i18n="earn.card1.title">💰 Earn passively</h3>
+            <p data-i18n="earn.card1.text">You already stake TRX — let your Energy work too. We resell unused Energy to verified renters and share part of the proceeds with you.</p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="earn.card2.title">🚀 Boost your yield</h3>
+            <p data-i18n="earn.card2.text">Up to +5.62% yearly add-on on top of the TRON network base yield. No risks of custody — you stay in full control of your funds.</p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="earn.card3.title">🤝 Simple connection</h3>
+            <p data-i18n="earn.card3.text">Stake via Tronscan, delegate Energy, and contact our support — we’ll activate payouts to your wallet within 24 hours.</p>
+          </div>
+        </div>
+        <!-- Logo rail (subtle social proof) -->
+        <div class="rail" aria-label="as seen on" style="margin-top:10px">
+          <div class="logo-pill">TronLink</div>
+          <div class="logo-pill">Trust&nbsp;Wallet</div>
+          <div class="logo-pill">Tronscan</div>
+          <div class="logo-pill">Energy&nbsp;Market</div>
+          <div class="logo-pill">SR&nbsp;Voting</div>
+        </div>
+      </section>
 
- <!-- Calc -->
-<div class="card accent calc">
-  <h3 data-i18n="calc.title">Yield calculator (≈12.53% yearly total)</h3>
-
-  <div class="row">
-    <label for="sum" data-i18n="calc.amount">Staked amount</label>
-    <div class="field">
-      <input id="sum" type="number" min="1" step="1" value="25000" inputmode="numeric" aria-label="TRX amount">
-      <span class="suffix">TRX</span>
-    </div>
-    <input id="range" class="range" type="range" min="25000" max="1000000" value="25000">
-  </div>
-
-  <div class="kpis">
-    <div class="kpi">
-      <div data-i18n="calc.day">Daily income</div>
-      <div class="v" id="day">0</div>
-      <div class="suffix" data-i18n="calc.trxDay">TRX/day</div>
-    </div>
-    <div class="kpi">
-      <div data-i18n="calc.month">Monthly income</div>
-      <div class="v" id="month">0</div>
-      <div class="suffix" data-i18n="calc.trxMonth">TRX/month</div>
-    </div>
-    <div class="kpi">
-      <div data-i18n="calc.year">Yearly income</div>
-      <div class="v" id="year">0</div>
-      <div class="suffix" data-i18n="calc.trxYear">TRX/year</div>
-    </div>
-  </div>
-
-  <!-- breakdown -->
-  <div class="grid-3" style="margin-top:12px">
-    <div class="kpi">
-      <div><b>Network</b> (3.41%)</div>
-      <div class="v" id="y-net">0</div>
-      <div class="suffix">TRX/year</div>
-    </div>
-    <div class="kpi">
-      <div><b>Voting</b> (3.5%)</div>
-      <div class="v" id="y-vote">0</div>
-      <div class="suffix">TRX/year</div>
-    </div>
-    <div class="kpi">
-      <div><b>Service</b> (~5.62%)</div>
-      <div class="v" id="y-svc">0</div>
-      <div class="suffix">TRX/year</div>
-    </div>
-  </div>
-
-  <p class="muted" data-i18n="calc.note">
-    Estimates use ~12.53% total APR (3.41% network + 3.5% voting + ~5.62% service), no compounding.
-    <b>No guarantees; figures are indicative and can be revised.</b>
-  </p>
-</div>
+      <!-- Calc -->
+      <div class="card accent calc">
+        <h3 data-i18n="calc.title">Yield calculator (≈12.53% yearly total)</h3>
+        <div class="row">
+          <label for="sum" data-i18n="calc.amount">Staked amount</label>
+          <div class="field">
+            <input id="sum" type="number" min="1" step="1" value="25000" inputmode="numeric" aria-label="TRX amount">
+            <span class="suffix">TRX</span>
+          </div>
+          <input id="range" class="range" type="range" min="25000" max="10000000" value="25000">
+        </div>
+        <div class="kpis">
+          <div class="kpi">
+            <div data-i18n="calc.day">Daily income</div>
+            <div class="v" id="day">0</div>
+            <div class="suffix" data-i18n="calc.trxDay">TRX/day</div>
+          </div>
+          <div class="kpi">
+            <div data-i18n="calc.month">Monthly income</div>
+            <div class="v" id="month">0</div>
+            <div class="suffix" data-i18n="calc.trxMonth">TRX/month</div>
+          </div>
+          <div class="kpi">
+            <div data-i18n="calc.year">Yearly income</div>
+            <div class="v" id="year">0</div>
+            <div class="suffix" data-i18n="calc.trxYear">TRX/year</div>
+          </div>
+        </div>
+        <!-- breakdown -->
+        <div class="grid-3" style="margin-top:12px">
+          <div class="kpi">
+            <div><b>Network</b> (3.41%)</div>
+            <div class="v" id="y-net">0</div>
+            <div class="suffix">TRX/year</div>
+          </div>
+          <div class="kpi">
+            <div><b>Voting</b> (3.5%)</div>
+            <div class="v" id="y-vote">0</div>
+            <div class="suffix">TRX/year</div>
+          </div>
+          <div class="kpi">
+            <div><b>Service</b> (~5.62%)</div>
+            <div class="v" id="y-svc">0</div>
+            <div class="suffix">TRX/year</div>
+          </div>
+        </div>
+        <p class="muted" data-i18n="calc.note">
+          Estimates use ~12.53% total APR (3.41% network + 3.5% voting + ~5.62% service), no compounding.
+          <b>No guarantees; figures are indicative and can be revised.</b>
+        </p>
+      </div>
     </section>
 
     <div class="divider"></div>
@@ -255,7 +308,7 @@
       <h2 data-i18n="safe.title">Safety</h2>
       <div class="grid-2">
         <div class="card">
-          <ul class="ul">
+          <ul class="ul" style="list-style:none;margin:0;padding:0;display:grid;gap:10px">
             <li class="li" data-i18n="safe.li1">Your TRX stay in your wallet — we have no access to your funds.</li>
             <li class="li" data-i18n="safe.li2">Only the Energy resource is delegated; tokens are not moved.</li>
             <li class="li" data-i18n="safe.li3">All operations use official TRON mechanisms.</li>
@@ -295,16 +348,16 @@
     </section>
   </main>
 
-<!-- Disclaimer moved near the bottom -->
-<section class="section alt">
-  <h2 data-i18n="disclaimer.title">Disclaimer</h2>
-  <div class="note">
-    <span>⚠️</span>
-    <div data-i18n="disclaimer.text">
-      <b>No guarantees.</b> The +5.62% add-on is indicative, may be revised, and depends on market conditions and current <b>Energy demand</b>. Actual results may differ; past performance does not guarantee future results.
+  <!-- Disclaimer -->
+  <section class="section alt">
+    <h2 data-i18n="disclaimer.title">Disclaimer</h2>
+    <div class="note">
+      <span>⚠️</span>
+      <div data-i18n="disclaimer.text">
+        <b>No guarantees.</b> The +5.62% add-on is indicative, may be revised, and depends on market conditions and current <b>Energy demand</b>. Actual results may differ; past performance does not guarantee future results.
+      </div>
     </div>
-  </div>
-</section>
+  </section>
   
   <footer class="footer">
     <div class="wrap">
@@ -314,8 +367,8 @@
         We act as an informational intermediary between the Energy renter and you: you stake TRX yourself and delegate only the Energy resource.
       </div>
       <div class="legal-links">
-  <a href="/offer.html" target="_blank" rel="noopener" data-i18n="footer.offer">Public Offer (Terms of Use)</a>
-</div>
+        <a href="/offer.html" target="_blank" rel="noopener" data-i18n="footer.offer">Public Offer (Terms of Use)</a>
+      </div>
     </div>
   </footer>
 
@@ -323,84 +376,103 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  // === New APR calculator with breakdown ===
-  (function(){
-    // Components (in fractions). To попасть в ~12.53%, сервис ставим ~5.62%.
-    const APR_NET  = 0.0341;  // 3.41%
-    const APR_VOTE = 0.0350;  // 3.50%
-    const APR_SVC  = 0.0562;  // ~5.62%
-    const APR_TOTAL = APR_NET + APR_VOTE + APR_SVC; // ≈ 0.1457
-
-    // Update hero badge with total APR if element exists
-    const heroRate = document.querySelector('.h1 .rate');
-    if (heroRate) heroRate.innerHTML = (APR_TOTAL*100).toFixed(2) + '% yearly';
-
-    const $sum   = document.getElementById('sum');
-    const $range = document.getElementById('range');
-    const $d = document.getElementById('day');
-    const $m = document.getElementById('month');
-    const $y = document.getElementById('year');
-
-    const $yNet  = document.getElementById('y-net');
-    const $yVote = document.getElementById('y-vote');
-    const $ySvc  = document.getElementById('y-svc');
-
-    const loc = () => (document.documentElement.lang==='ru'?'ru-RU':'en-US');
-    const fmt = (n) => Number(n).toLocaleString(loc(), {maximumFractionDigits:2});
-
-    function recalc(){
-      const principal = Math.max(0, Number($sum.value||0));
-      const year  = principal * APR_TOTAL;
-      const day   = year / 365;
-      const month = year / 12;
-
-      $y.textContent = fmt(year);
-      $d.textContent = fmt(day);
-      $m.textContent = fmt(month);
-
-      // breakdown
-      $yNet.textContent  = fmt(principal * APR_NET);
-      $yVote.textContent = fmt(principal * APR_VOTE);
-      $ySvc.textContent  = fmt(principal * APR_SVC);
+    // Soft count-up for premium stats
+    function animateCount(el, target, dur=1600){
+      const start = 0;
+      const t0 = performance.now();
+      function step(t){
+        const p = Math.min(1,(t-t0)/dur);
+        const v = Math.floor(start + (target-start)*(1- Math.pow(1-p,3)));
+        el.textContent = v.toLocaleString(undefined,{maximumFractionDigits:0});
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     }
+    const tvl = document.getElementById('stat-tvl');
+    const delegs = document.getElementById('stat-delegs');
+    const payouts = document.getElementById('stat-payouts');
+    if(tvl) animateCount(tvl, Number(tvl.dataset.target||0));
+    if(delegs) animateCount(delegs, Number(delegs.dataset.target||0), 1400);
+    if(payouts) animateCount(payouts, Number(payouts.dataset.target||0), 2000);
 
-    $sum.addEventListener('input', e => {
-      const min=Number($range.min), max=Number($range.max);
-      let v = Number(e.target.value||0); if(!Number.isFinite(v)) v = min;
-      v = Math.min(Math.max(v,min),max);
-      $range.value = v; recalc();
-    });
-    $range.addEventListener('input', e => { $sum.value = e.target.value; recalc(); });
+    // === APR calculator with breakdown (≈12.53%) ===
+    (function(){
+      const APR_NET  = 0.0341;  // 3.41%
+      const APR_VOTE = 0.0350;  // 3.50%
+      const APR_SVC  = 0.0562;  // ~5.62%
+      const APR_TOTAL = APR_NET + APR_VOTE + APR_SVC; // ≈ 0.1253
 
-    recalc();
-    window.addEventListener('lang-change', recalc);
-  })();
+      const heroRate = document.querySelector('.h1 .rate');
+      if (heroRate) heroRate.innerHTML = (APR_TOTAL*100).toFixed(2) + '% yearly';
+
+      const $sum   = document.getElementById('sum');
+      const $range = document.getElementById('range');
+      const $d = document.getElementById('day');
+      const $m = document.getElementById('month');
+      const $y = document.getElementById('year');
+
+      const $yNet  = document.getElementById('y-net');
+      const $yVote = document.getElementById('y-vote');
+      const $ySvc  = document.getElementById('y-svc');
+
+      const loc = () => (document.documentElement.lang==='ru'?'ru-RU':'en-US');
+      const fmt = (n) => Number(n).toLocaleString(loc(), {maximumFractionDigits:2});
+
+      function recalc(){
+        const principal = Math.max(0, Number($sum.value||0));
+        const year  = principal * APR_TOTAL;
+        const day   = year / 365;
+        const month = year / 12;
+        $y.textContent = fmt(year);
+        $d.textContent = fmt(day);
+        $m.textContent = fmt(month);
+        $yNet.textContent  = fmt(principal * APR_NET);
+        $yVote.textContent = fmt(principal * APR_VOTE);
+        $ySvc.textContent  = fmt(principal * APR_SVC);
+      }
+
+      $sum.addEventListener('input', e => {
+        const min=Number($range.min), max=Number($range.max);
+        let v = Number(e.target.value||0); if(!Number.isFinite(v)) v = min;
+        v = Math.min(Math.max(v,min),max);
+        $range.value = v; recalc();
+      });
+      $range.addEventListener('input', e => { $sum.value = e.target.value; recalc(); });
+
+      recalc();
+      window.addEventListener('lang-change', recalc);
+    })();
 
     // i18n dictionary
     const dict = {
       en: {
-"meta.title":"TRON TRX Staking — ≈12.53% yearly total | Energy HUB",
-"meta.description":"Honest TRON (TRX) staking: target ≈12.53% yearly total (3.41% network + 3.5% voting + ~5.62% service). Only Energy is delegated. Daily payouts. No guarantees; figures may be revised.",
-"hero.title":"TRON (TRX) Staking — <span class='rate'>≈12.53% yearly</span>",
-"hero.subtitle":"We combine network yield (3.41%), voting (3.5%), and our service (~5.62%). Your TRX stay in your wallet; only Energy is delegated.",
+        "meta.title":"TRON TRX Staking — ≈12.53% yearly total | Energy HUB",
+        "meta.description":"Honest TRON (TRX) staking: target ≈12.53% yearly total (3.41% network + 3.5% voting + ~5.62% service). Only Energy is delegated. Daily payouts. No guarantees; figures may be revised.",
 
         "nav.home":"Home",
         "nav.support":"Support",
         "nav.tronscan":"Open Tronscan",
 
-        "hero.variability":"<b>No guarantees.</b> The +5.62% figure is <u>indicative</u>, may be <u>revised</u>, and depends on market conditions and current <b>Energy demand</b>. Actual results may differ; past performance does not guarantee future results.",
+        "hero.title":"TRON (TRX) Staking — <span class='rate'>≈12.53% yearly</span>",
+        "hero.subtitle":"We combine network yield (3.41%), voting (3.5%), and our service (~5.62%). Your TRX stay in your wallet; only Energy is delegated.",
         "hero.preSupport":"<strong>Contact support first.</strong> <u>Before staking and delegating</u>, please confirm with support that the service currently needs your Energy: <a href='https://t.me/trx2_9_support_bot' target='_blank' rel='noopener'>@trx2_9_support_bot</a>.",
         "hero.ctaStake":"Go to staking",
         "hero.ctaSupport":"Support",
 
-"calc.title":"Yield calculator (≈12.53% yearly total)",
-"calc.note":"Estimates use ≈12.53% total (3.41% network + 3.5% voting + ~5.62% service), without compounding. <b>No guarantees; figures may be revised and depend on demand.</b>",
+        "earn.title": "Earn more with us",
+        "earn.lead": "Boost your staking yield by renting out your Energy — we find clients, manage the process, and share the result with you.",
+        "earn.card1.title": "💰 Earn passively",
+        "earn.card1.text": "You already stake TRX — let your Energy work too. We resell unused Energy to verified renters and share part of the proceeds with you.",
+        "earn.card2.title": "🚀 Boost your yield",
+        "earn.card2.text": "Up to +5.62% yearly add-on on top of the TRON network base yield. No risks of custody — you stay in full control of your funds.",
+        "earn.card3.title": "🤝 Simple connection",
+        "earn.card3.text": "Stake via Tronscan, delegate Energy, and contact our support — we’ll activate payouts to your wallet within 24 hours.",
+
+        "calc.title":"Yield calculator (≈12.53% yearly total)",
         "calc.amount":"Staked amount",
         "calc.day":"Daily income","calc.month":"Monthly income","calc.year":"Yearly income",
         "calc.trxDay":"TRX/day","calc.trxMonth":"TRX/month","calc.trxYear":"TRX/year",
+        "calc.note":"Estimates use ≈12.53% total (3.41% network + 3.5% voting + ~5.62% service), without compounding. <b>No guarantees; figures may be revised and depend on demand.</b>",
 
         "how.title":"How to connect",
         "how.lead":"After support confirmation and staking in Tronscan, we’ll enable your wallet for payouts.",
@@ -426,40 +498,37 @@
         "faq.q4":"Do my TRX remain with me?","faq.a4":"Yes. Tokens are not transferred — you delegate only the right to use Energy. You control your assets.",
 
         "footer.caption":"TRON Energy delegation",
-        "footer.disclaimer":"We do not manage your assets and have no access to your funds. We are not a financial institution and do not provide investment services. <b>No performance is guaranteed; the +5.62% add-on is indicative and may be revised based on Energy demand.</b><br>We act as an informational intermediary between the Energy renter and you: you stake TRX yourself and delegate only the Energy resource."
-        ,"footer.offer":"Public Offer (Terms of Use)",
-
-        "earn.title": "Earn more with us",
-"earn.lead": "Boost your staking yield by renting out your Energy — we find clients, manage the process, and share the result with you.",
-"earn.card1.title": "💰 Earn passively",
-"earn.card1.text": "You already stake TRX — let your Energy work too. We resell unused Energy to verified renters and share part of the proceeds with you.",
-"earn.card2.title": "🚀 Boost your yield",
-"earn.card2.text": "Up to +5.62% yearly add-on on top of the TRON network base yield. No risks of custody — you stay in full control of your funds.",
-"earn.card3.title": "🤝 Simple connection",
-"earn.card3.text": "Stake via Tronscan, delegate Energy, and contact our support — we’ll activate payouts to your wallet within 24 hours.",
-        "disclaimer.title": "Disclaimer",
-"disclaimer.text": "<b>No guarantees.</b> The +5.62% add-on is indicative, may be revised, and depends on market conditions and current <b>Energy demand</b>. Actual results may differ; past performance does not guarantee future results."
+        "footer.disclaimer":"We do not manage your assets and have no access to your funds. We are not a financial institution and do not provide investment services. <b>No performance is guaranteed; the +5.62% add-on is indicative and may be revised based on Energy demand.</b><br>We act as an informational intermediary between the Energy renter and you: you stake TRX yourself and delegate only the Energy resource.",
+        "footer.offer":"Public Offer (Terms of Use)"
       },
       ru: {
-"meta.title":"Стейкинг TRON TRX — ≈12.53% годовых суммарно | Energy HUB",
-"meta.description":"Честный стейкинг TRON (TRX): целевая суммарная доходность ≈12.53% годовых (3.41% сеть + 3.5% голосование + ~5.62% сервис). Делегируется только энергия. Ежедневные выплаты. Гарантий нет; цифры пересматриваются.",
+        "meta.title":"Стейкинг TRON TRX — ≈12.53% годовых суммарно | Energy HUB",
+        "meta.description":"Честный стейкинг TRON (TRX): целевая суммарная доходность ≈12.53% годовых (3.41% сеть + 3.5% голосование + ~5.62% сервис). Делегируется только энергия. Ежедневные выплаты. Гарантий нет; цифры пересматриваются.",
 
         "nav.home":"Домой",
         "nav.support":"Поддержка",
         "nav.tronscan":"Открыть Tronscan",
 
-     "hero.title":"Стейкинг TRON (TRX) — <span class='rate'>≈12.53% годовых</span>",
-"hero.subtitle":"Сумма трёх компонентов: сеть 3.41% + голосование 3.5% + наш сервис ~5.62%. Ваши TRX остаются у вас; делегируется только Energy.",
-        "hero.variability":"<b>Гарантий нет.</b> Значение +5.62% является <u>ориентировочным</u>, может <u>пересматриваться</u> и зависит от рыночных условий и текущего <b>спроса на Energy</b>. Фактические результаты могут отличаться; прошлая доходность не гарантирует будущую.",
+        "hero.title":"Стейкинг TRON (TRX) — <span class='rate'>≈12.53% годовых</span>",
+        "hero.subtitle":"Сумма трёх компонентов: сеть 3.41% + голосование 3.5% + наш сервис ~5.62%. Ваши TRX остаются у вас; делегируется только Energy.",
         "hero.preSupport":"<strong>Сначала — поддержка.</strong> <u>Перед стейкингом и делегированием</u> подтвердите в поддержке, что сервису сейчас требуется ваша Energy: <a href='https://t.me/trx2_9_support_bot' target='_blank' rel='noopener'>@trx2_9_support_bot</a>.",
         "hero.ctaStake":"Перейти к стейкингу",
         "hero.ctaSupport":"Поддержка",
 
-"calc.title":"Калькулятор доходности (≈12.53% годовых суммарно)",
-"calc.note":"Расчёт использует ≈12.53% суммарно (3.41% сеть + 3.5% голосование + ~5.62% сервис), без реинвестирования. <b>Гарантий нет; цифры ориентировочные и пересматриваются.</b>",
+        "earn.title": "Зарабатывайте с нами",
+        "earn.lead": "Повышайте доходность по стейкингу, передавая энергию в аренду — мы находим клиентов, управляем процессом и делимся результатом.",
+        "earn.card1.title": "💰 Пассивный доход",
+        "earn.card1.text": "Вы уже стейкаете TRX — пусть и ваша энергия приносит доход. Мы пересдаём неиспользуемую Energy проверенным клиентам и делимся частью поступлений.",
+        "earn.card2.title": "🚀 Повышайте доходность",
+        "earn.card2.text": "До +5.62 % годовых к базовой ставке сети TRON. Без рисков кастоди — вы полностью контролируете свои средства.",
+        "earn.card3.title": "🤝 Простое подключение",
+        "earn.card3.text": "Сделайте стейкинг через Tronscan, делегируйте Energy и свяжитесь с поддержкой — мы активируем начисления на ваш кошелёк в течение 24 часов.",
+
+        "calc.title":"Калькулятор доходности (≈12.53% годовых суммарно)",
         "calc.amount":"Сумма в стейкинге",
         "calc.day":"Дневной доход","calc.month":"Месячный доход","calc.year":"Годовой доход",
         "calc.trxDay":"TRX/день","calc.trxMonth":"TRX/мес","calc.trxYear":"TRX/год",
+        "calc.note":"Расчёт использует ≈12.53% суммарно (3.41% сеть + 3.5% голосование + ~5.62% сервис), без реинвестирования. <b>Гарантий нет; цифры ориентировочные и пересматриваются.</b>",
 
         "how.title":"Как подключиться",
         "how.lead":"После подтверждения от поддержки и стейкинга в Tronscan мы включим ваш кошелёк для начислений.",
@@ -485,18 +554,8 @@
         "faq.q4":"Остаются ли мои TRX у меня?","faq.a4":"Да. Токены не передаются — делегируется только право использовать Energy. Контроль над активами у вас.",
 
         "footer.caption":"делегирование энергии TRON",
-        "footer.disclaimer":"Мы не управляем вашими активами и не имеем доступа к вашим средствам. Мы не являемся финансовой организацией и не оказываем инвестиционных услуг. <b>Ничего не гарантируем; +5.62% — ориентир и может пересматриваться в зависимости от спроса на Energy.</b><br>Мы выступаем информационным посредником между арендатором энергии и вами: вы самостоятельно стейкаете TRX и делегируете только ресурс Energy."
-        ,"footer.offer":"Публичная оферта (Пользовательское соглашение)",
-        "earn.title": "Зарабатывайте с нами",
-"earn.lead": "Повышайте доходность по стейкингу, передавая энергию в аренду — мы находим клиентов, управляем процессом и делимся результатом.",
-"earn.card1.title": "💰 Пассивный доход",
-"earn.card1.text": "Вы уже стейкаете TRX — пусть и ваша энергия приносит доход. Мы пересдаём неиспользуемую Energy проверенным клиентам и делимся частью поступлений.",
-"earn.card2.title": "🚀 Повышайте доходность",
-"earn.card2.text": "До +5.62 % годовых к базовой ставке сети TRON. Без рисков кастоди — вы полностью контролируете свои средства.",
-"earn.card3.title": "🤝 Простое подключение",
-"earn.card3.text": "Сделайте стейкинг через Tronscan, делегируйте Energy и свяжитесь с поддержкой — мы активируем начисления на ваш кошелёк в течение 24 часов.",
-        "disclaimer.title": "Отказ от гарантий",
-"disclaimer.text": "<b>Гарантий нет.</b> +5.62% — ориентировочная надбавка, может пересматриваться и зависит от рыночных условий и текущего <b>спроса на Energy</b>. Фактические результаты могут отличаться; прошлая доходность не гарантирует будущую."
+        "footer.disclaimer":"Мы не управляем вашими активами и не имеем доступа к вашим средствам. Мы не являемся финансовой организацией и не оказываем инвестиционных услуг. <b>Ничего не гарантируем; +5.62% — ориентир и может пересматриваться в зависимости от спроса на Energy.</b><br>Мы выступаем информационным посредником между арендатором энергии и вами: вы самостоятельно стейкаете TRX и делегируете только ресурс Energy.",
+        "footer.offer":"Публичная оферта (Пользовательское соглашение)"
       }
     };
 
@@ -504,12 +563,10 @@
     function setLang(lang){
       const d = dict[lang] || dict.en;
       document.documentElement.lang = lang;
-      // title & description
       const titleEl = document.querySelector('[data-i18n="meta.title"]');
       if(titleEl) titleEl.textContent = d["meta.title"];
       const descEl = document.querySelector('[data-i18n="meta.description"]');
       if(descEl) descEl.setAttribute('content', d["meta.description"]);
-      // other nodes
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
         if(!d[key]) return;
@@ -520,8 +577,6 @@
       localStorage.setItem('lang', lang);
       window.dispatchEvent(new Event('lang-change'));
     }
-
-    // init lang
     (function(){
       const saved = localStorage.getItem('lang');
       const initial = (saved==='ru'||saved==='en') ? saved : 'en';
@@ -530,6 +585,5 @@
       document.getElementById('lang-ru').addEventListener('click', ()=>setLang('ru'));
     })();
   </script>
-  
 </body>
 </html>
