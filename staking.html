@@ -124,6 +124,61 @@
       .grid-4,.grid-3,.kpis,.stats{grid-template-columns:1fr}
       .trust{grid-template-columns:1fr}
     }
+    /* ==== MOBILE FIX: full-width, bigger type, comfy touch targets ==== */
+@media (max-width: 768px){
+  /* 1) Контейнер — убираем max-width и боковые поля у main */
+  .wrap{ max-width:100%; padding:0; }
+
+  /* Шапка/футер — оставляем внутренние поля, чтобы не липло к краям */
+  .header .wrap,
+  .footer .wrap{ padding:12px 16px; }
+
+  /* 2) Герой и секции — full-bleed карточки с равными отступами */
+  .hero{ padding:0; }
+  main.wrap > .hero > .card,
+  main.wrap > .section .card,
+  main.wrap > .section.alt .card{ margin:12px 16px; }
+
+  /* 3) Гриды — строго в одну колонку и на всю ширину */
+  .grid-4, .grid-3, .grid-2, .kpis, .stats{ grid-template-columns:1fr !important; gap:12px; }
+
+  /* 4) Типографика крупнее */
+  body{ font-size:17px; line-height:1.55; }
+  .h1{ font-size:clamp(26px, 7vw, 34px); line-height:1.2; }
+  .sub{ font-size:15px; }
+  .stat .v{ font-size:24px; }
+  .kpi .v{ font-size:22px; }
+
+  /* 5) Кнопки — во всю ширину, стеком */
+  .buttons{ gap:10px; }
+  .buttons .btn{ width:100%; justify-content:center; }
+
+  /* Нижняя фиксированная CTA не перекрывает контент */
+  body{ padding-bottom:76px; }
+
+  /* 6) Поля ввода — больше тап-зона */
+  .field{ padding:12px; border-radius:14px; }
+  .field input{ min-height:52px; font-size:18px; }
+
+  /* 7) Аккуратные радиусы и тени на мобильных */
+  .card{ border-radius:16px; box-shadow:none; }
+  .card.gold{ border-radius:16px; }
+
+  /* 8) FAQ и списки — чуть свободнее */
+  details{ padding:12px 14px; }
+  .ul{ gap:12px; }
+
+  /* 9) Нижняя мобильная панель — активна и читабельна */
+  .mobile-cta{ display:flex; gap:10px; }
+  .mobile-cta .btn{ padding:12px 14px; border-radius:12px; }
+}
+
+/* Микро-фикс для очень узких экранов */
+@media (max-width: 380px){
+  .header .wrap, .footer .wrap{ padding:10px 12px; }
+  main.wrap > .hero > .card,
+  main.wrap > .section .card{ margin:10px 12px; }
+}
   </style>
 </head>
 <body>
