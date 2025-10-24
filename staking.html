@@ -162,36 +162,61 @@
   </div>
 </section>
 
-      <!-- Calc -->
-      <div class="card accent">
-        <h3 data-i18n="calc.title">Add-on calculator (+5% yearly to network)</h3>
-        <div class="row">
-          <label for="sum" data-i18n="calc.amount">Staked amount</label>
-          <div class="field">
-            <input id="sum" type="number" min="1" step="1" value="25000" inputmode="numeric" aria-label="TRX amount">
-            <span class="suffix">TRX</span>
-          </div>
-          <input id="range" class="range" type="range" min="25000" max="1000000" value="25000">
-        </div>
-        <div class="kpis">
-          <div class="kpi">
-            <div data-i18n="calc.day">Daily income</div>
-            <div class="v" id="day">0</div>
-            <div class="suffix" data-i18n="calc.trxDay">TRX/day</div>
-          </div>
-          <div class="kpi">
-            <div data-i18n="calc.month">Monthly income</div>
-            <div class="v" id="month">0</div>
-            <div class="suffix" data-i18n="calc.trxMonth">TRX/month</div>
-          </div>
-          <div class="kpi">
-            <div data-i18n="calc.year">Yearly income</div>
-            <div class="v" id="year">0</div>
-            <div class="suffix" data-i18n="calc.trxYear">TRX/year</div>
-          </div>
-        </div>
-        <p class="muted" data-i18n="calc.note">Estimates use a target +5% yearly add-on to TRON’s base yield, without compounding. <b>No guarantees; the figure may be revised and depends on demand.</b></p>
-      </div>
+ <!-- Calc -->
+<div class="card accent calc">
+  <h3 data-i18n="calc.title">Yield calculator (≈14.57% yearly total)</h3>
+
+  <div class="row">
+    <label for="sum" data-i18n="calc.amount">Staked amount</label>
+    <div class="field">
+      <input id="sum" type="number" min="1" step="1" value="25000" inputmode="numeric" aria-label="TRX amount">
+      <span class="suffix">TRX</span>
+    </div>
+    <input id="range" class="range" type="range" min="25000" max="1000000" value="25000">
+  </div>
+
+  <div class="kpis">
+    <div class="kpi">
+      <div data-i18n="calc.day">Daily income</div>
+      <div class="v" id="day">0</div>
+      <div class="suffix" data-i18n="calc.trxDay">TRX/day</div>
+    </div>
+    <div class="kpi">
+      <div data-i18n="calc.month">Monthly income</div>
+      <div class="v" id="month">0</div>
+      <div class="suffix" data-i18n="calc.trxMonth">TRX/month</div>
+    </div>
+    <div class="kpi">
+      <div data-i18n="calc.year">Yearly income</div>
+      <div class="v" id="year">0</div>
+      <div class="suffix" data-i18n="calc.trxYear">TRX/year</div>
+    </div>
+  </div>
+
+  <!-- breakdown -->
+  <div class="grid-3" style="margin-top:12px">
+    <div class="kpi">
+      <div><b>Network</b> (3.41%)</div>
+      <div class="v" id="y-net">0</div>
+      <div class="suffix">TRX/year</div>
+    </div>
+    <div class="kpi">
+      <div><b>Voting</b> (3.5%)</div>
+      <div class="v" id="y-vote">0</div>
+      <div class="suffix">TRX/year</div>
+    </div>
+    <div class="kpi">
+      <div><b>Service</b> (~7.66%)</div>
+      <div class="v" id="y-svc">0</div>
+      <div class="suffix">TRX/year</div>
+    </div>
+  </div>
+
+  <p class="muted" data-i18n="calc.note">
+    Estimates use ~14.57% total APR (3.41% network + 3.5% voting + ~7.66% service), no compounding.
+    <b>No guarantees; figures are indicative and can be revised.</b>
+  </p>
+</div>
     </section>
 
     <div class="divider"></div>
@@ -297,57 +322,84 @@
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // APR add-on calculator
-    (function(){
-      const apy = 0.05;
-      const $sum = document.getElementById('sum');
-      const $range = document.getElementById('range');
-      const $d = document.getElementById('day');
-      const $m = document.getElementById('month');
-      const $y = document.getElementById('year');
-      const fmt = (n, loc) => Number(n).toLocaleString(loc || (document.documentElement.lang==='ru'?'ru-RU':'en-US'), {maximumFractionDigits:2});
-      function recalc(){
-        const principal = Math.max(0, Number($sum.value||0));
-        const year = principal * apy;
-        const day = year / 365;
-        const month = year / 12;
-        $y.textContent = fmt(year);
-        $d.textContent = fmt(day);
-        $m.textContent = fmt(month);
-      }
-      $sum.addEventListener('input', e => {
-        const min=Number($range.min), max=Number($range.max);
-        let v = Number(e.target.value||0); if(!Number.isFinite(v)) v = min;
-        v = Math.min(Math.max(v,min),max);
-        $range.value = v; recalc();
-      });
-      $range.addEventListener('input', e => { $sum.value = e.target.value; recalc(); });
-      recalc();
-      window.addEventListener('lang-change', recalc);
-    })();
+  // Year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // === New APR calculator with breakdown ===
+  (function(){
+    // Components (in fractions). To попасть в ~14.57%, сервис ставим ~7.66%.
+    const APR_NET  = 0.0341;  // 3.41%
+    const APR_VOTE = 0.0350;  // 3.50%
+    const APR_SVC  = 0.0766;  // ~7.66%
+    const APR_TOTAL = APR_NET + APR_VOTE + APR_SVC; // ≈ 0.1457
+
+    // Update hero badge with total APR if element exists
+    const heroRate = document.querySelector('.h1 .rate');
+    if (heroRate) heroRate.innerHTML = (APR_TOTAL*100).toFixed(2) + '% yearly';
+
+    const $sum   = document.getElementById('sum');
+    const $range = document.getElementById('range');
+    const $d = document.getElementById('day');
+    const $m = document.getElementById('month');
+    const $y = document.getElementById('year');
+
+    const $yNet  = document.getElementById('y-net');
+    const $yVote = document.getElementById('y-vote');
+    const $ySvc  = document.getElementById('y-svc');
+
+    const loc = () => (document.documentElement.lang==='ru'?'ru-RU':'en-US');
+    const fmt = (n) => Number(n).toLocaleString(loc(), {maximumFractionDigits:2});
+
+    function recalc(){
+      const principal = Math.max(0, Number($sum.value||0));
+      const year  = principal * APR_TOTAL;
+      const day   = year / 365;
+      const month = year / 12;
+
+      $y.textContent = fmt(year);
+      $d.textContent = fmt(day);
+      $m.textContent = fmt(month);
+
+      // breakdown
+      $yNet.textContent  = fmt(principal * APR_NET);
+      $yVote.textContent = fmt(principal * APR_VOTE);
+      $ySvc.textContent  = fmt(principal * APR_SVC);
+    }
+
+    $sum.addEventListener('input', e => {
+      const min=Number($range.min), max=Number($range.max);
+      let v = Number(e.target.value||0); if(!Number.isFinite(v)) v = min;
+      v = Math.min(Math.max(v,min),max);
+      $range.value = v; recalc();
+    });
+    $range.addEventListener('input', e => { $sum.value = e.target.value; recalc(); });
+
+    recalc();
+    window.addEventListener('lang-change', recalc);
+  })();
 
     // i18n dictionary
     const dict = {
       en: {
-        "meta.title":"TRON TRX Staking — +5% on top of network yield | Energy HUB",
-        "meta.description":"Honest TRON (TRX) staking: target +5% yearly add-on to TRON network yield. Only Energy is delegated. Daily payouts. No guarantees; figure may be revised and depends on demand.",
+"meta.title":"TRON TRX Staking — ≈14.57% yearly total | Energy HUB",
+"meta.description":"Honest TRON (TRX) staking: target ≈14.57% yearly total (3.41% network + 3.5% voting + ~7.66% service). Only Energy is delegated. Daily payouts. No guarantees; figures may be revised.",
+"hero.title":"TRON (TRX) Staking — <span class='rate'>≈14.57% yearly</span>",
+"hero.subtitle":"We combine network yield (3.41%), voting (3.5%), and our service (~7.66%). Your TRX stay in your wallet; only Energy is delegated.",
 
         "nav.home":"Home",
         "nav.support":"Support",
         "nav.tronscan":"Open Tronscan",
 
-        "hero.title":"TRON (TRX) Staking — <span class='rate'>+5% yearly</span>",
-        "hero.subtitle":"We don’t promise “high rates” — we think with a cool head. <b>+5% is an add-on to TRON network’s base yield</b> you earn from staking. Your TRX stay in your wallet; only Energy is delegated.",
         "hero.variability":"<b>No guarantees.</b> The +5% figure is <u>indicative</u>, may be <u>revised</u>, and depends on market conditions and current <b>Energy demand</b>. Actual results may differ; past performance does not guarantee future results.",
         "hero.preSupport":"<strong>Contact support first.</strong> <u>Before staking and delegating</u>, please confirm with support that the service currently needs your Energy: <a href='https://t.me/trx2_9_support_bot' target='_blank' rel='noopener'>@trx2_9_support_bot</a>.",
         "hero.ctaStake":"Go to staking",
         "hero.ctaSupport":"Support",
 
-        "calc.title":"Add-on calculator (+5% yearly to network)",
+"calc.title":"Yield calculator (≈14.57% yearly total)",
+"calc.note":"Estimates use ≈14.57% total (3.41% network + 3.5% voting + ~7.66% service), without compounding. <b>No guarantees; figures may be revised and depend on demand.</b>",
         "calc.amount":"Staked amount",
         "calc.day":"Daily income","calc.month":"Monthly income","calc.year":"Yearly income",
         "calc.trxDay":"TRX/day","calc.trxMonth":"TRX/month","calc.trxYear":"TRX/year",
-        "calc.note":"Estimates use a target +5% yearly add-on to TRON’s base yield, without compounding. <b>No guarantees; the figure may be revised and depends on demand.</b>",
 
         "how.title":"How to connect",
         "how.lead":"After support confirmation and staking in Tronscan, we’ll enable your wallet for payouts.",
@@ -388,25 +440,25 @@
 "disclaimer.text": "<b>No guarantees.</b> The +5% add-on is indicative, may be revised, and depends on market conditions and current <b>Energy demand</b>. Actual results may differ; past performance does not guarantee future results."
       },
       ru: {
-        "meta.title":"Стейкинг TRON TRX — +5% к доходности сети | Energy HUB",
-        "meta.description":"Честный стейкинг TRON (TRX): целевая надбавка +5% годовых к доходности сети TRON. Делегируется только энергия. Ежедневные выплаты. Гарантий нет; цифра пересматривается и зависит от спроса.",
+"meta.title":"Стейкинг TRON TRX — ≈14.57% годовых суммарно | Energy HUB",
+"meta.description":"Честный стейкинг TRON (TRX): целевая суммарная доходность ≈14.57% годовых (3.41% сеть + 3.5% голосование + ~7.66% сервис). Делегируется только энергия. Ежедневные выплаты. Гарантий нет; цифры пересматриваются.",
 
         "nav.home":"Домой",
         "nav.support":"Поддержка",
         "nav.tronscan":"Открыть Tronscan",
 
-        "hero.title":"Стейкинг TRON (TRX) — <span class='rate'>+5% годовых</span>",
-        "hero.subtitle":"Никаких обещаний «высоких ставок» — считаем с холодной головой. <b>+5% — это надбавка к базовой доходности сети TRON</b>, которую вы получаете за стейкинг. Ваши TRX остаются на вашем кошельке; делегируется только Energy.",
+     "hero.title":"Стейкинг TRON (TRX) — <span class='rate'>≈14.57% годовых</span>",
+"hero.subtitle":"Сумма трёх компонентов: сеть 3.41% + голосование 3.5% + наш сервис ~7.66%. Ваши TRX остаются у вас; делегируется только Energy.",
         "hero.variability":"<b>Гарантий нет.</b> Значение +5% является <u>ориентировочным</u>, может <u>пересматриваться</u> и зависит от рыночных условий и текущего <b>спроса на Energy</b>. Фактические результаты могут отличаться; прошлая доходность не гарантирует будущую.",
         "hero.preSupport":"<strong>Сначала — поддержка.</strong> <u>Перед стейкингом и делегированием</u> подтвердите в поддержке, что сервису сейчас требуется ваша Energy: <a href='https://t.me/trx2_9_support_bot' target='_blank' rel='noopener'>@trx2_9_support_bot</a>.",
         "hero.ctaStake":"Перейти к стейкингу",
         "hero.ctaSupport":"Поддержка",
 
-        "calc.title":"Калькулятор надбавки (+5% годовых к сети)",
+"calc.title":"Калькулятор доходности (≈14.57% годовых суммарно)",
+"calc.note":"Расчёт использует ≈14.57% суммарно (3.41% сеть + 3.5% голосование + ~7.66% сервис), без реинвестирования. <b>Гарантий нет; цифры ориентировочные и пересматриваются.</b>",
         "calc.amount":"Сумма в стейкинге",
         "calc.day":"Дневной доход","calc.month":"Месячный доход","calc.year":"Годовой доход",
         "calc.trxDay":"TRX/день","calc.trxMonth":"TRX/мес","calc.trxYear":"TRX/год",
-        "calc.note":"Расчёт использует целевую надбавку +5% годовых к доходности сети TRON, без реинвестирования. <b>Гарантий нет; цифра пересматривается и зависит от спроса.</b>",
 
         "how.title":"Как подключиться",
         "how.lead":"После подтверждения от поддержки и стейкинга в Tronscan мы включим ваш кошелёк для начислений.",
@@ -477,5 +529,6 @@
       document.getElementById('lang-ru').addEventListener('click', ()=>setLang('ru'));
     })();
   </script>
+  
 </body>
 </html>
