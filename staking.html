@@ -124,6 +124,83 @@
       .grid-4,.grid-3,.kpis,.stats{grid-template-columns:1fr}
       .trust{grid-template-columns:1fr}
     }
+
+    /* ===== Mobile-first polish ===== */
+
+/* Общие мелочи */
+:root{ --mobile-pad:16px }
+.wrap{ padding: var(--mobile-pad) }
+
+/* Герой и крупные цифры */
+.h1{ font-size: clamp(24px, 6vw, 32px); line-height: 1.2; }
+.sub{ font-size: 14.5px }
+
+/* Каркасы и сетки */
+.hero{ grid-template-columns: 1fr; gap: 16px; }
+.grid-4, .grid-3, .grid-2, .kpis, .stats{ grid-template-columns: 1fr; }
+
+/* На чуть более широких мобилках оставим 2 колонки для статов/KPI */
+@media (min-width: 380px) and (max-width: 768px){
+  .kpis, .stats{ grid-template-columns: 1fr 1fr; }
+}
+
+/* Карточки – больше воздуха, но компактная высота */
+.card{ padding: 14px; border-radius: 16px }
+
+/* Поля ввода – большие тап-зоны */
+.field{ padding: 12px; border-radius: 14px }
+.field input{ font-size: 18px; min-height: 48px }
+.range{ height: 36px }
+
+/* KPI плитки */
+.kpi{ padding: 12px; border-radius: 14px }
+.kpi .v{ font-size: 20px; font-weight: 800 }
+
+/* Trust-strip в один столбец */
+.trust{ grid-template-columns: 1fr; gap: 10px }
+
+/* Логотип-лента – горизонтальный скролл с snap */
+.rail{ gap: 14px; padding: 10px 2px 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch }
+.rail .logo-pill{ scroll-snap-align: start; padding: 10px 12px }
+
+/* Верхнее меню – экономим место */
+.header .links .btn{ padding: 8px 10px; font-size: 13px; border-radius: 10px }
+.lang button{ padding: 6px 8px; font-size: 12.5px }
+
+/* Кнопки – на мобилках можно в две строки; на очень узких – full width */
+.buttons{ gap: 10px }
+@media (max-width: 480px){
+  .buttons .btn{ width: 100%; justify-content: center }
+}
+
+/* Фрейм в герое – убираем лишний блур/тени для производительности */
+.frame{ border-radius: 18px; box-shadow: none }
+.frame>.in{ border-radius: 17px; backdrop-filter: none }
+
+/* Футер – компактнее */
+.footer{ padding: 20px 0 80px } /* место для нижней мобильной CTA */
+.disclaimer{ font-size: 12.5px }
+
+/* Исправление случайной фигурной скобки в .section.highlight */
+.section.highlight{
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== Fixed bottom CTA только на мобильных ===== */
+.mobile-cta{
+  position: fixed; left: 0; right: 0; bottom: 0;
+  display: none; gap: 10px; padding: 10px var(--mobile-pad) env(safe-area-inset-bottom);
+  backdrop-filter: saturate(160%) blur(8px);
+  background: linear-gradient(180deg, rgba(10,15,30,.0), rgba(10,15,30,.85));
+  border-top: 1px solid rgba(255,255,255,.10); z-index: 20;
+}
+.mobile-cta .btn{ flex: 1 1 auto; padding: 12px 14px; border-radius: 12px; text-align: center }
+.mobile-cta .primary{ background: linear-gradient(180deg, var(--gold), var(--gold-2)); color:#1b1304; border: none }
+@media (max-width: 768px){
+  .mobile-cta{ display: flex }
+}
   </style>
 </head>
 <body>
@@ -585,5 +662,19 @@
       document.getElementById('lang-ru').addEventListener('click', ()=>setLang('ru'));
     })();
   </script>
+  <script>
+  // Respect reduce-motion on mobile
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // отключаем плавные счётчики — сразу целевые значения
+    for (const id of ['stat-tvl','stat-delegs','stat-payouts']) {
+      const el = document.getElementById(id);
+      if (el && el.dataset.target) el.textContent = Number(el.dataset.target).toLocaleString();
+    }
+  }
+</script>
+  <div class="mobile-cta" role="region" aria-label="Quick actions">
+  <a class="btn" href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener" data-i18n="hero.ctaSupport">Support</a>
+  <a class="btn primary" href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener" data-i18n="hero.ctaStake">Go to staking</a>
+</div>
 </body>
 </html>
