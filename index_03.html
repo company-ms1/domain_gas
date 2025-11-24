@@ -604,6 +604,68 @@
     </section>
   </main>
 
+
+    <!-- ONBOARDING MODAL -->
+  <div class="modal" id="onbModal" role="dialog" aria-modal="true" style="display:none">
+    <div class="card" style="max-width:520px;width:100%;position:relative">
+      <h3 class="title" style="margin:0 0 6px;font-size:20px;font-weight:800" data-i18n="onb_title">
+        Что это за сервис?
+      </h3>
+      <p class="subtitle" style="margin:0 0 10px" data-i18n="onb_sub">
+        Выберите язык и ответьте на один вопрос — это займёт меньше 10 секунд.
+      </p>
+
+      <!-- выбор языка -->
+      <div style="margin:6px 0 14px">
+        <label for="onbLangSelect" class="tag" data-i18n="onb_lang_label">Язык сайта</label>
+        <select id="onbLangSelect" class="lang-select" style="width:100%;margin-top:4px">
+          <option value="ru">Русский</option>
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="tr">Türkçe</option>
+        </select>
+      </div>
+
+      <!-- Шаг 1: вопрос -->
+      <div data-step="q">
+        <p data-i18n="onb_q">
+          Вы знаете, что такое аренда энергии TRON и зачем она нужна?
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn" id="onbYes" data-i18n="onb_yes">Да, знаю</button>
+          <button class="btn primary" id="onbNo" data-i18n="onb_no">Нет, расскажите</button>
+        </div>
+      </div>
+
+      <!-- Шаг 2: объяснение -->
+      <div data-step="explain" hidden>
+        <h4 style="margin:4px 0 6px" data-i18n="onb_explain_title">Зачем нужна аренда энергии?</h4>
+        <p data-i18n="onb_explain_p1">
+          Очень коротко: вы платите немного TRX, чтобы комиссия за перевод USDT/TRC20 стала почти в два раза ниже.
+        </p>
+        <ul style="padding-left:18px;margin:8px 0">
+          <li data-i18n="onb_explain_li1">
+            Работает только для небиржевых кошельков: TronLink, Trust Wallet и других некастодиальных кошельков.
+          </li>
+          <li data-i18n="onb_explain_li2">
+            Не работает с биржами (Binance, OKX и др.) и кастодиальными кошельками.
+          </li>
+          <li data-i18n="onb_explain_li3">
+            Энергия действует только на <b>1 перевод</b>, потом автоматически отзывается.
+          </li>
+        </ul>
+        <p data-i18n="onb_explain_p2">
+          Дальше на сайте вы сможете посчитать экономию и сразу купить энергию для перевода.
+        </p>
+        <button class="btn primary" id="onbGotIt" style="margin-top:10px" data-i18n="onb_gotit">
+          Понятно, перейти к сайту
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
   <!-- WAIT MODAL -->
   <div class="modal" id="waitModal"
        style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;z-index:30">
@@ -1366,6 +1428,69 @@ document.getElementById('k_usdSaveBlock').textContent = `≈ ${usdSave} USDT`;
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+
+
+    // === Onboarding popup (simple education flow) ===
+    (function(){
+      const KEY = 'gf4y_onb_done_v1';
+      try{
+        if(localStorage.getItem(KEY) === '1') return; // уже проходили
+      }catch(_){}
+
+      const modal = document.getElementById('onbModal');
+      if(!modal) return;
+
+      const stepQ   = modal.querySelector('[data-step="q"]');
+      const stepExp = modal.querySelector('[data-step="explain"]');
+      const btnYes  = document.getElementById('onbYes');
+      const btnNo   = document.getElementById('onbNo');
+      const btnOk   = document.getElementById('onbGotIt');
+      const langSel = document.getElementById('onbLangSelect');
+
+      function openOnb(){
+        modal.style.display = 'flex';
+      }
+      function closeOnb(){
+        modal.style.display = 'none';
+        try{ localStorage.setItem(KEY, '1'); }catch(_){}
+      }
+
+      if(btnYes){
+        btnYes.addEventListener('click', function(){
+          // человек уже знает — просто желаем хорошего дня и закрываем
+          closeOnb();
+        });
+      }
+
+      if(btnNo){
+        btnNo.addEventListener('click', function(){
+          if(stepQ)   stepQ.hidden   = true;
+          if(stepExp) stepExp.hidden = false;
+        });
+      }
+
+      if(btnOk){
+        btnOk.addEventListener('click', closeOnb);
+      }
+
+      // выбор языка в попапе синхронизируем с основным селектом в шапке
+      if(langSel){
+        langSel.value = lang;
+        langSel.addEventListener('change', function(){
+          const newLang = langSel.value;
+          const mainSel = document.getElementById('langSelect');
+          if(mainSel){
+            mainSel.value = newLang;
+            mainSel.dispatchEvent(new Event('change'));
+          }
+        });
+      }
+
+      // показываем попап через небольшую паузу после загрузки
+      setTimeout(openOnb, 1200);
+    })();
+
+  
 })();
 
     // Курс TRX
