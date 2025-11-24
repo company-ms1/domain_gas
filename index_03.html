@@ -702,6 +702,43 @@
   }
 }
 
+    /* ==== FIX: языковой селект внутри попапа + флажки ==== */
+
+.onb-lang-corner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.onb-lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px 20px 4px 8px;   /* компактнее */
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
+  color: var(--text);
+  cursor: pointer;
+  max-width: 90px;             /* чтобы точно не вылезал */
+  box-sizing: border-box;
+}
+
+/* маленькая стрелочка внутри */
+.onb-lang-select {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23AFC6DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 10px;
+}
+
+
 
   </style>
 </head>
