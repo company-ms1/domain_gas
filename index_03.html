@@ -645,6 +645,27 @@
   margin-top: 8px;
 }
 
+    /* ==== FIX: чтобы онбординг не вылезал за экран на мобиле ==== */
+
+.onb-modal {
+  padding: 16px;                 /* чуть меньше отступы от краёв экрана */
+}
+
+.onb-card {
+  box-sizing: border-box;        /* ширина вместе с паддингами */
+  width: 100%;
+  max-width: 480px;
+  padding: 18px 16px 20px;       /* чуть компактнее внутри на узких экранах */
+}
+
+/* На совсем узких экранах кнопки в колонку, чтобы точно не ломались */
+@media (max-width: 360px) {
+  .onb-btns {
+    flex-direction: column;
+  }
+}
+
+
   </style>
 </head>
 <body>
