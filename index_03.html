@@ -541,6 +541,110 @@
   margin-bottom: 6px;
 }
 
+    /* ==== ONBOARDING – LAYOUT TWEAKS ==== */
+
+.onb-card {
+  position: relative;
+  width: min(480px, 100%);
+  background: var(--card);
+  padding: 22px 22px 26px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  animation: onbFade .5s ease;
+}
+
+/* маленький селект языка в углу */
+.onb-lang-corner {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+}
+
+.onb-lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 22px 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
+  color: var(--text);
+  cursor: pointer;
+  position: relative;
+}
+
+/* маленькая стрелка внутри */
+.onb-lang-select {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23AFC6DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 10px;
+}
+
+/* мини-подзаголовок */
+.onb-mini {
+  margin: 2px 0 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ГЛАВНЫЙ ВОПРОС – максимальный акцент */
+.onb-q-main {
+  margin: 4px 0 10px;
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 800;
+}
+
+/* Кнопки сразу под вопросом */
+.onb-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 6px;
+}
+
+.onb-btn,
+.onb-btn-primary {
+  flex: 1 1 0;
+  font-weight: 700;
+}
+
+/* Блок с объяснением визуально чуть отделяем */
+.onb-explain-title {
+  font-size: 17px;
+  margin: 14px 0 6px;
+  font-weight: 800;
+}
+
+.onb-text {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.onb-list {
+  font-size: 14px;
+  margin: 6px 0 10px;
+  padding-left: 18px;
+}
+
+.onb-list li {
+  margin-bottom: 4px;
+}
+
+.onb-finish {
+  width: 100%;
+  margin-top: 8px;
+}
+
   </style>
 </head>
 <body>
@@ -726,46 +830,45 @@
     </section>
   </main>
 
-
-   <!-- ONBOARDING MODAL -->
+<!-- ONBOARDING MODAL -->
 <div class="modal onb-modal" id="onbModal" role="dialog" aria-modal="true" style="display:none">
   <div class="onb-card">
 
-    <!-- деко-иконка -->
-    <div class="onb-icon">⚡</div>
-
-    <h3 class="title onb-title" data-i18n="onb_title">Что это за сервис?</h3>
-    <p class="subtitle onb-sub" data-i18n="onb_sub">
-      Выберите язык и ответьте на один вопрос — это займёт меньше 10 секунд.
-    </p>
-
-    <!-- Language -->
-    <div class="onb-lang-block">
-      <label for="onbLangSelect" class="onb-label" data-i18n="onb_lang_label">Язык сайта</label>
+    <!-- маленький переключатель языка в углу -->
+    <div class="onb-lang-corner">
       <select id="onbLangSelect" class="onb-lang-select">
-        <option value="ru">Русский</option>
-        <option value="en">English</option>
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
         <option value="zh">中文</option>
-        <option value="id">Bahasa Indonesia</option>
-        <option value="tr">Türkçe</option>
+        <option value="id">ID</option>
+        <option value="tr">TR</option>
       </select>
     </div>
 
-    <!-- Step 1 -->
-    <div data-step="q">
-      <p class="onb-q" data-i18n="onb_q">
-        Вы знаете, что такое аренда энергии TRON и зачем она нужна?
-      </p>
+    <!-- Иконка / бренд -->
+    <div class="onb-icon">⚡</div>
 
-      <div class="onb-btns">
-        <button class="btn onb-btn" id="onbYes" data-i18n="onb_yes">Да, знаю</button>
-        <button class="btn primary onb-btn-primary" id="onbNo" data-i18n="onb_no">Нет, расскажите</button>
-      </div>
+    <!-- Короткий подзаголовок -->
+    <p class="onb-mini" data-i18n="onb_small_intro">
+      Коротко объясним, что делает GasFree4you.
+    </p>
+
+    <!-- ГЛАВНЫЙ ВОПРОС (самый заметный) -->
+    <p class="onb-q-main" data-i18n="onb_q">
+      Вы знаете, что такое аренда энергии TRON и зачем она нужна?
+    </p>
+
+    <!-- Кнопки Да/Нет сразу под вопросом -->
+    <div class="onb-btns">
+      <button class="btn onb-btn" id="onbYes" data-i18n="onb_yes">Да, знаю</button>
+      <button class="btn primary onb-btn-primary" id="onbNo" data-i18n="onb_no">Нет, расскажите</button>
     </div>
 
-    <!-- Step 2 -->
+    <!-- Шаг 2: объяснение (появляется после "Нет") -->
     <div data-step="explain" hidden>
-      <h4 class="onb-explain-title" data-i18n="onb_explain_title">Зачем нужна аренда энергии?</h4>
+      <h4 class="onb-explain-title" data-i18n="onb_explain_title">
+        Зачем нужна аренда энергии?
+      </h4>
 
       <p class="onb-text" data-i18n="onb_explain_p1">
         Очень коротко: вы платите немного TRX, чтобы комиссия за перевод USDT/TRC20 стала почти в два раза ниже.
@@ -773,18 +876,18 @@
 
       <ul class="onb-list">
         <li data-i18n="onb_explain_li1">
-          Работает только для небиржевых кошельков: TronLink, Trust Wallet и др.
+          Работает только для небиржевых кошельков: TronLink, Trust Wallet и других некастодиальных кошельков.
         </li>
         <li data-i18n="onb_explain_li2">
-          Не работает с Binance, OKX и другими биржами.
+          Не работает с биржами (Binance, OKX и др.) и кастодиальными кошельками.
         </li>
         <li data-i18n="onb_explain_li3">
-          Энергия действует только на 1 перевод.
+          Энергия действует только на <b>1 перевод</b>, затем автоматически отзывается.
         </li>
       </ul>
 
       <p class="onb-text" data-i18n="onb_explain_p2">
-        После онбординга сможете рассчитать экономию и купить энергию.
+        Дальше на сайте вы сможете посчитать экономию и сразу купить энергию для перевода.
       </p>
 
       <button class="btn primary onb-finish" id="onbGotIt" data-i18n="onb_gotit">
@@ -795,7 +898,6 @@
   </div>
 </div>
 
-  
   <!-- WAIT MODAL -->
   <div class="modal" id="waitModal"
        style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;z-index:30">
