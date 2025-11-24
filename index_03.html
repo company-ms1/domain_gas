@@ -419,6 +419,128 @@
   border-color: rgba(109,231,255,.45);
   box-shadow: 0 4px 14px rgba(110,231,255,.18), inset 0 1px 0 rgba(255,255,255,.06);
 }
+    /* ==== ONBOARDING — PREMIUM STYLE ==== */
+
+.onb-modal {
+  backdrop-filter: blur(10px) saturate(140%);
+  background: rgba(0,0,0,.55);
+  padding: 24px;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+/* Карточка */
+.onb-card {
+  width: min(480px, 100%);
+  background: var(--card);
+  padding: 22px 22px 26px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  animation: onbFade .5s ease;
+}
+
+/* Анимация появления */
+@keyframes onbFade {
+  from { opacity:0; transform:translateY(18px) scale(.96); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+/* Иконка */
+.onb-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 10px 26px rgba(110,231,255,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #001b1b;
+  margin-bottom: 12px;
+}
+
+/* Заголовки */
+.onb-title {
+  font-size: 22px;
+  margin: 0;
+}
+.onb-sub {
+  margin: 6px 0 18px;
+  color: var(--muted);
+}
+
+/* Блок выбора языка */
+.onb-lang-block { margin-bottom: 16px; }
+.onb-label { font-size: 14px; color: var(--muted); }
+
+.onb-lang-select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Вопрос */
+.onb-q {
+  margin: 16px 0 14px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* Кнопки */
+.onb-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.onb-btn,
+.onb-btn-primary {
+  flex: 1;
+  font-weight: 700;
+}
+
+.onb-finish {
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* Шаг 2 */
+.onb-explain-title {
+  font-size: 18px;
+  margin: 0 0 8px;
+  font-weight: 800;
+}
+
+.onb-text {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.onb-list {
+  color: var(--text);
+  margin: 10px 0 12px;
+  padding-left: 20px;
+  line-height: 1.45;
+}
+
+.onb-list li {
+  margin-bottom: 6px;
+}
+
   </style>
 </head>
 <body>
@@ -605,65 +727,73 @@
   </main>
 
 
-    <!-- ONBOARDING MODAL -->
-  <div class="modal" id="onbModal" role="dialog" aria-modal="true" style="display:none">
-    <div class="card" style="max-width:520px;width:100%;position:relative">
-      <h3 class="title" style="margin:0 0 6px;font-size:20px;font-weight:800" data-i18n="onb_title">
-        Что это за сервис?
-      </h3>
-      <p class="subtitle" style="margin:0 0 10px" data-i18n="onb_sub">
-        Выберите язык и ответьте на один вопрос — это займёт меньше 10 секунд.
+   <!-- ONBOARDING MODAL -->
+<div class="modal onb-modal" id="onbModal" role="dialog" aria-modal="true" style="display:none">
+  <div class="onb-card">
+
+    <!-- деко-иконка -->
+    <div class="onb-icon">⚡</div>
+
+    <h3 class="title onb-title" data-i18n="onb_title">Что это за сервис?</h3>
+    <p class="subtitle onb-sub" data-i18n="onb_sub">
+      Выберите язык и ответьте на один вопрос — это займёт меньше 10 секунд.
+    </p>
+
+    <!-- Language -->
+    <div class="onb-lang-block">
+      <label for="onbLangSelect" class="onb-label" data-i18n="onb_lang_label">Язык сайта</label>
+      <select id="onbLangSelect" class="onb-lang-select">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="tr">Türkçe</option>
+      </select>
+    </div>
+
+    <!-- Step 1 -->
+    <div data-step="q">
+      <p class="onb-q" data-i18n="onb_q">
+        Вы знаете, что такое аренда энергии TRON и зачем она нужна?
       </p>
 
-      <!-- выбор языка -->
-      <div style="margin:6px 0 14px">
-        <label for="onbLangSelect" class="tag" data-i18n="onb_lang_label">Язык сайта</label>
-        <select id="onbLangSelect" class="lang-select" style="width:100%;margin-top:4px">
-          <option value="ru">Русский</option>
-          <option value="en">English</option>
-          <option value="zh">中文</option>
-          <option value="id">Bahasa Indonesia</option>
-          <option value="tr">Türkçe</option>
-        </select>
-      </div>
-
-      <!-- Шаг 1: вопрос -->
-      <div data-step="q">
-        <p data-i18n="onb_q">
-          Вы знаете, что такое аренда энергии TRON и зачем она нужна?
-        </p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-          <button class="btn" id="onbYes" data-i18n="onb_yes">Да, знаю</button>
-          <button class="btn primary" id="onbNo" data-i18n="onb_no">Нет, расскажите</button>
-        </div>
-      </div>
-
-      <!-- Шаг 2: объяснение -->
-      <div data-step="explain" hidden>
-        <h4 style="margin:4px 0 6px" data-i18n="onb_explain_title">Зачем нужна аренда энергии?</h4>
-        <p data-i18n="onb_explain_p1">
-          Очень коротко: вы платите немного TRX, чтобы комиссия за перевод USDT/TRC20 стала почти в два раза ниже.
-        </p>
-        <ul style="padding-left:18px;margin:8px 0">
-          <li data-i18n="onb_explain_li1">
-            Работает только для небиржевых кошельков: TronLink, Trust Wallet и других некастодиальных кошельков.
-          </li>
-          <li data-i18n="onb_explain_li2">
-            Не работает с биржами (Binance, OKX и др.) и кастодиальными кошельками.
-          </li>
-          <li data-i18n="onb_explain_li3">
-            Энергия действует только на <b>1 перевод</b>, потом автоматически отзывается.
-          </li>
-        </ul>
-        <p data-i18n="onb_explain_p2">
-          Дальше на сайте вы сможете посчитать экономию и сразу купить энергию для перевода.
-        </p>
-        <button class="btn primary" id="onbGotIt" style="margin-top:10px" data-i18n="onb_gotit">
-          Понятно, перейти к сайту
-        </button>
+      <div class="onb-btns">
+        <button class="btn onb-btn" id="onbYes" data-i18n="onb_yes">Да, знаю</button>
+        <button class="btn primary onb-btn-primary" id="onbNo" data-i18n="onb_no">Нет, расскажите</button>
       </div>
     </div>
+
+    <!-- Step 2 -->
+    <div data-step="explain" hidden>
+      <h4 class="onb-explain-title" data-i18n="onb_explain_title">Зачем нужна аренда энергии?</h4>
+
+      <p class="onb-text" data-i18n="onb_explain_p1">
+        Очень коротко: вы платите немного TRX, чтобы комиссия за перевод USDT/TRC20 стала почти в два раза ниже.
+      </p>
+
+      <ul class="onb-list">
+        <li data-i18n="onb_explain_li1">
+          Работает только для небиржевых кошельков: TronLink, Trust Wallet и др.
+        </li>
+        <li data-i18n="onb_explain_li2">
+          Не работает с Binance, OKX и другими биржами.
+        </li>
+        <li data-i18n="onb_explain_li3">
+          Энергия действует только на 1 перевод.
+        </li>
+      </ul>
+
+      <p class="onb-text" data-i18n="onb_explain_p2">
+        После онбординга сможете рассчитать экономию и купить энергию.
+      </p>
+
+      <button class="btn primary onb-finish" id="onbGotIt" data-i18n="onb_gotit">
+        Понятно, перейти к сайту
+      </button>
+    </div>
+
   </div>
+</div>
 
   
   <!-- WAIT MODAL -->
