@@ -5,9 +5,40 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vanity TRON Address — красивый суффикс</title>
   <meta name="description" content="Подбор суффикса TRON-адреса: вводите окончание — получаете цену и правила безопасности." />
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
+/* --- Top navigation --- */
+.topNav{
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.navLink{
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all .2s ease;
+}
+
+.navLink:hover{
+  color: white;
+  background: rgba(255,255,255,0.05);
+  border-color: var(--line);
+}
+
+.navLink.active{
+  color: white;
+  background: rgba(99,102,241,0.15);
+  border-color: var(--accent-glow);
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.15) inset;
+}
+
 
     :root {
       --bg: #06090f;
@@ -294,12 +325,49 @@
 }
 .pill .ico{ opacity: 0.9; }
 
+      /* --- Top navigation --- */
+.topNav{
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+@media (max-width: 960px){
+  .navLink{
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile layout fix */
+@media (max-width: 960px){
+  header{
+    flex-wrap: wrap;
+  }
+
+  .topNav{
+    width: 100%;
+    order: 2;               /* 👈 под логотипом */
+    justify-content: flex-start;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  .rightHead{
+    order: 1;               /* 👈 язык остаётся сверху справа */
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <header>
+
       <div class="brand">
         <div class="logo"></div>
         <div class="brandTitle">
@@ -307,7 +375,10 @@
           <p class="meta" data-i18n="brand.meta">Красивый суффикс • прайс и безопасность</p>
         </div>
       </div>
-
+<nav class="topNav">
+  <a href="/" class="navLink active" data-i18n="nav.home">Home</a>
+  <a href="https://user.gasfree4you.com/" class="navLink" data-i18n="nav.portal">Portal</a>
+</nav>
       <div class="rightHead">
         <div class="tag" data-i18n="tagline">TRON Base58 suffix • быстро • прозрачно</div>
         <div class="langToggle" aria-label="Language">
@@ -867,6 +938,15 @@
       url.searchParams.set("vanity_suffix", s.toUpperCase());
       window.location.href = url.toString();
     });
+
+(function setActiveNav(){
+  const path = window.location.pathname;
+  document.querySelectorAll(".navLink").forEach(a => {
+    a.classList.remove("active");
+    if (a.getAttribute("href") === "/" && path === "/") a.classList.add("active");
+    if (a.getAttribute("href") !== "/" && path.startsWith(a.getAttribute("href"))) a.classList.add("active");
+  });
+})();
 
     applyI18n(document.documentElement.getAttribute("data-lang") || "ru");
   </script>
