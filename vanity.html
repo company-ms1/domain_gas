@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vanity TRON Address — красивый суффикс</title>
+  <meta name="description" content="Подбор суффикса TRON-адреса: вводите окончание — получаете цену и правила безопасности." />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
+    :root {
+      --bg: #06090f;
+      --card-bg: rgba(16, 24, 38, 0.8);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.3);
+      --good: #10b981;
+      --warn: #f59e0b;
+      --bad: #ef4444;
+      --radius: 20px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.5);
+      --max: 1100px;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; transition: all 0.2s ease-in-out; }
+
+    html, body { height: 100%; margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+    body {
+      background-image:
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 32px 20px; padding-bottom: 120px; }
+
+    header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 16px; }
+
+    .logo {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+      position: relative; flex: 0 0 auto;
+    }
+    .logo::after { content: 'T'; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: 800; font-size: 20px; }
+
+    .brandTitle .name { font-size: 18px; font-weight: 800; margin: 0; letter-spacing: -0.02em; }
+    .brandTitle .meta { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+    .rightHead { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+    .tag {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 6px 14px; border: 1px solid var(--card-border); border-radius: 100px;
+      background: rgba(255,255,255,0.03); color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .langToggle { background: rgba(0,0,0,0.3); padding: 4px; border-radius: 100px; border: 1px solid var(--line); display: flex; }
+    .langBtn {
+      border: 0; background: transparent; color: var(--muted); padding: 6px 12px;
+      font-size: 12px; font-weight: 700; cursor: pointer; border-radius: 100px;
+    }
+    .langBtn.active { background: var(--accent); color: white; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
+
+    .grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 24px; align-items: start; }
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: 1fr; }
+      header { align-items: flex-start; }
+      .tag { display: none; }
+      .rightHead { justify-content: flex-start; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .heroTitle { font-size: 32px; font-weight: 800; margin: 0 0 12px; letter-spacing: -0.03em; }
+    .heroSub { font-size: 15px; color: var(--muted); margin-bottom: 30px; }
+    .heroSub .mono { background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 6px; color: var(--text); }
+
+    .calcGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .calcGrid { grid-template-columns: 1fr; } }
+
+    .form { display: flex; flex-direction: column; gap: 20px; }
+    .label { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 2px; }
+
+    .control { position: relative; }
+    input {
+      width: 100%; border-radius: 14px; border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.2); color: white; padding: 14px 16px;
+      font-size: 16px; font-family: var(--sans); outline: none;
+    }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-glow); }
+
+    .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); gap: 8px; }
+    .chip {
+      border: 1px solid var(--line); background: rgba(255,255,255,0.03);
+      color: var(--text); padding: 8px; border-radius: 10px; font-size: 12px;
+      font-weight: 700; cursor: pointer; font-family: var(--mono);
+    }
+    .chip:hover { border-color: var(--accent); background: var(--accent-glow); transform: translateY(-2px); }
+
+    .help { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+    .error { font-size: 12px; color: var(--bad); font-weight: 600; margin-top: 4px; display: none; }
+    .error.show { display: block; }
+
+    .summary {
+      background: rgba(0, 0, 0, 0.3); border-radius: var(--radius);
+      padding: 24px; border: 1px solid rgba(255,255,255,0.05);
+      display: flex; flex-direction: column; gap: 16px;
+      scroll-margin-top: 20px;
+    }
+    .hidden { display: none !important; }
+
+    .statusLine { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+      border-radius: 100px; background: rgba(0,0,0,0.2); font-size: 12px; font-weight: 700;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot.good { background: var(--good); box-shadow: 0 0 10px var(--good); }
+    .dot.warn { background: var(--warn); }
+    .dot.bad { background: var(--bad); }
+
+    .example-box { padding: 14px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px dashed var(--line); margin: 4px 0; }
+    .mono { font-family: var(--mono); }
+
+    .priceBox {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding: 20px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+      border: 1px solid var(--accent-glow);
+      flex-wrap: wrap;
+    }
+    .price { font-size: 32px; font-weight: 800; color: white; letter-spacing: -0.02em; }
+    .priceLabel { font-size: 11px; text-transform: uppercase; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 2px; }
+
+    .oldPrice{
+      display:block;
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: line-through;
+      opacity: 0.9;
+      margin-top: 6px;
+      letter-spacing: 0.02em;
+    }
+    .savePill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(16,185,129,0.35);
+      background: rgba(16,185,129,0.08);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .note {
+      padding: 12px 16px; border-radius: 12px; background: rgba(99,102,241,0.05);
+      border-left: 4px solid var(--accent); font-size: 13px; color: var(--muted);
+    }
+
+    .btnRow { display: flex; gap: 12px; margin-top: 10px; }
+    button.primary {
+      flex: 2; border: 0; background: var(--accent); color: white;
+      padding: 16px; border-radius: 14px; font-size: 15px; font-weight: 700;
+      cursor: pointer; box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    }
+    button.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(99, 102, 241, 0.4); filter: brightness(1.1); }
+
+    #resetBtn, #resetBtnSticky {
+      flex: 1; border: 1px solid var(--line); background: transparent;
+      color: var(--muted); cursor: pointer; border-radius: 14px; font-weight: 600;
+    }
+    #resetBtn:hover { border-color: var(--muted); color: white; background: rgba(255,255,255,0.05); }
+
+    .buyRow { display:none; }
+    .buyRow.show { display:flex; }
+    .buyRow button.buy {
+      width: 100%;
+      border: 0;
+      background: linear-gradient(135deg, rgba(16,185,129,0.95), rgba(99,102,241,0.95));
+      color: white; padding: 14px 16px; border-radius: 14px;
+      font-size: 14px; font-weight: 800; cursor: pointer;
+      box-shadow: 0 12px 28px rgba(16,185,129,0.12);
+    }
+    .buyRow button.buy:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .buyRow button.buy:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .mini { margin-bottom: 12px; padding: 16px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--card-border); }
+    .mini h3 { font-size: 14px; margin: 0 0 8px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em; }
+    .mini p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    .sectionTitle { font-size: 22px; font-weight: 800; margin-bottom: 20px; }
+    ul { padding: 0; list-style: none; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 768px) { ul { grid-template-columns: 1fr; } }
+    li { position: relative; padding-left: 28px; font-size: 13px; color: var(--muted); }
+    li::before { content: '✓'; position: absolute; left: 0; color: var(--good); font-weight: 800; }
+
+    .linksGrid{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    @media (max-width: 768px) { .linksGrid{ grid-template-columns: 1fr; } }
+    .linkCard{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding: 12px 14px; border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--card-border);
+      text-decoration:none;
+    }
+    .linkCard:hover{ border-color: rgba(99,102,241,0.45); background: rgba(99,102,241,0.08); transform: translateY(-1px); }
+    .linkLeft{ display:flex; flex-direction:column; gap:2px; }
+    .linkTitle{ font-size: 13px; font-weight: 800; color: var(--text); }
+    .linkMeta{ font-size: 12px; color: var(--muted); }
+    .linkPill{
+      font-size: 11px; font-weight: 800; letter-spacing: 0.03em;
+      padding: 6px 10px; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--muted);
+      background: rgba(0,0,0,0.2);
+      white-space: nowrap;
+    }
+
+    .footer { margin-top: 40px; text-align: center; color: var(--muted); font-size: 12px; opacity: 0.6; }
+
+    .stickyCta {
+      position: fixed; bottom: 20px; left: 20px; right: 20px; z-index: 100;
+      display: none; background: rgba(16, 24, 38, 0.95); backdrop-filter: blur(20px);
+      padding: 16px; border-radius: 20px; border: 1px solid var(--card-border);
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    }
+    @media (max-width: 960px) { .stickyCta { display: block; } .btnRow { display: none; } }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <div class="brandTitle">
+          <p class="name" data-i18n="brand.name">Vanity TRON Address</p>
+          <p class="meta" data-i18n="brand.meta">Красивый суффикс • прайс и безопасность</p>
+        </div>
+      </div>
+
+      <div class="rightHead">
+        <div class="tag" data-i18n="tagline">TRON Base58 suffix • быстро • прозрачно</div>
+        <div class="langToggle" aria-label="Language">
+          <button class="langBtn active" id="langRu" type="button">RU</button>
+          <button class="langBtn" id="langEn" type="button">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h1 class="heroTitle" data-i18n="hero.title">Красивый TRON-адрес с вашим суффиксом</h1>
+        <p class="heroSub">
+          <span data-i18n="hero.sub">Введите окончание адреса — получите цену и правила безопасности.</span>
+          <br />
+          <span data-i18n="hero.examples">Примеры:</span>
+          <span class="mono">777</span>, <span class="mono">HUB</span>, <span class="mono">USDT</span>
+        </p>
+
+        <div class="calcGrid">
+          <div class="form">
+            <div class="field">
+              <div class="label" data-i18n="form.presets">Быстрый выбор</div>
+              <div class="chips" id="presetBar">
+                <button type="button" class="chip" data-suffix="77">77</button>
+                <button type="button" class="chip" data-suffix="777">777</button>
+                <button type="button" class="chip" data-suffix="8888">8888</button>
+                <button type="button" class="chip" data-suffix="HUB">HUB</button>
+                <button type="button" class="chip" data-suffix="PAY">PAY</button>
+                <button type="button" class="chip" data-suffix="TRX">TRX</button>
+                <button type="button" class="chip" data-suffix="USDT">USDT</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="label" data-i18n="form.suffixLabel">Желаемый суффикс (2–4 символа)</div>
+              <div class="control">
+                <input id="suffix" inputmode="latin" autocomplete="off" placeholder="Например: HUB" maxlength="8" />
+              </div>
+              <div class="error" id="suffixErr"></div>
+              <div class="help">
+                <span data-i18n="form.suffixHelpA">💡 Можно использовать</span> <b data-i18n="form.suffixHelpB">буквы + цифры</b>,
+                <span data-i18n="form.suffixHelpC">главное — Base58 (без</span> <code>0 O I l</code>)
+              </div>
+            </div>
+
+            <div class="btnRow">
+              <button class="primary" id="calcBtn" type="button" data-i18n="btn.calc">Рассчитать цену</button>
+              <button id="resetBtn" type="button" data-i18n="btn.reset">Сбросить</button>
+            </div>
+          </div>
+
+          <div class="summary hidden" id="result">
+            <div class="statusLine">
+              <div id="status"></div>
+              <span class="savePill" data-i18n="promo.pill">-50% Launch скидка</span>
+            </div>
+
+            <div class="example-box">
+              <div class="priceLabel" data-i18n="result.example">Пример адреса:</div>
+              <div class="mono" id="exampleAddr" style="font-size: 14px; word-break: break-all; color: white;">—</div>
+            </div>
+
+            <div class="priceBox">
+              <div>
+                <div class="priceLabel"><span data-i18n="result.len">Длина:</span> <span id="len">—</span></div>
+                <div id="statusText" style="font-weight:700; font-size: 13px;">—</div>
+                <span class="oldPrice" id="oldPrice">—</span>
+              </div>
+              <div class="price" id="price">—</div>
+            </div>
+
+            <div class="note" id="callout"></div>
+
+            <div class="buyRow" id="buyRow">
+              <button class="buy" id="buyBtn" type="button" disabled data-i18n="btn.buy">Купить</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="stack">
+        <div class="mini">
+          <h3 data-i18n="side.priceTitle">💰 Прайс</h3>
+          <p data-i18n="side.p2">2 символа — <span class="mono"><s>10 TRX</s></span> → <span class="mono"><b>5 TRX</b></span></p>
+          <p data-i18n="side.p3">3 символа — <span class="mono"><s>50 TRX</s></span> → <span class="mono"><b>25 TRX</b></span></p>
+          <p data-i18n="side.p4">4 символа — <span class="mono"><s>250 TRX</s></span> → <span class="mono"><b>125 TRX</b></span></p>
+          <p style="margin-top:6px; font-size: 11px;" data-i18n="side.p5">5+ — по запросу (обычно заметно дольше).</p>
+        </div>
+        <div class="mini">
+          <h3 data-i18n="side.keyTitle">🔐 Выдача ключа</h3>
+          <p data-i18n="side.keyText">Ключ передаётся в <b>зашифрованном архиве</b>. Пароль задаётся на портале.</p>
+        </div>
+        <div class="mini">
+          <h3 data-i18n="side.recTitle">✅ Рекомендация</h3>
+          <p data-i18n="side.recText">Импортируйте кошелёк в <b>TronLink</b> и используйте vanity-кошелёк как “операционный”.</p>
+        </div>
+      </aside>
+    </main>
+
+    <section class="card" style="margin-top:24px;">
+      <h2 class="sectionTitle" data-i18n="safe.title">Правила безопасности</h2>
+      <ul>
+        <li data-i18n="safe.li1"><b>Самое надёжное:</b> делегирование подписи (permissions) на другой кошелёк. Средства — на основном, vanity — как “операционный”.</li>
+        <li data-i18n="safe.li2"><b>Не храните крупные суммы</b> на vanity-кошельке. Приняли → перевели на основной.</li>
+        <li data-i18n="safe.li3"><b>Разделяйте роли:</b> адрес для приёма ≠ адрес для хранения ≠ адрес для сервиса.</li>
+        <li data-i18n="safe.li4"><b>Тестовый перевод</b> после получения (маленькая сумма) — обязательный шаг.</li>
+        <li data-i18n="safe.li5"><b>Антифишинг:</b> мы никогда не просим seed phrase и не просим ставить “спец софт”.</li>
+        <li data-i18n="safe.li6"><b>Проверяйте домен:</b> покупка и пароль — только на официальном портале.</li>
+      </ul>
+
+      <div class="note" style="margin-top:20px;" data-i18n="safe.note">
+        Полезные ссылки по безопасности и правам аккаунта — ниже.
+      </div>
+
+      <div class="linksGrid" aria-label="Security and wallet links">
+        <a class="linkCard" href="https://tronscan.org/#/tools/permission" target="_blank" rel="noopener noreferrer">
+          <div class="linkLeft">
+            <div class="linkTitle" data-i18n="links.permTitle">TRONScan — Account Permissions</div>
+            <div class="linkMeta" data-i18n="links.permMeta">Настройка permissions / делегирование подписи</div>
+          </div>
+          <div class="linkPill" data-i18n="links.open">Открыть</div>
+        </a>
+
+        <a class="linkCard" href="https://developers.tron.network/docs/account-permissions" target="_blank" rel="noopener noreferrer">
+          <div class="linkLeft">
+            <div class="linkTitle" data-i18n="links.docsTitle">TRON Docs — Account Permissions</div>
+            <div class="linkMeta" data-i18n="links.docsMeta">Официальная документация по правам аккаунта</div>
+          </div>
+          <div class="linkPill" data-i18n="links.open">Открыть</div>
+        </a>
+
+        <a class="linkCard" href="https://www.tronlink.org/" target="_blank" rel="noopener noreferrer">
+          <div class="linkLeft">
+            <div class="linkTitle" data-i18n="links.walletTitle">TronLink Wallet</div>
+            <div class="linkMeta" data-i18n="links.walletMeta">Рекомендуемый кошелёк для импорта vanity-адреса</div>
+          </div>
+          <div class="linkPill" data-i18n="links.open">Открыть</div>
+        </a>
+
+        <a class="linkCard" href="https://developers.tron.network/" target="_blank" rel="noopener noreferrer">
+          <div class="linkLeft">
+            <div class="linkTitle" data-i18n="links.devTitle">TRON Developers</div>
+            <div class="linkMeta" data-i18n="links.devMeta">Документация и справочные материалы</div>
+          </div>
+          <div class="linkPill" data-i18n="links.open">Открыть</div>
+        </a>
+      </div>
+    </section>
+
+    <div class="footer" data-i18n="footer">© Vanity TRON Address</div>
+  </div>
+
+  <div class="stickyCta">
+    <div style="display:flex; gap:10px">
+      <button class="primary" id="calcBtnSticky" type="button" data-i18n="btn.calc">Рассчитать цену</button>
+      <button id="resetBtnSticky" type="button" data-i18n="btn.reset">Сброс</button>
+    </div>
+  </div>
+
+  <script>
+    const BASE58_RE = /^[1-9A-HJ-NP-Za-km-z]+$/;
+    const PORTAL_URL = "https://user.gasfree4you.com/";
+    const $ = (id) => document.getElementById(id);
+
+    const I18N = {
+      ru: {
+        "brand.name":"Vanity TRON Address",
+        "brand.meta":"Красивый суффикс • прайс и безопасность",
+        "tagline":"TRON Base58 суффикс • быстро • прозрачно",
+
+        "hero.title":"Красивый TRON-адрес с вашим суффиксом",
+        "hero.sub":"Введите окончание адреса — получите цену и правила безопасности.",
+        "hero.examples":"Примеры:",
+
+        "form.presets":"Быстрый выбор",
+        "form.suffixLabel":"Желаемый суффикс (2–4 символа)",
+        "form.suffixHelpA":"💡 Можно использовать",
+        "form.suffixHelpB":"буквы + цифры",
+        "form.suffixHelpC":"главное — Base58 (без",
+
+        "btn.calc":"Рассчитать цену",
+        "btn.reset":"Сбросить",
+        "btn.buy":"Купить",
+
+        "promo.pill":"Скидка -50% на всё",
+
+        "result.example":"Пример адреса:",
+        "result.len":"Длина:",
+
+        "side.priceTitle":"💰 Прайс",
+        "side.p2":"2 символа — <span class='mono'><s>10 TRX</s></span> → <span class='mono'><b>5 TRX</b></span>",
+        "side.p3":"3 символа — <span class='mono'><s>50 TRX</s></span> → <span class='mono'><b>25 TRX</b></span>",
+        "side.p4":"4 символа — <span class='mono'><s>250 TRX</s></span> → <span class='mono'><b>125 TRX</b></span>",
+        "side.p5":"5+ — по запросу (обычно заметно дольше).",
+
+        "side.keyTitle":"🔐 Выдача ключа",
+        "side.keyText":"Ключ передаётся в <b>зашифрованном архиве</b>. Пароль задаётся на портале.",
+
+        "side.recTitle":"✅ Рекомендация",
+        "side.recText":"Импортируйте кошелёк в <b>TronLink</b> и используйте vanity-кошелёк как “операционный” (для приёма/переводов).",
+
+        "safe.title":"Правила безопасности",
+        "safe.li1":"<b>Самое надёжное:</b> делегирование подписи (permissions) на другой кошелёк. Средства — на основном, vanity — как “операционный”.",
+        "safe.li2":"<b>Не храните крупные суммы</b> на vanity-кошельке. Приняли → перевели на основной.",
+        "safe.li3":"<b>Разделяйте роли:</b> адрес для приёма ≠ адрес для хранения ≠ адрес для сервиса.",
+        "safe.li4":"<b>Тестовый перевод</b> после получения (маленькая сумма) — обязательный шаг.",
+        "safe.li5":"<b>Антифишинг:</b> мы никогда не просим seed phrase и не просим ставить “спец софт”.",
+        "safe.li6":"<b>Проверяйте домен:</b> покупка и пароль — только на официальном портале.",
+
+        "safe.note":"Полезные ссылки по безопасности и правам аккаунта — ниже.",
+
+        "links.permTitle":"TRONScan — Account Permissions",
+        "links.permMeta":"Настройка permissions / делегирование подписи",
+        "links.docsTitle":"TRON Docs — Account Permissions",
+        "links.docsMeta":"Официальная документация по правам аккаунта",
+        "links.walletTitle":"TronLink Wallet",
+        "links.walletMeta":"Рекомендуемый кошелёк для импорта vanity-адреса",
+        "links.devTitle":"TRON Developers",
+        "links.devMeta":"Документация и справочные материалы",
+        "links.open":"Открыть",
+
+        "footer":"© Vanity TRON Address",
+
+        "msg.needInput":"Введите суффикс (2–4 символа).",
+        "msg.onlyBase58":"Недопустимые символы. Разрешены только Base58 (без 0, O, I, l).",
+        "msg.hint":"Подсказка: используйте только Base58 символы (без 0, O, I, l).",
+        "msg.fixTry":"Исправьте суффикс и попробуйте снова.",
+
+        "msg.waiting":"ожидаем ввод",
+        "msg.invalid":"невалидный суффикс",
+        "msg.available":"доступно",
+        "msg.needsOption":"уточнение",
+
+        "badge.fill":"Нужно заполнить",
+        "badge.error":"Ошибка ввода",
+        "badge.ok":"Доступно к покупке",
+        "badge.warn":"Нужна опция",
+
+        "note.2":"2 символа — самый быстрый вариант. Скидка действует ограниченное время.",
+        "note.3":"3 символа — лучший баланс цены и уникальности.",
+        "note.4":"4 символа — более редкая опция. Отлично для бренда."
+      },
+
+      en: {
+        "brand.name":"Vanity TRON Address",
+        "brand.meta":"Custom suffix • pricing & safety",
+        "tagline":"TRON Base58 suffix • fast • transparent",
+
+        "hero.title":"A TRON address with your custom suffix",
+        "hero.sub":"Enter the desired ending — get the price and safety tips.",
+        "hero.examples":"Examples:",
+        "form.presets":"Quick picks",
+        "form.suffixLabel":"Desired suffix (2–4 characters)",
+        "form.suffixHelpA":"💡 You can mix",
+        "form.suffixHelpB":"letters + numbers",
+        "form.suffixHelpC":"as long as it’s Base58 (no",
+
+        "btn.calc":"Calculate price",
+        "btn.reset":"Reset",
+        "btn.buy":"Buy",
+
+        "promo.pill":"-50% off everything",
+
+        "result.example":"Example address:",
+        "result.len":"Length:",
+
+        "side.priceTitle":"💰 Pricing",
+        "side.p2":"2 characters — <span class='mono'><s>10 TRX</s></span> → <span class='mono'><b>5 TRX</b></span>",
+        "side.p3":"3 characters — <span class='mono'><s>50 TRX</s></span> → <span class='mono'><b>25 TRX</b></span>",
+        "side.p4":"4 characters — <span class='mono'><s>250 TRX</s></span> → <span class='mono'><b>125 TRX</b></span>",
+        "side.p5":"5+ — on request (usually takes longer).",
+
+        "side.keyTitle":"🔐 Key delivery",
+        "side.keyText":"The key is delivered as an <b>encrypted archive</b>. Set the password on the portal.",
+
+        "side.recTitle":"✅ Recommendation",
+        "side.recText":"Import the wallet into <b>TronLink</b> and use the vanity wallet as an “operational” wallet (receiving/transfers).",
+
+        "safe.title":"Safety rules",
+        "safe.li1":"<b>Most secure:</b> delegate signing permissions to another wallet. Keep funds on the main wallet; use vanity as “operational”.",
+        "safe.li2":"<b>Don’t store large balances</b> on the vanity wallet. Receive → move to main.",
+        "safe.li3":"<b>Separate roles:</b> receiving ≠ storage ≠ service wallet.",
+        "safe.li4":"<b>Do a test transfer</b> after delivery (small amount) — mandatory.",
+        "safe.li5":"<b>Anti-phishing:</b> we never ask for your seed phrase and we don’t require any “special software”.",
+        "safe.li6":"<b>Verify the domain:</b> purchase and password are only on the official portal.",
+
+        "safe.note":"Useful links about security and account permissions are below.",
+
+        "links.permTitle":"TRONScan — Account Permissions",
+        "links.permMeta":"Configure permissions / delegate signing",
+        "links.docsTitle":"TRON Docs — Account Permissions",
+        "links.docsMeta":"Official docs on account permissions",
+        "links.walletTitle":"TronLink Wallet",
+        "links.walletMeta":"Recommended wallet to import the generated account",
+        "links.devTitle":"TRON Developers",
+        "links.devMeta":"Documentation and references",
+        "links.open":"Open",
+
+        "footer":"© Vanity TRON Address",
+
+        "msg.needInput":"Enter a suffix (2–4 characters).",
+        "msg.onlyBase58":"Invalid characters. Only Base58 is allowed (no 0, O, I, l).",
+        "msg.hint":"Tip: use Base58 characters only (no 0, O, I, l).",
+        "msg.fixTry":"Fix the suffix and try again.",
+
+        "msg.waiting":"waiting for input",
+        "msg.invalid":"invalid suffix",
+        "msg.available":"available",
+        "msg.needsOption":"needs review",
+
+        "badge.fill":"Required",
+        "badge.error":"Input error",
+        "badge.ok":"Available to buy",
+        "badge.warn":"Needs option",
+
+        "note.2":"2 characters — the fastest option. Limited-time launch discount.",
+        "note.3":"3 characters — the best balance of price and uniqueness.",
+        "note.4":"4 characters — a rarer option. Great for a brand."
+      }
+    };
+
+    function t(key){
+      const lang = document.documentElement.getAttribute("data-lang") || "ru";
+      return (I18N[lang] && I18N[lang][key]) ? I18N[lang][key] : key;
+    }
+
+    function applyI18n(lang){
+      document.documentElement.setAttribute("lang", lang);
+      document.documentElement.setAttribute("data-lang", lang);
+
+      $("langRu").classList.toggle("active", lang === "ru");
+      $("langEn").classList.toggle("active", lang === "en");
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        el.innerHTML = I18N[lang][key] ?? el.innerHTML;
+      });
+
+      $("suffix").setAttribute("placeholder", lang === "ru" ? "Например: HUB" : "e.g. HUB");
+    }
+
+    const suffixEl = $("suffix");
+    const resultEl = $("result"), statusEl = $("status"), statusText = $("statusText");
+    const lenEl = $("len"), priceEl = $("price"), oldPriceEl = $("oldPrice");
+    const calloutEl = $("callout"), suffixErr = $("suffixErr"), exampleAddr = $("exampleAddr");
+
+    const buyRow = $("buyRow"), buyBtn = $("buyBtn");
+
+    const calcBtn = $("calcBtn"), resetBtn = $("resetBtn");
+    const calcBtnSticky = $("calcBtnSticky"), resetBtnSticky = $("resetBtnSticky");
+
+    $("langRu").addEventListener("click", () => applyI18n("ru"));
+    $("langEn").addEventListener("click", () => applyI18n("en"));
+
+    function escapeHtml(s){
+      return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+    }
+
+    function normalizeSuffix(raw){ return (raw || "").trim().replace(/\s+/g, ""); }
+
+    function badge(type, text){
+      const dot = type === "good" ? "good" : type === "warn" ? "warn" : "bad";
+      return `<span class="badge"><span class="dot ${dot}"></span><span>${escapeHtml(text)}</span></span>`;
+    }
+
+    // 50% discount applied: old -> new
+    function calcPrice(len){
+      if (len === 2) return { ok:true, old:"10 TRX",  price:"5 TRX",   note: t("note.2") };
+      if (len === 3) return { ok:true, old:"50 TRX",  price:"25 TRX",  note: t("note.3") };
+      if (len === 4) return { ok:true, old:"250 TRX", price:"125 TRX", note: t("note.4") };
+      if (len < 2)   return { ok:false, old:"—", price:"—", note: (document.documentElement.dataset.lang==="en") ? "Minimum is 2 characters." : "Минимум 2 символа." };
+      return { ok:false, old:"—", price: (document.documentElement.dataset.lang==="en") ? "On request" : "По запросу", note: (document.documentElement.dataset.lang==="en") ? "5+ is not sold here yet." : "5+ пока не продаём здесь." };
+    }
+
+    function setError(msg){
+      if (!msg){ suffixErr.textContent = ""; suffixErr.classList.remove("show"); return; }
+      suffixErr.textContent = msg; suffixErr.classList.add("show");
+    }
+
+    function makeExampleAddress(suffix){ return `T.....${suffix}`; }
+
+    function openResult(){ resultEl.classList.remove("hidden"); }
+    function closeResult(){
+      resultEl.classList.add("hidden");
+      buyRow.classList.remove("show");
+      buyBtn.disabled = true;
+    }
+
+    function scrollToResult(){
+      setTimeout(() => resultEl.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+    }
+
+    function render(forceOpen = true, shouldScroll = false){
+      const s = normalizeSuffix(suffixEl.value);
+
+      if (forceOpen) openResult();
+
+      buyRow.classList.remove("show");
+      buyBtn.disabled = true;
+
+      if (!s){
+        setError(t("msg.needInput"));
+        statusEl.innerHTML = badge("warn", t("badge.fill"));
+        exampleAddr.textContent = "—";
+        statusText.textContent = t("msg.waiting");
+        lenEl.textContent = "—";
+        priceEl.textContent = "—";
+        oldPriceEl.textContent = "—";
+        calloutEl.textContent = t("msg.hint");
+        if (shouldScroll) scrollToResult();
+        return;
+      }
+
+      if (!BASE58_RE.test(s)){
+        setError(t("msg.onlyBase58"));
+        statusEl.innerHTML = badge("bad", t("badge.error"));
+        statusText.textContent = t("msg.invalid");
+        lenEl.textContent = String(s.length);
+        priceEl.textContent = "—";
+        oldPriceEl.textContent = "—";
+        exampleAddr.textContent = "—";
+        calloutEl.textContent = t("msg.fixTry");
+        if (shouldScroll) scrollToResult();
+        return;
+      }
+
+      setError("");
+      const len = s.length;
+      const p = calcPrice(len);
+
+      exampleAddr.textContent = makeExampleAddress(s.toUpperCase());
+      lenEl.textContent = String(len);
+      calloutEl.textContent = p.note;
+
+      if (p.ok){
+        statusEl.innerHTML = badge("good", t("badge.ok"));
+        statusText.textContent = t("msg.available");
+        priceEl.textContent = p.price;
+        oldPriceEl.textContent = p.old;
+
+        buyRow.classList.add("show");
+        buyBtn.disabled = false;
+      } else {
+        statusEl.innerHTML = badge("warn", t("badge.warn"));
+        statusText.textContent = t("msg.needsOption");
+        priceEl.textContent = p.price;
+        oldPriceEl.textContent = "—";
+      }
+
+      if (shouldScroll) scrollToResult();
+    }
+
+    (function attachPresets(){
+      $("presetBar").addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-suffix]");
+        if (!btn) return;
+        suffixEl.value = btn.getAttribute("data-suffix") || "";
+        suffixEl.focus();
+        if (!resultEl.classList.contains("hidden")) render(false, false);
+      });
+    })();
+
+    function bindCalc(btn){ btn.addEventListener("click", () => render(true, true)); }
+    function bindReset(btn){
+      btn.addEventListener("click", () => {
+        suffixEl.value = "";
+        setError("");
+        closeResult();
+        suffixEl.focus();
+      });
+    }
+
+    bindCalc(calcBtn); bindReset(resetBtn);
+    bindCalc(calcBtnSticky); bindReset(resetBtnSticky);
+
+    suffixEl.addEventListener("input", () => {
+      if (!resultEl.classList.contains("hidden")) render(false, false);
+      else setError("");
+    });
+
+    suffixEl.addEventListener("keydown", (e) => { if (e.key === "Enter") render(true, true); });
+
+    // BUY: redirect to portal (with suffix as query param)
+    buyBtn.addEventListener("click", () => {
+      const s = normalizeSuffix(suffixEl.value);
+      if (!s) return;
+
+      const url = new URL(PORTAL_URL);
+      url.searchParams.set("vanity_suffix", s.toUpperCase());
+      window.location.href = url.toString();
+    });
+
+    applyI18n(document.documentElement.getAttribute("data-lang") || "ru");
+  </script>
+</body>
+</html>
