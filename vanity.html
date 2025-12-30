@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru" data-lang="ru">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -244,6 +244,56 @@
       box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
     }
     @media (max-width: 960px) { .stickyCta { display: block; } .btnRow { display: none; } }
+      /* --- Marketing block before safety --- */
+.pitchGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+@media (max-width: 768px){ .pitchGrid{ grid-template-columns: 1fr; } }
+
+.pitchCard{
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--card-border);
+}
+.pitchCard h3{
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.pitchCard p{
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.pillRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.pill .ico{ opacity: 0.9; }
+
   </style>
 </head>
 
@@ -358,8 +408,44 @@
       </aside>
     </main>
 
-    <section class="card" style="margin-top:24px;">
-      <h2 class="sectionTitle" data-i18n="safe.title">Правила безопасности</h2>
+<section class="card" style="margin-top:24px;">
+  <h2 class="sectionTitle" data-i18n="pitch.title">Зачем красивый TRON-адрес?</h2>
+
+  <div class="pitchGrid">
+    <div class="pitchCard">
+      <h3 data-i18n="pitch.whoTitle">Кому это нужно</h3>
+      <p data-i18n="pitch.whoText">
+        Обменникам, мерчантам, OTC/P2P-трейдерам и брендам: красивый суффикс легче проверять глазами и проще узнавать в переписке.
+      </p>
+      <div class="pillRow">
+        <span class="pill"><span class="ico">🏪</span><span data-i18n="pitch.p1">Мерчанты</span></span>
+        <span class="pill"><span class="ico">🤝</span><span data-i18n="pitch.p2">OTC / P2P</span></span>
+        <span class="pill"><span class="ico">🔁</span><span data-i18n="pitch.p3">Обменники</span></span>
+        <span class="pill"><span class="ico">🏷️</span><span data-i18n="pitch.p4">Бренды</span></span>
+      </div>
+    </div>
+
+    <div class="pitchCard">
+      <h3 data-i18n="pitch.whyTitle">Зачем это</h3>
+      <p data-i18n="pitch.whyText">
+        Больше доверия и меньше ошибок: адрес выглядит “официально”, клиенты быстрее сверяют конец адреса и реже путаются при копировании/вставке.
+      </p>
+      <div class="pillRow">
+        <span class="pill"><span class="ico">✅</span><span data-i18n="pitch.b1">Проще сверять</span></span>
+        <span class="pill"><span class="ico">🧠</span><span data-i18n="pitch.b2">Запоминается</span></span>
+        <span class="pill"><span class="ico">🛡️</span><span data-i18n="pitch.b3">Меньше ошибок</span></span>
+        <span class="pill"><span class="ico">✨</span><span data-i18n="pitch.b4">Выглядит как бренд</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:18px;" data-i18n="pitch.note">
+    Важно: vanity-адрес — это не “инвестиционный” кошелёк. Используйте его как операционный (приём/переводы) и соблюдайте правила безопасности ниже.
+  </div>
+</section>
+
+<section class="card" style="margin-top:24px;">
+  <h2 class="sectionTitle" data-i18n="safe.title">Правила безопасности</h2>
       <ul>
         <li data-i18n="safe.li1"><b>Самое надёжное:</b> делегирование подписи (permissions) на другой кошелёк. Средства — на основном, vanity — как “операционный”.</li>
         <li data-i18n="safe.li2"><b>Не храните крупные суммы</b> на vanity-кошельке. Приняли → перевели на основной.</li>
@@ -444,7 +530,22 @@
         "btn.buy":"Купить",
 
         "promo.pill":"Скидка -50% на всё",
+"pitch.title":"Зачем красивый TRON-адрес?",
+"pitch.whoTitle":"Кому это нужно",
+"pitch.whoText":"Обменникам, мерчантам, OTC/P2P-трейдерам и брендам: красивый суффикс легче проверять глазами и проще узнавать в переписке.",
+"pitch.whyTitle":"Зачем это",
+"pitch.whyText":"Больше доверия и меньше ошибок: адрес выглядит “официально”, клиенты быстрее сверяют конец адреса и реже путаются при копировании/вставке.",
+"pitch.note":"Важно: vanity-адрес — это не “инвестиционный” кошелёк. Используйте его как операционный (приём/переводы) и соблюдайте правила безопасности ниже.",
 
+"pitch.p1":"Мерчанты",
+"pitch.p2":"OTC / P2P",
+"pitch.p3":"Обменники",
+"pitch.p4":"Бренды",
+
+"pitch.b1":"Проще сверять",
+"pitch.b2":"Запоминается",
+"pitch.b3":"Меньше ошибок",
+"pitch.b4":"Выглядит как бренд",
         "result.example":"Пример адреса:",
         "result.len":"Длина:",
 
@@ -530,7 +631,22 @@
         "side.p3":"3 characters — <span class='mono'><s>50 TRX</s></span> → <span class='mono'><b>25 TRX</b></span>",
         "side.p4":"4 characters — <span class='mono'><s>250 TRX</s></span> → <span class='mono'><b>125 TRX</b></span>",
         "side.p5":"5+ — on request (usually takes longer).",
+"pitch.title":"Why a vanity TRON address?",
+"pitch.whoTitle":"Who it’s for",
+"pitch.whoText":"Exchanges, merchants, OTC/P2P traders and brands: a clean suffix is easier to visually verify and recognize in chats.",
+"pitch.whyTitle":"Why it helps",
+"pitch.whyText":"More trust and fewer mistakes: the address looks “official”, and clients can quickly verify the ending to avoid copy/paste errors.",
+"pitch.note":"Important: a vanity address is not for long-term storage. Use it as an operational wallet (receive/transfers) and follow the safety rules below.",
 
+"pitch.p1":"Merchants",
+"pitch.p2":"OTC / P2P",
+"pitch.p3":"Exchanges",
+"pitch.p4":"Brands",
+
+"pitch.b1":"Easier to verify",
+"pitch.b2":"Memorable",
+"pitch.b3":"Fewer mistakes",
+"pitch.b4":"Brand-like look",
         "side.keyTitle":"🔐 Key delivery",
         "side.keyText":"The key is delivered as an <b>encrypted archive</b>. Set the password on the portal.",
 
@@ -588,6 +704,7 @@
     function applyI18n(lang){
       document.documentElement.setAttribute("lang", lang);
       document.documentElement.setAttribute("data-lang", lang);
+        document.documentElement.dataset.lang = lang;
 
       $("langRu").classList.toggle("active", lang === "ru");
       $("langEn").classList.toggle("active", lang === "en");
