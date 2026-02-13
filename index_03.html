@@ -1,1089 +1,2092 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>GasFree4you — аренда TRON Energy для перевода USDT/TRC20 без комиссии TRX</title>
-  <meta name="description" content="TRON Energy на 1 перевод USDT/TRC20. Платите 3–6 TRX вместо 6.5–13 TRX. Без доступа к вашим USDT и ключам."/>
-  <meta name="theme-color" content="#0b1020"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- SEO: добавили обе опечатки в тайтл/дескрипшен -->
+  <title>GasFree4you.com — TRON Energy for zero-fee transfers (often searched as “gasfree4ucom” or “fasfree4ucom”)</title>
+  <meta name="description" content="GasFree4you.com — TRON energy for USDT/TRC20 zero-fee transfers. People sometimes search 'gasfree4ucom' or 'fasfree4ucom' (other services with similar conditions). You’re free to buy TRON energy anywhere.">
+  <link rel="canonical" href="https://gasfree4you.com/">
+  <meta name="robots" content="index,follow">
+<meta name="mailru-domain" content="g9DojeU8NgF8ZSCr" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GasFree4you — TRON Energy for zero-fee transfers">
+  <meta property="og:description" content="Buy TRON energy for 3–6 TRX and send USDT/TRC20 without TRX fees. One package per transfer.">
+  <meta property="og:image" content="/og.png">
+  <meta property="og:url" content="https://gasfree4you.com/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="id_ID">
+    <meta property="og:locale:alternate" content="tr_TR">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GasFree4you — TRON Energy for zero-fee transfers">
+  <meta name="twitter:description" content="TRON energy for 3–6 TRX instead of 6.5–13 TRX. Fast, cost-effective, safe.">
+  <meta name="twitter:image" content="/og.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <meta name="theme-color" content="#F5C400">
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103986368', 'ym');
+
+    ym(103986368, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103986368" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+  <!-- GA / GTM -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSLELTPNPT"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-QSLELTPNPT');</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N8Z4SMVJ');</script>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8Z4SMVJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17462758132"></script>
+  <script>function gtag_report_conversion(url){var cb=function(){if(typeof url!=='undefined')window.location=url};try{gtag('event','conversion',{send_to:'AW-17462758132/KNmRCJKGiIQbEPSV8oZB',value:1.0,currency:'USD',event_callback:cb});}catch(e){}return false;}</script>
+
+  <!-- Styles -->
   <style>
-    /* =================== RESET =================== */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
+    :root{
+      --bg:#0b1020; --card:#0f152a; --elev:#0c1226; --muted:#8ea1b2; --text:#eaf2ff;
+      --accent:#6ee7ff; --accent2:#7df1b7; --border:rgba(255,255,255,.08);
+      --danger:#ff6b6b; --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+      --radius:18px; --line:rgba(255,255,255,.12); --ring:rgba(110,231,255,.25);
+      --good:#16c784; --good2:#5fe3b6;
+    }
+
+    *{box-sizing:unset}
     body{
-      margin:0;
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
       color:var(--text);
       background:
         radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.12), transparent 60%),
         radial-gradient(1000px 600px at -10% 110%, rgba(125,241,183,.12), transparent 60%),
         var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    a{color:inherit; text-decoration:none}
-    a:hover{text-decoration:none}
-    img,svg{max-width:100%; height:auto}
-    button,select,input{font:inherit}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1040px; margin:0 auto; padding:16px 16px 28px}
 
-    /* =================== THEME =================== */
-    :root{
-      --bg:#0b1020;
-      --card:#0f152a;
-      --elev:#0c1226;
-      --text:#eaf2ff;
-      --muted:#8ea1b2;
-      --border:rgba(255,255,255,.10);
-      --line:rgba(255,255,255,.14);
-      --ring:rgba(110,231,255,.25);
-      --accent:#6ee7ff;
-      --accent2:#7df1b7;
-      --good:#16c784;
-      --warn:#ffd27a;
-      --danger:#ff6b6b;
-      --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
-      --radius:18px;
-    }
-
-
-    /* =================== LAYOUT =================== */
-    .wrap{max-width:1060px; margin:0 auto; padding:16px}
     header{
       position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(0deg,rgba(0,0,0,.04),rgba(0,0,0,.04)), var(--bg);
+      backdrop-filter:saturate(140%) blur(6px);
+      background:linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)), var(--bg);
       border-bottom:1px solid var(--border);
     }
-    .top{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; flex-wrap:wrap;
-      padding:10px 0;
-    }
+
+        .client-savings{margin:40px 0;text-align:center}
+    .stake-grid{display:flex;flex-direction:column;gap:16px;max-width:800px;margin:20px auto 0}
+    .stake-item{flex:1}
+    .stake-icon{font-size:32px;margin-bottom:8px}
+    @media (min-width:600px){.stake-grid{flex-direction:row}}
+
+
+    .top{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:10px 0}
     .brand{display:flex; align-items:center; gap:10px; min-width:0}
-    .logo{
-      width:40px; height:40px; border-radius:14px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:var(--shadow);
-      display:grid; place-items:center;
-      color:#001b1b; font-weight:900;
-    }
-    .brand .name{font-weight:900; letter-spacing:.2px}
-    .brand .tag{font-size:12px; color:var(--muted)}
-    .nav{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-    }
+    .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
+    .name{font-weight:800; letter-spacing:.2px}
+    .tag{font-size:12px; opacity:.85}
+    .title{margin:0; font-weight:800; letter-spacing:.2px; font-size:clamp(22px,4.8vw,34px)}
+    .subtitle{margin:6px 0 0; color:var(--muted); font-size:14px}
 
-    /* =================== BUTTONS =================== */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:10px 14px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
-      color:var(--text);
-      font-weight:800; letter-spacing:.2px;
-      cursor:pointer;
-      -webkit-tap-highlight-color:transparent;
-      transition:transform .08s ease, box-shadow .25s ease, border-color .2s ease, background .2s ease;
-    }
-    .btn:hover{border-color:rgba(110,231,255,.35); background:rgba(255,255,255,.06)}
-    .btn:active{transform:translateY(1px) scale(.99)}
-    .btn:focus{outline:none}
-    .btn:focus-visible{box-shadow:0 0 0 6px var(--ring)}
-    .btn.primary{
-      border:none;
-      color:#001b1b;
-      padding:12px 22px;
-      border-radius:14px;
-      background:linear-gradient(135deg, #16c784, #4ade80);
-      box-shadow:0 8px 22px rgba(22,199,132,.35);
-    }
-    .btn.primary:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(22,199,132,.45)}
-    .btn.tg{
-      border-color:transparent;
-      color:#001b1b;
-      background:linear-gradient(135deg,#2ca5e0,#38d39f);
-      font-weight:900;
-    }
-    .btn.ghost{background:transparent}
-    .btn.small{padding:8px 12px; font-size:14px; border-radius:12px}
+    .top-right{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .btn{display:inline-flex; gap:8px; align-items:center; justify-content:center; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); color:var(--text); font-weight:800; letter-spacing:.2px; cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
+    .btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
+    .flags{display:flex; gap:8px; align-items:center}
+    .flag-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:34px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(180deg,var(--elev),#101622); cursor:pointer; font-size:18px; color:var(--text)}
+    .flag-btn[aria-pressed="true"]{outline:2px solid var(--accent)}
 
-    /* =================== LANGUAGE SELECT =================== */
-    .lang{position:relative; display:inline-flex; align-items:center}
-    .lang::before{content:"🌐"; position:absolute; left:10px; pointer-events:none; font-size:14px; opacity:.9}
-    .lang select{
-      appearance:none; -webkit-appearance:none; -moz-appearance:none;
-      padding:10px 40px 10px 32px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)),
-        var(--elev);
-      color:var(--text);
-      font-weight:800;
-      cursor:pointer;
-      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23AFC6DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
-      background-repeat:no-repeat;
-      background-position:right 12px center;
-      background-size:14px;
-    }
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0}
+    .badge{font-size:12px; color:var(--text); background:rgba(255,255,255,.04); border:1px solid var(--border); padding:6px 10px; border-radius:999px}
 
-    /* =================== STATUS STRIP =================== */
-    .statusline{display:flex; justify-content:center; padding:6px 0 10px}
-    .status-inner{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-      font-size:13px;
-      padding:6px 10px;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:12px;
-      box-shadow:0 2px 10px rgba(0,0,0,.18);
-    }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background:var(--good);
-      box-shadow:0 0 10px rgba(22,199,132,.8);
-    }
-    .num{font-variant-numeric:tabular-nums}
-    .status-right{display:flex; align-items:center; gap:6px; color:var(--muted)}
-    .status-right b{color:var(--text)}
+    .buybar{display:flex; gap:10px; align-items:center; justify-content:space-between;background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#071635; padding:10px 12px; border-radius:12px; margin:12px 0;box-shadow:0 6px 20px rgba(79,140,255,.25); font-weight:800}
 
-    /* =================== HERO =================== */
-    .hero{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:14px;
-      margin-top:12px;
-      align-items:stretch;
-    }
-    @media (max-width:900px){ .hero{grid-template-columns:1fr} }
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:16px;
-      box-shadow:var(--shadow);
-    }
-    .h1{
-      margin:0;
-      font-weight:950;
-      letter-spacing:.2px;
-      font-size:clamp(22px,4.6vw,34px);
-    }
-    .sub{margin:6px 0 0; color:var(--muted); font-size:14px}
-    .badges{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0}
-    .badge{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-    }
+    .calc{display:grid; grid-template-columns:1.05fr .95fr; gap:14px}
+    @media (max-width:820px){ .calc{grid-template-columns:1fr} }
+    .seg{display:inline-flex; gap:6px; padding:6px; border:1px solid var(--border); border-radius:12px; background:rgba(255,255,255,.04)}
+    .seg-option{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; border:1px solid var(--border); cursor:pointer; font-weight:800; color:var(--text); background:rgba(255,255,255,.04)}
+    .seg-option.active{background:linear-gradient(180deg,var(--accent),var(--accent2)); color:#06121f; border-color:transparent; box-shadow:0 0 0 4px var(--ring)}
 
-    /* =================== EXPLAIN (FLOW) =================== */
-    .flow{
-      display:grid; gap:10px;
-    }
-    .flow h3{margin:0; font-size:18px; font-weight:950}
-    .steps{list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px}
-    .step{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:10px 12px;
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:rgba(255,255,255,.03);
-    }
-    .step .n{
-      width:28px; height:28px; border-radius:12px;
-      display:grid; place-items:center;
-      background:rgba(22,199,132,.14);
-      border:1px solid rgba(22,199,132,.25);
-      color:var(--accent2);
-      font-weight:950;
-      flex:0 0 auto;
-    }
-    .step p{margin:0}
-    .warn{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,210,122,.35);
-      background:rgba(255,210,122,.06);
-      color:var(--text);
-      font-size:13px;
-    }
-    .ok{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(22,199,132,.28);
-      background:rgba(22,199,132,.08);
-      color:var(--text);
-      font-size:13px;
-    }
-    .muted{color:var(--muted)}
-    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      font-size:13px;
-      color:var(--text);
-    }
+    .kpis{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width:560px){ .kpis{grid-template-columns:1fr} }
+    .kpi{padding:10px; border:1px dashed var(--border); border-radius:12px}
+    .kpi .name{color:var(--muted); font-size:13px}
+    .kpi .val{font-weight:900; margin-top:4px}
 
-    /* =================== CALC =================== */
-    .calc{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    @media (max-width:900px){ .calc{grid-template-columns:1fr} }
-    .label{font-size:13px; color:var(--muted); font-weight:800}
-    .input{
-      width:100%;
-      margin-top:6px;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-      outline:none;
-    }
-    .input:focus{box-shadow:0 0 0 6px var(--ring)}
-    .seg{
-      display:inline-flex; gap:6px;
-      padding:6px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      margin-top:10px;
-    }
-    .seg button{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-      border-radius:12px;
-      padding:10px 12px;
-      font-weight:900;
-      cursor:pointer;
-      display:inline-flex; gap:8px; align-items:center;
-    }
-    .seg button.active{
-      border-color:transparent;
-      color:#001b1b;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 0 0 4px var(--ring);
-    }
+    .savecard{padding:16px; border-radius:14px; background:linear-gradient(135deg, rgba(32,212,144,.14), rgba(110,231,255,.14)); border:1px solid var(--border)}
+    .save-top{display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap}
+    .save-vals{display:flex; align-items:baseline; gap:10px}
+    .save-vals .now{font-size:clamp(20px,2.6vw,26px); font-weight:900}
+    .save-badge{background:#4caf50; color:#071b10; font-size:.82em; font-weight:900; padding:3px 7px; border-radius:6px; align-self:center}
+    .save-line{margin:10px 0 8px; height:18px; border-radius:999px; background:rgba(255,255,255,.04); border:1px solid var(--border); overflow:hidden}
+    .save-line-in{height:100%; width:0%; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; font-size:12px; font-weight:900; color:#06170d; background:linear-gradient(90deg, var(--good), var(--good2)); animation:pulseWidth 1.6s ease-in-out infinite alternate}
+    @keyframes pulseWidth{ from{filter:saturate(1)} to{filter:saturate(1.4)} }
 
-    .pricebox{
-      padding:16px;
-      border-radius:16px;
-      border:1px solid var(--border);
-      background:linear-gradient(135deg, rgba(32,212,144,.14), rgba(110,231,255,.12));
-    }
-    .priceTop{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:baseline}
-    .priceTop .big{font-size:clamp(22px,3vw,28px); font-weight:950}
-    .priceTop .base{color:var(--muted)}
-    .line{
-      margin:12px 0 10px;
-      height:12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      overflow:hidden;
-    }
-    .line > div{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg, var(--good), var(--accent2));
-      transition:width .5s cubic-bezier(.22,.61,.36,1);
-    }
-    .kpis{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:10px;
-    }
-    @media (max-width:520px){ .kpis{grid-template-columns:1fr} }
-    .kpi{
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px dashed var(--border);
-      background:rgba(255,255,255,.02);
-    }
-    .kpi .name{font-size:12px; color:var(--muted); font-weight:800}
-    .kpi .val{margin-top:4px; font-weight:950}
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-    .ctaRow .btn{flex:1 1 auto}
-    .fine{margin:10px 0 0; font-size:13px; color:var(--muted)}
-
-    /* =================== TRUST / WHO FOR =================== */
-    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px}
-    @media (max-width:900px){ .grid2{grid-template-columns:1fr} }
-    .boxTitle{margin:0; font-size:18px; font-weight:950}
-    .list{margin:10px 0 0; padding-left:18px; color:var(--text)}
-    .list li{margin:6px 0}
-    .nope{color:var(--muted); font-size:13px; margin-top:10px}
-    .nope b{color:var(--warn)}
-
-    /* =================== FAQ =================== */
-    .faq{margin-top:14px}
-    details{
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:var(--card);
-      padding:10px 12px;
-      margin:8px 0;
-    }
-    summary{cursor:pointer; font-weight:950; padding:6px 0}
-    summary::-webkit-details-marker{display:none}
-    details p{margin:8px 0 0; color:var(--text)}
+    .beam{margin-top:10px; height:8px; border-radius:999px; background:linear-gradient(90deg, rgba(110,231,255,.2), rgba(125,241,183,.2)); overflow:hidden; border:1px solid var(--border)}
+    .faq{margin-top:16px}
+    .faq h3{margin:0 0 8px}
+    details{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin:8px 0; transition:box-shadow .2s}
     details[open]{box-shadow:0 0 0 6px var(--ring)}
+    summary{cursor:pointer; font-weight:800}
+    summary::-webkit-details-marker{display:none}
+    .faq p{margin:8px 0 0; color:var(--text)}
 
-    /* =================== STICKY MOBILE CTA =================== */
-    .stickyCta{
-      position:fixed;
-      left:0; right:0; bottom:0;
-      padding:10px 12px calc(env(safe-area-inset-bottom, 0) + 10px);
-      background:linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,0));
-      display:none;
-      z-index:60;
+    .seo-inline{
+      margin:16px 0 4px;
+      font-size:13px;
+      color:var(--muted);
+      border-left:3px solid var(--border);
+      padding:6px 10px;
     }
-    .stickyCta .inner{
-      max-width:1060px; margin:0 auto;
-      display:flex; gap:10px; flex-wrap:wrap;
-    }
-    .stickyCta .inner .btn{flex:1 1 auto}
-    @media (max-width:900px){
-      .stickyCta{display:block}
-      body{padding-bottom:90px}
-    }
+    .typos{font-size:13px;color:var(--muted);margin:6px 0 14px}
 
-    /* =================== MODALS =================== */
-    .modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.6);
-      display:none;
-      justify-content:center;
-      align-items:center;
-      padding:16px;
-      overflow:auto;
-      z-index:70;
-    }
-    .modal .card{
-      width:min(520px, 100%);
-      max-height:calc(100dvh - 32px);
-      overflow:auto;
-      -webkit-overflow-scrolling:touch;
-      position:relative;
-    }
-    .x{
-      position:absolute; right:10px; top:10px;
-    }
 
-    /* =================== FAB TELEGRAM =================== */
-    .fab{
-      position:fixed; right:16px; bottom:18px;
-      z-index:80;
-      padding:12px 14px;
-      border-radius:999px;
-      border:none;
-      font-weight:950;
-      color:#001b1b;
-      background:linear-gradient(135deg,#2ca5e0,#38d39f);
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-    }
-    @media (max-width:900px){ .fab{bottom:96px} }
+       /* ===== Service status strip ===== */
+   .statusline{display:flex;justify-content:center;padding:2px 0;background:transparent;color:var(--text);font-weight:600;margin-top:4px}
+    .status-inner{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:2px 8px;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.15);border-radius:8px}
+    .status-dot{width:8px;height:8px;border-radius:50%;background:#16c784;box-shadow:0 0 6px #16c784}
+    .status-text{font-size:13px}
+    .status-energy{margin-left:10px;display:flex;align-items:center;gap:4px;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+    .status-energy .num{font-weight:700;font-size:13px}
+    .status-energy small{opacity:.7;font-size:12px}
+
+    /* Footer fix */
+    .footer{background:var(--card);border-top:1px solid var(--border);margin-top:24px}
+    .footer .foot-grid{display:flex;flex-wrap:wrap;gap:20px;padding:20px 16px}
+    .footer .col{flex:1 1 220px;min-width:180px}
+    .footer h4{margin:0 0 8px;font-weight:700;font-size:15px}
+    .foot-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;font-size:14px}
+    .foot-list a{color:var(--text)}
+    .foot-list a:hover{color:var(--accent)}
+    .foot-bottom{border-top:1px dashed var(--border);padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted)}
+    .foot-links{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* ===== Fancy, but subtle animations ===== */
+@media (prefers-reduced-motion:no-preference){
+  /* вход элементов */
+  .reveal{opacity:0; transform:translateY(12px); will-change:opacity,transform;}
+  .reveal.in{animation:revealUp .6s cubic-bezier(.22,.61,.36,1) forwards}
+  @keyframes revealUp{to{opacity:1; transform:translateY(0)}}
+
+  /* лёгкий параллакс подсветки на карточках при ховере */
+  .card{transition:transform .35s ease, box-shadow .35s ease}
+  .card:hover{transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04)}
+
+  /* кнопки — пружинка */
+  .btn{transition:transform .08s ease, box-shadow .2s ease}
+  .btn:active{transform:translateY(1px) scale(.98)}
+
+  /* статус-точка — «дышит» */
+  .status-dot{animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 6px rgba(22,199,132,.9), 0 0 0 0 rgba(22,199,132,.25)}
+    50%{box-shadow:0 0 10px rgba(22,199,132,1), 0 0 0 10px rgba(22,199,132,0)}
+  }
+
+  /* сияние в прогресс-линии экономии */
+  .save-line-in{position:relative; overflow:hidden}
+  .save-line-in::after{
+    content:""; position:absolute; inset:0 -40%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:translateX(-60%); animation:shine 1.8s ease-in-out infinite;
+  }
+  @keyframes shine{50%{transform:translateX(60%)}}
+
+  /* модалки — мягкий scale-in */
+/* Оверлей: скролл всего оверлея + безопасная высота на мобильных */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;                 /* включается JS-ом */
+  justify-content:center;
+  align-items:flex-start;       /* открывать чуть ниже */
+  padding:calc(env(safe-area-inset-top, 0) + 72px) 16px 24px;
+  overflow:auto;                /* если карточка выше окна — скроллим оверлей */
+  z-index:30;
+}
+
+/* Карточка: ограничиваем высоту и даём внутренний скролл */
+.modal .card{
+  box-sizing:border-box;
+  width:min(520px, 100%);
+  max-height:calc(100dvh - 120px);  /* ✅ не выше экрана */
+  overflow:auto;                    /* ✅ прокрутка внутри */
+  -webkit-overflow-scrolling:touch; /* плавный скролл iOS */
+  margin:auto;                      /* центр при высоком контенте */
+}
+
+/* Крестик всегда доступен */
+.modal .card .btn#mClose{
+  position:sticky; top:8px; right:10px; float:right; z-index:1;
+}
+
+/* QR и картинки — резиновые */
+.modal .card img{max-width:100%; height:auto}
+
+
+
+/* Ряд кнопок — переносится, чтобы не уезжать за край */
+#payModal .btn, #waitModal .btn{flex:1 1 auto}
+#payModal .card > div[style*="margin-top:10px"]{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Заголовки/подписи — не выходят за края на узких экранах */
+.modal .subtitle, .modal .title{word-wrap:break-word; overflow-wrap:anywhere}
+
+/* Если хочешь открывать модалку «ниже», а не по центру — уже ок:
+   align-items:flex-start + padding сверху. Для центрирования верни align-items:center */
+
+}
+
+/* чёткая анимация табличных цифр */
+.num, .val{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+
+.seg-option{position:relative; overflow:hidden}
+.seg-option.active::after{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(120px 60px at var(--x,50%) var(--y,50%), rgba(255,255,255,.18), transparent 60%);
+  pointer-events:none;
+  animation:segGlow .9s ease-out;
+}
+@keyframes segGlow{from{opacity:.9} to{opacity:0}}
+/* ===== Modal offset fix ===== */
+    .modal{align-items:flex-start !important; padding-top:210px !important;} /* смещаем модалку ниже */
+@media (max-width:820px){
+  .mobile-after-save{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+    margin-top:16px;
+  }
+}
+
+   /* Language select – pretty chip */
+.lang-wrap{position:relative; display:inline-flex; align-items:center}
+
+/* декоративная «глобус»-иконка слева */
+.lang-wrap::before{
+  content:"🌐";
+  position:absolute; left:10px; pointer-events:none;
+  font-size:14px; opacity:.9; transform:translateY(1px);
+}
+
+/* сам select */
+.lang-select{
+  appearance:none; -webkit-appearance:none; -moz-appearance:none;
+  padding:10px 40px 10px 32px;               /* место под глобус и стрелку */
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)), /* глянец */
+    var(--elev);
+  color:var(--text);
+  font-weight:800; letter-spacing:.2px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:transform .08s ease, box-shadow .25s ease, border-color .2s ease, background .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* кастомная стрелка */
+.lang-select{
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23AFC6DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  background-size:14px;
+}
+
+/* hover/active */
+.lang-select:hover{
+  border-color:rgba(110,231,255,.45);
+  box-shadow:0 8px 26px rgba(110,231,255,.18), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.lang-select:active{ transform:translateY(1px) scale(.99); }
+
+/* focus ring */
+.lang-select:focus{ outline:none; }
+.lang-select:focus-visible{
+  box-shadow:0 0 0 6px var(--ring), var(--shadow);
+  border-color:transparent;
+}
+
+/* опции (некоторые браузеры игнорят, но не вредно) */
+.lang-select option{
+  background:var(--card); color:var(--text);
+}
+
+/* светлая тема — чуть больше контраста и синее свечение */
+@media (prefers-color-scheme:light){
+  .lang-select{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.85), rgba(240,242,255,.75)),
+      var(--card);
+    border-color:rgba(15,21,42,.12);
+  }
+  .lang-select:hover{ box-shadow:0 10px 26px rgba(0,122,255,.12), inset 0 1px 0 #fff; }
+}
+
+
+
+/* компактнее на очень узких экранах */
+@media (max-width:420px){
+  .lang-select{ padding:8px 36px 8px 30px; border-radius:10px; }
+  .lang-wrap::before{ left:9px; font-size:13px; }
+}
+
+    .btn.tg{border-color:transparent;background:linear-gradient(135deg,#2ca5e0,#38d39f);color:#001b1b;font-weight:800}
+.btn.tg:hover{text-decoration:none;filter:saturate(1.1)}
+.fab-tg{
+  position:fixed; right:16px; bottom:18px; z-index:40;
+  padding:12px 14px; border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,.25);
+  background:linear-gradient(135deg,#2ca5e0,#38d39f); color:#001b1b; font-weight:900;
+  border:none
+}
+
+/* Главная кнопка — Купить энергию */
+.btn.primary {
+  background: linear-gradient(135deg, #16c784, #4ade80); /* зелёный акцент */
+  color: #001b1b;
+  border: none;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 12px 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(22,199,132,.35);
+  transition: transform .12s ease, box-shadow .25s ease;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(22,199,132,.45);
+}
+
+.btn.primary:active {
+  transform: scale(.97);
+}
+#whatYouGet{ scroll-margin-top: 80px; } /* чтобы не упирался в липкий header */
+/* Второстепенные кнопки — FAQ и Telegram */
+.btn.secondary,
+.btn.tg {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow: none;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.btn.secondary:hover,
+.btn.tg:hover {
+  background: rgba(255,255,255,.06);
+  border-color: var(--accent);
+}
+/* универсальный вертикальный зазор между секциями */
+.gap-section { margin-top: 16px; margin-bottom: 16px; }
+
+/* если вдруг две секции подряд — повышаем зазор */
+.gap-section + .gap-section { margin-top: 20px; }
+
+/* безопасная прокрутка к якорю под липкий header */
+#whatYouGet { scroll-margin-top: 90px; } /* подгони под высоту твоего header */
+@media (max-width:820px){ .fab-tg{bottom:14px; right:12px; padding:12px 14px} }
+
+    .btn.staking {
+  border-color: rgba(109,231,255,.45);
+  box-shadow: 0 4px 14px rgba(110,231,255,.18), inset 0 1px 0 rgba(255,255,255,.06);
+}
+    /* ==== ONBOARDING — PREMIUM STYLE ==== */
+
+.onb-modal {
+  backdrop-filter: blur(10px) saturate(140%);
+  background: rgba(0,0,0,.55);
+  padding: 24px;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+/* Карточка */
+.onb-card {
+  width: min(480px, 100%);
+  background: var(--card);
+  padding: 22px 22px 26px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  animation: onbFade .5s ease;
+}
+
+/* Анимация появления */
+@keyframes onbFade {
+  from { opacity:0; transform:translateY(18px) scale(.96); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+/* Иконка */
+.onb-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 10px 26px rgba(110,231,255,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #001b1b;
+  margin-bottom: 12px;
+}
+
+/* Заголовки */
+.onb-title {
+  font-size: 22px;
+  margin: 0;
+}
+.onb-sub {
+  margin: 6px 0 18px;
+  color: var(--muted);
+}
+
+/* Блок выбора языка */
+.onb-lang-block { margin-bottom: 16px; }
+.onb-label { font-size: 14px; color: var(--muted); }
+
+.onb-lang-select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Вопрос */
+.onb-q {
+  margin: 16px 0 14px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* Кнопки */
+.onb-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.onb-btn,
+.onb-btn-primary {
+  flex: 1;
+  font-weight: 700;
+}
+
+.onb-finish {
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* Шаг 2 */
+.onb-explain-title {
+  font-size: 18px;
+  margin: 0 0 8px;
+  font-weight: 800;
+}
+
+.onb-text {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.onb-list {
+  color: var(--text);
+  margin: 10px 0 12px;
+  padding-left: 20px;
+  line-height: 1.45;
+}
+
+.onb-list li {
+  margin-bottom: 6px;
+}
+
+    /* ==== ONBOARDING – LAYOUT TWEAKS ==== */
+
+.onb-card {
+  position: relative;
+  width: min(480px, 100%);
+  background: var(--card);
+  padding: 22px 22px 26px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  animation: onbFade .5s ease;
+}
+
+/* маленький селект языка в углу */
+.onb-lang-corner {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+}
+
+.onb-lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 22px 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
+  color: var(--text);
+  cursor: pointer;
+  position: relative;
+}
+
+/* маленькая стрелка внутри */
+.onb-lang-select {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23AFC6DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 10px;
+}
+
+/* мини-подзаголовок */
+.onb-mini {
+  margin: 2px 0 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ГЛАВНЫЙ ВОПРОС – максимальный акцент */
+.onb-q-main {
+  margin: 4px 0 10px;
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 800;
+}
+
+/* Кнопки сразу под вопросом */
+.onb-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 6px;
+}
+
+.onb-btn,
+.onb-btn-primary {
+  flex: 1 1 0;
+  font-weight: 700;
+}
+
+/* Блок с объяснением визуально чуть отделяем */
+.onb-explain-title {
+  font-size: 17px;
+  margin: 14px 0 6px;
+  font-weight: 800;
+}
+
+.onb-text {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.onb-list {
+  font-size: 14px;
+  margin: 6px 0 10px;
+  padding-left: 18px;
+}
+
+.onb-list li {
+  margin-bottom: 4px;
+}
+
+.onb-finish {
+  width: 100%;
+  margin-top: 8px;
+}
+
+    /* ==== FIX: чтобы онбординг не вылезал за экран на мобиле ==== */
+
+.onb-modal {
+  padding: 16px;                 /* чуть меньше отступы от краёв экрана */
+}
+
+.onb-card {
+  box-sizing: border-box;        /* ширина вместе с паддингами */
+  width: 100%;
+  max-width: 480px;
+  padding: 18px 16px 20px;       /* чуть компактнее внутри на узких экранах */
+}
+
+/* На совсем узких экранах кнопки в колонку, чтобы точно не ломались */
+@media (max-width: 360px) {
+  .onb-btns {
+    flex-direction: column;
+  }
+}
+
+
+    /* ==== FIX: кнопки не вылезают за пределы попапа ==== */
+
+/* центрируем именно онбординг и даём нормальный внутренний отступ */
+.onb-modal {
+  padding: 16px;
+  align-items: center !important;
+}
+
+/* карточка точно влезает в экран и не выпускает содержимое наружу */
+.onb-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;          /* чуть уже → больше воздуха по краям */
+  padding: 18px 14px 20px;
+  overflow: hidden;          /* всё, что случайно вылезет, будет обрезано */
+}
+
+/* контейнер с кнопками не шире карточки */
+.onb-btns {
+  width: 100%;
+  align-items: stretch;
+}
+
+/* ключевой фикс: флекс-детям разрешаем сжиматься */
+.onb-btn,
+.onb-btn-primary {
+  min-width: 0;              /* иначе контент может растягивать кнопку шире родителя */
+}
+
+/* на очень узких экранах просто складываем кнопки в колонку */
+@media (max-width: 400px) {
+  .onb-btns {
+    flex-direction: column;
+  }
+}
+
+    /* ==== FIX: языковой селект внутри попапа + флажки ==== */
+
+.onb-lang-corner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.onb-lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px 20px 4px 8px;   /* компактнее */
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06));
+  color: var(--text);
+  cursor: pointer;
+  max-width: 90px;             /* чтобы точно не вылезал */
+  box-sizing: border-box;
+}
+
+/* маленькая стрелочка внутри */
+.onb-lang-select {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23AFC6DA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 10px;
+}
+
+
 
   </style>
 </head>
-
 <body>
-<header>
-  <div class="wrap top">
-    <div class="brand">
-      <div class="logo">⚡</div>
-      <div>
-        <div class="name">GasFree4you</div>
-        <div class="tag" id="tagline">TRON Energy · 1 перевод без комиссии TRX</div>
+ <header>
+    <div class="wrap top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">⚡️</div>
+        <div>
+          <div class="name">GasFree4you</div>
+          <div class="tag" data-i18n="tagline">TRON Energy · Zero-fee transfers</div>
+        </div>
+      </div>
+ <div class="top-right">
+  <a class="btn" href="how-it-works.html" id="howLink" data-i18n="how_link">Как это работает</a>
+  <a class="btn" href="http://user.gasfree4you.com/" id="portalLink" data-i18n="nav_portal">Портал</a>
+   <a class="btn" href="/vanity.html" id="vanityLink" data-i18n="nav_vanity">Красивый кошелёк</a>
+  <a class="btn primary" href="/api.html">API</a>
+  <a class="btn staking" href="/staking.html" id="stakingLink" data-i18n="nav_staking">Staking</a>
+  <!-- header .top-right -->
+  <label class="lang-wrap" for="langSelect" aria-label="Language" title="Language">
+    <select id="langSelect" class="lang-select">
+      <option value="ru">Русский</option>
+      <option value="en">English</option>
+      <option value="zh">中文</option>
+      <option value="id">Bahasa Indonesia</option>
+      <option value="tr">Türkçe</option>
+    </select>
+  </label>
+</div>
+
+    </div>
+    <!-- Service status line -->
+    <div class="statusline">
+      <div class="status-inner">
+        <span class="status-dot"></span>
+        <span class="status-text" id="svcText" data-i18n="svc_online">Service is online</span>
+        <div class="status-energy" aria-live="polite">
+          <small data-i18n="svc_avail">Available energy</small>
+          <span class="num" id="energyNum">1,335,568,252</span>
+        </div>
       </div>
     </div>
+  </header>
 
-    <div class="nav">
-      <a class="btn small" href="how-it-works.html" id="howLink">Как это работает</a>
-      <a class="btn small" href="http://user.gasfree4you.com/" id="portalLink">Портал</a>
-      <a class="btn small" href="/vanity.html" id="vanityLink">Красивый кошелёк</a>
-      <a class="btn small primary" href="/api.html" id="apiLink">API</a>
-      <a class="btn small" href="/staking.html" id="stakingLink">Staking</a>
-
-      <!-- Оставил RU/EN чтобы код был компактным. Добавишь языки — просто расширь словарь I18N ниже -->
-      <label class="lang" title="Language">
-        <select id="lang">
-          <option value="ru">Русский</option>
-          <option value="en">English</option>
-        </select>
-      </label>
+  <main class="wrap" id="top">
+    <div style="margin-top:10px">
+      <h1 class="title reveal" data-i18n="title">Аренда энергии TRON</h1>
+      <p class="subtitle reveal" data-i18n="subtitle">Энергия действует только на <b>1 перевод</b>. Переводы USDT/TRC20 без комиссии TRX.</p>
     </div>
-  </div>
 
-  <div class="statusline">
-    <div class="status-inner">
-      <span class="dot"></span>
-      <span id="svcText">Сервис онлайн</span>
-      <span class="status-right">
-        · Доступная энергия:
-        <b class="num" id="energyNum">—</b>
-      </span>
+    <div class="buybar reveal"><div id="buyInfo" data-i18n="buy_info">💡 Здесь можно <b>не только рассчитать</b> стоимость энергии TRON, но и <b>купить её прямо сейчас</b> по выгодной цене!</div></div>
+
+   <div class="badges reveal">
+      <span class="badge" data-i18n="badge_price">3 TRX = 1 перевод (есть USDT) · 6 TRX = 1 перевод (нет USDT)</span>
+      <span class="badge" data-i18n="badge_base">Рынок: 6.5 TRX (есть USDT) · 13 TRX (нет USDT)</span>
     </div>
-  </div>
-</header>
 
-<main class="wrap">
-  <!-- HERO: смысл + “как это работает” -->
-  <section class="hero">
-    <div class="card">
-      <h1 class="h1" id="h1">Энергия TRON на 1 перевод USDT/TRC20</h1>
-      <p class="sub" id="sub">
-        Платите меньше за комиссию: <b>3–6 TRX</b> вместо <b>6.5–13 TRX</b>. Энергия действует до 1 часа или до первого перевода.
+    <!-- КАЛЬКУЛЯТОР -->
+    <section class="card calc reveal" aria-label="Калькулятор энергии">
+      <div>
+        <label data-i18n="label_wallet">Кошелёк получателя</label>
+        <div id="usdtState" class="seg" role="group" aria-label="USDT on wallet?" style="margin-bottom:10px">
+          <button type="button" class="seg-option active" data-v="has"><span>💰</span><span data-i18n="has_usdt">Есть USDT</span></button>
+          <button type="button" class="seg-option" data-v="none"><span>🚫</span><span data-i18n="no_usdt">Нет USDT</span></button>
+        </div>
+        <div class="note" style="color:var(--muted)" data-i18n="note_no_usdt">Если на кошельке <b>нет</b> USDT — на 1 перевод нужно ~130 000 энергии.</div>
+
+
+        <div class="beam" aria-hidden="true"></div>
+
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn primary" id="buyBtn" data-i18n="buy_btn">Купить энергию TRON</button>
+            <a class="btn tg" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="tg_cta_short">Через Telegram-бота</a>
+            <button class="btn" id="nudgeToFlow" data-i18n="nudge_to_flow">
+  Что будет дальше? ↓
+</button>
+        </div>
+        <p class="note" id="rateInfo" data-i18n="price_note" style="margin-top:10px">Цена указана за 1 перевод. Курс TRX обновляется автоматически.</p>
+      </div>
+
+      <div>
+        <div class="savecard" aria-live="polite">
+          <div class="save-top">
+            <div class="save-title" data-i18n="total_to_pay">Итого к оплате</div>
+            <div class="save-vals">
+              <div class="now" id="k_total">3 TRX</div>
+              <span class="save-badge" id="saveBadge">% </span>
+              <div class="base"><s id="k_totalBase">6.50 TRX</s></div>
+            </div>
+          </div>
+          <div class="save-line" aria-hidden="true"><div id="saveBarIn" class="save-line-in">—</div></div>
+          <div class="kpis">
+                           <div class="kpi">
+              <div class="name" data-i18n="usd_saving_title">Экономия в долларах</div>
+              <div id="k_usdSaveBlock" class="val">≈ 1.50 USDT</div>
+            </div>
+            <div class="kpi">
+              <div class="name" data-i18n="price_per">Цена за 1 перевод</div>
+              <div id="k_pp" class="val">3 TRX</div>
+            </div>
+            <div class="kpi">
+              <div class="name" data-i18n="energy_per">Энергии на 1 перевод</div>
+              <div id="k_energyPer" class="val">65 000</div>
+              <div class="note" id="k_usdSave" style="font-size:12px;color:var(--muted)"></div>
+            </div>
+            <div class="kpi">
+              <div class="name" data-i18n="rent_1h">Действует</div>
+              <div class="val" data-i18n="rent_1h_val">до 1 часа или до 1 перевода</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- EXPLAINER: what happens after payment -->
+<section class="card reveal gap-section" id="whatYouGet" style="border-left:4px solid var(--good);">
+  <h3 class="title" style="font-size:18px;margin:0 0 6px" data-i18n="flow_note_title">
+    Что произойдёт после оплаты
+  </h3>
+  <p data-i18n="flow_note_text">
+    Вы переводите указанную сумму TRX на сервисный кошелёк. Мы <b>сразу делегируем энергию</b> на тот же кошелёк.
+    Эта энергия <b>покроет комиссию за 1 перевод USDT/TRC20</b>, затем энергия будет автоматически <b>отозвана</b>
+    или истечёт по времени (до 1 часа). Ваши USDT и приватные ключи мы не трогаем.
+  </p>
+  <p style="margin:8px 0 0;color:var(--muted)" data-i18n="flow_note_short">
+    Энергия начисляется на тот же кошелёк, с которого пришёл TRX.
+  </p>
+</section>
+
+    <!-- Partner block -->
+   <section class="faq reveal" id="biz">
+      <h3 class="title" style="font-size:22px" data-i18n="biz_title">Партнёрам и большим объёмам</h3>
+      <details>
+        <summary data-i18n="biz_q1">Большие объёмы и хотите экономить больше?</summary>
+        <p data-i18n="biz_a1">Свяжитесь с нами в <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> — предложим индивидуальные условия.</p>
+      </details>
+      <details>
+        <summary data-i18n="biz_q2">Нужно раздавать энергию на другие кошельки?</summary>
+        <p data-i18n="biz_a2">У нас есть UI и API для этого. <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Свяжитесь с нами</a>.</p>
+      </details>
+      <details>
+        <summary data-i18n="biz_q3">Хотите свой бизнес?</summary>
+        <p data-i18n="biz_a3"><a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Свяжитесь с нами</a> — поможем стартовать.</p>
+      </details>
+      <details>
+        <summary data-i18n="biz_q4">Есть аудитория и хотите помочь ей экономить и зарабатывать?</summary>
+        <p data-i18n="biz_a4"><a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Свяжитесь с нами</a> — у нас есть партнёрская программа.</p>
+      </details>
+    </section>
+
+    <!-- Mini SEO note (видимая короткая подсказка) -->
+
+    <!-- Небольшой список вариантов написания, чтобы заякорить запросы -->
+    <p class="typos" data-i18n="typos_line">Also searched as: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.</p>
+
+
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <h3 class="title" style="font-size:22px" data-i18n="faq_title">FAQ</h3>
+      <details>
+        <summary data-i18n="q1">Зачем вообще нужна аренда энергии TRON?</summary>
+        <p data-i18n="a1">Держатели стейкают TRX и получают ресурсы сети — энергию. Её можно временно делегировать активным отправителям, что позволяет платить меньше, чем стандартная комиссия TRX.</p>
+      </details>
+      <details>
+        <summary data-i18n="q2">На сколько переводов хватает энергии?</summary>
+        <p data-i18n="a2">Пакет действует на <b>один</b> перевод и отзывается сразу после первой операции или по таймауту (до часа).</p>
+      </details>
+      <details>
+        <summary data-i18n="q3">Это безопасно?</summary>
+        <p data-i18n="a3">Мы делегируем энергию, не забирая ваши средства и без доступа к приватным ключам. Вы переводите TRX только для оплаты пакета энергии.</p>
+      </details>
+      <details>
+        <summary data-i18n="q4">Для кого этот сервис?</summary>
+        <p data-i18n="a4">Для обменников, кошельков, OTC и любых сервисов с частыми переводами USDT/TRC20, а также для пользователей, не желающих держать большой остаток TRX на комиссиях.</p>
+      </details>
+      <details>
+        <summary data-i18n="q5">Есть ли API и UI-консоль?</summary>
+        <p data-i18n="a5">Да. Доступны UI для массовой раздачи энергии и REST API для полной автоматизации. Нажмите кнопку «API» вверху.</p>
+      </details>
+      <!-- SEO-FAQ по опечаткам: теперь включает fasfree4ucom -->
+      <details>
+        <summary data-i18n="q6">Я искал «gasfree4ucom» или «fasfree4ucom» — это вы?</summary>
+        <p data-i18n="a6"> В сети могут встречаться разные площадки с созвучными именами. Наш сервис — отдельный проект с собственными условиями и системой делегирования энергии.</p>
+      </details>
+    </section>
+  </main>
+
+<!-- ONBOARDING MODAL -->
+<div class="modal onb-modal" id="onbModal" role="dialog" aria-modal="true" style="display:none">
+  <div class="onb-card">
+
+    <!-- маленький переключатель языка в углу -->
+    <div class="onb-lang-corner">
+<select id="onbLangSelect" class="onb-lang-select">
+  <option value="ru">🇷🇺 RU</option>
+  <option value="en">🇬🇧 EN</option>
+  <option value="zh">🇨🇳 中文</option>
+  <option value="id">🇮🇩 ID</option>
+  <option value="tr">🇹🇷 TR</option>
+</select>
+    </div>
+
+    <!-- Иконка / бренд -->
+    <div class="onb-icon">⚡</div>
+
+    <!-- Короткий подзаголовок -->
+    <p class="onb-mini" data-i18n="onb_small_intro">
+      Коротко объясним, что делает GasFree4you.
+    </p>
+
+    <!-- ГЛАВНЫЙ ВОПРОС (самый заметный) -->
+    <p class="onb-q-main" data-i18n="onb_q">
+      Вы знаете, что такое аренда энергии TRON и зачем она нужна?
+    </p>
+
+    <!-- Кнопки Да/Нет сразу под вопросом -->
+    <div class="onb-btns">
+      <button class="btn onb-btn" id="onbYes" data-i18n="onb_yes">Да, знаю</button>
+      <button class="btn primary onb-btn-primary" id="onbNo" data-i18n="onb_no">Нет, расскажите</button>
+    </div>
+
+    <!-- Шаг 2: объяснение (появляется после "Нет") -->
+    <div data-step="explain" hidden>
+      <h4 class="onb-explain-title" data-i18n="onb_explain_title">
+        Зачем нужна аренда энергии?
+      </h4>
+
+      <p class="onb-text" data-i18n="onb_explain_p1">
+        Очень коротко: вы платите немного TRX, чтобы комиссия за перевод USDT/TRC20 стала почти в два раза ниже.
       </p>
 
-      <div class="badges">
-        <span class="badge" id="b1">✅ 3 TRX — кошелёк уже активирован (есть USDT)</span>
-        <span class="badge" id="b2">✅ 6 TRX — кошелёк не активирован (нет USDT)</span>
-        <span class="badge" id="b3">🔒 Мы не трогаем ваши USDT и не получаем доступ к ключам</span>
-      </div>
-
-      <div class="pillrow">
-        <span class="pill" id="p1">⚡ Делегируем энергию мгновенно</span>
-        <span class="pill" id="p2">🧾 Пакет = 1 перевод</span>
-        <span class="pill" id="p3">🧠 Подходит TronLink / Trust Wallet</span>
-      </div>
-
-      <div class="warn" id="warn">
-        <b>Важно:</b> не работает для бирж (Binance/OKX и т.п.) и кастодиальных кошельков.
-      </div>
-    </div>
-
-    <div class="card flow" id="flow">
-      <h3 id="flowTitle">Как это выглядит для пользователя</h3>
-      <ul class="steps" id="steps">
-        <li class="step"><span class="n">1</span><p id="s1">Нажимаете «Купить энергию» → видите сумму и адрес.</p></li>
-        <li class="step"><span class="n">2</span><p id="s2">Отправляете TRX <b>с того же кошелька</b>, которому нужна энергия.</p></li>
-        <li class="step"><span class="n">3</span><p id="s3">Мы делегируем энергию → вы делаете 1 перевод USDT/TRC20 без комиссии TRX.</p></li>
+      <ul class="onb-list">
+        <li data-i18n="onb_explain_li1">
+          Работает только для небиржевых кошельков: TronLink, Trust Wallet и других некастодиальных кошельков.
+        </li>
+        <li data-i18n="onb_explain_li2">
+          Не работает с биржами (Binance, OKX и др.) и кастодиальными кошельками.
+        </li>
+        <li data-i18n="onb_explain_li3">
+          Энергия действует только на <b>1 перевод</b>, затем автоматически отзывается.
+        </li>
       </ul>
-      <div class="ok" id="ok">
-        Энергия начисляется на тот же кошелёк, с которого пришёл TRX, и затем отзывается автоматически.
+
+      <p class="onb-text" data-i18n="onb_explain_p2">
+        Дальше на сайте вы сможете посчитать экономию и сразу купить энергию для перевода.
+      </p>
+
+      <button class="btn primary onb-finish" id="onbGotIt" data-i18n="onb_gotit">
+        Понятно, перейти к сайту
+      </button>
+    </div>
+
+  </div>
+</div>
+
+  <!-- WAIT MODAL -->
+  <div class="modal" id="waitModal"
+       style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;z-index:30">
+    <div class="card" style="max-width:480px;width:100%;text-align:center;position:relative">
+      <button class="btn" id="wClose" aria-label="Close" style="position:absolute;right:10px;top:10px">✕</button>
+      <h3 class="title" style="margin:0 0 10px;font-size:20px">Processing payment</h3>
+      <p class="subtitle" style="margin:0 0 6px">Please wait, energy will be credited soon.</p>
+      <p class="subtitle" id="wCountdownWrap" style="margin:6px 0 0">Time left: <b id="waitCountdown">60</b> sec</p>
+    </div>
+  </div>
+
+  <!-- Payment modal -->
+  <div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="mTitle" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;z-index:30">
+    <div class="card" style="max-width:520px;width:100%;position:relative">
+      <button class="btn" id="mClose" aria-label="Закрыть" style="position:absolute;right:10px;top:10px">✕</button>
+      <h3 id="mTitle" style="margin:0 0 6px;font-size:20px;font-weight:800" data-i18n="pay_title">Оплата заказа</h3>
+      <p class="subtitle" id="mSub"><span data-i18n="pay_sub">Переведите</span> <b id="mAmount">—</b> <span data-i18n="pay_sub2">на адрес ниже. Укажите точную сумму.</span></p>
+      <div style="display:flex;justify-content:center;margin:12px 0"><img id="mQR" alt="QR для оплаты" width="200" height="200" loading="lazy"></div>
+      <div style="display:flex;align-items:center;gap:8px;margin:6px 0">
+        <div class="card" id="mAddr" style="flex:1;overflow:auto">—</div>
+        <button class="btn" id="copyAddr" data-i18n="copy">Скопировать</button>
+      </div>
+      <div class="card" style="border-color:#ffd27a;color:#ffd27a;background:rgba(255,210,122,.06)" data-i18n="warn_text">Важно! Переведите <b>именно эту сумму</b>. Энергия зачислится на <b>тот же кошелёк</b>.</div>
+      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn primary" id="paidBtn" data-i18n="paid_btn">Я оплатил</button>
+        <button class="btn" id="mClose2" data-i18n="cancel_btn">Отмена</button>
+      </div>
+      <p class="subtitle" style="margin-top:12px" id="mOrderMeta"></p>
+    </div>
+  </div>
+
+    <section class="client-savings">
+    <h3 data-i18n="stake_title">Staking benefits (official TRON info)</h3>
+    <div class="stake-grid">
+      <div class="stake-item card">
+        <div class="stake-icon">🔋</div>
+        <h4 data-i18n="stake_p1_title">Get Resources for Free Transactions</h4>
+        <p data-i18n="stake_p1_text">By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.</p>
+      </div>
+      <div class="stake-item card">
+        <div class="stake-icon">🤝</div>
+        <h4 data-i18n="stake_p2_title">Delegate Idle Resources to Others</h4>
+        <p data-i18n="stake_p2_text">You may delegate idle resources to others and can reclaim the resources anytime.</p>
       </div>
     </div>
+    <p class="stake-source"><a href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener" data-i18n="stake_source">Source: tronscan.org</a></p>
   </section>
 
-  <!-- CALCULATOR: меньше “магии”, больше смысла -->
-  <section class="card calc" style="margin-top:14px" aria-label="Калькулятор">
-    <div>
-      <div class="label" id="walletLabel">Ваш кошелёк (откуда отправите TRX)</div>
-      <input class="input" id="wallet" placeholder="Например: TAbc... (необязательно)" inputmode="text" autocomplete="off"/>
-
-      <div class="label" style="margin-top:10px" id="modeLabel">Состояние кошелька</div>
-      <div class="seg" id="usdtState" role="group" aria-label="USDT on wallet?">
-        <button type="button" class="active" data-v="has" id="hasBtn"><span>💰</span><span id="hasTxt">Есть USDT (активирован)</span></button>
-        <button type="button" data-v="none" id="noneBtn"><span>🚫</span><span id="noneTxt">Нет USDT (не активирован)</span></button>
-      </div>
-
-      <p class="fine" id="fine1">Если на кошельке нет USDT — обычно нужно больше энергии (~130 000) на первый перевод.</p>
-
-      <div class="ctaRow">
-        <button class="btn primary" id="buyBtn">Купить энергию</button>
-        <a class="btn tg" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" id="tgBtn">Через Telegram-бота</a>
-        <button class="btn ghost" id="scrollFaq">FAQ</button>
-      </div>
-      <p class="fine" id="fine2">Цена — за 1 перевод. Курс TRX обновляется автоматически.</p>
-    </div>
-
-    <div>
-      <div class="pricebox" aria-live="polite">
-        <div class="priceTop">
+  <footer class="footer" role="contentinfo">
+    <div class="wrap foot-grid">
+      <div class="col">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">⚡</div>
           <div>
-            <div class="label" id="totalLabel">Итого к оплате</div>
-            <div class="big num" id="total">—</div>
-          </div>
-          <div class="base">
-            <span id="savePct" class="num" style="font-weight:950">—</span><br/>
-            <span id="basePrice">—</span>
+            <div class="name">GasFree4you</div>
+            <div class="tag">TRON Energy · Zero-fee transfers</div>
           </div>
         </div>
-
-        <div class="line" aria-hidden="true"><div id="bar"></div></div>
-
-        <div class="kpis">
-          <div class="kpi">
-            <div class="name" id="k1n">Экономия ≈</div>
-            <div class="val num" id="usdSave">—</div>
-          </div>
-          <div class="kpi">
-            <div class="name" id="k2n">Энергии на 1 перевод</div>
-            <div class="val num" id="energyPer">—</div>
-          </div>
-          <div class="kpi">
-            <div class="name" id="k3n">Пакет</div>
-            <div class="val" id="pack">1 перевод</div>
-          </div>
-          <div class="kpi">
-            <div class="name" id="k4n">Срок</div>
-            <div class="val" id="ttl">до 1 часа</div>
-          </div>
-        </div>
-
-        <div class="warn" id="warn2">
-          Отправляйте <b>точную сумму</b>. Энергия начислится на кошелёк-отправитель TRX.
-        </div>
+        <p class="subtitle" data-i18n="footer_desc">3 TRX при наличии USDT или 6 TRX без USDT. Энергия на <b>1 перевод</b>. Моментальное начисление.</p>
+      </div>
+      <div class="col">
+        <h4 data-i18n="footer_contacts_title">Контакты</h4>
+        <ul class="foot-list">
+          <li>Telegram: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
+          <li>Support: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
+          
+          <li><a href="https://gasfree4you.com" target="_blank" rel="noopener" data-i18n="footer_site">Наш сайт</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4 data-i18n="footer_nav_title">Навигация</h4>
+        <ul class="foot-list">
+          <li><a href="#top" data-i18n="footer_nav_calc">Калькулятор</a></li>
+          
+          <li><a href="how-it-works.html" data-i18n="footer_nav_how">Как это работает</a></li>
+          <li><a href="#faq" data-i18n="footer_nav_faq">FAQ</a></li>
+          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-i18n="footer_nav_top">Наверх ↑</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4 data-i18n="footer_legal_title">Юридическая информация</h4>
+        <p class="subtitle" style="margin:8px 0" data-i18n="footer_legal_desc">GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.</p>
+        <ul class="foot-list">
+          <li><a href="/terms.html" data-i18n="footer_terms">Terms of Service</a></li>
+          <li><a href="/privacy.html" data-i18n="footer_privacy">Privacy Policy</a></li>
+          <li><a href="/refund.html" data-i18n="footer_refund">Refund Policy</a></li>
+          <li><a href="/vanity.html" data-i18n="footer_nav_vanity">Красивый кошелёк</a></li>
+           <a href="/legal.html" data-i18n="footer_legal">Legal Information</a>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <!-- TRUST / WHO FOR -->
-  <section class="grid2">
-    <div class="card">
-      <h3 class="boxTitle" id="trustTitle">Почему это безопасно</h3>
-      <ul class="list" id="trustList">
-        <li>Вы просто отправляете TRX как оплату пакета.</li>
-        <li>Мы <b>не получаем доступ</b> к приватным ключам и USDT.</li>
-        <li>Мы делегируем энергию — это ресурс сети TRON, а не ваши деньги.</li>
-      </ul>
-      <div class="nope" id="trustNote"><b>Никогда</b> не вводите сид/ключ на сайтах. Мы этого не просим.</div>
-    </div>
-
-    <div class="card">
-      <h3 class="boxTitle" id="whoTitle">Кому подходит</h3>
-      <ul class="list" id="whoList">
-        <li>TronLink / Trust Wallet / некастодиальные кошельки</li>
-        <li>Частые переводы USDT/TRC20</li>
-        <li>OTC/обменники/сервисы с транзакциями</li>
-      </ul>
-      <div class="nope" id="whoNote"><b>Не подходит</b> для биржевых адресов (Binance/OKX и т.п.).</div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq card" id="faq" style="margin-top:14px">
-    <h3 class="boxTitle" id="faqTitle">FAQ</h3>
-
-    <details>
-      <summary id="q1">На сколько переводов хватает?</summary>
-      <p id="a1">Пакет рассчитан на <b>один</b> перевод. Энергия отзывается после первой операции или по таймауту (до часа).</p>
-    </details>
-    <details>
-      <summary id="q2">Почему цена зависит от “есть USDT / нет USDT”?</summary>
-      <p id="a2">Если кошелёк не активирован (обычно “нет USDT”), сети нужно больше энергии на первый перевод.</p>
-    </details>
-    <details>
-      <summary id="q3">Есть API?</summary>
-      <p id="a3">Да. Нажмите кнопку <b>API</b> в шапке.</p>
-    </details>
-    <details>
-      <summary id="q4">Я искал gasfree4ucom / fasfree4ucom — это вы?</summary>
-      <p id="a4">В сети есть созвучные площадки. GasFree4you — отдельный проект со своей системой делегирования энергии.</p>
-    </details>
-  </section>
-</main>
-
-<!-- Sticky mobile CTA -->
-<div class="stickyCta">
-  <div class="inner">
-    <button class="btn primary" id="buyBtnSticky">Купить энергию</button>
-    <a class="btn tg" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" id="tgBtnSticky">Telegram</a>
-  </div>
-</div>
-
-<!-- Payment modal -->
-<div class="modal" id="payModal" role="dialog" aria-modal="true">
-  <div class="card">
-    <button class="btn x" id="closePay" aria-label="Close">✕</button>
-    <h3 class="boxTitle" id="payTitle" style="margin:0 0 6px">Оплата</h3>
-    <p class="sub" id="paySub" style="margin:0 0 10px">Переведите <b class="num" id="payAmount">—</b> на адрес ниже (точная сумма).</p>
-
-    <div style="display:flex; justify-content:center; margin:10px 0">
-      <img id="qr" width="200" height="200" alt="QR" loading="lazy"/>
-    </div>
-
-    <div class="kpi" style="border-style:solid">
-      <div class="name" id="addrLabel">Адрес</div>
-      <div class="val num" id="addr" style="word-break:break-all">—</div>
-      <div class="ctaRow" style="margin-top:10px">
-        <button class="btn" id="copy">Скопировать</button>
-        <button class="btn primary" id="paid">Я оплатил</button>
+    <div class="foot-bottom">
+      <small>© <span id="y"></span> GasFree4you. <span data-i18n="footer_rights">Все права защищены.</span></small>
+      <div class="foot-links">
+        <a href="/terms.html" data-i18n="footer_terms">Terms</a>
+        <a href="/privacy.html" data-i18n="footer_privacy">Privacy</a>
+        <a href="/refund.html" data-i18n="footer_refund">Refunds</a>
+        <a href="/legal.html" data-i18n="footer_legal">Legal Information</a>
       </div>
-      <p class="fine" id="payFine" style="margin:10px 0 0">Энергия начислится на тот же кошелёк, который отправил TRX.</p>
     </div>
-  </div>
-</div>
 
-<!-- Wait modal -->
-<div class="modal" id="waitModal" role="dialog" aria-modal="true">
-  <div class="card">
-    <button class="btn x" id="closeWait" aria-label="Close">✕</button>
-    <h3 class="boxTitle" id="waitTitle" style="margin:0 0 6px">Обработка</h3>
-    <p class="sub" id="waitSub" style="margin:0 0 10px">Подождите, энергия скоро начислится.</p>
-    <div class="kpi" style="border-style:solid">
-      <div class="name" id="leftLabel">Осталось</div>
-      <div class="val num"><span id="sec">60</span> sec</div>
-    </div>
-  </div>
-</div>
+  </footer>
 
-<a class="fab" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" aria-label="Open Telegram bot">👋 Telegram</a>
+  <!-- JSON-LD FAQ (перестраивается JS по языку) -->
+  <script type="application/ld+json" id="faq-json"></script>
 
-<script>
-  // =================== CONFIG ===================
-  const PAY_TO_ADDRESS = "TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX";
+  <!-- JSON-LD Organization: alternateName с опечатками -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"GasFree4you",
+    "url":"https://gasfree4you.com/",
+    "alternateName": ["Gas Free 4 U Com", "gasfree4ucom", "fasfree4ucom"],
+    "sameAs": ["https://t.me/saving_trx_bot"]
+  }
+  </script>
 
-  // Тарифы (как у тебя)
-  const PRICE_PER_TX = { has: 3.0, none: 6.0 };
-  const PRICE_BASE   = { has: 6.5, none: 13.0 };
-  const ENERGY_PER_TX= { has: 65000, none: 130000 };
+  <!-- Небольшой noscript-текст, чтобы роботы без JS видели опечатки естественно -->
+  <noscript>
+    <p style="padding:8px 12px;font-size:13px;color:#6b7280">
+      GasFree4you.com — TRON energy rental. Some users search for “gasfree4ucom” or “fasfree4ucom” (different services with similar conditions). You’re free to buy TRON energy anywhere.
+    </p>
+  </noscript>
 
-  // Для красивого "available energy" счётчика
-  const START_ENERGY = 935568252; // поставь своё реальное стартовое значение
-  const STEP = 131000;
+  <script>
+  // === I18N ===
+  document.addEventListener('DOMContentLoaded', function(){
+    const I18N = {
+      ru:{
+                onb_title: "Что это за сервис?",
+        nav_portal: "Портал",
+nav_portal_cta: "Открыть портал",
 
-  // =================== I18N (RU/EN компактно) ===================
-  const I18N = {
-    ru: {
-      tagline: "TRON Energy · 1 перевод без комиссии TRX",
-      h1: "Энергия TRON на 1 перевод USDT/TRC20",
-      sub: "Платите меньше за комиссию: <b>3–6 TRX</b> вместо <b>6.5–13 TRX</b>. Энергия действует до 1 часа или до первого перевода.",
-      b1:"✅ 3 TRX — кошелёк уже активирован (есть USDT)",
-      b2:"✅ 6 TRX — кошелёк не активирован (нет USDT)",
-      b3:"🔒 Мы не трогаем ваши USDT и не получаем доступ к ключам",
-      p1:"⚡ Делегируем энергию мгновенно",
-      p2:"🧾 Пакет = 1 перевод",
-      p3:"🧠 Подходит TronLink / Trust Wallet",
-      warn:"<b>Важно:</b> не работает для бирж (Binance/OKX и т.п.) и кастодиальных кошельков.",
-      flowTitle:"Как это выглядит для пользователя",
-      s1:"Нажимаете «Купить энергию» → видите сумму и адрес.",
-      s2:"Отправляете TRX <b>с того же кошелька</b>, которому нужна энергия.",
-      s3:"Мы делегируем энергию → вы делаете 1 перевод USDT/TRC20 без комиссии TRX.",
-      ok:"Энергия начисляется на тот же кошелёк, с которого пришёл TRX, и затем отзывается автоматически.",
-      walletLabel:"Ваш кошелёк (откуда отправите TRX)",
-      modeLabel:"Состояние кошелька",
-      hasTxt:"Есть USDT (активирован)",
-      noneTxt:"Нет USDT (не активирован)",
-      fine1:"Если на кошельке нет USDT — обычно нужно больше энергии (~130 000) на первый перевод.",
-      buy:"Купить энергию",
-      tg:"Через Telegram-бота",
-      faq:"FAQ",
-      fine2:"Цена — за 1 перевод. Курс TRX обновляется автоматически.",
-      totalLabel:"Итого к оплате",
-      k1n:"Экономия ≈",
-      k2n:"Энергии на 1 перевод",
-      k3n:"Пакет",
-      k4n:"Срок",
-      pack:"1 перевод",
-      ttl:"до 1 часа",
-      warn2:"Отправляйте <b>точную сумму</b>. Энергия начислится на кошелёк-отправитель TRX.",
-      trustTitle:"Почему это безопасно",
-      trustList:[
-        "Вы просто отправляете TRX как оплату пакета.",
-        "Мы <b>не получаем доступ</b> к приватным ключам и USDT.",
-        "Мы делегируем энергию — это ресурс сети TRON, а не ваши деньги."
-      ],
-      trustNote:"<b>Никогда</b> не вводите сид/ключ на сайтах. Мы этого не просим.",
-      whoTitle:"Кому подходит",
-      whoList:[
-        "TronLink / Trust Wallet / некастодиальные кошельки",
-        "Частые переводы USDT/TRC20",
-        "OTC/обменники/сервисы с транзакциями"
-      ],
-      whoNote:"<b>Не подходит</b> для биржевых адресов (Binance/OKX и т.п.).",
-      faqTitle:"FAQ",
-      q1:"На сколько переводов хватает?",
-      a1:"Пакет рассчитан на <b>один</b> перевод. Энергия отзывается после первой операции или по таймауту (до часа).",
-      q2:"Почему цена зависит от “есть USDT / нет USDT”?",
-      a2:"Если кошелёк не активирован (обычно “нет USDT”), сети нужно больше энергии на первый перевод.",
-      q3:"Есть API?",
-      a3:"Да. Нажмите кнопку <b>API</b> в шапке.",
-      q4:"Я искал gasfree4ucom / fasfree4ucom — это вы?",
-      a4:"В сети есть созвучные площадки. GasFree4you — отдельный проект со своей системой делегирования энергии.",
-      svc:"Сервис онлайн",
-      availPrefix:"Доступная энергия:",
-      payTitle:"Оплата",
-      paySub:"Переведите <b class='num' id='payAmount'>—</b> на адрес ниже (точная сумма).",
-      addrLabel:"Адрес",
-      copy:"Скопировать",
-      copied:"Скопировано!",
-      paid:"Я оплатил",
-      payFine:"Энергия начислится на тот же кошелёк, который отправил TRX.",
-      waitTitle:"Обработка",
-      waitSub:"Подождите, энергия скоро начислится.",
-      leftLabel:"Осталось",
-      stickyBuy:"Купить энергию"
-    },
-    en: {
-      tagline: "TRON Energy · 1 transfer with zero TRX fee",
-      h1: "TRON Energy for 1 USDT/TRC20 transfer",
-      sub: "Pay less for fees: <b>3–6 TRX</b> instead of <b>6.5–13 TRX</b>. Energy is valid up to 1 hour or until the first transfer.",
-      b1:"✅ 3 TRX — wallet is activated (has USDT)",
-      b2:"✅ 6 TRX — wallet is not activated (no USDT)",
-      b3:"🔒 We never touch your USDT or private keys",
-      p1:"⚡ Instant energy delegation",
-      p2:"🧾 Package = 1 transfer",
-      p3:"🧠 Works with TronLink / Trust Wallet",
-      warn:"<b>Important:</b> does NOT work for exchanges (Binance/OKX etc.) or custodial wallets.",
-      flowTitle:"How it works for the user",
-      s1:"Click “Buy energy” → see amount and address.",
-      s2:"Send TRX from the <b>same wallet</b> that needs energy.",
-      s3:"We delegate energy → you make 1 USDT/TRC20 transfer with zero TRX fee.",
-      ok:"Energy is credited to the same wallet that sent TRX, then revoked automatically.",
-      walletLabel:"Your wallet (where you will send TRX from)",
-      modeLabel:"Wallet state",
-      hasTxt:"Has USDT (activated)",
-      noneTxt:"No USDT (not activated)",
-      fine1:"If the wallet has no USDT — it usually needs more energy (~130,000) for the first transfer.",
-      buy:"Buy energy",
-      tg:"Via Telegram bot",
-      faq:"FAQ",
-      fine2:"Price is per 1 transfer. TRX rate updates automatically.",
-      totalLabel:"Total to pay",
-      k1n:"Saving ≈",
-      k2n:"Energy per transfer",
-      k3n:"Package",
-      k4n:"Validity",
-      pack:"1 transfer",
-      ttl:"up to 1 hour",
-      warn2:"Send the <b>exact amount</b>. Energy will be credited to the TRX sender wallet.",
-      trustTitle:"Why it’s safe",
-      trustList:[
-        "You only send TRX as payment.",
-        "We <b>never access</b> your private keys or USDT.",
-        "We delegate energy — a TRON network resource, not your funds."
-      ],
-      trustNote:"<b>Never</b> enter your seed/private key anywhere. We will never ask.",
-      whoTitle:"Who it’s for",
-      whoList:[
-        "TronLink / Trust Wallet / non-custodial wallets",
-        "Frequent USDT/TRC20 transfers",
-        "OTC/exchangers/services"
-      ],
-      whoNote:"<b>Not suitable</b> for exchange addresses (Binance/OKX etc.).",
-      faqTitle:"FAQ",
-      q1:"How many transfers per package?",
-      a1:"One transfer. Energy is revoked after the first operation or by timeout (up to 1 hour).",
-      q2:"Why does price depend on “has USDT / no USDT”?",
-      a2:"Non-activated wallets (often “no USDT”) usually require more energy for the first transfer.",
-      q3:"Do you have an API?",
-      a3:"Yes. Click <b>API</b> in the header.",
-      q4:"I searched gasfree4ucom / fasfree4ucom — is that you?",
-      a4:"There may be similarly named platforms. GasFree4you is an independent project with its own system.",
-      svc:"Service is online",
-      availPrefix:"Available energy:",
-      payTitle:"Payment",
-      paySub:"Send <b class='num' id='payAmount'>—</b> to the address below (exact amount).",
-      addrLabel:"Address",
-      copy:"Copy",
-      copied:"Copied!",
-      paid:"I’ve paid",
-      payFine:"Energy will be credited to the same wallet that sent TRX.",
-      waitTitle:"Processing",
-      waitSub:"Please wait, energy will be credited soon.",
-      leftLabel:"Time left",
-      stickyBuy:"Buy energy"
+        onb_sub: "Выберите язык и ответьте на один вопрос — это займёт меньше 10 секунд.",
+        onb_lang_label: "Язык сайта",
+        onb_q: "Вы знаете, что такое аренда энергии TRON и зачем она нужна?",
+        onb_yes: "Да, знаю",
+        onb_no: "Нет, расскажите",
+        onb_explain_title: "Зачем нужна аренда энергии?",
+        onb_explain_p1: "Очень коротко: вы платите немного TRX, чтобы комиссия за перевод USDT/TRC20 стала почти в два раза ниже.",
+        onb_explain_li1: "Работает только для небиржевых кошельков: TronLink, Trust Wallet и других некастодиальных кошельков.",
+        onb_explain_li2: "Не работает с биржами (Binance, OKX и др.) и кастодиальными кошельками.",
+        onb_explain_li3: "Энергия действует только на 1 перевод, потом автоматически отзывается.",
+        onb_explain_p2: "Дальше на сайте вы сможете посчитать экономию и сразу купить энергию для перевода.",
+        onb_gotit: "Понятно, перейти к сайту",
+nav_vanity: "Купить красивый кошелёк",
+        tagline:"TRON Energy · Zero-fee transfers", how_link:"Как это работает", faq_btn:"Вопросы и ответы",
+        title:"Аренда энергии TRON",
+        subtitle:"Энергия действует только на <b>1 перевод</b>. Переводы USDT/TRC20 без комиссии TRX.",
+        buy_info:"💡 Здесь можно <b>не только рассчитать</b> стоимость энергии TRON, но и <b>купить её прямо сейчас</b> по выгодной цене!",
+        badge_price:"3 TRX = 1 перевод (есть USDT) · 6 TRX = 1 перевод (нет USDT)",
+        badge_base:"Рынок: 6.5 TRX (есть USDT) · 13 TRX (нет USDT)",
+        label_wallet:"Кошелёк получателя", has_usdt:"Есть USDT", no_usdt:"Нет USDT",
+        note_no_usdt:"Если на кошельке <b>нет</b> USDT — на 1 перевод нужно ~130 000 энергии.",
+        tx_note:"Фиксировано: сеть отзывает энергию сразу после первого перевода.",
+        buy_btn:"Купить энергию TRON",
+        price_note:"Цена указана за 1 перевод. Курс TRX обновляется автоматически.",
+        total_to_pay:"Итого к оплате", price_per:"Цена за 1 перевод", energy_per:"Энергии на 1 перевод", energy_total:"Нужно энергии (всего)",
+        rent_1h:"Действует", rent_1h_val:"до 1 часа или до 1 перевода",
+        inst_title:"Инструкция", inst_tariffs_title:"💰 <b>Тарифы:</b>",
+        inst_tariffs:["3 TRX = 1 бесплатный перевод (активированный кошелёк)","6 TRX = 1 бесплатный перевод (неактивированный кошелёк)"],
+        inst_max:"⚡ <b>Отправьте TRX на адрес ниже — энергия придёт на <i>1 перевод</i>.</b>",
+        inst_addr_title:"📬 <b>Адрес для перевода:</b>", inst_how_title:"🛠 <i>Порядок действий:</i>",
+        inst_steps:["💳 Отправьте <b>TRX</b> с того кошелька, на который хотите получить энергию","⏳ Подождите 1–2 минуты","🎯 Энергия покроет <b>первую</b> комиссию и будет отозвана"],
+        inst_final:"🔥 Экономьте TRX на комиссиях!",
+        copy:"Скопировать", copied:"Скопировано!",
+        pay_title:"Оплата заказа", pay_sub:"Переведите", pay_sub2:"на адрес ниже. Укажите точную сумму.",
+        warn_text:"Важно! Переведите <b>именно эту сумму</b>. Энергия зачислится на <b>тот же кошелёк</b>.",
+        paid_btn:"Я оплатил", cancel_btn:"Отмена", order_meta_prefix:"Заказ",
+        q1:"Зачем вообще нужна аренда энергии TRON?",
+        a1:"Держатели стейкают TRX и получают ресурсы сети — энергию. Её можно временно делегировать активным отправителям, что позволяет платить меньше, чем стандартная комиссия TRX.",
+        q2:"На сколько переводов хватает энергии?",
+        a2:"Пакет действует на один перевод и отзывается сразу после первой операции или по таймауту (до часа).",
+        q3:"Это безопасно?",
+        a3:"Мы делегируем энергию без доступа к вашим ключам. Вы переводите только TRX для оплаты пакета.",
+        q4:"Для кого этот сервис?",
+        a4:"Для обменников, кошельков, OTC и сервисов с частыми переводами USDT/TRC20, а также для частных пользователей.",
+        q5:"Есть ли API и UI-консоль?",
+        a5:"Да. Есть UI для массовой раздачи и REST API. Жмите «API» в шапке.",
+        q6:"Я искал «gasfree4ucom» или «fasfree4ucom» — это вы?",
+        a6: "В сети могут встречаться разные площадки с созвучными именами. Наш сервис — отдельный проект с собственными условиями и системой делегирования энергии.",
+        biz_title:"Партнёрам и большим объёмам",
+        biz_q1:"Большие объёмы и хотите экономить больше?",
+        biz_a1:"Свяжитесь с нами в <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> — предложим индивидуальные условия.",
+        biz_q2:"Нужно раздавать энергию на другие кошельки?",
+        biz_a2:"У нас есть UI и API для этого. <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Свяжитесь с нами</a>.",
+        biz_q3:"Хотите свой бизнес?",
+        biz_a3:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Свяжитесь с нами</a> — поможем стартовать.",
+        biz_q4:"Есть аудитория и хотите помочь ей экономить и зарабатывать?",
+        biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Свяжитесь с нами</a> — у нас есть партнёрская программа.",
+        meta_title:"Аренда энергии TRON — GasFree4you",
+        meta_desc:"GasFree4you.com — энергия TRON для переводов USDT/TRC20 с почти нулевой комиссией TRX. Часто ищут «gasfree4ucom» или «fasfree4ucom» (другие сервисы с похожими условиями).",
+        seo_inline:"<strong>GasFree4you.com</strong> — если встретите запрос <em>gasfree4ucom</em> или <em>fasfree4ucom</em>, это другие сервисы с похожими условиями. Энергию TRON можно купить в любом месте.",
+        typos_line:"Также ищут: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.",
+        stake_title:"Преимущества стейкинга (официальные данные TRON)",
+        stake_p1_title:"Получите ресурсы для бесплатных транзакций",
+        stake_p1_text:"Стейкая TRX, вы получаете бесплатные ресурсы сети для покрытия комиссий. Использованные ресурсы восстанавливаются через некоторое время.",
+        stake_p2_title:"Делегируйте неиспользуемые ресурсы другим",
+        stake_p2_text:"Вы можете делегировать свободные ресурсы другим и в любой момент забрать их обратно.",
+        stake_source:"Источник: tronscan.org",
+        svc_online:"Сервис онлайн",
+        svc_avail:"Доступная энергия",
+          footer_desc: "3 TRX при наличии USDT или 6 TRX без USDT. Энергия на <b>1 перевод</b>. Моментальное начисление.",
+    footer_contacts_title: "Контакты",
+    footer_site: "Наш сайт",
+    footer_nav_title: "Навигация",
+    footer_nav_calc: "Калькулятор",
+    footer_nav_how: "Как это работает",
+    footer_nav_faq: "FAQ",
+    footer_nav_top: "Наверх ↑",
+    footer_legal_title: "Юридическая информация",
+    footer_legal_desc: "GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.",
+    footer_terms: "Условия использования",
+    footer_privacy: "Политика конфиденциальности",
+    footer_refund: "Политика возврата",
+    footer_legal: "Правовые моменты",
+    footer_rights: "Все права защищены.",
+    energy_per: "Энергии на 1 перевод",
+    usd_saving: "Экономия ≈ {x} USDT",
+    tg_cta:"Открыть в Telegram",
+    tg_cta_short:"Через Telegram-бота",
+    tg_fab:"👋 Открыть бота",
+    usd_saving_title:"Экономия в долларах",
+    nudge_to_flow:"Что будет дальше? ↓",
+    flow_note_title:"Что произойдёт после оплаты",
+    flow_note_text:"Вы переводите указанную сумму TRX на сервисный кошелёк. Мы <b>сразу делегируем энергию</b> на тот же кошелёк. Эта энергия <b>покроет комиссию за 1 перевод USDT/TRC20</b>, затем энергия будет автоматически <b>отозвана</b> или истечёт по времени (до 1 часа). Ваши USDT и приватные ключи мы не трогаем.",
+    flow_note_short:"Энергия начисляется на тот же кошелёк, с которого пришёл TRX.",
+    pay_flow_title:"Дальше будет так",
+    pay_flow_1:"Отправьте TRX с того же кошелька, которому нужна энергия.",
+    pay_flow_2:"Мы делегируем энергию на этот кошелёк (на 1 перевод).",
+    pay_flow_3:"Сделайте перевод USDT/TRC20 — комиссия покроется энергией, затем энергия будет отозвана.",
+        nav_staking: "Стейкинг"
+      },
+      en:{
+                onb_title: "What is this service?",
+        onb_sub: "Pick a language and answer one question — it takes under 10 seconds.",
+        onb_lang_label: "Site language",
+        onb_q: "Do you know what TRON energy rental is and why you might need it?",
+        onb_yes: "Yes, I know",
+        onb_no: "No, explain",
+        onb_explain_title: "Why rent TRON energy?",
+        onb_explain_p1: "In short: you pay a bit of TRX so your USDT/TRC20 transfer fee becomes almost 2× lower.",
+        onb_explain_li1: "Works only with non-custodial wallets like TronLink, Trust Wallet and similar.",
+        onb_explain_li2: "Does not work with exchanges (Binance, OKX, etc.) or custodial wallets.",
+        onb_explain_li3: "Energy covers only <b>one transfer</b> and is then automatically revoked.",
+        onb_explain_p2: "After this you can calculate savings on the site and buy energy for your transfer.",
+        onb_gotit: "Got it, go to the site",
+nav_portal: "Portal",
+nav_portal_cta: "Open portal",
+nav_vanity: "Buy vanity wallet",
+        tagline:"TRON Energy · Zero-fee transfers", how_link:"How it works", faq_btn:"FAQ",
+        title:"Rent TRON Energy",
+        subtitle:"Energy applies to <b>one transfer</b>. USDT/TRC20 transfers with zero TRX fee.",
+        buy_info:"💡 You can <b>calculate</b> the cost and <b>buy energy right now</b> at a great price!",
+        badge_price:"3 TRX = 1 transfer (has USDT) · 6 TRX = 1 transfer (no USDT)",
+        badge_base:"Market: 6.5 TRX (has USDT) · 13 TRX (no USDT)",
+        label_wallet:"Recipient wallet", has_usdt:"Has USDT", no_usdt:"No USDT",
+        note_no_usdt:"If the wallet has <b>no</b> USDT, ~130,000 energy is needed per transfer.",
+        tx_note:"Fixed: energy is revoked right after the first transfer.",
+        buy_btn:"Buy TRON Energy",
+        price_note:"Price is per one transfer. TRX price updates automatically.",
+        total_to_pay:"Total to pay", price_per:"Price per transfer", energy_per:"Energy per transfer", energy_total:"Total energy needed",
+        rent_1h:"Valid", rent_1h_val:"up to 1 hour or until the 1st transfer",
+        inst_title:"Guide", inst_tariffs_title:"💰 <b>Tariffs:</b>",
+        inst_tariffs:["3 TRX = 1 free transfer (activated wallet)","6 TRX = 1 free transfer (non-activated wallet)"],
+        inst_max:"⚡ <b>Send TRX to the address below — energy will be credited for <i>one transfer</i>.</b>",
+        inst_addr_title:"📬 <b>Payment address:</b>", inst_how_title:"🛠 <i>How to:</i>",
+        inst_steps:["💳 Send <b>TRX</b> from the wallet that should receive energy","⏳ Wait 1–2 minutes","🎯 Energy covers the <b>first</b> fee and is revoked"],
+        inst_final:"🔥 Save TRX on fees!",
+        copy:"Copy", copied:"Copied!",
+        pay_title:"Payment", pay_sub:"Send", pay_sub2:"to the address below. Send the exact amount.",
+        warn_text:"Important! Send the <b>exact</b> amount. Energy credits to the <b>same wallet</b>.",
+        paid_btn:"I’ve paid", cancel_btn:"Cancel", order_meta_prefix:"Order",
+        q1:"Why rent TRON energy?",
+        a1:"TRX stakers mint network resources (energy). Delegation lets active senders pay less than the standard TRX fee.",
+        q2:"How many transfers per package?",
+        a2:"One transfer; energy is revoked right after the first operation or by timeout (up to one hour).",
+        q3:"Is it safe?",
+        a3:"We delegate energy only; we never access your keys. You send TRX solely to pay for the package.",
+        q4:"Who is it for?",
+        a4:"Exchangers, wallets, OTC desks, and services with frequent USDT/TRC20 transfers — and power users.",
+        q5:"API & UI console?",
+        a5:"Yes. UI for bulk distribution and a REST API. See the “API” button above.",
+        q6:"I searched “gasfree4ucom” or “fasfree4ucom” — is that you?",
+        a6: "There may be other platforms with similar names. Our service is an independent project with its own conditions and energy delegation system.",
+        biz_title:"For volumes and partners",
+        biz_q1:"Large volumes and want to save more?",
+        biz_a1:"Contact us on <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> for custom rates.",
+        biz_q2:"Need to distribute energy to other wallets?",
+        biz_a2:"We have an interface and API. <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Reach out</a>.",
+        biz_q3:"Want your own business?",
+        biz_a3:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Contact us</a> and we’ll help you launch.",
+        biz_q4:"Have an audience and want to help them save and earn?",
+        biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Get in touch</a> — partner program available.",
+        meta_title:"Rent TRON Energy — GasFree4you",
+        meta_desc:"GasFree4you.com — TRON energy for USDT/TRC20 zero-fee transfers. People sometimes search 'gasfree4ucom' or 'fasfree4ucom' (other services with similar conditions).",
+        seo_inline:"<strong>GasFree4you.com</strong> — if you see <em>gasfree4ucom</em> or <em>fasfree4ucom</em>, note these are different services with similar conditions. You’re free to buy TRON energy anywhere.",
+        typos_line:"Also searched as: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.",
+         stake_title:"Staking benefits (official TRON info)",
+        stake_p1_title:"Get Resources for Free Transactions",
+        stake_p1_text:"By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.",
+        stake_p2_title:"Delegate Idle Resources to Others",
+        stake_p2_text:"You may delegate idle resources to others and can reclaim the resources anytime.",
+        stake_source:"Source: tronscan.org",
+        svc_online:"Service is online",
+        svc_avail:"Available energy",
+              footer_desc: "3 TRX if USDT is present or 6 TRX if no USDT. Energy for <b>1 transfer</b>. Instant crediting.",
+    footer_contacts_title: "Contacts",
+    footer_site: "Our website",
+    footer_nav_title: "Navigation",
+    footer_nav_calc: "Calculator",
+    footer_nav_how: "How it works",
+    footer_nav_faq: "FAQ",
+    footer_nav_top: "Back to top ↑",
+    footer_legal_title: "Legal Information",
+    footer_legal_desc: "GasFree4you is a TRON energy delegation service. We do not store your funds and are not affiliated with TRON Foundation. Using blockchain involves risks.",
+    footer_terms: "Terms of Service",
+    footer_privacy: "Privacy Policy",
+    footer_refund: "Refund Policy",
+    footer_legal: "Legal",
+    footer_rights: "All rights reserved.",
+    energy_per: "Energy per transfer",
+    usd_saving: "Saving ≈ {x} USDT",
+    tg_cta:"Open in Telegram",
+    tg_cta_short:"Via Telegram bot",
+    tg_fab:"👋 Open the bot",
+    usd_saving_title:"Saving in USD",
+    flow_note_title:"What happens after payment",
+    flow_note_text:"You send the specified TRX amount to our service wallet. We <b>instantly delegate energy</b> to the same wallet. This energy <b>covers the fee for one USDT/TRC20 transfer</b>, then it is automatically <b>revoked</b> or expires (up to 1 hour). We never touch your USDT or private keys.",
+    flow_note_short:"Energy is credited to the same wallet that sent the TRX.",
+    pay_flow_title:"Flow",
+    pay_flow_1:"Send TRX from the wallet that needs energy.",
+    pay_flow_2:"We delegate energy to that wallet (for 1 transfer).",
+    pay_flow_3:"Make your USDT/TRC20 transfer — the fee is covered by energy, then the energy is revoked.",
+          nudge_to_flow:"What happens next? ↓",
+        nav_staking: "Staking"
+      },
+      zh:{
+        nav_portal: "门户",
+nav_portal_cta: "打开门户",
+
+                onb_title: "这是一个什么服务？",
+        onb_sub: "选择语言并回答一个问题，只需不到 10 秒。",
+        onb_lang_label: "站点语言",
+        onb_q: "你知道什么是 TRON 能量租用以及为什么需要它吗？",
+        onb_yes: "知道",
+        onb_no: "不知道，解释一下",
+        onb_explain_title: "为什么要租用能量？",
+        onb_explain_p1: "一句话：你付出少量 TRX，让 USDT/TRC20 的转账手续费几乎降低一半。",
+        onb_explain_li1: "仅适用于非托管钱包：如 TronLink、Trust Wallet 等。",
+        onb_explain_li2: "不适用于交易所 (Binance、OKX 等) 或托管钱包。",
+        onb_explain_li3: "能量只覆盖<b>一次转账</b>，之后会自动收回。",
+        onb_explain_p2: "接下来你可以在网站上计算节省金额并购买能量。",
+        onb_gotit: "明白了，进入网站",
+// zh
+nav_vanity: "购买靓号钱包",
+        tagline:"TRON 能量 · 零手续费转账", how_link:"它是如何工作的", faq_btn:"常见问题",
+        title:"租用 TRON 能量",
+        subtitle:"能量仅适用于<b>一次转账</b>。USDT/TRC20 几乎零 TRX 手续费。",
+        buy_info:"💡 这里既可<b>计算</b>价格，也能<b>立即购买</b>能量！",
+        badge_price:"3 TRX = 1 次（有 USDT）· 6 TRX = 1 次（无 USDT）",
+        badge_base:"市场：6.5 TRX（有 USDT）· 13 TRX（无 USDT）",
+        label_wallet:"接收钱包", has_usdt:"有 USDT", no_usdt:"没有 USDT",
+        note_no_usdt:"若钱包<b>没有</b>USDT，每次约需 130,000 能量。",
+        tx_note:"固定为 1：第一次转账后能量会被收回。",
+        buy_btn:"购买 TRON 能量",
+        price_note:"价格为单次转账。TRX 价格自动更新。",
+        total_to_pay:"应付总额", price_per:"单次价格", energy_per:"每次所需能量", energy_total:"总需能量",
+        rent_1h:"有效期", rent_1h_val:"最多 1 小时或至首笔转账",
+        inst_title:"使用说明", inst_tariffs_title:"💰 <b>资费：</b>",
+        inst_tariffs:["3 TRX = 1 次（已激活）","6 TRX = 1 次（未激活）"],
+        inst_max:"⚡ <b>向下方地址转入 TRX —— 将发放<i>一次</i>所需能量。</b>",
+        inst_addr_title:"📬 <b>转账地址：</b>", inst_how_title:"🛠 <i>步骤：</i>",
+        inst_steps:["💳 使用需接收能量的钱包发送 <b>TRX</b>","⏳ 等待 1–2 分钟","🎯 能量覆盖<b>首笔</b>手续费后回收"],
+        inst_final:"🔥 节省 TRX 手续费！",
+        copy:"复制", copied:"已复制！",
+        pay_title:"支付", pay_sub:"请转账", pay_sub2:"至下方地址。务必发送精确金额。",
+        warn_text:"重要！请发送<b>精确</b>金额。能量将发放到<b>同一钱包</b>。",
+        paid_btn:"我已支付", cancel_btn:"取消", order_meta_prefix:"订单",
+        q1:"为什么要租用 TRON 能量？",
+        a1:"质押 TRX 会产生网络资源（能量）。委托能量让高频发送方的成本低于标准 TRX 手续费。",
+        q2:"一个套餐能用几次？",
+        a2:"一次转账；完成后能量立即回收或在 1 小时内过期。",
+        q3:"安全吗？",
+        a3:"仅委托能量，不接触私钥。您只需支付 TRX 用于购买套餐。",
+        q4:"适用人群？",
+        a4:"兑换所、钱包、OTC 以及高频 USDT/TRC20 转账的服务或用户。",
+        q5:"是否提供 API 和控制台？",
+        a5:"提供。上方点击“API”。",
+        q6:"我搜到“gasfree4ucom”或“fasfree4ucom”，是你们吗？",
+        a6: "网络上可能会有其他名称相似的平台。我们的服务是一个独立的项目，具有自己的条件和能量委托系统。",
+        biz_title:"更多场景与合作",
+        biz_q1:"大额需求想节省更多？",
+        biz_a1:"通过 <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> 联系我们，可获得定制价格。",
+        biz_q2:"需要向其他钱包分发能量？",
+        biz_a2:"我们提供界面和 API。<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>欢迎联系</a>。",
+        biz_q3:"想开展自己的业务？",
+        biz_a3:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>联系我们</a>，我们会协助启动。",
+        biz_q4:"有自己的用户想帮他们省钱并赚钱？",
+        biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>联系我们</a>——提供合作计划。",
+        meta_title:"租用 TRON 能量 — GasFree4you",
+        meta_desc:"GasFree4you.com — 用于 USDT/TRC20 的 TRON 能量。有人会搜索“gasfree4ucom”或“fasfree4ucom”（其他有类似条件的服务）。",
+        seo_inline:"<strong>GasFree4you.com</strong> —— 如果你看到 <em>gasfree4ucom</em> 或 <em>fasfree4ucom</em>，那是其他有类似条件的服务。TRON 能量可在任何地方购买，自由选择。",
+        typos_line:"常见搜索：<em>gasfree4ucom</em>、<em>fasfree4ucom</em>、<em>gas free 4 u com</em>。",
+        stake_title:"质押优势（TRON 官方）",
+        stake_p1_title:"获取免费交易资源",
+        stake_p1_text:"质押 TRX 可获得免费的网络资源，用于支付交易费用。使用的资源会在一段时间后自动恢复。",
+        stake_p2_title:"将闲置资源委托给他人",
+        stake_p2_text:"您可以将闲置资源委托给他人，并随时收回。",
+        stake_source:"来源：tronscan.org",
+                svc_online:"服务在线",
+        svc_avail:"可用能量",
+              footer_desc: "3 TRX（钱包有 USDT）或 6 TRX（无 USDT）。<b>一次转账</b>所需能量。即时到账。",
+    footer_contacts_title: "联系方式",
+    footer_site: "我们的网站",
+    footer_nav_title: "导航",
+    footer_nav_calc: "计算器",
+    footer_nav_how: "如何运作",
+    footer_nav_faq: "常见问题",
+    footer_nav_top: "回到顶部 ↑",
+    footer_legal_title: "法律信息",
+    footer_legal_desc: "GasFree4you 是 TRON 能量委托服务。我们不存储您的资金，也未与 TRON 基金会关联。使用区块链存在风险。",
+    footer_terms: "服务条款",
+    footer_privacy: "隐私政策",
+    footer_refund: "退款政策",
+        footer_legal: "Legal",
+    footer_rights: "版权所有。",
+    energy_per: "每次所需能量",
+    usd_saving: "节省 ≈ {x} USDT",
+    tg_cta:"在 Telegram 中打开",
+    tg_cta_short:"通过 Telegram 机器人",
+    tg_fab:"👋 打开机器人",
+          usd_saving_title:"美元节省",
+          nudge_to_flow:"接下来会怎样？↓",
+          flow_note_title:"付款后会发生什么",
+flow_note_text:"您向我们的服务钱包转入指定数量的 TRX。我们会<b>立即把能量委托</b>到同一钱包。该能量将<b>覆盖一次 USDT/TRC20 转账的手续费</b>，随后会自动<b>收回</b>或过期（最长 1 小时）。我们不会接触您的 USDT 或私钥。",
+flow_note_short:"能量将发放到发送 TRX 的同一钱包。",
+pay_flow_title:"流程",
+pay_flow_1:"使用需要能量的钱包发送 TRX。",
+pay_flow_2:"我们将能量委托到该钱包（一次转账）。",
+pay_flow_3:"进行 USDT/TRC20 转账——手续费由能量覆盖，随后能量被收回。",
+        nav_staking: "质押",
+      },
+
+  id:{
+    nav_portal: "Portal",
+nav_portal_cta: "Buka portal",
+
+            onb_title: "Ini layanan apa?",
+        onb_sub: "Pilih bahasa dan jawab satu pertanyaan — kurang dari 10 detik.",
+        onb_lang_label: "Bahasa situs",
+        onb_q: "Kamu sudah tahu apa itu sewa energi TRON dan untuk apa?",
+        onb_yes: "Ya, sudah tahu",
+        onb_no: "Belum, jelaskan",
+        onb_explain_title: "Kenapa perlu sewa energi?",
+        onb_explain_p1: "Singkatnya: kamu bayar sedikit TRX supaya biaya transfer USDT/TRC20 jadi hampir 2× lebih murah.",
+        onb_explain_li1: "Hanya bekerja dengan dompet non-custodial seperti TronLink, Trust Wallet, dll.",
+        onb_explain_li2: "Tidak bekerja untuk exchange (Binance, OKX, dll.) atau dompet custodial.",
+        onb_explain_li3: "Energi hanya berlaku untuk <b>1 transfer</b>, lalu otomatis ditarik.",
+        onb_explain_p2: "Setelah itu kamu bisa hitung penghematan dan beli energi langsung di situs.",
+        onb_gotit: "Oke, lanjut ke situs",
+nav_vanity: "Beli wallet vanity",
+    tagline:"TRON Energy · Transfer tanpa biaya TRX",
+    how_link:"Cara kerja",
+    faq_btn:"FAQ",
+    title:"Sewa Energi TRON",
+    subtitle:"Energi berlaku untuk <b>1 transfer</b>. Transfer USDT/TRC20 tanpa biaya TRX.",
+    buy_info:"💡 Di sini kamu bisa <b>hitung biaya</b> dan <b>langsung beli energi</b> dengan harga terbaik!",
+    badge_price:"3 TRX = 1 transfer (ada USDT) · 6 TRX = 1 transfer (tanpa USDT)",
+    badge_base:"Pasar: 6.5 TRX (ada USDT) · 13 TRX (tanpa USDT)",
+    label_wallet:"Dompet penerima",
+    has_usdt:"Ada USDT",
+    no_usdt:"Tanpa USDT",
+    note_no_usdt:"Jika dompet <b>tanpa</b> USDT — perlu ~130.000 energi per transfer.",
+    tx_note:"Tetap: energi ditarik setelah transfer pertama.",
+    buy_btn:"Beli Energi TRON",
+    price_note:"Harga per 1 transfer. Kurs TRX diperbarui otomatis.",
+    total_to_pay:"Total bayar",
+    price_per:"Harga per transfer",
+    energy_per:"Energi per transfer",
+    energy_total:"Total energi dibutuhkan",
+    rent_1h:"Masa berlaku",
+    rent_1h_val:"hingga 1 jam atau sampai transfer pertama",
+    copy:"Salin",
+    copied:"Tersalin!",
+    pay_title:"Pembayaran",
+    pay_sub:"Kirim",
+    pay_sub2:"ke alamat di bawah. Kirim jumlah yang tepat.",
+    warn_text:"Penting! Kirim <b>jumlah yang tepat</b>. Energi akan dikreditkan ke <b>dompet yang sama</b>.",
+    paid_btn:"Saya sudah bayar",
+    cancel_btn:"Batal",
+    order_meta_prefix:"Order",
+    q1:"Mengapa sewa energi TRON?",
+    a1:"Staker TRX mencetak sumber daya jaringan (energi). Delegasi memungkinkan pengirim aktif membayar lebih murah dari biaya TRX standar.",
+    q2:"Berapa banyak transfer per paket?",
+    a2:"Satu transfer; energi ditarik setelah operasi pertama atau saat timeout (hingga satu jam).",
+    q3:"Apakah aman?",
+    a3:"Kami hanya mendelegasikan energi; tidak pernah mengakses kunci Anda. Anda hanya mengirim TRX untuk membayar paket.",
+    q4:"Untuk siapa layanan ini?",
+    a4:"Exchanger, dompet, OTC, dan layanan dengan transfer USDT/TRC20 yang sering — juga untuk pengguna power.",
+    q5:"Apakah ada API & UI?",
+    a5:"Ya. UI untuk distribusi massal dan REST API. Klik tombol “API” di atas.",
+    q6:"Saya mencari “gasfree4ucom” atau “fasfree4ucom” — apakah itu kalian?",
+    a6: "Di internet mungkin ada platform lain dengan nama mirip. Layanan kami adalah proyek independen dengan syarat dan sistem delegasi energi sendiri.",
+    biz_title:"Untuk volume & mitra",
+    biz_q1:"Volume besar dan ingin lebih hemat?",
+    biz_a1:"Hubungi kami di <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> untuk harga khusus.",
+    biz_q2:"Perlu membagikan energi ke dompet lain?",
+    biz_a2:"Kami punya UI dan API. <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Hubungi kami</a>.",
+    biz_q3:"Ingin membangun bisnis sendiri?",
+    biz_a3:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Kontak</a> kami — kami bantu mulai.",
+    biz_q4:"Punya audiens dan ingin bantu mereka hemat & dapat penghasilan?",
+    biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Hubungi</a> — ada program kemitraan.",
+    meta_title:"Sewa Energi TRON — GasFree4you",
+    meta_desc:"GasFree4you.com — energi TRON untuk transfer USDT/TRC20 tanpa biaya TRX. Sebagian orang mencari 'gasfree4ucom' atau 'fasfree4ucom' (layanan lain dengan syarat serupa).",
+    seo_inline:"<strong>GasFree4you.com</strong> — jika melihat <em>gasfree4ucom</em> atau <em>fasfree4ucom</em>, itu layanan lain dengan syarat serupa. Anda bebas membeli energi TRON di mana saja.",
+    typos_line:"Juga dicari sebagai: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.",
+    stake_title:"Manfaat staking (info resmi TRON)",
+    stake_p1_title:"Dapatkan Sumber Daya untuk Transaksi Gratis",
+    stake_p1_text:"Dengan staking TRX, Anda memperoleh sumber daya jaringan untuk menutup biaya transaksi. Sumber daya akan pulih setelah periode tertentu.",
+    stake_p2_title:"Delegasikan Sumber Daya Menganggur",
+    stake_p2_text:"Anda bisa mendelegasikan sumber daya menganggur ke orang lain dan menariknya kapan saja.",
+    stake_source:"Sumber: tronscan.org",
+    svc_online:"Layanan online",
+    svc_avail:"Energi tersedia",
+    footer_desc:"3 TRX jika ada USDT atau 6 TRX jika tanpa USDT. Energi untuk <b>1 transfer</b>. Kredit instan.",
+    footer_contacts_title:"Kontak",
+    footer_site:"Situs kami",
+    footer_nav_title:"Navigasi",
+    footer_nav_calc:"Kalkulator",
+    footer_nav_how:"Cara kerja",
+    footer_nav_faq:"FAQ",
+    footer_nav_top:"Ke atas ↑",
+    footer_legal_title:"Informasi hukum",
+    footer_legal_desc:"GasFree4you adalah layanan delegasi energi TRON. Kami tidak menyimpan dana Anda dan tidak berafiliasi dengan TRON Foundation. Penggunaan blockchain mengandung risiko.",
+    footer_terms:"Ketentuan Layanan",
+    footer_privacy:"Kebijakan Privasi",
+    footer_refund:"Kebijakan Refund",
+    footer_legal: "Legal",
+    footer_rights:"Hak cipta dilindungi.",
+    usd_saving:"Hemat ≈ {x} USDT",
+    tg_cta:"Buka di Telegram",
+    tg_cta_short:"Lewat bot Telegram",
+    tg_fab:"👋 Buka bot",
+      usd_saving_title:"Hemat dalam USD",
+      nudge_to_flow:"Selanjutnya apa? ↓",
+      flow_note_title:"Apa yang terjadi setelah pembayaran",
+flow_note_text:"Kamu mengirim jumlah TRX yang tertera ke dompet layanan kami. Kami <b>segera mendelegasikan energi</b> ke dompet yang sama. Energi ini <b>menutup biaya untuk 1 transfer USDT/TRC20</b>, lalu akan <b>ditarik kembali</b> otomatis atau kedaluwarsa (hingga 1 jam). Kami tidak menyentuh USDT atau private key kamu.",
+flow_note_short:"Energi dikreditkan ke dompet yang sama yang mengirim TRX.",
+pay_flow_title:"Alur",
+pay_flow_1:"Kirim TRX dari dompet yang membutuhkan energi.",
+pay_flow_2:"Kami mendelegasikan energi ke dompet tersebut (untuk 1 transfer).",
+pay_flow_3:"Lakukan transfer USDT/TRC20 — biayanya ditutup oleh energi, lalu energi ditarik.",
+    nav_staking: "Staking"
+  },
+        tr:{
+          nav_portal: "Portal",
+nav_portal_cta: "Portalı aç",
+// tr
+nav_vanity: "Vanity cüzdan satın al",
+  tagline:"TRON Enerjisi · Ücretsiz transferler",
+  how_link:"Nasıl çalışır",
+  faq_btn:"SSS",
+  title:"TRON Enerjisi Kirala",
+  subtitle:"Enerji yalnızca <b>1 transfer</b> için geçerlidir. USDT/TRC20 transferleri TRX ücreti olmadan.",
+  buy_info:"💡 Burada maliyeti <b>hesaplayabilir</b> ve <b>hemen enerji satın alabilirsiniz</b>!",
+  badge_price:"3 TRX = 1 transfer (USDT var) · 6 TRX = 1 transfer (USDT yok)",
+  badge_base:"Piyasa: 6.5 TRX (USDT var) · 13 TRX (USDT yok)",
+  label_wallet:"Alıcı cüzdanı",
+  has_usdt:"USDT var",
+  no_usdt:"USDT yok",
+  note_no_usdt:"Cüzdanda <b>USDT yoksa</b> transfer başına ~130.000 enerji gerekir.",
+  tx_note:"Sabit: ilk transferden sonra enerji geri alınır.",
+  buy_btn:"TRON Enerjisi Satın Al",
+  price_note:"Fiyat 1 transfer içindir. TRX kuru otomatik güncellenir.",
+  total_to_pay:"Ödenecek toplam",
+  price_per:"Transfer başına fiyat",
+  energy_per:"Transfer başına enerji",
+  energy_total:"Gerekli toplam enerji",
+  rent_1h:"Geçerlilik",
+  rent_1h_val:"1 saate kadar veya ilk transfere kadar",
+  copy:"Kopyala",
+  copied:"Kopyalandı!",
+  pay_title:"Ödeme",
+  pay_sub:"Gönderin",
+  pay_sub2:"aşağıdaki adrese. Lütfen tam tutarı gönderin.",
+  warn_text:"Önemli! <b>Tam</b> tutarı gönderin. Enerji <b>aynı cüzdana</b> tanımlanacaktır.",
+  paid_btn:"Ödeme yaptım",
+  cancel_btn:"İptal",
+  order_meta_prefix:"Sipariş",
+  q1:"Neden TRON enerjisi kiralanır?",
+  a1:"TRX stake edenler ağ kaynakları (enerji) elde eder. Delegasyon, sık gönderim yapanların standart TRX ücretinden daha az ödemesini sağlar.",
+  q2:"Paket başına kaç transfer?",
+  a2:"Tek transfer; enerji ilk işlemden sonra veya zaman aşımında (en fazla bir saat) geri alınır.",
+  q3:"Güvenli mi?",
+  a3:"Sadece enerji delege ederiz; anahtarlarınıza erişmeyiz. Yalnızca paketi ödemek için TRX gönderirsiniz.",
+  q4:"Kimler için?",
+  a4:"Borsalar, cüzdanlar, OTC ve sık USDT/TRC20 transferi yapan servisler — ve ileri düzey kullanıcılar.",
+  q5:"API ve arayüz?",
+  a5:"Evet. Toplu dağıtım için arayüz ve REST API mevcut. Yukarıdaki “API” düğmesine bakın.",
+  q6:"“gasfree4ucom” veya “fasfree4ucom” aradım — siz misiniz?",
+  a6: "İnternette benzer isimlere sahip başka platformlar olabilir. Bizim servis, kendi koşulları ve enerji delege sistemi olan bağımsız bir projedir.",
+  biz_title:"Hacimler ve iş ortakları için",
+  biz_q1:"Büyük hacimler ve daha fazla tasarruf ister misiniz?",
+  biz_a1:"Özel fiyatlar için <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Telegram</a> üzerinden iletişime geçin.",
+  biz_q2:"Enerjiyi diğer cüzdanlara dağıtmanız mı gerekiyor?",
+  biz_a2:"Bunun için arayüz ve API'imiz var. <a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>İletişime geçin</a>.",
+  biz_q3:"Kendi işinizi kurmak ister misiniz?",
+  biz_a3:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>İletişime geçin</a> — başlatmanıza yardımcı olalım.",
+  biz_q4:"Kitleniz var ve onlara tasarruf ile kazanç sağlamak ister misiniz?",
+  biz_a4:"<a href='https://t.me/saving_trx_bot' target='_blank' rel='noopener'>Bize ulaşın</a> — ortaklık programı mevcut.",
+  meta_title:"TRON Enerjisi Kirala — GasFree4you",
+  meta_desc:"GasFree4you.com — USDT/TRC20 için TRON enerjisi; TRX ücreti yok. Bazı kullanıcılar 'gasfree4ucom' veya 'fasfree4ucom' arar (benzer koşullu farklı servisler).",
+  seo_inline:"<strong>GasFree4you.com</strong> — <em>gasfree4ucom</em> veya <em>fasfree4ucom</em> görürseniz, bunlar benzer koşullara sahip farklı servislerdir. TRON enerjisini dilediğiniz yerden alabilirsiniz.",
+  typos_line:"Şöyle de aranır: <em>gasfree4ucom</em>, <em>fasfree4ucom</em>, <em>gas free 4 u com</em>.",
+  stake_title:"Stake etmenin faydaları (resmi TRON bilgisi)",
+  stake_p1_title:"Ücretsiz İşlemler için Kaynak Edinin",
+  stake_p1_text:"TRX stake ederek, işlemlerin ücretini karşılayacak ağ kaynaklarını elde edersiniz. Kullanılan kaynaklar bir süre sonra eski seviyesine döner.",
+  stake_p2_title:"Boştaki Kaynakları Başkalarına Devredin",
+  stake_p2_text:"Boştaki kaynakları başkalarına devredebilir ve istediğiniz zaman geri alabilirsiniz.",
+  stake_source:"Kaynak: tronscan.org",
+  svc_online:"Hizmet çevrimiçi",
+  svc_avail:"Kullanılabilir enerji",
+  footer_desc:"USDT varsa 3 TRX, yoksa 6 TRX. <b>1 transfer</b> için enerji. Anında tanımlama.",
+  footer_contacts_title:"İletişim",
+  footer_site:"Web sitemiz",
+  footer_nav_title:"Gezinti",
+  footer_nav_calc:"Hesaplayıcı",
+  footer_nav_how:"Nasıl çalışır",
+  footer_nav_faq:"SSS",
+  footer_nav_top:"Yukarı ↑",
+  footer_legal_title:"Hukuki bilgiler",
+  footer_legal_desc:"GasFree4you, TRON enerji delegasyon servisidir. Fonlarınızı saklamayız ve TRON Foundation ile bağlantılı değiliz. Blockchain kullanımı risk içerir.",
+  footer_terms:"Kullanım Şartları",
+  footer_privacy:"Gizlilik Politikası",
+  footer_refund:"İade Politikası",
+        footer_legal: "Legal",
+  footer_rights:"Tüm hakları saklıdır.",
+    usd_saving:"Tasarruf ≈ {x} USDT",
+    tg_cta:"Telegram’da aç",
+    tg_cta_short:"Telegram botu ile",
+    tg_fab:"👋 Botu aç",
+    usd_saving_title:"USD tasarrufu",
+    nudge_to_flow:"Sırada ne var? ↓",
+    flow_note_title:"Ödemeden sonra ne olur",
+    flow_note_text:"Belirtilen TRX tutarını servis cüzdanımıza gönderirsiniz. <b>Enerjiyi aynı cüzdana anında delege ederiz</b>. Bu enerji <b>1 adet USDT/TRC20 transferinin ücretini karşılar</b>, ardından otomatik olarak <b>geri alınır</b> veya süresi dolar (en fazla 1 saat). USDT’nize veya özel anahtarlarınıza asla dokunmayız.",
+    flow_note_short:"Enerji, TRX’i gönderen aynı cüzdana tanımlanır.",
+    pay_flow_title:"İlerleyiş",
+    pay_flow_1:"Enerjiye ihtiyaç duyan cüzdandan TRX gönderin.",
+    pay_flow_2:"Bu cüzdana enerji delege ederiz (1 transfer için).",
+    pay_flow_3:"USDT/TRC20 transferinizi yapın — ücret enerjiyle karşılanır ve ardından enerji geri alınır.",
+          nav_staking: "Staking",
+                  onb_title: "Bu nasıl bir servis?",
+        onb_sub: "Dili seçin ve tek bir soruyu cevaplayın — 10 saniyeden kısa sürer.",
+        onb_lang_label: "Site dili",
+        onb_q: "TRON enerji kiralamanın ne olduğunu ve ne işe yaradığını biliyor musunuz?",
+        onb_yes: "Evet, biliyorum",
+        onb_no: "Hayır, anlatın",
+        onb_explain_title: "Neden enerji kiralanır?",
+        onb_explain_p1: "Kısaca: Biraz TRX ödeyerek USDT/TRC20 transfer ücretinizi neredeyse 2 kat düşürürsünüz.",
+        onb_explain_li1: "Sadece TronLink, Trust Wallet gibi non-custodial cüzdanlarla çalışır.",
+        onb_explain_li2: "Borsalar (Binance, OKX vb.) veya custodial cüzdanlarla çalışmaz.",
+        onb_explain_li3: "Enerji yalnızca <b>1 transfer</b> için geçerlidir, sonra otomatik geri alınır.",
+        onb_explain_p2: "Sonrasında sitede tasarrufu hesaplayıp transfer için enerji satın alabilirsiniz.",
+        onb_gotit: "Anladım, siteye geç"
+}
+
+    };
+
+
+  // ===== Service energy counter (random 10–30s tick, -65,000, daily reset) =====
+    const START_ENERGY = 935568252; // 1,335,568,252
+    const STEP = 131000;
+    const energyEl = document.getElementById('energyNum');
+
+   function readState(){
+      try{ return JSON.parse(localStorage.getItem('gf4y_energy')||'null'); }catch(e){ return null; }
     }
-  };
+    function writeState(obj){ try{ localStorage.setItem('gf4y_energy', JSON.stringify(obj)); }catch(e){} }
 
-  // =================== HELPERS ===================
-  const $ = (id)=>document.getElementById(id);
-
-  let lang = localStorage.getItem('lang') || 'ru';
-  if(!I18N[lang]) lang = 'ru';
-  $('lang').value = lang;
-
-  function setHTML(id, html){ const el=$(id); if(el) el.innerHTML = html; }
-  function setText(id, text){ const el=$(id); if(el) el.textContent = text; }
-
-  function nf(num, d=2){
-    const loc = (lang==='en')?'en-US':'ru-RU';
-    return new Intl.NumberFormat(loc,{minimumFractionDigits:d,maximumFractionDigits:d}).format(num);
-  }
-  function ni(num){
-    const loc = (lang==='en')?'en-US':'ru-RU';
-    return new Intl.NumberFormat(loc).format(num);
-  }
-
-  // =================== UI TEXT APPLY ===================
-  function applyI18n(){
-    const t = I18N[lang];
-
-    setText('tagline', t.tagline);
-    setText('svcText', t.svc);
-
-    setText('h1', t.h1);
-    setHTML('sub', t.sub);
-
-    setText('b1', t.b1);
-    setText('b2', t.b2);
-    setText('b3', t.b3);
-
-    setText('p1', t.p1);
-    setText('p2', t.p2);
-    setText('p3', t.p3);
-
-    setHTML('warn', t.warn);
-
-    setText('flowTitle', t.flowTitle);
-    setHTML('s1', t.s1);
-    setHTML('s2', t.s2);
-    setHTML('s3', t.s3);
-    setHTML('ok', t.ok);
-
-    setText('walletLabel', t.walletLabel);
-    setText('modeLabel', t.modeLabel);
-    setText('hasTxt', t.hasTxt);
-    setText('noneTxt', t.noneTxt);
-    setText('fine1', t.fine1);
-
-    setText('buyBtn', t.buy);
-    setText('tgBtn', t.tg);
-    setText('scrollFaq', t.faq);
-    setText('fine2', t.fine2);
-
-    setText('totalLabel', t.totalLabel);
-    setText('k1n', t.k1n);
-    setText('k2n', t.k2n);
-    setText('k3n', t.k3n);
-    setText('k4n', t.k4n);
-    setText('pack', t.pack);
-    setText('ttl', t.ttl);
-    setHTML('warn2', t.warn2);
-
-    setText('trustTitle', t.trustTitle);
-    const trustList = $('trustList'); trustList.innerHTML = (t.trustList||[]).map(x=>`<li>${x}</li>`).join('');
-    setHTML('trustNote', t.trustNote);
-
-    setText('whoTitle', t.whoTitle);
-    const whoList = $('whoList'); whoList.innerHTML = (t.whoList||[]).map(x=>`<li>${x}</li>`).join('');
-    setHTML('whoNote', t.whoNote);
-
-    setText('faqTitle', t.faqTitle);
-    setText('q1', t.q1); setHTML('a1', t.a1);
-    setText('q2', t.q2); setHTML('a2', t.a2);
-    setText('q3', t.q3); setHTML('a3', t.a3);
-    setText('q4', t.q4); setHTML('a4', t.a4);
-
-    setText('payTitle', t.payTitle);
-    // paySub мы будем обновлять в openPay() (там сумма)
-    setText('addrLabel', t.addrLabel);
-    setText('copy', t.copy);
-    setText('paid', t.paid);
-    setText('payFine', t.payFine);
-
-    setText('waitTitle', t.waitTitle);
-    setText('waitSub', t.waitSub);
-    setText('leftLabel', t.leftLabel);
-
-    setText('buyBtnSticky', t.stickyBuy);
-  }
-
-  // =================== PRICE LOGIC ===================
-  let TRX_USD = null;
-  const st = { usdt:'has' };
-
-  function compute(){
-    const pp = PRICE_PER_TX[st.usdt];
-    const base = PRICE_BASE[st.usdt];
-    const ePer = ENERGY_PER_TX[st.usdt];
-
-    setText('total', nf(pp,2) + ' TRX');
-    setText('basePrice', '≈ ' + nf(base,2) + ' TRX (market)');
-    const save = Math.max(base-pp,0);
-    const pct = base>0 ? Math.round((save/base)*100) : 0;
-    setText('savePct', (lang==='ru' ? `Экономия ${pct}%` : `Save ${pct}%`));
-
-    $('bar').style.width = pct + '%';
-
-    setText('energyPer', ni(ePer));
-
-    const rate = TRX_USD || 0.35;
-    const usd = (save * rate);
-    setText('usdSave', `≈ ${nf(usd,2)} USDT`);
-  }
-
-  async function fetchTrxRate(){
-    try{
-      const r = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT', {cache:'no-store'});
-      if(!r.ok) throw 0;
-      const d = await r.json();
-      const v = Number(d.price) || null;
-      if(v){ TRX_USD = v; compute(); }
-    }catch(_){}
-  }
-
-  // =================== ENERGY COUNTER ===================
-  const ENERGY_KEY = 'gf4y_energy';
-  function readState(){ try{return JSON.parse(localStorage.getItem(ENERGY_KEY)||'null')}catch(e){return null} }
-  function writeState(s){ try{localStorage.setItem(ENERGY_KEY, JSON.stringify(s))}catch(e){} }
-  function resetDaily(){
-    const today = new Date().toISOString().slice(0,10);
-    const st = { val: START_ENERGY, date: today };
-    writeState(st);
-    return st;
-  }
-  function initEnergy(){
-    const el = $('energyNum');
-    let st = readState();
-    const today = new Date().toISOString().slice(0,10);
-    if(!st || st.date!==today) st = resetDaily();
-    el.textContent = ni(st.val);
-  }
-  function animateNumber(el, from, to, dur=600){
-    const start = performance.now();
-    function step(ts){
-      const p = Math.min(1, (ts-start)/dur);
-      const eased = 1 - Math.pow(1-p, 3);
-      el.textContent = ni(Math.round(from + (to-from)*eased));
-      if(p<1) requestAnimationFrame(step);
+    function resetDaily(){
+      const today = new Date().toISOString().slice(0,10);
+      const state = { val: START_ENERGY, date: today };
+      writeState(state);
+      return state;
     }
-    requestAnimationFrame(step);
+
+    function animateNumber(el, from, to, dur = 600){
+  if(!el) return;
+  const start = performance.now();
+  function step(ts){
+    const p = Math.min(1, (ts - start)/dur);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = Math.round(from + (to - from) * eased);
+    el.textContent = ni(val);
+    if(p < 1) requestAnimationFrame(step);
   }
-  function tickEnergy(){
-    const el = $('energyNum');
-    let st = readState();
-    const today = new Date().toISOString().slice(0,10);
-    if(!st || st.date!==today) st = resetDaily();
-    const from = st.val;
-    st.val = Math.max(0, st.val - STEP);
-    writeState(st);
-    animateNumber(el, from, st.val, 620);
-    scheduleNextTick();
-  }
-  function scheduleNextTick(){
-    const delay = (10 + Math.random()*20)*1000;
-    setTimeout(tickEnergy, delay);
-  }
+  requestAnimationFrame(step);
+}
 
-  // =================== MODALS ===================
-  function openPay(){
-    const pp = PRICE_PER_TX[st.usdt];
-    $('payModal').style.display='flex';
-
-    // Заголовок/подзаголовок с суммой на текущем языке:
-    const t = I18N[lang];
-    $('payTitle').textContent = t.payTitle;
-    // Вставим сумму прямо в текст (без innerHTML-хака)
-    $('paySub').innerHTML = (lang==='ru'
-      ? `Переведите <b class="num">${nf(pp,2)} TRX</b> на адрес ниже (точная сумма).`
-      : `Send <b class="num">${nf(pp,2)} TRX</b> to the address below (exact amount).`
-    );
-
-    $('addr').textContent = PAY_TO_ADDRESS;
-    const uri = PAY_TO_ADDRESS; // можно заменить на tronlink-URI если хочешь
-    $('qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(uri)}`;
-  }
-  function closePay(){ $('payModal').style.display='none'; }
-
-  let waitTimer=null;
-  function openWait(sec=60){
-    $('waitModal').style.display='flex';
-    let left = sec;
-    $('sec').textContent = left;
-    clearInterval(waitTimer);
-    waitTimer = setInterval(()=>{
-      left -= 1;
-      if(left<=0){ clearInterval(waitTimer); closeWait(); }
-      else $('sec').textContent = left;
-    }, 1000);
-  }
-  function closeWait(){ $('waitModal').style.display='none'; clearInterval(waitTimer); }
-
-  // =================== EVENTS ===================
-  $('lang').addEventListener('change', ()=>{
-    lang = $('lang').value;
-    localStorage.setItem('lang', lang);
-    applyI18n();
-    compute();
-    initEnergy(); // чтобы формат чисел сменился
-  });
-
-  $('usdtState').addEventListener('click', (e)=>{
-    const b = e.target.closest('button[data-v]');
-    if(!b) return;
-    st.usdt = b.dataset.v;
-    $('hasBtn').classList.toggle('active', st.usdt==='has');
-    $('noneBtn').classList.toggle('active', st.usdt==='none');
-    compute();
-  });
-
-  $('buyBtn').addEventListener('click', openPay);
-  $('buyBtnSticky').addEventListener('click', openPay);
-
-  $('closePay').addEventListener('click', closePay);
-  $('payModal').addEventListener('click', (e)=>{ if(e.target.id==='payModal') closePay(); });
-
-  $('copy').addEventListener('click', async ()=>{
-    try{
-      await navigator.clipboard.writeText(PAY_TO_ADDRESS);
-      const t = I18N[lang];
-      $('copy').textContent = t.copied;
-      setTimeout(()=> $('copy').textContent = t.copy, 1100);
-    }catch(_){}
-  });
-
-  $('paid').addEventListener('click', ()=>{
-    closePay();
-    openWait(60);
-  });
-
-  $('closeWait').addEventListener('click', closeWait);
-  $('waitModal').addEventListener('click', (e)=>{ if(e.target.id==='waitModal') closeWait(); });
-
-  $('scrollFaq').addEventListener('click', ()=>{
-    $('faq').scrollIntoView({behavior:'smooth', block:'start'});
-  });
-
-  // Telegram open (app first on mobile)
-  (function(){
-    const tgUrlWeb = "https://t.me/saving_trx_bot";
-    const tgUrlApp = "tg://resolve?domain=saving_trx_bot";
-    function wantsApp(){
-      const ua = navigator.userAgent.toLowerCase();
-      return /android|iphone|ipad|ipod/.test(ua);
+    function initEnergy(){
+      let st = readState();
+      const today = new Date().toISOString().slice(0,10);
+      if(!st || st.date!==today){ st = resetDaily(); }
+      energyEl.textContent = ni(st.val);
+      return st;
     }
-    ['tgBtn','tgBtnSticky'].forEach(id=>{
-      const a = $(id);
-      if(!a) return;
-      a.addEventListener('click', (e)=>{
-        if(wantsApp()){
-          const t = Date.now();
-          location.href = tgUrlApp;
-          setTimeout(()=>{ if(Date.now()-t<1400) window.open(tgUrlWeb,'_blank'); }, 1200);
-          e.preventDefault();
-        }
-      });
-    });
-  })();
 
-  // =================== INIT ===================
-  applyI18n();
-  compute();
-  initEnergy();
+function tickEnergy(){
+  let st = readState();
+  const today = new Date().toISOString().slice(0,10);
+  if(!st || st.date!==today){ st = resetDaily(); }
+  const from = st.val;
+  st.val = Math.max(0, st.val - STEP);
+  writeState(st);
+  animateNumber(energyEl, from, st.val, 620);
   scheduleNextTick();
-  fetchTrxRate();
-  setInterval(fetchTrxRate, 60_000);
+}
 
-  // daily reset check
-  setInterval(()=>{
-    const stt = readState();
-    const today = new Date().toISOString().slice(0,10);
-    if(!stt || stt.date!==today){
-      const ns = resetDaily();
-      const el = $('energyNum');
-      const curr = Number((el.textContent||'').replace(/[^\d]/g,'')) || 0;
-      animateNumber(el, curr, ns.val, 700);
+    function scheduleNextTick(){
+      const delay = (10 + Math.random()*20) * 1000; // 10–30s
+      setTimeout(tickEnergy, delay);
     }
-  }, 60_000);
-</script>
+
+
+    const $ = id => document.getElementById(id);
+function detectLang(){
+  const nav = (navigator.language || '').toLowerCase();
+  const code2 = nav.slice(0,2);
+  const guess = (code2==='in') ? 'id' : code2; // alias for old Indonesian
+  return ['ru','en','zh','id','tr'].includes(guess) ? guess : 'en';
+}
+
+    const urlLang = new URLSearchParams(location.search).get('lang');
+
+
+    let lang = localStorage.getItem('lang');
+    if(!lang){ lang = detectLang(); try{ localStorage.setItem('lang', lang); }catch(e){} }
+if (urlLang && ['ru','en','zh','id','tr'].includes(urlLang)) {
+  lang = urlLang;
+  localStorage.setItem('lang', lang);
+}
+
+    // Константы
+    const PAY_TO_ADDRESS="TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX";
+    const PRICE_PER_TX={has:3, none:6};
+    const PRICE_BASE   ={has:6.5, none:13.0};
+    const ENERGY_PER_TX={has:65000, none:130000};
+
+    // KPI элементы
+    const k_energyPer=$('k_energyPer'),k_energyTot=$('k_energyTotal'),
+          k_pricePer=$('k_pp'),k_total=$('k_total'),k_totalBase=$('k_totalBase'),
+          saveBarIn=$('saveBarIn'), saveBadge=$('saveBadge');
+
+    let TRX_USD = null;
+    const st={usdt:'has'};
+
+function nf(num, d=2){
+  const loc = (lang==='en')?'en-US'
+            : (lang==='zh')?'zh-CN'
+            : (lang==='id')?'id-ID'
+            : (lang==='tr')?'tr-TR'
+            : 'ru-RU';
+  return new Intl.NumberFormat(loc,{minimumFractionDigits:d,maximumFractionDigits:d}).format(num);
+}
+function ni(num){
+  const loc = (lang==='en')?'en-US'
+            : (lang==='zh')?'zh-CN'
+            : (lang==='id')?'id-ID'
+            : (lang==='tr')?'tr-TR'
+            : 'ru-RU';
+  return new Intl.NumberFormat(loc).format(num);
+}
+    function compute(){
+      const ePer = ENERGY_PER_TX[st.usdt];
+      const pp   = PRICE_PER_TX[st.usdt];
+      const base = PRICE_BASE[st.usdt];
+      const save = Math.max(base - pp, 0);
+      k_energyPer.textContent = ni(ePer);
+
+      k_pricePer.textContent  = nf(pp,2) + ' TRX';
+      k_total.textContent     = nf(pp,2) + ' TRX';
+      k_totalBase.textContent = nf(base,2) + ' TRX';
+const pct = base>0 ? Math.round((save/base)*100) : 0;
+saveBarIn.style.width = pct + '%';
+saveBarIn.style.transition = 'width .5s cubic-bezier(.22,.61,.36,1)';
+saveBarIn.textContent =
+  lang==='ru' ? `Экономия ${pct}%` :
+  lang==='zh' ? `节省 ${pct}%` :
+  lang==='id' ? `Hemat ${pct}%` :
+  lang==='tr' ? `Tasarruf ${pct}%` :
+  `Save ${pct}%`;
+saveBadge.textContent = pct + '%';
+      // экономия в USDT
+const rate = TRX_USD || 0.35; // фолбэк на случай, если курс ещё не пришёл
+ const usdSave = (save * rate).toFixed(2);
+ const saveLine = t('usd_saving').replace('{x}', usdSave);
+document.getElementById('k_usdSaveBlock').textContent = `≈ ${usdSave} USDT`;
+    }
+
+    function t(key){ return (I18N[lang] && I18N[lang][key]) || key; }
+    function applyText(){
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key=el.getAttribute('data-i18n');
+        if (I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
+      });
+      // списки в инструкции (если есть)
+      const tset = I18N[lang];
+      const instTariffs = $('instTariffs'); if (instTariffs) instTariffs.innerHTML = (tset.inst_tariffs?.[0]||'') + '<br>' + (tset.inst_tariffs?.[1]||'');
+      const instMax = $('instMax'); if (instMax) instMax.innerHTML = tset.inst_max || '';
+      const instHowTitle = $('instHowTitle'); if (instHowTitle) instHowTitle.innerHTML = tset.inst_how_title || '';
+      const instFinal = $('instFinal'); if (instFinal) instFinal.innerHTML = tset.inst_final || '';
+      const ol = $('instSteps'); if(ol){ ol.innerHTML=''; (tset.inst_steps||[]).forEach(s=>{ const li=document.createElement('li'); li.innerHTML=s; ol.appendChild(li); }); }
+      // тайтл/мета по языку
+      document.title = tset.meta_title || document.title;
+      const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', tset.meta_desc || md.getAttribute('content'));
+      document.documentElement.lang = lang;
+      // мини-блоки
+      const seoInline = document.querySelector('.seo-inline'); if (seoInline) seoInline.innerHTML = t('seo_inline');
+      const typosLine = document.querySelector('.typos'); if (typosLine) typosLine.innerHTML = t('typos_line');
+      compute();
+
+      // FAQ JSON-LD
+      (function rebuildFAQSchema(){
+        const qaPairs = [["q1","a1"],["q2","a2"],["q3","a3"],["q4","a4"],["q5","a5"],["q6","a6"]]
+          .filter(([q,a]) => tset[q] && tset[a]);
+        const mainEntity = qaPairs.map(([q,a]) => ({
+          "@type":"Question",
+          "name": (tset[q]+"").replace(/<[^>]*>/g,""),
+          "acceptedAnswer": {"@type":"Answer","text": tset[a]}
+        }));
+        const schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity": mainEntity};
+        const el = document.getElementById('faq-json');
+        if(el){ el.textContent = JSON.stringify(schema); }
+      })();
+    }
+
+    // Smooth scroll to "Что будет дальше" block
+(function(){
+  const btn = document.getElementById('nudgeToFlow');
+  if(!btn) return;
+
+  btn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const target = document.getElementById('whatYouGet');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+
+    // === Onboarding popup (simple education flow) ===
+    (function(){
+      const KEY = 'gf4y_onb_done_v1';
+      try{
+        if(localStorage.getItem(KEY) === '1') return; // уже проходили
+      }catch(_){}
+
+      const modal = document.getElementById('onbModal');
+      if(!modal) return;
+
+      const stepQ   = modal.querySelector('[data-step="q"]');
+      const stepExp = modal.querySelector('[data-step="explain"]');
+      const btnYes  = document.getElementById('onbYes');
+      const btnNo   = document.getElementById('onbNo');
+      const btnOk   = document.getElementById('onbGotIt');
+      const langSel = document.getElementById('onbLangSelect');
+
+      function openOnb(){
+        modal.style.display = 'flex';
+      }
+      function closeOnb(){
+        modal.style.display = 'none';
+        try{ localStorage.setItem(KEY, '1'); }catch(_){}
+      }
+
+      if(btnYes){
+        btnYes.addEventListener('click', function(){
+          // человек уже знает — просто желаем хорошего дня и закрываем
+          closeOnb();
+        });
+      }
+
+      if(btnNo){
+        btnNo.addEventListener('click', function(){
+          if(stepQ)   stepQ.hidden   = true;
+          if(stepExp) stepExp.hidden = false;
+        });
+      }
+
+      if(btnOk){
+        btnOk.addEventListener('click', closeOnb);
+      }
+
+      // выбор языка в попапе синхронизируем с основным селектом в шапке
+      if(langSel){
+        langSel.value = lang;
+        langSel.addEventListener('change', function(){
+          const newLang = langSel.value;
+          const mainSel = document.getElementById('langSelect');
+          if(mainSel){
+            mainSel.value = newLang;
+            mainSel.dispatchEvent(new Event('change'));
+          }
+        });
+      }
+
+      // показываем попап через небольшую паузу после загрузки
+      setTimeout(openOnb, 1200);
+    })();
+
+  
+})();
+
+    // Курс TRX
+async function fetchTrxRate(){
+  try{
+    const r = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT', {cache:'no-store'});
+    if(!r.ok) throw 0;
+    const d = await r.json();
+    const newRate = Number(d.price) || null;
+    if(newRate && newRate !== TRX_USD){ TRX_USD = newRate; compute(); }
+  }catch(_){}
+}
+
+    // Переключатель USDT
+    document.getElementById('usdtState').addEventListener('click', e=>{
+      const b=e.target.closest('.seg-option'); if(!b) return;
+      st.usdt=b.dataset.v; document.querySelectorAll('#usdtState .seg-option').forEach(c=>c.classList.toggle('active', c.dataset.v===b.dataset.v));
+      compute();
+    });
+
+    document.getElementById('usdtState').addEventListener('mousemove', e=>{
+  const t = e.target.closest('.seg-option'); if(!t) return;
+  const r = t.getBoundingClientRect();
+  t.style.setProperty('--x', (e.clientX - r.left)+'px');
+  t.style.setProperty('--y', (e.clientY - r.top)+'px');
+});
+
+    // Флаги
+  function setActiveLang(){
+  const sel = document.getElementById('langSelect');
+  if(sel) sel.value = lang;
+}
+function bindLangSelect(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=>{
+    const newLang = sel.value;
+    if(!I18N[newLang]) return;
+    lang = newLang;
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+    setActiveLang();
+    applyText();
+  });
+}
+
+    // Модалка оплаты
+    const modal=document.getElementById('payModal'), mAmount=$('mAmount'), mAddr=$('mAddr'), mQR=$('mQR'), mOrderMeta=$('mOrderMeta');
+    function openModal(){
+      const ePer=ENERGY_PER_TX[st.usdt], totalTRX=PRICE_PER_TX[st.usdt];
+      mAmount.textContent = nf(totalTRX,2) + ' TRX';
+      mAddr.textContent   = PAY_TO_ADDRESS;
+      const memo = encodeURIComponent(`TRON ENERGY | tx:1 | e/tx:${ePer}`);
+      const uri = `${PAY_TO_ADDRESS}`;
+      mQR.src=`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(uri)}`;
+      mOrderMeta.textContent = (I18N[lang].order_meta_prefix||'Order') + `: 1 · ` + (st.usdt==='has'?t('has_usdt'):t('no_usdt'));
+      modal.style.display='flex';
+    }
+    function closeModal(){ modal.style.display='none'; }
+    document.getElementById('buyBtn').addEventListener('click', openModal);
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    document.getElementById('mClose2').addEventListener('click', closeModal);
+    document.getElementById('copyAddr').addEventListener('click',async()=>{
+      try{await navigator.clipboard.writeText(PAY_TO_ADDRESS);document.getElementById('copyAddr').textContent=t('copied');setTimeout(()=>document.getElementById('copyAddr').textContent=t('copy'),1200);}catch(e){}
+    });
+
+    // WAIT modal
+    const waitModal = document.getElementById('waitModal');
+    const waitCountdownEl = document.getElementById('waitCountdown');
+    let waitTimer = null;
+    function openWait(seconds = 60){
+      if(!waitModal) return;
+      let left = seconds;
+      waitCountdownEl.textContent = left;
+      waitModal.style.display = 'flex';
+      clearInterval(waitTimer);
+      waitTimer = setInterval(()=>{
+        left -= 1;
+        if(left <= 0){ clearInterval(waitTimer); closeWait(); }
+        else{ waitCountdownEl.textContent = left; }
+      }, 1000);
+    }
+    function closeWait(){ if(waitModal) waitModal.style.display = 'none'; clearInterval(waitTimer); }
+    document.getElementById('paidBtn')?.addEventListener('click', () => { try { gtag_report_conversion?.(); } catch(_) {} closeModal(); openWait(60); });
+    document.getElementById('wClose')?.addEventListener('click', closeWait);
+
+// ===== Reveal on scroll (IntersectionObserver) =====
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries, obs)=>{
+    for(const e of entries){
+      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    }
+  }, {root:null, rootMargin:'0px 0px -10% 0px', threshold: .12});
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+})();
+
+
+    // Init
+// Init
+bindLangSelect(); setActiveLang(); applyText(); compute();
+
+// 👉 стартуем счётчик энергии
+initEnergy();
+scheduleNextTick();
+
+// опционально: ночной сброс к стартовому значению (проверяем раз в минуту)
+setInterval(()=>{
+  const st = readState();
+  const today = new Date().toISOString().slice(0,10);
+if(!st || st.date !== today){
+   const ns = resetDaily();
+   if(energyEl){
+     const curr = Number((energyEl.textContent||'').replace(/[^\d]/g,'')) || 0;
+     animateNumber(energyEl, curr, ns.val, 700);
+   }
+ }
+}, 60_000);
+
+fetchTrxRate(); setInterval(fetchTrxRate, 60_000);
+document.getElementById('y').textContent = new Date().getFullYear();
+
+// --- Move Buy+FAQ buttons and rateInfo under savecard on mobile ---
+(function(){
+  const MOBILE_W = 820;
+  const savecard = document.querySelector('.calc .savecard');
+  const btnWrap = document.querySelector('#buyBtn')?.parentElement;
+  const rateInfo = document.getElementById('rateInfo');
+
+  if(!savecard || !btnWrap || !rateInfo) return;
+
+  // создаём плейсхолдер, чтобы вернуть на место при десктопе
+  const btnPlaceholder = document.createComment('btns-original-place');
+  btnWrap.parentNode.insertBefore(btnPlaceholder, btnWrap.nextSibling);
+
+  const ratePlaceholder = document.createComment('rate-original-place');
+  rateInfo.parentNode.insertBefore(ratePlaceholder, rateInfo.nextSibling);
+
+  function moveElems(){
+    if(window.innerWidth <= MOBILE_W){
+      savecard.insertAdjacentElement('afterend', btnWrap);
+      btnWrap.insertAdjacentElement('afterend', rateInfo);
+      btnWrap.classList.add('mobile-after-save');
+    } else {
+      btnPlaceholder.parentNode.insertBefore(btnWrap, btnPlaceholder.nextSibling);
+      ratePlaceholder.parentNode.insertBefore(rateInfo, ratePlaceholder.nextSibling);
+      btnWrap.classList.remove('mobile-after-save');
+    }
+  }
+
+  moveElems();
+  window.addEventListener('resize', moveElems);
+  window.addEventListener('orientationchange', moveElems);
+})();
+
+
+  });
+
+(function(){
+  const tgUrlWeb = "https://t.me/saving_trx_bot";
+  const tgUrlApp = "tg://resolve?domain=saving_trx_bot";
+  function wantsApp(){
+    const ua = navigator.userAgent.toLowerCase();
+    return /android|iphone|ipad|ipod|macintosh.*(crios|fxios|safari)/.test(ua);
+  }
+  document.querySelectorAll('a[href*="t.me/saving_trx_bot"], #tgBtn').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      try{ gtag('event','click', {event_category:'cta', event_label:'telegram_bot'}); }catch(_){}
+      if(wantsApp()){
+        const t = Date.now();
+        window.location.href = tgUrlApp;
+        setTimeout(()=>{ if(Date.now()-t<1400) window.open(tgUrlWeb,'_blank'); }, 1200);
+        e.preventDefault();
+      }
+    });
+  });
+})();
+
+  </script>
+<!-- перед </body> -->
+<a class="fab-tg" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" aria-label="Open Telegram bot" data-i18n="tg_fab">👋 Открыть бота</a>
 </body>
+
 </html>
