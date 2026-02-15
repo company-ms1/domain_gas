@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- ===== SEO (will be updated by JS on language switch) ===== -->
+  <title>Недостаточно TRX для комиссии TRON: как решить (Energy / Bandwidth)</title>
+  <meta name="description" content="Ошибка «Недостаточно TRX для оплаты комиссии» в сети TRON при переводе USDT TRC20: причины и решения — пополнение TRX, Energy, Bandwidth, аренда энергии." />
+  <meta name="keywords" content="TRON комиссия недостаточно TRX, USDT TRC20 fee, energy rent, bandwidth, gas tron, how to fix insufficient TRX" />
+  <link rel="canonical" href="https://gasfree4you.com/blog/insufficient-trx-tron-fee" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="GasFree4you" />
+  <meta property="og:title" content="Недостаточно TRX для комиссии TRON: как решить" />
+  <meta property="og:description" content="Почему возникает ошибка и как отправлять USDT TRC20 дешевле — Energy, Bandwidth и аренда энергии." />
+  <meta property="og:url" content="https://gasfree4you.com/blog/insufficient-trx-tron-fee" />
+  <meta name="theme-color" content="#0f1220" />
+
+  <style>
+    /* =========================
+       GasFree4you-style dark UI
+       ========================= */
+    :root{
+      --bg:#0f1220;
+      --card:#171a2b;
+      --card2:#121528;
+      --txt:#e7e9f2;
+      --muted:#9aa0b6;
+      --hair:#2a2d44;
+      --accent:#2b6af7;
+      --ok:#1fbf75;
+      --warn:#e0a800;
+      --err:#ff5a5f;
+
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1100px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--txt);
+      background:
+        radial-gradient(1200px 700px at 12% -12%, rgba(43,106,247,.18), transparent 55%),
+        radial-gradient(900px 550px at 90% 10%, rgba(31,191,117,.10), transparent 55%),
+        radial-gradient(1100px 800px at 35% 120%, rgba(224,168,0,.08), transparent 55%),
+        var(--bg);
+      font: 15px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      letter-spacing:.2px;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 16px; }
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(15,18,32,.92), rgba(15,18,32,.68));
+      border-bottom:1px solid rgba(42,45,68,.7);
+    }
+    .topbar .row{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:12px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width: 210px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.25), transparent 60%),
+        linear-gradient(135deg, rgba(43,106,247,1), rgba(31,191,117,1));
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      flex:0 0 auto;
+    }
+    .brand .t{
+      display:flex; flex-direction:column; line-height:1.15;
+    }
+    .brand .t b{ font-size:14px; letter-spacing:.4px; }
+    .brand .t span{ font-size:12px; color:var(--muted); }
+
+    .nav{
+      display:flex; align-items:center; gap:8px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .btn, .chip, select{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: var(--txt);
+      border-radius: 999px;
+      padding: 9px 12px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+      font-weight:600;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .btn:hover, .chip:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.16); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(43,106,247,1), rgba(43,106,247,.75));
+      border-color: rgba(43,106,247,.35);
+      box-shadow: 0 14px 26px rgba(43,106,247,.18);
+    }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(43,106,247,1), rgba(31,191,117,.65)); }
+
+    .right{
+      display:flex; align-items:center; gap:10px;
+      min-width: 240px;
+      justify-content:flex-end;
+    }
+    .lang{
+      display:flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .lang label{ font-size:12px; color:var(--muted); }
+    .lang select{
+      padding:8px 10px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      outline:none;
+    }
+
+    /* Hero */
+    .hero{ padding: 26px 0 14px; }
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:12px;
+    }
+    .kicker .dot{ width:4px; height:4px; border-radius:50%; background:rgba(154,160,182,.9); }
+    h1{
+      margin:0;
+      font-size: 30px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 72ch;
+      font-size: 15px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 330px;
+      gap:16px;
+      padding: 18px 0 36px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .content{ padding: 18px; }
+    .content h2{ margin: 18px 0 8px; font-size: 18px; }
+    .content h3{ margin: 14px 0 6px; font-size: 15px; color: #dfe3f7; }
+    .content p{ margin: 8px 0; color: #d8dbeb; }
+    .content ul{ margin: 8px 0 12px 18px; color:#d8dbeb; }
+    .content li{ margin: 5px 0; }
+
+    .toc{
+      padding: 14px;
+      position: sticky;
+      top: 72px;
+      border-radius: var(--radius);
+    }
+    .toc h4{ margin:0 0 10px; font-size: 13px; color: var(--muted); letter-spacing:.4px; text-transform:uppercase; }
+    .toc a{
+      display:block;
+      padding:9px 10px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      margin-bottom:8px;
+      text-decoration:none;
+      font-size: 13px;
+      color: #e9ecf8;
+    }
+    .toc a:hover{ background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.14); }
+
+    .cta{
+      padding:14px;
+      margin-top:12px;
+      border-radius: var(--radius);
+      border:1px solid rgba(43,106,247,.28);
+      background:
+        radial-gradient(420px 180px at 25% 20%, rgba(43,106,247,.22), transparent 55%),
+        rgba(255,255,255,.04);
+    }
+    .cta .t{ font-weight:800; margin:0 0 6px; }
+    .cta .d{ margin:0 0 12px; color: var(--muted); font-size: 13px; }
+    .cta .row{ display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* FAQ accordion */
+    .faq{ margin-top: 10px; }
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin: 10px 0;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:700;
+      outline:none;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ color:#d8dbeb; margin: 10px 0 0; }
+
+    /* Footer */
+    footer{
+      border-top:1px solid rgba(42,45,68,.7);
+      background: rgba(0,0,0,.10);
+      padding: 22px 0 34px;
+      color: var(--muted);
+    }
+    .foot{
+      display:flex; gap:14px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+    }
+    .foot small{ color: var(--muted); }
+    .foot a{ color:#cfd5ee; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+      .toc{ position: relative; top: auto; }
+      .brand{ min-width: 160px; }
+      .right{ min-width: unset; }
+    }
+    @media (max-width: 520px){
+      h1{ font-size: 24px; }
+      .nav{ justify-content:flex-start; }
+      .brand .t span{ display:none; }
+    }
+  </style>
+
+  <!-- Structured data (updated by JS) -->
+  <script id="ldJson" type="application/ld+json"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="row">
+        <a class="brand" href="https://gasfree4you.com/" data-i18n-href="homeHref" aria-label="GasFree4you">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="t">
+            <b>GasFree4you</b>
+            <span data-i18n="brandTagline">TRON Energy · cheaper USDT transfers</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Main">
+          <a class="btn" href="https://gasfree4you.com/" data-i18n="navHome">Главная</a>
+          <a class="btn primary" href="https://user.gasfree4you.com/" data-i18n="navBuy">Купить энергию</a>
+        </nav>
+
+        <div class="right">
+          <div class="lang">
+            <label for="langSel" data-i18n="langLabel">Язык</label>
+            <select id="langSel" aria-label="Language">
+              <option value="ru">RU</option>
+              <option value="en">EN</option>
+              <option value="tr">TR</option>
+              <option value="id">ID</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="kicker">
+        <span class="chip" data-i18n="badgeBlog">Блог</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="metaRead">12 мин чтения</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="metaUpdated">Обновлено: 2026-02-15</span>
+      </div>
+
+      <h1 data-i18n="title">Недостаточно TRX для оплаты комиссии в сети TRON: как решить ошибку</h1>
+      <p class="sub" data-i18n="subtitle">
+        Почему возникает “Insufficient TRX” при переводе USDT (TRC-20) и как снизить расходы: Energy, Bandwidth, минимальный TRX и аренда энергии.
+      </p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="content">
+          <h2 id="what" data-i18n="hWhat">Почему появляется ошибка “Недостаточно TRX”</h2>
+          <p data-i18n="pWhat1">
+            В TRON комиссии покрываются не только TRX, но и ресурсами сети: <b>Bandwidth</b> и <b>Energy</b>.
+            При переводах USDT (TRC-20) чаще всего нужен именно Energy. Если ресурсов нет — сеть автоматически “жжёт” TRX.
+            Когда TRX на кошельке недостаточно, транзакция не проходит.
+          </p>
+          <ul>
+            <li data-i18n="liWhat1">На балансе мало или 0 TRX (даже при наличии USDT).</li>
+            <li data-i18n="liWhat2">Недостаточно Energy для вызова смарт-контракта USDT (TRC-20).</li>
+            <li data-i18n="liWhat3">Недостаточно Bandwidth для базовой нагрузки транзакции.</li>
+          </ul>
+
+          <h2 id="fees" data-i18n="hFees">Как работают комиссии в TRON</h2>
+          <p data-i18n="pFees1">
+            У TRON гибридная модель оплаты: вы тратите ежедневные лимиты ресурсов или платите TRX.
+            Для USDT (TRC-20) ключевой расход — Energy (исполнение смарт-контракта).
+          </p>
+          <h3 data-i18n="hFeesB">1) Bandwidth</h3>
+          <p data-i18n="pFeesB">Нужен для базовых операций, в том числе обычных переводов TRX.</p>
+          <h3 data-i18n="hFeesE">2) Energy</h3>
+          <p data-i18n="pFeesE">Нужна для взаимодействия со смарт-контрактами, включая переводы USDT TRC-20.</p>
+          <h3 data-i18n="hFeesT">3) Оплата в TRX</h3>
+          <p data-i18n="pFeesT">
+            Если Energy/Bandwidth не хватает, сеть автоматически списывает TRX. Поэтому “держать чуть-чуть TRX” почти всегда необходимо.
+          </p>
+
+          <h2 id="quickfix" data-i18n="hQuick">Быстрые решения (за 2 минуты)</h2>
+          <ul>
+            <li data-i18n="liQuick1"><b>Пополнить TRX</b> на 5–30 TRX (зависит от кошелька/сценария) и повторить перевод.</li>
+            <li data-i18n="liQuick2"><b>Арендовать Energy</b> под 1–N транзакций и снизить комиссию.</li>
+            <li data-i18n="liQuick3">Если кошелёк новый — <b>активировать адрес</b> минимальным TRX (обычно требуется хотя бы 1 TRX).</li>
+          </ul>
+
+          <h2 id="rent" data-i18n="hRent">Аренда энергии для переводов USDT TRC-20</h2>
+          <p data-i18n="pRent1">
+            Если вы переводите USDT регулярно, выгоднее использовать Energy вместо постоянного “сжигания” TRX.
+            Аренда Energy — самый практичный вариант: вы платите небольшую сумму и получаете ресурс на время/количество транзакций.
+          </p>
+          <ul>
+            <li data-i18n="liRent1">Экономия на комиссиях при частых переводах.</li>
+            <li data-i18n="liRent2">Не нужно замораживать большие суммы TRX ради Energy.</li>
+            <li data-i18n="liRent3">Можно брать Energy “точечно” под нужный объём.</li>
+          </ul>
+
+          <div class="cta">
+            <p class="t" data-i18n="ctaTitle">Купить Energy за пару кликов</p>
+            <p class="d" data-i18n="ctaDesc">Без подключения. Без передачи ключей. Автоматически используется при транзакции.</p>
+            <div class="row">
+              <a class="btn primary" href="https://user.gasfree4you.com/" data-i18n="ctaBtnPortal">Открыть портал</a>
+              <a class="btn" href="https://t.me/saving_trx_bot" data-i18n="ctaBtnBot">Открыть Telegram-бот</a>
+            </div>
+          </div>
+
+          <h2 id="stake" data-i18n="hStake">Стейкинг TRX: когда это выгодно</h2>
+          <p data-i18n="pStake1">
+            Стейкинг даёт ресурсы сети (Energy/Bandwidth) “на постоянке”. Это удобно, если вы делаете много операций каждый день
+            и готовы держать TRX заблокированными. Для разовых или нерегулярных переводов аренда часто проще и дешевле.
+          </p>
+          <ul>
+            <li data-i18n="liStake1">Плюс: постоянные ресурсы.</li>
+            <li data-i18n="liStake2">Минус: TRX заморожены и не используются в обороте.</li>
+          </ul>
+
+          <h2 id="topup" data-i18n="hTopup">Как пополнить TRX быстро</h2>
+          <p data-i18n="pTopup1">
+            Подойдут биржи, обменники или P2P. Главное — вывести TRX на свой TRON-кошелёк (TronLink, Trust Wallet и т.п.).
+            Держите небольшой “технический” остаток TRX, чтобы не ловить ошибку на ровном месте.
+          </p>
+
+          <h2 id="faq" data-i18n="hFaq">FAQ</h2>
+          <div class="faq">
+            <details>
+              <summary data-i18n="q1">Почему ошибка возникает даже если есть USDT?</summary>
+              <p data-i18n="a1">Потому что USDT TRC-20 — смарт-контракт. Для исполнения нужен Energy или TRX, который будет сожжён как комиссия.</p>
+            </details>
+            <details>
+              <summary data-i18n="q2">Сколько TRX держать на кошельке “на всякий случай”?</summary>
+              <p data-i18n="a2">Обычно достаточно держать небольшой запас (например 5–30 TRX), чтобы покрыть комиссии, если ресурсов не хватает.</p>
+            </details>
+            <details>
+              <summary data-i18n="q3">Что выгоднее: стейкинг или аренда Energy?</summary>
+              <p data-i18n="a3">Стейкинг выгоден при постоянных объёмах и готовности заморозить TRX. Аренда удобнее для разовых/плавающих переводов.</p>
+            </details>
+            <details>
+              <summary data-i18n="q4">Можно ли отправить USDT TRC-20 вообще без TRX?</summary>
+              <p data-i18n="a4">На практике почти всегда нужен минимальный TRX на кошельке (например для активации/остаточных комиссий). Energy снижает расходы, но “ноль TRX навсегда” — редкий кейс.</p>
+            </details>
+          </div>
+
+          <h2 id="conclusion" data-i18n="hConclusion">Вывод</h2>
+          <p data-i18n="pConclusion">
+            “Недостаточно TRX” — не баг, а следствие модели комиссий TRON. Решение: держать небольшой запас TRX, использовать Energy для USDT TRC-20,
+            а при регулярных переводах — выбрать аренду Energy или стейкинг под ваш объём.
+          </p>
+        </div>
+      </article>
+
+      <aside class="toc card">
+        <h4 data-i18n="tocTitle">Содержание</h4>
+        <a href="#what" data-i18n="toc1">Почему ошибка</a>
+        <a href="#fees" data-i18n="toc2">Комиссии TRON</a>
+        <a href="#quickfix" data-i18n="toc3">Быстрые решения</a>
+        <a href="#rent" data-i18n="toc4">Аренда Energy</a>
+        <a href="#stake" data-i18n="toc5">Стейкинг TRX</a>
+        <a href="#topup" data-i18n="toc6">Пополнение TRX</a>
+        <a href="#faq" data-i18n="toc7">FAQ</a>
+        <a href="#conclusion" data-i18n="toc8">Вывод</a>
+
+        <div class="cta">
+          <p class="t" data-i18n="sideCtaTitle">Нужно быстро отправить USDT?</p>
+          <p class="d" data-i18n="sideCtaDesc">Купите Energy и перестаньте сжигать TRX на комиссиях.</p>
+          <div class="row">
+            <a class="btn primary" href="https://user.gasfree4you.com/" data-i18n="sideCtaBtn">Купить энергию</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <small>© <span id="y"></span> GasFree4you</small>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://gasfree4you.com/docs.html">API</a>
+          <a href="https://t.me/saving_trx_bot">Telegram</a>
+          <a href="https://gasfree4you.com/">Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Content (4 languages) =====
+    const I18N = {
+      ru: {
+        langName: "RU",
+        seo: {
+          title: "Недостаточно TRX для комиссии TRON: как решить (Energy / Bandwidth)",
+          desc: "Ошибка «Недостаточно TRX для оплаты комиссии» в сети TRON при переводе USDT TRC20: причины и решения — пополнение TRX, Energy, Bandwidth, аренда энергии.",
+          keywords: "недостаточно trx tron, комиссия tron usdt trc20, аренда энергии tron, bandwidth energy tron, ошибка insufficient trx",
+          ogTitle: "Недостаточно TRX для комиссии TRON: как решить",
+          ogDesc: "Почему возникает ошибка и как отправлять USDT TRC20 дешевле — Energy, Bandwidth и аренда энергии."
+        },
+        brandTagline: "TRON Energy · дешёвые переводы USDT",
+        navHome: "Главная",
+        navBuy: "Купить энергию",
+        langLabel: "Язык",
+        badgeBlog: "Блог",
+        metaRead: "12 мин чтения",
+        metaUpdated: "Обновлено: 2026-02-15",
+        title: "Недостаточно TRX для оплаты комиссии в сети TRON: как решить ошибку",
+        subtitle: "Почему возникает “Insufficient TRX” при переводе USDT (TRC-20) и как снизить расходы: Energy, Bandwidth, минимальный TRX и аренда энергии.",
+
+        tocTitle: "Содержание",
+        toc1:"Почему ошибка", toc2:"Комиссии TRON", toc3:"Быстрые решения", toc4:"Аренда Energy", toc5:"Стейкинг TRX", toc6:"Пополнение TRX", toc7:"FAQ", toc8:"Вывод",
+
+        hWhat: "Почему появляется ошибка “Недостаточно TRX”",
+        pWhat1: "В TRON комиссии покрываются не только TRX, но и ресурсами сети: Bandwidth и Energy. При переводах USDT (TRC-20) чаще всего нужен именно Energy. Если ресурсов нет — сеть автоматически “жжёт” TRX. Когда TRX на кошельке недостаточно, транзакция не проходит.",
+        liWhat1: "На балансе мало или 0 TRX (даже при наличии USDT).",
+        liWhat2: "Недостаточно Energy для вызова смарт-контракта USDT (TRC-20).",
+        liWhat3: "Недостаточно Bandwidth для базовой нагрузки транзакции.",
+
+        hFees: "Как работают комиссии в TRON",
+        pFees1: "У TRON гибридная модель оплаты: вы тратите ежедневные лимиты ресурсов или платите TRX. Для USDT (TRC-20) ключевой расход — Energy (исполнение смарт-контракта).",
+        hFeesB: "1) Bandwidth",
+        pFeesB: "Нужен для базовых операций, в том числе обычных переводов TRX.",
+        hFeesE: "2) Energy",
+        pFeesE: "Нужна для взаимодействия со смарт-контрактами, включая переводы USDT TRC-20.",
+        hFeesT: "3) Оплата в TRX",
+        pFeesT: "Если Energy/Bandwidth не хватает, сеть автоматически списывает TRX. Поэтому “держать чуть-чуть TRX” почти всегда необходимо.",
+
+        hQuick: "Быстрые решения (за 2 минуты)",
+        liQuick1: "Пополнить TRX на 5–30 TRX (зависит от кошелька/сценария) и повторить перевод.",
+        liQuick2: "Арендовать Energy под 1–N транзакций и снизить комиссию.",
+        liQuick3: "Если кошелёк новый — активировать адрес минимальным TRX (обычно требуется хотя бы 1 TRX).",
+
+        hRent: "Аренда энергии для переводов USDT TRC-20",
+        pRent1: "Если вы переводите USDT регулярно, выгоднее использовать Energy вместо постоянного “сжигания” TRX. Аренда Energy — самый практичный вариант: вы платите небольшую сумму и получаете ресурс на время/количество транзакций.",
+        liRent1: "Экономия на комиссиях при частых переводах.",
+        liRent2: "Не нужно замораживать большие суммы TRX ради Energy.",
+        liRent3: "Можно брать Energy “точечно” под нужный объём.",
+
+        ctaTitle: "Купить Energy за пару кликов",
+        ctaDesc: "Без подключения. Без передачи ключей. Автоматически используется при транзакции.",
+        ctaBtnPortal: "Открыть портал",
+        ctaBtnBot: "Открыть Telegram-бот",
+
+        hStake: "Стейкинг TRX: когда это выгодно",
+        pStake1: "Стейкинг даёт ресурсы сети (Energy/Bandwidth) “на постоянке”. Это удобно, если вы делаете много операций каждый день и готовы держать TRX заблокированными. Для разовых или нерегулярных переводов аренда часто проще и дешевле.",
+        liStake1: "Плюс: постоянные ресурсы.",
+        liStake2: "Минус: TRX заморожены и не используются в обороте.",
+
+        hTopup: "Как пополнить TRX быстро",
+        pTopup1: "Подойдут биржи, обменники или P2P. Главное — вывести TRX на свой TRON-кошелёк (TronLink, Trust Wallet и т.п.). Держите небольшой “технический” остаток TRX, чтобы не ловить ошибку на ровном месте.",
+
+        hFaq: "FAQ",
+        q1: "Почему ошибка возникает даже если есть USDT?",
+        a1: "Потому что USDT TRC-20 — смарт-контракт. Для исполнения нужен Energy или TRX, который будет сожжён как комиссия.",
+        q2: "Сколько TRX держать на кошельке “на всякий случай”?",
+        a2: "Обычно достаточно держать небольшой запас (например 5–30 TRX), чтобы покрыть комиссии, если ресурсов не хватает.",
+        q3: "Что выгоднее: стейкинг или аренда Energy?",
+        a3: "Стейкинг выгоден при постоянных объёмах и готовности заморозить TRX. Аренда удобнее для разовых/плавающих переводов.",
+        q4: "Можно ли отправить USDT TRC-20 вообще без TRX?",
+        a4: "На практике почти всегда нужен минимальный TRX на кошельке (например для активации/остаточных комиссий). Energy снижает расходы, но “ноль TRX навсегда” — редкий кейс.",
+
+        hConclusion: "Вывод",
+        pConclusion: "“Недостаточно TRX” — не баг, а следствие модели комиссий TRON. Решение: держать небольшой запас TRX, использовать Energy для USDT TRC-20, а при регулярных переводах — выбрать аренду Energy или стейкинг под ваш объём.",
+
+        sideCtaTitle: "Нужно быстро отправить USDT?",
+        sideCtaDesc: "Купите Energy и перестаньте сжигать TRX на комиссиях.",
+        sideCtaBtn: "Купить энергию"
+      },
+
+      en: {
+        seo: {
+          title: "Insufficient TRX for TRON fees: how to fix (Energy / Bandwidth)",
+          desc: "“Insufficient TRX” error on TRON when sending USDT TRC20: why it happens and how to fix it — keep small TRX balance, use Energy, Bandwidth, or rent Energy.",
+          keywords: "insufficient TRX tron, TRON fee USDT TRC20, rent energy tron, bandwidth energy tron, how to fix insufficient trx",
+          ogTitle: "Insufficient TRX for TRON fees: how to fix",
+          ogDesc: "Why it happens and how to send USDT TRC20 cheaper with Energy, Bandwidth, and Energy rental."
+        },
+        brandTagline: "TRON Energy · cheaper USDT transfers",
+        navHome: "Home",
+        navBuy: "Buy Energy",
+        langLabel: "Lang",
+        badgeBlog: "Blog",
+        metaRead: "12 min read",
+        metaUpdated: "Updated: 2026-02-15",
+        title: "Insufficient TRX for TRON network fees: practical fixes",
+        subtitle: "Why “Insufficient TRX” happens on USDT (TRC-20) transfers and how to reduce costs: Energy, Bandwidth, minimum TRX, and Energy rental.",
+
+        tocTitle: "Contents",
+        toc1:"Why it happens", toc2:"How fees work", toc3:"Quick fixes", toc4:"Rent Energy", toc5:"Stake TRX", toc6:"Top up TRX", toc7:"FAQ", toc8:"Conclusion",
+
+        hWhat: "Why the “Insufficient TRX” error appears",
+        pWhat1: "On TRON, fees can be covered by network resources: Bandwidth and Energy — not only TRX. USDT (TRC-20) usually requires Energy. If resources are missing, the network burns TRX automatically. If your TRX balance is too low, the transaction fails.",
+        liWhat1: "You have too little or 0 TRX (even if you have USDT).",
+        liWhat2: "Not enough Energy to run the USDT (TRC-20) smart contract.",
+        liWhat3: "Not enough Bandwidth for the base transaction load.",
+
+        hFees: "How TRON fees work",
+        pFees1: "TRON uses a hybrid model: you spend daily resource quotas or pay in TRX. For USDT (TRC-20), the main cost is Energy (smart-contract execution).",
+        hFeesB: "1) Bandwidth",
+        pFeesB: "Used for basic operations, including regular TRX transfers.",
+        hFeesE: "2) Energy",
+        pFeesE: "Needed for smart-contract interactions, including USDT TRC-20 transfers.",
+        hFeesT: "3) Paying in TRX",
+        pFeesT: "If Energy/Bandwidth is insufficient, TRX is burned automatically. That’s why keeping a small TRX balance is usually required.",
+
+        hQuick: "Quick fixes (2 minutes)",
+        liQuick1: "Top up 5–30 TRX (depends on your scenario) and retry.",
+        liQuick2: "Rent Energy for 1–N transactions to reduce fees.",
+        liQuick3: "New wallet? Activate the address with a minimal TRX amount (often at least 1 TRX).",
+
+        hRent: "Renting Energy for USDT TRC-20 transfers",
+        pRent1: "If you send USDT often, using Energy is cheaper than burning TRX every time. Renting Energy is practical: you pay a small amount and receive Energy for a period or a transaction count.",
+        liRent1: "Lower fees for frequent transfers.",
+        liRent2: "No need to lock large TRX amounts just to get Energy.",
+        liRent3: "Rent only what you need.",
+
+        ctaTitle: "Get Energy in a couple clicks",
+        ctaDesc: "No integrations. No key sharing. Automatically used during the transaction.",
+        ctaBtnPortal: "Open portal",
+        ctaBtnBot: "Open Telegram bot",
+
+        hStake: "Staking TRX: when it makes sense",
+        pStake1: "Staking gives you ongoing resources (Energy/Bandwidth). It’s great for daily high volume if you’re fine with locking TRX. For occasional transfers, renting is often simpler and cheaper.",
+        liStake1: "Pro: ongoing resources.",
+        liStake2: "Con: TRX is locked and not liquid.",
+
+        hTopup: "How to top up TRX fast",
+        pTopup1: "Exchanges, swap services, and P2P all work. The key is withdrawing TRX to your own TRON wallet (TronLink, Trust Wallet, etc.). Keep a small “maintenance” TRX balance to avoid failed sends.",
+
+        hFaq: "FAQ",
+        q1: "Why does it happen even if I have USDT?",
+        a1: "USDT TRC-20 is a smart contract. It needs Energy or TRX (burned as fees) to execute.",
+        q2: "How much TRX should I keep “just in case”?",
+        a2: "A small buffer (e.g., 5–30 TRX) is often enough when resources run out.",
+        q3: "What’s better: staking or renting Energy?",
+        a3: "Staking is better for steady daily volume. Renting is better for occasional or variable volume.",
+        q4: "Can I send USDT TRC-20 with zero TRX?",
+        a4: "In practice you usually need at least a tiny TRX balance (activation/edge cases). Energy reduces costs, but “always zero TRX” is uncommon.",
+
+        hConclusion: "Conclusion",
+        pConclusion: "“Insufficient TRX” isn’t a bug — it’s TRON’s fee model. Keep a small TRX buffer, use Energy for USDT TRC-20, and choose Energy rental or staking based on your volume.",
+
+        sideCtaTitle: "Need to send USDT now?",
+        sideCtaDesc: "Buy Energy and stop burning TRX on fees.",
+        sideCtaBtn: "Buy Energy"
+      },
+
+      tr: {
+        seo: {
+          title: "TRON ücretleri için yetersiz TRX: nasıl çözülür (Energy / Bandwidth)",
+          desc: "TRON’da USDT TRC20 gönderirken “Yetersiz TRX” hatası: neden olur ve çözüm yolları — az TRX bakiyesi, Energy, Bandwidth veya Energy kiralama.",
+          keywords: "tron yetersiz trx, tron usdt trc20 ücret, enerji kiralama tron, bandwidth energy tron, insufficient trx çözüm",
+          ogTitle: "TRON ücretleri için yetersiz TRX: çözüm",
+          ogDesc: "USDT TRC20’yi daha ucuza göndermek için Energy, Bandwidth ve enerji kiralama."
+        },
+        brandTagline: "TRON Energy · daha ucuz USDT transferi",
+        navHome: "Ana Sayfa",
+        navBuy: "Enerji Satın Al",
+        langLabel: "Dil",
+        badgeBlog: "Blog",
+        metaRead: "12 dk okuma",
+        metaUpdated: "Güncellendi: 2026-02-15",
+        title: "TRON ağ ücretleri için yetersiz TRX: pratik çözümler",
+        subtitle: "USDT (TRC-20) transferlerinde “Yetersiz TRX” neden olur ve maliyet nasıl düşürülür: Energy, Bandwidth, minimum TRX ve enerji kiralama.",
+
+        tocTitle: "İçindekiler",
+        toc1:"Neden olur", toc2:"Ücretler nasıl çalışır", toc3:"Hızlı çözümler", toc4:"Energy kiralama", toc5:"TRX stake", toc6:"TRX yükleme", toc7:"SSS", toc8:"Sonuç",
+
+        hWhat: "“Yetersiz TRX” hatası neden görünür?",
+        pWhat1: "TRON’da ücretler yalnızca TRX ile değil, ağ kaynaklarıyla da karşılanabilir: Bandwidth ve Energy. USDT (TRC-20) çoğunlukla Energy gerektirir. Kaynak yoksa ağ TRX yakar. TRX yetersizse işlem başarısız olur.",
+        liWhat1: "Bakiyede az veya 0 TRX (USDT olsa bile).",
+        liWhat2: "USDT (TRC-20) akıllı sözleşmesi için yeterli Energy yok.",
+        liWhat3: "Temel işlem yükü için yeterli Bandwidth yok.",
+
+        hFees: "TRON ücretleri nasıl çalışır?",
+        pFees1: "TRON hibrit bir model kullanır: günlük kaynak kotası harcarsınız veya TRX ödersiniz. USDT (TRC-20) için ana maliyet Energy’dir (akıllı sözleşme çalıştırma).",
+        hFeesB: "1) Bandwidth",
+        pFeesB: "TRX transferleri gibi temel işlemler için kullanılır.",
+        hFeesE: "2) Energy",
+        pFeesE: "USDT TRC-20 gibi akıllı sözleşme etkileşimleri için gerekir.",
+        hFeesT: "3) TRX ile ödeme",
+        pFeesT: "Energy/Bandwidth yetersizse TRX otomatik yakılır. Bu yüzden küçük bir TRX bakiyesi çoğu zaman gerekir.",
+
+        hQuick: "Hızlı çözümler (2 dakika)",
+        liQuick1: "5–30 TRX yükleyin (duruma göre) ve tekrar deneyin.",
+        liQuick2: "1–N işlem için Energy kiralayın ve ücreti düşürün.",
+        liQuick3: "Yeni cüzdan mı? Adresi minimum TRX ile aktive edin (çoğu zaman en az 1 TRX).",
+
+        hRent: "USDT TRC-20 transferleri için Energy kiralama",
+        pRent1: "Sık USDT gönderiyorsanız, her seferinde TRX yakmak yerine Energy kullanmak daha ucuzdur. Energy kiralama pratiktir: küçük bir ödeme ile belirli süre/işlem sayısı için Energy alırsınız.",
+        liRent1: "Sık transferlerde daha düşük ücret.",
+        liRent2: "Energy için büyük TRX kilitlemeye gerek yok.",
+        liRent3: "İhtiyacınız kadar kiralayın.",
+
+        ctaTitle: "Birkaç tıkla Energy alın",
+        ctaDesc: "Entegrasyon yok. Anahtar paylaşımı yok. İşlem sırasında otomatik kullanılır.",
+        ctaBtnPortal: "Portal",
+        ctaBtnBot: "Telegram botu",
+
+        hStake: "TRX stake: ne zaman mantıklı?",
+        pStake1: "Stake, sürekli Energy/Bandwidth sağlar. Günlük yüksek hacim için iyidir; ancak TRX kilitli kalır. Ara sıra işlem için kiralama daha basit olabilir.",
+        liStake1: "Artı: sürekli kaynak.",
+        liStake2: "Eksi: TRX kilitli ve likit değil.",
+
+        hTopup: "TRX’i hızlı nasıl yüklersiniz?",
+        pTopup1: "Borsalar, takas servisleri ve P2P kullanılabilir. Önemli olan TRX’i kendi TRON cüzdanınıza çekmektir (TronLink, Trust Wallet vb.). Küçük bir TRX “bakım” bakiyesi tutun.",
+
+        hFaq: "SSS",
+        q1: "USDT varken neden hata olur?",
+        a1: "USDT TRC-20 bir akıllı sözleşmedir. Çalışması için Energy veya ücret olarak yakılan TRX gerekir.",
+        q2: "Ne kadar TRX ‘yedek’ tutmalıyım?",
+        a2: "Kaynaklar bittiğinde genelde küçük bir tampon (ör. 5–30 TRX) yeterlidir.",
+        q3: "Stake mi, Energy kiralama mı?",
+        a3: "Sabit günlük hacimde stake; değişken/az hacimde kiralama daha uygundur.",
+        q4: "Sıfır TRX ile USDT gönderebilir miyim?",
+        a4: "Pratikte çoğu zaman minimum TRX gerekir (aktivasyon/kenar durumlar). Energy maliyeti düşürür ama ‘hep 0 TRX’ nadirdir.",
+
+        hConclusion: "Sonuç",
+        pConclusion: "“Yetersiz TRX” bir bug değil, TRON ücret modelidir. Küçük TRX bakiyesi tutun, USDT TRC-20 için Energy kullanın ve hacminize göre kiralama veya stake seçin.",
+
+        sideCtaTitle: "USDT hemen mi göndereceksiniz?",
+        sideCtaDesc: "Energy alın, TRX yakmayı bırakın.",
+        sideCtaBtn: "Enerji Satın Al"
+      },
+
+      id: {
+        seo: {
+          title: "TRX tidak cukup untuk biaya TRON: cara mengatasi (Energy / Bandwidth)",
+          desc: "Error “Insufficient TRX” di TRON saat kirim USDT TRC20: penyebab dan solusi — simpan sedikit TRX, gunakan Energy, Bandwidth, atau sewa Energy.",
+          keywords: "trx tidak cukup tron, biaya tron usdt trc20, sewa energy tron, bandwidth energy tron, cara mengatasi insufficient trx",
+          ogTitle: "TRX tidak cukup untuk biaya TRON: cara mengatasi",
+          ogDesc: "Kirim USDT TRC20 lebih murah dengan Energy, Bandwidth, dan sewa Energy."
+        },
+        brandTagline: "TRON Energy · transfer USDT lebih murah",
+        navHome: "Beranda",
+        navBuy: "Beli Energy",
+        langLabel: "Bahasa",
+        badgeBlog: "Blog",
+        metaRead: "12 menit",
+        metaUpdated: "Diperbarui: 2026-02-15",
+        title: "TRX tidak cukup untuk biaya jaringan TRON: solusi praktis",
+        subtitle: "Kenapa muncul “Insufficient TRX” saat transfer USDT (TRC-20) dan cara menekan biaya: Energy, Bandwidth, minimum TRX, dan sewa Energy.",
+
+        tocTitle: "Daftar isi",
+        toc1:"Penyebab", toc2:"Cara kerja biaya", toc3:"Solusi cepat", toc4:"Sewa Energy", toc5:"Stake TRX", toc6:"Top up TRX", toc7:"FAQ", toc8:"Kesimpulan",
+
+        hWhat: "Kenapa muncul error “TRX tidak cukup”",
+        pWhat1: "Di TRON, biaya bisa ditutup oleh resource jaringan: Bandwidth dan Energy — bukan hanya TRX. USDT (TRC-20) biasanya butuh Energy. Kalau resource kurang, jaringan akan membakar TRX. Jika TRX tidak cukup, transaksi gagal.",
+        liWhat1: "Saldo TRX sedikit atau 0 (meski punya USDT).",
+        liWhat2: "Energy tidak cukup untuk smart contract USDT (TRC-20).",
+        liWhat3: "Bandwidth tidak cukup untuk beban transaksi dasar.",
+
+        hFees: "Bagaimana biaya di TRON bekerja",
+        pFees1: "TRON memakai model hybrid: pakai kuota resource harian atau bayar dengan TRX. Untuk USDT (TRC-20), biaya utama adalah Energy (eksekusi smart contract).",
+        hFeesB: "1) Bandwidth",
+        pFeesB: "Dipakai untuk operasi dasar termasuk transfer TRX biasa.",
+        hFeesE: "2) Energy",
+        pFeesE: "Dibutuhkan untuk interaksi smart contract termasuk transfer USDT TRC-20.",
+        hFeesT: "3) Bayar dengan TRX",
+        pFeesT: "Kalau Energy/Bandwidth kurang, TRX akan dibakar otomatis. Karena itu biasanya perlu saldo TRX kecil.",
+
+        hQuick: "Solusi cepat (2 menit)",
+        liQuick1: "Top up 5–30 TRX (tergantung skenario) lalu coba lagi.",
+        liQuick2: "Sewa Energy untuk 1–N transaksi agar biaya turun.",
+        liQuick3: "Wallet baru? Aktivasi alamat dengan TRX minimal (seringnya setidaknya 1 TRX).",
+
+        hRent: "Sewa Energy untuk transfer USDT TRC-20",
+        pRent1: "Kalau sering kirim USDT, lebih murah pakai Energy daripada membakar TRX setiap transaksi. Sewa Energy itu praktis: bayar kecil lalu dapat Energy untuk periode/jumlah transaksi.",
+        liRent1: "Biaya lebih rendah untuk transfer rutin.",
+        liRent2: "Tidak perlu mengunci TRX besar demi Energy.",
+        liRent3: "Sewa sesuai kebutuhan.",
+
+        ctaTitle: "Dapatkan Energy dalam beberapa klik",
+        ctaDesc: "Tanpa integrasi. Tanpa berbagi private key. Dipakai otomatis saat transaksi.",
+        ctaBtnPortal: "Buka portal",
+        ctaBtnBot: "Buka bot Telegram",
+
+        hStake: "Stake TRX: kapan cocok?",
+        pStake1: "Stake memberi Energy/Bandwidth secara terus-menerus. Cocok untuk volume harian tinggi, tapi TRX jadi terkunci. Untuk transfer sesekali, sewa sering lebih simpel dan murah.",
+        liStake1: "Pro: resource terus-menerus.",
+        liStake2: "Kontra: TRX terkunci dan tidak likuid.",
+
+        hTopup: "Cara top up TRX cepat",
+        pTopup1: "Bisa via exchange, swap, atau P2P. Kuncinya tarik TRX ke wallet TRON milik sendiri (TronLink, Trust Wallet, dll.). Simpan saldo TRX kecil untuk menghindari transaksi gagal.",
+
+        hFaq: "FAQ",
+        q1: "Kenapa error walau ada USDT?",
+        a1: "USDT TRC-20 adalah smart contract. Untuk eksekusi perlu Energy atau TRX yang dibakar sebagai biaya.",
+        q2: "Berapa TRX yang sebaiknya disimpan?",
+        a2: "Buffer kecil (mis. 5–30 TRX) sering cukup saat resource habis.",
+        q3: "Lebih baik stake atau sewa Energy?",
+        a3: "Stake cocok untuk volume stabil harian; sewa cocok untuk volume variatif/lebih kecil.",
+        q4: "Bisa kirim USDT TRC-20 tanpa TRX sama sekali?",
+        a4: "Praktiknya biasanya tetap perlu TRX minimal (aktivasi/edge case). Energy menekan biaya, tapi ‘selalu 0 TRX’ jarang.",
+
+        hConclusion: "Kesimpulan",
+        pConclusion: "“TRX tidak cukup” bukan bug — ini model biaya TRON. Simpan buffer TRX kecil, gunakan Energy untuk USDT TRC-20, dan pilih sewa atau stake sesuai volume.",
+
+        sideCtaTitle: "Butuh kirim USDT sekarang?",
+        sideCtaDesc: "Beli Energy dan hentikan membakar TRX untuk biaya.",
+        sideCtaBtn: "Beli Energy"
+      }
+    };
+
+    const $ = (s) => document.querySelector(s);
+
+    function setMeta(name, content){
+      let el = document.querySelector(`meta[name="${name}"]`);
+      if(!el){
+        el = document.createElement("meta");
+        el.setAttribute("name", name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    }
+
+    function setOG(property, content){
+      let el = document.querySelector(`meta[property="${property}"]`);
+      if(!el){
+        el = document.createElement("meta");
+        el.setAttribute("property", property);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    }
+
+    function updateLdJson(lang){
+      const t = I18N[lang];
+      const now = "2026-02-15";
+      const data = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "inLanguage": lang,
+        "headline": t.title,
+        "description": t.seo.desc,
+        "dateModified": now,
+        "datePublished": now,
+        "author": { "@type": "Organization", "name": "GasFree4you" },
+        "publisher": { "@type": "Organization", "name": "GasFree4you" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": document.querySelector('link[rel="canonical"]').href }
+      };
+      $("#ldJson").textContent = JSON.stringify(data);
+    }
+
+    function applyLang(lang){
+      if(!I18N[lang]) lang = "en";
+      const t = I18N[lang];
+
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute("data-lang", lang);
+
+      // Text nodes
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // SEO
+      document.title = t.seo.title;
+      setMeta("description", t.seo.desc);
+      setMeta("keywords", t.seo.keywords);
+      setOG("og:title", t.seo.ogTitle);
+      setOG("og:description", t.seo.ogDesc);
+
+      // JSON-LD
+      updateLdJson(lang);
+
+      // Save + reflect
+      localStorage.setItem("gf_lang", lang);
+      const sel = $("#langSel");
+      if(sel) sel.value = lang;
+
+      // hash for shareability
+      if(location.hash.replace("#","") !== lang){
+        history.replaceState(null, "", "#" + lang);
+      }
+    }
+
+    // Smooth anchor scroll
+    document.addEventListener("click", (e)=>{
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      const id = a.getAttribute("href");
+      const el = document.querySelector(id);
+      if(!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior:"smooth", block:"start" });
+    });
+
+    // Init
+    (function init(){
+      $("#y").textContent = new Date().getFullYear();
+
+      const fromHash = (location.hash || "").replace("#","").trim();
+      const saved = localStorage.getItem("gf_lang");
+      const lang = I18N[fromHash] ? fromHash : (I18N[saved] ? saved : "en");
+
+      $("#langSel").addEventListener("change", (e)=> applyLang(e.target.value));
+      applyLang(lang);
+    })();
+  </script>
+</body>
+</html>
