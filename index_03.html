@@ -213,12 +213,12 @@
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.6);
-  display:none;                 /* включается JS-ом */
+  display:none;
   justify-content:center;
-  align-items:flex-start;       /* открывать чуть ниже */
-  padding:calc(env(safe-area-inset-top, 0) + 72px) 16px 24px;
-  overflow:auto;                /* если карточка выше окна — скроллим оверлей */
-  z-index:30;
+  align-items:flex-start;
+  padding:calc(env(safe-area-inset-top, 0) + 24px) 16px 24px;
+  overflow:auto;
+  z-index:1000;
 }
 
 /* Карточка: ограничиваем высоту и даём внутренний скролл */
@@ -239,7 +239,9 @@
 /* QR и картинки — резиновые */
 .modal .card img{max-width:100%; height:auto}
 
-
+#onbModal{ z-index:1000; }
+#waitModal{ z-index:1100; }
+#payModal{ z-index:1200; }
 
 /* Ряд кнопок — переносится, чтобы не уезжать за край */
 #payModal .btn, #waitModal .btn{flex:1 1 auto}
@@ -265,7 +267,11 @@
 }
 @keyframes segGlow{from{opacity:.9} to{opacity:0}}
 /* ===== Modal offset fix ===== */
-    .modal{align-items:flex-start !important; padding-top:210px !important;} /* смещаем модалку ниже */
+.modal{
+  align-items:flex-start !important;
+  padding-top:calc(env(safe-area-inset-top, 0) + 24px) !important;
+}
+
 @media (max-width:820px){
   .mobile-after-save{
     display:flex;
@@ -998,9 +1004,8 @@
   </div>
 </div>
 
-  <!-- WAIT MODAL -->
-  <div class="modal" id="waitModal"
-       style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;z-index:30">
+  <!-- WAIT MODAL --><div class="modal" id="waitModal"
+     style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;">
     <div class="card" style="max-width:480px;width:100%;text-align:center;position:relative">
       <button class="btn" id="wClose" aria-label="Close" style="position:absolute;right:10px;top:10px">✕</button>
       <h3 class="title" style="margin:0 0 10px;font-size:20px">Processing payment</h3>
@@ -1010,7 +1015,7 @@
   </div>
 
   <!-- Payment modal -->
-  <div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="mTitle" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;z-index:30">
+  <div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="mTitle" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:16px;">
     <div class="card" style="max-width:520px;width:100%;position:relative">
       <button class="btn" id="mClose" aria-label="Закрыть" style="position:absolute;right:10px;top:10px">✕</button>
       <h3 id="mTitle" style="margin:0 0 6px;font-size:20px;font-weight:800" data-i18n="pay_title">Оплата заказа</h3>
