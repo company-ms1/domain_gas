@@ -753,12 +753,12 @@
           <div class="tag" data-i18n="tagline">TRON Energy · Zero-fee transfers</div>
         </div>
       </div>
- <div class="top-right">
+<div class="top-right">
   <a class="btn" href="how-it-works.html" id="howLink" data-i18n="how_link">Как это работает</a>
-  <a class="btn" href="http://user.gasfree4you.com/" id="portalLink" data-i18n="nav_portal">Портал</a>
-   <a class="btn" href="/vanity.html" id="vanityLink" data-i18n="nav_vanity">Красивый кошелёк</a>
-  <a class="btn primary" href="/api.html">API</a>
-  <!-- header .top-right -->
+  <a class="btn primary" href="http://user.gasfree4you.com/" id="portalLink" data-i18n="nav_portal">Войти</a>
+  <a class="btn" href="/vanity.html" id="vanityLink" data-i18n="nav_vanity">Купить красивый кошелёк</a>
+  <a class="btn" href="/api.html" data-i18n="nav_api">API</a>
+
   <label class="lang-wrap" for="langSelect" aria-label="Language" title="Language">
     <select id="langSelect" class="lang-select">
       <option value="ru">Русский</option>
@@ -1134,8 +1134,8 @@
 const I18N = {
   ru:{
     onb_title: "Что это за сервис?",
-    nav_portal: "Портал",
-    nav_portal_cta: "Открыть портал",
+    nav_portal: "Войти",
+    nav_portal_cta: "Войти в портал",
     onb_sub: "Выберите язык и ответьте на один вопрос — это займёт меньше 10 секунд.",
     onb_lang_label: "Язык сайта",
     onb_q: "Вы знаете, что такое аренда энергии TRON и зачем она нужна?",
@@ -1236,6 +1236,7 @@ const I18N = {
     footer_privacy:"Политика конфиденциальности",
     footer_refund:"Политика возврата",
     footer_legal:"Правовые моменты",
+    nav_api: "API",
     footer_rights:"Все права защищены.",
     usd_saving:"Экономия ≈ {x} USDT",
     tg_cta:"Открыть в Telegram",
@@ -1267,7 +1268,7 @@ const I18N = {
     onb_explain_li3:"Energy covers only <b>one transfer</b> and is then automatically revoked.",
     onb_explain_p2:"After this you can calculate savings on the site and buy energy for your transfer.",
     onb_gotit:"Got it, go to the site",
-    nav_portal:"Portal",
+    nav_portal:"Login",
     nav_portal_cta:"Open portal",
     nav_vanity:"Buy vanity wallet",
     tagline:"TRON Energy · Zero-fee transfers",
@@ -1371,12 +1372,13 @@ const I18N = {
     pay_flow_2:"We delegate energy to that wallet (for 1 transfer).",
     pay_flow_3:"Make your USDT/TRC20 transfer — the fee is covered by energy, then the energy is revoked.",
     nudge_to_flow:"What happens next? ↓",
+    nav_api: "API",
     nav_staking:"Staking"
   },
 
   zh:{
-    nav_portal:"门户",
-    nav_portal_cta:"打开门户",
+nav_portal:"登录",
+nav_portal_cta:"打开登录",
     onb_title:"这是一个什么服务？",
     onb_sub:"选择语言并回答一个问题，只需不到 10 秒。",
     onb_lang_label:"站点语言",
@@ -1492,13 +1494,14 @@ const I18N = {
     pay_flow_title:"流程",
     pay_flow_1:"使用需要能量的钱包发送 TRX。",
     pay_flow_2:"我们将能量委托到该钱包（一次转账）。",
+    nav_api: "API",
     pay_flow_3:"进行 USDT/TRC20 转账——手续费由能量覆盖，随后能量被收回。",
     nav_staking:"质押"
   },
 
   id:{
-    nav_portal:"Portal",
-    nav_portal_cta:"Buka portal",
+nav_portal:"Login",
+nav_portal_cta:"Buka login",
     onb_title:"Ini layanan apa?",
     onb_sub:"Pilih bahasa dan jawab satu pertanyaan — kurang dari 10 detik.",
     onb_lang_label:"Bahasa situs",
@@ -1552,6 +1555,7 @@ const I18N = {
     q3:"Apakah aman?",
     a3:"Kami hanya mendelegasikan energi; tidak pernah mengakses kunci Anda. Anda hanya mengirim TRX untuk membayar paket.",
     q4:"Untuk siapa layanan ini?",
+    nav_api: "API",
     a4:"Exchanger, dompet, OTC, dan layanan dengan transfer USDT/TRC20 yang sering — juga untuk pengguna power.",
     q5:"Apakah ada API & UI?",
     a5:"Ya. UI untuk distribusi massal dan REST API. Klik tombol “API” di atas.",
@@ -1607,11 +1611,13 @@ const I18N = {
     pay_flow_2:"Kami mendelegasikan energi ke dompet tersebut (untuk 1 transfer).",
     pay_flow_3:"Lakukan transfer USDT/TRC20 — biayanya ditutup oleh energi, lalu energi ditarik.",
     nav_staking:"Staking"
+    
   },
 
   tr:{
-    nav_portal:"Portal",
-    nav_portal_cta:"Portalı aç",
+nav_portal:"Giriş",
+nav_portal_cta:"Girişi aç",
+    nav_api: "API",
     nav_vanity:"Vanity cüzdan satın al",
     tagline:"TRON Enerjisi · Ücretsiz transferler",
     how_link:"Nasıl çalışır",
