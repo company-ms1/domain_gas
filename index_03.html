@@ -2361,33 +2361,6 @@ document.getElementById('y').textContent = new Date().getFullYear();
   });
 })();
 
- 
-function applyPromoTexts(startStr, endStr, isActive){
-  const banner = document.getElementById('promoBanner');
-  const badge = document.getElementById('promoBadge');
-  const title = document.getElementById('promoTitle');
-  const subtitle = document.getElementById('promoSubtitle');
-  const btn = document.getElementById('promoBtn');
-  const time = document.getElementById('promoTime');
-
-  if(!banner || !badge || !title || !subtitle || !btn || !time) return;
-
-  if (I18N[lang]?.promo_badge) badge.innerHTML = I18N[lang].promo_badge;
-  if (I18N[lang]?.promo_title) title.innerHTML = I18N[lang].promo_title;
-  if (I18N[lang]?.promo_subtitle) subtitle.innerHTML = I18N[lang].promo_subtitle;
-  if (I18N[lang]?.promo_btn) btn.textContent = I18N[lang].promo_btn;
-
-  const tpl = isActive
-    ? (I18N[lang]?.promo_time_active || '')
-    : (I18N[lang]?.promo_time_inactive || '');
-
-  time.textContent = tpl
-    .replace('{start}', startStr)
-    .replace('{end}', endStr);
-
-  banner.hidden = false;
-}
-
 function initPromoBanner(){
   const banner = document.getElementById('promoBanner');
   if(!banner) return;
@@ -2419,6 +2392,34 @@ function initPromoBanner(){
   updatePromo();
   setInterval(updatePromo, 60_000);
 }
+    
+function applyPromoTexts(startStr, endStr, isActive){
+  const banner = document.getElementById('promoBanner');
+  const badge = document.getElementById('promoBadge');
+  const title = document.getElementById('promoTitle');
+  const subtitle = document.getElementById('promoSubtitle');
+  const btn = document.getElementById('promoBtn');
+  const time = document.getElementById('promoTime');
+
+  if(!banner || !badge || !title || !subtitle || !btn || !time) return;
+
+  if (I18N[lang]?.promo_badge) badge.innerHTML = I18N[lang].promo_badge;
+  if (I18N[lang]?.promo_title) title.innerHTML = I18N[lang].promo_title;
+  if (I18N[lang]?.promo_subtitle) subtitle.innerHTML = I18N[lang].promo_subtitle;
+  if (I18N[lang]?.promo_btn) btn.textContent = I18N[lang].promo_btn;
+
+  const tpl = isActive
+    ? (I18N[lang]?.promo_time_active || '')
+    : (I18N[lang]?.promo_time_inactive || '');
+
+  time.textContent = tpl
+    .replace('{start}', startStr)
+    .replace('{end}', endStr);
+
+  banner.hidden = false;
+}
+
+
     
 
   </script>
