@@ -879,6 +879,99 @@
 }
 
 
+    .promo-right{
+  position:relative;
+  z-index:1;
+  flex:0 1 220px;
+  min-width:0;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.promo-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:220px;
+  min-width:0;
+  padding:14px 18px;
+  border-radius:16px;
+  font-weight:900;
+  font-size:15px;
+  line-height:1.2;
+  text-align:center;
+  text-decoration:none;
+  color:#001b1b;
+  background:linear-gradient(135deg,#16c784,#7df1b7);
+  box-shadow:0 12px 28px rgba(22,199,132,.28);
+  transition:transform .12s ease, box-shadow .2s ease, filter .2s ease;
+  box-sizing:border-box;
+  word-break:break-word;
+}
+
+.promo-btn:hover{
+  text-decoration:none;
+  transform:translateY(-2px);
+  filter:saturate(1.08);
+  box-shadow:0 16px 32px rgba(22,199,132,.36);
+}
+
+.promo-btn:active{
+  transform:scale(.98);
+}
+
+@media (max-width:820px){
+  .promo-inner{
+    flex-direction:column;
+    align-items:stretch;
+    padding:16px;
+    gap:14px;
+  }
+
+  .promo-left,
+  .promo-right{
+    width:100%;
+    max-width:100%;
+  }
+
+  .promo-right{
+    flex:1 1 auto;
+    justify-content:stretch;
+  }
+
+  .promo-btn{
+    max-width:none;
+    width:100%;
+    padding:13px 16px;
+    font-size:14px;
+    border-radius:14px;
+  }
+}
+
+@media (max-width:420px){
+  .promo-inner{
+    padding:14px;
+  }
+
+  .promo-title{
+    font-size:22px;
+  }
+
+  .promo-subtitle{
+    font-size:14px;
+  }
+
+  .promo-time{
+    font-size:13px;
+  }
+
+  .promo-btn{
+    font-size:14px;
+    padding:12px 14px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -930,9 +1023,9 @@
       <div class="promo-left">
         <div class="promo-pill" id="promoBadge">⚡ SPECIAL OFFER</div>
 
-        <div class="promo-title" id="promoTitle">
-          Rent energy with <span>72% discount</span>
-        </div>
+<div class="promo-title" id="promoTitle">
+  65,000 Energy for <span>1.77 TRX</span>
+</div>
 
         <div class="promo-subtitle" id="promoSubtitle">
           Lower price is available <b>only via portal</b>
@@ -1307,10 +1400,10 @@
   document.addEventListener('DOMContentLoaded', function(){
 const I18N = {
   ru:{
-    promo_badge:"⚡ СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ",
-promo_title:"Аренда энергии со <span>скидкой 72%</span>",
-promo_subtitle:"Сниженная цена доступна <b>только через портал</b>",
-promo_btn:"Перейти в портал",
+promo_badge:"⚡ СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ",
+promo_title:"65 000 энергии за <span>1.77 TRX</span>",
+promo_subtitle:"Эта цена доступна <b>только через портал</b>",
+promo_btn:"Открыть портал",
 promo_time_active:"Ежедневно с {start} до {end} по вашему местному времени",
 promo_time_inactive:"Акция действует ежедневно с {start} до {end} по вашему местному времени",
     onb_title: "Что это за сервис?",
@@ -1435,6 +1528,12 @@ promo_time_inactive:"Акция действует ежедневно с {start}
   },
 
   en:{
+    promo_badge:"⚡ SPECIAL OFFER",
+promo_title:"65,000 Energy for <span>1.77 TRX</span>",
+promo_subtitle:"This price is available <b>only via portal</b>",
+promo_btn:"Open portal",
+promo_time_active:"Daily from {start} to {end} in your local time",
+promo_time_inactive:"Offer runs daily from {start} to {end} in your local time",
     onb_title:"What is this service?",
     onb_sub:"Pick a language and answer one question — it takes under 10 seconds.",
     onb_lang_label:"Site language",
@@ -1557,6 +1656,12 @@ promo_time_inactive:"Акция действует ежедневно с {start}
   },
 
   zh:{
+    promo_badge:"⚡ 特别优惠",
+promo_title:"65,000 能量仅需 <span>1.77 TRX</span>",
+promo_subtitle:"该价格<b>仅可通过门户获取</b>",
+promo_btn:"打开门户",
+promo_time_active:"每天 {start}–{end}（你的本地时间）",
+promo_time_inactive:"优惠每天 {start}–{end}（你的本地时间）",
 nav_portal:"登录",
 nav_portal_cta:"打开登录",
     onb_title:"这是一个什么服务？",
@@ -1680,6 +1785,12 @@ nav_portal_cta:"打开登录",
   },
 
   id:{
+    promo_badge:"⚡ PENAWARAN SPESIAL",
+promo_title:"65.000 Energy seharga <span>1.77 TRX</span>",
+promo_subtitle:"Harga ini tersedia <b>hanya lewat portal</b>",
+promo_btn:"Buka portal",
+promo_time_active:"Setiap hari dari {start} sampai {end} waktu lokal Anda",
+promo_time_inactive:"Promo berlaku setiap hari dari {start} sampai {end} waktu lokal Anda",
 nav_portal:"Login",
 nav_portal_cta:"Buka login",
     onb_title:"Ini layanan apa?",
@@ -1795,6 +1906,12 @@ nav_portal_cta:"Buka login",
   },
 
   tr:{
+    promo_badge:"⚡ ÖZEL TEKLİF",
+promo_title:"65.000 Energy için <span>1.77 TRX</span>",
+promo_subtitle:"Bu fiyat <b>sadece portal üzerinden</b> sunulur",
+promo_btn:"Portalı aç",
+promo_time_active:"Her gün yerel saatinize göre {start}–{end}",
+promo_time_inactive:"Kampanya her gün yerel saatinize göre {start}–{end}",
 nav_portal:"Giriş",
 nav_portal_cta:"Girişi aç",
     nav_api: "API",
