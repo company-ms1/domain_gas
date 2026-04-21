@@ -178,10 +178,7 @@
 
     /* ===== Fancy, but subtle animations ===== */
 @media (prefers-reduced-motion:no-preference){
-  /* вход элементов */
-  .reveal{opacity:0; transform:translateY(12px); will-change:opacity,transform;}
-  .reveal.in{animation:revealUp .6s cubic-bezier(.22,.61,.36,1) forwards}
-  @keyframes revealUp{to{opacity:1; transform:translateY(0)}}
+
 
   /* лёгкий параллакс подсветки на карточках при ховере */
   .card{transition:transform .35s ease, box-shadow .35s ease}
