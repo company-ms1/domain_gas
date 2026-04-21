@@ -739,7 +739,145 @@
   background-size: 10px;
 }
 
+/* ===== PROMO BANNER ===== */
+.promo-banner{
+  position:relative;
+  margin:14px 0 10px;
+  z-index:30;
+}
 
+.promo-inner{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:18px 18px;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(700px 200px at -10% 50%, rgba(255,255,255,.08), transparent 60%),
+    radial-gradient(500px 180px at 110% 50%, rgba(255,255,255,.10), transparent 60%),
+    linear-gradient(135deg, rgba(22,199,132,.18), rgba(110,231,255,.18)),
+    linear-gradient(135deg, #0f152a, #101829);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.promo-glow{
+  position:absolute;
+  inset:auto;
+  width:220px;
+  height:220px;
+  right:-60px;
+  top:-70px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(125,241,183,.24), transparent 65%);
+  pointer-events:none;
+}
+
+.promo-left{
+  position:relative;
+  z-index:1;
+  min-width:0;
+}
+
+.promo-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.10);
+  color:#dffcf0;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.4px;
+}
+
+.promo-title{
+  font-size:clamp(20px, 3.5vw, 30px);
+  line-height:1.15;
+  font-weight:900;
+  margin:0 0 8px;
+  color:var(--text);
+}
+
+.promo-title span{
+  color:#7df1b7;
+  text-shadow:0 0 18px rgba(125,241,183,.18);
+}
+
+.promo-subtitle{
+  margin:0 0 8px;
+  color:var(--text);
+  font-size:15px;
+}
+
+.promo-subtitle b{
+  color:#6ee7ff;
+}
+
+.promo-time{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+}
+
+.promo-right{
+  position:relative;
+  z-index:1;
+  flex:0 0 auto;
+}
+
+.promo-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:170px;
+  padding:14px 18px;
+  border-radius:16px;
+  font-weight:900;
+  font-size:15px;
+  text-decoration:none;
+  color:#001b1b;
+  background:linear-gradient(135deg,#16c784,#7df1b7);
+  box-shadow:0 12px 28px rgba(22,199,132,.28);
+  transition:transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.promo-btn:hover{
+  text-decoration:none;
+  transform:translateY(-2px);
+  filter:saturate(1.08);
+  box-shadow:0 16px 32px rgba(22,199,132,.36);
+}
+
+.promo-btn:active{
+  transform:scale(.98);
+}
+
+@media (max-width:820px){
+  .promo-inner{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:16px;
+  }
+
+  .promo-right{
+    width:100%;
+  }
+
+  .promo-btn{
+    width:100%;
+    min-width:0;
+  }
+}
+    
 
   </style>
 </head>
@@ -784,26 +922,42 @@
     </div>
   </header>
 
+<section id="promoBanner" class="promo-banner" aria-label="Special portal promotion" hidden>
+  <div class="wrap">
+    <div class="promo-inner">
+      <div class="promo-glow" aria-hidden="true"></div>
 
-  <div id="promoBanner" style="
-  background: linear-gradient(90deg,#16c784,#4ade80);
-  color:#001b1b;
-  text-align:center;
-  padding:12px 10px;
-  font-weight:900;
-  font-size:14px;
-  letter-spacing:.2px;
-  box-shadow:0 6px 20px rgba(22,199,132,.25);
-  position:sticky;
-  top:64px;
-  z-index:40;
-">
-  ⚡ <span id="promoText">
-    72% OFF — Energy discount active now!
-  </span>
-  <span id="promoTime" style="margin-left:6px; font-weight:700;"></span>
-</div>
+      <div class="promo-left">
+        <div class="promo-pill" id="promoBadge">⚡ SPECIAL OFFER</div>
 
+        <div class="promo-title" id="promoTitle">
+          Rent energy with <span>72% discount</span>
+        </div>
+
+        <div class="promo-subtitle" id="promoSubtitle">
+          Lower price is available <b>only via portal</b>
+        </div>
+
+        <div class="promo-time" id="promoTime">
+          Daily from 03:00 to 11:00 UTC
+        </div>
+      </div>
+
+      <div class="promo-right">
+        <a
+          class="promo-btn"
+          id="promoBtn"
+          href="https://user.gasfree4you.com/"
+          target="_blank"
+          rel="noopener"
+        >
+          Open portal
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+  
   <main class="wrap" id="top">
     <div style="margin-top:10px">
       <h1 class="title reveal" data-i18n="title">Аренда энергии TRON</h1>
@@ -1153,6 +1307,13 @@
   document.addEventListener('DOMContentLoaded', function(){
 const I18N = {
   ru:{
+    promo_badge:"⚡ СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ",
+promo_title:"Аренда энергии со <span>скидкой 72%</span>",
+promo_subtitle:"Сниженная цена доступна <b>только через портал</b>",
+promo_btn:"Перейти в портал",
+promo_time_active:"Ежедневно с {start} до {end} по вашему местному времени",
+promo_time_inactive:"Акция действует ежедневно с {start} до {end} по вашему местному времени",
+    
     onb_title: "Что это за сервис?",
     nav_portal: "Войти",
     nav_portal_cta: "Войти в портал",
@@ -1275,6 +1436,12 @@ const I18N = {
   },
 
   en:{
+    promo_badge:"⚡ SPECIAL OFFER",
+promo_title:"Rent energy with <span>72% discount</span>",
+promo_subtitle:"Lower price is available <b>only via portal</b>",
+promo_btn:"Open portal",
+promo_time_active:"Daily from {start} to {end} in your local time",
+promo_time_inactive:"Offer runs daily from {start} to {end} in your local time",
     onb_title:"What is this service?",
     onb_sub:"Pick a language and answer one question — it takes under 10 seconds.",
     onb_lang_label:"Site language",
@@ -1397,6 +1564,12 @@ const I18N = {
   },
 
   zh:{
+    promo_badge:"⚡ 特别优惠",
+promo_title:"租用能量可享 <span>72% 折扣</span>",
+promo_subtitle:"更低价格<b>仅在门户中提供</b>",
+promo_btn:"打开门户",
+promo_time_active:"每天 {start}–{end}（你的本地时间）",
+promo_time_inactive:"优惠每天 {start}–{end}（你的本地时间）",
 nav_portal:"登录",
 nav_portal_cta:"打开登录",
     onb_title:"这是一个什么服务？",
@@ -1520,6 +1693,12 @@ nav_portal_cta:"打开登录",
   },
 
   id:{
+    promo_badge:"⚡ PENAWARAN SPESIAL",
+promo_title:"Sewa energi dengan <span>diskon 72%</span>",
+promo_subtitle:"Harga lebih murah tersedia <b>hanya lewat portal</b>",
+promo_btn:"Buka portal",
+promo_time_active:"Setiap hari dari {start} sampai {end} waktu lokal Anda",
+promo_time_inactive:"Promo berlaku setiap hari dari {start} sampai {end} waktu lokal Anda",
 nav_portal:"Login",
 nav_portal_cta:"Buka login",
     onb_title:"Ini layanan apa?",
@@ -1635,6 +1814,12 @@ nav_portal_cta:"Buka login",
   },
 
   tr:{
+    promo_badge:"⚡ ÖZEL TEKLİF",
+promo_title:"Enerji kiralamada <span>%72 indirim</span>",
+promo_subtitle:"Daha düşük fiyat <b>sadece portal üzerinden</b> sunulur",
+promo_btn:"Portalı aç",
+promo_time_active:"Her gün yerel saatinize göre {start}–{end}",
+promo_time_inactive:"Kampanya her gün yerel saatinize göre {start}–{end}",
 nav_portal:"Giriş",
 nav_portal_cta:"Girişi aç",
     nav_api: "API",
@@ -2094,8 +2279,12 @@ function bindLangSelect(){
 
     // Init
 // Init
-bindLangSelect(); setActiveLang(); applyText(); compute();
-
+bindLangSelect();
+setActiveLang();
+applyText();
+compute();
+initPromoBanner();
+    
 // 👉 стартуем счётчик энергии
 initEnergy();
 scheduleNextTick();
@@ -2172,67 +2361,64 @@ document.getElementById('y').textContent = new Date().getFullYear();
   });
 })();
 
-    (function(){
+ 
+function applyPromoTexts(startStr, endStr, isActive){
   const banner = document.getElementById('promoBanner');
-  const text = document.getElementById('promoText');
-  const timeEl = document.getElementById('promoTime');
+  const badge = document.getElementById('promoBadge');
+  const title = document.getElementById('promoTitle');
+  const subtitle = document.getElementById('promoSubtitle');
+  const btn = document.getElementById('promoBtn');
+  const time = document.getElementById('promoTime');
 
+  if(!banner || !badge || !title || !subtitle || !btn || !time) return;
+
+  if (I18N[lang]?.promo_badge) badge.innerHTML = I18N[lang].promo_badge;
+  if (I18N[lang]?.promo_title) title.innerHTML = I18N[lang].promo_title;
+  if (I18N[lang]?.promo_subtitle) subtitle.innerHTML = I18N[lang].promo_subtitle;
+  if (I18N[lang]?.promo_btn) btn.textContent = I18N[lang].promo_btn;
+
+  const tpl = isActive
+    ? (I18N[lang]?.promo_time_active || '')
+    : (I18N[lang]?.promo_time_inactive || '');
+
+  time.textContent = tpl
+    .replace('{start}', startStr)
+    .replace('{end}', endStr);
+
+  banner.hidden = false;
+}
+
+function initPromoBanner(){
+  const banner = document.getElementById('promoBanner');
   if(!banner) return;
 
-  function updateBanner(){
+  function updatePromo(){
     const now = new Date();
 
-    // текущее UTC время
-    const utcHour = now.getUTCHours();
+    const localStart = new Date(now);
+    localStart.setUTCHours(3,0,0,0);
 
-    const start = 3;   // 03:00 UTC
-    const end = 11;    // 11:00 UTC
+    const localEnd = new Date(now);
+    localEnd.setUTCHours(11,0,0,0);
 
-    const isActive = utcHour >= start && utcHour < end;
+    const timeOpts = { hour:'2-digit', minute:'2-digit' };
+    const startStr = localStart.toLocaleTimeString([], timeOpts);
+    const endStr = localEnd.toLocaleTimeString([], timeOpts);
 
-    if(!isActive){
-      banner.style.display = 'none';
-      return;
-    }
+    const utcMs = now.getTime();
+    const startMs = localStart.getTime();
+    const endMs = localEnd.getTime();
 
-    banner.style.display = 'block';
+    const isActive = utcMs >= startMs && utcMs < endMs;
 
-    // переводим в локальное время пользователя
-    const localStart = new Date();
-    localStart.setUTCHours(start,0,0,0);
+    applyPromoTexts(startStr, endStr, isActive);
 
-    const localEnd = new Date();
-    localEnd.setUTCHours(end,0,0,0);
-
-    const opts = {hour:'2-digit', minute:'2-digit'};
-
-    const startStr = localStart.toLocaleTimeString([], opts);
-    const endStr = localEnd.toLocaleTimeString([], opts);
-
-    timeEl.textContent = `(${startStr} – ${endStr} local time)`;
-
-    // тексты по языку
-    if(lang === 'ru'){
-      text.innerHTML = `⚡ Скидка <b>72%</b> на энергию — действует сейчас`;
-    }
-    else if(lang === 'zh'){
-      text.innerHTML = `⚡ 能量 <b>72%</b> 折扣 — 现在生效`;
-    }
-    else if(lang === 'id'){
-      text.innerHTML = `⚡ Diskon energi <b>72%</b> — aktif sekarang`;
-    }
-    else if(lang === 'tr'){
-      text.innerHTML = `⚡ Enerjide <b>%72</b> indirim — şimdi aktif`;
-    }
-    else{
-      text.innerHTML = `⚡ <b>72% OFF</b> Energy — active now`;
-    }
+    banner.style.opacity = isActive ? '1' : '.92';
   }
 
-  updateBanner();
-  setInterval(updateBanner, 60_000);
-})();
-
+  updatePromo();
+  setInterval(updatePromo, 60_000);
+}
     
 
   </script>
