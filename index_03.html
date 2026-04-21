@@ -877,7 +877,6 @@
     min-width:0;
   }
 }
-    
 
   </style>
 </head>
@@ -1307,13 +1306,6 @@
   document.addEventListener('DOMContentLoaded', function(){
 const I18N = {
   ru:{
-    promo_badge:"⚡ СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ",
-promo_title:"Аренда энергии со <span>скидкой 72%</span>",
-promo_subtitle:"Сниженная цена доступна <b>только через портал</b>",
-promo_btn:"Перейти в портал",
-promo_time_active:"Ежедневно с {start} до {end} по вашему местному времени",
-promo_time_inactive:"Акция действует ежедневно с {start} до {end} по вашему местному времени",
-    
     onb_title: "Что это за сервис?",
     nav_portal: "Войти",
     nav_portal_cta: "Войти в портал",
@@ -1432,7 +1424,13 @@ promo_time_inactive:"Акция действует ежедневно с {start}
     pay_flow_1:"Отправьте TRX с того же кошелька, которому нужна энергия.",
     pay_flow_2:"Мы делегируем энергию на этот кошелёк (на 1 перевод).",
     pay_flow_3:"Сделайте перевод USDT/TRC20 — комиссия покроется энергией, затем энергия будет отозвана.",
-    nav_staking:"Стейкинг"
+    nav_staking:"Стейкинг",
+    promo_badge:"⚡ СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ",
+promo_title:"Аренда энергии со <span>скидкой 72%</span>",
+promo_subtitle:"Сниженная цена доступна <b>только через портал</b>",
+promo_btn:"Перейти в портал",
+promo_time_active:"Ежедневно с {start} до {end} по вашему местному времени",
+promo_time_inactive:"Акция действует ежедневно с {start} до {end} по вашему местному времени",
   },
 
   en:{
@@ -2102,19 +2100,66 @@ document.getElementById('k_usdSaveBlock').textContent = `≈ ${usdSave} USDT`;
       })();
     }
 
-    // Smooth scroll to "Что будет дальше" block
-(function(){
-  const btn = document.getElementById('nudgeToFlow');
-  if(!btn) return;
 
-  btn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const target = document.getElementById('whatYouGet');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
+function applyPromoTexts(startStr, endStr, isActive){
+  const banner = document.getElementById('promoBanner');
+  const badge = document.getElementById('promoBadge');
+  const title = document.getElementById('promoTitle');
+  const subtitle = document.getElementById('promoSubtitle');
+  const btn = document.getElementById('promoBtn');
+  const time = document.getElementById('promoTime');
 
+  if(!banner || !badge || !title || !subtitle || !btn || !time) return;
+
+  if (I18N[lang]?.promo_badge) badge.innerHTML = I18N[lang].promo_badge;
+  if (I18N[lang]?.promo_title) title.innerHTML = I18N[lang].promo_title;
+  if (I18N[lang]?.promo_subtitle) subtitle.innerHTML = I18N[lang].promo_subtitle;
+  if (I18N[lang]?.promo_btn) btn.textContent = I18N[lang].promo_btn;
+
+  const tpl = isActive
+    ? (I18N[lang]?.promo_time_active || '')
+    : (I18N[lang]?.promo_time_inactive || '');
+
+  time.textContent = tpl
+    .replace('{start}', startStr)
+    .replace('{end}', endStr);
+
+  banner.hidden = false;
+}
+
+function initPromoBanner(){
+  const banner = document.getElementById('promoBanner');
+  if(!banner) return;
+
+  function updatePromo(){
+    const now = new Date();
+
+    const localStart = new Date(now);
+    localStart.setUTCHours(3,0,0,0);
+
+    const localEnd = new Date(now);
+    localEnd.setUTCHours(11,0,0,0);
+
+    const timeOpts = { hour:'2-digit', minute:'2-digit' };
+    const startStr = localStart.toLocaleTimeString([], timeOpts);
+    const endStr = localEnd.toLocaleTimeString([], timeOpts);
+
+    const utcMs = now.getTime();
+    const startMs = localStart.getTime();
+    const endMs = localEnd.getTime();
+
+    const isActive = utcMs >= startMs && utcMs < endMs;
+
+    applyPromoTexts(startStr, endStr, isActive);
+
+    banner.style.opacity = isActive ? '1' : '.92';
+  }
+
+  updatePromo();
+  setInterval(updatePromo, 60_000);
+}
+
+    
 
     // === Onboarding popup (simple education flow) ===
     (function(){
@@ -2278,13 +2323,12 @@ function bindLangSelect(){
 
 
     // Init
-// Init
 bindLangSelect();
 setActiveLang();
 applyText();
 compute();
 initPromoBanner();
-    
+
 // 👉 стартуем счётчик энергии
 initEnergy();
 scheduleNextTick();
@@ -2360,67 +2404,6 @@ document.getElementById('y').textContent = new Date().getFullYear();
     });
   });
 })();
-
-function initPromoBanner(){
-  const banner = document.getElementById('promoBanner');
-  if(!banner) return;
-
-  function updatePromo(){
-    const now = new Date();
-
-    const localStart = new Date(now);
-    localStart.setUTCHours(3,0,0,0);
-
-    const localEnd = new Date(now);
-    localEnd.setUTCHours(11,0,0,0);
-
-    const timeOpts = { hour:'2-digit', minute:'2-digit' };
-    const startStr = localStart.toLocaleTimeString([], timeOpts);
-    const endStr = localEnd.toLocaleTimeString([], timeOpts);
-
-    const utcMs = now.getTime();
-    const startMs = localStart.getTime();
-    const endMs = localEnd.getTime();
-
-    const isActive = utcMs >= startMs && utcMs < endMs;
-
-    applyPromoTexts(startStr, endStr, isActive);
-
-    banner.style.opacity = isActive ? '1' : '.92';
-  }
-
-  updatePromo();
-  setInterval(updatePromo, 60_000);
-}
-    
-function applyPromoTexts(startStr, endStr, isActive){
-  const banner = document.getElementById('promoBanner');
-  const badge = document.getElementById('promoBadge');
-  const title = document.getElementById('promoTitle');
-  const subtitle = document.getElementById('promoSubtitle');
-  const btn = document.getElementById('promoBtn');
-  const time = document.getElementById('promoTime');
-
-  if(!banner || !badge || !title || !subtitle || !btn || !time) return;
-
-  if (I18N[lang]?.promo_badge) badge.innerHTML = I18N[lang].promo_badge;
-  if (I18N[lang]?.promo_title) title.innerHTML = I18N[lang].promo_title;
-  if (I18N[lang]?.promo_subtitle) subtitle.innerHTML = I18N[lang].promo_subtitle;
-  if (I18N[lang]?.promo_btn) btn.textContent = I18N[lang].promo_btn;
-
-  const tpl = isActive
-    ? (I18N[lang]?.promo_time_active || '')
-    : (I18N[lang]?.promo_time_inactive || '');
-
-  time.textContent = tpl
-    .replace('{start}', startStr)
-    .replace('{end}', endStr);
-
-  banner.hidden = false;
-}
-
-
-    
 
   </script>
 <!-- перед </body> -->
