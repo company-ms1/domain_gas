@@ -784,6 +784,26 @@
     </div>
   </header>
 
+
+  <div id="promoBanner" style="
+  background: linear-gradient(90deg,#16c784,#4ade80);
+  color:#001b1b;
+  text-align:center;
+  padding:12px 10px;
+  font-weight:900;
+  font-size:14px;
+  letter-spacing:.2px;
+  box-shadow:0 6px 20px rgba(22,199,132,.25);
+  position:sticky;
+  top:64px;
+  z-index:40;
+">
+  ⚡ <span id="promoText">
+    72% OFF — Energy discount active now!
+  </span>
+  <span id="promoTime" style="margin-left:6px; font-weight:700;"></span>
+</div>
+
   <main class="wrap" id="top">
     <div style="margin-top:10px">
       <h1 class="title reveal" data-i18n="title">Аренда энергии TRON</h1>
@@ -2151,6 +2171,69 @@ document.getElementById('y').textContent = new Date().getFullYear();
     });
   });
 })();
+
+    (function(){
+  const banner = document.getElementById('promoBanner');
+  const text = document.getElementById('promoText');
+  const timeEl = document.getElementById('promoTime');
+
+  if(!banner) return;
+
+  function updateBanner(){
+    const now = new Date();
+
+    // текущее UTC время
+    const utcHour = now.getUTCHours();
+
+    const start = 3;   // 03:00 UTC
+    const end = 11;    // 11:00 UTC
+
+    const isActive = utcHour >= start && utcHour < end;
+
+    if(!isActive){
+      banner.style.display = 'none';
+      return;
+    }
+
+    banner.style.display = 'block';
+
+    // переводим в локальное время пользователя
+    const localStart = new Date();
+    localStart.setUTCHours(start,0,0,0);
+
+    const localEnd = new Date();
+    localEnd.setUTCHours(end,0,0,0);
+
+    const opts = {hour:'2-digit', minute:'2-digit'};
+
+    const startStr = localStart.toLocaleTimeString([], opts);
+    const endStr = localEnd.toLocaleTimeString([], opts);
+
+    timeEl.textContent = `(${startStr} – ${endStr} local time)`;
+
+    // тексты по языку
+    if(lang === 'ru'){
+      text.innerHTML = `⚡ Скидка <b>72%</b> на энергию — действует сейчас`;
+    }
+    else if(lang === 'zh'){
+      text.innerHTML = `⚡ 能量 <b>72%</b> 折扣 — 现在生效`;
+    }
+    else if(lang === 'id'){
+      text.innerHTML = `⚡ Diskon energi <b>72%</b> — aktif sekarang`;
+    }
+    else if(lang === 'tr'){
+      text.innerHTML = `⚡ Enerjide <b>%72</b> indirim — şimdi aktif`;
+    }
+    else{
+      text.innerHTML = `⚡ <b>72% OFF</b> Energy — active now`;
+    }
+  }
+
+  updateBanner();
+  setInterval(updateBanner, 60_000);
+})();
+
+    
 
   </script>
 <!-- перед </body> -->
