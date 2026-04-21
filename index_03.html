@@ -1897,7 +1897,18 @@ document.getElementById('k_usdSaveBlock').textContent = `≈ ${usdSave} USDT`;
       })();
     }
 
+    // Smooth scroll to "Что будет дальше" block
+(function(){
+  const btn = document.getElementById('nudgeToFlow');
+  if(!btn) return;
 
+  btn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const target = document.getElementById('whatYouGet');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 
 
     // === Onboarding popup (simple education flow) ===
@@ -2119,7 +2130,7 @@ document.getElementById('y').textContent = new Date().getFullYear();
 })();
 
 
-
+  });
 
 (function(){
   const tgUrlWeb = "https://t.me/saving_trx_bot";
