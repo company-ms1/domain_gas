@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GasFree4you Partner Program — Earn 8% Forever</title>
+  <meta name="description" content="Join the GasFree4you Partner Program. Help your audience reduce TRON USDT transfer fees and earn 8% from their spending forever." />
+
+  <style>
+    :root{
+      --bg:#0f1220;
+      --card:#171a2b;
+      --card2:#101327;
+      --txt:#e6e8ee;
+      --muted:#8b90a7;
+      --accent:#2b6af7;
+      --ok:#1fbf75;
+      --warn:#e0a800;
+      --hair:#2a2d44;
+      --glass:rgba(255,255,255,.06);
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(900px 420px at 12% -10%, rgba(43,106,247,.26), transparent 60%),
+        radial-gradient(800px 420px at 88% 8%, rgba(31,191,117,.16), transparent 55%),
+        radial-gradient(900px 520px at 50% 110%, rgba(224,168,0,.10), transparent 60%),
+        var(--bg);
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(16px);
+      background:rgba(15,18,32,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:950;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:36px;height:36px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--accent),#7aa3ff);
+      box-shadow:0 12px 32px rgba(43,106,247,.35);
+    }
+    .navlinks{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:14px;font-weight:700}
+    .navlinks a:hover{color:var(--txt)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:44px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:900;
+      cursor:pointer;
+      transition:transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),#6d95ff);
+      box-shadow:0 14px 34px rgba(43,106,247,.32);
+      color:white;
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+      border-color:var(--hair);
+      color:var(--txt);
+    }
+    .btn-secondary:hover{border-color:rgba(43,106,247,.7);box-shadow:0 12px 28px rgba(43,106,247,.15)}
+
+    .hero{
+      padding:76px 0 44px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:32px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border:1px solid rgba(31,191,117,.5);
+      background:rgba(31,191,117,.10);
+      color:var(--ok);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+    h1{
+      margin:0;
+      max-width:760px;
+      font-size:clamp(38px,6vw,68px);
+      line-height:.98;
+      letter-spacing:-2.1px;
+      font-weight:1000;
+    }
+    .grad{
+      background:linear-gradient(90deg,#fff,#9fb8ff 50%,#6ef0aa);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .lead{
+      margin:22px 0 0;
+      max-width:660px;
+      color:var(--muted);
+      font-size:clamp(17px,2.2vw,21px);
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .trustline{margin-top:16px;color:var(--muted);font-size:13px}
+    .trustline b{color:var(--txt)}
+
+    .hero-card{
+      position:relative;
+      border:1px solid rgba(43,106,247,.38);
+      border-radius:26px;
+      padding:22px;
+      background:
+        radial-gradient(420px 220px at 25% 0%, rgba(43,106,247,.22), transparent 65%),
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+      box-shadow:0 26px 80px rgba(0,0,0,.32);
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;inset:-2px;
+      background:linear-gradient(120deg, transparent, rgba(43,106,247,.22), transparent);
+      pointer-events:none;
+    }
+    .dash-head{display:flex;justify-content:space-between;align-items:center;gap:12px;position:relative}
+    .dash-title{font-weight:950;font-size:18px}
+    .live-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(31,191,117,.12);
+      border:1px solid rgba(31,191,117,.45);
+      color:var(--ok);
+      font-size:12px;font-weight:950;
+    }
+    .live-dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 6px rgba(31,191,117,.1)}
+
+    .metric-main{
+      margin-top:22px;
+      padding:18px;
+      border-radius:20px;
+      background:#0e1120;
+      border:1px solid var(--hair);
+      position:relative;
+    }
+    .metric-label{color:var(--muted);font-size:13px;font-weight:800}
+    .metric-value{font-size:48px;line-height:1;font-weight:1000;margin-top:8px;color:var(--ok)}
+    .metric-value small{font-size:16px;color:var(--muted)}
+    .metric-note{margin-top:8px;color:var(--muted);font-size:13px}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;position:relative}
+    .mini{
+      padding:14px;border-radius:16px;background:#101327;border:1px solid var(--hair);
+    }
+    .mini .k{font-size:12px;color:var(--muted);font-weight:800}
+    .mini .v{margin-top:4px;font-size:20px;font-weight:950}
+    .mini.ok .v{color:var(--ok)}
+    .mini.warn .v{color:var(--warn)}
+
+    .section{padding:46px 0}
+    .section-head{max-width:720px;margin-bottom:22px}
+    .section-kicker{color:var(--ok);font-size:13px;font-weight:950;text-transform:uppercase;letter-spacing:.13em;margin-bottom:8px}
+    h2{margin:0;font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-1px}
+    .section p{color:var(--muted)}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{
+      border:1px solid var(--hair);
+      border-radius:22px;
+      padding:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+      box-shadow:0 12px 42px rgba(0,0,0,.20);
+    }
+    .icon{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background:#101327;
+      border:1px solid var(--hair);
+      margin-bottom:14px;
+      font-size:21px;
+    }
+    .card h3{margin:0 0 8px;font-size:19px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    .how{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .steps{display:grid;gap:12px}
+    .step{
+      display:grid;
+      grid-template-columns:44px 1fr;
+      gap:12px;
+      padding:16px;
+      border:1px solid var(--hair);
+      border-radius:18px;
+      background:#101327;
+    }
+    .num{
+      width:44px;height:44px;border-radius:14px;
+      display:grid;place-items:center;
+      background:rgba(43,106,247,.14);
+      border:1px solid rgba(43,106,247,.4);
+      color:#9fb8ff;
+      font-weight:1000;
+    }
+    .step b{display:block;margin-bottom:4px}
+    .step span{color:var(--muted);font-size:14px}
+
+    .quote-card{
+      border:1px solid rgba(31,191,117,.35);
+      border-radius:24px;
+      padding:24px;
+      background:
+        radial-gradient(420px 180px at 20% 0%, rgba(31,191,117,.14), transparent 65%),
+        #101327;
+    }
+    .quote-card .big{font-size:30px;font-weight:1000;line-height:1.12;letter-spacing:-.6px}
+    .quote-card p{font-size:15px}
+
+    .terms{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+    .term{
+      border:1px solid var(--hair);
+      border-radius:18px;
+      padding:16px;
+      background:#101327;
+    }
+    .term .k{font-size:12px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+    .term .v{margin-top:7px;font-size:22px;font-weight:1000}
+    .term .v.ok{color:var(--ok)}
+
+    .cta{
+      margin:36px 0 54px;
+      border:1px solid rgba(43,106,247,.45);
+      border-radius:30px;
+      padding:30px;
+      background:
+        radial-gradient(700px 260px at 10% 0%, rgba(43,106,247,.24), transparent 70%),
+        radial-gradient(700px 260px at 90% 100%, rgba(31,191,117,.13), transparent 70%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:center;
+    }
+    .cta h2{font-size:clamp(28px,4vw,46px)}
+    .cta p{margin:12px 0 0;color:var(--muted);max-width:680px}
+
+    .support{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .support a{color:#9fb8ff;font-weight:800}
+
+    footer{padding:24px 0 38px;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+
+    @media(max-width:900px){
+      .hero-grid,.how,.cta{grid-template-columns:1fr}
+      .cta{align-items:start}
+      .cards{grid-template-columns:1fr}
+      .terms{grid-template-columns:1fr 1fr}
+      .navlinks{display:none}
+    }
+    @media(max-width:560px){
+      .hero{padding-top:46px}
+      .hero-actions .btn{width:100%}
+      .mini-grid,.terms{grid-template-columns:1fr}
+      .metric-value{font-size:40px}
+      .cta{padding:22px;border-radius:24px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="https://gasfree4you.com/" aria-label="GasFree4you home">
+        <span class="logo">⚡</span>
+        <span>GasFree4you</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#benefits">Benefits</a>
+        <a href="#how">How it works</a>
+        <a href="#terms">Terms</a>
+      </nav>
+
+      <a class="btn btn-secondary" href="https://user.gasfree4you.com/">Open portal</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">🤝 Partner Program · 8% forever</div>
+          <h1>Help your audience send USDT cheaper. <span class="grad">Earn passive income.</span></h1>
+          <p class="lead">
+            Share GasFree4you with people who use USDT on TRON. They save on network fees, and you earn <b>8% from all their spending forever</b>.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://user.gasfree4you.com/">Start earning</a>
+            <a class="btn btn-secondary" href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">Talk to support</a>
+          </div>
+
+          <div class="trustline">
+            Simple idea: <b>shared once → helped once → earn every time they use the portal.</b>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Partner earnings preview">
+          <div class="dash-head">
+            <div class="dash-title">Partner dashboard</div>
+            <div class="live-badge"><span class="live-dot"></span> Active</div>
+          </div>
+
+          <div class="metric-main">
+            <div class="metric-label">Your reward rate</div>
+            <div class="metric-value">8<small>% forever</small></div>
+            <div class="metric-note">From every successful Energy order made by users you invited.</div>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini ok">
+              <div class="k">Minimum payout</div>
+              <div class="v">10 TRX</div>
+            </div>
+            <div class="mini warn">
+              <div class="k">Payout speed</div>
+              <div class="v">10+ min</div>
+            </div>
+            <div class="mini">
+              <div class="k">Payout wallet</div>
+              <div class="v">TRON</div>
+            </div>
+            <div class="mini">
+              <div class="k">Income type</div>
+              <div class="v">Passive</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="benefits">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">Why it works</div>
+          <h2>Your audience already has the problem. You give them the solution.</h2>
+          <p>
+            TRON users often need TRX to pay USDT transfer fees. GasFree4you helps them rent Energy instead of burning extra TRX.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">💚</div>
+            <h3>Help people save</h3>
+            <p>Recommend a practical tool that reduces USDT TRC20 transfer costs for non-custodial wallet users.</p>
+          </div>
+          <div class="card">
+            <div class="icon">♾️</div>
+            <h3>Earn forever</h3>
+            <p>Once a user registers through your link, you earn 8% from their spending on the portal forever.</p>
+          </div>
+          <div class="card">
+            <div class="icon">⚡</div>
+            <h3>No complex setup</h3>
+            <p>You get a personal referral link. Share it in posts, videos, Telegram channels, communities or private chats.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap how">
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <b>Get your personal link</b>
+              <span>Open the GasFree4you portal and copy your referral link from the Partner section.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <b>Share it with your audience</b>
+              <span>Explain how Energy helps reduce USDT TRON transfer fees. You are not just advertising — you are helping.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <b>Earn from every order</b>
+              <span>When invited users spend on the portal, your reward is calculated automatically.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <div>
+              <b>Withdraw to your TRON wallet</b>
+              <span>Request payout from 10 TRX. Payouts are sent to your wallet from 10 minutes after request.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <div class="section-kicker">Positioning</div>
+          <div class="big">Share once. Help users save. Keep earning when they come back.</div>
+          <p>
+            This is not a one-time promo. It is a simple long-term partner model for bloggers, community owners, OTC desks, support chats and anyone with a TRON/USDT audience.
+          </p>
+          <div class="support">
+            <span>Personal manager:</span>
+            <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a>
+            <span>·</span>
+            <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">Telegram support</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="terms">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-kicker">Program terms</div>
+          <h2>Clear conditions. Simple payouts.</h2>
+        </div>
+
+        <div class="terms">
+          <div class="term">
+            <div class="k">Reward</div>
+            <div class="v ok">8%</div>
+          </div>
+          <div class="term">
+            <div class="k">Duration</div>
+            <div class="v">Forever</div>
+          </div>
+          <div class="term">
+            <div class="k">Minimum payout</div>
+            <div class="v">10 TRX</div>
+          </div>
+          <div class="term">
+            <div class="k">Payout time</div>
+            <div class="v">from 10 min</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Ready to turn your audience into passive income?</h2>
+          <p>
+            Create your partner account, share your link and start earning from people who need cheaper USDT transfers on TRON.
+          </p>
+        </div>
+        <div style="display:grid;gap:10px">
+          <a class="btn btn-primary" href="https://user.gasfree4you.com/">Join Partner Program</a>
+          <a class="btn btn-secondary" href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">Contact support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © GasFree4you · TRON Energy rental partner program · Support: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a>
+    </div>
+  </footer>
+</body>
+</html>
