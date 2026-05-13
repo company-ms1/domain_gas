@@ -1,9 +1,10 @@
 {
   "rewrites": [
-      {
-      "source": "/landing",
-      "destination": "/landing.html"
-    },
+{
+  "source": "/landing",
+  "has": [{ "type": "host", "value": "gasfree4you.com" }],
+  "destination": "/landing.html"
+},
     {
       "source": "/",
       "has": [{ "type": "host", "value": "id.gasfree4you.com" }],
