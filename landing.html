@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>TRON Network Fee Helper for USDT Transfers</title>
+  <meta name="description" content="Check TRON network resource options for USDT TRC20 transfers. Non-custodial tool. No private keys required." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root {
+      --bg: #07101f;
+      --card: #101b2e;
+      --card2: #13243a;
+      --text: #f4f7fb;
+      --muted: #aab8ca;
+      --green: #32e69b;
+      --green2: #22c783;
+      --line: rgba(255,255,255,.12);
+      --soft: rgba(50,230,155,.12);
+      --white: #ffffff;
+      --dark: #0b1526;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(50,230,155,.16), transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(67,137,255,.13), transparent 35%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6cf7d2, #31e191);
+      display: grid;
+      place-items: center;
+      color: #073225;
+      font-weight: 900;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 36px;
+      align-items: center;
+      padding: 34px 0 40px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.04);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: .98;
+      letter-spacing: -2.5px;
+      margin: 0 0 22px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .sub {
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.45;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 26px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 26px;
+      border-radius: 15px;
+      font-size: 17px;
+      font-weight: 800;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color: #062319;
+      box-shadow: 0 18px 40px rgba(50,230,155,.22);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,.04);
+    }
+
+    .trust {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 620px;
+    }
+
+    .phone {
+      background: linear-gradient(180deg, #f9fbff, #edf5ff);
+      border-radius: 38px;
+      padding: 16px;
+      color: var(--dark);
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.35);
+    }
+
+    .screen {
+      border-radius: 28px;
+      background: #fff;
+      padding: 24px;
+      min-height: 540px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+      font-weight: 800;
+    }
+
+    .input-card {
+      border: 1px solid #e0e7f0;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .label {
+      color: #68758a;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .input-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .coin {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      background: #f1f6fb;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .info-box {
+      margin-top: 22px;
+      background: #e9fbf3;
+      color: #10291f;
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid #c8f0dd;
+    }
+
+    .info-title {
+      font-weight: 900;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .small {
+      color: #486054;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .mock-btn {
+      margin-top: 28px;
+      height: 54px;
+      border-radius: 16px;
+      background: #e9f2ee;
+      color: #789287;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 24px 0 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--soft);
+      color: var(--green);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .explain, .notice {
+      background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      margin-bottom: 28px;
+    }
+
+    .explain h2, .notice h2 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -1px;
+    }
+
+    .explain p, .notice p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 0 0 16px;
+      max-width: 900px;
+    }
+
+    .notice ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(0,0,0,.12);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .num {
+      color: var(--green);
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .bottom-cta {
+      text-align: center;
+      padding: 38px 22px 54px;
+    }
+
+    .bottom-cta h2 {
+      font-size: clamp(30px, 5vw, 50px);
+      margin: 0 0 14px;
+      letter-spacing: -1.5px;
+    }
+
+    .bottom-cta p {
+      color: var(--muted);
+      margin: 0 auto 26px;
+      font-size: 18px;
+      max-width: 680px;
+      line-height: 1.55;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 0;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      line-height: 1.5;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 18px;
+      }
+
+      .sections,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .phone {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      .screen {
+        min-height: auto;
+      }
+
+      header {
+        align-items: flex-start;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="https://gasfree4you.com/">
+        <div class="logo">⚡</div>
+        <div>
+          GasFree4you
+          <div style="font-size:13px;color:#aab8ca;font-weight:600;">
+            TRON network resource tool
+          </div>
+        </div>
+      </a>
+
+      <div class="nav">
+        <a href="#how-it-works">How it works</a>
+        <a href="#important">Important information</a>
+        <a href="https://gasfree4you.com/legal.html">Terms</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="badge">For USDT transfers on TRON / TRC20</div>
+
+          <h1>
+            Need <span>TRX</span><br />
+            to send <span>USDT?</span>
+          </h1>
+
+          <p class="sub">
+            Check TRON network resource options before sending USDT.
+            GasFree4you helps users understand and prepare for TRON transfer fees.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-main" href="https://user.gasfree4you.com/" onclick="trackStart()">
+              Check Fee Options →
+            </a>
+
+            <a class="btn btn-secondary" href="#how-it-works">
+              Learn how it works
+            </a>
+          </div>
+
+          <div class="trust">
+            Non-custodial service. We do not ask for your seed phrase, private key,
+            or wallet password.
+          </div>
+        </div>
+
+        <div class="phone" aria-label="TRON fee example">
+          <div class="screen">
+            <div class="screen-top">
+              <span>Send USDT</span>
+              <span>?</span>
+            </div>
+
+            <div class="input-card">
+              <div class="label">Amount</div>
+              <div class="input-row">
+                <span>100</span>
+                <span class="coin">₮ USDT</span>
+              </div>
+            </div>
+
+            <div class="input-card">
+              <div class="label">Network</div>
+              <div class="input-row" style="font-size:18px;">
+                <span>TRON</span>
+                <span style="color:#68758a;">TRC20</span>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-title">Network resources may be required</div>
+              <div class="small">
+                TRON transfers may require TRX, Energy, or Bandwidth.
+                Check your options before sending.
+              </div>
+            </div>
+
+            <div class="mock-btn">Continue</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sections">
+        <div class="card">
+          <div class="card-icon">1</div>
+          <h3>Check the transfer</h3>
+          <p>Enter the recipient wallet and review the transfer type.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">2</div>
+          <h3>Review fee options</h3>
+          <p>See what TRON network resources may be required.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">3</div>
+          <h3>Continue in portal</h3>
+          <p>Use the portal without sharing private keys or seed phrases.</p>
+        </div>
+      </section>
+
+      <section class="explain" id="how-it-works">
+        <h2>How TRON transfer fees work</h2>
+
+        <p>
+          USDT on TRON is a TRC20 token. Sending it requires TRON network resources,
+          such as Energy and Bandwidth. If a wallet does not have enough resources,
+          the network may use TRX to cover the transaction cost.
+        </p>
+
+        <p>
+          GasFree4you provides temporary TRON Energy delegation for supported transfers.
+          This is a network resource service, not an exchange, investment product,
+          wallet provider, or custody service.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">Step 1</div>
+            Choose or check a TRON USDT transfer.
+          </div>
+
+          <div class="step">
+            <div class="num">Step 2</div>
+            Estimate the required network resources.
+          </div>
+
+          <div class="step">
+            <div class="num">Step 3</div>
+            Continue to the portal if you want to use the service.
+          </div>
+        </div>
+      </section>
+
+      <section class="notice" id="important">
+        <h2>Important information</h2>
+
+        <p>
+          Please review this information before using the service.
+        </p>
+
+        <ul>
+          <li>GasFree4you does not provide investment, trading, exchange, lending, or brokerage services.</li>
+          <li>The service does not custody user funds and does not request private keys or seed phrases.</li>
+          <li>Network fees and required resources may vary depending on the wallet, recipient address, and TRON network conditions.</li>
+          <li>GasFree4you is not affiliated with TRON, Tether, Binance, Trust Wallet, Meta, or any wallet provider.</li>
+          <li>Users are responsible for checking whether this type of blockchain service is allowed in their jurisdiction.</li>
+        </ul>
+      </section>
+
+      <section class="bottom-cta">
+        <h2>Check your TRON fee options</h2>
+        <p>
+          Open the portal to estimate network resources for your USDT/TRC20 transfer.
+        </p>
+
+        <a class="btn btn-main" href="https://user.gasfree4you.com/" onclick="trackStart()">
+          Check Fee Options →
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        © GasFree4you. TRON network resource service.
+      </div>
+
+      <div>
+        <a href="https://gasfree4you.com/legal.html">Terms & Privacy</a>
+        ·
+        <a href="https://gasfree4you.com/">Main site</a>
+        ·
+        <a href="mailto:support@gasfree4you.com">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function trackStart() {
+      if (typeof fbq === "function") {
+        fbq("trackCustom", "CheckFeeOptions");
+      }
+    }
+  </script>
+</body>
+</html>
