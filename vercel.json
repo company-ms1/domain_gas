@@ -32,7 +32,7 @@
     },
     {
       "source": "/:path((?!api|_next|.*\\..*).*)",
-      "destination": "/index_03.html"
+      "destination": "/utilitu_landing.html"
     }
   ]
 }
