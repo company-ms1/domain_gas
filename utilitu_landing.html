@@ -3,93 +3,1040 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#080b18" />
+  <meta name="theme-color" content="#050812" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <title>GasFree — Check your TRON wallet before sending USDT TRC20</title>
   <meta name="description" content="Check if a TRON wallet is ready for USDT TRC20 transfers: TRX balance, Energy, Bandwidth and failed transaction risk. Rent Energy through a service wallet, top up TRX, monitor wallets and receive alerts." />
-  <meta name="keywords" content="USDT TRC20, TRON wallet check, TRON Energy rental, rent Energy TRON, TRX for USDT transfer, Bandwidth TRON, GasFree, wallet monitoring, USDT without TRX" />
   <link rel="canonical" href="https://gasfree4you.com/" />
-  <link rel="alternate" hreflang="en" href="https://gasfree4you.com/?lang=en" />
-  <link rel="alternate" hreflang="ru" href="https://gasfree4you.com/?lang=ru" />
-  <link rel="alternate" hreflang="es" href="https://gasfree4you.com/?lang=es" />
-  <link rel="alternate" hreflang="id" href="https://gasfree4you.com/?lang=id" />
-  <link rel="alternate" hreflang="x-default" href="https://gasfree4you.com/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gasfree4you.com/" />
-  <meta property="og:site_name" content="GasFree" />
-  <meta property="og:title" content="GasFree — Check your TRON wallet before sending USDT TRC20" />
-  <meta property="og:description" content="Check TRX, Energy and Bandwidth before sending USDT TRC20. Rent Energy through a service wallet, top up TRX and monitor TRON addresses." />
-  <meta property="og:image" content="https://gasfree4you.com/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GasFree — Check your TRON wallet before sending USDT TRC20" />
-  <meta name="twitter:description" content="Wallet readiness check, Energy rental, TRX top-up, monitoring and alerts for USDT TRC20 operations." />
-  <meta name="twitter:image" content="https://gasfree4you.com/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#080b18;--panel:#0e1328;--panel2:#111936;--text:#eef3ff;--muted:#aeb8d6;--muted2:#7783a5;--line:rgba(255,255,255,.1);--brand:#49e6c3;--brand2:#69a7ff;--warn:#ffcc66;--danger:#ff6b8a;--ok:#6df0a1;--shadow:0 24px 80px rgba(0,0,0,.38);--r:24px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top left,rgba(73,230,195,.16),transparent 36%),radial-gradient(circle at top right,rgba(105,167,255,.14),transparent 34%),var(--bg);color:var(--text)}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}.nav{position:sticky;top:0;z-index:40;background:rgba(8,11,24,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}.logo-mark{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#06101f;box-shadow:0 0 34px rgba(73,230,195,.28)}.nav-links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}.nav-links a:hover{color:var(--text)}.nav-actions{display:flex;align-items:center;gap:10px}.lang-select{height:40px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);padding:0 10px;outline:none}.lang-select option{background:#111936;color:#fff}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#071020;font-weight:850;border:0;box-shadow:0 14px 42px rgba(73,230,195,.16);cursor:pointer}.btn.secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line);box-shadow:none}.btn.small{min-height:40px;padding:0 14px;font-size:14px}.btn:hover{transform:translateY(-1px)}
-    section{padding:76px 0}.hero{padding:96px 0 78px}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--brand);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;background:rgba(73,230,195,.08);border:1px solid rgba(73,230,195,.18);padding:9px 12px;border-radius:999px}.dot{width:8px;height:8px;background:var(--brand);border-radius:50%;box-shadow:0 0 16px var(--brand)}h1{font-size:clamp(42px,6vw,74px);line-height:.98;margin:20px 0 18px;letter-spacing:-.055em}h2{font-size:clamp(30px,4vw,48px);line-height:1.06;margin:0 0 14px;letter-spacing:-.04em}h3{margin:0 0 10px;font-size:20px}.grad{background:linear-gradient(135deg,#fff,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}.lead,.section-sub{font-size:18px;line-height:1.65;color:var(--muted);margin:0}.checker{margin:28px 0 18px;display:flex;gap:10px;padding:8px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow)}.checker input{flex:1;min-width:0;border:0;outline:none;background:transparent;color:var(--text);font-size:15px;padding:0 14px}.checker input::placeholder{color:var(--muted2)}.trust-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:var(--muted);padding:9px 12px;border-radius:999px;font-size:13px}.product-card,.card,.mini-panel,.price-card,.final-cta{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.product-card{padding:18px}.mock{background:linear-gradient(180deg,#111a36,#0b1024);border-radius:20px;border:1px solid var(--line);overflow:hidden}.mock-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:20px;border-bottom:1px solid var(--line)}.mock-title{font-weight:900}.status{display:inline-flex;align-items:center;gap:8px;color:var(--warn);font-size:13px;background:rgba(255,204,102,.1);border:1px solid rgba(255,204,102,.22);border-radius:999px;padding:8px 10px;white-space:nowrap}.mock-body{padding:20px}.wallet-line,.row{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);border-bottom:1px solid var(--line);padding:12px 0}.wallet-line strong,.row strong{color:var(--text)}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}.metric{padding:14px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid var(--line)}.label{color:var(--muted2);font-size:12px}.value{font-weight:900;margin-top:6px}.warn{color:var(--warn)}.danger{color:var(--danger)}.ok{color:var(--ok)}.recommend{padding:16px;border-radius:18px;background:rgba(73,230,195,.08);border:1px solid rgba(73,230,195,.17)}.recommend p{color:var(--muted);line-height:1.55;margin:0}.mock-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.section-head{max-width:820px;margin:0 0 32px}.section-head.center{text-align:center;margin:0 auto 34px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{padding:24px}.card p,.step p,.faq p,.price-card .for{color:var(--muted);line-height:1.6}.icon{font-size:28px;margin-bottom:14px}.link{color:var(--brand);font-weight:850}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}.step{position:relative;padding:24px;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:20px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:rgba(73,230,195,.12);border:1px solid rgba(73,230,195,.18);color:var(--brand);font-weight:900;margin-bottom:14px}.feature-band{padding:34px;border-radius:30px;background:radial-gradient(circle at 10% 20%,rgba(73,230,195,.13),transparent 34%),linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.03));border:1px solid var(--line);box-shadow:var(--shadow)}.feature-grid{display:grid;grid-template-columns:1fr .72fr;gap:28px;align-items:center}.check-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}.check-item{display:flex;gap:9px;align-items:flex-start;color:var(--muted);padding:12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.check{color:var(--ok);font-weight:900}.mini-panel{padding:24px}.bar{height:10px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;width:72%;background:linear-gradient(90deg,var(--brand),var(--brand2));border-radius:999px}.clean{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}.clean li{display:flex;gap:9px;color:var(--muted);line-height:1.45}.ribbon{display:inline-flex;margin-bottom:12px;padding:8px 10px;border-radius:999px;background:rgba(105,167,255,.1);border:1px solid rgba(105,167,255,.2);color:#bcd5ff;font-size:13px;font-weight:800}.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.tile{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid var(--line);color:var(--muted);font-weight:750;text-align:center}.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.price-card{padding:26px}.price-card.featured{border-color:rgba(73,230,195,.36);box-shadow:0 24px 90px rgba(73,230,195,.09)}.price{font-size:34px;font-weight:950;margin:18px 0}.faq{display:grid;gap:12px;max-width:900px;margin:auto}details{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:18px;padding:18px 20px}summary{cursor:pointer;font-weight:850}.final-cta{text-align:center;padding:42px}.final-cta p{color:var(--muted);font-size:18px;line-height:1.6}.footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);background:rgba(0,0,0,.12)}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.seo-text{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
-    @media (max-width:980px){.nav-links{display:none}.hero-grid,.grid-2,.feature-grid{grid-template-columns:1fr}.grid-3,.grid-4,.steps,.pricing{grid-template-columns:1fr 1fr}.tiles{grid-template-columns:1fr 1fr}.hero{padding-top:70px}.product-card{max-width:680px}.checker{border-radius:24px;align-items:stretch;flex-direction:column;padding:10px}.checker input{min-height:46px}.checker .btn{width:100%}}
-    @media (max-width:640px){.wrap{width:min(100% - 24px,1160px)}.nav-inner{height:auto;min-height:68px;flex-wrap:wrap;padding:10px 0}.nav-actions{margin-left:auto}.nav-actions .secondary{display:none}.grid-3,.grid-4,.steps,.pricing,.check-list,.tiles{grid-template-columns:1fr}section{padding:54px 0}h1{font-size:42px}.metric-grid{grid-template-columns:1fr}.footer-inner{align-items:flex-start;flex-direction:column}.lang-select{height:38px;max-width:92px}.btn.small{padding:0 12px}}
+    :root {
+      --bg: #050812;
+      --bg2: #080d1a;
+      --surface: #0c1225;
+      --surface2: #101830;
+      --surface3: #141e38;
+      --text: #f0f4ff;
+      --muted: #8896b8;
+      --muted2: #5a6a8a;
+      --line: rgba(255,255,255,0.07);
+      --line2: rgba(255,255,255,0.12);
+      --brand: #3de8bf;
+      --brand2: #5fa8ff;
+      --brand3: #8b6bff;
+      --warn: #f5c542;
+      --danger: #ff5572;
+      --ok: #4ade80;
+      --r: 16px;
+      --r2: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(5,8,18,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: auto;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+      gap: 16px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 18px; letter-spacing: -0.02em;
+    }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      display: grid; place-items: center;
+      color: #040c1a; font-weight: 900; font-size: 15px;
+    }
+    .nav-links {
+      display: flex; gap: 4px; align-items: center;
+    }
+    .nav-links a {
+      padding: 8px 12px; border-radius: 8px;
+      font-size: 14px; color: var(--muted);
+      transition: color .15s, background .15s;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .lang-sel {
+      height: 36px; border-radius: 8px; border: 1px solid var(--line2);
+      background: rgba(255,255,255,0.04); color: var(--text);
+      padding: 0 10px; outline: none; font-size: 13px; cursor: pointer;
+    }
+    .lang-sel option { background: #0c1225; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 0 20px; height: 44px; border-radius: 10px;
+      font-weight: 700; font-size: 14px; border: none; cursor: pointer;
+      transition: transform .15s, opacity .15s;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-1px); opacity: 0.92; }
+    .btn:active { transform: translateY(0); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+      color: #050812;
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      border: 1px solid var(--line2);
+    }
+    .btn-sm { height: 38px; padding: 0 16px; font-size: 13px; }
+    .btn-lg { height: 52px; padding: 0 28px; font-size: 16px; border-radius: 12px; }
+
+    /* LAYOUT */
+    .wrap { max-width: 1200px; margin: auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--brand); background: rgba(61,232,191,0.08);
+      border: 1px solid rgba(61,232,191,0.2);
+      padding: 6px 12px; border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .dot-live {
+      width: 6px; height: 6px; background: var(--brand);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(61,232,191,0.2);
+    }
+    h1 { font-size: clamp(44px, 6vw, 72px); line-height: 1.0; letter-spacing: -0.04em; font-weight: 900; }
+    h2 { font-size: clamp(28px, 3.5vw, 46px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
+    h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+    .grad-text {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand2) 50%, var(--brand3) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .lead { font-size: 18px; line-height: 1.7; color: var(--muted); }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% -10%, rgba(61,232,191,0.12), transparent),
+        radial-gradient(ellipse 50% 60% at 80% -5%, rgba(95,168,255,0.1), transparent);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600;
+      color: var(--brand); background: rgba(61,232,191,0.08);
+      border: 1px solid rgba(61,232,191,0.2);
+      padding: 7px 14px; border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    /* CHECKER INPUT */
+    .checker-wrap {
+      margin: 32px 0 20px;
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: 14px;
+      padding: 8px;
+      display: flex; gap: 8px;
+    }
+    .checker-wrap input {
+      flex: 1; min-width: 0;
+      background: transparent; border: none; outline: none;
+      color: var(--text); font-size: 15px;
+      padding: 0 14px;
+      font-family: 'Inter', sans-serif;
+    }
+    .checker-wrap input::placeholder { color: var(--muted2); }
+    .trust-pills {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      padding: 6px 12px; border-radius: 999px;
+    }
+    .pill-check { color: var(--ok); font-size: 11px; }
+
+    /* MOCK PANEL */
+    .mock-card {
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: var(--r2);
+      overflow: hidden;
+    }
+    .mock-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface2);
+    }
+    .mock-title-wrap { }
+    .mock-title { font-size: 14px; font-weight: 700; }
+    .mock-sub { font-size: 12px; color: var(--muted2); margin-top: 2px; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600;
+      padding: 6px 10px; border-radius: 8px;
+      white-space: nowrap;
+    }
+    .status-warn {
+      color: var(--warn); background: rgba(245,197,66,0.1);
+      border: 1px solid rgba(245,197,66,0.2);
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+    }
+    .mock-body { padding: 20px; }
+    .mock-address {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: var(--muted);
+      background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+      border-radius: 8px; padding: 10px 14px;
+      margin-bottom: 16px;
+    }
+    .mock-address strong { color: var(--text); font-family: monospace; font-size: 13px; }
+    .metric-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 16px;
+    }
+    .metric {
+      background: var(--surface3);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .metric-label { font-size: 11px; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .metric-value { font-size: 18px; font-weight: 800; margin-top: 4px; letter-spacing: -0.02em; }
+    .v-warn { color: var(--warn); }
+    .v-danger { color: var(--danger); }
+    .v-ok { color: var(--ok); }
+    .v-neutral { color: var(--text); }
+    .rec-box {
+      background: rgba(61,232,191,0.05);
+      border: 1px solid rgba(61,232,191,0.15);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .rec-box h4 { font-size: 13px; font-weight: 700; color: var(--brand); margin-bottom: 6px; }
+    .rec-box p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .mock-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* CARDS */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: var(--r2);
+      padding: 28px;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-2px); }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: grid; place-items: center;
+      font-size: 20px; margin-bottom: 18px;
+    }
+    .icon-teal { background: rgba(61,232,191,0.1); border: 1px solid rgba(61,232,191,0.2); }
+    .icon-blue { background: rgba(95,168,255,0.1); border: 1px solid rgba(95,168,255,0.2); }
+    .icon-purple { background: rgba(139,107,255,0.1); border: 1px solid rgba(139,107,255,0.2); }
+    .icon-amber { background: rgba(245,197,66,0.1); border: 1px solid rgba(245,197,66,0.2); }
+    .card p { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: 10px; }
+    .card-link { display: inline-flex; align-items: center; gap: 4px; color: var(--brand); font-size: 14px; font-weight: 600; margin-top: 16px; transition: gap .15s; }
+    .card-link:hover { gap: 8px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .section-head { margin-bottom: 48px; }
+    .section-head.center { text-align: center; }
+    .section-head p { color: var(--muted); font-size: 17px; line-height: 1.7; margin-top: 14px; }
+
+    /* STEPS */
+    .steps-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .steps-row::before {
+      content: ''; position: absolute;
+      top: 24px; left: calc(12.5% + 16px); right: calc(12.5% + 16px);
+      height: 1px; background: linear-gradient(90deg, var(--brand), var(--brand2));
+      opacity: 0.3;
+    }
+    .step { padding: 24px; text-align: center; }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(61,232,191,0.15), rgba(95,168,255,0.15));
+      border: 1px solid rgba(61,232,191,0.25);
+      display: grid; place-items: center; margin: 0 auto 20px;
+      font-size: 18px; font-weight: 900; color: var(--brand);
+    }
+    .step h3 { font-size: 16px; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); }
+
+    /* FEATURE BAND */
+    .feature-band {
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: 28px;
+      padding: 48px;
+      position: relative; overflow: hidden;
+    }
+    .feature-band::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      background: radial-gradient(ellipse at top right, rgba(95,168,255,0.07), transparent 60%);
+      pointer-events: none;
+    }
+    .feature-band-grid { display: grid; grid-template-columns: 1fr 0.8fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+    .check-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; color: var(--muted);
+      background: rgba(255,255,255,0.03); border: 1px solid var(--line);
+      border-radius: 8px; padding: 10px 12px;
+    }
+    .check-icon { color: var(--ok); font-size: 14px; font-weight: 700; }
+
+    /* READINESS MINI PANEL */
+    .mini-panel {
+      background: var(--surface2);
+      border: 1px solid var(--line2);
+      border-radius: 18px;
+      padding: 20px;
+    }
+    .mini-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      padding: 11px 0;
+    }
+    .mini-row:last-child { border-bottom: none; }
+    .mini-row strong { color: var(--text); font-weight: 600; }
+    .score-bar-wrap { padding: 4px 0 16px; }
+    .score-bar-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; color: var(--muted); }
+    .score-bar-label strong { color: var(--text); }
+    .score-bar {
+      height: 6px; background: rgba(255,255,255,0.08);
+      border-radius: 999px; overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%; width: 72%;
+      background: linear-gradient(90deg, var(--brand), var(--brand2));
+      border-radius: 999px;
+    }
+
+    /* SECURITY TILES */
+    .sec-tiles { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+    .sec-tile {
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: center;
+      font-size: 13px; font-weight: 600; color: var(--muted);
+      transition: border-color .2s, color .2s;
+    }
+    .sec-tile:hover { border-color: rgba(61,232,191,0.3); color: var(--text); }
+    .sec-tile-icon { font-size: 22px; margin-bottom: 8px; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: var(--r2);
+      padding: 28px;
+    }
+    .price-card.featured {
+      background: var(--surface2);
+      border-color: rgba(61,232,191,0.35);
+      position: relative;
+    }
+    .featured-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: #050812;
+      font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .price-name { font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+    .price-for { font-size: 13px; color: var(--muted2); }
+    .price-amount { font-size: 40px; font-weight: 900; letter-spacing: -0.04em; margin: 18px 0; }
+    .price-amount span { font-size: 16px; font-weight: 500; color: var(--muted); }
+    .price-features { list-style: none; display: grid; gap: 8px; margin-bottom: 24px; }
+    .price-features li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+    .price-features li .check-icon { font-size: 12px; }
+
+    /* FAQ */
+    .faq-list { display: grid; gap: 10px; max-width: 880px; margin: auto; }
+    details {
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: 14px;
+      padding: 0;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    details[open] { border-color: rgba(61,232,191,0.25); }
+    summary {
+      cursor: pointer; font-weight: 700; font-size: 15px;
+      padding: 18px 22px;
+      display: flex; justify-content: space-between; align-items: center;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+'; font-size: 20px; font-weight: 400;
+      color: var(--muted); transition: transform .2s;
+      flex-shrink: 0;
+    }
+    details[open] summary::after { content: '−'; }
+    details p {
+      font-size: 15px; color: var(--muted); line-height: 1.65;
+      padding: 0 22px 18px;
+    }
+
+    /* FINAL CTA */
+    .cta-block {
+      background: var(--surface);
+      border: 1px solid var(--line2);
+      border-radius: 28px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-block::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(61,232,191,0.09), transparent);
+      pointer-events: none;
+    }
+    .cta-block p { color: var(--muted); font-size: 18px; margin-top: 16px; line-height: 1.6; }
+    .cta-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0;
+      background: rgba(0,0,0,0.2);
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+      font-size: 14px; color: var(--muted);
+    }
+    .footer a:hover { color: var(--text); }
+
+    /* JOURNEY ROW */
+    .journey-tiles { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; }
+    .journey-tile {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 20px 12px; position: relative;
+    }
+    .journey-tile:not(:last-child)::after {
+      content: '→';
+      position: absolute; right: -6px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted2); font-size: 14px;
+    }
+    .journey-num {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(61,232,191,0.08); border: 1px solid rgba(61,232,191,0.18);
+      display: grid; place-items: center;
+      font-size: 13px; font-weight: 800; color: var(--brand);
+      margin-bottom: 12px;
+    }
+    .journey-tile p { font-size: 13px; color: var(--muted); font-weight: 600; line-height: 1.4; }
+
+    /* SEGMENTS */
+    .segment-card { background: var(--surface); border: 1px solid var(--line2); border-radius: var(--r2); padding: 24px; transition: border-color .2s, transform .2s; }
+    .segment-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
+    /* ALERTS FEATURE */
+    .alert-list { list-style: none; display: grid; gap: 8px; margin-top: 20px; }
+    .alert-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+
+    /* TAGS */
+    .tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .tag-blue { background: rgba(95,168,255,0.1); color: var(--brand2); border: 1px solid rgba(95,168,255,0.2); }
+    .tag-purple { background: rgba(139,107,255,0.1); color: var(--brand3); border: 1px solid rgba(139,107,255,0.2); }
+    .tag-teal { background: rgba(61,232,191,0.1); color: var(--brand); border: 1px solid rgba(61,232,191,0.2); }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .seo-text { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .hero-grid, .grid-2, .feature-band-grid { grid-template-columns: 1fr; }
+      .grid-3, .grid-4, .steps-row, .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .sec-tiles, .journey-tiles { grid-template-columns: 1fr 1fr; }
+      .hero { padding-top: 64px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      .grid-3, .grid-4, .steps-row, .pricing-grid, .sec-tiles, .journey-tiles { grid-template-columns: 1fr; }
+      .check-grid { grid-template-columns: 1fr; }
+      .steps-row::before { display: none; }
+      section { padding: 56px 0; }
+      .feature-band { padding: 28px 20px; }
+      .hero-badge { font-size: 12px; }
+      .nav-inner { padding: 0 16px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <header class="nav">
-    <div class="wrap nav-inner">
-      <a href="#top" class="logo" aria-label="GasFree home"><span class="logo-mark">G</span><span>GasFree</span></a>
+    <div class="nav-inner">
+      <a href="#top" class="logo" aria-label="GasFree home">
+        <span class="logo-mark">G</span>
+        <span>GasFree</span>
+      </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#check" data-i18n="nav.check">Check wallet</a><a href="#energy" data-i18n="nav.energy">Energy rental</a><a href="#monitoring" data-i18n="nav.monitoring">Monitoring</a><a href="#business" data-i18n="nav.business">For business</a><a href="#pricing" data-i18n="nav.pricing">Pricing</a><a href="#faq">FAQ</a>
+        <a href="#check" data-i18n="nav.check">Check wallet</a>
+        <a href="#energy" data-i18n="nav.energy">Energy rental</a>
+        <a href="#monitoring" data-i18n="nav.monitoring">Monitoring</a>
+        <a href="#business" data-i18n="nav.business">For business</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <div class="nav-actions">
-        <select id="langSelect" class="lang-select" aria-label="Language"><option value="en">EN</option><option value="ru">RU</option><option value="es">ES</option><option value="id">ID</option></select>
-        <a class="btn secondary small" href="https://user.gasfree4you.com/" rel="noopener" data-i18n="nav.signin">Sign in</a>
-        <a class="btn small" href="#check" data-i18n="nav.cta">Check wallet</a>
+        <select id="langSelect" class="lang-sel" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="es">ES</option>
+          <option value="id">ID</option>
+        </select>
+        <a class="btn btn-ghost btn-sm" href="https://user.gasfree4you.com/" rel="noopener" data-i18n="nav.signin">Sign in</a>
+        <a class="btn btn-primary btn-sm" href="#check" data-i18n="nav.cta">Check wallet</a>
       </div>
     </div>
   </header>
 
   <main id="top">
+
+    <!-- HERO -->
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span> <span data-i18n="hero.eyebrow">USDT TRC20 operations platform</span></div>
-          <h1 data-i18n-html="hero.title">USDT TRC20 transfers <span class="grad">without failed transactions, extra fees and manual checks</span></h1>
-          <p class="lead" data-i18n="hero.subtitle">Check if a TRON wallet is ready for a USDT transfer: TRX, Energy and Bandwidth. Rent Energy, top up TRX, monitor wallets and receive alerts in one service.</p>
-          <form class="checker" id="heroCheckForm"><input id="walletInput" inputmode="text" autocomplete="off" data-i18n-placeholder="hero.placeholder" placeholder="Enter TRON address: Txxxxxxxxxxxxxxxxxxxx" /><button class="btn" type="submit" data-i18n="hero.cta">Check wallet</button></form>
-          <div class="trust-row" aria-label="Trust signals"><span class="pill">✓ <b data-i18n="trust.nonCustodial">Non-custodial</b></span><span class="pill">✓ <span data-i18n="trust.noKeys">No private keys</span></span><span class="pill">✓ <span data-i18n="trust.publicOnly">Public address only</span></span><span class="pill">✓ <span data-i18n="trust.noFunds">No access to your funds</span></span></div>
+          <div class="hero-badge">
+            <span class="dot-live"></span>
+            <span data-i18n="hero.eyebrow">USDT TRC20 operations platform</span>
+          </div>
+          <h1 data-i18n-html="hero.title">USDT TRC20 transfers <span class="grad-text">without failed transactions, extra fees and manual checks</span></h1>
+          <p class="lead" style="margin-top:20px;" data-i18n="hero.subtitle">Check if a TRON wallet is ready for a USDT transfer: TRX, Energy and Bandwidth. Rent Energy, top up TRX, monitor wallets and receive alerts in one service.</p>
+          <form class="checker-wrap" id="heroCheckForm">
+            <input id="walletInput" inputmode="text" autocomplete="off"
+              data-i18n-placeholder="hero.placeholder"
+              placeholder="Enter TRON address: Txxxxxxxxxxxxxxxxxxxx" />
+            <button class="btn btn-primary" type="submit" data-i18n="hero.cta">Check wallet</button>
+          </form>
+          <div class="trust-pills">
+            <span class="pill"><span class="pill-check">✓</span> <span data-i18n="trust.nonCustodial">Non-custodial</span></span>
+            <span class="pill"><span class="pill-check">✓</span> <span data-i18n="trust.noKeys">No private keys</span></span>
+            <span class="pill"><span class="pill-check">✓</span> <span data-i18n="trust.publicOnly">Public address only</span></span>
+            <span class="pill"><span class="pill-check">✓</span> <span data-i18n="trust.noFunds">No access to funds</span></span>
+          </div>
         </div>
-        <aside class="product-card" aria-label="Wallet readiness mockup"><div class="mock"><div class="mock-top"><div><div class="mock-title" data-i18n="mock.title">Wallet Readiness Panel</div><div style="color:var(--muted2);font-size:13px;margin-top:4px;" data-i18n="mock.subtitle">Before sending USDT TRC20</div></div><div class="status"><span class="dot" style="background:var(--warn);box-shadow:0 0 16px var(--warn);"></span> <span data-i18n="mock.status">Needs Energy</span></div></div><div class="mock-body"><div class="wallet-line"><span data-i18n="mock.wallet">Wallet</span><strong id="mockWallet">TQ9x...8Lk2</strong></div><div class="metric-grid"><div class="metric"><div class="label" data-i18n="mock.usdt">USDT Balance</div><div class="value">4,250.00</div></div><div class="metric"><div class="label" data-i18n="mock.trx">TRX Balance</div><div class="value warn">0.12 TRX</div></div><div class="metric"><div class="label">Energy</div><div class="value danger" data-i18n="mock.low">Low</div></div><div class="metric"><div class="label">Bandwidth</div><div class="value ok">OK</div></div></div><div class="recommend"><h3 data-i18n="mock.recommended">Recommended action</h3><p data-i18n="mock.recommendedText">Rent 65,000 Energy and top up 0.345 TRX if the wallet needs bandwidth coverage.</p></div><div class="mock-actions"><a class="btn small" href="#energy" data-i18n="mock.fix">Fix before sending</a><a class="btn secondary small" href="#monitoring" data-i18n="mock.add">Add to monitoring</a></div></div></div></aside>
+
+        <!-- MOCK PANEL -->
+        <aside class="mock-card reveal" aria-label="Wallet readiness mockup">
+          <div class="mock-header">
+            <div class="mock-title-wrap">
+              <div class="mock-title" data-i18n="mock.title">Wallet Readiness Panel</div>
+              <div class="mock-sub" data-i18n="mock.subtitle">Before sending USDT TRC20</div>
+            </div>
+            <div class="status-badge status-warn">
+              <span class="status-dot"></span>
+              <span data-i18n="mock.status">Needs Energy</span>
+            </div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-address">
+              <span data-i18n="mock.wallet">Wallet</span>
+              <strong id="mockWallet">TQ9x...8Lk2</strong>
+            </div>
+            <div class="metric-grid">
+              <div class="metric">
+                <div class="metric-label" data-i18n="mock.usdt">USDT Balance</div>
+                <div class="metric-value v-neutral">4,250.00</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label" data-i18n="mock.trx">TRX Balance</div>
+                <div class="metric-value v-warn">0.12 TRX</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Energy</div>
+                <div class="metric-value v-danger" data-i18n="mock.low">Low</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Bandwidth</div>
+                <div class="metric-value v-ok">OK</div>
+              </div>
+            </div>
+            <div class="rec-box">
+              <h4 data-i18n="mock.recommended">Recommended action</h4>
+              <p data-i18n="mock.recommendedText">Rent 65,000 Energy and top up 0.345 TRX if the wallet needs bandwidth coverage.</p>
+            </div>
+            <div class="mock-actions">
+              <a class="btn btn-primary btn-sm" href="#energy" data-i18n="mock.fix">Fix before sending</a>
+              <a class="btn btn-ghost btn-sm" href="#monitoring" data-i18n="mock.add">Add to monitoring</a>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section id="check"><div class="wrap"><div class="section-head center"><h2 data-i18n="pain.title">Before sending USDT TRC20, make sure the wallet is ready</h2><p data-i18n="pain.subtitle">Most problems can be seen in advance: low TRX, no Energy, low Bandwidth or a wallet that needs attention.</p></div><div class="grid-3"><article class="card"><div class="icon">⛽</div><h3 data-i18n="pain.trxTitle">Not enough TRX?</h3><p data-i18n="pain.trxText">The transfer may fail or become more expensive. Check the balance in advance and top up the wallet if needed.</p></article><article class="card"><div class="icon">⚡</div><h3 data-i18n="pain.energyTitle">Not enough Energy?</h3><p data-i18n="pain.energyText">Rent Energy before sending and reduce USDT TRC20 transaction costs in suitable scenarios.</p></article><article class="card"><div class="icon">📊</div><h3 data-i18n="pain.walletsTitle">Many wallets?</h3><p data-i18n="pain.walletsText">Track balances, statuses and activity of all TRON addresses in one dashboard.</p></article></div></div></section>
+    <!-- PAIN POINTS -->
+    <section id="check" style="padding-top:0;">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <h2 data-i18n="pain.title">Before sending USDT TRC20, make sure the wallet is ready</h2>
+          <p data-i18n="pain.subtitle">Most problems can be seen in advance: low TRX, no Energy, low Bandwidth or a wallet that needs attention.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card-icon icon-amber">⛽</div>
+            <h3 data-i18n="pain.trxTitle">Not enough TRX?</h3>
+            <p data-i18n="pain.trxText">The transfer may fail or become more expensive. Check the balance in advance and top up the wallet if needed.</p>
+          </article>
+          <article class="card reveal" style="transition-delay:.1s">
+            <div class="card-icon icon-teal">⚡</div>
+            <h3 data-i18n="pain.energyTitle">Not enough Energy?</h3>
+            <p data-i18n="pain.energyText">Rent Energy before sending and reduce USDT TRC20 transaction costs in suitable scenarios.</p>
+          </article>
+          <article class="card reveal" style="transition-delay:.2s">
+            <div class="card-icon icon-blue">📊</div>
+            <h3 data-i18n="pain.walletsTitle">Many wallets?</h3>
+            <p data-i18n="pain.walletsText">Track balances, statuses and activity of all TRON addresses in one dashboard.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section id="business"><div class="wrap"><div class="section-head"><h2 data-i18n="segments.title">For one wallet, a team or an exchange business</h2><p data-i18n="segments.subtitle">Simple enough for private users. Deep enough for P2P, OTC, exchangers and teams working with many addresses.</p></div><div class="grid-4"><article class="card"><div class="icon">👤</div><h3 data-i18n="segments.privateTitle">Private users</h3><p data-i18n="segments.privateText">Check your wallet before a transfer, see if TRX and Energy are enough, and avoid extra costs or failed transactions.</p><a class="link" href="#top" data-i18n="segments.privateCta">Check my wallet →</a></article><article class="card"><div class="icon">🤝</div><h3 data-i18n="segments.p2pTitle">P2P and OTC traders</h3><p data-i18n="segments.p2pText">Quickly check working addresses, prepare wallets for deals and reduce delays during exchange operations.</p><a class="link" href="#energy" data-i18n="segments.p2pCta">Prepare address →</a></article><article class="card"><div class="icon">🏪</div><h3 data-i18n="segments.exchTitle">Exchangers and Telegram services</h3><p data-i18n="segments.exchText">Monitor balances, TRX, Energy, incoming and outgoing transfers, alerts and bulk checks for your operations team.</p><a class="link" href="#monitoring" data-i18n="segments.exchCta">View dashboard →</a></article><article class="card"><div class="icon">🏢</div><h3 data-i18n="segments.bizTitle">Businesses and payouts</h3><p data-i18n="segments.bizText">Control treasury wallets, get alerts and prepare addresses for regular USDT TRC20 payments in advance.</p><a class="link" href="#monitoring" data-i18n="segments.bizCta">Set up monitoring →</a></article></div></div></section>
+    <!-- FOR BUSINESS -->
+    <section id="business">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-label"><span class="dot-live"></span> <span data-i18n="segments.title">Use cases</span></div>
+          <h2 data-i18n="segments.title">For one wallet, a team or an exchange business</h2>
+          <p data-i18n="segments.subtitle">Simple enough for private users. Deep enough for P2P, OTC, exchangers and teams working with many addresses.</p>
+        </div>
+        <div class="grid-4">
+          <article class="segment-card reveal">
+            <div style="font-size:28px;margin-bottom:14px;">👤</div>
+            <h3 data-i18n="segments.privateTitle">Private users</h3>
+            <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-top:8px;" data-i18n="segments.privateText">Check your wallet before a transfer, see if TRX and Energy are enough, and avoid extra costs or failed transactions.</p>
+            <a class="card-link" href="#top" data-i18n="segments.privateCta">Check my wallet →</a>
+          </article>
+          <article class="segment-card reveal" style="transition-delay:.08s">
+            <div style="font-size:28px;margin-bottom:14px;">🤝</div>
+            <h3 data-i18n="segments.p2pTitle">P2P and OTC traders</h3>
+            <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-top:8px;" data-i18n="segments.p2pText">Quickly check working addresses, prepare wallets for deals and reduce delays during exchange operations.</p>
+            <a class="card-link" href="#energy" data-i18n="segments.p2pCta">Prepare address →</a>
+          </article>
+          <article class="segment-card reveal" style="transition-delay:.16s">
+            <div style="font-size:28px;margin-bottom:14px;">🏪</div>
+            <h3 data-i18n="segments.exchTitle">Exchangers and Telegram services</h3>
+            <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-top:8px;" data-i18n="segments.exchText">Monitor balances, TRX, Energy, incoming and outgoing transfers, alerts and bulk checks for your operations team.</p>
+            <a class="card-link" href="#monitoring" data-i18n="segments.exchCta">View dashboard →</a>
+          </article>
+          <article class="segment-card reveal" style="transition-delay:.24s">
+            <div style="font-size:28px;margin-bottom:14px;">🏢</div>
+            <h3 data-i18n="segments.bizTitle">Businesses and payouts</h3>
+            <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-top:8px;" data-i18n="segments.bizText">Control treasury wallets, get alerts and prepare addresses for regular USDT TRC20 payments in advance.</p>
+            <a class="card-link" href="#monitoring" data-i18n="segments.bizCta">Set up monitoring →</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap"><div class="section-head center"><h2 data-i18n="steps.title">From check to successful transfer in a few steps</h2></div><div class="steps"><article class="step"><h3 data-i18n="steps.oneTitle">Enter a TRON address</h3><p data-i18n="steps.oneText">The platform checks a public address. No private keys required.</p></article><article class="step"><h3 data-i18n="steps.twoTitle">Get readiness status</h3><p data-i18n="steps.twoText">See USDT, TRX, Energy, Bandwidth and failed transaction risk.</p></article><article class="step"><h3 data-i18n="steps.threeTitle">Fix the issue</h3><p data-i18n="steps.threeText">Rent Energy, top up TRX or add the wallet to monitoring.</p></article><article class="step"><h3 data-i18n="steps.fourTitle">Send USDT with more control</h3><p data-i18n="steps.fourText">The wallet is prepared, risks are visible and operations are under control.</p></article></div></div></section>
+    <!-- STEPS -->
+    <section>
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <h2 data-i18n="steps.title">From check to successful transfer in a few steps</h2>
+        </div>
+        <div class="steps-row">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <h3 data-i18n="steps.oneTitle">Enter a TRON address</h3>
+            <p data-i18n="steps.oneText">The platform checks a public address. No private keys required.</p>
+          </div>
+          <div class="step reveal" style="transition-delay:.1s">
+            <div class="step-num">2</div>
+            <h3 data-i18n="steps.twoTitle">Get readiness status</h3>
+            <p data-i18n="steps.twoText">See USDT, TRX, Energy, Bandwidth and failed transaction risk.</p>
+          </div>
+          <div class="step reveal" style="transition-delay:.2s">
+            <div class="step-num">3</div>
+            <h3 data-i18n="steps.threeTitle">Fix the issue</h3>
+            <p data-i18n="steps.threeText">Rent Energy, top up TRX or add the wallet to monitoring.</p>
+          </div>
+          <div class="step reveal" style="transition-delay:.3s">
+            <div class="step-num">4</div>
+            <h3 data-i18n="steps.fourTitle">Send USDT with more control</h3>
+            <p data-i18n="steps.fourText">The wallet is prepared, risks are visible and operations are under control.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap feature-band"><div class="feature-grid"><div><h2 data-i18n="readiness.title">Wallet Readiness Check for USDT TRC20</h2><p class="section-sub" data-i18n="readiness.subtitle">Know if a TRON wallet is ready for a USDT transfer before you press Send.</p><div class="check-list"><div class="check-item"><span class="check">✓</span> USDT balance</div><div class="check-item"><span class="check">✓</span> TRX balance</div><div class="check-item"><span class="check">✓</span> Energy status</div><div class="check-item"><span class="check">✓</span> Bandwidth status</div><div class="check-item"><span class="check">✓</span> Estimated transfer cost</div><div class="check-item"><span class="check">✓</span> Failed transfer risk</div><div class="check-item"><span class="check">✓</span> Recommended action</div><div class="check-item"><span class="check">✓</span> Public address only</div></div></div><div class="mini-panel"><div class="row"><span data-i18n="readiness.score">Readiness score</span><strong>72%</strong></div><div class="bar"><span></span></div><div style="height:14px"></div><div class="row"><span data-i18n="readiness.type">Transfer type</span><strong>USDT TRC20</strong></div><div class="row"><span data-i18n="readiness.risk">Risk</span><strong style="color:var(--warn)" data-i18n="readiness.needsAction">Needs action</strong></div><div class="row"><span data-i18n="readiness.next">Next step</span><strong data-i18n="readiness.rentEnergy">Rent Energy</strong></div><div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;"><a class="btn small" href="#top" data-i18n="readiness.cta">Check address</a><a class="btn secondary small" href="#faq" data-i18n="readiness.safe">How is it safe?</a></div><p style="color:var(--muted2);font-size:13px;line-height:1.5;margin:16px 0 0;" data-i18n="readiness.micro">We do not ask for seed phrase, private key or wallet access.</p></div></div></div></section>
+    <!-- READINESS FEATURE BAND -->
+    <section>
+      <div class="wrap">
+        <div class="feature-band reveal">
+          <div class="feature-band-grid">
+            <div>
+              <div class="section-label" style="margin-bottom:16px;"><span>Wallet check</span></div>
+              <h2 data-i18n="readiness.title">Wallet Readiness Check for USDT TRC20</h2>
+              <p style="color:var(--muted);font-size:16px;line-height:1.65;margin-top:12px;" data-i18n="readiness.subtitle">Know if a TRON wallet is ready for a USDT transfer before you press Send.</p>
+              <div class="check-grid">
+                <div class="check-item"><span class="check-icon">✓</span> USDT balance</div>
+                <div class="check-item"><span class="check-icon">✓</span> TRX balance</div>
+                <div class="check-item"><span class="check-icon">✓</span> Energy status</div>
+                <div class="check-item"><span class="check-icon">✓</span> Bandwidth status</div>
+                <div class="check-item"><span class="check-icon">✓</span> Estimated transfer cost</div>
+                <div class="check-item"><span class="check-icon">✓</span> Failed transfer risk</div>
+                <div class="check-item"><span class="check-icon">✓</span> Recommended action</div>
+                <div class="check-item"><span class="check-icon">✓</span> Public address only</div>
+              </div>
+            </div>
+            <div class="mini-panel">
+              <div class="score-bar-wrap">
+                <div class="score-bar-label"><span data-i18n="readiness.score">Readiness score</span><strong>72%</strong></div>
+                <div class="score-bar"><div class="score-bar-fill"></div></div>
+              </div>
+              <div class="mini-row"><span data-i18n="readiness.type">Transfer type</span><strong>USDT TRC20</strong></div>
+              <div class="mini-row"><span data-i18n="readiness.risk">Risk</span><strong style="color:var(--warn)" data-i18n="readiness.needsAction">Needs action</strong></div>
+              <div class="mini-row"><span data-i18n="readiness.next">Next step</span><strong data-i18n="readiness.rentEnergy">Rent Energy</strong></div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;">
+                <a class="btn btn-primary btn-sm" href="#top" data-i18n="readiness.cta">Check address</a>
+                <a class="btn btn-ghost btn-sm" href="#faq" data-i18n="readiness.safe">How is it safe?</a>
+              </div>
+              <p style="color:var(--muted2);font-size:12px;line-height:1.5;margin-top:14px;" data-i18n="readiness.micro">We do not ask for seed phrase, private key or wallet access.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section id="energy"><div class="wrap"><div class="grid-2"><article class="card"><div class="icon">⚡</div><h2 style="font-size:36px;" data-i18n="energy.title">Reduce USDT TRC20 fees with Energy</h2><p class="section-sub" data-i18n="energy.text">If a wallet has no Energy, a USDT TRC20 transfer can cost more. Rent Energy to the required TRON address and prepare the wallet before sending.</p><p class="section-sub" style="margin-top:14px;" data-i18n="energy.serviceWallet">Energy rental is available through the service wallet: the user calculates the order, sends TRX to the service address, and the service delegates Energy to the user's TRON address.</p><div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn old-energy-link" href="https://renttrx.vercel.app/" rel="noopener" data-i18n="energy.cta">Rent Energy through service wallet</a><a class="btn secondary" href="#top" data-i18n="energy.check">Check wallet first</a></div></article><article class="mini-panel"><span class="ribbon" data-i18n="energy.calc">Energy calculator</span><div class="row"><span data-i18n="energy.transferType">Transfer type</span><strong>USDT TRC20</strong></div><div class="row"><span data-i18n="energy.walletStatus">Wallet status</span><strong style="color:var(--danger)" data-i18n="energy.noEnergy">No Energy</strong></div><div class="row"><span data-i18n="energy.required">Required Energy</span><strong>~65,000</strong></div><div class="row"><span data-i18n="energy.action">Action</span><strong data-i18n="energy.rent">Rent Energy</strong></div><p style="color:var(--muted2);line-height:1.55;margin:18px 0 0;" data-i18n="energy.note">Energy can help reduce costs in suitable scenarios. We avoid fake guarantees and show the action before you pay.</p></article></div></div></section>
+    <!-- ENERGY + TRX -->
+    <section id="energy">
+      <div class="wrap">
+        <div class="grid-2">
+          <article class="card reveal">
+            <div class="card-icon icon-teal">⚡</div>
+            <div class="section-label" style="margin-bottom:14px;"><span data-i18n="energy.calc">Energy calculator</span></div>
+            <h2 style="font-size:32px;letter-spacing:-0.03em;" data-i18n="energy.title">Reduce USDT TRC20 fees with Energy</h2>
+            <p style="color:var(--muted);margin-top:14px;line-height:1.65;" data-i18n="energy.text">If a wallet has no Energy, a USDT TRC20 transfer can cost more. Rent Energy to the required TRON address and prepare the wallet before sending.</p>
+            <p style="color:var(--muted);margin-top:10px;line-height:1.65;" data-i18n="energy.serviceWallet">Energy rental is available through the service wallet: the user calculates the order, sends TRX to the service address, and the service delegates Energy to the user's TRON address.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;">
+              <a class="btn btn-primary old-energy-link" href="https://renttrx.vercel.app/" rel="noopener" data-i18n="energy.cta">Rent Energy through service wallet</a>
+              <a class="btn btn-ghost" href="#top" data-i18n="energy.check">Check wallet first</a>
+            </div>
+          </article>
+          <div class="mini-panel reveal" style="align-self:start;">
+            <div class="mini-row"><span data-i18n="energy.transferType">Transfer type</span><strong>USDT TRC20</strong></div>
+            <div class="mini-row"><span data-i18n="energy.walletStatus">Wallet status</span><strong style="color:var(--danger)" data-i18n="energy.noEnergy">No Energy</strong></div>
+            <div class="mini-row"><span data-i18n="energy.required">Required Energy</span><strong>~65,000</strong></div>
+            <div class="mini-row" style="border-bottom:none;"><span data-i18n="energy.action">Action</span><strong style="color:var(--brand)" data-i18n="energy.rent">Rent Energy</strong></div>
+            <p style="color:var(--muted2);font-size:13px;line-height:1.55;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);" data-i18n="energy.note">Energy can help reduce costs in suitable scenarios. We avoid fake guarantees and show the action before you pay.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap"><div class="grid-2"><article class="card"><div class="icon">⛽</div><h2 data-i18n="trx.title">Do not let a transfer fail because of low TRX</h2><p class="section-sub" data-i18n="trx.text">Some wallets are not ready for USDT TRC20 operations because they have no TRX for network resources. GasFree can show when a small TRX top-up may be needed.</p><a class="btn" style="margin-top:22px;" href="#top" data-i18n="trx.cta">Check TRX balance</a></article><article class="card"><div class="icon">🛡️</div><h2 data-i18n="notWallet.title">Not a wallet, not an exchange, not DeFi</h2><p class="section-sub" data-i18n="notWallet.text">GasFree is an operational layer for USDT on TRON. It works with public addresses, gives recommendations and helps monitor activity, but does not control user funds.</p></article></div></div></section>
+    <!-- TRX + NOT WALLET -->
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="grid-2">
+          <article class="card reveal">
+            <div class="card-icon icon-amber">⛽</div>
+            <h2 style="font-size:28px;letter-spacing:-0.03em;" data-i18n="trx.title">Do not let a transfer fail because of low TRX</h2>
+            <p style="color:var(--muted);margin-top:14px;line-height:1.65;" data-i18n="trx.text">Some wallets are not ready for USDT TRC20 operations because they have no TRX for network resources. GasFree can show when a small TRX top-up may be needed.</p>
+            <a class="btn btn-primary" style="margin-top:24px;" href="#top" data-i18n="trx.cta">Check TRX balance</a>
+          </article>
+          <article class="card reveal" style="transition-delay:.1s">
+            <div class="card-icon icon-purple">🛡️</div>
+            <h2 style="font-size:28px;letter-spacing:-0.03em;" data-i18n="notWallet.title">Not a wallet, not an exchange, not DeFi</h2>
+            <p style="color:var(--muted);margin-top:14px;line-height:1.65;" data-i18n="notWallet.text">GasFree is an operational layer for USDT on TRON. It works with public addresses, gives recommendations and helps monitor activity, but does not control user funds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section id="monitoring"><div class="wrap"><div class="section-head"><h2 data-i18n="monitoring.title">All TRON wallets under control</h2><p data-i18n="monitoring.subtitle">Add one address or upload a list of wallets to track balances, resources and activity in one dashboard.</p></div><div class="grid-3"><article class="card"><div class="icon">📥</div><h3 data-i18n="monitoring.uploadTitle">CSV upload</h3><p data-i18n="monitoring.uploadText">Load many addresses and check their status without manual copy-paste.</p></article><article class="card"><div class="icon">🏷️</div><h3 data-i18n="monitoring.labelsTitle">Labels and statuses</h3><p data-i18n="monitoring.labelsText">Use labels like Treasury, P2P, Client, Exchange and see statuses such as Ready, Needs TRX or Needs Energy.</p></article><article class="card"><div class="icon">📈</div><h3 data-i18n="monitoring.activityTitle">Recent activity</h3><p data-i18n="monitoring.activityText">Track incoming USDT, outgoing transfers, resource changes and wallets that need attention.</p></article></div></div></section>
+    <!-- MONITORING -->
+    <section id="monitoring">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-label"><span class="dot-live"></span> <span>Monitoring</span></div>
+          <h2 data-i18n="monitoring.title">All TRON wallets under control</h2>
+          <p data-i18n="monitoring.subtitle">Add one address or upload a list of wallets to track balances, resources and activity in one dashboard.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card-icon icon-blue">📥</div>
+            <h3 data-i18n="monitoring.uploadTitle">CSV upload</h3>
+            <p data-i18n="monitoring.uploadText">Load many addresses and check their status without manual copy-paste.</p>
+          </article>
+          <article class="card reveal" style="transition-delay:.1s">
+            <div class="card-icon icon-purple">🏷️</div>
+            <h3 data-i18n="monitoring.labelsTitle">Labels and statuses</h3>
+            <p data-i18n="monitoring.labelsText">Use labels like Treasury, P2P, Client, Exchange and see statuses such as Ready, Needs TRX or Needs Energy.</p>
+          </article>
+          <article class="card reveal" style="transition-delay:.2s">
+            <div class="card-icon icon-teal">📈</div>
+            <h3 data-i18n="monitoring.activityTitle">Recent activity</h3>
+            <p data-i18n="monitoring.activityText">Track incoming USDT, outgoing transfers, resource changes and wallets that need attention.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap"><div class="grid-2"><article class="card"><div class="icon">🔔</div><h2 data-i18n="alerts.title">Get alerts before a problem becomes an error</h2><p class="section-sub" data-i18n="alerts.text">Connect Telegram alerts and know when a wallet needs action: top up TRX, rent Energy or check an incoming transfer.</p><ul class="clean"><li><span class="check">✓</span> Low TRX</li><li><span class="check">✓</span> Low Energy</li><li><span class="check">✓</span> Incoming USDT</li><li><span class="check">✓</span> Outgoing USDT</li><li><span class="check">✓</span> Failed transaction risk</li></ul><a class="btn" href="https://t.me/trx2_9_support_bot" style="margin-top:22px;" rel="noopener" data-i18n="alerts.cta">Connect Telegram alerts</a></article><article class="card"><div class="icon">🧩</div><h2 data-i18n="bulk.title">For teams working with dozens or hundreds of addresses</h2><p class="section-sub" data-i18n="bulk.text">Upload addresses, check readiness in bulk, prepare wallets for transfers and export reports for operational control.</p><ul class="clean"><li><span class="check">✓</span> CSV upload</li><li><span class="check">✓</span> Bulk readiness check</li><li><span class="check">✓</span> Bulk Energy rental</li><li><span class="check">✓</span> Wallet tags</li><li><span class="check">✓</span> Export reports</li><li><span class="check">✓</span> Team roles</li></ul><a class="btn secondary" href="mailto:lina@gasfree4you.com" style="margin-top:22px;" data-i18n="bulk.cta">Discuss business setup</a></article></div></div></section>
+    <!-- ALERTS + BULK -->
+    <section style="padding-top:0;">
+      <div class="wrap">
+        <div class="grid-2">
+          <article class="card reveal">
+            <div class="card-icon icon-amber">🔔</div>
+            <h2 style="font-size:28px;letter-spacing:-0.03em;" data-i18n="alerts.title">Get alerts before a problem becomes an error</h2>
+            <p style="color:var(--muted);margin-top:14px;line-height:1.65;" data-i18n="alerts.text">Connect Telegram alerts and know when a wallet needs action: top up TRX, rent Energy or check an incoming transfer.</p>
+            <ul class="alert-list">
+              <li><span class="check-icon">✓</span> Low TRX</li>
+              <li><span class="check-icon">✓</span> Low Energy</li>
+              <li><span class="check-icon">✓</span> Incoming USDT</li>
+              <li><span class="check-icon">✓</span> Outgoing USDT</li>
+              <li><span class="check-icon">✓</span> Failed transaction risk</li>
+            </ul>
+            <a class="btn btn-primary" href="https://t.me/trx2_9_support_bot" style="margin-top:24px;" rel="noopener" data-i18n="alerts.cta">Connect Telegram alerts</a>
+          </article>
+          <article class="card reveal" style="transition-delay:.1s">
+            <div class="card-icon icon-blue">🧩</div>
+            <h2 style="font-size:28px;letter-spacing:-0.03em;" data-i18n="bulk.title">For teams working with dozens or hundreds of addresses</h2>
+            <p style="color:var(--muted);margin-top:14px;line-height:1.65;" data-i18n="bulk.text">Upload addresses, check readiness in bulk, prepare wallets for transfers and export reports for operational control.</p>
+            <ul class="alert-list">
+              <li><span class="check-icon">✓</span> CSV upload</li>
+              <li><span class="check-icon">✓</span> Bulk readiness check</li>
+              <li><span class="check-icon">✓</span> Bulk Energy rental</li>
+              <li><span class="check-icon">✓</span> Wallet tags</li>
+              <li><span class="check-icon">✓</span> Export reports</li>
+              <li><span class="check-icon">✓</span> Team roles</li>
+            </ul>
+            <a class="btn btn-ghost" href="mailto:lina@gasfree4you.com" style="margin-top:24px;" data-i18n="bulk.cta">Discuss business setup</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap"><div class="section-head center"><h2 data-i18n="security.title">Security and transparency by default</h2><p data-i18n="security.subtitle">The service helps prepare and monitor TRON wallets, but never receives control over user funds.</p></div><div class="tiles"><div class="tile" data-i18n="security.one">No private keys</div><div class="tile" data-i18n="security.two">No seed phrase</div><div class="tile" data-i18n="security.three">No access to funds</div><div class="tile" data-i18n="security.four">Public addresses only</div><div class="tile" data-i18n="security.five">Transparent fees</div></div></div></section>
+    <!-- SECURITY -->
+    <section>
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <h2 data-i18n="security.title">Security and transparency by default</h2>
+          <p data-i18n="security.subtitle">The service helps prepare and monitor TRON wallets, but never receives control over user funds.</p>
+        </div>
+        <div class="sec-tiles">
+          <div class="sec-tile reveal">
+            <div class="sec-tile-icon">🔑</div>
+            <span data-i18n="security.one">No private keys</span>
+          </div>
+          <div class="sec-tile reveal" style="transition-delay:.06s">
+            <div class="sec-tile-icon">🌱</div>
+            <span data-i18n="security.two">No seed phrase</span>
+          </div>
+          <div class="sec-tile reveal" style="transition-delay:.12s">
+            <div class="sec-tile-icon">🚫</div>
+            <span data-i18n="security.three">No access to funds</span>
+          </div>
+          <div class="sec-tile reveal" style="transition-delay:.18s">
+            <div class="sec-tile-icon">👁</div>
+            <span data-i18n="security.four">Public addresses only</span>
+          </div>
+          <div class="sec-tile reveal" style="transition-delay:.24s">
+            <div class="sec-tile-icon">💎</div>
+            <span data-i18n="security.five">Transparent fees</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap feature-band"><div class="section-head center"><h2 data-i18n="journey.title">Start with one check. Scale to a full operations dashboard.</h2><p data-i18n="journey.text">For a private user it is a quick wallet check before sending USDT. For a team it becomes a dashboard for daily USDT TRC20 operations.</p></div><div class="tiles"><div class="tile" data-i18n="journey.one">Check one wallet</div><div class="tile" data-i18n="journey.two">Rent Energy</div><div class="tile" data-i18n="journey.three">Add monitoring</div><div class="tile" data-i18n="journey.four">Enable alerts</div><div class="tile" data-i18n="journey.five">Automate operations</div></div></div></section>
+    <!-- JOURNEY -->
+    <section>
+      <div class="wrap">
+        <div class="feature-band reveal">
+          <div class="section-head center" style="margin-bottom:36px;">
+            <h2 data-i18n="journey.title">Start with one check. Scale to a full operations dashboard.</h2>
+            <p data-i18n="journey.text">For a private user it is a quick wallet check before sending USDT. For a team it becomes a dashboard for daily USDT TRC20 operations.</p>
+          </div>
+          <div class="journey-tiles">
+            <div class="journey-tile">
+              <div class="journey-num">1</div>
+              <p data-i18n="journey.one">Check one wallet</p>
+            </div>
+            <div class="journey-tile">
+              <div class="journey-num">2</div>
+              <p data-i18n="journey.two">Rent Energy</p>
+            </div>
+            <div class="journey-tile">
+              <div class="journey-num">3</div>
+              <p data-i18n="journey.three">Add monitoring</p>
+            </div>
+            <div class="journey-tile">
+              <div class="journey-num">4</div>
+              <p data-i18n="journey.four">Enable alerts</p>
+            </div>
+            <div class="journey-tile">
+              <div class="journey-num">5</div>
+              <p data-i18n="journey.five">Automate operations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section id="pricing"><div class="wrap"><div class="section-head center"><h2 data-i18n="pricing.title">Simple plans for different levels of usage</h2><p data-i18n="pricing.subtitle">Free helps private users start. Business makes the product useful for teams and exchange operations.</p></div><div class="pricing"><article class="price-card"><h3>Free</h3><div class="for" data-i18n="pricing.freeFor">For private users</div><div class="price">$0</div><ul class="clean"><li><span class="check">✓</span> Wallet readiness check</li><li><span class="check">✓</span> Energy calculator</li><li><span class="check">✓</span> Basic fee estimate</li><li><span class="check">✓</span> One-time Energy rental through service wallet</li><li><span class="check">✓</span> Basic TRX check</li></ul><a class="btn" style="margin-top:22px;width:100%;" href="#top" data-i18n="pricing.freeCta">Check for free</a></article><article class="price-card featured"><h3>Pro</h3><div class="for" data-i18n="pricing.proFor">For active users</div><div class="price" data-i18n="pricing.early">Early access</div><ul class="clean"><li><span class="check">✓</span> Saved wallets</li><li><span class="check">✓</span> Telegram alerts</li><li><span class="check">✓</span> Wallet labels</li><li><span class="check">✓</span> Transaction history</li><li><span class="check">✓</span> Energy stats</li><li><span class="check">✓</span> More frequent checks</li></ul><a class="btn" style="margin-top:22px;width:100%;" href="https://user.gasfree4you.com/" rel="noopener" data-i18n="pricing.proCta">Start Pro</a></article><article class="price-card"><h3>Business</h3><div class="for" data-i18n="pricing.bizFor">For exchangers and teams</div><div class="price">Custom</div><ul class="clean"><li><span class="check">✓</span> Multi-wallet dashboard</li><li><span class="check">✓</span> CSV upload</li><li><span class="check">✓</span> Bulk checks</li><li><span class="check">✓</span> Bulk Energy rental</li><li><span class="check">✓</span> Team access</li><li><span class="check">✓</span> API / webhooks</li><li><span class="check">✓</span> Priority support</li></ul><a class="btn secondary" style="margin-top:22px;width:100%;" href="mailto:lina@gasfree4you.com" data-i18n="pricing.bizCta">Contact sales</a></article></div></div></section>
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <h2 data-i18n="pricing.title">Simple plans for different levels of usage</h2>
+          <p data-i18n="pricing.subtitle">Free helps private users start. Business makes the product useful for teams and exchange operations.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <div class="price-name">Free</div>
+            <div class="price-for" data-i18n="pricing.freeFor">For private users</div>
+            <div class="price-amount">$0</div>
+            <ul class="price-features">
+              <li><span class="check-icon">✓</span> Wallet readiness check</li>
+              <li><span class="check-icon">✓</span> Energy calculator</li>
+              <li><span class="check-icon">✓</span> Basic fee estimate</li>
+              <li><span class="check-icon">✓</span> One-time Energy rental through service wallet</li>
+              <li><span class="check-icon">✓</span> Basic TRX check</li>
+            </ul>
+            <a class="btn btn-ghost" style="width:100%;justify-content:center;" href="#top" data-i18n="pricing.freeCta">Check for free</a>
+          </article>
+          <article class="price-card featured reveal" style="transition-delay:.1s">
+            <div class="featured-badge">Most popular</div>
+            <div class="price-name">Pro</div>
+            <div class="price-for" data-i18n="pricing.proFor">For active users</div>
+            <div class="price-amount"><span data-i18n="pricing.early">Early access</span></div>
+            <ul class="price-features">
+              <li><span class="check-icon">✓</span> Saved wallets</li>
+              <li><span class="check-icon">✓</span> Telegram alerts</li>
+              <li><span class="check-icon">✓</span> Wallet labels</li>
+              <li><span class="check-icon">✓</span> Transaction history</li>
+              <li><span class="check-icon">✓</span> Energy stats</li>
+              <li><span class="check-icon">✓</span> More frequent checks</li>
+            </ul>
+            <a class="btn btn-primary" style="width:100%;justify-content:center;" href="https://user.gasfree4you.com/" rel="noopener" data-i18n="pricing.proCta">Start Pro</a>
+          </article>
+          <article class="price-card reveal" style="transition-delay:.2s">
+            <div class="price-name">Business</div>
+            <div class="price-for" data-i18n="pricing.bizFor">For exchangers and teams</div>
+            <div class="price-amount">Custom</div>
+            <ul class="price-features">
+              <li><span class="check-icon">✓</span> Multi-wallet dashboard</li>
+              <li><span class="check-icon">✓</span> CSV upload</li>
+              <li><span class="check-icon">✓</span> Bulk checks</li>
+              <li><span class="check-icon">✓</span> Bulk Energy rental</li>
+              <li><span class="check-icon">✓</span> Team access</li>
+              <li><span class="check-icon">✓</span> API / webhooks</li>
+              <li><span class="check-icon">✓</span> Priority support</li>
+            </ul>
+            <a class="btn btn-ghost" style="width:100%;justify-content:center;" href="mailto:lina@gasfree4you.com" data-i18n="pricing.bizCta">Contact sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section id="faq"><div class="wrap"><div class="section-head center"><h2>FAQ</h2></div><div class="faq"><details open><summary data-i18n="faq.q1">Is this a wallet?</summary><p data-i18n="faq.a1">No. GasFree is not a wallet and does not store your funds. It helps check, prepare and monitor TRON addresses.</p></details><details><summary data-i18n="faq.q2">Do I need to enter a private key or seed phrase?</summary><p data-i18n="faq.a2">No. Never. A public TRON address is enough for checking.</p></details><details><summary data-i18n="faq.q3">Can the service access my funds?</summary><p data-i18n="faq.a3">No. The service cannot sign transactions on your behalf and has no access to your funds.</p></details><details><summary data-i18n="faq.q4">Why do I need TRX if I send USDT?</summary><p data-i18n="faq.a4">TRON transactions use network resources. If resources are not enough, TRX or Energy may be required.</p></details><details><summary data-i18n="faq.q5">What is Energy?</summary><p data-i18n="faq.a5">Energy is a TRON network resource used for smart contract operations, including USDT TRC20 transfers.</p></details><details><summary data-i18n="faq.q6">How does Energy rental through a service wallet work?</summary><p data-i18n="faq.a6">You open the old Energy rental landing page, calculate the order and send TRX to the service wallet. After payment, the service delegates Energy to your TRON address. The service does not receive access to your USDT.</p></details><details><summary data-i18n="faq.q7">Why does the Energy button open the old landing page?</summary><p data-i18n="faq.a7">The new landing positions GasFree as a wider wallet readiness and operations platform. Energy ordering already works in the old interface, so the button opens the page where the user can place an order now.</p></details><details><summary data-i18n="faq.q8">Is it suitable for ordinary users?</summary><p data-i18n="faq.a8">Yes. You can simply check one wallet before sending USDT TRC20.</p></details><details><summary data-i18n="faq.q9">Is it suitable for exchangers?</summary><p data-i18n="faq.a9">Yes. Teams can work with many addresses, track statuses, run bulk checks and connect alerts.</p></details></div></div></section>
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <h2>FAQ</h2>
+        </div>
+        <div class="faq-list">
+          <details open><summary data-i18n="faq.q1">Is this a wallet?</summary><p data-i18n="faq.a1">No. GasFree is not a wallet and does not store your funds. It helps check, prepare and monitor TRON addresses.</p></details>
+          <details><summary data-i18n="faq.q2">Do I need to enter a private key or seed phrase?</summary><p data-i18n="faq.a2">No. Never. A public TRON address is enough for checking.</p></details>
+          <details><summary data-i18n="faq.q3">Can the service access my funds?</summary><p data-i18n="faq.a3">No. The service cannot sign transactions on your behalf and has no access to your funds.</p></details>
+          <details><summary data-i18n="faq.q4">Why do I need TRX if I send USDT?</summary><p data-i18n="faq.a4">TRON transactions use network resources. If resources are not enough, TRX or Energy may be required.</p></details>
+          <details><summary data-i18n="faq.q5">What is Energy?</summary><p data-i18n="faq.a5">Energy is a TRON network resource used for smart contract operations, including USDT TRC20 transfers.</p></details>
+          <details><summary data-i18n="faq.q6">How does Energy rental through a service wallet work?</summary><p data-i18n="faq.a6">You open the old Energy rental landing page, calculate the order and send TRX to the service wallet. After payment, the service delegates Energy to your TRON address. The service does not receive access to your USDT.</p></details>
+          <details><summary data-i18n="faq.q7">Why does the Energy button open the old landing page?</summary><p data-i18n="faq.a7">The new landing positions GasFree as a wider wallet readiness and operations platform. Energy ordering already works in the old interface, so the button opens the page where the user can place an order now.</p></details>
+          <details><summary data-i18n="faq.q8">Is it suitable for ordinary users?</summary><p data-i18n="faq.a8">Yes. You can simply check one wallet before sending USDT TRC20.</p></details>
+          <details><summary data-i18n="faq.q9">Is it suitable for exchangers?</summary><p data-i18n="faq.a9">Yes. Teams can work with many addresses, track statuses, run bulk checks and connect alerts.</p></details>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap"><div class="final-cta"><h2 data-i18n="final.title">Before your next USDT TRC20 transfer, check the wallet</h2><p data-i18n="final.text">Know if TRX, Energy and Bandwidth are enough and prepare the address before sending.</p><div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;"><a class="btn" href="#top" data-i18n="final.cta1">Check wallet</a><a class="btn secondary" href="#monitoring" data-i18n="final.cta2">Add wallets to monitoring</a></div></div></div></section>
+    <!-- FINAL CTA -->
+    <section style="padding-bottom:100px;">
+      <div class="wrap">
+        <div class="cta-block reveal">
+          <h2 data-i18n="final.title" style="position:relative;z-index:1;">Before your next USDT TRC20 transfer, check the wallet</h2>
+          <p data-i18n="final.text" style="position:relative;z-index:1;">Know if TRX, Energy and Bandwidth are enough and prepare the address before sending.</p>
+          <div class="cta-buttons">
+            <a class="btn btn-primary btn-lg" href="#top" data-i18n="final.cta1">Check wallet</a>
+            <a class="btn btn-ghost btn-lg" href="#monitoring" data-i18n="final.cta2">Add wallets to monitoring</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="footer"><div class="wrap footer-inner"><div class="logo"><span class="logo-mark">G</span><span>GasFree</span></div><div data-i18n="footer.text">Non-custodial USDT TRC20 operations platform</div><div><a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a> · <a href="https://t.me/trx2_9_support_bot">Support</a></div></div></footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="logo">
+        <span class="logo-mark">G</span>
+        <span>GasFree</span>
+      </div>
+      <div data-i18n="footer.text">Non-custodial USDT TRC20 operations platform</div>
+      <div>
+        <a href="mailto:lina@gasfree4you.com" style="transition:color .15s;">lina@gasfree4you.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://t.me/trx2_9_support_bot" style="transition:color .15s;">Support</a>
+      </div>
+    </div>
+  </footer>
 
   <div class="seo-text" data-i18n="seo.hidden">GasFree helps users check a TRON wallet before sending USDT TRC20, rent TRON Energy through a service wallet, check TRX and Bandwidth, monitor many wallet addresses and receive Telegram alerts.</div>
 
@@ -106,14 +1053,14 @@
       en: {
         meta:{title:'GasFree — Check your TRON wallet before sending USDT TRC20',description:'Check if a TRON wallet is ready for USDT TRC20 transfers: TRX balance, Energy, Bandwidth and failed transaction risk. Rent Energy through a service wallet, top up TRX, monitor wallets and receive alerts.',keywords:'USDT TRC20, TRON wallet check, TRON Energy rental, rent Energy TRON, TRX for USDT transfer, Bandwidth TRON, GasFree, wallet monitoring, USDT without TRX'},
         nav:{check:'Check wallet',energy:'Energy rental',monitoring:'Monitoring',business:'For business',pricing:'Pricing',signin:'Sign in',cta:'Check wallet'},
-        hero:{eyebrow:'USDT TRC20 operations platform',title:'USDT TRC20 transfers <span class="grad">without failed transactions, extra fees and manual checks</span>',subtitle:'Check if a TRON wallet is ready for a USDT transfer: TRX, Energy and Bandwidth. Rent Energy, top up TRX, monitor wallets and receive alerts in one service.',placeholder:'Enter TRON address: Txxxxxxxxxxxxxxxxxxxx',cta:'Check wallet',invalid:'Enter a valid TRON address starting with T'},
+        hero:{eyebrow:'USDT TRC20 operations platform',title:'USDT TRC20 transfers <span class="grad-text">without failed transactions, extra fees and manual checks</span>',subtitle:'Check if a TRON wallet is ready for a USDT transfer: TRX, Energy and Bandwidth. Rent Energy, top up TRX, monitor wallets and receive alerts in one service.',placeholder:'Enter TRON address: Txxxxxxxxxxxxxxxxxxxx',cta:'Check wallet',invalid:'Enter a valid TRON address starting with T'},
         trust:{nonCustodial:'Non-custodial',noKeys:'No private keys',publicOnly:'Public address only',noFunds:'No access to your funds'},
         mock:{title:'Wallet Readiness Panel',subtitle:'Before sending USDT TRC20',status:'Needs Energy',wallet:'Wallet',usdt:'USDT Balance',trx:'TRX Balance',low:'Low',recommended:'Recommended action',recommendedText:'Rent 65,000 Energy and top up 0.345 TRX if the wallet needs bandwidth coverage.',fix:'Fix before sending',add:'Add to monitoring'},
         pain:{title:'Before sending USDT TRC20, make sure the wallet is ready',subtitle:'Most problems can be seen in advance: low TRX, no Energy, low Bandwidth or a wallet that needs attention.',trxTitle:'Not enough TRX?',trxText:'The transfer may fail or become more expensive. Check the balance in advance and top up the wallet if needed.',energyTitle:'Not enough Energy?',energyText:'Rent Energy before sending and reduce USDT TRC20 transaction costs in suitable scenarios.',walletsTitle:'Many wallets?',walletsText:'Track balances, statuses and activity of all TRON addresses in one dashboard.'},
         segments:{title:'For one wallet, a team or an exchange business',subtitle:'Simple enough for private users. Deep enough for P2P, OTC, exchangers and teams working with many addresses.',privateTitle:'Private users',privateText:'Check your wallet before a transfer, see if TRX and Energy are enough, and avoid extra costs or failed transactions.',privateCta:'Check my wallet →',p2pTitle:'P2P and OTC traders',p2pText:'Quickly check working addresses, prepare wallets for deals and reduce delays during exchange operations.',p2pCta:'Prepare address →',exchTitle:'Exchangers and Telegram services',exchText:'Monitor balances, TRX, Energy, incoming and outgoing transfers, alerts and bulk checks for your operations team.',exchCta:'View dashboard →',bizTitle:'Businesses and payouts',bizText:'Control treasury wallets, get alerts and prepare addresses for regular USDT TRC20 payments in advance.',bizCta:'Set up monitoring →'},
         steps:{title:'From check to successful transfer in a few steps',oneTitle:'Enter a TRON address',oneText:'The platform checks a public address. No private keys required.',twoTitle:'Get readiness status',twoText:'See USDT, TRX, Energy, Bandwidth and failed transaction risk.',threeTitle:'Fix the issue',threeText:'Rent Energy, top up TRX or add the wallet to monitoring.',fourTitle:'Send USDT with more control',fourText:'The wallet is prepared, risks are visible and operations are under control.'},
         readiness:{title:'Wallet Readiness Check for USDT TRC20',subtitle:'Know if a TRON wallet is ready for a USDT transfer before you press Send.',score:'Readiness score',type:'Transfer type',risk:'Risk',needsAction:'Needs action',next:'Next step',rentEnergy:'Rent Energy',cta:'Check address',safe:'How is it safe?',micro:'We do not ask for seed phrase, private key or wallet access.'},
-        energy:{title:'Reduce USDT TRC20 fees with Energy',text:'If a wallet has no Energy, a USDT TRC20 transfer can cost more. Rent Energy to the required TRON address and prepare the wallet before sending.',serviceWallet:'Energy rental is available through the service wallet: the user calculates the order, sends TRX to the service address, and the service delegates Energy to the user\'s TRON address.',cta:'Rent Energy through service wallet',check:'Check wallet first',calc:'Energy calculator',transferType:'Transfer type',walletStatus:'Wallet status',noEnergy:'No Energy',required:'Required Energy',action:'Action',rent:'Rent Energy',note:'Energy can help reduce costs in suitable scenarios. We avoid fake guarantees and show the action before you pay.'},
+        energy:{title:'Reduce USDT TRC20 fees with Energy',text:'If a wallet has no Energy, a USDT TRC20 transfer can cost more. Rent Energy to the required TRON address and prepare the wallet before sending.',serviceWallet:"Energy rental is available through the service wallet: the user calculates the order, sends TRX to the service address, and the service delegates Energy to the user's TRON address.",cta:'Rent Energy through service wallet',check:'Check wallet first',calc:'Energy calculator',transferType:'Transfer type',walletStatus:'Wallet status',noEnergy:'No Energy',required:'Required Energy',action:'Action',rent:'Rent Energy',note:'Energy can help reduce costs in suitable scenarios. We avoid fake guarantees and show the action before you pay.'},
         trx:{title:'Do not let a transfer fail because of low TRX',text:'Some wallets are not ready for USDT TRC20 operations because they have no TRX for network resources. GasFree can show when a small TRX top-up may be needed.',cta:'Check TRX balance'},
         notWallet:{title:'Not a wallet, not an exchange, not DeFi',text:'GasFree is an operational layer for USDT on TRON. It works with public addresses, gives recommendations and helps monitor activity, but does not control user funds.'},
         monitoring:{title:'All TRON wallets under control',subtitle:'Add one address or upload a list of wallets to track balances, resources and activity in one dashboard.',uploadTitle:'CSV upload',uploadText:'Load many addresses and check their status without manual copy-paste.',labelsTitle:'Labels and statuses',labelsText:'Use labels like Treasury, P2P, Client, Exchange and see statuses such as Ready, Needs TRX or Needs Energy.',activityTitle:'Recent activity',activityText:'Track incoming USDT, outgoing transfers, resource changes and wallets that need attention.'},
@@ -123,122 +1070,195 @@
         journey:{title:'Start with one check. Scale to a full operations dashboard.',text:'For a private user it is a quick wallet check before sending USDT. For a team it becomes a dashboard for daily USDT TRC20 operations.',one:'Check one wallet',two:'Rent Energy',three:'Add monitoring',four:'Enable alerts',five:'Automate operations'},
         pricing:{title:'Simple plans for different levels of usage',subtitle:'Free helps private users start. Business makes the product useful for teams and exchange operations.',freeFor:'For private users',freeCta:'Check for free',proFor:'For active users',early:'Early access',proCta:'Start Pro',bizFor:'For exchangers and teams',bizCta:'Contact sales'},
         faq:{q1:'Is this a wallet?',a1:'No. GasFree is not a wallet and does not store your funds. It helps check, prepare and monitor TRON addresses.',q2:'Do I need to enter a private key or seed phrase?',a2:'No. Never. A public TRON address is enough for checking.',q3:'Can the service access my funds?',a3:'No. The service cannot sign transactions on your behalf and has no access to your funds.',q4:'Why do I need TRX if I send USDT?',a4:'TRON transactions use network resources. If resources are not enough, TRX or Energy may be required.',q5:'What is Energy?',a5:'Energy is a TRON network resource used for smart contract operations, including USDT TRC20 transfers.',q6:'How does Energy rental through a service wallet work?',a6:'You open the old Energy rental landing page, calculate the order and send TRX to the service wallet. After payment, the service delegates Energy to your TRON address. The service does not receive access to your USDT.',q7:'Why does the Energy button open the old landing page?',a7:'The new landing positions GasFree as a wider wallet readiness and operations platform. Energy ordering already works in the old interface, so the button opens the page where the user can place an order now.',q8:'Is it suitable for ordinary users?',a8:'Yes. You can simply check one wallet before sending USDT TRC20.',q9:'Is it suitable for exchangers?',a9:'Yes. Teams can work with many addresses, track statuses, run bulk checks and connect alerts.'},
-        final:{title:'Before your next USDT TRC20 transfer, check the wallet',text:'Know if TRX, Energy and Bandwidth are enough and prepare the address before sending.',cta1:'Check wallet',cta2:'Add wallets to monitoring'},footer:{text:'Non-custodial USDT TRC20 operations platform'},seo:{hidden:'GasFree helps users check a TRON wallet before sending USDT TRC20, rent TRON Energy through a service wallet, check TRX and Bandwidth, monitor many wallet addresses and receive Telegram alerts.'}
+        final:{title:'Before your next USDT TRC20 transfer, check the wallet',text:'Know if TRX, Energy and Bandwidth are enough and prepare the address before sending.',cta1:'Check wallet',cta2:'Add wallets to monitoring'},
+        footer:{text:'Non-custodial USDT TRC20 operations platform'},
+        seo:{hidden:'GasFree helps users check a TRON wallet before sending USDT TRC20, rent TRON Energy through a service wallet, check TRX and Bandwidth, monitor many wallet addresses and receive Telegram alerts.'}
       },
       ru: {
-        meta:{title:'GasFree — проверьте TRON-кошелек перед USDT TRC20 переводом',description:'Проверьте, готов ли TRON-кошелек к USDT TRC20 переводу: TRX balance, Energy, Bandwidth и риск failed transaction. Аренда Energy через сервисный кошелек, TRX top-up, мониторинг адресов и алерты.',keywords:'USDT TRC20, проверить TRON кошелек, аренда Energy TRON, TRX для комиссии, Bandwidth TRON, GasFree, мониторинг кошельков, USDT без TRX'},
+        meta:{title:'GasFree — проверьте TRON-кошелек перед USDT TRC20 переводом',description:'Проверьте, готов ли TRON-кошелек к USDT TRC20 переводу: TRX balance, Energy, Bandwidth и риск failed transaction.',keywords:'USDT TRC20, проверить TRON кошелек, аренда Energy TRON'},
         nav:{check:'Проверить кошелек',energy:'Аренда Energy',monitoring:'Мониторинг',business:'Для бизнеса',pricing:'Тарифы',signin:'Войти',cta:'Check wallet'},
-        hero:{eyebrow:'Платформа для USDT TRC20 операций',title:'USDT TRC20-переводы <span class="grad">без сбоев, лишних комиссий и ручных проверок</span>',subtitle:'Проверьте, готов ли TRON-кошелек к USDT-переводу: хватает ли TRX, Energy и Bandwidth. Арендуйте Energy, пополняйте TRX, отслеживайте адреса и получайте уведомления — в одном сервисе.',placeholder:'Введите TRON-адрес: Txxxxxxxxxxxxxxxxxxxx',cta:'Проверить кошелек',invalid:'Введите корректный TRON-адрес, начинается с T'},
+        hero:{eyebrow:'Платформа для USDT TRC20 операций',title:'USDT TRC20-переводы <span class="grad-text">без сбоев, лишних комиссий и ручных проверок</span>',subtitle:'Проверьте, готов ли TRON-кошелек к USDT-переводу: хватает ли TRX, Energy и Bandwidth. Арендуйте Energy, пополняйте TRX, отслеживайте адреса и получайте уведомления — в одном сервисе.',placeholder:'Введите TRON-адрес: Txxxxxxxxxxxxxxxxxxxx',cta:'Проверить кошелек',invalid:'Введите корректный TRON-адрес, начинается с T'},
         trust:{nonCustodial:'Non-custodial',noKeys:'No private keys',publicOnly:'Только публичный адрес',noFunds:'Нет доступа к средствам'},
-        mock:{title:'Wallet Readiness Panel',subtitle:'Перед отправкой USDT TRC20',status:'Needs Energy',wallet:'Кошелек',usdt:'USDT баланс',trx:'TRX баланс',low:'Low',recommended:'Рекомендуемое действие',recommendedText:'Арендовать 65,000 Energy и пополнить 0.345 TRX, если кошельку нужно покрытие Bandwidth.',fix:'Исправить перед отправкой',add:'Добавить в мониторинг'},
-        pain:{title:'Перед отправкой USDT TRC20 убедитесь, что кошелек готов',subtitle:'Большинство проблем видно заранее: не хватает TRX, нет Energy, низкий Bandwidth или адрес требует внимания.',trxTitle:'Не хватает TRX?',trxText:'Перевод может не пройти или стать дороже. Проверьте баланс заранее и пополните кошелек при необходимости.',energyTitle:'Не хватает Energy?',energyText:'Арендуйте Energy перед переводом и снижайте расходы на USDT TRC20-транзакции в подходящих сценариях.',walletsTitle:'Много кошельков?',walletsText:'Следите за балансами, статусами и активностью всех TRON-адресов в одном кабинете.'},
-        segments:{title:'Для одного кошелька, команды или целого обменного бизнеса',subtitle:'Достаточно просто для частника. Достаточно глубоко для P2P, OTC, обменников и команд с большим количеством адресов.',privateTitle:'Частные пользователи',privateText:'Проверьте кошелек перед переводом, узнайте, хватает ли TRX и Energy, и избежите лишних комиссий или failed transaction.',privateCta:'Проверить мой кошелек →',p2pTitle:'P2P и OTC-трейдеры',p2pText:'Быстро проверяйте рабочие адреса, готовьте кошельки к сделкам и снижайте риск задержек во время обмена.',p2pCta:'Подготовить адрес →',exchTitle:'Обменники и Telegram-сервисы',exchText:'Мониторинг балансов, TRX, Energy, входящих и исходящих переводов, алерты и bulk-проверки для операционной команды.',exchCta:'Посмотреть dashboard →',bizTitle:'Бизнесы и выплаты',bizText:'Контролируйте treasury-кошельки, получайте уведомления и готовьте адреса к регулярным USDT TRC20 платежам заранее.',bizCta:'Настроить мониторинг →'},
-        steps:{title:'От проверки до успешного перевода — за несколько шагов',oneTitle:'Введите TRON-адрес',oneText:'Платформа проверит публичный адрес. Private keys не нужны.',twoTitle:'Получите статус готовности',twoText:'Сервис покажет USDT, TRX, Energy, Bandwidth и риск failed transaction.',threeTitle:'Исправьте проблему',threeText:'Арендуйте Energy, пополните TRX или добавьте кошелек в мониторинг.',fourTitle:'Отправляйте USDT спокойнее',fourText:'Кошелек готов, риски видны, операции под контролем.'},
-        readiness:{title:'Wallet Readiness Check для USDT TRC20',subtitle:'Узнайте, готов ли TRON-кошелек к USDT-переводу, до того как нажмете Send.',score:'Readiness score',type:'Тип перевода',risk:'Риск',needsAction:'Needs action',next:'Следующий шаг',rentEnergy:'Арендовать Energy',cta:'Проверить адрес',safe:'Как это безопасно?',micro:'Мы не запрашиваем seed phrase, private key или доступ к кошельку.'},
-        energy:{title:'Снижайте комиссии на USDT TRC20 с помощью Energy',text:'Если кошельку не хватает Energy, USDT TRC20-перевод может стоить дороже. Арендуйте Energy на нужный TRON-адрес и подготовьте кошелек к переводу заранее.',serviceWallet:'Аренда Energy доступна через сервисный кошелек: пользователь рассчитывает заказ, отправляет TRX на сервисный адрес, а сервис делегирует Energy на TRON-адрес пользователя.',cta:'Арендовать Energy через сервисный кошелек',check:'Сначала проверить кошелек',calc:'Energy calculator',transferType:'Тип перевода',walletStatus:'Статус кошелька',noEnergy:'Нет Energy',required:'Нужно Energy',action:'Действие',rent:'Арендовать Energy',note:'Energy помогает снизить расходы в подходящих сценариях. Мы не обещаем магическую экономию всегда и показываем действие до оплаты.'},
-        trx:{title:'Не дайте переводу сорваться из-за нехватки TRX',text:'Некоторые кошельки не готовы к USDT TRC20-операциям, потому что на них нет TRX для сетевых ресурсов. GasFree покажет, когда нужен небольшой TRX top-up.',cta:'Проверить TRX balance'},
-        notWallet:{title:'Это не кошелек, не биржа и не DeFi',text:'GasFree — operational layer для USDT в сети TRON. Сервис работает с публичными адресами, дает рекомендации и помогает мониторить активность, но не контролирует средства пользователя.'},
-        monitoring:{title:'Все TRON-кошельки под контролем',subtitle:'Добавьте один адрес или загрузите список кошельков, чтобы отслеживать балансы, ресурсы и активность в одном dashboard.',uploadTitle:'CSV upload',uploadText:'Загружайте много адресов и проверяйте статус без ручного копирования.',labelsTitle:'Метки и статусы',labelsText:'Используйте метки Treasury, P2P, Client, Exchange и статусы Ready, Needs TRX или Needs Energy.',activityTitle:'Recent activity',activityText:'Отслеживайте входящие USDT, исходящие переводы, изменения ресурсов и кошельки, которым нужно внимание.'},
-        alerts:{title:'Получайте уведомления до того, как проблема станет ошибкой',text:'Подключите Telegram-уведомления и узнавайте, когда кошелек требует действия: пополнить TRX, арендовать Energy или проверить входящий перевод.',cta:'Подключить Telegram alerts'},
-        bulk:{title:'Для команд, которые работают с десятками и сотнями адресов',text:'Загружайте адреса, проверяйте готовность списком, готовьте кошельки к переводам и экспортируйте отчеты для операционного контроля.',cta:'Обсудить бизнес-настройку'},
-        security:{title:'Безопасность и прозрачность по умолчанию',subtitle:'Сервис помогает подготовить и контролировать TRON-кошельки, но не получает контроль над средствами пользователя.',one:'No private keys',two:'No seed phrase',three:'Нет доступа к средствам',four:'Только публичные адреса',five:'Прозрачные комиссии'},
-        journey:{title:'Начните с одной проверки. Масштабируйтесь до полной операционной панели.',text:'Для частного пользователя это быстрый способ проверить кошелек перед отправкой USDT. Для команды — dashboard для ежедневных USDT TRC20-операций.',one:'Проверить кошелек',two:'Арендовать Energy',three:'Добавить мониторинг',four:'Включить алерты',five:'Автоматизировать операции'},
-        pricing:{title:'Простые тарифы под разную глубину использования',subtitle:'Free нужен, чтобы частники начали пользоваться продуктом. Business нужен для команд и обменных операций.',freeFor:'Для частных пользователей',freeCta:'Проверить бесплатно',proFor:'Для активных пользователей',early:'Early access',proCta:'Start Pro',bizFor:'Для обменников и команд',bizCta:'Contact sales'},
-        faq:{q1:'Это кошелек?',a1:'Нет. GasFree не является кошельком и не хранит ваши средства. Сервис помогает проверять, готовить и мониторить TRON-адреса.',q2:'Нужно ли вводить private key или seed phrase?',a2:'Нет. Никогда. Для проверки нужен только публичный TRON-адрес.',q3:'Может ли сервис получить доступ к средствам?',a3:'Нет. Сервис не может подписывать транзакции от вашего имени и не имеет доступа к вашим средствам.',q4:'Зачем нужен TRX, если я отправляю USDT?',a4:'В сети TRON для операций нужны сетевые ресурсы. Если ресурсов не хватает, может потребоваться TRX или Energy.',q5:'Что такое Energy?',a5:'Energy — ресурс сети TRON, который используется при выполнении smart contract-операций, включая USDT TRC20.',q6:'Как работает аренда Energy через сервисный кошелек?',a6:'Вы переходите на старый лендинг аренды Energy, рассчитываете заказ и отправляете TRX на сервисный кошелек. После оплаты сервис делегирует Energy на ваш TRON-адрес. Сервис не получает доступ к вашим USDT.',q7:'Почему кнопка аренды Energy ведет на старый лендинг?',a7:'Новый лендинг позиционирует GasFree шире: проверка кошелька, мониторинг и операционный контроль. Покупка Energy уже работает в старом интерфейсе, поэтому кнопка ведет туда, где можно оформить заказ сейчас.',q8:'Подходит ли это обычным пользователям?',a8:'Да. Можно просто проверить один кошелек перед переводом USDT TRC20.',q9:'Подходит ли это обменникам?',a9:'Да. Команды могут работать с множеством адресов, отслеживать статусы, делать bulk-проверки и подключать уведомления.'},
-        final:{title:'Перед следующим USDT TRC20-переводом проверьте кошелек',text:'Узнайте, хватает ли TRX, Energy и Bandwidth, и подготовьте адрес до отправки.',cta1:'Проверить кошелек',cta2:'Добавить кошельки в мониторинг'},footer:{text:'Non-custodial платформа для USDT TRC20 операций'},seo:{hidden:'GasFree помогает проверить TRON кошелек перед USDT TRC20 переводом, арендовать TRON Energy через сервисный кошелек, проверить TRX и Bandwidth, мониторить много адресов и получать Telegram alerts.'}
+        mock:{title:'Wallet Readiness Panel',subtitle:'Перед отправкой USDT TRC20',status:'Needs Energy',wallet:'Кошелек',usdt:'USDT баланс',trx:'TRX баланс',low:'Low',recommended:'Рекомендуемое действие',recommendedText:'Арендовать 65,000 Energy и пополнить 0.345 TRX.',fix:'Исправить перед отправкой',add:'Добавить в мониторинг'},
+        pain:{title:'Перед отправкой USDT TRC20 убедитесь, что кошелек готов',subtitle:'Большинство проблем видно заранее: не хватает TRX, нет Energy, низкий Bandwidth или адрес требует внимания.',trxTitle:'Не хватает TRX?',trxText:'Перевод может не пройти или стать дороже. Проверьте баланс заранее.',energyTitle:'Не хватает Energy?',energyText:'Арендуйте Energy перед переводом и снижайте расходы.',walletsTitle:'Много кошельков?',walletsText:'Следите за балансами, статусами и активностью в одном кабинете.'},
+        segments:{title:'Для одного кошелька, команды или обменного бизнеса',subtitle:'Достаточно просто для частника. Достаточно глубоко для P2P, OTC, обменников и команд.',privateTitle:'Частные пользователи',privateText:'Проверьте кошелек перед переводом, узнайте, хватает ли TRX и Energy.',privateCta:'Проверить мой кошелек →',p2pTitle:'P2P и OTC-трейдеры',p2pText:'Быстро проверяйте рабочие адреса и готовьте кошельки к сделкам.',p2pCta:'Подготовить адрес →',exchTitle:'Обменники и Telegram-сервисы',exchText:'Мониторинг балансов, TRX, Energy, алерты и bulk-проверки.',exchCta:'Посмотреть dashboard →',bizTitle:'Бизнесы и выплаты',bizText:'Контролируйте treasury-кошельки и готовьте адреса к платежам.',bizCta:'Настроить мониторинг →'},
+        steps:{title:'От проверки до успешного перевода — за несколько шагов',oneTitle:'Введите TRON-адрес',oneText:'Платформа проверит публичный адрес. Private keys не нужны.',twoTitle:'Получите статус готовности',twoText:'Сервис покажет USDT, TRX, Energy, Bandwidth и риск.',threeTitle:'Исправьте проблему',threeText:'Арендуйте Energy, пополните TRX или добавьте в мониторинг.',fourTitle:'Отправляйте USDT спокойнее',fourText:'Кошелек готов, риски видны, операции под контролем.'},
+        readiness:{title:'Wallet Readiness Check для USDT TRC20',subtitle:'Узнайте, готов ли TRON-кошелек к USDT-переводу, до нажатия Send.',score:'Readiness score',type:'Тип перевода',risk:'Риск',needsAction:'Needs action',next:'Следующий шаг',rentEnergy:'Арендовать Energy',cta:'Проверить адрес',safe:'Как это безопасно?',micro:'Мы не запрашиваем seed phrase, private key или доступ к кошельку.'},
+        energy:{title:'Снижайте комиссии на USDT TRC20 с помощью Energy',text:'Если кошельку не хватает Energy, USDT TRC20-перевод может стоить дороже.',serviceWallet:'Аренда Energy доступна через сервисный кошелек.',cta:'Арендовать Energy через сервисный кошелек',check:'Сначала проверить кошелек',calc:'Energy calculator',transferType:'Тип перевода',walletStatus:'Статус кошелька',noEnergy:'Нет Energy',required:'Нужно Energy',action:'Действие',rent:'Арендовать Energy',note:'Energy помогает снизить расходы в подходящих сценариях.'},
+        trx:{title:'Не дайте переводу сорваться из-за нехватки TRX',text:'Некоторые кошельки не готовы к USDT TRC20-операциям, потому что нет TRX.',cta:'Проверить TRX balance'},
+        notWallet:{title:'Это не кошелек, не биржа и не DeFi',text:'GasFree — operational layer для USDT в сети TRON. Не контролирует средства пользователя.'},
+        monitoring:{title:'Все TRON-кошельки под контролем',subtitle:'Добавьте один адрес или загрузите список кошельков для мониторинга.',uploadTitle:'CSV upload',uploadText:'Загружайте много адресов и проверяйте статус без ручного копирования.',labelsTitle:'Метки и статусы',labelsText:'Используйте метки Treasury, P2P, Client, Exchange.',activityTitle:'Recent activity',activityText:'Отслеживайте входящие USDT, исходящие переводы и изменения ресурсов.'},
+        alerts:{title:'Получайте уведомления до того, как проблема станет ошибкой',text:'Подключите Telegram-уведомления.',cta:'Подключить Telegram alerts'},
+        bulk:{title:'Для команд, которые работают с десятками и сотнями адресов',text:'Загружайте адреса, проверяйте готовность списком и экспортируйте отчеты.',cta:'Обсудить бизнес-настройку'},
+        security:{title:'Безопасность и прозрачность по умолчанию',subtitle:'Сервис помогает подготовить и контролировать TRON-кошельки, но не получает контроль над средствами.',one:'No private keys',two:'No seed phrase',three:'Нет доступа к средствам',four:'Только публичные адреса',five:'Прозрачные комиссии'},
+        journey:{title:'Начните с одной проверки. Масштабируйтесь до полной операционной панели.',text:'Для частного пользователя — быстрая проверка. Для команды — dashboard для операций.',one:'Проверить кошелек',two:'Арендовать Energy',three:'Добавить мониторинг',four:'Включить алерты',five:'Автоматизировать операции'},
+        pricing:{title:'Простые тарифы под разную глубину использования',subtitle:'Free для частников. Business для команд и обменных операций.',freeFor:'Для частных пользователей',freeCta:'Проверить бесплатно',proFor:'Для активных пользователей',early:'Early access',proCta:'Start Pro',bizFor:'Для обменников и команд',bizCta:'Contact sales'},
+        faq:{q1:'Это кошелек?',a1:'Нет. GasFree не является кошельком и не хранит ваши средства.',q2:'Нужно ли вводить private key или seed phrase?',a2:'Нет. Никогда. Нужен только публичный TRON-адрес.',q3:'Может ли сервис получить доступ к средствам?',a3:'Нет. Сервис не может подписывать транзакции от вашего имени.',q4:'Зачем нужен TRX, если я отправляю USDT?',a4:'В сети TRON для операций нужны сетевые ресурсы.',q5:'Что такое Energy?',a5:'Energy — ресурс сети TRON для smart contract-операций, включая USDT TRC20.',q6:'Как работает аренда Energy через сервисный кошелек?',a6:'Вы рассчитываете заказ и отправляете TRX на сервисный кошелек. Сервис делегирует Energy на ваш TRON-адрес.',q7:'Почему кнопка аренды Energy ведет на старый лендинг?',a7:'Покупка Energy уже работает в старом интерфейсе, поэтому кнопка ведет туда.',q8:'Подходит ли это обычным пользователям?',a8:'Да. Можно просто проверить один кошелек перед переводом.',q9:'Подходит ли это обменникам?',a9:'Да. Команды могут работать с множеством адресов и подключать уведомления.'},
+        final:{title:'Перед следующим USDT TRC20-переводом проверьте кошелек',text:'Узнайте, хватает ли TRX, Energy и Bandwidth.',cta1:'Проверить кошелек',cta2:'Добавить кошельки в мониторинг'},
+        footer:{text:'Non-custodial платформа для USDT TRC20 операций'},
+        seo:{hidden:'GasFree помогает проверить TRON кошелек перед USDT TRC20 переводом.'}
       },
       es: {
-        meta:{title:'GasFree — revisa tu wallet TRON antes de enviar USDT TRC20',description:'Comprueba si una wallet TRON está lista para transferencias USDT TRC20: saldo TRX, Energy, Bandwidth y riesgo de transacción fallida. Alquila Energy mediante una wallet de servicio, recarga TRX, monitorea direcciones y recibe alertas.',keywords:'USDT TRC20, comprobar wallet TRON, alquiler Energy TRON, TRX para comisión, Bandwidth TRON, GasFree, monitoreo de wallets, USDT sin TRX'},
+        meta:{title:'GasFree — revisa tu wallet TRON antes de enviar USDT TRC20',description:'Comprueba si una wallet TRON está lista para transferencias USDT TRC20.',keywords:'USDT TRC20, comprobar wallet TRON, alquiler Energy TRON'},
         nav:{check:'Revisar wallet',energy:'Alquiler de Energy',monitoring:'Monitoreo',business:'Para negocios',pricing:'Planes',signin:'Entrar',cta:'Check wallet'},
-        hero:{eyebrow:'Plataforma de operaciones USDT TRC20',title:'Transferencias USDT TRC20 <span class="grad">sin fallos, comisiones extra ni revisiones manuales</span>',subtitle:'Comprueba si una wallet TRON está lista para enviar USDT: TRX, Energy y Bandwidth. Alquila Energy, recarga TRX, monitorea direcciones y recibe alertas en un solo servicio.',placeholder:'Introduce dirección TRON: Txxxxxxxxxxxxxxxxxxxx',cta:'Revisar wallet',invalid:'Introduce una dirección TRON válida que empiece por T'},
+        hero:{eyebrow:'Plataforma de operaciones USDT TRC20',title:'Transferencias USDT TRC20 <span class="grad-text">sin fallos, comisiones extra ni revisiones manuales</span>',subtitle:'Comprueba si una wallet TRON está lista para enviar USDT: TRX, Energy y Bandwidth.',placeholder:'Introduce dirección TRON: Txxxxxxxxxxxxxxxxxxxx',cta:'Revisar wallet',invalid:'Introduce una dirección TRON válida que empiece por T'},
         trust:{nonCustodial:'Non-custodial',noKeys:'Sin claves privadas',publicOnly:'Solo dirección pública',noFunds:'Sin acceso a tus fondos'},
-        mock:{title:'Panel de preparación de wallet',subtitle:'Antes de enviar USDT TRC20',status:'Necesita Energy',wallet:'Wallet',usdt:'Saldo USDT',trx:'Saldo TRX',low:'Bajo',recommended:'Acción recomendada',recommendedText:'Alquila 65,000 Energy y recarga 0.345 TRX si la wallet necesita cubrir Bandwidth.',fix:'Corregir antes de enviar',add:'Añadir a monitoreo'},
-        pain:{title:'Antes de enviar USDT TRC20, asegúrate de que la wallet esté lista',subtitle:'La mayoría de problemas se ven antes: poco TRX, sin Energy, bajo Bandwidth o una dirección que requiere atención.',trxTitle:'¿Falta TRX?',trxText:'La transferencia puede fallar o salir más cara. Revisa el saldo con antelación y recarga si hace falta.',energyTitle:'¿Falta Energy?',energyText:'Alquila Energy antes de enviar y reduce costes de transacciones USDT TRC20 en los escenarios adecuados.',walletsTitle:'¿Muchas wallets?',walletsText:'Controla saldos, estados y actividad de todas las direcciones TRON en un dashboard.'},
-        segments:{title:'Para una wallet, un equipo o un negocio de intercambio',subtitle:'Simple para usuarios privados. Suficientemente potente para P2P, OTC, exchanges y equipos con muchas direcciones.',privateTitle:'Usuarios privados',privateText:'Revisa tu wallet antes de transferir, comprueba si hay TRX y Energy suficientes y evita costes extra o transacciones fallidas.',privateCta:'Revisar mi wallet →',p2pTitle:'Traders P2P y OTC',p2pText:'Revisa direcciones de trabajo, prepara wallets para operaciones y reduce retrasos durante intercambios.',p2pCta:'Preparar dirección →',exchTitle:'Exchangers y servicios de Telegram',exchText:'Monitoreo de saldos, TRX, Energy, entradas y salidas, alertas y revisiones masivas para el equipo operativo.',exchCta:'Ver dashboard →',bizTitle:'Negocios y pagos',bizText:'Controla wallets de tesorería, recibe alertas y prepara direcciones para pagos USDT TRC20 recurrentes.',bizCta:'Configurar monitoreo →'},
-        steps:{title:'De la revisión a una transferencia exitosa en pocos pasos',oneTitle:'Introduce una dirección TRON',oneText:'La plataforma revisa una dirección pública. No se necesitan claves privadas.',twoTitle:'Recibe el estado de preparación',twoText:'Ve USDT, TRX, Energy, Bandwidth y riesgo de transacción fallida.',threeTitle:'Corrige el problema',threeText:'Alquila Energy, recarga TRX o añade la wallet al monitoreo.',fourTitle:'Envía USDT con más control',fourText:'La wallet está preparada, los riesgos son visibles y las operaciones bajo control.'},
-        readiness:{title:'Wallet Readiness Check para USDT TRC20',subtitle:'Sabe si una wallet TRON está lista para enviar USDT antes de pulsar Send.',score:'Puntuación de preparación',type:'Tipo de transferencia',risk:'Riesgo',needsAction:'Requiere acción',next:'Siguiente paso',rentEnergy:'Alquilar Energy',cta:'Revisar dirección',safe:'¿Es seguro?',micro:'No pedimos seed phrase, private key ni acceso a la wallet.'},
-        energy:{title:'Reduce comisiones USDT TRC20 con Energy',text:'Si una wallet no tiene Energy, una transferencia USDT TRC20 puede costar más. Alquila Energy a la dirección TRON necesaria y prepara la wallet antes de enviar.',serviceWallet:'El alquiler de Energy está disponible mediante wallet de servicio: el usuario calcula el pedido, envía TRX a la dirección de servicio y el servicio delega Energy a la dirección TRON del usuario.',cta:'Alquilar Energy con wallet de servicio',check:'Revisar wallet primero',calc:'Calculadora de Energy',transferType:'Tipo de transferencia',walletStatus:'Estado de wallet',noEnergy:'Sin Energy',required:'Energy necesaria',action:'Acción',rent:'Alquilar Energy',note:'Energy puede ayudar a reducir costes en escenarios adecuados. No prometemos garantías falsas y mostramos la acción antes de pagar.'},
-        trx:{title:'No dejes que una transferencia falle por falta de TRX',text:'Algunas wallets no están listas para operaciones USDT TRC20 porque no tienen TRX para recursos de red. GasFree puede mostrar cuándo hace falta una pequeña recarga de TRX.',cta:'Revisar saldo TRX'},
-        notWallet:{title:'No es una wallet, no es un exchange, no es DeFi',text:'GasFree es una capa operativa para USDT en TRON. Trabaja con direcciones públicas, da recomendaciones y ayuda a monitorear actividad, pero no controla fondos del usuario.'},
-        monitoring:{title:'Todas las wallets TRON bajo control',subtitle:'Añade una dirección o sube una lista de wallets para controlar saldos, recursos y actividad en un dashboard.',uploadTitle:'Carga CSV',uploadText:'Carga muchas direcciones y revisa su estado sin copiar y pegar manualmente.',labelsTitle:'Etiquetas y estados',labelsText:'Usa etiquetas como Treasury, P2P, Client, Exchange y estados como Ready, Needs TRX o Needs Energy.',activityTitle:'Actividad reciente',activityText:'Controla USDT entrante, transferencias salientes, cambios de recursos y wallets que requieren atención.'},
-        alerts:{title:'Recibe alertas antes de que un problema sea un error',text:'Conecta alertas de Telegram y sabe cuándo una wallet necesita acción: recargar TRX, alquilar Energy o revisar una entrada.',cta:'Conectar alertas Telegram'},
-        bulk:{title:'Para equipos que trabajan con decenas o cientos de direcciones',text:'Sube direcciones, revisa preparación en masa, prepara wallets para transferencias y exporta reportes operativos.',cta:'Hablar de configuración business'},
-        security:{title:'Seguridad y transparencia por defecto',subtitle:'El servicio ayuda a preparar y monitorear wallets TRON, pero nunca recibe control sobre los fondos del usuario.',one:'Sin claves privadas',two:'Sin seed phrase',three:'Sin acceso a fondos',four:'Solo direcciones públicas',five:'Comisiones transparentes'},
-        journey:{title:'Empieza con una revisión. Escala a un dashboard operativo completo.',text:'Para un usuario privado es una revisión rápida antes de enviar USDT. Para un equipo es un dashboard diario de operaciones USDT TRC20.',one:'Revisar una wallet',two:'Alquilar Energy',three:'Añadir monitoreo',four:'Activar alertas',five:'Automatizar operaciones'},
-        pricing:{title:'Planes simples para diferentes niveles de uso',subtitle:'Free ayuda a usuarios privados a empezar. Business hace el producto útil para equipos y operaciones de intercambio.',freeFor:'Para usuarios privados',freeCta:'Revisar gratis',proFor:'Para usuarios activos',early:'Acceso anticipado',proCta:'Empezar Pro',bizFor:'Para exchangers y equipos',bizCta:'Contactar ventas'},
-        faq:{q1:'¿Es una wallet?',a1:'No. GasFree no es una wallet y no guarda tus fondos. Ayuda a revisar, preparar y monitorear direcciones TRON.',q2:'¿Debo introducir private key o seed phrase?',a2:'No. Nunca. Solo se necesita una dirección pública TRON.',q3:'¿El servicio puede acceder a mis fondos?',a3:'No. El servicio no puede firmar transacciones por ti y no tiene acceso a tus fondos.',q4:'¿Por qué necesito TRX si envío USDT?',a4:'Las transacciones en TRON usan recursos de red. Si no hay suficientes recursos, puede hacer falta TRX o Energy.',q5:'¿Qué es Energy?',a5:'Energy es un recurso de la red TRON usado para operaciones de smart contracts, incluidas transferencias USDT TRC20.',q6:'¿Cómo funciona el alquiler de Energy mediante wallet de servicio?',a6:'Abres el landing antiguo de alquiler de Energy, calculas el pedido y envías TRX a la wallet de servicio. Después del pago, el servicio delega Energy a tu dirección TRON. El servicio no accede a tu USDT.',q7:'¿Por qué el botón de Energy abre el landing antiguo?',a7:'El nuevo landing posiciona GasFree como plataforma más amplia de preparación y operaciones. El pedido de Energy ya funciona en la interfaz antigua, así que el botón abre la página donde se puede ordenar ahora.',q8:'¿Sirve para usuarios normales?',a8:'Sí. Puedes revisar una sola wallet antes de enviar USDT TRC20.',q9:'¿Sirve para exchangers?',a9:'Sí. Los equipos pueden trabajar con muchas direcciones, controlar estados, hacer revisiones masivas y conectar alertas.'},
-        final:{title:'Antes de tu próxima transferencia USDT TRC20, revisa la wallet',text:'Comprueba si TRX, Energy y Bandwidth son suficientes y prepara la dirección antes de enviar.',cta1:'Revisar wallet',cta2:'Añadir wallets al monitoreo'},footer:{text:'Plataforma non-custodial para operaciones USDT TRC20'},seo:{hidden:'GasFree ayuda a revisar una wallet TRON antes de enviar USDT TRC20, alquilar TRON Energy mediante wallet de servicio, comprobar TRX y Bandwidth, monitorear muchas direcciones y recibir alertas Telegram.'}
+        mock:{title:'Panel de preparación de wallet',subtitle:'Antes de enviar USDT TRC20',status:'Necesita Energy',wallet:'Wallet',usdt:'Saldo USDT',trx:'Saldo TRX',low:'Bajo',recommended:'Acción recomendada',recommendedText:'Alquila 65,000 Energy y recarga 0.345 TRX.',fix:'Corregir antes de enviar',add:'Añadir a monitoreo'},
+        pain:{title:'Antes de enviar USDT TRC20, asegúrate de que la wallet esté lista',subtitle:'La mayoría de problemas se ven antes.',trxTitle:'¿Falta TRX?',trxText:'La transferencia puede fallar o salir más cara.',energyTitle:'¿Falta Energy?',energyText:'Alquila Energy antes de enviar.',walletsTitle:'¿Muchas wallets?',walletsText:'Controla saldos y actividad en un dashboard.'},
+        segments:{title:'Para una wallet, un equipo o un negocio de intercambio',subtitle:'Simple para usuarios privados. Potente para P2P, OTC y exchangers.',privateTitle:'Usuarios privados',privateText:'Revisa tu wallet antes de transferir.',privateCta:'Revisar mi wallet →',p2pTitle:'Traders P2P y OTC',p2pText:'Revisa direcciones y prepara wallets para operaciones.',p2pCta:'Preparar dirección →',exchTitle:'Exchangers y servicios de Telegram',exchText:'Monitoreo de saldos, TRX, Energy y alertas.',exchCta:'Ver dashboard →',bizTitle:'Negocios y pagos',bizText:'Controla wallets de tesorería y recibe alertas.',bizCta:'Configurar monitoreo →'},
+        steps:{title:'De la revisión a una transferencia exitosa en pocos pasos',oneTitle:'Introduce una dirección TRON',oneText:'No se necesitan claves privadas.',twoTitle:'Recibe el estado de preparación',twoText:'Ve USDT, TRX, Energy, Bandwidth y riesgo.',threeTitle:'Corrige el problema',threeText:'Alquila Energy, recarga TRX o añade al monitoreo.',fourTitle:'Envía USDT con más control',fourText:'La wallet está preparada y los riesgos son visibles.'},
+        readiness:{title:'Wallet Readiness Check para USDT TRC20',subtitle:'Sabe si una wallet TRON está lista antes de pulsar Send.',score:'Puntuación de preparación',type:'Tipo de transferencia',risk:'Riesgo',needsAction:'Requiere acción',next:'Siguiente paso',rentEnergy:'Alquilar Energy',cta:'Revisar dirección',safe:'¿Es seguro?',micro:'No pedimos seed phrase, private key ni acceso a la wallet.'},
+        energy:{title:'Reduce comisiones USDT TRC20 con Energy',text:'Si una wallet no tiene Energy, una transferencia puede costar más.',serviceWallet:'El alquiler de Energy está disponible mediante wallet de servicio.',cta:'Alquilar Energy con wallet de servicio',check:'Revisar wallet primero',calc:'Calculadora de Energy',transferType:'Tipo de transferencia',walletStatus:'Estado de wallet',noEnergy:'Sin Energy',required:'Energy necesaria',action:'Acción',rent:'Alquilar Energy',note:'Energy puede ayudar a reducir costes en escenarios adecuados.'},
+        trx:{title:'No dejes que una transferencia falle por falta de TRX',text:'Algunas wallets no están listas porque no tienen TRX para recursos de red.',cta:'Revisar saldo TRX'},
+        notWallet:{title:'No es una wallet, no es un exchange, no es DeFi',text:'GasFree es una capa operativa para USDT en TRON.'},
+        monitoring:{title:'Todas las wallets TRON bajo control',subtitle:'Añade una dirección o sube una lista para monitorear.',uploadTitle:'Carga CSV',uploadText:'Carga muchas direcciones sin copiar y pegar.',labelsTitle:'Etiquetas y estados',labelsText:'Usa etiquetas como Treasury, P2P, Client, Exchange.',activityTitle:'Actividad reciente',activityText:'Controla USDT entrante, salidas y cambios de recursos.'},
+        alerts:{title:'Recibe alertas antes de que un problema sea un error',text:'Conecta alertas de Telegram.',cta:'Conectar alertas Telegram'},
+        bulk:{title:'Para equipos con decenas o cientos de direcciones',text:'Sube direcciones, revisa en masa y exporta reportes.',cta:'Hablar de configuración business'},
+        security:{title:'Seguridad y transparencia por defecto',subtitle:'El servicio nunca recibe control sobre los fondos del usuario.',one:'Sin claves privadas',two:'Sin seed phrase',three:'Sin acceso a fondos',four:'Solo direcciones públicas',five:'Comisiones transparentes'},
+        journey:{title:'Empieza con una revisión. Escala a un dashboard operativo.',text:'Para un usuario privado es una revisión rápida. Para un equipo es un dashboard diario.',one:'Revisar una wallet',two:'Alquilar Energy',three:'Añadir monitoreo',four:'Activar alertas',five:'Automatizar operaciones'},
+        pricing:{title:'Planes simples para diferentes niveles de uso',subtitle:'Free para empezar. Business para equipos.',freeFor:'Para usuarios privados',freeCta:'Revisar gratis',proFor:'Para usuarios activos',early:'Acceso anticipado',proCta:'Empezar Pro',bizFor:'Para exchangers y equipos',bizCta:'Contactar ventas'},
+        faq:{q1:'¿Es una wallet?',a1:'No. GasFree no es una wallet y no guarda tus fondos.',q2:'¿Debo introducir private key o seed phrase?',a2:'No. Nunca. Solo se necesita una dirección pública TRON.',q3:'¿El servicio puede acceder a mis fondos?',a3:'No. El servicio no puede firmar transacciones por ti.',q4:'¿Por qué necesito TRX si envío USDT?',a4:'Las transacciones en TRON usan recursos de red.',q5:'¿Qué es Energy?',a5:'Energy es un recurso de la red TRON para operaciones de smart contracts.',q6:'¿Cómo funciona el alquiler de Energy mediante wallet de servicio?',a6:'Calculas el pedido y envías TRX a la wallet de servicio. El servicio delega Energy a tu dirección TRON.',q7:'¿Por qué el botón de Energy abre el landing antiguo?',a7:'El pedido de Energy ya funciona en la interfaz antigua.',q8:'¿Sirve para usuarios normales?',a8:'Sí. Puedes revisar una sola wallet antes de enviar USDT TRC20.',q9:'¿Sirve para exchangers?',a9:'Sí. Los equipos pueden trabajar con muchas direcciones.'},
+        final:{title:'Antes de tu próxima transferencia USDT TRC20, revisa la wallet',text:'Comprueba si TRX, Energy y Bandwidth son suficientes.',cta1:'Revisar wallet',cta2:'Añadir wallets al monitoreo'},
+        footer:{text:'Plataforma non-custodial para operaciones USDT TRC20'},
+        seo:{hidden:'GasFree ayuda a revisar una wallet TRON antes de enviar USDT TRC20.'}
       },
       id: {
-        meta:{title:'GasFree — Cek wallet TRON sebelum mengirim USDT TRC20',description:'Cek apakah wallet TRON siap untuk transfer USDT TRC20: saldo TRX, Energy, Bandwidth, dan risiko transaksi gagal. Sewa Energy melalui service wallet, top up TRX, monitor alamat, dan dapatkan alert.',keywords:'USDT TRC20, cek wallet TRON, sewa Energy TRON, TRX untuk biaya USDT, Bandwidth TRON, GasFree, monitoring wallet, USDT tanpa TRX'},
+        meta:{title:'GasFree — Cek wallet TRON sebelum mengirim USDT TRC20',description:'Cek apakah wallet TRON siap untuk transfer USDT TRC20.',keywords:'USDT TRC20, cek wallet TRON, sewa Energy TRON'},
         nav:{check:'Cek wallet',energy:'Sewa Energy',monitoring:'Monitoring',business:'Untuk bisnis',pricing:'Harga',signin:'Masuk',cta:'Check wallet'},
-        hero:{eyebrow:'Platform operasi USDT TRC20',title:'Transfer USDT TRC20 <span class="grad">tanpa gagal, biaya ekstra, dan pengecekan manual</span>',subtitle:'Cek apakah wallet TRON siap untuk transfer USDT: TRX, Energy, dan Bandwidth. Sewa Energy, top up TRX, monitor alamat, dan dapatkan notifikasi dalam satu layanan.',placeholder:'Masukkan alamat TRON: Txxxxxxxxxxxxxxxxxxxx',cta:'Cek wallet',invalid:'Masukkan alamat TRON valid yang diawali T'},
+        hero:{eyebrow:'Platform operasi USDT TRC20',title:'Transfer USDT TRC20 <span class="grad-text">tanpa gagal, biaya ekstra, dan pengecekan manual</span>',subtitle:'Cek apakah wallet TRON siap untuk transfer USDT: TRX, Energy, dan Bandwidth.',placeholder:'Masukkan alamat TRON: Txxxxxxxxxxxxxxxxxxxx',cta:'Cek wallet',invalid:'Masukkan alamat TRON valid yang diawali T'},
         trust:{nonCustodial:'Non-custodial',noKeys:'Tanpa private key',publicOnly:'Hanya alamat publik',noFunds:'Tidak ada akses ke dana Anda'},
-        mock:{title:'Panel Kesiapan Wallet',subtitle:'Sebelum mengirim USDT TRC20',status:'Butuh Energy',wallet:'Wallet',usdt:'Saldo USDT',trx:'Saldo TRX',low:'Rendah',recommended:'Aksi yang disarankan',recommendedText:'Sewa 65,000 Energy dan top up 0.345 TRX jika wallet butuh coverage Bandwidth.',fix:'Perbaiki sebelum kirim',add:'Tambahkan ke monitoring'},
-        pain:{title:'Sebelum mengirim USDT TRC20, pastikan wallet siap',subtitle:'Sebagian besar masalah bisa terlihat lebih awal: TRX rendah, tidak ada Energy, Bandwidth rendah, atau alamat butuh perhatian.',trxTitle:'TRX tidak cukup?',trxText:'Transfer bisa gagal atau menjadi lebih mahal. Cek saldo lebih dulu dan top up wallet jika diperlukan.',energyTitle:'Energy tidak cukup?',energyText:'Sewa Energy sebelum mengirim dan kurangi biaya transaksi USDT TRC20 pada skenario yang sesuai.',walletsTitle:'Banyak wallet?',walletsText:'Pantau saldo, status, dan aktivitas semua alamat TRON dalam satu dashboard.'},
-        segments:{title:'Untuk satu wallet, tim, atau bisnis exchanger',subtitle:'Mudah untuk pengguna pribadi. Cukup dalam untuk P2P, OTC, exchanger, dan tim dengan banyak alamat.',privateTitle:'Pengguna pribadi',privateText:'Cek wallet sebelum transfer, lihat apakah TRX dan Energy cukup, dan hindari biaya ekstra atau transaksi gagal.',privateCta:'Cek wallet saya →',p2pTitle:'Trader P2P dan OTC',p2pText:'Cek alamat kerja dengan cepat, siapkan wallet untuk transaksi, dan kurangi risiko delay saat exchange.',p2pCta:'Siapkan alamat →',exchTitle:'Exchanger dan layanan Telegram',exchText:'Monitoring saldo, TRX, Energy, transfer masuk/keluar, alert, dan bulk check untuk tim operasi.',exchCta:'Lihat dashboard →',bizTitle:'Bisnis dan payout',bizText:'Kontrol wallet treasury, dapatkan alert, dan siapkan alamat untuk pembayaran USDT TRC20 rutin.',bizCta:'Atur monitoring →'},
-        steps:{title:'Dari pengecekan sampai transfer berhasil dalam beberapa langkah',oneTitle:'Masukkan alamat TRON',oneText:'Platform mengecek alamat publik. Private key tidak diperlukan.',twoTitle:'Dapatkan status kesiapan',twoText:'Lihat USDT, TRX, Energy, Bandwidth, dan risiko transaksi gagal.',threeTitle:'Perbaiki masalah',threeText:'Sewa Energy, top up TRX, atau tambahkan wallet ke monitoring.',fourTitle:'Kirim USDT dengan lebih terkontrol',fourText:'Wallet siap, risiko terlihat, dan operasi lebih terkendali.'},
-        readiness:{title:'Wallet Readiness Check untuk USDT TRC20',subtitle:'Ketahui apakah wallet TRON siap untuk transfer USDT sebelum Anda menekan Send.',score:'Skor kesiapan',type:'Jenis transfer',risk:'Risiko',needsAction:'Butuh aksi',next:'Langkah berikutnya',rentEnergy:'Sewa Energy',cta:'Cek alamat',safe:'Bagaimana keamanannya?',micro:'Kami tidak meminta seed phrase, private key, atau akses wallet.'},
-        energy:{title:'Kurangi biaya USDT TRC20 dengan Energy',text:'Jika wallet tidak memiliki Energy, transfer USDT TRC20 bisa lebih mahal. Sewa Energy ke alamat TRON yang diperlukan dan siapkan wallet sebelum mengirim.',serviceWallet:'Sewa Energy tersedia melalui service wallet: pengguna menghitung order, mengirim TRX ke alamat service, lalu service mendelegasikan Energy ke alamat TRON pengguna.',cta:'Sewa Energy melalui service wallet',check:'Cek wallet dulu',calc:'Kalkulator Energy',transferType:'Jenis transfer',walletStatus:'Status wallet',noEnergy:'Tidak ada Energy',required:'Energy diperlukan',action:'Aksi',rent:'Sewa Energy',note:'Energy dapat membantu mengurangi biaya pada skenario yang sesuai. Kami tidak memberi janji palsu dan menampilkan aksi sebelum pembayaran.'},
-        trx:{title:'Jangan sampai transfer gagal karena TRX kurang',text:'Beberapa wallet belum siap untuk operasi USDT TRC20 karena tidak punya TRX untuk resource jaringan. GasFree dapat menunjukkan kapan top up TRX kecil diperlukan.',cta:'Cek saldo TRX'},
-        notWallet:{title:'Bukan wallet, bukan exchange, bukan DeFi',text:'GasFree adalah operational layer untuk USDT di TRON. Layanan ini bekerja dengan alamat publik, memberi rekomendasi, dan membantu monitoring aktivitas, tetapi tidak mengontrol dana pengguna.'},
-        monitoring:{title:'Semua wallet TRON terkendali',subtitle:'Tambahkan satu alamat atau unggah daftar wallet untuk memantau saldo, resource, dan aktivitas dalam satu dashboard.',uploadTitle:'Upload CSV',uploadText:'Muat banyak alamat dan cek status tanpa copy-paste manual.',labelsTitle:'Label dan status',labelsText:'Gunakan label seperti Treasury, P2P, Client, Exchange dan status seperti Ready, Needs TRX, atau Needs Energy.',activityTitle:'Aktivitas terbaru',activityText:'Pantau USDT masuk, transfer keluar, perubahan resource, dan wallet yang butuh perhatian.'},
-        alerts:{title:'Dapatkan alert sebelum masalah menjadi error',text:'Hubungkan alert Telegram dan ketahui kapan wallet perlu aksi: top up TRX, sewa Energy, atau cek transfer masuk.',cta:'Hubungkan alert Telegram'},
-        bulk:{title:'Untuk tim yang bekerja dengan puluhan atau ratusan alamat',text:'Upload alamat, cek kesiapan secara massal, siapkan wallet untuk transfer, dan ekspor report untuk kontrol operasional.',cta:'Diskusikan setup bisnis'},
-        security:{title:'Keamanan dan transparansi sejak awal',subtitle:'Layanan membantu menyiapkan dan memonitor wallet TRON, tetapi tidak pernah menerima kontrol atas dana pengguna.',one:'Tanpa private key',two:'Tanpa seed phrase',three:'Tidak ada akses ke dana',four:'Hanya alamat publik',five:'Biaya transparan'},
-        journey:{title:'Mulai dari satu pengecekan. Naikkan menjadi dashboard operasi penuh.',text:'Untuk pengguna pribadi, ini adalah cara cepat mengecek wallet sebelum mengirim USDT. Untuk tim, ini menjadi dashboard operasi USDT TRC20 harian.',one:'Cek satu wallet',two:'Sewa Energy',three:'Tambah monitoring',four:'Aktifkan alert',five:'Otomatisasi operasi'},
-        pricing:{title:'Paket sederhana untuk berbagai tingkat penggunaan',subtitle:'Free membantu pengguna pribadi memulai. Business membuat produk berguna untuk tim dan operasi exchanger.',freeFor:'Untuk pengguna pribadi',freeCta:'Cek gratis',proFor:'Untuk pengguna aktif',early:'Early access',proCta:'Mulai Pro',bizFor:'Untuk exchanger dan tim',bizCta:'Hubungi sales'},
-        faq:{q1:'Apakah ini wallet?',a1:'Tidak. GasFree bukan wallet dan tidak menyimpan dana Anda. Layanan ini membantu mengecek, menyiapkan, dan memonitor alamat TRON.',q2:'Apakah perlu memasukkan private key atau seed phrase?',a2:'Tidak. Jangan pernah. Alamat TRON publik sudah cukup untuk pengecekan.',q3:'Apakah layanan bisa mengakses dana saya?',a3:'Tidak. Layanan tidak bisa menandatangani transaksi atas nama Anda dan tidak memiliki akses ke dana Anda.',q4:'Kenapa perlu TRX kalau saya mengirim USDT?',a4:'Transaksi TRON memakai resource jaringan. Jika resource tidak cukup, TRX atau Energy mungkin diperlukan.',q5:'Apa itu Energy?',a5:'Energy adalah resource jaringan TRON yang digunakan untuk operasi smart contract, termasuk transfer USDT TRC20.',q6:'Bagaimana cara kerja sewa Energy melalui service wallet?',a6:'Anda membuka landing lama untuk sewa Energy, menghitung order, lalu mengirim TRX ke service wallet. Setelah pembayaran, service mendelegasikan Energy ke alamat TRON Anda. Service tidak mendapat akses ke USDT Anda.',q7:'Kenapa tombol Energy membuka landing lama?',a7:'Landing baru memosisikan GasFree sebagai platform readiness dan operasi yang lebih luas. Order Energy sudah berjalan di interface lama, jadi tombol membuka halaman tempat user bisa order sekarang.',q8:'Apakah cocok untuk pengguna biasa?',a8:'Ya. Anda bisa mengecek satu wallet sebelum mengirim USDT TRC20.',q9:'Apakah cocok untuk exchanger?',a9:'Ya. Tim bisa bekerja dengan banyak alamat, memantau status, melakukan bulk check, dan menghubungkan alert.'},
-        final:{title:'Sebelum transfer USDT TRC20 berikutnya, cek wallet dulu',text:'Ketahui apakah TRX, Energy, dan Bandwidth cukup, lalu siapkan alamat sebelum mengirim.',cta1:'Cek wallet',cta2:'Tambahkan wallet ke monitoring'},footer:{text:'Platform non-custodial untuk operasi USDT TRC20'},seo:{hidden:'GasFree membantu pengguna mengecek wallet TRON sebelum mengirim USDT TRC20, menyewa TRON Energy melalui service wallet, mengecek TRX dan Bandwidth, memonitor banyak alamat wallet, dan menerima alert Telegram.'}
+        mock:{title:'Panel Kesiapan Wallet',subtitle:'Sebelum mengirim USDT TRC20',status:'Butuh Energy',wallet:'Wallet',usdt:'Saldo USDT',trx:'Saldo TRX',low:'Rendah',recommended:'Aksi yang disarankan',recommendedText:'Sewa 65,000 Energy dan top up 0.345 TRX.',fix:'Perbaiki sebelum kirim',add:'Tambahkan ke monitoring'},
+        pain:{title:'Sebelum mengirim USDT TRC20, pastikan wallet siap',subtitle:'Sebagian besar masalah bisa terlihat lebih awal.',trxTitle:'TRX tidak cukup?',trxText:'Transfer bisa gagal atau menjadi lebih mahal.',energyTitle:'Energy tidak cukup?',energyText:'Sewa Energy sebelum mengirim dan kurangi biaya.',walletsTitle:'Banyak wallet?',walletsText:'Pantau saldo dan aktivitas dalam satu dashboard.'},
+        segments:{title:'Untuk satu wallet, tim, atau bisnis exchanger',subtitle:'Mudah untuk pengguna pribadi. Dalam untuk P2P, OTC, exchanger.',privateTitle:'Pengguna pribadi',privateText:'Cek wallet sebelum transfer.',privateCta:'Cek wallet saya →',p2pTitle:'Trader P2P dan OTC',p2pText:'Cek alamat kerja dan siapkan wallet untuk transaksi.',p2pCta:'Siapkan alamat →',exchTitle:'Exchanger dan layanan Telegram',exchText:'Monitoring saldo, TRX, Energy, dan alert.',exchCta:'Lihat dashboard →',bizTitle:'Bisnis dan payout',bizText:'Kontrol wallet treasury dan dapatkan alert.',bizCta:'Atur monitoring →'},
+        steps:{title:'Dari pengecekan sampai transfer berhasil dalam beberapa langkah',oneTitle:'Masukkan alamat TRON',oneText:'Private key tidak diperlukan.',twoTitle:'Dapatkan status kesiapan',twoText:'Lihat USDT, TRX, Energy, Bandwidth, dan risiko.',threeTitle:'Perbaiki masalah',threeText:'Sewa Energy, top up TRX, atau tambahkan ke monitoring.',fourTitle:'Kirim USDT dengan lebih terkontrol',fourText:'Wallet siap dan risiko terlihat.'},
+        readiness:{title:'Wallet Readiness Check untuk USDT TRC20',subtitle:'Ketahui apakah wallet TRON siap sebelum menekan Send.',score:'Skor kesiapan',type:'Jenis transfer',risk:'Risiko',needsAction:'Butuh aksi',next:'Langkah berikutnya',rentEnergy:'Sewa Energy',cta:'Cek alamat',safe:'Bagaimana keamanannya?',micro:'Kami tidak meminta seed phrase, private key, atau akses wallet.'},
+        energy:{title:'Kurangi biaya USDT TRC20 dengan Energy',text:'Jika wallet tidak memiliki Energy, transfer bisa lebih mahal.',serviceWallet:'Sewa Energy tersedia melalui service wallet.',cta:'Sewa Energy melalui service wallet',check:'Cek wallet dulu',calc:'Kalkulator Energy',transferType:'Jenis transfer',walletStatus:'Status wallet',noEnergy:'Tidak ada Energy',required:'Energy diperlukan',action:'Aksi',rent:'Sewa Energy',note:'Energy dapat membantu mengurangi biaya pada skenario yang sesuai.'},
+        trx:{title:'Jangan sampai transfer gagal karena TRX kurang',text:'Beberapa wallet belum siap karena tidak punya TRX.',cta:'Cek saldo TRX'},
+        notWallet:{title:'Bukan wallet, bukan exchange, bukan DeFi',text:'GasFree adalah operational layer untuk USDT di TRON.'},
+        monitoring:{title:'Semua wallet TRON terkendali',subtitle:'Tambahkan alamat atau unggah daftar wallet untuk monitoring.',uploadTitle:'Upload CSV',uploadText:'Muat banyak alamat tanpa copy-paste manual.',labelsTitle:'Label dan status',labelsText:'Gunakan label Treasury, P2P, Client, Exchange.',activityTitle:'Aktivitas terbaru',activityText:'Pantau USDT masuk, transfer keluar, dan perubahan resource.'},
+        alerts:{title:'Dapatkan alert sebelum masalah menjadi error',text:'Hubungkan alert Telegram.',cta:'Hubungkan alert Telegram'},
+        bulk:{title:'Untuk tim dengan puluhan atau ratusan alamat',text:'Upload alamat, cek kesiapan massal, dan ekspor report.',cta:'Diskusikan setup bisnis'},
+        security:{title:'Keamanan dan transparansi sejak awal',subtitle:'Layanan tidak pernah menerima kontrol atas dana pengguna.',one:'Tanpa private key',two:'Tanpa seed phrase',three:'Tidak ada akses ke dana',four:'Hanya alamat publik',five:'Biaya transparan'},
+        journey:{title:'Mulai dari satu pengecekan. Naikkan menjadi dashboard operasi penuh.',text:'Untuk pengguna pribadi, cek cepat sebelum mengirim USDT. Untuk tim, dashboard harian.',one:'Cek satu wallet',two:'Sewa Energy',three:'Tambah monitoring',four:'Aktifkan alert',five:'Otomatisasi operasi'},
+        pricing:{title:'Paket sederhana untuk berbagai tingkat penggunaan',subtitle:'Free untuk memulai. Business untuk tim dan exchanger.',freeFor:'Untuk pengguna pribadi',freeCta:'Cek gratis',proFor:'Untuk pengguna aktif',early:'Early access',proCta:'Mulai Pro',bizFor:'Untuk exchanger dan tim',bizCta:'Hubungi sales'},
+        faq:{q1:'Apakah ini wallet?',a1:'Tidak. GasFree bukan wallet dan tidak menyimpan dana Anda.',q2:'Apakah perlu memasukkan private key atau seed phrase?',a2:'Tidak. Jangan pernah. Alamat TRON publik sudah cukup.',q3:'Apakah layanan bisa mengakses dana saya?',a3:'Tidak. Layanan tidak bisa menandatangani transaksi atas nama Anda.',q4:'Kenapa perlu TRX kalau saya mengirim USDT?',a4:'Transaksi TRON memakai resource jaringan.',q5:'Apa itu Energy?',a5:'Energy adalah resource jaringan TRON untuk operasi smart contract.',q6:'Bagaimana cara kerja sewa Energy melalui service wallet?',a6:'Anda menghitung order dan mengirim TRX ke service wallet. Service mendelegasikan Energy ke alamat TRON Anda.',q7:'Kenapa tombol Energy membuka landing lama?',a7:'Order Energy sudah berjalan di interface lama.',q8:'Apakah cocok untuk pengguna biasa?',a8:'Ya. Anda bisa mengecek satu wallet sebelum mengirim USDT TRC20.',q9:'Apakah cocok untuk exchanger?',a9:'Ya. Tim bisa bekerja dengan banyak alamat dan menghubungkan alert.'},
+        final:{title:'Sebelum transfer USDT TRC20 berikutnya, cek wallet dulu',text:'Ketahui apakah TRX, Energy, dan Bandwidth cukup.',cta1:'Cek wallet',cta2:'Tambahkan wallet ke monitoring'},
+        footer:{text:'Platform non-custodial untuk operasi USDT TRC20'},
+        seo:{hidden:'GasFree membantu mengecek wallet TRON sebelum mengirim USDT TRC20.'}
       }
     };
 
-    function get(obj, path){return path.split('.').reduce((o,k)=>o && o[k], obj)}
-    function applyLanguage(lang){
-      if(!SUPPORTED_LANGS.includes(lang)) lang = 'en';
+    function get(obj, path){ return path.split('.').reduce((o,k) => o && o[k], obj); }
+
+    function applyLanguage(lang) {
+      if (!SUPPORTED_LANGS.includes(lang)) lang = 'en';
       const dict = I18N[lang];
       document.documentElement.lang = lang;
       document.getElementById('langSelect').value = lang;
       document.title = dict.meta.title;
       setMeta('description', dict.meta.description);
       setMeta('keywords', dict.meta.keywords);
-      setMetaProperty('og:title', dict.meta.title);
-      setMetaProperty('og:description', dict.meta.description);
+      setMetaProp('og:title', dict.meta.title);
+      setMetaProp('og:description', dict.meta.description);
       setMeta('twitter:title', dict.meta.title);
       setMeta('twitter:description', dict.meta.description);
-      document.querySelectorAll('[data-i18n]').forEach(el=>{const v=get(dict,el.dataset.i18n); if(v!==undefined) el.textContent=v;});
-      document.querySelectorAll('[data-i18n-html]').forEach(el=>{const v=get(dict,el.dataset.i18nHtml); if(v!==undefined) el.innerHTML=v;});
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const v=get(dict,el.dataset.i18nPlaceholder); if(v!==undefined) el.placeholder=v;});
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = get(dict, el.dataset.i18n);
+        if (v !== undefined) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = get(dict, el.dataset.i18nHtml);
+        if (v !== undefined) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const v = get(dict, el.dataset.i18nPlaceholder);
+        if (v !== undefined) el.placeholder = v;
+      });
       localStorage.setItem('gasfree_lang', lang);
-      updateUrlLang(lang);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url.toString());
       buildJsonLd(lang);
     }
-    function setMeta(name, content){const el=document.querySelector(`meta[name="${name}"]`); if(el) el.setAttribute('content', content)}
-    function setMetaProperty(property, content){const el=document.querySelector(`meta[property="${property}"]`); if(el) el.setAttribute('content', content)}
-    function updateUrlLang(lang){
-      const url = new URL(window.location.href); url.searchParams.set('lang', lang); history.replaceState(null,'',url.toString());
+
+    function setMeta(name, content) {
+      const el = document.querySelector(`meta[name="${name}"]`);
+      if (el) el.setAttribute('content', content);
     }
-    function buildJsonLd(lang){
-      const d = I18N[lang];
-      document.getElementById('orgJson').textContent = JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":"GasFree","alternateName":["GasFree4you","Gas Free 4 You"],"url":"https://gasfree4you.com/","contactPoint":[{"@type":"ContactPoint","email":"lina@gasfree4you.com","contactType":"customer support"}],"sameAs":["https://t.me/trx2_9_support_bot"]});
-      document.getElementById('appJson').textContent = JSON.stringify({"@context":"https://schema.org","@type":"SoftwareApplication","name":"GasFree","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":d.meta.description,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}});
-      document.getElementById('faqJson').textContent = JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[1,2,3,4,5,6,7,8,9].map(n=>({"@type":"Question","name":d.faq['q'+n],"acceptedAnswer":{"@type":"Answer","text":d.faq['a'+n]}}))});
+    function setMetaProp(property, content) {
+      const el = document.querySelector(`meta[property="${property}"]`);
+      if (el) el.setAttribute('content', content);
     }
 
-    document.querySelectorAll('.old-energy-link').forEach((link) => { link.href = OLD_ENERGY_LANDING; });
+    function buildJsonLd(lang) {
+      const d = I18N[lang];
+      document.getElementById('orgJson').textContent = JSON.stringify({
+        "@context":"https://schema.org","@type":"Organization","name":"GasFree",
+        "url":"https://gasfree4you.com/","contactPoint":[{"@type":"ContactPoint","email":"lina@gasfree4you.com","contactType":"customer support"}],
+        "sameAs":["https://t.me/trx2_9_support_bot"]
+      });
+      document.getElementById('appJson').textContent = JSON.stringify({
+        "@context":"https://schema.org","@type":"SoftwareApplication","name":"GasFree",
+        "applicationCategory":"FinanceApplication","operatingSystem":"Web",
+        "description":d.meta.description,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+      });
+      document.getElementById('faqJson').textContent = JSON.stringify({
+        "@context":"https://schema.org","@type":"FAQPage",
+        "mainEntity":[1,2,3,4,5,6,7,8,9].map(n => ({
+          "@type":"Question","name":d.faq['q'+n],
+          "acceptedAnswer":{"@type":"Answer","text":d.faq['a'+n]}
+        }))
+      });
+    }
+
+    document.querySelectorAll('.old-energy-link').forEach(l => { l.href = OLD_ENERGY_LANDING; });
+
     const form = document.getElementById('heroCheckForm');
     const input = document.getElementById('walletInput');
     const mockWallet = document.getElementById('mockWallet');
-    function shortWallet(value){const v=value.trim();if(!v)return 'TQ9x...8Lk2';if(v.length<=12)return v;return v.slice(0,5)+'...'+v.slice(-5)}
-    form.addEventListener('submit',(event)=>{event.preventDefault();const wallet=input.value.trim();mockWallet.textContent=shortWallet(wallet);const lang=document.documentElement.lang||'en';if(!wallet||!wallet.startsWith('T')||wallet.length<20){input.focus();input.placeholder=I18N[lang].hero.invalid;return;}window.open(APP_URL,'_blank','noopener,noreferrer');});
-    input.addEventListener('input',()=>{mockWallet.textContent=shortWallet(input.value)});
-    document.getElementById('langSelect').addEventListener('change',(e)=>applyLanguage(e.target.value));
+
+    function shortWallet(v) {
+      const t = v.trim();
+      if (!t) return 'TQ9x...8Lk2';
+      if (t.length <= 12) return t;
+      return t.slice(0,5) + '...' + t.slice(-5);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const wallet = input.value.trim();
+      mockWallet.textContent = shortWallet(wallet);
+      const lang = document.documentElement.lang || 'en';
+      if (!wallet || !wallet.startsWith('T') || wallet.length < 20) {
+        input.focus();
+        input.placeholder = I18N[lang].hero.invalid;
+        return;
+      }
+      window.open(APP_URL, '_blank', 'noopener,noreferrer');
+    });
+
+    input.addEventListener('input', () => {
+      mockWallet.textContent = shortWallet(input.value);
+    });
+
+    document.getElementById('langSelect').addEventListener('change', (e) => applyLanguage(e.target.value));
+
     const urlLang = new URLSearchParams(window.location.search).get('lang');
     const savedLang = localStorage.getItem('gasfree_lang');
     const browserLang = (navigator.language || 'en').slice(0,2);
-    applyLanguage(SUPPORTED_LANGS.includes(urlLang) ? urlLang : (SUPPORTED_LANGS.includes(savedLang) ? savedLang : (SUPPORTED_LANGS.includes(browserLang) ? browserLang : 'en')));
+    applyLanguage(
+      SUPPORTED_LANGS.includes(urlLang) ? urlLang :
+      (SUPPORTED_LANGS.includes(savedLang) ? savedLang :
+      (SUPPORTED_LANGS.includes(browserLang) ? browserLang : 'en'))
+    );
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
-  <noscript><p style="padding:12px 18px;color:#aeb8d6;background:#080b18;margin:0;">GasFree — check TRON wallet before USDT TRC20 transfer, rent Energy through service wallet, TRX top-up, Bandwidth check, wallet monitoring and Telegram alerts.</p></noscript>
+  <noscript><p style="padding:12px 18px;color:#8896b8;background:#050812;">GasFree — check TRON wallet before USDT TRC20 transfer, rent Energy through service wallet.</p></noscript>
 </body>
 </html>
