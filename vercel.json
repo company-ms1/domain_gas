@@ -13,7 +13,7 @@
     {
       "source": "/:path((?!api|_next|.*\\..*).*)",
       "has": [{ "type": "host", "value": "gasfree4you.com" }],
-      "destination": "/index_03.html"
+      "destination": "/utilitu_landing.html"
     },
     {
       "source": "/",
