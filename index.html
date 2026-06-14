@@ -983,6 +983,134 @@
   }
 }
 
+        /* ===== Wallet Dashboard Block ===== */
+.dashboard-block{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:16px;
+  align-items:stretch;
+  overflow:hidden;
+  position:relative;
+}
+
+@media (max-width:820px){
+  .dashboard-block{grid-template-columns:1fr}
+}
+
+.dashboard-block::before{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  right:-80px;
+  top:-80px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(110,231,255,.16), transparent 65%);
+  pointer-events:none;
+}
+
+.dashboard-list{
+  display:grid;
+  gap:10px;
+  margin:14px 0 0;
+}
+
+.dashboard-item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.035);
+}
+
+.dashboard-icon{
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#001b1b;
+  font-weight:900;
+}
+
+.dashboard-item b{
+  display:block;
+  margin-bottom:2px;
+}
+
+.dashboard-item span{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.dashboard-preview{
+  position:relative;
+  z-index:1;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.08)),
+    var(--elev);
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+
+.wallet-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px dashed var(--border);
+}
+
+.wallet-row:last-child{
+  border-bottom:none;
+}
+
+.wallet-name{
+  font-weight:800;
+  font-size:14px;
+}
+
+.wallet-meta{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px;
+}
+
+.ready-pill{
+  white-space:nowrap;
+  font-size:12px;
+  font-weight:900;
+  padding:5px 8px;
+  border-radius:999px;
+}
+
+.ready-ok{
+  background:rgba(22,199,132,.16);
+  color:#7df1b7;
+  border:1px solid rgba(125,241,183,.25);
+}
+
+.ready-warn{
+  background:rgba(255,210,122,.12);
+  color:#ffd27a;
+  border:1px solid rgba(255,210,122,.25);
+}
+
+.dashboard-cta{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
   </style>
 </head>
 <body>
@@ -1117,7 +1245,83 @@
     Энергия начисляется на тот же кошелёк, с которого пришёл TRX.
   </p>
 </section>
+<!-- WALLET DASHBOARD BLOCK -->
+<section class="card reveal gap-section dashboard-block" id="walletDashboard">
+  <div>
+    <h3 class="title" style="font-size:22px;margin:0 0 6px" data-i18n="dash_title">
+      Dashboard для TRON-кошельков
+    </h3>
 
+    <p class="subtitle" style="font-size:15px;margin-bottom:10px" data-i18n="dash_subtitle">
+      Отслеживайте балансы кошельков и заранее понимайте, готов ли кошелёк к отправке USDT/TRC20.
+    </p>
+
+    <div class="dashboard-list">
+      <div class="dashboard-item">
+        <div class="dashboard-icon">💰</div>
+        <div>
+          <b data-i18n="dash_item1_title">Баланс USDT и TRX</b>
+          <span data-i18n="dash_item1_text">Видно, хватает ли средств для перевода и оплаты сетевых ресурсов.</span>
+        </div>
+      </div>
+
+      <div class="dashboard-item">
+        <div class="dashboard-icon">✅</div>
+        <div>
+          <b data-i18n="dash_item2_title">Готовность к отправке</b>
+          <span data-i18n="dash_item2_text">Сервис показывает, может ли кошелёк сейчас отправить USDT без лишних ошибок.</span>
+        </div>
+      </div>
+
+      <div class="dashboard-item">
+        <div class="dashboard-icon">⚡</div>
+        <div>
+          <b data-i18n="dash_item3_title">Калькулятор энергии</b>
+          <span data-i18n="dash_item3_text">Калькулятор подскажет, сколько энергии нужно для перевода: около 65 000 или 130 000.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-cta">
+      <a class="btn primary" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="dash_cta">
+        Проверить кошелёк
+      </a>
+      <a class="btn" href="#top" data-i18n="dash_calc_cta">
+        Рассчитать энергию
+      </a>
+    </div>
+  </div>
+
+  <div class="dashboard-preview" aria-label="Wallet dashboard preview">
+    <div class="wallet-row">
+      <div>
+        <div class="wallet-name">Wallet #1</div>
+        <div class="wallet-meta">USDT: 245.00 · TRX: 12.4 · Energy: 68,200</div>
+      </div>
+      <div class="ready-pill ready-ok" data-i18n="dash_ready_ok">Ready</div>
+    </div>
+
+    <div class="wallet-row">
+      <div>
+        <div class="wallet-name">Wallet #2</div>
+        <div class="wallet-meta">USDT: 90.00 · TRX: 1.1 · Energy: 0</div>
+      </div>
+      <div class="ready-pill ready-warn" data-i18n="dash_ready_need">Need energy</div>
+    </div>
+
+    <div class="wallet-row">
+      <div>
+        <div class="wallet-name">Wallet #3</div>
+        <div class="wallet-meta">USDT: 0.00 · TRX: 8.7 · Energy: 0</div>
+      </div>
+      <div class="ready-pill ready-warn" data-i18n="dash_ready_check">Check first</div>
+    </div>
+
+    <p class="subtitle" style="margin-top:12px;font-size:13px" data-i18n="dash_note">
+      Мы не запрашиваем private keys и не храним ваши средства. Проверка работает по публичному адресу кошелька.
+    </p>
+  </div>
+</section>
  
 
     <!-- Mini SEO note (видимая короткая подсказка) -->
@@ -1147,8 +1351,8 @@
         <p data-i18n="a4">Для обменников, кошельков, OTC и любых сервисов с частыми переводами USDT/TRC20, а также для пользователей, не желающих держать большой остаток TRX на комиссиях.</p>
       </details>
       <details>
-        <summary data-i18n="q5">Есть ли API и UI-консоль?</summary>
-        <p data-i18n="a5">Да. Доступны UI для массовой раздачи энергии и REST API для полной автоматизации. Нажмите кнопку «API» вверху.</p>
+<summary data-i18n="q5">Как купить энергию?</summary>
+<p data-i18n="a5">Вы переводите точную сумму TRX на сервисный кошелёк. После оплаты энергия автоматически делегируется на тот же кошелёк, с которого пришёл TRX.</p>
       </details>
       <!-- SEO-FAQ по опечаткам: теперь включает fasfree4ucom -->
       <details>
@@ -1298,6 +1502,7 @@
         <h4 data-i18n="footer_nav_title">Навигация</h4>
         <ul class="foot-list">
           <li><a href="#top" data-i18n="footer_nav_calc">Калькулятор</a></li>
+          <li><a href="#walletDashboard" data-i18n="footer_nav_dashboard">Dashboard</a></li>
           
           <li><a href="how-it-works.html" data-i18n="footer_nav_how">Как это работает</a></li>
           <li><a href="#faq" data-i18n="footer_nav_faq">FAQ</a></li>
@@ -1474,6 +1679,7 @@ a5:"Вы переводите точную сумму TRX на сервисны�
     tg_cta_short:"Через Telegram-бота",
     tg_fab:"👋 Открыть бота",
     usd_saving_title:"Экономия в долларах",
+        footer_nav_dashboard:"Dashboard кошельков",
     nudge_to_flow:"Что будет дальше? ↓",
     flow_note_title:"Что произойдёт после оплаты",
     flow_note_text:"Вы переводите указанную сумму TRX на сервисный кошелёк. Мы <b>сразу делегируем энергию</b> на тот же кошелёк. Эта энергия <b>покроет комиссию за 1 перевод USDT/TRC20</b>, затем энергия будет автоматически <b>отозвана</b> или истечёт по времени (до 1 часа). Ваши USDT и приватные ключи мы не трогаем.",
@@ -1482,7 +1688,21 @@ a5:"Вы переводите точную сумму TRX на сервисны�
     pay_flow_1:"Отправьте TRX с того же кошелька, которому нужна энергия.",
     pay_flow_2:"Мы делегируем энергию на этот кошелёк (на 1 перевод).",
     pay_flow_3:"Сделайте перевод USDT/TRC20 — комиссия покроется энергией, затем энергия будет отозвана.",
-    nav_staking:"Стейкинг"
+    nav_staking:"Стейкинг",
+        dash_title:"Dashboard для TRON-кошельков",
+    dash_subtitle:"Отслеживайте балансы кошельков и заранее понимайте, готов ли кошелёк к отправке USDT/TRC20.",
+    dash_item1_title:"Баланс USDT и TRX",
+    dash_item1_text:"Видно, хватает ли средств для перевода и оплаты сетевых ресурсов.",
+    dash_item2_title:"Готовность к отправке",
+    dash_item2_text:"Сервис показывает, может ли кошелёк сейчас отправить USDT без лишних ошибок.",
+    dash_item3_title:"Калькулятор энергии",
+    dash_item3_text:"Калькулятор подскажет, сколько энергии нужно для перевода: около 65 000 или 130 000.",
+    dash_cta:"Проверить кошелёк",
+    dash_calc_cta:"Рассчитать энергию",
+    dash_ready_ok:"Готов",
+    dash_ready_need:"Нужна энергия",
+    dash_ready_check:"Проверить",
+    dash_note:"Мы не запрашиваем private keys и не храним ваши средства. Проверка работает по публичному адресу кошелька.",
   },
 
   en:{
@@ -1527,6 +1747,7 @@ promo_time_inactive:"Offer runs daily from {start} to {end} in your local time",
     price_per:"Price per transfer",
     energy_per:"Energy per transfer",
     energy_total:"Total energy needed",
+        footer_nav_dashboard:"Wallet dashboard",
     rent_1h:"Valid",
     rent_1h_val:"up to 1 hour or until the 1st transfer",
     inst_title:"Guide",
@@ -1612,7 +1833,21 @@ a5:"Send the exact TRX amount to the service wallet. After payment, energy is au
     nudge_to_flow:"What happens next? ↓",
     nav_api: "API",
     nav_partner:"Partners",
-    nav_staking:"Staking"
+    nav_staking:"Staking",
+        dash_title:"TRON wallet dashboard",
+    dash_subtitle:"Track wallet balances and understand in advance whether a wallet is ready to send USDT/TRC20.",
+    dash_item1_title:"USDT and TRX balance",
+    dash_item1_text:"See whether the wallet has enough funds and network resources for a transfer.",
+    dash_item2_title:"Sending readiness",
+    dash_item2_text:"The service shows whether the wallet can send USDT now without unnecessary errors.",
+    dash_item3_title:"Energy calculator",
+    dash_item3_text:"The calculator tells how much energy is needed for a transfer: around 65,000 or 130,000.",
+    dash_cta:"Check wallet",
+    dash_calc_cta:"Calculate energy",
+    dash_ready_ok:"Ready",
+    dash_ready_need:"Need energy",
+    dash_ready_check:"Check first",
+    dash_note:"We do not ask for private keys and do not store your funds. The check works by public wallet address.",
   },
 
   zh:{
@@ -1628,6 +1863,7 @@ nav_portal_cta:"打开登录",
     onb_sub:"选择语言并回答一个问题，只需不到 10 秒。",
     onb_lang_label:"站点语言",
     onb_q:"你知道什么是 TRON 能量租用以及为什么需要它吗？",
+        footer_nav_dashboard:"Wallet dashboard",
     onb_yes:"知道",
     onb_no:"不知道，解释一下",
     onb_explain_title:"为什么要租用能量？",
@@ -1768,6 +2004,7 @@ nav_portal_cta:"Buka login",
     onb_explain_p2:"Setelah itu kamu bisa hitung penghematan dan beli energi langsung di situs.",
     onb_gotit:"Oke, lanjut ke situs",
     nav_vanity:"Beli wallet vanity",
+        footer_nav_dashboard:"Wallet dashboard",
     tagline:"TRON Energy · Transfer tanpa biaya TRX",
     how_link:"Cara kerja",
     faq_btn:"FAQ",
@@ -1872,6 +2109,7 @@ a5:"Send the exact TRX amount to the service wallet. After payment, energy is au
 promo_title:"65.000 Energy için <span>1.77 TRX</span>",
 promo_subtitle:"Bu fiyat <b>sadece portal üzerinden</b> sunulur",
 promo_btn:"Portalı aç",
+        footer_nav_dashboard:"Wallet dashboard",
 promo_time_active:"Her gün yerel saatinize göre {start}–{end}",
 promo_time_inactive:"Kampanya her gün yerel saatinize göre {start}–{end}",
 nav_portal:"Giriş",
@@ -2341,7 +2579,7 @@ bindLangSelect();
 setActiveLang();
 applyText();
 compute();
-initPromoBanner();
+
 
 // 👉 стартуем счётчик энергии
 initEnergy();
