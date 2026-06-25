@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/:path((?!api|_next|.*\\..*).*)",
-      "destination": "/index.html"
+      "destination": "/utilitu_landing.html"
     }
   ]
 }
