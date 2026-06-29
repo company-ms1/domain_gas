@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/:path((?!api|_next|.*\\..*).*)",
-      "destination": "/new_landing.html" 
+      "source": "/",
+      "destination": "/new_landing.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/new_landing.html"
     }
   ]
 }
