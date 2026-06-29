@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GasFree4you — the operational layer for TRON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#060912;
+    --bg-soft:#0a0e1c;
+    --surface:#10152b;
+    --surface-2:#141a37;
+    --border:rgba(255,255,255,0.07);
+    --border-strong:rgba(255,255,255,0.14);
+    --text:#f4f6fc;
+    --text-muted:#8c93ae;
+    --text-faint:#5b6280;
+    --indigo:#5670ff;
+    --indigo-soft:rgba(86,112,255,0.14);
+    --indigo-glow:rgba(86,112,255,0.35);
+    --mint:#57e8a6;
+    --mint-soft:rgba(87,232,166,0.13);
+    --amber:#f3b94d;
+    --coral:#ff6b6b;
+    --violet:#9b7bff;
+    --radius-lg:24px;
+    --radius-md:16px;
+    --radius-sm:10px;
+    --font-display:'Archivo', 'Inter', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:26px 26px;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.6;
+  }
+
+  body::after{
+    content:"";
+    position:fixed;
+    top:-20%;
+    left:50%;
+    width:1100px;
+    height:700px;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse at center, rgba(86,112,255,0.16), rgba(87,232,166,0.05) 45%, transparent 70%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img,svg{display:block; max-width:100%;}
+
+  :focus-visible{
+    outline:2px solid var(--indigo);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+    position:relative;
+    z-index:1;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    padding:6px 14px;
+    border:1px solid var(--border-strong);
+    border-radius:999px;
+    background:rgba(255,255,255,0.02);
+  }
+
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--mint);
+    box-shadow:0 0 8px var(--mint);
+    animation:pulseMint 2.2s ease-out infinite;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(6,9,18,0.78);
+    border-bottom:1px solid var(--border);
+  }
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:18px;
+    letter-spacing:-0.02em;
+  }
+  .logo .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--indigo);
+    box-shadow:0 0 10px var(--indigo-glow);
+    animation:pulseIndigo 2.2s ease-out infinite;
+  }
+
+  nav.links{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  nav.links a{
+    font-size:14px;
+    color:var(--text-muted);
+    padding:8px 14px;
+    border-radius:999px;
+    border:1px solid transparent;
+    transition:border-color .15s ease, color .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  nav.links a:hover{
+    color:var(--text);
+    border-color:var(--border-strong);
+    background:rgba(255,255,255,0.03);
+  }
+
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .pill-lang{
+    font-family:var(--font-mono);
+    font-size:13px;
+    padding:8px 12px;
+    border:1px solid var(--border-strong);
+    border-radius:999px;
+    color:var(--text-muted);
+  }
+  .btn{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:14px;
+    padding:10px 18px;
+    border-radius:999px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--indigo);
+    color:#fff;
+    box-shadow:0 0 0 0 rgba(86,112,255,0);
+  }
+  .btn-primary:hover{
+    box-shadow:0 6px 24px var(--indigo-glow);
+    transform:translateY(-1px);
+  }
+  .btn-ghost{
+    background:rgba(255,255,255,0.02);
+    border-color:var(--border-strong);
+    color:var(--text);
+  }
+  .btn-ghost:hover{
+    border-color:var(--mint);
+    color:var(--mint);
+  }
+  .btn-sm{font-size:13px; padding:8px 14px;}
+
+  @media (max-width:980px){
+    nav.links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 64px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(38px, 5.6vw, 68px);
+    line-height:1.02;
+    letter-spacing:-0.025em;
+    margin:22px 0 20px;
+    max-width:780px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(90deg, var(--indigo), var(--mint));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lede{
+    font-size:18px;
+    color:var(--text-muted);
+    max-width:560px;
+    margin-bottom:32px;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  /* layer diagram */
+  .stack{
+    margin-top:64px;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+  }
+  .plane{
+    border-radius:var(--radius-lg);
+    padding:22px 26px;
+    position:relative;
+  }
+  .plane-app{
+    background:linear-gradient(135deg, rgba(86,112,255,0.16), rgba(87,232,166,0.08));
+    border:1px solid rgba(86,112,255,0.35);
+    box-shadow:0 0 60px rgba(86,112,255,0.12), inset 0 0 40px rgba(86,112,255,0.06);
+  }
+  .plane-label{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .plane-app .plane-label{color:var(--mint);}
+  .chip-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--text);
+    background:rgba(6,9,18,0.55);
+    border:1px solid var(--border-strong);
+    border-radius:999px;
+    padding:8px 14px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    white-space:nowrap;
+  }
+  button.chip{
+    appearance:none;
+    -webkit-appearance:none;
+    cursor:pointer;
+    transition:border-color .15s ease, color .15s ease, transform .15s ease;
+  }
+  button.chip:hover, button.chip:focus-visible{
+    border-color:var(--mint);
+    color:var(--mint);
+    transform:translateY(-1px);
+  }
+  .connectors{
+    display:flex;
+    justify-content:space-around;
+    padding:6px 36px 6px;
+  }
+  .connectors span{
+    position:relative;
+    width:0;
+    height:30px;
+    border-left:1px dashed var(--border-strong);
+  }
+  .connectors span::after{
+    content:"";
+    position:absolute;
+    left:-2.5px;
+    bottom:0;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--mint);
+    box-shadow:0 0 6px var(--mint);
+    opacity:0;
+    animation:flowUp 2.4s linear infinite;
+    animation-delay:var(--flow-delay, 0s);
+  }
+
+  @keyframes flowUp{
+    0%{ bottom:0; opacity:0; }
+    12%{ opacity:1; }
+    88%{ opacity:1; }
+    100%{ bottom:100%; opacity:0; }
+  }
+  @keyframes pulseMint{
+    0%{ box-shadow:0 0 0 0 rgba(87,232,166,.55); }
+    70%{ box-shadow:0 0 0 9px rgba(87,232,166,0); }
+    100%{ box-shadow:0 0 0 0 rgba(87,232,166,0); }
+  }
+  @keyframes pulseIndigo{
+    0%{ box-shadow:0 0 0 0 rgba(86,112,255,.55); }
+    70%{ box-shadow:0 0 0 9px rgba(86,112,255,0); }
+    100%{ box-shadow:0 0 0 0 rgba(86,112,255,0); }
+  }
+  .plane-tron{
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 28px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 28px),
+      var(--surface);
+    border:1px solid var(--border);
+  }
+  .plane-tron .plane-label{
+    color:var(--text-faint);
+  }
+  .plane-tron .tron-foot{
+    font-size:13px;
+    color:var(--text-muted);
+    max-width:460px;
+  }
+
+  @media (max-width:760px){
+    .chip{font-size:12px; padding:7px 11px;}
+    .connectors{padding:6px 14px 6px;}
+  }
+
+  /* proof strip */
+  .proof{
+    padding:8px 0 72px;
+  }
+  .proof-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .proof-card{
+    border:1px solid var(--border);
+    background:var(--surface);
+    border-radius:var(--radius-md);
+    padding:22px 22px;
+  }
+  .proof-num{
+    font-family:var(--font-mono);
+    font-weight:600;
+    font-size:26px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .proof-num .strike{
+    color:var(--text-faint);
+    text-decoration:line-through;
+    font-size:17px;
+  }
+  .proof-num .now{color:var(--mint);}
+  .proof-card p{font-size:14px; color:var(--text-muted);}
+
+  @media (max-width:860px){
+    .proof-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- LAYER SECTIONS ---------- */
+  .layer-section{
+    padding:56px 0;
+    border-top:1px solid var(--border);
+  }
+  .layer-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:32px;
+    flex-wrap:wrap;
+  }
+  .layer-head h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(24px, 3vw, 32px);
+    letter-spacing:-0.02em;
+  }
+  .layer-head p{
+    color:var(--text-muted);
+    font-size:15px;
+    max-width:420px;
+  }
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  .cards.single{grid-template-columns:1fr;}
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(86,112,255,0.35), transparent 70%);
+    opacity:0;
+    transition:opacity .25s ease;
+    pointer-events:none;
+    mix-blend-mode:screen;
+  }
+  .card:hover::after{opacity:1;}
+  .card:hover{
+    border-color:var(--border-strong);
+    transform:translateY(-2px);
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:3px;
+  }
+  .card.tag-mint::before{background:linear-gradient(90deg, var(--mint), transparent);}
+  .card.tag-indigo::before{background:linear-gradient(90deg, var(--indigo), transparent);}
+  .card.tag-amber::before{background:linear-gradient(90deg, var(--amber), transparent);}
+  .card.tag-coral::before{background:linear-gradient(90deg, var(--coral), transparent);}
+  .card.tag-violet::before{background:linear-gradient(90deg, var(--violet), transparent);}
+
+  .card-tag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:16px;
+    border:1px solid var(--border-strong);
+    color:var(--text-muted);
+  }
+  .card h3{
+    font-family:var(--font-display);
+    font-size:21px;
+    font-weight:700;
+    margin-bottom:10px;
+    letter-spacing:-0.01em;
+  }
+  .card p{
+    font-size:14.5px;
+    color:var(--text-muted);
+    margin-bottom:16px;
+  }
+  .card .fine{
+    font-size:12px;
+    color:var(--text-faint);
+    border-top:1px solid var(--border);
+    padding-top:12px;
+    margin-top:4px;
+  }
+  .card-cta{
+    font-size:14px;
+    font-weight:600;
+    color:var(--mint);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  /* transfer fee card visual */
+  .fee-compare{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    background:rgba(87,232,166,0.06);
+    border:1px solid var(--mint-soft);
+    border-radius:var(--radius-md);
+    padding:14px 18px;
+    margin-bottom:18px;
+  }
+  .fee-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .fee-row + .fee-row{
+    border-top:1px solid var(--mint-soft);
+    padding-top:12px;
+  }
+  .fee-row-label{
+    font-size:12.5px;
+    color:var(--text-muted);
+    flex:1 0 100%;
+    margin-bottom:2px;
+  }
+  .fee-old, .fee-new{font-family:var(--font-mono); font-weight:600;}
+  .fee-old{color:var(--text-faint); text-decoration:line-through; font-size:15px;}
+  .fee-new{color:var(--mint); font-size:20px; margin-left:auto;}
+
+  /* energy calculator demo */
+  .calc-box{
+    background:rgba(86,112,255,0.05);
+    border:1px solid var(--indigo-soft);
+    border-radius:var(--radius-md);
+    padding:18px;
+    margin-bottom:18px;
+  }
+  .calc-toggle{
+    display:flex;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .calc-toggle button{
+    flex:1;
+    font-family:var(--font-body);
+    font-size:13px;
+    font-weight:600;
+    padding:9px 10px;
+    border-radius:999px;
+    border:1px solid var(--border-strong);
+    background:transparent;
+    color:var(--text-muted);
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .calc-toggle button.active{
+    background:var(--indigo);
+    border-color:var(--indigo);
+    color:#fff;
+  }
+  .calc-out{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    font-family:var(--font-mono);
+  }
+  .calc-out .label{font-size:13px; color:var(--text-muted);}
+  .calc-out .value{font-size:24px; font-weight:600; color:var(--text);}
+  .calc-out .unit{font-size:13px; font-weight:500; color:var(--text-muted); font-family:var(--font-body); margin-left:2px;}
+  .calc-note{font-size:11.5px; color:var(--text-faint); margin-top:8px;}
+
+  /* mini dashboard preview tiles */
+  .mini-dash{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .mini-tile{
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    padding:12px 14px;
+  }
+  .mini-tile span.k{font-size:11px; color:var(--text-faint); display:block; margin-bottom:4px;}
+  .mini-tile span.v{font-family:var(--font-mono); font-size:17px; font-weight:600;}
+  .mini-tile.usdt span.v{color:var(--mint);}
+  .mini-tile.trx span.v{color:var(--amber);}
+
+  @media (max-width:860px){
+    .cards{grid-template-columns:1fr;}
+  }
+
+  /* growth / referral banner */
+  .banner{
+    border-radius:var(--radius-lg);
+    background:linear-gradient(120deg, rgba(86,112,255,0.18), rgba(155,123,255,0.10));
+    border:1px solid rgba(86,112,255,0.3);
+    padding:40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:32px;
+    flex-wrap:wrap;
+  }
+  .banner h3{
+    font-family:var(--font-display);
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .banner p{color:var(--text-muted); max-width:480px; font-size:15px;}
+  .banner-stat{
+    font-family:var(--font-mono);
+    font-size:44px;
+    font-weight:700;
+    color:var(--mint);
+    line-height:1;
+  }
+  .banner-stat span{display:block; font-size:13px; color:var(--text-muted); font-family:var(--font-body); font-weight:500; margin-top:6px;}
+
+  /* pricing */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+    align-items:stretch;
+  }
+  .price-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+  }
+  .price-card--featured{
+    border-color:rgba(86,112,255,0.45);
+    background:linear-gradient(160deg, rgba(86,112,255,0.10), var(--surface) 55%);
+    box-shadow:0 0 50px rgba(86,112,255,0.10);
+  }
+  .price-recommended{
+    position:absolute;
+    top:-12px;
+    left:28px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:var(--indigo);
+    color:#fff;
+    padding:5px 12px;
+    border-radius:999px;
+  }
+  .price-head{margin-bottom:18px;}
+  .price-amount{
+    font-family:var(--font-mono);
+    font-size:34px;
+    font-weight:700;
+    margin-top:12px;
+  }
+  .price-period{
+    font-size:14px;
+    font-weight:500;
+    color:var(--text-muted);
+    font-family:var(--font-body);
+  }
+  .price-features{
+    list-style:none;
+    margin:4px 0 24px;
+    flex:1;
+  }
+  .price-features li{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    font-size:13.5px;
+    padding:11px 0;
+    border-top:1px solid var(--border);
+  }
+  .price-features li:first-child{border-top:none;}
+  .price-features li span{color:var(--text-muted);}
+  .price-features li b{
+    font-weight:600;
+    text-align:right;
+    color:var(--text);
+  }
+
+  @media (max-width:980px){
+    .pricing-grid{grid-template-columns:1fr;}
+    .price-card--featured{order:-1;}
+  }
+
+  /* ---------- CLOSING CTA ---------- */
+  .closing{
+    padding:96px 0;
+    text-align:center;
+    border-top:1px solid var(--border);
+  }
+  .closing h2{
+    font-family:var(--font-display);
+    font-size:clamp(28px, 4vw, 44px);
+    font-weight:800;
+    margin-bottom:16px;
+    letter-spacing:-0.02em;
+  }
+  .closing p{
+    color:var(--text-muted);
+    margin-bottom:28px;
+    max-width:480px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .closing .hero-ctas{justify-content:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:48px 0 32px;
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:32px;
+    margin-bottom:32px;
+  }
+  .foot-col h4{
+    font-size:13px;
+    color:var(--text-faint);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:14px;
+    font-family:var(--font-mono);
+  }
+  .foot-col a{
+    display:block;
+    font-size:14px;
+    color:var(--text-muted);
+    margin-bottom:10px;
+  }
+  .foot-col a:hover{color:var(--text);}
+  .foot-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    border-top:1px solid var(--border);
+    padding-top:24px;
+    font-size:12.5px;
+    color:var(--text-faint);
+  }
+
+  /* ---------- INSTANT RENTAL ENERGY ---------- */
+  .instant-section{
+    padding:8px 0 64px;
+  }
+  .instant-banner{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    background:linear-gradient(120deg, rgba(87,232,166,0.14), rgba(86,112,255,0.07));
+    border:1px solid rgba(87,232,166,0.35);
+    border-radius:var(--radius-lg);
+    padding:30px 34px;
+    box-shadow:0 0 60px rgba(87,232,166,0.10);
+  }
+  .instant-icon{
+    position:relative;
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:rgba(87,232,166,0.12);
+    border:1px solid rgba(87,232,166,0.4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    flex-shrink:0;
+  }
+  .instant-icon-glow{
+    position:absolute;
+    inset:-6px;
+    border-radius:50%;
+    border:1px solid rgba(87,232,166,0.5);
+    animation:pulseRing 2.2s ease-out infinite;
+  }
+  @keyframes pulseRing{
+    0%{transform:scale(0.9); opacity:0.7;}
+    70%{transform:scale(1.4); opacity:0;}
+    100%{opacity:0;}
+  }
+  .instant-copy{flex:1; min-width:240px;}
+  .instant-copy h3{
+    font-family:var(--font-display);
+    font-size:22px;
+    font-weight:600;
+    margin:12px 0 10px;
+    letter-spacing:-0.005em;
+  }
+  .instant-copy p{
+    font-size:14px;
+    color:var(--text-muted);
+    margin-bottom:14px;
+    max-width:520px;
+  }
+  .instant-points{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    list-style:none;
+  }
+  .instant-points li{
+    font-size:13px;
+    color:var(--text-muted);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .instant-points li::before{content:"✓"; color:var(--mint); font-weight:700;}
+  .instant-cta{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    flex-shrink:0;
+  }
+
+  @media (max-width:760px){
+    .instant-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:26px;
+    }
+    .instant-cta{
+      align-items:flex-start;
+      width:100%;
+    }
+    .instant-cta .btn{width:100%; justify-content:center;}
+  }
+
+  /* ---------- INSTANT RENTAL ENERGY END ---------- */
+
+  /* ---------- SERVICE MODAL ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(4,6,12,0.72);
+    backdrop-filter:blur(6px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    z-index:200;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .2s ease, visibility .2s ease;
+  }
+  .modal-overlay.open{
+    opacity:1;
+    visibility:visible;
+  }
+  .modal-box{
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    border-radius:var(--radius-lg);
+    max-width:500px;
+    width:100%;
+    max-height:88vh;
+    overflow-y:auto;
+    padding:34px;
+    position:relative;
+    transform:translateY(12px) scale(.97);
+    transition:transform .2s ease;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+  }
+  .modal-overlay.open .modal-box{
+    transform:translateY(0) scale(1);
+  }
+  .modal-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:1px solid var(--border-strong);
+    background:transparent;
+    color:var(--text-muted);
+    cursor:pointer;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .modal-close:hover{color:var(--text); border-color:var(--mint);}
+  .modal-icon{font-size:30px; margin-bottom:8px;}
+  .modal-box h3{
+    font-family:var(--font-display);
+    font-size:25px;
+    font-weight:700;
+    margin:12px 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .modal-box .lede-body{
+    font-size:14.5px;
+    color:var(--text-muted);
+    line-height:1.65;
+    margin-bottom:18px;
+  }
+  .modal-bullets{
+    margin:0 0 20px;
+    padding:0;
+  }
+  .modal-bullets li{
+    font-size:13.5px;
+    color:var(--text-muted);
+    padding:9px 0;
+    border-top:1px solid var(--border);
+    display:flex;
+    gap:9px;
+  }
+  .modal-bullets li:first-child{border-top:none;}
+  .modal-bullets li::before{content:"→"; color:var(--mint); flex-shrink:0;}
+
+  .modal-shot{
+    position:relative;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    border:1px dashed var(--border-strong);
+    aspect-ratio:16/10;
+    background:rgba(255,255,255,0.02);
+    margin-bottom:22px;
+  }
+  .modal-shot img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+  }
+  .modal-shot-empty{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    color:var(--text-faint);
+    font-size:12.5px;
+    font-family:var(--font-mono);
+    text-align:center;
+  }
+  .modal-shot-icon{font-size:22px;}
+
+  @media (max-width:560px){
+    .modal-box{padding:26px;}
+  }
+
+  /* ---------- SERVICE MODAL END ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    animation:rise .6s ease forwards;
+  }
+  @keyframes rise{to{opacity:1; transform:translateY(0);}}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{animation:none; opacity:1; transform:none;}
+    .instant-icon-glow{animation:none;}
+    .eyebrow .dot, .logo .dot{animation:none;}
+    .connectors span::after{animation:none; opacity:0;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">GasFree4you <span class="dot"></span></a>
+    <nav class="links">
+      <a href="#instant-rental">Instant Energy</a>
+      <a href="#transfer-layer">Transfers</a>
+      <a href="#transfer-layer">Energy</a>
+      <a href="#compliance-layer">AML Check</a>
+      <a href="#compliance-layer">Sanctions</a>
+      <a href="#visibility-layer">Dashboard</a>
+      <a href="#visibility-layer">Statements</a>
+      <a href="#growth-layer">Referrals</a>
+      <a href="#pricing-layer">Pricing</a>
+    </nav>
+    <div class="nav-right">
+      <span class="pill-lang">EN</span>
+      <a href="#" class="btn btn-primary btn-sm">Open the app</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="reveal">
+          <span class="eyebrow"><span class="dot"></span>TRON · USDT-TRC20 INFRASTRUCTURE</span>
+          <h1>GasFree4you is <span class="grad">the operational layer</span> for TRON.</h1>
+          <p class="lede">Energy, compliance, multi-wallet visibility and accounting — bundled into one layer that sits on top of raw TRON, so every transfer leaves your wallet cheaper, checked, and already accounted for.</p>
+          <div class="hero-ctas">
+            <a href="#" class="btn btn-primary">Open the dashboard</a>
+            <a href="#transfer-layer" class="btn btn-ghost">See the tools ↓</a>
+          </div>
+        </div>
+
+        <div class="stack reveal" style="animation-delay:.1s">
+          <div class="plane plane-app">
+            <div class="plane-label"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block;"></span> GASFREE4YOU · OPERATIONAL LAYER</div>
+            <div class="chip-row">
+              <button type="button" class="chip" data-service="energy">⚡ Energy</button>
+              <button type="button" class="chip" data-service="aml">🛡 AML Check</button>
+              <button type="button" class="chip" data-service="sanctions">🚫 Sanctions</button>
+              <button type="button" class="chip" data-service="dashboard">📊 Dashboard</button>
+              <button type="button" class="chip" data-service="statements">📄 Statements</button>
+              <button type="button" class="chip" data-service="referrals">🤝 Referrals</button>
+            </div>
+          </div>
+          <div class="connectors">
+            <span style="--flow-delay:0s"></span><span style="--flow-delay:.3s"></span><span style="--flow-delay:.6s"></span><span style="--flow-delay:.9s"></span><span style="--flow-delay:1.2s"></span><span style="--flow-delay:1.5s"></span><span style="--flow-delay:1.8s"></span>
+          </div>
+          <div class="plane plane-tron">
+            <div class="plane-label">TRON L1 · SETTLEMENT</div>
+            <p class="tron-foot">Bandwidth, energy, smart contracts and consensus — the raw infrastructure GasFree4you runs on top of, so you never have to deal with it directly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap">
+      <div class="proof-grid">
+        <div class="proof-card reveal">
+          <div class="proof-num"><span class="now">↓ ~<span class="countup" data-target="53">0</span>%</span></div>
+          <p>Lower network fee per USDT transfer — 3 TRX instead of 6.4 if the recipient wallet already holds USDT, or 6 TRX instead of 13 if it doesn't.</p>
+        </div>
+        <div class="proof-card reveal" style="animation-delay:.05s">
+          <div class="proof-num">0 keys</div>
+          <p>Fully non-custodial. We work with public addresses only — never your private key or seed phrase.</p>
+        </div>
+        <div class="proof-card reveal" style="animation-delay:.1s">
+          <div class="proof-num"><span class="countup" data-target="8">0</span>% <span style="font-size:15px; color:var(--text-muted); font-family:var(--font-body); font-weight:500;">recurring</span></div>
+          <p>Referral commission on every order placed by people you bring to the platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTANT RENTAL ENERGY -->
+  <section class="instant-section" id="instant-rental">
+    <div class="wrap">
+      <div class="instant-banner">
+        <div class="instant-icon"><span class="instant-icon-glow"></span>⚡</div>
+        <div class="instant-copy">
+          <span class="eyebrow"><span class="dot"></span>NO SIGN-UP NEEDED</span>
+          <h3>Need energy right now? Rent it instantly.</h3>
+          <p>Energy is rented through our service wallet and delegated straight to the sender's address — no portal account, no waiting around. Built for the one-off transfer you just need to get through, right now.</p>
+          <ul class="instant-points">
+            <li>Delegated directly to the sending address</li>
+            <li>Delivered in 1–5 seconds</li>
+            <li>No registration required</li>
+            <li>Best for one-off transfers</li>
+          </ul>
+        </div>
+        <div class="instant-cta">
+          <div class="banner-stat" style="font-size:36px;">1–5<span>sec delivery</span></div>
+          <a href="https://user.gasfree4you.com/instant-energy" class="btn btn-primary">Rent energy now →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 1 — TRANSFER -->
+  <section class="layer-section" id="transfer-layer">
+    <div class="wrap">
+      <div class="layer-head">
+        <div>
+          <span class="eyebrow">TRANSFER LAYER</span>
+          <h2 style="margin-top:14px;">Move USDT without thinking about TRX</h2>
+        </div>
+        <p>The two tools that sit closest to the chain — sending value, and knowing exactly what it costs before you do.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card tag-mint">
+          <span class="card-tag">USDT · TRC-20</span>
+          <h3>Half the network fee, every time</h3>
+          <div class="fee-compare">
+            <div class="fee-row">
+              <span class="fee-row-label">Recipient already holds USDT</span>
+              <span class="fee-old">6.4 TRX</span>
+              <span class="fee-new">3 TRX</span>
+            </div>
+            <div class="fee-row">
+              <span class="fee-row-label">Recipient wallet has no USDT yet</span>
+              <span class="fee-old">13 TRX</span>
+              <span class="fee-new">6 TRX</span>
+            </div>
+          </div>
+          <p>Energy is delegated straight to your wallet right before you send, so the transfer settles at a flat, reduced cost instead of burning TRON's standard bandwidth and energy fee.</p>
+          <a href="#" class="card-cta">Send a transfer →</a>
+        </div>
+
+        <div class="card tag-indigo">
+          <span class="card-tag">ENERGY CALCULATOR</span>
+          <h3>Know the number before you send</h3>
+          <p>Tell it the wallet's activation state — get the energy a transfer of that kind actually needs, instead of guessing and over- or under-paying.</p>
+          <div class="calc-box">
+            <div class="calc-toggle">
+              <button type="button" class="active" data-state="activated">Activated wallet</button>
+              <button type="button" data-state="new">New / inactive wallet</button>
+            </div>
+            <div class="calc-out">
+              <span class="label">Estimated network fee</span>
+              <span class="value"><span id="calcValue">6</span><span class="unit"> TRX</span></span>
+            </div>
+            <p class="calc-note">Standard TRON network fee for this scenario — your GasFree4you price is up to 53% lower (see the Transfer Layer above).</p>
+          </div>
+          <a href="#" class="card-cta">Open the calculator →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 2 — COMPLIANCE -->
+  <section class="layer-section" id="compliance-layer">
+    <div class="wrap">
+      <div class="layer-head">
+        <div>
+          <span class="eyebrow">COMPLIANCE LAYER</span>
+          <h2 style="margin-top:14px;">Check before it becomes a problem</h2>
+        </div>
+        <p>Bank- and exchange-grade screening, built for anyone running a business on TRON — not just for filling out a form.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card tag-amber">
+          <span class="card-tag">AML CHECK</span>
+          <h3>Bank-grade wallet screening</h3>
+          <p>The same depth of due diligence exchanges and licensed companies run — risk scoring, exposure paths, counterparty history — broken down clearly enough to actually act on, not just file away.</p>
+          <a href="#" class="card-cta">Run a check →</a>
+        </div>
+
+        <div class="card tag-coral">
+          <span class="card-tag">SANCTIONS SCREENING</span>
+          <h3>Cleared against the lists that matter</h3>
+          <p>Screen a wallet or counterparty against OFAC, EU and other national sanctions registries before you move funds — one overlooked address shouldn't become your problem.</p>
+          <a href="#" class="card-cta">Screen an address →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 3 — VISIBILITY -->
+  <section class="layer-section" id="visibility-layer">
+    <div class="wrap">
+      <div class="layer-head">
+        <div>
+          <span class="eyebrow">VISIBILITY LAYER</span>
+          <h2 style="margin-top:14px;">Everything you run, in one place</h2>
+        </div>
+        <p>See the state of your wallets and your paper trail without digging through a block explorer.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card tag-violet">
+          <span class="card-tag">DASHBOARD</span>
+          <h3>Every wallet, one screen</h3>
+          <div class="mini-dash">
+            <div class="mini-tile usdt"><span class="k">TOTAL USDT</span><span class="v">39.28</span></div>
+            <div class="mini-tile trx"><span class="k">TOTAL TRX</span><span class="v">2,809.27</span></div>
+          </div>
+          <p>Balances, energy, and health status across all your TRON wallets — built for tracking and running a business. We never ask for private keys or seed phrases.</p>
+          <a href="#" class="card-cta">Open dashboard →</a>
+        </div>
+
+        <div class="card tag-mint">
+          <span class="card-tag">STATEMENTS</span>
+          <h3>Statements your accountant will thank you for</h3>
+          <p>A clean, readable record of wallet activity with the running balance after every operation — built for bookkeeping, tax prep, or just understanding what happened.</p>
+          <p class="fine">Not a legal document and does not establish the source of funds.</p>
+          <a href="#" class="card-cta">Generate a statement →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 4 — GROWTH -->
+  <section class="layer-section" id="growth-layer">
+    <div class="wrap">
+      <div class="layer-head">
+        <div>
+          <span class="eyebrow">GROWTH LAYER</span>
+          <h2 style="margin-top:14px;">Bring people in, get paid for it</h2>
+        </div>
+      </div>
+
+      <div class="banner">
+        <div>
+          <h3>Up to 8%, recurring, on every order</h3>
+          <p>Share your link. Every transfer, check, or statement your referrals pay for puts a cut back in your balance — for as long as they keep using GasFree4you.</p>
+          <a href="#" class="btn btn-primary" style="margin-top:18px;">Get your referral link →</a>
+        </div>
+        <div class="banner-stat">8%<span>commission per referral order</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYER 5 — PRICING -->
+  <section class="layer-section" id="pricing-layer">
+    <div class="wrap">
+      <div class="layer-head">
+        <div>
+          <span class="eyebrow">ACCESS LAYER</span>
+          <h2 style="margin-top:14px;">Pick how deep you go</h2>
+        </div>
+        <p>Pay per use from day one, or move to a flat monthly rate once volume makes that cheaper.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-head">
+            <span class="card-tag">BASIC</span>
+            <div class="price-amount">Free<span class="price-period"> · pay per use</span></div>
+          </div>
+          <ul class="price-features">
+            <li><span>Energy packages</span><b>3 / 6 TRX per transfer</b></li>
+            <li><span>AML check</span><b>1.5–6 TRX per check</b></li>
+            <li><span>Sanctions check</span><b>Free</b></li>
+            <li><span>Statements</span><b>5 / mo · 0.5 TRX each</b></li>
+            <li><span>Energy calculator</span><b>Free</b></li>
+            <li><span>Dashboard</span><b>Up to 5 wallets</b></li>
+          </ul>
+          <a href="#" class="btn btn-ghost" style="width:100%; justify-content:center;">Get started free</a>
+        </div>
+
+        <div class="price-card price-card--featured">
+          <span class="price-recommended">Recommended</span>
+          <div class="price-head">
+            <span class="card-tag">STANDARD</span>
+            <div class="price-amount"><span class="countup" data-target="99">0</span><span class="price-period"> TRX / mo</span></div>
+          </div>
+          <ul class="price-features">
+            <li><span>Energy packages</span><b>Discounted</b></li>
+            <li><span>AML check</span><b>Discounted</b></li>
+            <li><span>Sanctions check</span><b>Free</b></li>
+            <li><span>Statements</span><b>Unlimited &amp; free, with tags + counterparty notes</b></li>
+            <li><span>Energy calculator</span><b>Free</b></li>
+            <li><span>Dashboard</span><b>Up to 25 wallets</b></li>
+            <li><span>API access</span><b>All services</b></li>
+          </ul>
+          <a href="#" class="btn btn-primary" style="width:100%; justify-content:center;">Upgrade to Standard</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-head">
+            <span class="card-tag">MAXIMUM</span>
+            <div class="price-amount">Custom</div>
+          </div>
+          <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px; flex:1;">Built around your volume and team — energy, AML, dashboard limits and API terms, scoped to how you actually run your business.</p>
+          <a href="#" class="btn btn-ghost" style="width:100%; justify-content:center;">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <h2>Stop fighting TRON's plumbing.</h2>
+      <p>Open the dashboard and run your first transfer in under a minute — energy delegated, screening on standby, statement waiting at the end of the month.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary">Open the dashboard</a>
+        <a href="#" class="btn btn-ghost">Talk to us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col" style="max-width:280px;">
+        <h4>GasFree4you</h4>
+        <a href="#transfer-layer" style="color:var(--text); margin-bottom:14px;">The operational layer for TRON</a>
+        <p style="font-size:13px; color:var(--text-faint);">Energy delegation, compliance screening and accounting for USDT-TRC20 operations.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#instant-rental">Instant energy rental</a>
+        <a href="#transfer-layer">Transfers</a>
+        <a href="#transfer-layer">Energy calculator</a>
+        <a href="#compliance-layer">AML check</a>
+        <a href="#compliance-layer">Sanctions screening</a>
+        <a href="#visibility-layer">Dashboard</a>
+        <a href="#visibility-layer">Statements</a>
+        <a href="#growth-layer">Referral program</a>
+        <a href="#pricing-layer">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">Contacts</a>
+        <a href="https://www.gasfree4you.com/terms.html">Terms</a>
+        <a href="https://www.gasfree4you.com/privacy.html">Privacy</a>
+        <a href="https://www.gasfree4you.com/refund.html">Refund</a>
+        <a href="https://www.gasfree4you.com/legal.html">Legal</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GasFree4you.</span>
+      <span>EN</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="serviceModalOverlay" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-icon" id="modalIcon">⚡</div>
+    <span class="card-tag" id="modalTag">ENERGY</span>
+    <h3 id="modalTitle">Energy Calculator</h3>
+    <p class="lede-body" id="modalBody"></p>
+    <ul class="modal-bullets" id="modalBullets"></ul>
+    <div class="modal-shot">
+      <img id="modalShotImg" src="" alt="">
+      <div class="modal-shot-empty" id="modalShotEmpty">
+        <span class="modal-shot-icon">🖼️</span>
+        <span>Screenshot coming soon</span>
+      </div>
+    </div>
+    <a href="#" class="btn btn-primary" id="modalCta" style="width:100%; justify-content:center;">Open</a>
+  </div>
+</div>
+
+<script>
+  // energy calculator demo — illustrative only
+  const calcButtons = document.querySelectorAll('.calc-toggle button');
+  const calcValue = document.getElementById('calcValue');
+  const networkFeeByState = { activated: 6, new: 13 };
+
+  calcButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      calcButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const state = btn.getAttribute('data-state');
+      calcValue.textContent = networkFeeByState[state];
+    });
+  });
+
+  // cursor spotlight on service cards
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reducedMotion) {
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
+    });
+  }
+
+  // count-up animation for key numbers, triggered on scroll into view
+  function animateCountUp(el){
+    const target = parseFloat(el.dataset.target);
+    const duration = 1100;
+    const startTime = performance.now();
+    function step(now){
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countEls = document.querySelectorAll('.countup');
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    countEls.forEach(el => { el.textContent = el.dataset.target; });
+  } else {
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCountUp(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    countEls.forEach(el => countObserver.observe(el));
+  }
+  const serviceData = {
+    energy: {
+      icon: '⚡',
+      tag: 'ENERGY',
+      title: 'Energy Calculator',
+      body: "Every USDT-TRC20 transfer burns bandwidth and energy on TRON, and the amount changes depending on whether the recipient wallet already holds USDT. Guess wrong and you either pay for energy you didn't need, or the transfer fails halfway through. This calculator takes the variables that actually matter — recipient state, token, transfer count — and gives you the exact figure before you commit a single TRX.",
+      bullets: [
+        'No more rough estimates copied from forum posts',
+        'Plan energy purchases ahead of a batch of transfers',
+        'Works the same whether it’s one transfer or a hundred'
+      ],
+      cta: { label: 'Open the calculator', href: '#transfer-layer' },
+      shot: 'screenshots/energy.png'
+    },
+    aml: {
+      icon: '🛡',
+      tag: 'AML CHECK',
+      title: 'AML Check',
+      body: "Before you accept funds from an address you don't fully trust, you want to know what that address has actually done — not just whether it shows up on one blacklist. GasFree4you's AML check runs the same depth of screening exchanges and licensed companies rely on: risk scoring, exposure paths, counterparty history, broken into something you can actually act on instead of a single pass/fail flag.",
+      bullets: [
+        'Multiple providers, from a fast first signal to forensic-level detail',
+        'Built for one-off due diligence or screening every incoming payment',
+        'Pay per check — no subscription required to stay protected'
+      ],
+      cta: { label: 'Run a check', href: '#compliance-layer' },
+      shot: 'screenshots/aml.png'
+    },
+    sanctions: {
+      icon: '🚫',
+      tag: 'SANCTIONS',
+      title: 'Sanctions Screening',
+      body: "A single transfer to the wrong address can turn into a frozen account, a blocked exchange, or worse. Sanctions screening checks a wallet or counterparty against OFAC, the EU, and other national registries before you move funds — so you find out about a problem before it's your problem, not after.",
+      bullets: [
+        'Covers multiple jurisdictions, not just one list',
+        'Free on every plan, including Basic',
+        'Takes seconds, not days'
+      ],
+      cta: { label: 'Screen an address', href: '#compliance-layer' },
+      shot: 'screenshots/sanctions.png'
+    },
+    dashboard: {
+      icon: '📊',
+      tag: 'DASHBOARD',
+      title: 'Wallet Dashboard',
+      body: "Running more than one TRON wallet usually means opening a separate block explorer tab for each one. The dashboard pulls balances, energy levels, and wallet health into a single screen, so you can see what needs attention at a glance — without ever handing over a private key or seed phrase.",
+      bullets: [
+        'Track up to 5 wallets free, scale to 25+ on Standard',
+        'Spot low-TRX or low-energy wallets before a transfer fails',
+        'Read-only by design — we work from public addresses only'
+      ],
+      cta: { label: 'Open dashboard', href: '#visibility-layer' },
+      shot: 'screenshots/dashboard.png'
+    },
+    statements: {
+      icon: '📄',
+      tag: 'STATEMENTS',
+      title: 'Wallet Statements',
+      body: "Bank statements exist for a reason — you need a readable record of what happened and what your balance was after each step. Wallet statements do the same for a TRON wallet: every operation, with the running balance right after it, exported in a format your accountant can actually use.",
+      bullets: [
+        'Filter by wallet and date range',
+        'Tag transactions and label counterparties (Standard plan)',
+        '5 free statements a month, unlimited on Standard'
+      ],
+      cta: { label: 'Generate a statement', href: '#visibility-layer' },
+      shot: 'screenshots/statements.png'
+    },
+    referrals: {
+      icon: '🤝',
+      tag: 'REFERRALS',
+      title: 'Referral Program',
+      body: "If people already come to you asking how to move USDT cheaply on TRON, there's no reason that should be unpaid advice. Share a link, and every transfer, check, or statement your referrals pay for puts up to 8% back in your balance — for as long as they keep using GasFree4you.",
+      bullets: [
+        'Up to 8%, recurring — not a one-time bounty',
+        'No cap on how many people you refer',
+        'Commission tracked automatically in your dashboard'
+      ],
+      cta: { label: 'Get your referral link', href: '#growth-layer' },
+      shot: 'screenshots/referrals.png'
+    }
+  };
+
+  const modalOverlay = document.getElementById('serviceModalOverlay');
+  const modalIcon = document.getElementById('modalIcon');
+  const modalTag = document.getElementById('modalTag');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+  const modalBullets = document.getElementById('modalBullets');
+  const modalCta = document.getElementById('modalCta');
+  const modalClose = document.getElementById('modalClose');
+  const modalShotImg = document.getElementById('modalShotImg');
+  const modalShotEmpty = document.getElementById('modalShotEmpty');
+  let lastFocusedChip = null;
+
+  function openServiceModal(key){
+    const data = serviceData[key];
+    if(!data) return;
+    modalIcon.textContent = data.icon;
+    modalTag.textContent = data.tag;
+    modalTitle.textContent = data.title;
+    modalBody.textContent = data.body;
+    modalBullets.innerHTML = data.bullets.map(b => `<li>${b}</li>`).join('');
+    modalCta.textContent = data.cta.label;
+    modalCta.href = data.cta.href;
+
+    modalShotImg.style.display = 'none';
+    modalShotEmpty.style.display = 'flex';
+    modalShotImg.onload = () => { modalShotImg.style.display = 'block'; modalShotEmpty.style.display = 'none'; };
+    modalShotImg.onerror = () => { modalShotImg.style.display = 'none'; modalShotEmpty.style.display = 'flex'; };
+    modalShotImg.src = data.shot;
+
+    modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modalClose.focus();
+  }
+
+  function closeServiceModal(){
+    modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if(lastFocusedChip) lastFocusedChip.focus();
+  }
+
+  document.querySelectorAll('.chip[data-service]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      lastFocusedChip = chip;
+      openServiceModal(chip.getAttribute('data-service'));
+    });
+  });
+
+  modalClose.addEventListener('click', closeServiceModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if(e.target === modalOverlay) closeServiceModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && modalOverlay.classList.contains('open')) closeServiceModal();
+  });
+</script>
+
+</body>
+</html>
