@@ -1,119 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – GasFree4you</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0a0a0a;
-      color: #f1f1f1;
-      line-height: 1.6;
-    }
-    .wrap {
-      max-width: 800px;
-      margin: auto;
-      padding: 24px;
-    }
-    h1, h2 {
-      color: #fff;
-    }
-    a {
-      color: #4cc3ff;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — GasFree4you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#060912;
+    --surface:#10152b;
+    --border:rgba(255,255,255,0.07);
+    --border-strong:rgba(255,255,255,0.14);
+    --text:#f4f6fc;
+    --text-muted:#8c93ae;
+    --text-faint:#5b6280;
+    --indigo:#5670ff;
+    --indigo-glow:rgba(86,112,255,0.35);
+    --mint:#57e8a6;
+    --mint-soft:rgba(87,232,166,0.13);
+    --radius-lg:24px;
+    --radius-md:16px;
+    --radius-sm:10px;
+    --font-display:'Archivo','Inter',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);
+    background-size:26px 26px;
+    pointer-events:none;z-index:0;opacity:0.6;
+  }
+
+  body::after{
+    content:"";
+    position:fixed;top:-20%;left:50%;
+    width:900px;height:600px;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse at center,rgba(86,112,255,0.12),rgba(87,232,166,0.04) 45%,transparent 70%);
+    pointer-events:none;z-index:0;
+  }
+
+  a{color:var(--mint);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .wrap{max-width:780px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(6,9,18,0.78);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--font-display);font-weight:800;font-size:18px;
+    letter-spacing:-0.02em;color:var(--text);text-decoration:none;
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--indigo);box-shadow:0 0 10px var(--indigo-glow);
+  }
+  .back-link{font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:6px;}
+  .back-link:hover{color:var(--text);text-decoration:none;}
+
+  /* PAGE HEADER */
+  .page-header{padding:64px 0 48px;border-bottom:1px solid var(--border);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:12px;
+    letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--text-muted);padding:6px 14px;
+    border:1px solid var(--border-strong);border-radius:999px;
+    background:rgba(255,255,255,0.02);margin-bottom:20px;
+  }
+  .page-header h1{
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(28px,4vw,42px);letter-spacing:-0.02em;margin-bottom:12px;
+  }
+  .page-header .updated{
+    font-family:var(--font-mono);font-size:12px;color:var(--text-faint);
+  }
+
+  /* SCOPE BANNER */
+  .scope-banner{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+    margin:32px 0 0;
+  }
+  .scope-item{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius-sm);padding:14px 16px;
+  }
+  .scope-item .si-label{
+    font-family:var(--font-mono);font-size:10.5px;
+    letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--text-faint);display:block;margin-bottom:6px;
+  }
+  .scope-item .si-val{
+    font-size:13.5px;color:var(--text-muted);line-height:1.4;
+  }
+  @media(max-width:540px){.scope-banner{grid-template-columns:1fr;}}
+
+  /* TABLE OF CONTENTS */
+  .toc{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius-md);padding:24px 28px;margin:40px 0;
+  }
+  .toc-title{
+    font-family:var(--font-mono);font-size:11px;
+    letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--text-faint);margin-bottom:14px;
+  }
+  .toc ol{list-style:none;counter-reset:toc;display:flex;flex-direction:column;gap:6px;}
+  .toc ol li{counter-increment:toc;}
+  .toc ol li a{
+    display:flex;align-items:baseline;gap:10px;
+    font-size:14px;color:var(--text-muted);
+  }
+  .toc ol li a::before{
+    content:counter(toc,decimal-leading-zero);
+    font-family:var(--font-mono);font-size:11px;color:var(--text-faint);flex-shrink:0;
+  }
+  .toc ol li a:hover{color:var(--mint);text-decoration:none;}
+
+  /* SECTIONS */
+  .legal-body{padding:0 0 80px;}
+  .legal-section{padding:44px 0 0;border-top:1px solid var(--border);margin-top:44px;}
+  .legal-section:first-child{border-top:none;margin-top:0;padding-top:40px;}
+  .section-number{
+    font-family:var(--font-mono);font-size:11px;
+    letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--indigo);margin-bottom:8px;
+  }
+  .legal-section h2{
+    font-family:var(--font-display);font-weight:700;
+    font-size:20px;letter-spacing:-0.01em;margin-bottom:18px;
+  }
+  .legal-section p{
+    font-size:14.5px;color:var(--text-muted);
+    margin-bottom:14px;line-height:1.7;
+  }
+  .legal-section p:last-child{margin-bottom:0;}
+
+  .legal-list{margin:4px 0 18px;padding:0;display:flex;flex-direction:column;gap:0;}
+  .legal-list li{
+    font-size:14px;color:var(--text-muted);
+    padding:10px 0;border-top:1px solid var(--border);
+    display:flex;gap:12px;line-height:1.55;
+  }
+  .legal-list li:first-child{border-top:none;padding-top:0;}
+  .legal-list li::before{content:"→";color:var(--mint);flex-shrink:0;font-size:13px;margin-top:1px;}
+
+  /* DATA TABLE */
+  .data-table{
+    width:100%;border-collapse:collapse;
+    margin:18px 0;font-size:13.5px;
+  }
+  .data-table thead tr{border-bottom:1px solid var(--border-strong);}
+  .data-table th{
+    font-family:var(--font-mono);font-size:10.5px;
+    letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--text-faint);padding:10px 14px;text-align:left;
+  }
+  .data-table td{
+    padding:12px 14px;color:var(--text-muted);
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    vertical-align:top;line-height:1.5;
+  }
+  .data-table tr:last-child td{border-bottom:none;}
+  .data-table td:first-child{
+    font-weight:600;color:var(--text);white-space:nowrap;
+    font-size:13px;
+  }
+  @media(max-width:560px){
+    .data-table thead{display:none;}
+    .data-table td{display:block;padding:6px 0;}
+    .data-table td:first-child{color:var(--mint);font-size:12px;margin-top:10px;}
+    .data-table tr{display:block;border-top:1px solid var(--border);padding:8px 0;}
+  }
+
+  /* INFO BOX */
+  .info-box{
+    background:var(--mint-soft);border:1px solid rgba(87,232,166,0.22);
+    border-radius:var(--radius-sm);padding:14px 18px;margin:18px 0;
+  }
+  .info-box p{font-size:13.5px;color:rgba(87,232,166,0.85);margin-bottom:0;}
+
+  /* WARN BOX */
+  .warn-box{
+    background:rgba(243,185,77,0.06);border:1px solid rgba(243,185,77,0.22);
+    border-radius:var(--radius-sm);padding:14px 18px;margin:18px 0;
+  }
+  .warn-box p{font-size:13.5px;color:rgba(243,185,77,0.85);margin-bottom:0;}
+
+  /* RETENTION PILLS */
+  .retention-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0;
+  }
+  .ret-card{
+    background:rgba(255,255,255,0.02);border:1px solid var(--border);
+    border-radius:var(--radius-sm);padding:14px 16px;
+  }
+  .ret-card .rc-what{
+    font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;
+  }
+  .ret-card .rc-period{
+    font-family:var(--font-mono);font-size:13px;color:var(--mint);
+  }
+  .ret-card .rc-note{font-size:12px;color:var(--text-faint);margin-top:4px;}
+  @media(max-width:480px){.retention-grid{grid-template-columns:1fr;}}
+
+  /* CONTACT CARDS */
+  .contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+  .contact-card{
+    background:rgba(255,255,255,0.02);border:1px solid var(--border-strong);
+    border-radius:var(--radius-sm);padding:16px 18px;
+  }
+  .contact-card .cc-label{
+    font-family:var(--font-mono);font-size:10.5px;
+    letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--text-faint);margin-bottom:6px;display:block;
+  }
+  .contact-card a{font-size:14px;font-weight:600;color:var(--mint);}
+  @media(max-width:540px){.contact-cards{grid-template-columns:1fr;}}
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--border);padding:32px 28px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;
+    gap:12px;max-width:1180px;margin:0 auto;
+    font-size:12.5px;color:var(--text-faint);
+    position:relative;z-index:1;
+  }
+  footer a{color:var(--text-faint);}
+  footer a:hover{color:var(--text);}
+  .foot-links{display:flex;gap:20px;flex-wrap:wrap;}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Privacy Policy</h1>
-    <p>Last updated: <strong>March 2026</strong></p>
 
-    <h2>1. Overview</h2>
-    <p>
-      This Privacy Policy explains how <strong>GasFree4you</strong> collects, uses,
-      and protects information when you use our blockchain utility service for
-      TRON Energy delegation.
-    </p>
-
-    <h2>2. Information We Collect</h2>
-    <ul>
-      <li>
-        <strong>Blockchain Data:</strong> Wallet addresses, transaction hashes,
-        and transaction-related amounts submitted through or associated with use
-        of the service.
-      </li>
-      <li>
-        <strong>Contact Information:</strong> Information you provide voluntarily,
-        such as your email address or Telegram handle when contacting support.
-      </li>
-      <li>
-        <strong>Technical Data:</strong> Limited technical information such as IP
-        address, browser type, device information, and basic usage metrics needed
-        for service reliability, security, and abuse prevention.
-      </li>
-    </ul>
-
-    <h2>3. How We Use Information</h2>
-    <ul>
-      <li>To process service requests and deliver TRON Energy delegation.</li>
-      <li>To provide customer support when requested.</li>
-      <li>To maintain service reliability, security, and abuse prevention.</li>
-      <li>To monitor performance and improve website functionality.</li>
-    </ul>
-
-    <h2>4. Data Sharing</h2>
-    <p>We do not sell or rent your personal data. Information may be shared only in the following cases:</p>
-    <ul>
-      <li>When required by applicable law, legal process, or lawful request.</li>
-      <li>When reasonably necessary to detect, investigate, or prevent fraud, abuse, or security incidents.</li>
-      <li>When needed for basic service infrastructure, hosting, analytics, or technical support.</li>
-    </ul>
-
-    <h2>5. Data Retention</h2>
-    <p>
-      Public blockchain transaction data may remain publicly accessible indefinitely
-      by nature of the blockchain. Support correspondence and related contact
-      information may be retained for up to 12 months, unless a longer retention
-      period is required for security, legal, or operational reasons.
-    </p>
-
-    <h2>6. Analytics</h2>
-    <p>
-      We may use analytics tools to understand how visitors interact with the
-      website and to improve service performance, reliability, and usability.
-      These tools may collect limited technical information such as IP address,
-      browser type, pages visited, and general interaction events.
-    </p>
-
-    <h2>7. Security</h2>
-    <p>
-      We take reasonable technical and organizational measures to protect stored
-      information. However, no method of transmission or storage is completely
-      secure, and we cannot guarantee absolute security.
-    </p>
-
-    <h2>8. Your Responsibility</h2>
-    <p>
-      Users are responsible for the accuracy of the wallet addresses and contact
-      details they provide. Users should also understand that blockchain activity
-      may be publicly visible and traceable by third parties.
-    </p>
-
-    <h2>9. Contact Us</h2>
-    <p>
-      If you have questions about this Privacy Policy, please contact us at
-      <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a>.
-    </p>
-
-    <hr />
-    <p>
-      <a href="/">Home</a> |
-      <a href="/terms.html">Terms</a> |
-      <a href="/privacy.html">Privacy</a>
-    </p>
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">GasFree4you <span class="dot"></span></a>
+    <a href="index.html" class="back-link">← Back to main page</a>
   </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="page-header">
+      <div class="eyebrow">PRIVACY</div>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: March 2026</p>
+      <div class="scope-banner">
+        <div class="scope-item">
+          <span class="si-label">Service</span>
+          <span class="si-val">TRON Energy Delegation &amp; Blockchain Utilities</span>
+        </div>
+        <div class="scope-item">
+          <span class="si-label">Data controller</span>
+          <span class="si-val">GasFree4you</span>
+        </div>
+        <div class="scope-item">
+          <span class="si-label">Contact</span>
+          <span class="si-val"><a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a></span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="toc">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#collected">Information We Collect</a></li>
+        <li><a href="#use">How We Use Information</a></li>
+        <li><a href="#sharing">Data Sharing</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#blockchain">Blockchain &amp; Public Data</a></li>
+        <li><a href="#rights">Your Rights</a></li>
+        <li><a href="#responsibility">Your Responsibility</a></li>
+        <li><a href="#contact-privacy">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <div class="legal-body">
+
+      <div class="legal-section" id="overview">
+        <p class="section-number">01 — Overview</p>
+        <h2>Overview</h2>
+        <p>This Privacy Policy explains how GasFree4you collects, uses, and protects information when you use our blockchain utility service for TRON Energy delegation, AML screening, wallet management, and related tools.</p>
+        <div class="info-box">
+          <p>We collect the minimum data necessary to operate the service. We do not sell personal data. We do not store private keys or seed phrases — ever.</p>
+        </div>
+        <p>By using GasFree4you, you acknowledge that you have read and understood this Privacy Policy. If you do not agree, please discontinue use of the service.</p>
+      </div>
+
+      <div class="legal-section" id="collected">
+        <p class="section-number">02 — Information We Collect</p>
+        <h2>Information We Collect</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Examples</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Blockchain data</td>
+              <td>Wallet addresses, transaction hashes, transfer amounts submitted through the service</td>
+              <td>Provided by user; retrieved from TRON public ledger</td>
+            </tr>
+            <tr>
+              <td>Contact information</td>
+              <td>Email address, Telegram handle — only if you contact support or register an account</td>
+              <td>Voluntarily provided by user</td>
+            </tr>
+            <tr>
+              <td>Technical data</td>
+              <td>IP address, browser type, device information, pages visited, session duration</td>
+              <td>Collected automatically on service access</td>
+            </tr>
+            <tr>
+              <td>AML / screening data</td>
+              <td>Wallet addresses submitted for AML or sanctions checks, check results, provider responses</td>
+              <td>Provided by user; retrieved from third-party screening providers</td>
+            </tr>
+            <tr>
+              <td>Support correspondence</td>
+              <td>Messages, attachments, and context shared when contacting support</td>
+              <td>Provided by user</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>We do not collect payment card data, bank account details, government-issued IDs, or private keys of any kind.</p>
+      </div>
+
+      <div class="legal-section" id="use">
+        <p class="section-number">03 — How We Use Information</p>
+        <h2>How We Use Information</h2>
+        <ul class="legal-list">
+          <li>To process service requests and deliver TRON Energy delegation to the specified wallet address.</li>
+          <li>To run AML and sanctions screening when requested, and to store check results for your reference.</li>
+          <li>To provide customer support when you contact us.</li>
+          <li>To maintain service reliability, detect abuse, and prevent fraudulent or unauthorised use.</li>
+          <li>To generate wallet statements when requested, using publicly available blockchain data.</li>
+          <li>To monitor performance and improve website functionality and usability.</li>
+          <li>To comply with applicable legal obligations, including sanctions screening and law enforcement requests.</li>
+        </ul>
+        <p>We do not use your data for advertising, profiling, or sale to third parties.</p>
+      </div>
+
+      <div class="legal-section" id="sharing">
+        <p class="section-number">04 — Data Sharing</p>
+        <h2>Data Sharing</h2>
+        <p>We do not sell or rent your personal data. Information may be shared only in the following circumstances:</p>
+        <ul class="legal-list">
+          <li><strong style="color:var(--text);">Legal obligation:</strong> when required by applicable law, court order, or a lawful request from a competent authority.</li>
+          <li><strong style="color:var(--text);">Fraud and security:</strong> when reasonably necessary to detect, investigate, or prevent fraud, abuse, or security incidents.</li>
+          <li><strong style="color:var(--text);">AML screening providers:</strong> wallet addresses submitted for AML checks are shared with our third-party screening providers solely for the purpose of generating a risk report. Providers are contractually prohibited from using this data for other purposes.</li>
+          <li><strong style="color:var(--text);">Infrastructure partners:</strong> hosting, analytics, and technical support providers who process data strictly on our behalf under data processing agreements.</li>
+          <li><strong style="color:var(--text);">Sanctions compliance:</strong> in the event of a confirmed sanctions match, relevant information may be disclosed to appropriate authorities as required by law.</li>
+        </ul>
+        <div class="warn-box">
+          <p>Wallet addresses submitted for AML checks are processed by third-party providers. While we select providers with strong data protection practices, we cannot fully control how third-party systems process data once a request is made.</p>
+        </div>
+      </div>
+
+      <div class="legal-section" id="retention">
+        <p class="section-number">05 — Data Retention</p>
+        <h2>Data Retention</h2>
+        <p>We retain data only as long as necessary for the purposes described in this Policy, or as required by law.</p>
+        <div class="retention-grid">
+          <div class="ret-card">
+            <p class="rc-what">Blockchain / transaction data</p>
+            <p class="rc-period">Indefinite (public ledger)</p>
+            <p class="rc-note">Public by nature — exists on the TRON blockchain regardless of our retention.</p>
+          </div>
+          <div class="ret-card">
+            <p class="rc-what">Account &amp; contact data</p>
+            <p class="rc-period">Duration of account + 12 months</p>
+            <p class="rc-note">Deleted upon verified account closure request.</p>
+          </div>
+          <div class="ret-card">
+            <p class="rc-what">AML check results</p>
+            <p class="rc-period">Up to 12 months</p>
+            <p class="rc-note">May be retained longer if required for regulatory or legal purposes.</p>
+          </div>
+          <div class="ret-card">
+            <p class="rc-what">Support correspondence</p>
+            <p class="rc-period">Up to 12 months</p>
+            <p class="rc-note">May be retained longer if related to an open dispute or legal matter.</p>
+          </div>
+          <div class="ret-card">
+            <p class="rc-what">Technical logs (IP, sessions)</p>
+            <p class="rc-period">Up to 90 days</p>
+            <p class="rc-note">Used for security and abuse prevention only.</p>
+          </div>
+          <div class="ret-card">
+            <p class="rc-what">Wallet statements (generated)</p>
+            <p class="rc-period">30 days after generation</p>
+            <p class="rc-note">Statement files are available for download for 30 days, then purged.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal-section" id="analytics">
+        <p class="section-number">06 — Analytics</p>
+        <h2>Analytics</h2>
+        <p>We use analytics tools to understand how visitors interact with the website and to improve service performance, reliability, and usability. These tools may collect limited technical information including IP address, browser type, pages visited, and general interaction events.</p>
+        <p>Analytics data is aggregated and not linked to individual user identities where possible. We use Yandex Metrica for website analytics, which may process data on infrastructure located outside the EU/EEA.</p>
+        <p>By using the service, you consent to this analytics processing. You may opt out by disabling JavaScript or using a browser extension that blocks analytics scripts.</p>
+      </div>
+
+      <div class="legal-section" id="security">
+        <p class="section-number">07 — Security</p>
+        <h2>Security</h2>
+        <p>We take reasonable technical and organisational measures to protect stored information from unauthorised access, alteration, disclosure, or destruction. These measures include encrypted data transmission (HTTPS), access controls, and routine security reviews.</p>
+        <p>However, no method of transmission over the internet or method of electronic storage is completely secure. We cannot guarantee absolute security, and we encourage users to take their own precautions — including using strong passwords and securing their own devices and wallets.</p>
+      </div>
+
+      <div class="legal-section" id="blockchain">
+        <p class="section-number">08 — Blockchain &amp; Public Data</p>
+        <h2>Blockchain &amp; Public Data</h2>
+        <p>The TRON blockchain is a public ledger. Any wallet address, transaction hash, or transfer amount processed through or associated with the service may be permanently and publicly visible on the blockchain, accessible to anyone worldwide.</p>
+        <div class="warn-box">
+          <p>GasFree4you has no ability to delete, modify, or conceal data that has been recorded on the TRON blockchain. This is an inherent property of the technology and is outside our control.</p>
+        </div>
+        <p>Wallet statements generated by GasFree4you are derived from this publicly available blockchain data. Generating a statement does not create or alter any on-chain record.</p>
+      </div>
+
+      <div class="legal-section" id="rights">
+        <p class="section-number">09 — Your Rights</p>
+        <h2>Your Rights</h2>
+        <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+        <ul class="legal-list">
+          <li><strong style="color:var(--text);">Access:</strong> request a copy of the personal data we hold about you.</li>
+          <li><strong style="color:var(--text);">Correction:</strong> request correction of inaccurate or incomplete data.</li>
+          <li><strong style="color:var(--text);">Deletion:</strong> request deletion of your personal data, subject to legal retention requirements.</li>
+          <li><strong style="color:var(--text);">Portability:</strong> request your data in a structured, machine-readable format.</li>
+          <li><strong style="color:var(--text);">Objection:</strong> object to processing of your data in certain circumstances.</li>
+        </ul>
+        <p>To exercise any of these rights, contact us at <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a>. We will respond within a reasonable timeframe. Note that rights related to blockchain data cannot be fulfilled due to the immutable nature of the public ledger.</p>
+      </div>
+
+      <div class="legal-section" id="responsibility">
+        <p class="section-number">10 — Your Responsibility</p>
+        <h2>Your Responsibility</h2>
+        <p>Users are responsible for the accuracy of wallet addresses and contact details they provide. Errors in wallet addresses may result in irreversible loss of funds or failed energy delegation — GasFree4you cannot reverse blockchain transactions.</p>
+        <p>Users should be aware that all blockchain activity — including transfers made using delegated energy from our service — is publicly visible and permanently traceable by third parties, including analytics providers, regulators, and blockchain analytics firms.</p>
+      </div>
+
+      <div class="legal-section" id="contact-privacy">
+        <p class="section-number">11 — Contact Us</p>
+        <h2>Contact Us</h2>
+        <p>If you have questions about this Privacy Policy, wish to exercise your data rights, or need to report a data concern, please reach out through:</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <span class="cc-label">Privacy &amp; Data Requests</span>
+            <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a>
+          </div>
+          <div class="contact-card">
+            <span class="cc-label">Support</span>
+            <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 GasFree4you.</span>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="refund.html">Refund</a>
+    <a href="legal.html">Legal</a>
+  </div>
+</footer>
+
 </body>
 </html>
