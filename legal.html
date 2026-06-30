@@ -9,232 +9,85 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#060912;
-    --surface:#10152b;
-    --border:rgba(255,255,255,0.07);
-    --border-strong:rgba(255,255,255,0.14);
-    --text:#f4f6fc;
-    --text-muted:#8c93ae;
-    --text-faint:#5b6280;
-    --indigo:#5670ff;
-    --indigo-glow:rgba(86,112,255,0.35);
-    --mint:#57e8a6;
-    --mint-soft:rgba(87,232,166,0.13);
-    --radius-lg:24px;
-    --radius-md:16px;
-    --radius-sm:10px;
+    --bg:#060912;--surface:#10152b;
+    --border:rgba(255,255,255,0.07);--border-strong:rgba(255,255,255,0.14);
+    --text:#f4f6fc;--text-muted:#8c93ae;--text-faint:#5b6280;
+    --indigo:#5670ff;--indigo-glow:rgba(86,112,255,0.35);
+    --mint:#57e8a6;--mint-soft:rgba(87,232,166,0.13);
+    --radius-lg:24px;--radius-md:16px;--radius-sm:10px;
     --font-display:'Archivo','Inter',sans-serif;
     --font-body:'Inter',sans-serif;
     --font-mono:'JetBrains Mono',monospace;
   }
-
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--font-body);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    position:relative;
-    overflow-x:hidden;
-  }
-
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);
-    background-size:26px 26px;
-    pointer-events:none;
-    z-index:0;
-    opacity:0.6;
-  }
-
-  body::after{
-    content:"";
-    position:fixed;
-    top:-20%;left:50%;
-    width:900px;height:600px;
-    transform:translateX(-50%);
-    background:radial-gradient(ellipse at center,rgba(86,112,255,0.12),rgba(87,232,166,0.04) 45%,transparent 70%);
-    pointer-events:none;
-    z-index:0;
-  }
-
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;z-index:0;opacity:0.6;}
+  body::after{content:"";position:fixed;top:-20%;left:50%;width:900px;height:600px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(86,112,255,0.12),rgba(87,232,166,0.04) 45%,transparent 70%);pointer-events:none;z-index:0;}
   a{color:var(--mint);text-decoration:none;}
   a:hover{text-decoration:underline;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
 
-  .wrap{
-    max-width:780px;
-    margin:0 auto;
-    padding:0 28px;
-    position:relative;
-    z-index:1;
-  }
-
-  /* NAV */
-  header{
-    position:sticky;top:0;z-index:50;
-    backdrop-filter:blur(14px);
-    background:rgba(6,9,18,0.78);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-inner{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px 28px;max-width:1180px;margin:0 auto;
-  }
-  .logo{
-    font-family:var(--font-display);font-weight:800;font-size:18px;
-    letter-spacing:-0.02em;color:var(--text);text-decoration:none;
-    display:flex;align-items:center;gap:8px;
-  }
-  .logo .dot{
-    width:7px;height:7px;border-radius:50%;
-    background:var(--indigo);box-shadow:0 0 10px var(--indigo-glow);
-  }
-  .back-link{
-    font-size:13px;color:var(--text-muted);
-    display:flex;align-items:center;gap:6px;
-  }
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,9,18,0.78);border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1180px;margin:0 auto;}
+  .logo{font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--indigo);box-shadow:0 0 10px var(--indigo-glow);}
+  .back-link{font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:6px;}
   .back-link:hover{color:var(--text);text-decoration:none;}
 
-  /* PAGE HEADER */
-  .page-header{
-    padding:64px 0 48px;
-    border-bottom:1px solid var(--border);
-  }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:var(--font-mono);font-size:12px;
-    letter-spacing:0.12em;text-transform:uppercase;
-    color:var(--text-muted);padding:6px 14px;
-    border:1px solid var(--border-strong);border-radius:999px;
-    background:rgba(255,255,255,0.02);margin-bottom:20px;
-  }
-  .page-header h1{
-    font-family:var(--font-display);font-weight:800;
-    font-size:clamp(28px,4vw,42px);letter-spacing:-0.02em;
-    margin-bottom:12px;
-  }
-  .page-header .updated{
-    font-family:var(--font-mono);font-size:12px;
-    color:var(--text-faint);
-  }
+  .page-header{padding:64px 0 48px;border-bottom:1px solid var(--border);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);padding:6px 14px;border:1px solid var(--border-strong);border-radius:999px;background:rgba(255,255,255,0.02);margin-bottom:20px;}
+  .page-header h1{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-0.02em;margin-bottom:12px;}
+  .page-header .updated{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);}
 
-  /* TABLE OF CONTENTS */
-  .toc{
-    background:var(--surface);border:1px solid var(--border);
-    border-radius:var(--radius-md);padding:24px 28px;
-    margin:40px 0;
-  }
-  .toc-title{
-    font-family:var(--font-mono);font-size:11px;
-    letter-spacing:0.1em;text-transform:uppercase;
-    color:var(--text-faint);margin-bottom:14px;
-  }
-  .toc ol{
-    list-style:none;counter-reset:toc-counter;
-    display:flex;flex-direction:column;gap:6px;
-  }
+  /* doc links strip */
+  .doc-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0;}
+  .doc-link-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;display:flex;flex-direction:column;gap:4px;}
+  .doc-link-card .dlc-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);}
+  .doc-link-card a{font-size:13px;font-weight:600;color:var(--mint);}
+  @media(max-width:540px){.doc-links{grid-template-columns:1fr;}}
+
+  .toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px 28px;margin:40px 0;}
+  .toc-title{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;}
+  .toc ol{list-style:none;counter-reset:toc-counter;display:flex;flex-direction:column;gap:6px;}
   .toc ol li{counter-increment:toc-counter;}
-  .toc ol li a{
-    display:flex;align-items:baseline;gap:10px;
-    font-size:14px;color:var(--text-muted);
-  }
-  .toc ol li a::before{
-    content:counter(toc-counter,decimal-leading-zero);
-    font-family:var(--font-mono);font-size:11px;
-    color:var(--text-faint);flex-shrink:0;
-  }
+  .toc ol li a{display:flex;align-items:baseline;gap:10px;font-size:14px;color:var(--text-muted);}
+  .toc ol li a::before{content:counter(toc-counter,decimal-leading-zero);font-family:var(--font-mono);font-size:11px;color:var(--text-faint);flex-shrink:0;}
   .toc ol li a:hover{color:var(--mint);text-decoration:none;}
 
-  /* SECTIONS */
   .legal-body{padding:0 0 80px;}
-
-  .legal-section{
-    padding:44px 0 0;
-    border-top:1px solid var(--border);
-    margin-top:44px;
-  }
+  .legal-section{padding:44px 0 0;border-top:1px solid var(--border);margin-top:44px;}
   .legal-section:first-child{border-top:none;margin-top:0;padding-top:40px;}
-
-  .section-number{
-    font-family:var(--font-mono);font-size:11px;
-    letter-spacing:0.1em;text-transform:uppercase;
-    color:var(--indigo);margin-bottom:8px;
-  }
-  .legal-section h2{
-    font-family:var(--font-display);font-weight:700;
-    font-size:20px;letter-spacing:-0.01em;
-    margin-bottom:18px;
-  }
-  .legal-section p{
-    font-size:14.5px;color:var(--text-muted);
-    margin-bottom:14px;line-height:1.7;
-  }
+  .section-number{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:8px;}
+  .legal-section h2{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:-0.01em;margin-bottom:18px;}
+  .legal-section p{font-size:14.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.7;}
   .legal-section p:last-child{margin-bottom:0;}
 
-  .legal-list{
-    margin:4px 0 18px;padding:0;
-    display:flex;flex-direction:column;gap:0;
-  }
-  .legal-list li{
-    font-size:14px;color:var(--text-muted);
-    padding:10px 0;border-top:1px solid var(--border);
-    display:flex;gap:12px;line-height:1.55;
-  }
+  .legal-list{margin:4px 0 18px;padding:0;display:flex;flex-direction:column;}
+  .legal-list li{font-size:14px;color:var(--text-muted);padding:10px 0;border-top:1px solid var(--border);display:flex;gap:12px;line-height:1.55;}
   .legal-list li:first-child{border-top:none;padding-top:0;}
-  .legal-list li::before{
-    content:"→";color:var(--mint);flex-shrink:0;
-    font-size:13px;margin-top:1px;
-  }
+  .legal-list li::before{content:"→";color:var(--mint);flex-shrink:0;font-size:13px;margin-top:1px;}
 
-  /* WARNING BOX */
-  .warn-box{
-    background:rgba(243,185,77,0.06);
-    border:1px solid rgba(243,185,77,0.22);
-    border-radius:var(--radius-sm);
-    padding:14px 18px;margin-bottom:18px;
-  }
-  .warn-box p{
-    font-size:13.5px;color:rgba(243,185,77,0.85);
-    margin-bottom:0;
-  }
+  .info-box{background:var(--mint-soft);border:1px solid rgba(87,232,166,0.22);border-radius:var(--radius-sm);padding:14px 18px;margin:18px 0;}
+  .info-box p{font-size:13.5px;color:rgba(87,232,166,0.85);margin-bottom:0;}
+  .warn-box{background:rgba(243,185,77,0.06);border:1px solid rgba(243,185,77,0.22);border-radius:var(--radius-sm);padding:14px 18px;margin:18px 0;}
+  .warn-box p{font-size:13.5px;color:rgba(243,185,77,0.85);margin-bottom:0;}
 
-  /* CONTACT CARDS */
-  .contact-cards{
-    display:grid;grid-template-columns:1fr 1fr;gap:12px;
-    margin-top:18px;
-  }
-  .contact-card{
-    background:rgba(255,255,255,0.02);
-    border:1px solid var(--border-strong);
-    border-radius:var(--radius-sm);
-    padding:16px 18px;
-  }
-  .contact-card .cc-label{
-    font-family:var(--font-mono);font-size:10.5px;
-    letter-spacing:0.08em;text-transform:uppercase;
-    color:var(--text-faint);margin-bottom:6px;display:block;
-  }
-  .contact-card a{
-    font-size:14px;font-weight:600;color:var(--mint);
-  }
-  @media(max-width:540px){
-    .contact-cards{grid-template-columns:1fr;}
-  }
+  /* registry list */
+  .registry-list{margin:16px 0 8px;padding:0;display:flex;flex-direction:column;}
+  .registry-list li{display:flex;align-items:center;gap:10px;font-size:13px;padding:9px 0;border-top:1px solid var(--border);color:var(--text-muted);}
+  .registry-list li:first-child{border-top:none;}
+  .registry-list li b{margin-left:auto;font-size:11px;font-family:var(--font-mono);color:var(--text-faint);white-space:nowrap;}
+  .reg-flag{font-size:16px;flex-shrink:0;}
 
-  /* FOOTER */
-  footer{
-    border-top:1px solid var(--border);
-    padding:32px 28px;
-    display:flex;justify-content:space-between;flex-wrap:wrap;
-    gap:12px;max-width:1180px;margin:0 auto;
-    font-size:12.5px;color:var(--text-faint);
-    position:relative;z-index:1;
-  }
+  /* contact cards */
+  .contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+  .contact-card{background:rgba(255,255,255,0.02);border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:16px 18px;}
+  .contact-card .cc-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:6px;display:block;}
+  .contact-card a{font-size:14px;font-weight:600;color:var(--mint);}
+  @media(max-width:540px){.contact-cards{grid-template-columns:1fr;}}
+
+  footer{border-top:1px solid var(--border);padding:32px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1180px;margin:0 auto;font-size:12.5px;color:var(--text-faint);position:relative;z-index:1;}
   footer a{color:var(--text-faint);}
   footer a:hover{color:var(--text);}
   .foot-links{display:flex;gap:20px;flex-wrap:wrap;}
@@ -255,68 +108,91 @@
     <div class="page-header">
       <div class="eyebrow">LEGAL</div>
       <h1>Legal Information</h1>
-      <p class="updated">Last updated: September 30, 2025</p>
+      <p class="updated">Last updated: March 2026</p>
+      <div class="doc-links">
+        <div class="doc-link-card">
+          <span class="dlc-label">Full document</span>
+          <a href="terms.html">Terms of Service →</a>
+        </div>
+        <div class="doc-link-card">
+          <span class="dlc-label">Full document</span>
+          <a href="privacy.html">Privacy Policy →</a>
+        </div>
+        <div class="doc-link-card">
+          <span class="dlc-label">Full document</span>
+          <a href="refund.html">Refund Policy →</a>
+        </div>
+      </div>
     </div>
 
     <nav class="toc">
       <p class="toc-title">Contents</p>
       <ol>
-        <li><a href="#terms">Terms of Use</a></li>
-        <li><a href="#jurisdictions">Jurisdictional Restrictions</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+        <li><a href="#non-custodial">Non-Custodial Service</a></li>
         <li><a href="#privacy">Privacy Policy</a></li>
         <li><a href="#refunds">Refund Policy</a></li>
         <li><a href="#risks">Risk Disclaimer</a></li>
         <li><a href="#aml">KYC / AML Compliance</a></li>
         <li><a href="#liability">Liability Limitation</a></li>
+        <li><a href="#indemnification">Indemnification</a></li>
+        <li><a href="#force-majeure">Force Majeure</a></li>
+        <li><a href="#ip">Intellectual Property</a></li>
+        <li><a href="#severability">Severability &amp; Entire Agreement</a></li>
         <li><a href="#governing">Governing Law</a></li>
-        <li><a href="#contact">Contact Information</a></li>
         <li><a href="#excluded">Excluded Jurisdictions &amp; EU Notice</a></li>
-        <li><a href="#sanctions-compliance">Sanctions Compliance</a></li>
-        <li><a href="#amendments">Amendments to These Terms</a></li>
+        <li><a href="#sanctions">Sanctions Compliance</a></li>
+        <li><a href="#amendments">Amendments</a></li>
+        <li><a href="#contact">Contact Information</a></li>
       </ol>
     </nav>
 
     <div class="legal-body">
 
       <div class="legal-section" id="terms">
-        <p class="section-number">01 — Terms of Use</p>
-        <h2>Terms of Use</h2>
-        <p>By accessing or using GasFree4you, you agree to these Terms of Use:</p>
+        <p class="section-number">01 — Terms of Service</p>
+        <h2>Terms of Service</h2>
+        <p>By accessing or using GasFree4you — including the web portal, Telegram bot, API, and any related tools — you agree to be bound by our <a href="terms.html">Terms of Service</a> and this Legal Information page.</p>
         <ul class="legal-list">
-          <li>The service provides TRON energy delegation (energy/bandwidth) only. We do not custody or store user funds.</li>
+          <li>The service provides TRON energy delegation, AML screening, wallet tools, and related utilities. We do not custody or store user funds.</li>
           <li>You must be at least 18 years old or the age of majority in your jurisdiction.</li>
-          <li>You are solely responsible for ensuring that your use of the service complies with local laws and regulations.</li>
-          <li>You agree not to use the service for illegal transactions, money laundering, fraud, or any activity prohibited by law.</li>
+          <li>You are solely responsible for ensuring your use of the service complies with local laws and regulations.</li>
+          <li>You agree not to use the service for illegal transactions, money laundering, fraud, sanctions evasion, or any activity prohibited by law.</li>
+          <li>You represent that you are not located in a jurisdiction where use of this service is prohibited or restricted.</li>
         </ul>
+        <p>For the full Terms of Service including payment terms, prohibited use, indemnification, and governing law, see <a href="terms.html">terms.html</a>.</p>
       </div>
 
-      <div class="legal-section" id="jurisdictions">
-        <p class="section-number">02 — Jurisdictional Restrictions</p>
-        <h2>Jurisdictional Restrictions</h2>
-        <p>The service may be unavailable or restricted in certain countries and territories where blockchain or energy delegation services are regulated or prohibited. Users are responsible for confirming the legality of the service in their jurisdiction.</p>
-        <div class="warn-box">
-          <p>Access may be restricted from sanctioned countries. The list below is indicative and subject to confirmation with legal counsel: United States, Canada (certain provinces), United Kingdom, Singapore, Hong Kong, Iran, DPRK, Syria, Cuba, Crimea/Sevastopol.</p>
+      <div class="legal-section" id="non-custodial">
+        <p class="section-number">02 — Non-Custodial Service</p>
+        <h2>Non-Custodial Service</h2>
+        <p>GasFree4you is a non-custodial service. Users maintain full control of their wallets and private keys at all times. The platform never stores, manages, or has access to user funds, private keys, or seed phrases.</p>
+        <div class="info-box">
+          <p>We interact with the TRON network using only the public wallet addresses you provide. No signing authority or custody over your assets is ever transferred to GasFree4you.</p>
         </div>
+        <p>Certain services — such as instant energy rental — may involve blockchain transactions executed through service-controlled wallets solely for the technical delivery of the requested service. In these cases, no user funds pass through or are held in service wallets.</p>
       </div>
 
       <div class="legal-section" id="privacy">
         <p class="section-number">03 — Privacy Policy</p>
         <h2>Privacy Policy</h2>
-        <p>We respect your privacy and process only minimal data necessary to provide the service:</p>
+        <p>We respect your privacy and process only minimal data necessary to provide the service. A summary of our data practices:</p>
         <ul class="legal-list">
-          <li><strong style="color:var(--text);">Data collected:</strong> account identifiers (e.g. email address), technical logs (IP address, browser version), transaction metadata.</li>
-          <li><strong style="color:var(--text);">Purpose:</strong> service operation, fraud prevention, compliance with applicable law.</li>
-          <li><strong style="color:var(--text);">Storage:</strong> data is stored securely and retained only as long as necessary.</li>
-          <li><strong style="color:var(--text);">Disclosure:</strong> we do not sell or share personal data with third parties, except when required by law or to comply with regulators.</li>
-          <li><strong style="color:var(--text);">User rights:</strong> you may request deletion or export of your personal data by contacting support.</li>
+          <li><strong style="color:var(--text);">Data collected:</strong> account identifiers (e.g. email address), technical logs (IP address, browser version), wallet addresses submitted to the service, AML check results, support correspondence.</li>
+          <li><strong style="color:var(--text);">Purpose:</strong> service operation, fraud prevention, AML screening, compliance with applicable law.</li>
+          <li><strong style="color:var(--text);">Storage:</strong> data is stored securely and retained only as long as necessary. Technical logs up to 90 days; support correspondence and AML results up to 12 months.</li>
+          <li><strong style="color:var(--text);">Disclosure:</strong> we do not sell or share personal data with third parties, except as required by law, for AML screening, or for service infrastructure.</li>
+          <li><strong style="color:var(--text);">User rights:</strong> you may request access, correction, deletion, restriction, objection, or data portability where applicable. Certain data may be retained where required for legal, fraud-prevention, security, or compliance purposes.</li>
         </ul>
+        <p>For the full Privacy Policy including analytics, blockchain data handling, and detailed retention periods, see <a href="privacy.html">privacy.html</a>.</p>
       </div>
 
       <div class="legal-section" id="refunds">
         <p class="section-number">04 — Refund Policy</p>
         <h2>Refund Policy</h2>
-        <p>Due to the nature of blockchain services, all transactions are final once executed. Energy delegation is applied instantly, therefore refunds are generally not possible.</p>
-        <p>Exceptions may be granted only in cases of proven technical errors on our side. Users are responsible for entering the correct wallet addresses and verifying all details before confirming transactions.</p>
+        <p>Due to the nature of blockchain services, all transactions are final once executed on-chain. Energy delegation is applied instantly and therefore refunds are generally not possible.</p>
+        <p>Exceptions may be granted only in cases of proven technical errors on our side. Users are responsible for entering the correct wallet addresses and verifying all details before confirming transactions. No refunds will be issued in cases of sanctions matches or prohibited use.</p>
+        <p>For the full Refund Policy and how to submit a request, see <a href="refund.html">refund.html</a>.</p>
       </div>
 
       <div class="legal-section" id="risks">
@@ -324,36 +200,116 @@
         <h2>Risk Disclaimer</h2>
         <p>By using GasFree4you, you acknowledge and accept the following risks:</p>
         <ul class="legal-list">
-          <li>TRON network performance or fees may change due to network upgrades, congestion, or protocol changes.</li>
-          <li>Transactions may fail if the receiving wallet is misconfigured or incompatible.</li>
-          <li>Loss of private keys or compromised wallets are the sole responsibility of the user.</li>
-          <li>The price of TRX/USDT is volatile and may affect the cost of service.</li>
+          <li>TRON network performance or fees may change due to network upgrades, congestion, protocol changes, or other network-level events.</li>
+          <li>Transactions may fail if the receiving wallet is frozen, misconfigured, or incompatible with energy delegation.</li>
+          <li>Loss of private keys or compromised wallets are the sole responsibility of the user. GasFree4you cannot assist with wallet recovery.</li>
+          <li>The price of TRX and USDT is volatile and may affect the effective cost of the service in fiat terms.</li>
+          <li>Smart contract limitations or on-chain errors may result in failed or partial execution outside our control.</li>
         </ul>
+        <p>GasFree4you provides a technical blockchain infrastructure service only. We do not provide financial services, investment products, investment advice, or any form of regulated financial activity.</p>
       </div>
 
       <div class="legal-section" id="aml">
         <p class="section-number">06 — KYC / AML Compliance</p>
         <h2>KYC / AML Compliance</h2>
-        <p>Where required by applicable law, we may request users to undergo Know Your Customer (KYC) or Anti-Money Laundering (AML) checks. Failure to complete such checks may result in restricted access or termination of the service.</p>
+        <p>GasFree4you actively screens wallet addresses against international sanctions registries as part of its standard operation. We may request additional information or verification before providing certain services, where permitted or required by applicable law, risk controls, or third-party provider requirements.</p>
+        <p>We reserve the right to refuse or terminate service without prior notice if a wallet or user presents unacceptable risk indicators or matches a sanctions list entry. Users who request AML screening through our platform acknowledge that wallet addresses will be submitted to third-party screening providers.</p>
+        <div class="warn-box">
+          <p>AML screening results are informational risk indicators only and do not constitute legal, compliance, financial, or investigative advice. Results are stored for up to 12 months for compliance and audit purposes.</p>
+        </div>
       </div>
 
       <div class="legal-section" id="liability">
         <p class="section-number">07 — Liability Limitation</p>
         <h2>Liability Limitation</h2>
-        <p>The service is provided "as is" without warranties of any kind. To the maximum extent permitted by law, GasFree4you shall not be liable for any direct, indirect, incidental, or consequential damages, including loss of funds, profits, or data.</p>
-        <p>Our liability, if any, is limited to the amount paid by the user for the service in the last billing period.</p>
+        <p>The service is provided "as is" and "as available" without warranties of any kind, express or implied. To the maximum extent permitted by law, GasFree4you shall not be liable for any direct, indirect, incidental, or consequential damages, including loss of funds, profits, data, or business opportunities.</p>
+        <p>Our liability, if any, is limited to the amount paid by the user for the specific service transaction that gave rise to the claim, in the 30-day period preceding the claim.</p>
+        <p>Nothing in these Terms excludes or limits liability where such exclusion or limitation is prohibited by applicable law, including liability for fraud, wilful misconduct, or gross negligence where applicable.</p>
+      </div>
+
+      <div class="legal-section" id="indemnification">
+        <p class="section-number">08 — Indemnification</p>
+        <h2>Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless GasFree4you and its operators, affiliates, and representatives from and against any claims, liabilities, damages, losses, and expenses — including reasonable legal fees — arising out of or in any way connected with:</p>
+        <ul class="legal-list">
+          <li>Your access to or use of the service in violation of these Terms or applicable law.</li>
+          <li>Incorrect wallet addresses or instructions provided by you that result in failed or misdirected transactions.</li>
+          <li>Any fraudulent, abusive, or illegal activity carried out using the service.</li>
+          <li>Your violation of any third-party rights, including intellectual property or privacy rights.</li>
+        </ul>
+      </div>
+
+      <div class="legal-section" id="force-majeure">
+        <p class="section-number">09 — Force Majeure</p>
+        <h2>Force Majeure</h2>
+        <p>GasFree4you shall not be liable for any delay, failure, or interruption of the service resulting from causes beyond our reasonable control, including but not limited to the TRON network, protocol changes, network congestion, or third-party infrastructure failures; regulatory actions or government orders; cyberattacks or security breaches affecting our infrastructure or third-party providers; natural disasters, acts of war, or failures of telecommunications or internet infrastructure.</p>
+        <p>In such events, we will make reasonable efforts to restore the service and communicate the situation to affected users.</p>
+      </div>
+
+      <div class="legal-section" id="ip">
+        <p class="section-number">10 — Intellectual Property</p>
+        <h2>Intellectual Property</h2>
+        <p>All content, interfaces, logos, branding, documentation, and source code associated with GasFree4you are the intellectual property of the operating entity and are protected by applicable copyright, trademark, and other intellectual property laws.</p>
+        <p>You may refer to GasFree4you by name in factual, non-commercial contexts — for example, when describing your use of the service. You may not use the GasFree4you name, logo, or brand in any way that creates an impression of official partnership, endorsement, affiliation, or sponsorship without prior written permission.</p>
+        <p>You may not copy, reproduce, modify, distribute, or create derivative works from any part of the service or its content without prior written permission.</p>
+      </div>
+
+      <div class="legal-section" id="severability">
+        <p class="section-number">11 — Severability &amp; Entire Agreement</p>
+        <h2>Severability &amp; Entire Agreement</h2>
+        <p>If any provision of this document is found to be invalid or unenforceable, it shall be modified to the minimum extent necessary or severed, and the remaining provisions shall continue in full force and effect.</p>
+        <p>This Legal Information page, together with our <a href="terms.html">Terms of Service</a>, <a href="privacy.html">Privacy Policy</a>, and <a href="refund.html">Refund Policy</a>, constitute the entire legal agreement between you and GasFree4you. They supersede any prior agreements, representations, or understandings.</p>
       </div>
 
       <div class="legal-section" id="governing">
-        <p class="section-number">08 — Governing Law</p>
+        <p class="section-number">12 — Governing Law</p>
         <h2>Governing Law</h2>
-        <p>The governing law and jurisdiction will depend on the place of incorporation of the operating entity behind GasFree4you. Users agree that disputes shall be resolved under this jurisdiction, unless mandatory laws of the user's country require otherwise.</p>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which the operating entity behind GasFree4you is incorporated, without regard to its conflict of law provisions.</p>
+        <p>Any dispute arising out of or in connection with this document shall be subject to the exclusive jurisdiction of the courts of that jurisdiction, unless mandatory laws of the user's country of residence require otherwise.</p>
+      </div>
+
+      <div class="legal-section" id="excluded">
+        <p class="section-number">13 — Excluded Jurisdictions &amp; EU Notice</p>
+        <h2>Excluded Jurisdictions &amp; EU Notice</h2>
+        <p>This service is not directed at, and is not available to, residents of the European Union or European Economic Area. By accessing the service, you confirm that you are not a resident of the EU/EEA. If you are located in the EU/EEA, you must discontinue use immediately.</p>
+        <div class="warn-box">
+          <p><strong style="color:rgba(243,185,77,0.95);">Reason:</strong> GasFree4you has not registered as a Crypto-Asset Service Provider (CASP) under MiCA Regulation (EU) 2023/1114 and does not hold any equivalent license required to offer services to EU/EEA residents.</p>
+        </div>
+        <p>Access to the service is also restricted from the following jurisdictions. This list is indicative and subject to confirmation with legal counsel:</p>
+        <ul class="legal-list">
+          <li>European Union and European Economic Area (all member states)</li>
+          <li>United States of America and its territories</li>
+          <li>Canada (certain provinces)</li>
+          <li>United Kingdom, Singapore, Hong Kong</li>
+          <li>Iran, DPRK, Syria, Cuba, Crimea/Sevastopol</li>
+        </ul>
+        <p>GasFree4you reserves the right to terminate access without notice if a user is identified as residing in an excluded jurisdiction. No refunds will be issued in such cases.</p>
+      </div>
+
+      <div class="legal-section" id="sanctions">
+        <p class="section-number">14 — Sanctions Compliance</p>
+        <h2>Sanctions Compliance</h2>
+        <p>GasFree4you actively screens wallet addresses and, where applicable, user identifiers against international sanctions registries. Current sources include:</p>
+        <ul class="registry-list">
+          <li><span class="reg-flag">🇺🇸</span><span>OFAC SDN</span><b>USA</b></li>
+          <li><span class="reg-flag">🇪🇺</span><span>EU Consolidated Financial Sanctions List</span><b>European Union</b></li>
+          <li><span class="reg-flag">🇮🇱</span><span>NBCTF</span><b>Israel</b></li>
+        </ul>
+        <p>We reserve the right to refuse, suspend, or terminate access at any time and without prior notice if a wallet address or user matches a sanctions list entry. No refunds will be issued in such cases. Sanctions list coverage may be updated as regulatory requirements evolve.</p>
+        <p>Users are responsible for ensuring that their own counterparties are not sanctioned entities before initiating transfers.</p>
+      </div>
+
+      <div class="legal-section" id="amendments">
+        <p class="section-number">15 — Amendments</p>
+        <h2>Amendments</h2>
+        <p>We reserve the right to update or modify this Legal Information page and any related documents at any time. The "Last updated" date at the top reflects the most recent revision. Continued use of the service after changes are posted constitutes acceptance of the revised terms.</p>
+        <p>For material changes affecting user rights or obligations, we will make reasonable efforts to notify active users via email or in-app notice where technically feasible.</p>
       </div>
 
       <div class="legal-section" id="contact">
-        <p class="section-number">09 — Contact Information</p>
+        <p class="section-number">16 — Contact Information</p>
         <h2>Contact Information</h2>
-        <p>For compliance, legal inquiries, or personal data requests, please reach out through any of the channels below:</p>
+        <p>For compliance, legal inquiries, data requests, or general questions about this document, please reach out through:</p>
         <div class="contact-cards">
           <div class="contact-card">
             <span class="cc-label">Legal &amp; Compliance</span>
@@ -364,45 +320,6 @@
             <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a>
           </div>
         </div>
-      </div>
-
-      <div class="legal-section" id="excluded">
-        <p class="section-number">10 — Excluded Jurisdictions &amp; EU Notice</p>
-        <h2>Excluded Jurisdictions &amp; EU Notice</h2>
-        <p>This service is not directed at, and is not available to, residents of the European Union or European Economic Area. By accessing the service, you confirm that you are not a resident of the EU/EEA. If you are located in the EU/EEA, you must discontinue use immediately.</p>
-        <div class="warn-box">
-          <p><strong style="color:rgba(243,185,77,0.95);">Reason:</strong> GasFree4you has not registered as a Crypto-Asset Service Provider (CASP) under MiCA Regulation (EU) 2023/1114 and does not hold any equivalent license required to offer services to EU/EEA residents.</p>
-        </div>
-        <p>More broadly, access to the service may be restricted from the following jurisdictions. This list is indicative and subject to confirmation with legal counsel:</p>
-        <ul class="legal-list">
-          <li>European Union and European Economic Area (all member states)</li>
-          <li>United States of America and its territories</li>
-          <li>Canada (certain provinces)</li>
-          <li>United Kingdom, Singapore, Hong Kong</li>
-          <li>Iran, DPRK, Syria, Cuba, Crimea/Sevastopol</li>
-        </ul>
-        <p>Users in restricted jurisdictions who access the service do so at their own risk and in violation of these Terms. GasFree4you reserves the right to terminate access without notice if a user is identified as residing in an excluded jurisdiction.</p>
-      </div>
-
-      <div class="legal-section" id="sanctions-compliance">
-        <p class="section-number">11 — Sanctions Compliance</p>
-        <h2>Sanctions Compliance</h2>
-        <p>GasFree4you actively screens wallet addresses and, where applicable, user identifiers against international sanctions registries. Current sources include:</p>
-        <ul class="legal-list">
-          <li><strong style="color:var(--text);">OFAC SDN</strong> — Office of Foreign Assets Control, United States</li>
-          <li><strong style="color:var(--text);">EU FSF</strong> — European Union Financial Sanctions Files</li>
-          <li><strong style="color:var(--text);">IL NBCTF</strong> — Israel National Bureau for Counter Terror Financing</li>
-        </ul>
-        <p>We reserve the right to refuse, suspend, or terminate access to the service at any time and without prior notice if a wallet address or user is identified as matching a sanctions list entry. No refunds will be issued in such cases.</p>
-        <p>Sanctions list coverage may be updated as regulatory requirements evolve. Users are responsible for ensuring that their counterparties are not sanctioned entities.</p>
-      </div>
-
-      <div class="legal-section" id="amendments">
-        <p class="section-number">12 — Amendments to These Terms</p>
-        <h2>Amendments to These Terms</h2>
-        <p>We reserve the right to update or modify these Terms at any time without prior notice. The "Last updated" date at the top of this page reflects the most recent revision.</p>
-        <p>Continued use of the service after changes are posted constitutes your acceptance of the revised Terms. If you do not agree with the updated Terms, you must discontinue use of the service.</p>
-        <p>For material changes affecting user rights or obligations, we will make reasonable efforts to notify active users via email or an in-app notice, where technically feasible.</p>
       </div>
 
     </div>
