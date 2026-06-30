@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
       "source": "/landing",
@@ -11,7 +12,17 @@
       "destination": "/landing.html"
     },
     {
-      "source": "/",
+      "source": "/:path((?!api|_next|.*\\..*).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "gasfree4you.com"
+        }
+      ],
+      "destination": "/new_landing.html"
+    },
+    {
+      "source": "/:path((?!api|_next|.*\\..*).*)",
       "has": [
         {
           "type": "host",
@@ -25,23 +36,13 @@
       "has": [
         {
           "type": "host",
-          "value": "gasfree4you.com"
-        }
-      ],
-      "destination": "/new_landing.html"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
           "value": "ph.gasfree4you.com"
         }
       ],
       "destination": "/ph.html"
     },
     {
-      "source": "/",
+      "source": "/:path((?!api|_next|.*\\..*).*)",
       "has": [
         {
           "type": "host",
@@ -51,7 +52,7 @@
       "destination": "/vn.html"
     },
     {
-      "source": "/",
+      "source": "/:path((?!api|_next|.*\\..*).*)",
       "has": [
         {
           "type": "host",
@@ -59,10 +60,6 @@
         }
       ],
       "destination": "/tr.html"
-    },
-    {
-      "source": "/:path((?!api|_next|.*\\..*).*)",
-      "destination": "/new_landing.html"
     }
   ]
 }
