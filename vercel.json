@@ -10,16 +10,6 @@
         }
       ],
       "destination": "/new_landing.html"
-    },
-    {
-      "source": "/:path((?!api|_next|.*\\..*).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "gasfree4you.com"
-        }
-      ],
-      "destination": "/new_landing.html"
     }
   ]
 }
