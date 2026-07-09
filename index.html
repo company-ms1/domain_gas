@@ -1,11 +1,8 @@
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GasFree4you — the operational layer for TRON</title>
-        <script type="text/javascript">
+                <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -14,6 +11,9 @@
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109800201', 'ym');
     ym(109800201, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GasFree4you — the operational layer for TRON</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -452,6 +452,31 @@
     gap:18px;
   }
   .cards.single{grid-template-columns:1fr;}
+
+  @media (max-width:860px){
+    .cards{grid-template-columns:1fr;}
+  }
+
+  /* --- мобильные фиксы внутри карточек --- */
+  @media (max-width:600px){
+    .card{padding:20px 18px;}
+
+    /* Fee card: цифры стопкой, не в строку */
+    .fee-compare{padding:12px 14px; gap:14px;}
+    .fee-row-label{font-size:12px; margin-bottom:4px;}
+    .fee-old{font-size:13px; margin-left:0;}
+    .fee-new{font-size:22px; margin-left:0; flex-basis:100%; margin-top:2px;}
+
+    /* Calc card: кнопки одна под другой */
+    .calc-toggle{flex-direction:column; gap:6px;}
+    .calc-toggle button{flex:none; width:100%; text-align:center;}
+    .calc-out .value{font-size:28px;}
+
+    /* Dashboard card: плитки стопкой */
+    .mini-dash{grid-template-columns:1fr; gap:8px;}
+    .mini-tile span.v{font-size:22px;}
+  }
+  /* --- конец мобильных фиксов --- */
 
   .card{
     background:var(--surface);
@@ -1377,7 +1402,7 @@
         </div>
         <div class="instant-cta">
           <div class="banner-stat" style="font-size:36px;">1–5<span>sec delivery</span></div>
-          <a href="instant_new.html" class="btn btn-primary">Rent energy now →</a>
+          <a href="instant.html" class="btn btn-primary">Rent energy now →</a>
         </div>
       </div>
     </div>
@@ -1664,9 +1689,6 @@
         <a href="https://www.gasfree4you.com/privacy.html">Privacy</a>
         <a href="https://www.gasfree4you.com/refund.html">Refund</a>
         <a href="https://www.gasfree4you.com/legal.html">Legal</a>
-        <a href="https://www.gasfree4you.com/wallet/TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX/">
-  TRON service wallet
-        </a>
       </div>
     </div>
     <div class="foot-bottom">
