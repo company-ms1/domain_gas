@@ -686,6 +686,38 @@
   .calc-out .unit{font-size:13px; font-weight:500; color:var(--text-muted); font-family:var(--font-body); margin-left:2px;}
   .calc-note{font-size:11.5px; color:var(--text-faint); margin-top:8px;}
 
+  /* annual savings calculator */
+  .savings-section{padding:0 0 72px}
+  .savings-calc{
+    position:relative;overflow:hidden;
+    display:grid;grid-template-columns:minmax(260px,.85fr) minmax(0,1.35fr);gap:28px;align-items:center;
+    padding:28px;border:1px solid rgba(87,232,166,.25);border-radius:var(--radius-lg);
+    background:linear-gradient(135deg,rgba(87,232,166,.08),rgba(86,112,255,.075) 62%,rgba(6,9,18,.8));
+    box-shadow:0 18px 55px rgba(0,0,0,.18),inset 0 0 55px rgba(87,232,166,.025)
+  }
+  .savings-calc::after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-100px;top:-130px;background:rgba(87,232,166,.08);filter:blur(4px);pointer-events:none}
+  .savings-copy h3{font-size:clamp(24px,3vw,34px);margin:10px 0 8px}
+  .savings-copy p{color:var(--text-muted);font-size:14px;max-width:470px}
+  .savings-control{margin-top:20px}
+  .savings-control-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px}
+  .savings-control label{font-size:12px;font-weight:700;color:var(--text-muted)}
+  .savings-number{width:112px;height:40px;padding:0 11px;border:1px solid var(--border-strong);border-radius:11px;background:rgba(6,9,18,.62);color:var(--text);font-family:var(--font-mono);font-size:16px;font-weight:700;text-align:right;outline:none}
+  .savings-number:focus{border-color:var(--mint);box-shadow:0 0 0 3px rgba(87,232,166,.1)}
+  .savings-range{width:100%;height:5px;accent-color:var(--mint);cursor:pointer}
+  .savings-range-scale{display:flex;justify-content:space-between;margin-top:6px;color:var(--text-faint);font-family:var(--font-mono);font-size:9.5px}
+  .savings-results{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  .savings-result{min-height:160px;padding:21px;border-radius:18px;border:1px solid var(--border);background:rgba(6,9,18,.55);display:flex;flex-direction:column;justify-content:space-between}
+  .savings-result.highlight{border-color:rgba(87,232,166,.32);background:linear-gradient(145deg,rgba(87,232,166,.1),rgba(6,9,18,.62))}
+  .savings-result-label{font-size:12.5px;line-height:1.4;color:var(--text-muted);max-width:220px}
+  .savings-result-value{font-family:var(--font-mono);font-size:clamp(27px,4vw,42px);line-height:1;font-weight:750;letter-spacing:-.04em;color:var(--text);white-space:nowrap}
+  .savings-result.highlight .savings-result-value{color:var(--mint)}
+  .savings-result-value.bump{animation:savingsBump .24s ease}
+  @keyframes savingsBump{50%{transform:scale(1.025);filter:brightness(1.18)}}
+  .savings-result-unit{font-size:12px;letter-spacing:0;color:var(--text-muted);margin-left:5px}
+  .savings-formula{grid-column:1 / -1;text-align:right;color:var(--text-faint);font-size:10.5px;margin-top:-4px}
+  @media(max-width:820px){.savings-calc{grid-template-columns:1fr}.savings-results{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.savings-calc{padding:20px}.savings-results{grid-template-columns:1fr}.savings-result{min-height:132px}.savings-section{padding-bottom:56px}}
+
   /* mini dashboard preview tiles */
   .mini-dash{
     display:grid;
@@ -1376,6 +1408,7 @@
     .instant-icon-glow{animation:none;}
     .service-preview.changing{animation:none;}
     .mini-tile.updated{animation:none;}
+    .savings-result-value.bump{animation:none;}
     .eyebrow .dot, .logo .dot{animation:none;}
     .connectors span::after{animation:none; opacity:0;}
     *{transition:none !important;}
@@ -1558,6 +1591,37 @@
             <p class="calc-note">Standard TRON network fee for this scenario — your GasFree4you price is up to 53% lower (see the Transfer Layer above).</p>
           </div>
           <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_energy_calculator" class="card-cta">Open the calculator →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="savings-section" aria-labelledby="savingsTitle">
+    <div class="wrap">
+      <div class="savings-calc reveal">
+        <div class="savings-copy">
+          <span class="eyebrow">SAVINGS CALCULATOR</span>
+          <h3 id="savingsTitle">How much could you save in a year?</h3>
+          <p>Enter your average number of USDT transfers per month. We will compare the average TRON network fee with the average GasFree4you price.</p>
+          <div class="savings-control">
+            <div class="savings-control-head">
+              <label for="monthlyTransfers">Transfers per month</label>
+              <input class="savings-number" id="monthlyTransfers" type="number" min="0" max="10000" step="1" value="100" inputmode="numeric">
+            </div>
+            <input class="savings-range" id="monthlyTransfersRange" type="range" min="0" max="1000" step="10" value="100" aria-label="Transfers per month">
+            <div class="savings-range-scale"><span>0</span><span>500</span><span>1,000+</span></div>
+          </div>
+        </div>
+        <div class="savings-results" aria-live="polite">
+          <div class="savings-result">
+            <span class="savings-result-label">You would pay directly to the blockchain per year</span>
+            <strong class="savings-result-value"><span id="annualBlockchainCost">11,640</span><span class="savings-result-unit">TRX</span></strong>
+          </div>
+          <div class="savings-result highlight">
+            <span class="savings-result-label">You could save with GasFree4you per year</span>
+            <strong class="savings-result-value"><span id="annualSavings">4,440</span><span class="savings-result-unit">TRX</span></strong>
+          </div>
+          <div class="savings-formula">Average fee: blockchain 9.7 TRX · GasFree4you 6 TRX · saving 3.7 TRX per transfer</div>
         </div>
       </div>
     </div>
@@ -1940,17 +2004,20 @@
     "REFERRALS":"РЕФЕРАЛЫ","Referral Program":"Реферальная программа","If people already come to you asking how to move USDT cheaply on TRON, there's no reason that should be unpaid advice. Share a link, and every transfer, check, or statement your referrals pay for puts up to 8% back in your balance — for as long as they keep using GasFree4you.":"Если вас уже спрашивают, как дешевле переводить USDT в TRON, поделитесь реферальной ссылкой. Каждый оплаченный перевод, проверка или выписка принесёт до 8% на баланс, пока рефералы пользуются GasFree4you.","Up to 8%, recurring — not a one-time bounty":"До 8% постоянно, а не разовый бонус","No cap on how many people you refer":"Без ограничений по числу рефералов","Commission tracked automatically in your dashboard":"Комиссия автоматически учитывается в дашборде","Get your referral link":"Получить реферальную ссылку"
   };
   Object.assign(LANDING_ID,{
-    "Live demo":"Demo langsung","Refresh wallets":"Perbarui dompet","Checking…":"Memeriksa…","Updated just now":"Baru saja diperbarui","Updated 4 min ago":"Diperbarui 4 menit lalu","Personal":"Pribadi","Payments":"Pembayaran","Reserve":"Cadangan","Healthy":"Sehat","Low energy":"Energi rendah"
+    "Live demo":"Demo langsung","Refresh wallets":"Perbarui dompet","Checking…":"Memeriksa…","Updated just now":"Baru saja diperbarui","Updated 4 min ago":"Diperbarui 4 menit lalu","Personal":"Pribadi","Payments":"Pembayaran","Reserve":"Cadangan","Healthy":"Sehat","Low energy":"Energi rendah",
+    "SAVINGS CALCULATOR":"KALKULATOR PENGHEMATAN","How much could you save in a year?":"Berapa banyak yang dapat Anda hemat dalam setahun?","Enter your average number of USDT transfers per month. We will compare the average TRON network fee with the average GasFree4you price.":"Masukkan rata-rata jumlah transfer USDT per bulan. Kami akan membandingkan biaya jaringan TRON rata-rata dengan harga rata-rata GasFree4you.","Transfers per month":"Transfer per bulan","You would pay directly to the blockchain per year":"Biaya yang akan Anda bayar langsung ke blockchain per tahun","You could save with GasFree4you per year":"Penghematan Anda dengan GasFree4you per tahun","Average fee: blockchain 9.7 TRX · GasFree4you 6 TRX · saving 3.7 TRX per transfer":"Biaya rata-rata: blockchain 9,7 TRX · GasFree4you 6 TRX · hemat 3,7 TRX per transfer"
   });
   Object.assign(LANDING_RU,{
-    "Live demo":"Демо","Refresh wallets":"Обновить кошельки","Checking…":"Проверяем…","Updated just now":"Обновлено только что","Updated 4 min ago":"Обновлено 4 мин назад","Personal":"Личный","Payments":"Платежи","Reserve":"Резерв","Healthy":"В норме","Low energy":"Мало Energy"
+    "Live demo":"Демо","Refresh wallets":"Обновить кошельки","Checking…":"Проверяем…","Updated just now":"Обновлено только что","Updated 4 min ago":"Обновлено 4 мин назад","Personal":"Личный","Payments":"Платежи","Reserve":"Резерв","Healthy":"В норме","Low energy":"Мало Energy",
+    "SAVINGS CALCULATOR":"КАЛЬКУЛЯТОР ЭКОНОМИИ","How much could you save in a year?":"Сколько вы можете сэкономить за год?","Enter your average number of USDT transfers per month. We will compare the average TRON network fee with the average GasFree4you price.":"Введите среднее количество переводов USDT в месяц. Мы сравним среднюю комиссию сети TRON со средней ценой GasFree4you.","Transfers per month":"Переводов в месяц","You would pay directly to the blockchain per year":"Столько вы заплатили бы блокчейну за год","You could save with GasFree4you per year":"Столько вы сэкономите с GasFree4you за год","Average fee: blockchain 9.7 TRX · GasFree4you 6 TRX · saving 3.7 TRX per transfer":"Средняя комиссия: блокчейн 9,7 TRX · GasFree4you 6 TRX · экономия 3,7 TRX с перевода"
   });
   Object.assign(LANDING_ES,{
-    "Live demo":"Demo interactiva","Refresh wallets":"Actualizar billeteras","Checking…":"Comprobando…","Updated just now":"Actualizado ahora","Updated 4 min ago":"Actualizado hace 4 min","Personal":"Personal","Payments":"Pagos","Reserve":"Reserva","Healthy":"Correcto","Low energy":"Energía baja"
+    "Live demo":"Demo interactiva","Refresh wallets":"Actualizar billeteras","Checking…":"Comprobando…","Updated just now":"Actualizado ahora","Updated 4 min ago":"Actualizado hace 4 min","Personal":"Personal","Payments":"Pagos","Reserve":"Reserva","Healthy":"Correcto","Low energy":"Energía baja",
+    "SAVINGS CALCULATOR":"CALCULADORA DE AHORRO","How much could you save in a year?":"¿Cuánto podrías ahorrar en un año?","Enter your average number of USDT transfers per month. We will compare the average TRON network fee with the average GasFree4you price.":"Introduce tu número promedio de transferencias USDT al mes. Compararemos la comisión media de TRON con el precio medio de GasFree4you.","Transfers per month":"Transferencias al mes","You would pay directly to the blockchain per year":"Lo que pagarías directamente a la blockchain al año","You could save with GasFree4you per year":"Lo que podrías ahorrar con GasFree4you al año","Average fee: blockchain 9.7 TRX · GasFree4you 6 TRX · saving 3.7 TRX per transfer":"Comisión media: blockchain 9,7 TRX · GasFree4you 6 TRX · ahorro de 3,7 TRX por transferencia"
   });
-  const LANDING_ATTR_ID = {"Language":"Bahasa","Contact us":"Hubungi kami","Close":"Tutup"};
-  const LANDING_ATTR_RU = {"Language":"Язык","Contact us":"Связаться с нами","Close":"Закрыть"};
-  const LANDING_ATTR_ES = {"Language":"Idioma","Contact us":"Contáctanos","Close":"Cerrar"};
+  const LANDING_ATTR_ID = {"Language":"Bahasa","Contact us":"Hubungi kami","Close":"Tutup","Transfers per month":"Transfer per bulan"};
+  const LANDING_ATTR_RU = {"Language":"Язык","Contact us":"Связаться с нами","Close":"Закрыть","Transfers per month":"Переводов в месяц"};
+  const LANDING_ATTR_ES = {"Language":"Idioma","Contact us":"Contáctanos","Close":"Cerrar","Transfers per month":"Transferencias al mes"};
   const landingOriginalText = new WeakMap();
   const landingOriginalAttrs = new WeakMap();
   let landingLang = "en";
@@ -1994,6 +2061,7 @@
     const mobileSelect=document.getElementById("mobileLangSelect"); if(mobileSelect)mobileSelect.value=landingLang;
     const footer=document.getElementById("currentLangLabel"); if(footer)footer.textContent=({en:"EN",ru:"RU",id:"ID",es:"ES"})[landingLang];
     if(save)localStorage.setItem("landing_lang",landingLang);
+    document.dispatchEvent(new CustomEvent("landinglanguagechange",{detail:{lang:landingLang}}));
   }
   function detectLandingLanguage(){
     const saved=localStorage.getItem("landing_lang"); if(["en","ru","id","es"].includes(saved))return saved;
@@ -2038,6 +2106,37 @@
       calcValue.textContent = networkFeeByState[state];
     });
   });
+
+  // annual savings calculator
+  const monthlyTransfers = document.getElementById('monthlyTransfers');
+  const monthlyTransfersRange = document.getElementById('monthlyTransfersRange');
+  const annualBlockchainCost = document.getElementById('annualBlockchainCost');
+  const annualSavings = document.getElementById('annualSavings');
+  const savingsOutputValues = document.querySelectorAll('.savings-result-value');
+  const landingNumberLocales = {en:'en-US',ru:'ru-RU',id:'id-ID',es:'es-ES'};
+
+  function updateSavingsCalculator({animate=true}={}){
+    const transfers = Math.min(10000,Math.max(0,Math.round(Number(monthlyTransfers?.value)||0)));
+    if(monthlyTransfers && document.activeElement !== monthlyTransfers) monthlyTransfers.value = transfers;
+    if(monthlyTransfersRange) monthlyTransfersRange.value = Math.min(1000,transfers);
+    const format = new Intl.NumberFormat(landingNumberLocales[landingLang]||'en-US',{maximumFractionDigits:1});
+    annualBlockchainCost.textContent = format.format(transfers * 12 * 9.7);
+    annualSavings.textContent = format.format(transfers * 12 * 3.7);
+    if(animate) savingsOutputValues.forEach(value => {
+      value.classList.remove('bump'); void value.offsetWidth; value.classList.add('bump');
+    });
+  }
+  monthlyTransfers?.addEventListener('input',()=>updateSavingsCalculator());
+  monthlyTransfers?.addEventListener('change',()=>{
+    monthlyTransfers.value=Math.min(10000,Math.max(0,Math.round(Number(monthlyTransfers.value)||0)));
+    updateSavingsCalculator();
+  });
+  monthlyTransfersRange?.addEventListener('input',()=>{
+    monthlyTransfers.value=monthlyTransfersRange.value;
+    updateSavingsCalculator();
+  });
+  document.addEventListener('landinglanguagechange',()=>updateSavingsCalculator({animate:false}));
+  updateSavingsCalculator({animate:false});
 
   // dashboard wallet refresh demo — local UI simulation, no network request
   const walletDemoRefresh = document.getElementById('walletDemoRefresh');
