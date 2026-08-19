@@ -653,13 +653,15 @@
   .burn-stop:hover{transform:translateY(-1px);background:rgba(255,111,125,.16);border-color:rgba(255,111,125,.7)}
   .burn-demo.stopped .burn-stop{color:var(--mint);border-color:rgba(87,232,166,.35);background:rgba(87,232,166,.08)}
   .burn-lanes{display:grid;grid-template-columns:1fr;gap:12px}
-  .burn-lane{padding:13px;border:1px solid rgba(255,255,255,.075);border-radius:15px;background:rgba(6,9,18,.48)}
-  .burn-receipt{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;padding:13px 14px;border-radius:13px;background:#fff;color:#17191f}
+  .burn-lane{padding:12px;border:1px solid rgba(255,255,255,.075);border-radius:15px;background:rgba(6,9,18,.48)}
+  .burn-receipt{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-bottom:10px;padding:17px 18px;border-radius:12px;background:#fff;color:#17191f;box-shadow:0 5px 18px rgba(0,0,0,.12)}
   .burn-receipt-copy{display:flex;align-items:center;gap:11px;min-width:0}
-  .burn-help{width:27px;height:27px;flex:none;display:grid;place-items:center;border-radius:8px;background:#edf0f2;color:#20242b;font-weight:800;font-size:14px}
-  .burn-receipt-title{display:block;font-size:15px;font-weight:750;line-height:1.25}
-  .burn-receipt-sub{display:block;margin-top:4px;color:#9299a3;font-size:11.5px;font-weight:600}
-  .burn-fee-pill{flex:none;display:flex;align-items:center;gap:7px;padding:10px 13px;border-radius:11px;background:#fff5f5;color:#16181d;font-family:var(--font-mono);font-size:18px;font-weight:750;white-space:nowrap}
+  .burn-help{width:28px;height:28px;flex:none;display:grid;place-items:center;border-radius:8px;background:#edf0f2;color:#20242b;font-weight:800;font-size:15px}
+  .burn-receipt-title{display:block;font-size:18px;font-weight:700;line-height:1.25;letter-spacing:-.015em}
+  .burn-receipt-sub{display:block;margin-top:8px;color:#9299a3;font-size:14px;font-weight:600}
+  .burn-fee-wrap{flex:none;text-align:right}
+  .burn-fee-pill{display:flex;align-items:center;justify-content:center;gap:7px;min-width:154px;padding:12px 15px;border-radius:11px;background:#fff4f4;color:#16181d;font-family:var(--font-mono);font-size:20px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .burn-fee-caption{display:block;margin-top:5px;color:#9ca2aa;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.055em}
   .burn-demo.stopped .burn-fee-pill{background:#f1fff9}
   .burn-track{position:relative;height:44px;border-radius:999px;border:1px solid rgba(255,111,125,.14);background:linear-gradient(90deg,rgba(86,112,255,.08),rgba(255,111,125,.08));overflow:hidden}
   .burn-track::before{content:"";position:absolute;left:13px;right:42px;top:50%;border-top:1px dashed rgba(255,255,255,.12)}
@@ -669,7 +671,7 @@
   @keyframes flamePulse{to{transform:scale(1.13) rotate(3deg);filter:drop-shadow(0 0 13px rgba(255,111,125,.7))}}
   .burn-demo.stopped .burn-coin,.burn-demo.stopped .burn-flame{animation-play-state:paused}
   .burn-demo.stopped .burn-track{border-color:rgba(87,232,166,.18);background:rgba(87,232,166,.035)}
-  @media(max-width:700px){.burn-demo-head{flex-direction:column}.burn-stop{width:100%}.burn-receipt{align-items:flex-start;flex-direction:column}.burn-fee-pill{align-self:stretch;justify-content:center}.burn-receipt-title{font-size:14px}}
+  @media(max-width:700px){.burn-demo-head{flex-direction:column}.burn-stop{width:100%}.burn-receipt{align-items:flex-start;flex-direction:column;padding:15px}.burn-fee-wrap{align-self:stretch}.burn-fee-pill{width:100%}.burn-receipt-title{font-size:16px}.burn-receipt-sub{font-size:12.5px;margin-top:6px}}
 
   /* energy calculator demo */
   .calc-box{
@@ -1635,9 +1637,9 @@
             <div class="burn-receipt">
               <div class="burn-receipt-copy">
                 <span class="burn-help">?</span>
-                <span><strong class="burn-receipt-title">Resources Consumed &amp; Fee:</strong><span class="burn-receipt-sub">Average network fee per USDT transfer</span></span>
+                <span><strong class="burn-receipt-title">Resources Consumed &amp; Fee:</strong><span class="burn-receipt-sub">Energy Fee Limit: 15 TRX</span></span>
               </div>
-              <span class="burn-fee-pill"><span id="burnFeeIcon">🔥</span> 9.7 TRX</span>
+              <span class="burn-fee-wrap"><span class="burn-fee-pill"><span id="burnFeeIcon">🔥</span><span id="burnedTrxValue" data-rate="9.7">0.0</span> TRX</span><span class="burn-fee-caption">Burned in demo · 9.7 TRX average</span></span>
             </div>
             <div class="burn-track" aria-hidden="true">
               <span class="burn-coin" style="--coin-delay:0s">TRX</span><span class="burn-coin" style="--coin-delay:-.8s">TRX</span><span class="burn-coin" style="--coin-delay:-1.6s">TRX</span><span class="burn-flame">🔥</span>
@@ -2058,17 +2060,17 @@
   Object.assign(LANDING_ID,{
     "Live demo":"Demo langsung","Refresh wallets":"Perbarui dompet","Checking…":"Memeriksa…","Updated just now":"Baru saja diperbarui","Updated 4 min ago":"Diperbarui 4 menit lalu","Personal":"Pribadi","Payments":"Pembayaran","Reserve":"Cadangan","Healthy":"Sehat","Low energy":"Energi rendah",
     "SAVINGS CALCULATOR":"KALKULATOR PENGHEMATAN","How much could you save in a year?":"Berapa banyak yang dapat Anda hemat dalam setahun?","Enter your average number of USDT transfers per month. We will compare the average TRON network fee with the average GasFree4you price.":"Masukkan rata-rata jumlah transfer USDT per bulan. Kami akan membandingkan biaya jaringan TRON rata-rata dengan harga rata-rata GasFree4you.","Transfers per month":"Transfer per bulan","You would pay directly to the blockchain per year":"Biaya yang akan Anda bayar langsung ke blockchain per tahun","You could save with GasFree4you per year":"Penghematan Anda dengan GasFree4you per tahun","Average fee: blockchain 9.7 TRX · GasFree4you 6 TRX · saving 3.7 TRX per transfer":"Biaya rata-rata: blockchain 9,7 TRX · GasFree4you 6 TRX · hemat 3,7 TRX per transfer"
-    ,"TRX BURN DEMO":"DEMO PEMBAKARAN TRX","Watch the standard network fee disappear":"Lihat biaya jaringan standar menghabiskan TRX","Standard TRON fees keep burning TRX on every transfer.":"Biaya standar TRON terus membakar TRX pada setiap transfer.","Stop burning TRX":"Hentikan pembakaran TRX","Start burning again":"Mulai demo lagi","Demo paused — your TRX stays in your wallet.":"Demo dihentikan — TRX tetap berada di dompet Anda.","Resources Consumed & Fee:":"Sumber Daya Terpakai & Biaya:","Average network fee per USDT transfer":"Biaya jaringan rata-rata per transfer USDT"
+    ,"TRX BURN DEMO":"DEMO PEMBAKARAN TRX","Watch the standard network fee disappear":"Lihat biaya jaringan standar menghabiskan TRX","Standard TRON fees keep burning TRX on every transfer.":"Biaya standar TRON terus membakar TRX pada setiap transfer.","Stop burning TRX":"Hentikan pembakaran TRX","Start burning again":"Mulai demo lagi","Demo paused — your TRX stays in your wallet.":"Demo dihentikan — TRX tetap berada di dompet Anda.","Resources Consumed & Fee:":"Sumber Daya Terpakai & Biaya:","Energy Fee Limit: 15 TRX":"Batas Biaya Energi: 15 TRX","Burned in demo · 9.7 TRX average":"Terbakar dalam demo · rata-rata 9,7 TRX"
   });
   Object.assign(LANDING_RU,{
     "Live demo":"Демо","Refresh wallets":"Обновить кошельки","Checking…":"Проверяем…","Updated just now":"Обновлено только что","Updated 4 min ago":"Обновлено 4 мин назад","Personal":"Личный","Payments":"Платежи","Reserve":"Резерв","Healthy":"В норме","Low energy":"Мало Energy",
     "SAVINGS CALCULATOR":"КАЛЬКУЛЯТОР ЭКОНОМИИ","How much could you save in a year?":"Сколько вы можете сэкономить за год?","Enter your average number of USDT transfers per month. We will compare the average TRON network fee with the average GasFree4you price.":"Введите среднее количество переводов USDT в месяц. Мы сравним среднюю комиссию сети TRON со средней ценой GasFree4you.","Transfers per month":"Переводов в месяц","You would pay directly to the blockchain per year":"Столько вы заплатили бы блокчейну за год","You could save with GasFree4you per year":"Столько вы сэкономите с GasFree4you за год","Average fee: blockchain 9.7 TRX · GasFree4you 6 TRX · saving 3.7 TRX per transfer":"Средняя комиссия: блокчейн 9,7 TRX · GasFree4you 6 TRX · экономия 3,7 TRX с перевода"
-    ,"TRX BURN DEMO":"ДЕМО СЖИГАНИЯ TRX","Watch the standard network fee disappear":"Посмотрите, как сгорает стандартная комиссия","Standard TRON fees keep burning TRX on every transfer.":"Стандартная комиссия TRON сжигает TRX при каждом переводе.","Stop burning TRX":"Остановить сжигание TRX","Start burning again":"Запустить снова","Demo paused — your TRX stays in your wallet.":"Сжигание остановлено — TRX остаются в вашем кошельке.","Resources Consumed & Fee:":"Использованные ресурсы и комиссия:","Average network fee per USDT transfer":"Средняя комиссия сети за перевод USDT"
+    ,"TRX BURN DEMO":"ДЕМО СЖИГАНИЯ TRX","Watch the standard network fee disappear":"Посмотрите, как сгорает стандартная комиссия","Standard TRON fees keep burning TRX on every transfer.":"Стандартная комиссия TRON сжигает TRX при каждом переводе.","Stop burning TRX":"Остановить сжигание TRX","Start burning again":"Запустить снова","Demo paused — your TRX stays in your wallet.":"Сжигание остановлено — TRX остаются в вашем кошельке.","Resources Consumed & Fee:":"Использованные ресурсы и комиссия:","Energy Fee Limit: 15 TRX":"Лимит комиссии Energy: 15 TRX","Burned in demo · 9.7 TRX average":"Сожжено в демо · в среднем 9,7 TRX"
   });
   Object.assign(LANDING_ES,{
     "Live demo":"Demo interactiva","Refresh wallets":"Actualizar billeteras","Checking…":"Comprobando…","Updated just now":"Actualizado ahora","Updated 4 min ago":"Actualizado hace 4 min","Personal":"Personal","Payments":"Pagos","Reserve":"Reserva","Healthy":"Correcto","Low energy":"Energía baja",
     "SAVINGS CALCULATOR":"CALCULADORA DE AHORRO","How much could you save in a year?":"¿Cuánto podrías ahorrar en un año?","Enter your average number of USDT transfers per month. We will compare the average TRON network fee with the average GasFree4you price.":"Introduce tu número promedio de transferencias USDT al mes. Compararemos la comisión media de TRON con el precio medio de GasFree4you.","Transfers per month":"Transferencias al mes","You would pay directly to the blockchain per year":"Lo que pagarías directamente a la blockchain al año","You could save with GasFree4you per year":"Lo que podrías ahorrar con GasFree4you al año","Average fee: blockchain 9.7 TRX · GasFree4you 6 TRX · saving 3.7 TRX per transfer":"Comisión media: blockchain 9,7 TRX · GasFree4you 6 TRX · ahorro de 3,7 TRX por transferencia"
-    ,"TRX BURN DEMO":"DEMO DE QUEMA DE TRX","Watch the standard network fee disappear":"Mira cómo desaparece la comisión de red","Standard TRON fees keep burning TRX on every transfer.":"Las comisiones estándar de TRON siguen quemando TRX en cada transferencia.","Stop burning TRX":"Detener la quema de TRX","Start burning again":"Iniciar de nuevo","Demo paused — your TRX stays in your wallet.":"Demo pausada: tus TRX permanecen en tu billetera.","Resources Consumed & Fee:":"Recursos consumidos y comisión:","Average network fee per USDT transfer":"Comisión media de red por transferencia USDT"
+    ,"TRX BURN DEMO":"DEMO DE QUEMA DE TRX","Watch the standard network fee disappear":"Mira cómo desaparece la comisión de red","Standard TRON fees keep burning TRX on every transfer.":"Las comisiones estándar de TRON siguen quemando TRX en cada transferencia.","Stop burning TRX":"Detener la quema de TRX","Start burning again":"Iniciar de nuevo","Demo paused — your TRX stays in your wallet.":"Demo pausada: tus TRX permanecen en tu billetera.","Resources Consumed & Fee:":"Recursos consumidos y comisión:","Energy Fee Limit: 15 TRX":"Límite de comisión de energía: 15 TRX","Burned in demo · 9.7 TRX average":"Quemado en la demo · promedio de 9,7 TRX"
   });
   const LANDING_ATTR_ID = {"Language":"Bahasa","Contact us":"Hubungi kami","Close":"Tutup","Transfers per month":"Transfer per bulan"};
   const LANDING_ATTR_RU = {"Language":"Язык","Contact us":"Связаться с нами","Close":"Закрыть","Transfers per month":"Переводов в месяц"};
@@ -2200,7 +2202,31 @@
   const burnFeeIcon = document.getElementById('burnFeeIcon');
   const burnButtonLabel = document.getElementById('burnButtonLabel');
   const burnDemoStatus = document.getElementById('burnDemoStatus');
+  const burnedTrxValue = document.getElementById('burnedTrxValue');
   let burnStopped = false;
+  let burnVisible = !('IntersectionObserver' in window);
+  let burnedTrx = 0;
+  let burnLastFrame = performance.now();
+
+  function renderBurnedTrx(){
+    const format = new Intl.NumberFormat(landingNumberLocales[landingLang]||'en-US',{minimumFractionDigits:1,maximumFractionDigits:1});
+    burnedTrxValue.textContent = format.format(burnedTrx);
+  }
+  function runBurnCounter(now){
+    const delta = Math.min(.08,(now-burnLastFrame)/1000);
+    burnLastFrame = now;
+    if(burnVisible && !burnStopped){
+      burnedTrx += Number(burnedTrxValue.dataset.rate) * delta / 2.4;
+      renderBurnedTrx();
+    }
+    requestAnimationFrame(runBurnCounter);
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(entries=>{
+      burnVisible=entries.some(entry=>entry.isIntersecting);
+      burnLastFrame=performance.now();
+    },{threshold:.2}).observe(burnDemo);
+  }
   burnStopButton?.addEventListener('click',()=>{
     burnStopped=!burnStopped;
     burnDemo.classList.toggle('stopped',burnStopped);
@@ -2211,6 +2237,8 @@
     burnDemoStatus.textContent=burnStopped?'Demo paused — your TRX stays in your wallet.':'Standard TRON fees keep burning TRX on every transfer.';
     burnDemo.querySelectorAll('.burn-flame').forEach(flame=>flame.textContent=burnStopped?'💧':'🔥');
   });
+  document.addEventListener('landinglanguagechange',renderBurnedTrx);
+  requestAnimationFrame(runBurnCounter);
 
   // dashboard wallet refresh demo — local UI simulation, no network request
   const walletDemoRefresh = document.getElementById('walletDemoRefresh');
