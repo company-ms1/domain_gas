@@ -1608,8 +1608,8 @@
               <label for="monthlyTransfers">Transfers per month</label>
               <input class="savings-number" id="monthlyTransfers" type="number" min="0" max="10000" step="1" value="100" inputmode="numeric">
             </div>
-            <input class="savings-range" id="monthlyTransfersRange" type="range" min="0" max="1000" step="10" value="100" aria-label="Transfers per month">
-            <div class="savings-range-scale"><span>0</span><span>500</span><span>1,000+</span></div>
+            <input class="savings-range" id="monthlyTransfersRange" type="range" min="0" max="200" step="5" value="100" aria-label="Transfers per month">
+            <div class="savings-range-scale"><span>0</span><span>100</span><span>200</span></div>
           </div>
         </div>
         <div class="savings-results" aria-live="polite">
@@ -2118,7 +2118,7 @@
   function updateSavingsCalculator({animate=true}={}){
     const transfers = Math.min(10000,Math.max(0,Math.round(Number(monthlyTransfers?.value)||0)));
     if(monthlyTransfers && document.activeElement !== monthlyTransfers) monthlyTransfers.value = transfers;
-    if(monthlyTransfersRange) monthlyTransfersRange.value = Math.min(1000,transfers);
+    if(monthlyTransfersRange) monthlyTransfersRange.value = Math.min(200,transfers);
     const format = new Intl.NumberFormat(landingNumberLocales[landingLang]||'en-US',{maximumFractionDigits:1});
     annualBlockchainCost.textContent = format.format(transfers * 12 * 9.7);
     annualSavings.textContent = format.format(transfers * 12 * 3.7);
