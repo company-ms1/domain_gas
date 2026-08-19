@@ -1,5 +1,4 @@
-
-        <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
                 <script type="text/javascript">
@@ -189,6 +188,9 @@
     border-radius:999px;
     color:var(--text-muted);
   }
+  .lang-switcher{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--border-strong);border-radius:999px;background:rgba(255,255,255,.025)}
+  .lang-option{min-width:38px;padding:5px 8px;border:0;border-radius:999px;background:transparent;color:var(--text-muted);font-family:var(--font-mono);font-size:11px;font-weight:700;cursor:pointer;box-shadow:none}
+  .lang-option:hover{color:var(--text);background:rgba(255,255,255,.05)}.lang-option.active{color:#fff;background:linear-gradient(135deg,var(--indigo),#4d79ef);box-shadow:0 4px 12px rgba(90,123,255,.24)}
   .btn{
     font-family:var(--font-body);
     font-weight:600;
@@ -1320,7 +1322,10 @@
       <a href="#pricing-layer">Pricing</a>
     </nav>
     <div class="nav-right">
-      <span class="pill-lang">EN</span>
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-option" type="button" data-lang="en">EN</button>
+        <button class="lang-option" type="button" data-lang="id">🇮🇩 ID</button>
+      </div>
       <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=nav_open_app" class="btn btn-primary btn-sm">Open the app</a>
     </div>
   </div>
@@ -1693,7 +1698,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 GasFree4you.</span>
-      <span>EN</span>
+      <span id="currentLangLabel">EN</span>
     </div>
   </div>
 </footer>
@@ -1742,6 +1747,78 @@
 </div>
 
 <script>
+  const LANDING_ID = {
+    "GasFree4you — the operational layer for TRON":"GasFree4you — lapisan operasional untuk TRON",
+    "Instant Energy":"Energi Instan","Transfers":"Transfer","Energy":"Energi","ENERGY":"ENERGI","AML Check":"Pemeriksaan AML","AML check":"Pemeriksaan AML","Sanctions":"Sanksi","Sanctions screening":"Pemeriksaan sanksi","Dashboard":"Dasbor","DASHBOARD":"DASBOR","Statements":"Laporan","Referrals":"Referal","Pricing":"Harga","Open the app":"Buka aplikasi",
+    "TRON · USDT-TRC20 INFRASTRUCTURE":"INFRASTRUKTUR TRON · USDT-TRC20","GasFree4you is":"GasFree4you adalah","the operational layer":"lapisan operasional","for TRON.":"untuk TRON.",
+    "Energy, compliance, multi-wallet visibility and accounting — bundled into one layer that sits on top of raw TRON, so every transfer leaves your wallet cheaper, checked, and already accounted for.":"Energi, kepatuhan, visibilitas multi-dompet, dan akuntansi — digabungkan dalam satu lapisan di atas TRON, agar setiap transfer dari dompet Anda lebih murah, telah diperiksa, dan langsung tercatat.",
+    "Open the dashboard":"Buka dasbor","See the tools ↓":"Lihat fitur ↓","GASFREE4YOU · OPERATIONAL LAYER":"GASFREE4YOU · LAPISAN OPERASIONAL","⚡ Energy":"⚡ Energi","🛡 AML Check":"🛡 Pemeriksaan AML","🚫 Sanctions":"🚫 Sanksi","📊 Dashboard":"📊 Dasbor","📄 Statements":"📄 Laporan","🤝 Referrals":"🤝 Referal","TRON L1 · SETTLEMENT":"TRON L1 · PENYELESAIAN",
+    "Bandwidth, energy, smart contracts and consensus — the raw infrastructure GasFree4you runs on top of, so you never have to deal with it directly.":"Bandwidth, energi, smart contract, dan konsensus — infrastruktur dasar tempat GasFree4you berjalan, sehingga Anda tidak perlu menanganinya secara langsung.",
+    "Lower network fee per USDT transfer — 3 TRX instead of 6.4 if the recipient wallet already holds USDT, or 6 TRX instead of 13 if it doesn't.":"Biaya jaringan lebih rendah per transfer USDT — 3 TRX, bukan 6,4, jika dompet penerima sudah memiliki USDT; atau 6 TRX, bukan 13, jika belum.","0 keys":"0 kunci","Fully non-custodial. We work with public addresses only — never your private key or seed phrase.":"Sepenuhnya non-kustodial. Kami hanya menggunakan alamat publik — tidak pernah meminta private key atau seed phrase Anda.","recurring":"berulang","Referral commission on every order placed by people you bring to the platform.":"Komisi referal untuk setiap pesanan dari pengguna yang Anda bawa ke platform.",
+    "NO SIGN-UP NEEDED":"TANPA PENDAFTARAN","Need energy right now? Rent it instantly.":"Butuh energi sekarang? Sewa secara instan.","Energy is rented through our service wallet and delegated straight to the sender's address — no portal account, no waiting around. Built for the one-off transfer you just need to get through, right now.":"Energi disewa melalui dompet layanan kami dan langsung didelegasikan ke alamat pengirim — tanpa akun portal dan tanpa menunggu. Cocok untuk satu transfer yang perlu Anda selesaikan sekarang.","Delegated directly to the sending address":"Didelegasikan langsung ke alamat pengirim","Delivered in 1–5 seconds":"Terkirim dalam 1–5 detik","No registration required":"Tidak perlu registrasi","Best for one-off transfers":"Cocok untuk transfer satu kali","sec delivery":"detik pengiriman","Rent energy now →":"Sewa energi sekarang →",
+    "TRANSFER LAYER":"LAPISAN TRANSFER","Move USDT without thinking about TRX":"Kirim USDT tanpa memikirkan TRX","The two tools that sit closest to the chain — sending value, and knowing exactly what it costs before you do.":"Dua alat yang paling dekat dengan blockchain — mengirim nilai dan mengetahui biayanya sebelum Anda melakukannya.","Half the network fee, every time":"Setengah biaya jaringan, setiap saat","Recipient already holds USDT":"Penerima sudah memiliki USDT","Recipient wallet has no USDT yet":"Dompet penerima belum memiliki USDT","Energy is delegated straight to your wallet right before you send, so the transfer settles at a flat, reduced cost instead of burning TRON's standard bandwidth and energy fee.":"Energi didelegasikan langsung ke dompet Anda sebelum pengiriman, sehingga transfer diproses dengan biaya tetap yang lebih rendah daripada membayar biaya bandwidth dan energi standar TRON.","Send a transfer →":"Kirim transfer →",
+    "ENERGY CALCULATOR":"KALKULATOR ENERGI","Know the number before you send":"Ketahui jumlahnya sebelum mengirim","Tell it the wallet's activation state — get the energy a transfer of that kind actually needs, instead of guessing and over- or under-paying.":"Masukkan status aktivasi dompet untuk mengetahui kebutuhan energi sebenarnya, tanpa menebak atau membayar terlalu banyak maupun terlalu sedikit.","Has USDT":"Memiliki USDT","No USDT":"Tidak ada USDT","Fee · recipient wallet":"Biaya · dompet penerima","Standard TRON network fee for this scenario — your GasFree4you price is up to 53% lower (see the Transfer Layer above).":"Biaya jaringan TRON standar untuk skenario ini — harga GasFree4you hingga 53% lebih rendah (lihat Lapisan Transfer di atas).","Open the calculator →":"Buka kalkulator →",
+    "COMPLIANCE LAYER":"LAPISAN KEPATUHAN","Check before it becomes a problem":"Periksa sebelum menjadi masalah","Bank- and exchange-grade screening, built for anyone running a business on TRON — not just for filling out a form.":"Pemeriksaan setingkat bank dan bursa untuk siapa pun yang menjalankan bisnis di TRON — bukan sekadar mengisi formulir.","AML CHECK":"PEMERIKSAAN AML","Bank-grade wallet screening":"Pemeriksaan dompet setingkat bank","The same depth of due diligence exchanges and licensed companies run — risk scoring, exposure paths, counterparty history — broken down clearly enough to actually act on, not just file away.":"Uji tuntas sedalam yang dilakukan bursa dan perusahaan berlisensi — skor risiko, jalur eksposur, dan riwayat pihak lawan — disajikan dengan jelas agar dapat ditindaklanjuti.","Quick check":"Pemeriksaan cepat","from 1.5 TRX":"mulai 1,5 TRX","Fast initial risk assessment — sanctions exposure, entity flags and risk level. Use before any incoming transfer you're not sure about.":"Penilaian risiko awal yang cepat — eksposur sanksi, tanda entitas, dan tingkat risiko. Gunakan sebelum menerima transfer yang meragukan.","Routine screening":"Pemeriksaan rutin","Fast first signal":"Sinyal awal cepat","Deep analysis":"Analisis mendalam","from 6 TRX":"mulai 6 TRX","Full forensic-level report — exposure paths, counterparty chains, darknet & mixer flags, and multi-jurisdiction sanctions context.":"Laporan forensik lengkap — jalur eksposur, rantai pihak lawan, indikator darknet dan mixer, serta konteks sanksi lintas yurisdiksi.","High-value transfers":"Transfer bernilai tinggi","Enhanced due diligence":"Uji tuntas lanjutan","Specific providers and live pricing are shown inside the app after sign-in.":"Penyedia dan harga terkini ditampilkan di aplikasi setelah masuk.","Run a check →":"Jalankan pemeriksaan →",
+    "SANCTIONS SCREENING":"PEMERIKSAAN SANKSI","Cleared against the lists that matter":"Periksa terhadap daftar yang relevan","Screen any wallet against the registries that can freeze your funds or get your exchange account blocked.":"Periksa dompet terhadap registri yang dapat menyebabkan dana dibekukan atau akun bursa diblokir.","European Union":"Uni Eropa","Lists refreshed on a stale-while-revalidate schedule — sub-second on hot path.":"Daftar diperbarui dengan skema stale-while-revalidate — respons kurang dari satu detik untuk data yang sudah tersedia.","Screen an address →":"Periksa alamat →",
+    "VISIBILITY LAYER":"LAPISAN VISIBILITAS","Everything you run, in one place":"Semua yang Anda kelola, dalam satu tempat","See the state of your wallets and your paper trail without digging through a block explorer.":"Lihat kondisi dompet dan riwayat transaksi tanpa menelusuri block explorer.","Every wallet, one screen":"Semua dompet dalam satu layar","TOTAL USDT":"TOTAL USDT","TOTAL TRX":"TOTAL TRX","Balances, energy, and health status across all your TRON wallets — built for tracking and running a business. We never ask for private keys or seed phrases.":"Saldo, energi, dan status seluruh dompet TRON Anda dalam satu tempat. Kami tidak pernah meminta private key atau seed phrase.","Open dashboard →":"Buka dasbor →",
+    "STATEMENTS":"LAPORAN","Statements your accountant will thank you for":"Laporan yang memudahkan akuntan Anda","A clean, readable record of wallet activity with the running balance after every operation — export to PDF, ready for bookkeeping, tax prep, or just understanding what happened.":"Catatan aktivitas dompet yang rapi dengan saldo berjalan setelah setiap operasi — dapat diekspor ke PDF untuk pembukuan, persiapan pajak, atau memahami riwayat transaksi.","Date":"Tanggal","Operation":"Operasi","Amount":"Jumlah","Balance after":"Saldo setelahnya","Transfer out":"Transfer keluar","Transfer in":"Transfer masuk","481 operations":"481 operasi","Not a legal document and does not establish the source of funds. Statement price: 0.01 TRX.":"Bukan dokumen hukum dan tidak membuktikan sumber dana. Harga laporan: 0,01 TRX.","Generate a statement →":"Buat laporan →",
+    "GROWTH LAYER":"LAPISAN PERTUMBUHAN","Bring people in, get paid for it":"Ajak pengguna, dapatkan komisi","Up to 8%, recurring, on every order":"Hingga 8%, berulang, dari setiap pesanan","Share your link. Every transfer, check, or statement your referrals pay for puts a cut back in your balance — for as long as they keep using GasFree4you.":"Bagikan tautan Anda. Setiap transfer, pemeriksaan, atau laporan berbayar dari referal akan memberi komisi ke saldo Anda selama mereka menggunakan GasFree4you.","Get your referral link →":"Dapatkan tautan referal →","commission per referral order":"komisi per pesanan referal",
+    "ACCESS LAYER":"LAPISAN AKSES","Pick how deep you go":"Pilih tingkat layanan Anda","Pay per use from day one, or move to a flat monthly rate once volume makes that cheaper.":"Bayar sesuai penggunaan sejak awal, atau pilih tarif bulanan tetap ketika volume Anda meningkat.","BASIC":"DASAR","Free":"Gratis","· pay per use":"· bayar sesuai penggunaan","Energy packages":"Paket energi","3 / 6 TRX per transfer":"3 / 6 TRX per transfer","1.5–6 TRX per check":"1,5–6 TRX per pemeriksaan","Sanctions check":"Pemeriksaan sanksi","5 / mo · 0.5 TRX each":"5 / bulan · masing-masing 0,5 TRX","Energy calculator":"Kalkulator energi","Up to 5 wallets":"Hingga 5 dompet","Get started free":"Mulai gratis","Recommended":"Direkomendasikan","STANDARD":"STANDAR","TRX / mo":"TRX / bulan","Discounted":"Harga khusus","Unlimited & free, with tags + counterparty notes":"Tanpa batas dan gratis, dengan tag + catatan pihak lawan","Up to 25 wallets":"Hingga 25 dompet","API access":"Akses API","All services":"Semua layanan","Upgrade to Standard":"Upgrade ke Standar","MAXIMUM":"MAKSIMUM","Custom":"Kustom","Built around your volume and team — energy, AML, dashboard limits and API terms, scoped to how you actually run your business.":"Disesuaikan dengan volume dan tim Anda — energi, AML, batas dasbor, dan ketentuan API sesuai kebutuhan bisnis.","Talk to us":"Hubungi kami",
+    "Stop fighting TRON's plumbing.":"Berhenti berurusan dengan kerumitan TRON.","Open the dashboard and run your first transfer in under a minute — energy delegated, screening on standby, statement waiting at the end of the month.":"Buka dasbor dan jalankan transfer pertama dalam waktu kurang dari satu menit — energi siap, pemeriksaan tersedia, dan laporan menunggu di akhir bulan.",
+    "The operational layer for TRON":"Lapisan operasional untuk TRON","Energy delegation, compliance screening and accounting for USDT-TRC20 operations.":"Delegasi energi, pemeriksaan kepatuhan, dan akuntansi untuk operasi USDT-TRC20.","Product":"Produk","Instant energy rental":"Sewa energi instan","Referral program":"Program referal","Company":"Perusahaan","Terms":"Ketentuan","Privacy":"Privasi","Refund":"Pengembalian dana","Legal":"Legal","Contact us":"Hubungi kami","Screenshot coming soon":"Tangkapan layar segera tersedia","Open":"Buka",
+    "Energy Calculator":"Kalkulator Energi","Every USDT-TRC20 transfer burns bandwidth and energy on TRON, and the amount changes depending on whether the recipient wallet already holds USDT. Guess wrong and you either pay for energy you didn't need, or the transfer fails halfway through. This calculator takes the variables that actually matter — recipient state, token, transfer count — and gives you the exact figure before you commit a single TRX.":"Setiap transfer USDT-TRC20 menggunakan bandwidth dan energi di TRON, dan kebutuhannya berubah tergantung apakah dompet penerima sudah memiliki USDT. Kalkulator ini memperhitungkan status penerima, token, dan jumlah transfer agar Anda mengetahui jumlah yang tepat sebelum membayar TRX.","No more rough estimates copied from forum posts":"Tidak ada lagi perkiraan kasar dari forum","Plan energy purchases ahead of a batch of transfers":"Rencanakan pembelian energi sebelum melakukan banyak transfer","Works the same whether it’s one transfer or a hundred":"Berfungsi sama untuk satu maupun seratus transfer","Open the calculator":"Buka kalkulator",
+    "Before you accept funds from an address you don't fully trust, you want to know what that address has actually done — not just whether it shows up on one blacklist. GasFree4you's AML check runs the same depth of screening exchanges and licensed companies rely on: risk scoring, exposure paths, counterparty history, broken into something you can actually act on instead of a single pass/fail flag.":"Sebelum menerima dana dari alamat yang belum sepenuhnya Anda percaya, Anda perlu mengetahui aktivitas alamat tersebut — bukan hanya apakah alamat itu ada di satu daftar hitam. Pemeriksaan AML GasFree4you mencakup skor risiko, jalur eksposur, dan riwayat pihak lawan dengan hasil yang dapat ditindaklanjuti.","Multiple providers, from a fast first signal to forensic-level detail":"Beberapa penyedia, dari sinyal awal cepat hingga detail forensik","Built for one-off due diligence or screening every incoming payment":"Untuk uji tuntas satu kali atau pemeriksaan setiap pembayaran masuk","Pay per check — no subscription required to stay protected":"Bayar per pemeriksaan — tanpa langganan","Run a check":"Jalankan pemeriksaan",
+    "SANCTIONS":"SANKSI","Sanctions Screening":"Pemeriksaan Sanksi","A single transfer to the wrong address can turn into a frozen account, a blocked exchange, or worse. Sanctions screening checks a wallet or counterparty against OFAC, the EU, and other national registries before you move funds — so you find out about a problem before it's your problem, not after.":"Satu transfer ke alamat yang salah dapat menyebabkan akun dibekukan atau akses ke bursa diblokir. Pemeriksaan sanksi membandingkan dompet dengan OFAC, Uni Eropa, dan registri nasional sebelum dana dikirim.","Covers multiple jurisdictions, not just one list":"Mencakup beberapa yurisdiksi, bukan hanya satu daftar","Free on every plan, including Basic":"Gratis di semua paket, termasuk Dasar","Takes seconds, not days":"Hanya beberapa detik, bukan beberapa hari","Screen an address":"Periksa alamat",
+    "Wallet Dashboard":"Dasbor Dompet","Running more than one TRON wallet usually means opening a separate block explorer tab for each one. The dashboard pulls balances, energy levels, and wallet health into a single screen, so you can see what needs attention at a glance — without ever handing over a private key or seed phrase.":"Mengelola beberapa dompet TRON biasanya memerlukan banyak tab block explorer. Dasbor menyatukan saldo, energi, dan kondisi dompet dalam satu layar tanpa meminta private key atau seed phrase.","Track up to 5 wallets free, scale to 25+ on Standard":"Pantau hingga 5 dompet gratis, atau 25+ pada paket Standar","Spot low-TRX or low-energy wallets before a transfer fails":"Temukan dompet dengan TRX atau energi rendah sebelum transfer gagal","Read-only by design — we work from public addresses only":"Hanya-baca — kami hanya menggunakan alamat publik","Open dashboard":"Buka dasbor",
+    "Wallet Statements":"Laporan Dompet","Bank statements exist for a reason — you need a readable record of what happened and what your balance was after each step. Wallet statements do the same for a TRON wallet: every operation, with the running balance right after it, exported in a format your accountant can actually use.":"Laporan bank memudahkan Anda memahami aktivitas dan saldo setelah setiap langkah. Laporan dompet melakukan hal yang sama untuk TRON dan dapat diekspor dalam format yang berguna bagi akuntan.","Filter by wallet and date range":"Filter berdasarkan dompet dan rentang tanggal","Tag transactions and label counterparties (Standard plan)":"Beri tag transaksi dan nama pihak lawan (paket Standar)","5 free statements a month, unlimited on Standard":"5 laporan gratis per bulan, tanpa batas pada Standar","Generate a statement":"Buat laporan",
+    "REFERRALS":"REFERAL","Referral Program":"Program Referal","If people already come to you asking how to move USDT cheaply on TRON, there's no reason that should be unpaid advice. Share a link, and every transfer, check, or statement your referrals pay for puts up to 8% back in your balance — for as long as they keep using GasFree4you.":"Jika orang bertanya cara mengirim USDT dengan murah di TRON, bagikan tautan referal Anda. Setiap transfer, pemeriksaan, atau laporan berbayar memberi hingga 8% ke saldo Anda selama mereka menggunakan GasFree4you.","Up to 8%, recurring — not a one-time bounty":"Hingga 8% berulang — bukan bonus satu kali","No cap on how many people you refer":"Tanpa batas jumlah referal","Commission tracked automatically in your dashboard":"Komisi dilacak otomatis di dasbor","Get your referral link":"Dapatkan tautan referal"
+  };
+  const LANDING_ATTR_ID = {"Language":"Bahasa","Contact us":"Hubungi kami","Close":"Tutup"};
+  const landingOriginalText = new WeakMap();
+  const landingOriginalAttrs = new WeakMap();
+  let landingLang = "en";
+  function translateLandingNode(root){
+    if (!root) return;
+    const visit = node => {
+      if (node.nodeType !== Node.TEXT_NODE || node.parentElement?.closest("script,style,noscript,.lang-switcher")) return;
+      const value = node.nodeValue.trim();
+      if (landingLang === "en" && landingOriginalText.has(node)) {
+        node.nodeValue = node.nodeValue.replace(value,landingOriginalText.get(node)); landingOriginalText.delete(node); return;
+      }
+      const translated = LANDING_ID[value];
+      if (landingLang === "id" && translated !== undefined) {
+        if (!landingOriginalText.has(node)) landingOriginalText.set(node,value);
+        node.nodeValue = node.nodeValue.replace(value,translated);
+      }
+    };
+    if (root.nodeType === Node.TEXT_NODE) visit(root);
+    else {
+      const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT); let node; while((node=walker.nextNode())) visit(node);
+      root.querySelectorAll?.("[aria-label],[title],[placeholder]").forEach(el=>["aria-label","title","placeholder"].forEach(attr=>{
+        const value=el.getAttribute(attr); if(value==null)return;
+        const saved=landingOriginalAttrs.get(el)||{};
+        if(landingLang==="en"&&saved[attr]!==undefined){el.setAttribute(attr,saved[attr]);delete saved[attr];landingOriginalAttrs.set(el,saved);return;}
+        const translated=LANDING_ATTR_ID[value];
+        if(landingLang==="id"&&translated!==undefined){if(saved[attr]===undefined)saved[attr]=value;landingOriginalAttrs.set(el,saved);el.setAttribute(attr,translated);}
+      }));
+    }
+  }
+  function applyLandingLanguage(lang,{save=true}={}){
+    landingLang=lang==="id"?"id":"en";
+    document.documentElement.lang=landingLang;
+    translateLandingNode(document.documentElement);
+    document.querySelectorAll(".lang-option").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===landingLang));
+    const footer=document.getElementById("currentLangLabel"); if(footer)footer.textContent=landingLang==="id"?"ID":"EN";
+    if(save)localStorage.setItem("landing_lang",landingLang);
+  }
+  function detectLandingLanguage(){
+    const saved=localStorage.getItem("landing_lang"); if(saved==="en"||saved==="id")return saved;
+    return (navigator.languages||[navigator.language||"en"]).some(value=>String(value).toLowerCase().startsWith("id"))?"id":"en";
+  }
+  document.querySelectorAll(".lang-option").forEach(btn=>btn.addEventListener("click",()=>applyLandingLanguage(btn.dataset.lang)));
+  applyLandingLanguage(detectLandingLanguage(),{save:false});
+  new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(translateLandingNode))).observe(document.body,{childList:true,subtree:true});
+
   // floating contact toggle
   const contactToggle = document.getElementById('contactToggle');
   const contactPopover = document.getElementById('contactPopover');
