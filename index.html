@@ -338,6 +338,45 @@
     color:var(--mint);
     transform:translateY(-1px);
   }
+  button.chip.active{
+    border-color:rgba(87,232,166,.7);
+    color:var(--mint);
+    background:rgba(87,232,166,.09);
+    box-shadow:0 0 0 3px rgba(87,232,166,.06), inset 0 0 18px rgba(87,232,166,.04);
+  }
+  .service-preview{
+    margin-top:16px;
+    padding:15px 16px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    background:rgba(6,9,18,.52);
+    display:grid;
+    grid-template-columns:44px minmax(0,1fr) auto;
+    align-items:center;
+    gap:13px;
+    overflow:hidden;
+  }
+  .service-preview.changing{animation:previewSwap .28s ease}
+  @keyframes previewSwap{
+    0%{opacity:.3;transform:translateY(5px)}
+    100%{opacity:1;transform:translateY(0)}
+  }
+  .service-preview-icon{
+    width:44px;height:44px;border-radius:13px;
+    display:grid;place-items:center;font-size:21px;
+    background:linear-gradient(135deg,rgba(86,112,255,.25),rgba(87,232,166,.15));
+    border:1px solid rgba(86,112,255,.28);
+  }
+  .service-preview-copy{min-width:0}
+  .service-preview-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
+  .service-preview-text{font-size:12.5px;line-height:1.45;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .service-preview-actions{display:flex;align-items:center;gap:7px}
+  .service-preview-link,.service-preview-more{
+    min-height:34px;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap
+  }
+  .service-preview-link{color:#fff;background:var(--indigo);border:1px solid var(--indigo)}
+  .service-preview-more{color:var(--text);background:rgba(255,255,255,.035);border:1px solid var(--border-strong);cursor:pointer}
+  .service-preview-more:hover{border-color:var(--mint);color:var(--mint)}
   .connectors{
     display:flex;
     justify-content:space-around;
@@ -399,6 +438,10 @@
   @media (max-width:760px){
     .chip{font-size:12px; padding:7px 11px;}
     .connectors{padding:6px 14px 6px;}
+    .service-preview{grid-template-columns:40px minmax(0,1fr);padding:13px}
+    .service-preview-icon{width:40px;height:40px}
+    .service-preview-actions{grid-column:1 / -1}
+    .service-preview-link,.service-preview-more{flex:1;text-align:center;justify-content:center}
   }
 
   /* proof strip */
@@ -1313,6 +1356,7 @@
   @media (prefers-reduced-motion: reduce){
     .reveal{animation:none; opacity:1; transform:none;}
     .instant-icon-glow{animation:none;}
+    .service-preview.changing{animation:none;}
     .eyebrow .dot, .logo .dot{animation:none;}
     .connectors span::after{animation:none; opacity:0;}
     *{transition:none !important;}
@@ -1374,12 +1418,23 @@
           <div class="plane plane-app">
             <div class="plane-label"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block;"></span> GASFREE4YOU · OPERATIONAL LAYER</div>
             <div class="chip-row">
-              <button type="button" class="chip" data-service="energy">⚡ Energy</button>
+              <button type="button" class="chip active" data-service="energy" aria-pressed="true">⚡ Energy</button>
               <button type="button" class="chip" data-service="aml">🛡 AML Check</button>
               <button type="button" class="chip" data-service="sanctions">🚫 Sanctions</button>
               <button type="button" class="chip" data-service="dashboard">📊 Dashboard</button>
               <button type="button" class="chip" data-service="statements">📄 Statements</button>
               <button type="button" class="chip" data-service="referrals">🤝 Referrals</button>
+            </div>
+            <div class="service-preview" id="servicePreview" aria-live="polite">
+              <div class="service-preview-icon" id="servicePreviewIcon">⚡</div>
+              <div class="service-preview-copy">
+                <div class="service-preview-title" id="servicePreviewTitle">Energy Calculator</div>
+                <div class="service-preview-text" id="servicePreviewText">No more rough estimates copied from forum posts</div>
+              </div>
+              <div class="service-preview-actions">
+                <a class="service-preview-link" id="servicePreviewLink" href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=modal_energy_calculator">Open the calculator</a>
+                <button class="service-preview-more" id="servicePreviewMore" type="button">Open</button>
+              </div>
             </div>
           </div>
           <div class="connectors">
@@ -2071,7 +2126,33 @@
   const modalClose = document.getElementById('modalClose');
   const modalShotImg = document.getElementById('modalShotImg');
   const modalShotEmpty = document.getElementById('modalShotEmpty');
+  const servicePreview = document.getElementById('servicePreview');
+  const servicePreviewIcon = document.getElementById('servicePreviewIcon');
+  const servicePreviewTitle = document.getElementById('servicePreviewTitle');
+  const servicePreviewText = document.getElementById('servicePreviewText');
+  const servicePreviewLink = document.getElementById('servicePreviewLink');
+  const servicePreviewMore = document.getElementById('servicePreviewMore');
   let lastFocusedChip = null;
+  let selectedService = 'energy';
+
+  function selectService(key, chip){
+    const data = serviceData[key];
+    if(!data) return;
+    selectedService = key;
+    document.querySelectorAll('.chip[data-service]').forEach(item => {
+      const active = item === chip || item.getAttribute('data-service') === key;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-pressed', String(active));
+    });
+    servicePreviewIcon.textContent = data.icon;
+    servicePreviewTitle.textContent = data.title;
+    servicePreviewText.textContent = data.bullets[0];
+    servicePreviewLink.textContent = data.cta.label;
+    servicePreviewLink.href = data.cta.href;
+    servicePreview.classList.remove('changing');
+    void servicePreview.offsetWidth;
+    servicePreview.classList.add('changing');
+  }
 
   function openServiceModal(key){
     const data = serviceData[key];
@@ -2106,8 +2187,12 @@
   document.querySelectorAll('.chip[data-service]').forEach(chip => {
     chip.addEventListener('click', () => {
       lastFocusedChip = chip;
-      openServiceModal(chip.getAttribute('data-service'));
+      selectService(chip.getAttribute('data-service'), chip);
     });
+  });
+  servicePreviewMore.addEventListener('click', () => {
+    lastFocusedChip = document.querySelector(`.chip[data-service="${selectedService}"]`);
+    openServiceModal(selectedService);
   });
 
   modalClose.addEventListener('click', closeServiceModal);
