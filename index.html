@@ -703,6 +703,24 @@
   .mini-tile span.v{font-family:var(--font-mono); font-size:17px; font-weight:600;}
   .mini-tile.usdt span.v{color:var(--mint);}
   .mini-tile.trx span.v{color:var(--amber);}
+  .mini-tile.updated{animation:tileUpdate .42s ease}
+  @keyframes tileUpdate{50%{transform:translateY(-2px);border-color:rgba(87,232,166,.38);background:rgba(87,232,166,.06)}}
+  .wallet-demo{margin:-7px 0 18px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:rgba(6,9,18,.34)}
+  .wallet-demo-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 11px;border-bottom:1px solid var(--border)}
+  .wallet-demo-label{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--text-faint);text-transform:uppercase}
+  .wallet-demo-label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 7px rgba(87,232,166,.7)}
+  .wallet-refresh{border:1px solid var(--border-strong);border-radius:999px;background:rgba(255,255,255,.035);color:var(--text);font-size:11px;font-weight:700;padding:6px 10px;cursor:pointer;transition:border-color .15s ease,color .15s ease,transform .15s ease}
+  .wallet-refresh:hover{border-color:var(--mint);color:var(--mint);transform:translateY(-1px)}
+  .wallet-refresh:disabled{cursor:wait;opacity:.62;transform:none}
+  .wallet-demo-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:10px 11px;border-bottom:1px solid rgba(255,255,255,.055);transition:background .2s ease,opacity .2s ease}
+  .wallet-demo-row:last-child{border-bottom:0}
+  .wallet-demo-row.checking{opacity:.48;background:rgba(86,112,255,.06)}
+  .wallet-name{font-size:12.5px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wallet-amount{font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);white-space:nowrap}
+  .wallet-status{font-size:10px;font-weight:750;padding:4px 7px;border-radius:999px;white-space:nowrap}
+  .wallet-status.ok{color:var(--mint);background:rgba(87,232,166,.1);border:1px solid rgba(87,232,166,.2)}
+  .wallet-status.warn{color:var(--amber);background:rgba(243,185,77,.1);border:1px solid rgba(243,185,77,.22)}
+  .wallet-updated{padding:0 11px 10px;color:var(--text-faint);font-size:10.5px;text-align:right}
 
   /* 3-column card grid for compliance */
   .cards-3col{
@@ -1357,6 +1375,7 @@
     .reveal{animation:none; opacity:1; transform:none;}
     .instant-icon-glow{animation:none;}
     .service-preview.changing{animation:none;}
+    .mini-tile.updated{animation:none;}
     .eyebrow .dot, .logo .dot{animation:none;}
     .connectors span::after{animation:none; opacity:0;}
     *{transition:none !important;}
@@ -1620,8 +1639,24 @@
           <span class="card-tag">DASHBOARD</span>
           <h3>Every wallet, one screen</h3>
           <div class="mini-dash">
-            <div class="mini-tile usdt"><span class="k">TOTAL USDT</span><span class="v">39.28</span></div>
-            <div class="mini-tile trx"><span class="k">TOTAL TRX</span><span class="v">2,809.27</span></div>
+            <div class="mini-tile usdt"><span class="k">TOTAL USDT</span><span class="v" id="demoTotalUsdt">39.28</span></div>
+            <div class="mini-tile trx"><span class="k">TOTAL TRX</span><span class="v" id="demoTotalTrx">2,809.27</span></div>
+          </div>
+          <div class="wallet-demo">
+            <div class="wallet-demo-head">
+              <span class="wallet-demo-label">Live demo</span>
+              <button class="wallet-refresh" id="walletDemoRefresh" type="button"><span aria-hidden="true">↻</span> <span id="walletDemoRefreshLabel">Refresh wallets</span></button>
+            </div>
+            <div class="wallet-demo-row" data-wallet-row>
+              <span class="wallet-name">Personal</span><span class="wallet-amount" data-wallet-amount>18.42 USDT</span><span class="wallet-status ok" data-wallet-status>Healthy</span>
+            </div>
+            <div class="wallet-demo-row" data-wallet-row>
+              <span class="wallet-name">Payments</span><span class="wallet-amount" data-wallet-amount>20.86 USDT</span><span class="wallet-status warn" data-wallet-status>Low energy</span>
+            </div>
+            <div class="wallet-demo-row" data-wallet-row>
+              <span class="wallet-name">Reserve</span><span class="wallet-amount" data-wallet-amount>0.00 USDT</span><span class="wallet-status ok" data-wallet-status>Healthy</span>
+            </div>
+            <div class="wallet-updated" id="walletDemoUpdated">Updated 4 min ago</div>
           </div>
           <p>Balances, energy, and health status across all your TRON wallets — built for tracking and running a business. We never ask for private keys or seed phrases.</p>
           <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_dashboard_open" class="card-cta">Open dashboard →</a>
@@ -1904,6 +1939,15 @@
     "Wallet Statements":"Выписки по кошельку","Bank statements exist for a reason — you need a readable record of what happened and what your balance was after each step. Wallet statements do the same for a TRON wallet: every operation, with the running balance right after it, exported in a format your accountant can actually use.":"Банковские выписки нужны для понятной истории операций и баланса после каждого шага. Выписки TRON делают то же самое для кошелька и экспортируются в удобном для бухгалтера формате.","Filter by wallet and date range":"Фильтр по кошельку и периоду","Tag transactions and label counterparties (Standard plan)":"Теги транзакций и названия контрагентов на Standard","5 free statements a month, unlimited on Standard":"5 бесплатных выписок в месяц, без ограничений на Standard","Generate a statement":"Создать выписку",
     "REFERRALS":"РЕФЕРАЛЫ","Referral Program":"Реферальная программа","If people already come to you asking how to move USDT cheaply on TRON, there's no reason that should be unpaid advice. Share a link, and every transfer, check, or statement your referrals pay for puts up to 8% back in your balance — for as long as they keep using GasFree4you.":"Если вас уже спрашивают, как дешевле переводить USDT в TRON, поделитесь реферальной ссылкой. Каждый оплаченный перевод, проверка или выписка принесёт до 8% на баланс, пока рефералы пользуются GasFree4you.","Up to 8%, recurring — not a one-time bounty":"До 8% постоянно, а не разовый бонус","No cap on how many people you refer":"Без ограничений по числу рефералов","Commission tracked automatically in your dashboard":"Комиссия автоматически учитывается в дашборде","Get your referral link":"Получить реферальную ссылку"
   };
+  Object.assign(LANDING_ID,{
+    "Live demo":"Demo langsung","Refresh wallets":"Perbarui dompet","Checking…":"Memeriksa…","Updated just now":"Baru saja diperbarui","Updated 4 min ago":"Diperbarui 4 menit lalu","Personal":"Pribadi","Payments":"Pembayaran","Reserve":"Cadangan","Healthy":"Sehat","Low energy":"Energi rendah"
+  });
+  Object.assign(LANDING_RU,{
+    "Live demo":"Демо","Refresh wallets":"Обновить кошельки","Checking…":"Проверяем…","Updated just now":"Обновлено только что","Updated 4 min ago":"Обновлено 4 мин назад","Personal":"Личный","Payments":"Платежи","Reserve":"Резерв","Healthy":"В норме","Low energy":"Мало Energy"
+  });
+  Object.assign(LANDING_ES,{
+    "Live demo":"Demo interactiva","Refresh wallets":"Actualizar billeteras","Checking…":"Comprobando…","Updated just now":"Actualizado ahora","Updated 4 min ago":"Actualizado hace 4 min","Personal":"Personal","Payments":"Pagos","Reserve":"Reserva","Healthy":"Correcto","Low energy":"Energía baja"
+  });
   const LANDING_ATTR_ID = {"Language":"Bahasa","Contact us":"Hubungi kami","Close":"Tutup"};
   const LANDING_ATTR_RU = {"Language":"Язык","Contact us":"Связаться с нами","Close":"Закрыть"};
   const LANDING_ATTR_ES = {"Language":"Idioma","Contact us":"Contáctanos","Close":"Cerrar"};
@@ -1993,6 +2037,53 @@
       const state = btn.getAttribute('data-state');
       calcValue.textContent = networkFeeByState[state];
     });
+  });
+
+  // dashboard wallet refresh demo — local UI simulation, no network request
+  const walletDemoRefresh = document.getElementById('walletDemoRefresh');
+  const walletDemoRefreshLabel = document.getElementById('walletDemoRefreshLabel');
+  const walletDemoUpdated = document.getElementById('walletDemoUpdated');
+  const walletDemoRows = [...document.querySelectorAll('[data-wallet-row]')];
+  const demoTotalUsdt = document.getElementById('demoTotalUsdt');
+  const demoTotalTrx = document.getElementById('demoTotalTrx');
+  let walletDemoAlternate = false;
+  const walletDemoStates = [
+    {
+      totals:['42.61','2,811.04'],
+      wallets:[['19.42 USDT','Healthy','ok'],['23.19 USDT','Healthy','ok'],['0.00 USDT','Healthy','ok']]
+    },
+    {
+      totals:['39.28','2,809.27'],
+      wallets:[['18.42 USDT','Healthy','ok'],['20.86 USDT','Low energy','warn'],['0.00 USDT','Healthy','ok']]
+    }
+  ];
+
+  walletDemoRefresh?.addEventListener('click', () => {
+    const state = walletDemoStates[walletDemoAlternate ? 1 : 0];
+    walletDemoAlternate = !walletDemoAlternate;
+    walletDemoRefresh.disabled = true;
+    walletDemoRefreshLabel.textContent = 'Checking…';
+    walletDemoRows.forEach(row => row.classList.add('checking'));
+
+    walletDemoRows.forEach((row,index) => setTimeout(() => {
+      const [amount,label,tone] = state.wallets[index];
+      row.querySelector('[data-wallet-amount]').textContent = amount;
+      const status = row.querySelector('[data-wallet-status]');
+      status.textContent = label;
+      status.className = `wallet-status ${tone}`;
+      row.classList.remove('checking');
+    },180 + index * 210));
+
+    setTimeout(() => {
+      demoTotalUsdt.textContent = state.totals[0];
+      demoTotalTrx.textContent = state.totals[1];
+      document.querySelectorAll('.mini-tile').forEach(tile => {
+        tile.classList.remove('updated'); void tile.offsetWidth; tile.classList.add('updated');
+      });
+      walletDemoUpdated.textContent = 'Updated just now';
+      walletDemoRefreshLabel.textContent = 'Refresh wallets';
+      walletDemoRefresh.disabled = false;
+    },900);
   });
 
   // cursor spotlight on service cards
