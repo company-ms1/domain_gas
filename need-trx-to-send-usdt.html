@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Need TRX to Send USDT? Buy TRON Energy Instead | GasFree4you</title>
+  <meta name="description" content="Need TRX to send USDT TRC20? Rent the exact TRON Energy required for your transfer instead of buying and keeping TRX just for network fees." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://gasfree4you.com/need-trx-to-send-usdt.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GasFree4you" />
+  <meta property="og:title" content="Need TRX to Send USDT? Buy TRON Energy Instead" />
+  <meta property="og:description" content="You do not need to buy and keep TRX just to pay USDT TRC20 network fees. Rent TRON Energy directly to your wallet." />
+  <meta property="og:url" content="https://gasfree4you.com/need-trx-to-send-usdt.html" />
+  <meta property="og:image" content="https://gasfree4you.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Need TRX to Send USDT? Buy TRON Energy Instead" />
+  <meta name="twitter:description" content="Calculate the Energy needed for a USDT TRC20 transfer and avoid burning TRX on network fees." />
+  <meta name="twitter:image" content="https://gasfree4you.com/og.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="theme-color" content="#060912" />
+  <style>
+    :root{
+      --bg:#060912;
+      --bg-soft:#0a0e1c;
+      --surface:#10152b;
+      --surface-2:#141a37;
+      --line:rgba(255,255,255,.09);
+      --line-strong:rgba(255,255,255,.16);
+      --text:#f4f6fc;
+      --muted:#9aa3bd;
+      --faint:#646d8b;
+      --mint:#57e8a6;
+      --mint-soft:rgba(87,232,166,.14);
+      --blue:#5670ff;
+      --blue-soft:rgba(86,112,255,.16);
+      --red:#ff6b6b;
+      --red-soft:rgba(255,107,107,.14);
+      --amber:#f3b94d;
+      --shadow:0 24px 70px rgba(0,0,0,.34);
+      --radius-lg:24px;
+      --radius-md:16px;
+      --radius-sm:10px;
+      --max:1180px;
+      --font-body:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --font-mono:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(950px 520px at 15% -12%, rgba(86,112,255,.20), transparent 58%),
+        radial-gradient(850px 480px at 92% 8%, rgba(87,232,166,.13), transparent 52%),
+        linear-gradient(180deg, #060912 0%, #0a0e1c 100%);
+      font:16px/1.55 var(--font-body);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      background-image:radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size:28px 28px;
+      opacity:.55;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .wrap{width:min(calc(100% - 36px), var(--max));margin:0 auto;position:relative;z-index:1}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid var(--line);
+      background:rgba(6,9,18,.78);
+      backdrop-filter:blur(14px);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      min-height:68px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.01em}
+    .logo{
+      width:38px;
+      height:38px;
+      border-radius:13px;
+      display:grid;
+      place-items:center;
+      color:#04120d;
+      background:linear-gradient(135deg, var(--mint), #6ee7ff);
+      box-shadow:0 16px 34px rgba(87,232,166,.16);
+      font-weight:950;
+    }
+    .nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+    .nav a{padding:8px 10px;border-radius:999px}
+    .nav a:hover{color:var(--text);background:rgba(255,255,255,.045)}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:48px;
+      padding:12px 18px;
+      border:1px solid var(--line-strong);
+      border-radius:14px;
+      color:var(--text);
+      background:rgba(255,255,255,.04);
+      font-weight:800;
+      cursor:pointer;
+      transition:transform .14s ease, border-color .14s ease, background .14s ease, box-shadow .14s ease;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(87,232,166,.38);background:rgba(255,255,255,.065)}
+    .btn.primary{border-color:transparent;color:#04120d;background:linear-gradient(135deg, var(--mint), #6ee7ff);box-shadow:0 16px 35px rgba(87,232,166,.18)}
+    .btn.full{width:100%}
+
+    .hero{padding:64px 0 38px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,460px);gap:34px;align-items:start}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 13px;
+      border:1px solid var(--line-strong);
+      border-radius:999px;
+      color:var(--muted);
+      background:rgba(255,255,255,.03);
+      font-family:var(--font-mono);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}
+    h1{margin:20px 0 18px;font-size:76px;line-height:.98;letter-spacing:0;font-weight:900;max-width:780px}
+    .headline-accent{display:block;color:var(--mint)}
+    .hero-copy{margin:0;max-width:690px;color:#dce3f7;font-size:22px;line-height:1.48}
+    .hero-copy strong{color:#fff}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .intent-cloud{display:flex;gap:8px;flex-wrap:wrap;margin-top:30px;max-width:720px}
+    .intent-cloud span{
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      background:rgba(255,255,255,.026);
+      font-size:12px;
+      font-family:var(--font-mono);
+    }
+
+    .calculator{
+      border:1px solid rgba(87,232,166,.24);
+      border-radius:var(--radius-lg);
+      background:linear-gradient(180deg, rgba(16,21,43,.96), rgba(10,14,28,.94));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .calc-head{padding:20px 20px 0}
+    .calc-head h2{margin:0;font-size:24px;line-height:1.15}
+    .calc-head p{margin:8px 0 0;color:var(--muted);font-size:14px}
+    .calc-form{display:grid;gap:14px;padding:20px}
+    .field label{display:block;margin-bottom:7px;color:var(--muted);font-size:13px;font-weight:700}
+    .field input{
+      width:100%;
+      height:48px;
+      padding:0 13px;
+      border:1px solid var(--line-strong);
+      border-radius:12px;
+      outline:none;
+      color:var(--text);
+      background:rgba(6,9,18,.64);
+      font-family:var(--font-mono);
+      font-size:14px;
+    }
+    .field input:focus{border-color:var(--mint);box-shadow:0 0 0 4px rgba(87,232,166,.10)}
+    .segmented{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .segment{
+      min-height:44px;
+      padding:9px 10px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--muted);
+      background:rgba(255,255,255,.035);
+      cursor:pointer;
+      font-size:13px;
+      font-weight:800;
+    }
+    .segment.active{border-color:rgba(87,232,166,.42);color:#06130e;background:linear-gradient(135deg, var(--mint), #6ee7ff)}
+    .calc-result{
+      display:none;
+      margin:0 20px 20px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.035);
+    }
+    .calc-result.show{display:block;animation:rise .28s ease}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .result-label{color:var(--muted);font-size:13px;font-weight:700}
+    .energy-number{margin:4px 0 15px;font-family:var(--font-mono);font-size:34px;font-weight:850;line-height:1;color:var(--mint)}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+    .compare-card{min-height:116px;padding:13px;border:1px solid var(--line);border-radius:14px;background:rgba(6,9,18,.52)}
+    .compare-card.burn{border-color:rgba(255,107,107,.25);background:linear-gradient(180deg, rgba(255,107,107,.10), rgba(6,9,18,.48))}
+    .compare-card.save{border-color:rgba(87,232,166,.27);background:linear-gradient(180deg, rgba(87,232,166,.10), rgba(6,9,18,.48))}
+    .compare-card span{display:block;color:var(--muted);font-size:12px;font-weight:750}
+    .compare-card strong{display:block;margin-top:8px;font-family:var(--font-mono);font-size:25px;line-height:1}
+    .compare-card.save strong{color:var(--mint)}
+    .saving-line{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;color:#dce3f7;font-weight:800}
+    .saving-line strong{color:var(--mint);font-family:var(--font-mono)}
+    .validation{display:none;margin-top:-4px;color:#ffb4b4;font-size:12px}
+    .validation.show{display:block}
+
+    .burn-demo{
+      margin-top:22px;
+      padding:18px;
+      border:1px solid rgba(255,107,107,.24);
+      border-radius:20px;
+      background:linear-gradient(135deg, rgba(255,107,107,.10), rgba(6,9,18,.64));
+      overflow:hidden;
+    }
+    .burn-receipt{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:15px 16px;
+      border-radius:14px;
+      background:#fff;
+      color:#181b23;
+      box-shadow:0 10px 24px rgba(0,0,0,.16);
+    }
+    .burn-receipt-title{display:block;font-weight:850;line-height:1.18}
+    .burn-receipt-sub{display:block;margin-top:5px;color:#858c99;font-size:12px;font-weight:700}
+    .burn-pill{flex:none;display:flex;align-items:center;gap:7px;min-width:126px;justify-content:center;padding:10px 12px;border-radius:11px;background:#fff0f0;font-family:var(--font-mono);font-size:20px;font-weight:850}
+    .burn-track{position:relative;height:42px;margin-top:12px;border:1px solid rgba(255,107,107,.16);border-radius:999px;background:linear-gradient(90deg, rgba(86,112,255,.08), rgba(255,107,107,.10));overflow:hidden}
+    .burn-track::before{content:"";position:absolute;left:14px;right:42px;top:50%;border-top:1px dashed rgba(255,255,255,.14)}
+    .coin{position:absolute;left:10px;top:9px;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ff5661,#b70f1b);border:1px solid #ff9090;color:#fff;font-family:var(--font-mono);font-size:9px;font-weight:900;box-shadow:0 0 14px rgba(255,58,70,.32);animation:coinBurn 2.4s linear infinite;animation-delay:var(--delay)}
+    .flame{position:absolute;right:8px;top:4px;width:34px;height:34px;display:grid;place-items:center;font-size:25px;filter:drop-shadow(0 0 9px rgba(255,107,107,.56));animation:flamePulse .65s ease-in-out infinite alternate}
+    @keyframes coinBurn{0%{left:10px;opacity:0;transform:scale(.82) rotate(0)}10%{opacity:1}78%{opacity:1;transform:scale(1) rotate(300deg)}100%{left:calc(100% - 50px);opacity:0;transform:scale(.25) rotate(420deg)}}
+    @keyframes flamePulse{to{transform:scale(1.14) rotate(3deg);filter:drop-shadow(0 0 14px rgba(255,107,107,.78))}}
+
+    .section{padding:42px 0}
+    .section-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+    .panel{
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      background:linear-gradient(180deg, rgba(16,21,43,.82), rgba(10,14,28,.82));
+      box-shadow:var(--shadow);
+      padding:26px;
+    }
+    .panel h2{margin:0 0 14px;font-size:44px;line-height:1.07;letter-spacing:0}
+    .panel h3{margin:0 0 10px;font-size:20px}
+    .panel p{margin:0 0 12px;color:#dbe1f5}
+    .panel .muted{color:var(--muted)}
+    .trust-lines{display:grid;gap:10px;margin-top:18px}
+    .trust-line{display:flex;align-items:center;gap:10px;color:#fff;font-weight:850}
+    .check{
+      width:24px;
+      height:24px;
+      border-radius:8px;
+      display:grid;
+      place-items:center;
+      color:#04120d;
+      background:var(--mint);
+      font-weight:950;
+      flex:none;
+    }
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{padding:19px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+    .step-num{display:grid;place-items:center;width:32px;height:32px;margin-bottom:14px;border-radius:50%;background:var(--blue);font-weight:900}
+    .step h3{margin:0 0 8px;font-size:18px}
+    .step p{margin:0;color:var(--muted);font-size:14px}
+    .faq{display:grid;gap:12px}
+    details{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03);padding:16px 18px}
+    summary{cursor:pointer;font-weight:850}
+    details p{margin:10px 0 0;color:var(--muted)}
+    .final-cta{text-align:center;padding:54px 0 72px}
+    .final-cta h2{margin:0 auto 12px;max-width:780px;font-size:58px;line-height:1.04}
+    .final-cta p{margin:0 auto 24px;max-width:650px;color:var(--muted);font-size:18px}
+    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--faint);font-size:13px}
+    .footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .footer-row a{color:var(--muted)}
+
+    @media (max-width:940px){
+      .hero-grid,.section-grid{grid-template-columns:1fr}
+      .hero{padding-top:44px}
+      .calculator{max-width:620px}
+      .steps{grid-template-columns:1fr}
+      h1{font-size:58px}
+      .panel h2,.final-cta h2{font-size:40px}
+    }
+    @media (max-width:620px){
+      .wrap{width:min(calc(100% - 24px), var(--max))}
+      .topbar-inner{align-items:flex-start;flex-direction:column;padding:13px 0}
+      .hero{padding-top:34px}
+      h1{font-size:42px}
+      .hero-copy{font-size:18px}
+      .panel h2,.final-cta h2{font-size:32px}
+      .compare{grid-template-columns:1fr}
+      .segmented{grid-template-columns:1fr}
+      .burn-receipt{align-items:flex-start;flex-direction:column}
+      .burn-pill{width:100%}
+      .panel{padding:21px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Do I need TRX to send USDT TRC20?","acceptedAnswer":{"@type":"Answer","text":"A USDT TRC20 transfer needs TRON network resources. If your wallet does not have enough Energy, TRON burns TRX to cover the transaction cost. Renting Energy can reduce or avoid that TRX burn."}},
+      {"@type":"Question","name":"Can I send USDT without buying TRX?","acceptedAnswer":{"@type":"Answer","text":"You can rent TRON Energy for the sender wallet before the transfer, then send USDT from your own wallet without buying and holding TRX only for Energy fees."}},
+      {"@type":"Question","name":"Does GasFree4you need my private key or USDT?","acceptedAnswer":{"@type":"Answer","text":"No. Energy is delegated to your wallet. You do not share your private key and you do not send USDT to GasFree4you."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="/">
+        <span class="logo">G</span>
+        <span>GasFree4you</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#calculator">Calculator</a>
+        <a href="#why-energy">Why Energy</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="https://user.gasfree4you.com/?utm_source=need_trx_landing&amp;utm_medium=nav&amp;utm_campaign=need_trx_to_send_usdt">Open app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow"><span class="eyebrow-dot"></span> USDT TRC20 fee fix</span>
+          <h1>Need TRX to send USDT? <span class="headline-accent">Buy TRON Energy instead.</span></h1>
+          <p class="hero-copy">
+            You do not need to buy and keep TRX just to pay network fees.
+            Rent the exact amount of <strong>TRON Energy</strong> required for your USDT TRC20 transfer.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#calculator">Calculate Energy</a>
+            <a class="btn" href="https://user.gasfree4you.com/?utm_source=need_trx_landing&amp;utm_medium=hero&amp;utm_campaign=need_trx_to_send_usdt">Get Energy</a>
+          </div>
+          <div class="intent-cloud" aria-label="Searches this page answers">
+            <span>need TRX to send USDT</span>
+            <span>how much TRX to send USDT</span>
+            <span>TRX fee for USDT transfer</span>
+            <span>USDT TRC20 insufficient energy</span>
+            <span>send USDT without TRX</span>
+          </div>
+
+          <div class="burn-demo" aria-label="TRX burn comparison">
+            <div class="burn-receipt">
+              <span>
+                <strong class="burn-receipt-title">Without Energy, TRON burns TRX</strong>
+                <span class="burn-receipt-sub">6.4 TRX if recipient has USDT · 13 TRX if not</span>
+              </span>
+              <span class="burn-pill"><span aria-hidden="true">🔥</span><span id="burnPreview">13</span> TRX</span>
+            </div>
+            <div class="burn-track" aria-hidden="true">
+              <span class="coin" style="--delay:0s">TRX</span>
+              <span class="coin" style="--delay:-.8s">TRX</span>
+              <span class="coin" style="--delay:-1.6s">TRX</span>
+              <span class="flame">🔥</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="calculator" id="calculator" aria-label="Energy calculator">
+          <div class="calc-head">
+            <h2>Calculate Energy</h2>
+            <p>Estimate the Energy required before you send USDT.</p>
+          </div>
+          <form class="calc-form" id="energyForm">
+            <div class="field">
+              <label for="sender">Sender address</label>
+              <input id="sender" name="sender" autocomplete="off" inputmode="text" placeholder="T....................." />
+            </div>
+            <div class="field">
+              <label for="recipient">Recipient address</label>
+              <input id="recipient" name="recipient" autocomplete="off" inputmode="text" placeholder="T....................." />
+            </div>
+            <div class="field">
+              <label>Recipient wallet</label>
+              <div class="segmented" role="group" aria-label="Recipient wallet USDT status">
+                <button class="segment" type="button" data-state="has">Has USDT</button>
+                <button class="segment active" type="button" data-state="new">No USDT yet</button>
+              </div>
+            </div>
+            <p class="validation" id="validation">Enter TRON-style sender and recipient addresses that start with T.</p>
+            <button class="btn primary full" type="submit">Calculate Energy</button>
+          </form>
+          <div class="calc-result" id="result" aria-live="polite">
+            <span class="result-label">Your USDT transfer requires</span>
+            <div class="energy-number"><span id="energyValue">130,000</span> Energy</div>
+            <div class="compare">
+              <div class="compare-card burn">
+                <span>Without Energy</span>
+                <strong><span id="burnValue">13</span> TRX</strong>
+                <span>burned by network</span>
+              </div>
+              <div class="compare-card save">
+                <span>With GasFree4you</span>
+                <strong><span id="gasValue">6</span> TRX</strong>
+                <span>estimated Energy cost</span>
+              </div>
+            </div>
+            <p class="saving-line">You save <strong><span id="savingValue">7</span> TRX</strong></p>
+            <a class="btn primary full" href="https://user.gasfree4you.com/?utm_source=need_trx_landing&amp;utm_medium=calculator&amp;utm_campaign=need_trx_to_send_usdt">Get Energy →</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="why-energy">
+      <div class="wrap section-grid">
+        <article class="panel">
+          <h2>Why buy Energy instead of TRX?</h2>
+          <p>When you send USDT on TRON, the network consumes <strong>Energy</strong>.</p>
+          <p>If your wallet does not have enough Energy, TRON burns your <strong>TRX</strong> to cover the transaction cost.</p>
+          <p>GasFree4you provides the Energy directly to your wallet before the transaction.</p>
+        </article>
+        <aside class="panel">
+          <h3>Your wallet stays yours</h3>
+          <div class="trust-lines">
+            <div class="trust-line"><span class="check">✓</span>Your USDT stays in your wallet.</div>
+            <div class="trust-line"><span class="check">✓</span>We never need your private key.</div>
+            <div class="trust-line"><span class="check">✓</span>You do not send USDT to us.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="wrap">
+        <div class="steps">
+          <article class="step">
+            <div class="step-num">1</div>
+            <h3>Enter addresses</h3>
+            <p>Use the sender and recipient addresses to estimate the likely Energy requirement for this USDT transfer.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">2</div>
+            <h3>Rent Energy</h3>
+            <p>GasFree4you delegates Energy to the sender wallet before you make the transaction.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">3</div>
+            <h3>Send USDT</h3>
+            <p>You send USDT from your own wallet. The Energy covers the network resource cost.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap section-grid">
+        <div class="panel">
+          <h2>Common questions</h2>
+          <p class="muted">Short answers for people who found this page after seeing an insufficient Energy or insufficient TRX error.</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Do I need TRX to send USDT TRC20?</summary>
+            <p>You need TRON network resources. If you do not have enough Energy, TRON burns TRX. Renting Energy is the alternative.</p>
+          </details>
+          <details>
+            <summary>How much TRX does a USDT transfer burn?</summary>
+            <p>A common estimate is about 6.4 TRX when the recipient already has USDT and about 13 TRX when the recipient has no USDT yet.</p>
+          </details>
+          <details>
+            <summary>How much Energy do I need?</summary>
+            <p>A typical USDT TRC20 transfer needs about 65,000 Energy if the recipient already has USDT, or about 130,000 Energy if the recipient has no USDT yet.</p>
+          </details>
+          <details>
+            <summary>Do I send USDT to GasFree4you?</summary>
+            <p>No. Energy is delegated to your wallet. Your USDT remains in your wallet, and you send it yourself.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="wrap">
+        <h2>Stop buying TRX just to burn it.</h2>
+        <p>Calculate the Energy for your next USDT TRC20 transfer, rent it to your sender wallet, and keep control of your funds.</p>
+        <a class="btn primary" href="https://user.gasfree4you.com/?utm_source=need_trx_landing&amp;utm_medium=final_cta&amp;utm_campaign=need_trx_to_send_usdt">Get Energy →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© 2026 GasFree4you</span>
+      <span>
+        <a href="/privacy.html">Privacy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/refund.html">Refund policy</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const state = {
+      recipient: 'new',
+      values: {
+        has: { energy: 65000, burn: 6.4, gas: 3 },
+        new: { energy: 130000, burn: 13, gas: 6 }
+      }
+    };
+
+    const form = document.getElementById('energyForm');
+    const result = document.getElementById('result');
+    const validation = document.getElementById('validation');
+    const segments = document.querySelectorAll('.segment');
+    const energyValue = document.getElementById('energyValue');
+    const burnValue = document.getElementById('burnValue');
+    const gasValue = document.getElementById('gasValue');
+    const savingValue = document.getElementById('savingValue');
+    const burnPreview = document.getElementById('burnPreview');
+    const formatter = new Intl.NumberFormat('en-US');
+
+    function looksLikeTronAddress(value){
+      const trimmed = value.trim();
+      return trimmed.length >= 12 && trimmed.length <= 40 && trimmed.startsWith('T');
+    }
+
+    function renderEstimate(){
+      const current = state.values[state.recipient];
+      energyValue.textContent = formatter.format(current.energy);
+      burnValue.textContent = current.burn;
+      gasValue.textContent = current.gas;
+      savingValue.textContent = Number((current.burn - current.gas).toFixed(1));
+      burnPreview.textContent = current.burn;
+    }
+
+    segments.forEach(segment => {
+      segment.addEventListener('click', () => {
+        segments.forEach(item => item.classList.remove('active'));
+        segment.classList.add('active');
+        state.recipient = segment.dataset.state;
+        renderEstimate();
+        if(result.classList.contains('show')) result.classList.remove('show');
+      });
+    });
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const sender = document.getElementById('sender').value;
+      const recipient = document.getElementById('recipient').value;
+      const valid = looksLikeTronAddress(sender) && looksLikeTronAddress(recipient);
+      validation.classList.toggle('show', !valid);
+      if(!valid) return;
+      renderEstimate();
+      result.classList.add('show');
+    });
+
+    renderEstimate();
+  </script>
+</body>
+</html>
