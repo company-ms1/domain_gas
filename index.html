@@ -1463,6 +1463,10 @@
   .float-popover{pointer-events:none;}
   .float-popover.open{pointer-events:auto;}
 
+  /* A closed full-screen layer must not exist in Safari's hit-test tree. */
+  .modal-overlay{display:none;}
+  .modal-overlay.open{display:flex;}
+
   /* Decorative animation layers are visual only. */
   .instant-icon-glow,
   .burn-track::before,
@@ -1488,6 +1492,53 @@
     .card::after{opacity:0 !important;}
   }
   /* ---------- MOBILE TAP RELIABILITY END ---------- */
+
+  /*
+    iOS Safari can keep fixed/backdrop-filter layers in the touch hit-test map
+    until the first scroll repaint. Remove those composited layers on touch iOS.
+  */
+  @supports (-webkit-touch-callout:none){
+    @media (hover:none) and (pointer:coarse){
+      html{scroll-behavior:auto;}
+
+      body::before,
+      body::after{display:none;}
+
+      header.nav{
+        position:relative;
+        top:auto;
+        -webkit-backdrop-filter:none;
+        backdrop-filter:none;
+        background:var(--bg);
+      }
+
+      .modal-overlay{
+        display:none;
+        -webkit-backdrop-filter:none;
+        backdrop-filter:none;
+      }
+      .modal-overlay.open{display:flex;}
+
+      .float-popover{display:none;}
+      .float-popover.open{display:flex;}
+
+      .reveal{
+        animation:none !important;
+        opacity:1 !important;
+        transform:none !important;
+      }
+
+      a[href],
+      button,
+      [role="button"]{
+        position:relative;
+        z-index:2;
+        pointer-events:auto;
+        touch-action:manipulation;
+        -webkit-touch-callout:none;
+      }
+    }
+  }
 
   /* Hover styles only on devices with a real fine pointer. */
   @media (hover:hover) and (pointer:fine){
