@@ -1333,11 +1333,13 @@
     z-index:200;
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
     transition:opacity .2s ease, visibility .2s ease;
   }
   .modal-overlay.open{
     opacity:1;
     visibility:visible;
+    pointer-events:auto;
   }
   .modal-box{
     background:var(--surface);
@@ -1444,6 +1446,56 @@
     animation:rise .6s ease forwards;
   }
   @keyframes rise{to{opacity:1; transform:translateY(0);}}
+
+  /* ---------- TOUCH / MOBILE TAP FIX ---------- */
+  button,
+  a,
+  select,
+  input,
+  [role="button"]{
+    touch-action:manipulation;
+  }
+
+  /* Touch browsers may emulate :hover on the first tap.
+     Disable hover-only visual movement/reveals when there is no real hover pointer. */
+  @media (hover:none), (pointer:coarse){
+    .card:hover{
+      border-color:var(--border);
+      transform:none;
+    }
+    .card:hover::after{opacity:0;}
+
+    nav.links a:hover,
+    .lang-option:hover,
+    .btn-primary:hover,
+    .btn-ghost:hover,
+    button.chip:hover,
+    .service-preview-more:hover,
+    .burn-stop:hover,
+    .burn-cta-primary:hover,
+    .burn-cta-secondary:hover,
+    .wallet-refresh:hover,
+    .foot-col a:hover,
+    .float-contact-link:hover,
+    .float-btn:hover,
+    .modal-close:hover{
+      transform:none;
+    }
+
+    .btn-primary:hover{box-shadow:0 0 0 0 rgba(86,112,255,0);}
+    .btn-ghost:hover{border-color:var(--border-strong);color:var(--text);}
+    button.chip:hover{border-color:var(--border-strong);color:var(--text);}
+    .service-preview-more:hover{border-color:var(--border-strong);color:var(--text);}
+    .burn-stop:hover{background:rgba(255,111,125,.1);border-color:rgba(255,111,125,.42);}
+    .burn-demo.stopped .burn-stop:hover{color:var(--mint);border-color:rgba(87,232,166,.35);background:rgba(87,232,166,.08);}
+    .burn-cta-primary:hover{box-shadow:0 7px 20px rgba(87,232,166,.16);}
+    .burn-cta-secondary:hover{border-color:var(--border-strong);color:var(--text);}
+    .wallet-refresh:hover{border-color:var(--border-strong);color:var(--text);}
+    .float-contact-link:hover{border-color:var(--border);background:rgba(255,255,255,0.02);}
+    .float-btn:hover{box-shadow:0 6px 24px var(--indigo-glow);}
+    .modal-close:hover{color:var(--text-muted);border-color:var(--border-strong);}
+  }
+  /* ---------- TOUCH / MOBILE TAP FIX END ---------- */
 
   @media (prefers-reduced-motion: reduce){
     .reveal{animation:none; opacity:1; transform:none;}
@@ -2322,9 +2374,10 @@
     },900);
   });
 
-  // cursor spotlight on service cards
+  // cursor spotlight on service cards — desktop mouse only
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reducedMotion) {
+  const hasFineHoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!reducedMotion && hasFineHoverPointer) {
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
