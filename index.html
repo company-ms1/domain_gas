@@ -170,11 +170,7 @@
     transition:border-color .15s ease, color .15s ease, background .15s ease;
     white-space:nowrap;
   }
-  nav.links a:hover{
-    color:var(--text);
-    border-color:var(--border-strong);
-    background:rgba(255,255,255,0.03);
-  }
+
 
   .nav-right{
     display:flex;
@@ -191,7 +187,7 @@
   }
   .lang-switcher{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--border-strong);border-radius:999px;background:rgba(255,255,255,.025)}
   .lang-option{min-width:38px;padding:5px 8px;border:0;border-radius:999px;background:transparent;color:var(--text-muted);font-family:var(--font-mono);font-size:11px;font-weight:700;cursor:pointer;box-shadow:none}
-  .lang-option:hover{color:var(--text);background:rgba(255,255,255,.05)}.lang-option.active{color:#fff;background:linear-gradient(135deg,var(--indigo),#4d79ef);box-shadow:0 4px 12px rgba(90,123,255,.24)}
+.lang-option.active{color:#fff;background:linear-gradient(135deg,var(--indigo),#4d79ef);box-shadow:0 4px 12px rgba(90,123,255,.24)}
   .lang-select-wrap{display:none;position:relative}
   .lang-select-wrap::after{content:"⌄";position:absolute;right:11px;top:50%;transform:translateY(-56%);color:var(--text-muted);font-size:13px;pointer-events:none}
   .lang-select{appearance:none;-webkit-appearance:none;min-width:94px;height:36px;padding:0 30px 0 12px;border:1px solid var(--border-strong);border-radius:999px;background:rgba(18,22,36,.96);color:var(--text);font-family:var(--font-mono);font-size:12px;font-weight:700;cursor:pointer;outline:none}
@@ -214,19 +210,13 @@
     color:#fff;
     box-shadow:0 0 0 0 rgba(86,112,255,0);
   }
-  .btn-primary:hover{
-    box-shadow:0 6px 24px var(--indigo-glow);
-    transform:translateY(-1px);
-  }
+
   .btn-ghost{
     background:rgba(255,255,255,0.02);
     border-color:var(--border-strong);
     color:var(--text);
   }
-  .btn-ghost:hover{
-    border-color:var(--mint);
-    color:var(--mint);
-  }
+
   .btn-sm{font-size:13px; padding:8px 14px;}
 
   @media (max-width:980px){
@@ -333,7 +323,7 @@
     cursor:pointer;
     transition:border-color .15s ease, color .15s ease, transform .15s ease;
   }
-  button.chip:hover, button.chip:focus-visible{
+  button.chip:focus-visible{
     border-color:var(--mint);
     color:var(--mint);
     transform:translateY(-1px);
@@ -376,7 +366,7 @@
   }
   .service-preview-link{color:#fff;background:var(--indigo);border:1px solid var(--indigo)}
   .service-preview-more{color:var(--text);background:rgba(255,255,255,.035);border:1px solid var(--border-strong);cursor:pointer}
-  .service-preview-more:hover{border-color:var(--mint);color:var(--mint)}
+
   .connectors{
     display:flex;
     justify-content:space-around;
@@ -556,11 +546,8 @@
     pointer-events:none;
     mix-blend-mode:screen;
   }
-  .card:hover::after{opacity:1;}
-  .card:hover{
-    border-color:var(--border-strong);
-    transform:translateY(-2px);
-  }
+
+
   .card::before{
     content:"";
     position:absolute;
@@ -650,7 +637,7 @@
   .burn-demo-title{font-size:18px;font-weight:750;margin-top:5px}
   .burn-demo-status{font-size:12px;color:var(--text-muted);margin-top:5px}
   .burn-stop{flex:none;min-height:39px;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,111,125,.42);background:rgba(255,111,125,.1);color:#ff9ba5;font-size:12px;font-weight:750;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease}
-  .burn-stop:hover{transform:translateY(-1px);background:rgba(255,111,125,.16);border-color:rgba(255,111,125,.7)}
+
   .burn-demo.stopped .burn-stop{color:var(--mint);border-color:rgba(87,232,166,.35);background:rgba(87,232,166,.08)}
   .burn-lanes{display:grid;grid-template-columns:1fr;gap:12px}
   .burn-lane{padding:12px;border:1px solid rgba(255,255,255,.075);border-radius:15px;background:rgba(6,9,18,.48)}
@@ -681,9 +668,9 @@
   .burn-cta-actions{display:flex;align-items:center;gap:8px;flex:none}
   .burn-cta-primary,.burn-cta-secondary{min-height:38px;padding:9px 13px;border-radius:999px;font-size:12px;font-weight:750;white-space:nowrap;text-align:center}
   .burn-cta-primary{color:#04120d;background:var(--mint);border:1px solid var(--mint);box-shadow:0 7px 20px rgba(87,232,166,.16)}
-  .burn-cta-primary:hover{transform:translateY(-1px);box-shadow:0 9px 25px rgba(87,232,166,.24)}
+
   .burn-cta-secondary{color:var(--text);border:1px solid var(--border-strong);background:rgba(255,255,255,.03)}
-  .burn-cta-secondary:hover{border-color:var(--mint);color:var(--mint)}
+
   @media(max-width:700px){.burn-demo-head{flex-direction:column}.burn-stop{width:100%}.burn-receipt{align-items:flex-start;flex-direction:column;padding:15px}.burn-fee-wrap{align-self:stretch}.burn-fee-pill{width:100%}.burn-receipt-title{font-size:16px}.burn-receipt-sub{font-size:12.5px;margin-top:6px}.burn-cta-inner{align-items:stretch;flex-direction:column}.burn-cta-actions{display:grid;grid-template-columns:1fr}.burn-demo.stopped .burn-cta{max-height:300px}}
 
   /* energy calculator demo */
@@ -784,7 +771,7 @@
   .wallet-demo-label{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--text-faint);text-transform:uppercase}
   .wallet-demo-label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 7px rgba(87,232,166,.7)}
   .wallet-refresh{border:1px solid var(--border-strong);border-radius:999px;background:rgba(255,255,255,.035);color:var(--text);font-size:11px;font-weight:700;padding:6px 10px;cursor:pointer;transition:border-color .15s ease,color .15s ease,transform .15s ease}
-  .wallet-refresh:hover{border-color:var(--mint);color:var(--mint);transform:translateY(-1px)}
+
   .wallet-refresh:disabled{cursor:wait;opacity:.62;transform:none}
   .wallet-demo-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:10px 11px;border-bottom:1px solid rgba(255,255,255,.055);transition:background .2s ease,opacity .2s ease}
   .wallet-demo-row:last-child{border-bottom:0}
@@ -1112,7 +1099,7 @@
     color:var(--text-muted);
     margin-bottom:10px;
   }
-  .foot-col a:hover{color:var(--text);}
+
   .foot-bottom{
     display:flex;
     justify-content:space-between;
@@ -1175,10 +1162,7 @@
     transition:border-color .15s ease, background .15s ease;
     text-decoration:none;
   }
-  .float-contact-link:hover{
-    border-color:var(--mint);
-    background:var(--mint-soft);
-  }
+
   .float-contact-icon{
     font-size:18px;
     flex-shrink:0;
@@ -1218,10 +1202,7 @@
     transition:transform .15s ease, box-shadow .15s ease;
     flex-shrink:0;
   }
-  .float-btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 10px 32px var(--indigo-glow);
-  }
+
   .float-btn .icon-close{display:none;}
   .float-btn.open .icon-open{display:none;}
   .float-btn.open .icon-close{display:block;}
@@ -1333,13 +1314,11 @@
     z-index:200;
     opacity:0;
     visibility:hidden;
-    pointer-events:none;
     transition:opacity .2s ease, visibility .2s ease;
   }
   .modal-overlay.open{
     opacity:1;
     visibility:visible;
-    pointer-events:auto;
   }
   .modal-box{
     background:var(--surface);
@@ -1375,7 +1354,7 @@
     justify-content:center;
     transition:border-color .15s ease, color .15s ease;
   }
-  .modal-close:hover{color:var(--text); border-color:var(--mint);}
+
   .modal-icon{font-size:30px; margin-bottom:8px;}
   .modal-box h3{
     font-family:var(--font-display);
@@ -1447,56 +1426,6 @@
   }
   @keyframes rise{to{opacity:1; transform:translateY(0);}}
 
-  /* ---------- TOUCH / MOBILE TAP FIX ---------- */
-  button,
-  a,
-  select,
-  input,
-  [role="button"]{
-    touch-action:manipulation;
-  }
-
-  /* Touch browsers may emulate :hover on the first tap.
-     Disable hover-only visual movement/reveals when there is no real hover pointer. */
-  @media (hover:none), (pointer:coarse){
-    .card:hover{
-      border-color:var(--border);
-      transform:none;
-    }
-    .card:hover::after{opacity:0;}
-
-    nav.links a:hover,
-    .lang-option:hover,
-    .btn-primary:hover,
-    .btn-ghost:hover,
-    button.chip:hover,
-    .service-preview-more:hover,
-    .burn-stop:hover,
-    .burn-cta-primary:hover,
-    .burn-cta-secondary:hover,
-    .wallet-refresh:hover,
-    .foot-col a:hover,
-    .float-contact-link:hover,
-    .float-btn:hover,
-    .modal-close:hover{
-      transform:none;
-    }
-
-    .btn-primary:hover{box-shadow:0 0 0 0 rgba(86,112,255,0);}
-    .btn-ghost:hover{border-color:var(--border-strong);color:var(--text);}
-    button.chip:hover{border-color:var(--border-strong);color:var(--text);}
-    .service-preview-more:hover{border-color:var(--border-strong);color:var(--text);}
-    .burn-stop:hover{background:rgba(255,111,125,.1);border-color:rgba(255,111,125,.42);}
-    .burn-demo.stopped .burn-stop:hover{color:var(--mint);border-color:rgba(87,232,166,.35);background:rgba(87,232,166,.08);}
-    .burn-cta-primary:hover{box-shadow:0 7px 20px rgba(87,232,166,.16);}
-    .burn-cta-secondary:hover{border-color:var(--border-strong);color:var(--text);}
-    .wallet-refresh:hover{border-color:var(--border-strong);color:var(--text);}
-    .float-contact-link:hover{border-color:var(--border);background:rgba(255,255,255,0.02);}
-    .float-btn:hover{box-shadow:0 6px 24px var(--indigo-glow);}
-    .modal-close:hover{color:var(--text-muted);border-color:var(--border-strong);}
-  }
-  /* ---------- TOUCH / MOBILE TAP FIX END ---------- */
-
   @media (prefers-reduced-motion: reduce){
     .reveal{animation:none; opacity:1; transform:none;}
     .instant-icon-glow{animation:none;}
@@ -1508,6 +1437,76 @@
     .eyebrow .dot, .logo .dot{animation:none;}
     .connectors span::after{animation:none; opacity:0;}
     *{transition:none !important;}
+  }
+
+
+  /* ---------- MOBILE TAP RELIABILITY ---------- */
+  a,
+  button,
+  [role="button"]{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:rgba(86,112,255,.18);
+  }
+
+  /* Hidden layers must never catch a tap. */
+  .modal-overlay{pointer-events:none;}
+  .modal-overlay.open{pointer-events:auto;}
+  .float-popover{pointer-events:none;}
+  .float-popover.open{pointer-events:auto;}
+
+  /* Decorative animation layers are visual only. */
+  .instant-icon-glow,
+  .burn-track::before,
+  .burn-coin,
+  .burn-flame,
+  .modal-shot-empty{
+    pointer-events:none;
+  }
+
+  /* Give touch users feedback without relying on :hover. */
+  @media (hover:none), (pointer:coarse){
+    .btn:active,
+    button.chip:active,
+    .service-preview-more:active,
+    .burn-stop:active,
+    .wallet-refresh:active,
+    .float-btn:active,
+    .modal-close:active{
+      transform:scale(.985);
+    }
+
+    .card{transform:none !important;}
+    .card::after{opacity:0 !important;}
+  }
+  /* ---------- MOBILE TAP RELIABILITY END ---------- */
+
+  /* Hover styles only on devices with a real fine pointer. */
+  @media (hover:hover) and (pointer:fine){
+    nav.links a:hover{color:var(--text);
+    border-color:var(--border-strong);
+    background:rgba(255,255,255,0.03);}
+    .lang-option:hover{color:var(--text);background:rgba(255,255,255,.05)}
+    .btn-primary:hover{box-shadow:0 6px 24px var(--indigo-glow);
+    transform:translateY(-1px);}
+    .btn-ghost:hover{border-color:var(--mint);
+    color:var(--mint);}
+    button.chip:hover{border-color:var(--mint);
+    color:var(--mint);
+    transform:translateY(-1px);}
+    .service-preview-more:hover{border-color:var(--mint);color:var(--mint)}
+    .card:hover::after{opacity:1;}
+    .card:hover{border-color:var(--border-strong);
+    transform:translateY(-2px);}
+    .burn-stop:hover{transform:translateY(-1px);background:rgba(255,111,125,.16);border-color:rgba(255,111,125,.7)}
+    .burn-cta-primary:hover{transform:translateY(-1px);box-shadow:0 9px 25px rgba(87,232,166,.24)}
+    .burn-cta-secondary:hover{border-color:var(--mint);color:var(--mint)}
+    .wallet-refresh:hover{border-color:var(--mint);color:var(--mint);transform:translateY(-1px)}
+    .foot-col a:hover{color:var(--text);}
+    .float-contact-link:hover{border-color:var(--mint);
+    background:var(--mint-soft);}
+    .float-btn:hover{transform:scale(1.08);
+    box-shadow:0 10px 32px var(--indigo-glow);}
+    .modal-close:hover{color:var(--text); border-color:var(--mint);}
   }
 </style>
 </head>
@@ -1542,7 +1541,7 @@
           <option value="es">🇪🇸 ES</option>
         </select>
       </label>
-      <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=nav_open_app" class="btn btn-primary btn-sm">Open the app</a>
+      <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=nav_open_app" class="btn btn-primary btn-sm">Open the app</a>
     </div>
   </div>
 </header>
@@ -1557,7 +1556,7 @@
           <h1>GasFree4you is <span class="grad">the operational layer</span> for TRON.</h1>
           <p class="lede">Energy, compliance, multi-wallet visibility and accounting — bundled into one layer that sits on top of raw TRON, so every transfer leaves your wallet cheaper, checked, and already accounted for.</p>
           <div class="hero-ctas">
-            <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=hero_open_dashboard" class="btn btn-primary">Open the dashboard</a>
+            <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=hero_open_dashboard" class="btn btn-primary">Open the dashboard</a>
             <a href="#transfer-layer" class="btn btn-ghost">See the tools ↓</a>
           </div>
         </div>
@@ -1580,7 +1579,7 @@
                 <div class="service-preview-text" id="servicePreviewText">No more rough estimates copied from forum posts</div>
               </div>
               <div class="service-preview-actions">
-                <a class="service-preview-link" id="servicePreviewLink" href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=modal_energy_calculator">Open the calculator</a>
+                <a class="service-preview-link" id="servicePreviewLink" href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=modal_energy_calculator">Open the calculator</a>
                 <button class="service-preview-more" id="servicePreviewMore" type="button">Open</button>
               </div>
             </div>
@@ -1668,7 +1667,7 @@
             </div>
           </div>
           <p>Energy is delegated straight to your wallet right before you send, so the transfer settles at a flat, reduced cost instead of burning TRON's standard bandwidth and energy fee.</p>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_transfer_send" class="card-cta">Send a transfer →</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_transfer_send" class="card-cta">Send a transfer →</a>
         </div>
 
         <div class="card tag-indigo">
@@ -1686,7 +1685,7 @@
             </div>
             <p class="calc-note">Standard TRON network fee for this scenario — your GasFree4you price is up to 53% lower (see the Transfer Layer above).</p>
           </div>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_energy_calculator" class="card-cta">Open the calculator →</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_energy_calculator" class="card-cta">Open the calculator →</a>
         </div>
       </div>
       <div class="burn-demo reveal" id="burnDemo">
@@ -1800,7 +1799,7 @@
             </div>
           </div>
           <p class="fine">Specific providers and live pricing are shown inside the app after sign-in.</p>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_aml_check" class="card-cta" style="margin-top:14px;">Run a check →</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_aml_check" class="card-cta" style="margin-top:14px;">Run a check →</a>
         </div>
 
         <div class="card tag-coral">
@@ -1813,7 +1812,7 @@
             <li><span class="reg-flag">🇮🇱</span><span>NBCTF</span><b>Israel</b></li>
           </ul>
           <p class="fine" style="margin-top:4px;">Lists refreshed on a stale-while-revalidate schedule — sub-second on hot path.</p>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_sanctions_screen" class="card-cta" style="margin-top:16px;">Screen an address →</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_sanctions_screen" class="card-cta" style="margin-top:16px;">Screen an address →</a>
         </div>
       </div>
     </div>
@@ -1855,7 +1854,7 @@
             <div class="wallet-updated" id="walletDemoUpdated">Updated 4 min ago</div>
           </div>
           <p>Balances, energy, and health status across all your TRON wallets — built for tracking and running a business. We never ask for private keys or seed phrases.</p>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_dashboard_open" class="card-cta">Open dashboard →</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_dashboard_open" class="card-cta">Open dashboard →</a>
         </div>
 
         <div class="card tag-mint span-2" style="grid-column: span 2;">
@@ -1880,7 +1879,7 @@
             </table>
           </div>
           <p class="fine">Not a legal document and does not establish the source of funds. Statement price: 0.01 TRX.</p>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_statements_generate" class="card-cta" style="margin-top:14px;">Generate a statement →</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=card_statements_generate" class="card-cta" style="margin-top:14px;">Generate a statement →</a>
         </div>
       </div>
     </div>
@@ -1900,7 +1899,7 @@
         <div>
           <h3>Up to 8%, recurring, on every order</h3>
           <p>Share your link. Every transfer, check, or statement your referrals pay for puts a cut back in your balance — for as long as they keep using GasFree4you.</p>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=banner_referral_link" class="btn btn-primary" style="margin-top:18px;">Get your referral link →</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=banner_referral_link" class="btn btn-primary" style="margin-top:18px;">Get your referral link →</a>
         </div>
         <div class="banner-stat">8%<span>commission per referral order</span></div>
       </div>
@@ -1932,7 +1931,7 @@
             <li><span>Energy calculator</span><b>Free</b></li>
             <li><span>Dashboard</span><b>Up to 5 wallets</b></li>
           </ul>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=pricing_basic" class="btn btn-ghost" style="width:100%; justify-content:center;">Get started free</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=pricing_basic" class="btn btn-ghost" style="width:100%; justify-content:center;">Get started free</a>
         </div>
 
         <div class="price-card price-card--featured">
@@ -1950,7 +1949,7 @@
             <li><span>Dashboard</span><b>Up to 25 wallets</b></li>
             <li><span>API access</span><b>All services</b></li>
           </ul>
-          <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=pricing_standard" class="btn btn-primary" style="width:100%; justify-content:center;">Upgrade to Standard</a>
+          <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=pricing_standard" class="btn btn-primary" style="width:100%; justify-content:center;">Upgrade to Standard</a>
         </div>
 
         <div class="price-card">
@@ -1970,7 +1969,7 @@
       <h2>Stop fighting TRON's plumbing.</h2>
       <p>Open the dashboard and run your first transfer in under a minute — energy delegated, screening on standby, statement waiting at the end of the month.</p>
       <div class="hero-ctas">
-        <a href="http://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=closing_open_dashboard" class="btn btn-primary">Open the dashboard</a>
+        <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=closing_open_dashboard" class="btn btn-primary">Open the dashboard</a>
         <button type="button" class="btn btn-ghost" onclick="document.getElementById('contactPopover').classList.add('open');document.getElementById('contactToggle').classList.add('open');">Talk to us</button>
       </div>
     </div>
@@ -2195,11 +2194,11 @@
     document.querySelectorAll(".lang-option").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===landingLang));
     const mobileSelect=document.getElementById("mobileLangSelect"); if(mobileSelect)mobileSelect.value=landingLang;
     const footer=document.getElementById("currentLangLabel"); if(footer)footer.textContent=({en:"EN",ru:"RU",id:"ID",es:"ES"})[landingLang];
-    if(save)localStorage.setItem("landing_lang",landingLang);
+    if(save){try{localStorage.setItem("landing_lang",landingLang);}catch(_){}}
     document.dispatchEvent(new CustomEvent("landinglanguagechange",{detail:{lang:landingLang}}));
   }
   function detectLandingLanguage(){
-    const saved=localStorage.getItem("landing_lang"); if(["en","ru","id","es"].includes(saved))return saved;
+    let saved=null; try{saved=localStorage.getItem("landing_lang");}catch(_){} if(["en","ru","id","es"].includes(saved))return saved;
     for(const value of (navigator.languages||[navigator.language||"en"])){
       const code=String(value).toLowerCase();
       if(code.startsWith("ru"))return "ru";
@@ -2374,10 +2373,9 @@
     },900);
   });
 
-  // cursor spotlight on service cards — desktop mouse only
+  // cursor spotlight on service cards
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasFineHoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (!reducedMotion && hasFineHoverPointer) {
+  if (!reducedMotion) {
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -2426,7 +2424,7 @@
         'Plan energy purchases ahead of a batch of transfers',
         'Works the same whether it’s one transfer or a hundred'
       ],
-      cta: { label: 'Open the calculator', href: 'http://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_energy_calculator' },
+      cta: { label: 'Open the calculator', href: 'https://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_energy_calculator' },
       shot: 'screenshots/energy.png'
     },
     aml: {
@@ -2439,7 +2437,7 @@
         'Built for one-off due diligence or screening every incoming payment',
         'Pay per check — no subscription required to stay protected'
       ],
-      cta: { label: 'Run a check', href: 'http://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_aml_check' },
+      cta: { label: 'Run a check', href: 'https://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_aml_check' },
       shot: 'screenshots/aml.png'
     },
     sanctions: {
@@ -2452,7 +2450,7 @@
         'Free on every plan, including Basic',
         'Takes seconds, not days'
       ],
-      cta: { label: 'Screen an address', href: 'http://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_sanctions_screen' },
+      cta: { label: 'Screen an address', href: 'https://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_sanctions_screen' },
       shot: 'screenshots/sanctions.png'
     },
     dashboard: {
@@ -2465,7 +2463,7 @@
         'Spot low-TRX or low-energy wallets before a transfer fails',
         'Read-only by design — we work from public addresses only'
       ],
-      cta: { label: 'Open dashboard', href: 'http://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_dashboard_open' },
+      cta: { label: 'Open dashboard', href: 'https://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_dashboard_open' },
       shot: 'screenshots/dashboard.png'
     },
     statements: {
@@ -2478,7 +2476,7 @@
         'Tag transactions and label counterparties (Standard plan)',
         '5 free statements a month, unlimited on Standard'
       ],
-      cta: { label: 'Generate a statement', href: 'http://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_statements_generate' },
+      cta: { label: 'Generate a statement', href: 'https://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_statements_generate' },
       shot: 'screenshots/statements.png'
     },
     referrals: {
@@ -2491,7 +2489,7 @@
         'No cap on how many people you refer',
         'Commission tracked automatically in your dashboard'
       ],
-      cta: { label: 'Get your referral link', href: 'http://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_referral_link' },
+      cta: { label: 'Get your referral link', href: 'https://user.gasfree4you.com/?utm_source=landing&utm_medium=cta&utm_campaign=operational_layer&utm_content=modal_referral_link' },
       shot: 'screenshots/referrals.png'
     }
   };
@@ -2582,6 +2580,54 @@
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape' && modalOverlay.classList.contains('open')) closeServiceModal();
   });
+
+
+  // Mobile fast-tap bridge.
+  // iOS Safari and some in-app browsers can consume the first tap as a hover/focus tap.
+  // For a short, non-scrolling touch we suppress the compatibility click and fire one click immediately.
+  (() => {
+    if (!(('ontouchstart' in window) || navigator.maxTouchPoints > 0)) return;
+
+    const selector = 'a[href], button, [role="button"]';
+    let target = null;
+    let startX = 0;
+    let startY = 0;
+    let startTime = 0;
+    let moved = false;
+
+    document.addEventListener('touchstart', (event) => {
+      if (event.touches.length !== 1) { target = null; return; }
+      const el = event.target.closest?.(selector);
+      if (!el || el.disabled) { target = null; return; }
+      target = el;
+      startX = event.touches[0].clientX;
+      startY = event.touches[0].clientY;
+      startTime = Date.now();
+      moved = false;
+    }, { passive: true, capture: true });
+
+    document.addEventListener('touchmove', (event) => {
+      if (!target || event.touches.length !== 1) return;
+      const dx = Math.abs(event.touches[0].clientX - startX);
+      const dy = Math.abs(event.touches[0].clientY - startY);
+      if (dx > 10 || dy > 10) moved = true;
+    }, { passive: true, capture: true });
+
+    document.addEventListener('touchcancel', () => { target = null; moved = false; }, { passive: true, capture: true });
+
+    document.addEventListener('touchend', (event) => {
+      const el = target;
+      target = null;
+      if (!el || moved || (Date.now() - startTime) > 650) return;
+      if (!document.contains(el) || el.disabled) return;
+
+      // Do not hijack modified/multi-touch gestures.
+      if (event.changedTouches.length !== 1) return;
+
+      event.preventDefault();
+      el.click();
+    }, { passive: false, capture: true });
+  })();
 </script>
 
 </body>
