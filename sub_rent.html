@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#060a0d" />
+  <title>GasFree4you — TRON Energy Sub-rental</title>
+  <meta name="description" content="Start your own TRON Energy rental business with GasFree4you. Set your price, keep the spread, and let GasFree4you handle Energy fulfillment." />
+  <style>
+    :root{
+      --bg:#060a0d;
+      --bg-2:#091016;
+      --panel:#0b1218;
+      --panel-2:#0f1820;
+      --panel-3:#121f28;
+      --line:rgba(255,255,255,.085);
+      --line-strong:rgba(255,255,255,.15);
+      --text:#f7f9fb;
+      --muted:#8796a5;
+      --soft:#c6d0d9;
+      --money:#6ef0a9;
+      --money-2:#23d77c;
+      --blue:#55b7ff;
+      --danger:#ff6f7c;
+      --warn:#ffd27d;
+      --shadow:0 26px 90px rgba(0,0,0,.42);
+      --shadow-green:0 18px 60px rgba(35,215,124,.14);
+      --radius:24px;
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(760px 420px at 76% 3%, rgba(54,231,146,.11), transparent 63%),
+        radial-gradient(620px 520px at 8% 27%, rgba(85,183,255,.06), transparent 68%),
+        linear-gradient(180deg,#060a0d 0%,#070c10 48%,#060a0d 100%);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.26;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:44px 44px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.85),transparent 78%);
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+
+    .nav-wrap{
+      position:sticky;top:0;z-index:50;
+      background:rgba(6,10,13,.76);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.055);
+    }
+    nav{height:72px;display:flex;align-items:center;gap:22px}
+    .brand{font-weight:900;letter-spacing:-.04em;font-size:20px;white-space:nowrap}
+    .brand span{color:var(--money)}
+    .nav-links{display:flex;align-items:center;gap:22px;margin-left:18px;color:var(--muted);font-size:13px;font-weight:700}
+    .nav-links a{transition:.18s ease}
+    .nav-links a:hover{color:var(--text)}
+    .nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+    .lang{display:flex;padding:3px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.02)}
+    .lang button{border:0;background:transparent;color:var(--muted);padding:7px 9px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:900}
+    .lang button.active{background:#121b22;color:var(--text);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:12px;padding:12px 17px;font-weight:900;font-size:14px;border:1px solid var(--line);transition:.2s ease;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--money),#34df8a);border-color:transparent;color:#03120b;box-shadow:0 10px 30px rgba(35,215,124,.13)}
+    .btn.primary:hover{transform:translateY(-1px);box-shadow:0 16px 36px rgba(35,215,124,.2)}
+    .btn.secondary{background:rgba(255,255,255,.025);color:var(--soft)}
+    .btn.secondary:hover{border-color:var(--line-strong);color:var(--text);background:rgba(255,255,255,.04)}
+
+    .eyebrow{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:950;letter-spacing:.16em;text-transform:uppercase;color:var(--money)}
+    .eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--money);box-shadow:0 0 18px rgba(110,240,169,.6)}
+
+    .hero{padding:92px 0 62px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:68px;align-items:center}
+    h1{font-size:clamp(52px,6.6vw,88px);line-height:.93;letter-spacing:-.065em;margin:18px 0 0;max-width:760px}
+    h1 .money-word{color:var(--money);text-shadow:0 0 38px rgba(110,240,169,.13)}
+    .hero-copy>p{font-size:clamp(18px,1.8vw,22px);color:var(--muted);max-width:700px;margin:26px 0 0}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+    .hero-note{margin-top:18px;color:#738291;font-size:12px}
+
+    .business-card{
+      position:relative;
+      border:1px solid rgba(110,240,169,.16);
+      border-radius:28px;
+      background:
+        radial-gradient(420px 210px at 90% 0%,rgba(110,240,169,.10),transparent 68%),
+        linear-gradient(180deg,rgba(17,28,35,.96),rgba(8,14,18,.97));
+      box-shadow:var(--shadow),var(--shadow-green);
+      overflow:hidden;
+      min-height:535px;
+    }
+    .business-card:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.055)}
+    .business-top{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .live{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:950;letter-spacing:.12em;color:var(--soft)}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--money);box-shadow:0 0 14px rgba(110,240,169,.7)}
+    .status-pill{font-size:11px;color:#b7c4ce;border:1px solid var(--line);padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.025)}
+
+    .business-body{padding:26px}
+    .balance-label{font-size:12px;color:var(--muted);font-weight:800}
+    .earnings{display:flex;align-items:flex-end;gap:10px;margin-top:4px}
+    .earnings strong{font-size:56px;line-height:1;font-weight:950;letter-spacing:-.065em;color:var(--money)}
+    .earnings span{font-size:17px;color:var(--soft);font-weight:900;padding-bottom:6px}
+    .earnings-sub{font-size:12px;color:var(--muted);margin-top:8px}
+
+    .order-card{margin-top:26px;border:1px solid var(--line);border-radius:18px;background:rgba(2,8,11,.52);overflow:hidden}
+    .order-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 16px;border-bottom:1px solid var(--line)}
+    .order-head strong{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .complete{font-size:11px;font-weight:900;color:var(--money);background:rgba(110,240,169,.07);border:1px solid rgba(110,240,169,.14);padding:5px 8px;border-radius:999px}
+    .ledger{padding:4px 16px}
+    .ledger-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .ledger-row:last-child{border-bottom:0}
+    .ledger-label{font-size:12px;color:var(--muted)}
+    .ledger-label b{display:block;color:var(--soft);font-size:14px;margin-top:1px}
+    .ledger-value{font-size:17px;font-weight:900;letter-spacing:-.03em}
+    .ledger-row.yours{margin:8px -8px;padding:15px 8px;border-radius:12px;border-bottom:0;background:linear-gradient(90deg,rgba(110,240,169,.09),rgba(110,240,169,.025))}
+    .ledger-row.yours .ledger-label b,.ledger-row.yours .ledger-value{color:var(--money)}
+    .order-foot{padding:13px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px}
+
+    .floating-profit{position:absolute;right:20px;top:100px;padding:10px 13px;border-radius:13px;background:#13291f;border:1px solid rgba(110,240,169,.22);box-shadow:0 16px 36px rgba(0,0,0,.3);transform:rotate(2deg)}
+    .floating-profit small{display:block;color:#88ac9a;font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .floating-profit b{display:block;color:var(--money);font-size:19px;margin-top:1px}
+
+    .money-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.018);margin-top:60px;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+    .money-stat{padding:22px 24px;border-right:1px solid var(--line)}
+    .money-stat:last-child{border-right:0}
+    .money-stat strong{display:block;font-size:28px;line-height:1;font-weight:950;letter-spacing:-.045em}
+    .money-stat strong.green{color:var(--money)}
+    .money-stat span{display:block;color:var(--muted);font-size:12px;margin-top:7px;max-width:210px}
+
+    section{padding:88px 0;border-top:1px solid rgba(255,255,255,.055)}
+    .section-head{display:grid;grid-template-columns:.64fr 1.36fr;gap:52px;align-items:start;margin-bottom:38px}
+    .section-kicker{font-size:11px;font-weight:950;letter-spacing:.16em;text-transform:uppercase;color:#7f8e9c;padding-top:7px}
+    h2{font-size:clamp(36px,4.4vw,60px);line-height:1;letter-spacing:-.05em;margin:0}
+    .section-intro{color:var(--muted);font-size:18px;margin:15px 0 0;max-width:790px}
+
+    .card{position:relative;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.033),rgba(255,255,255,.014));overflow:hidden}
+    .card:before{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+    .card:hover{border-color:rgba(255,255,255,.135)}
+
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{padding:24px;min-height:310px;display:flex;flex-direction:column}
+    .step-top{display:flex;align-items:center;justify-content:space-between}
+    .step-no{font-size:11px;font-weight:950;letter-spacing:.12em;color:var(--money)}
+    .step-icon{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--soft);background:rgba(255,255,255,.025);font-size:14px;font-weight:900}
+    .step h3{font-size:21px;letter-spacing:-.03em;margin:auto 0 9px}
+    .step p{color:var(--muted);margin:0;font-size:14px}
+    .step .step-line{height:1px;background:linear-gradient(90deg,rgba(110,240,169,.55),transparent);margin:24px 0}
+
+    .money-section{position:relative}
+    .money-section:after{content:"";position:absolute;left:50%;top:16%;width:760px;height:420px;transform:translateX(-10%);background:radial-gradient(circle,rgba(110,240,169,.055),transparent 67%);pointer-events:none}
+    .economics{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;position:relative;z-index:1}
+    .profit-card{padding:31px;background:
+      radial-gradient(500px 240px at 100% 0,rgba(110,240,169,.08),transparent 65%),
+      linear-gradient(180deg,rgba(16,27,34,.96),rgba(10,16,21,.96));
+      border-color:rgba(110,240,169,.13)}
+    .mini-kicker{font-size:11px;font-weight:950;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .profit-card h3{font-size:27px;letter-spacing:-.035em;margin:8px 0 0}
+    .profit-stack{margin-top:26px;border-top:1px solid var(--line)}
+    .profit-line{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:19px 0;border-bottom:1px solid var(--line)}
+    .profit-line .meta{color:var(--muted);font-size:12px}
+    .profit-line .meta b{display:block;color:var(--soft);font-size:15px;margin-top:3px}
+    .profit-line .num{font-size:31px;font-weight:950;letter-spacing:-.05em}
+    .profit-line.highlight{margin:13px -13px 0;padding:18px 13px;border-bottom:0;border-radius:15px;background:linear-gradient(90deg,rgba(110,240,169,.10),rgba(110,240,169,.025));border:1px solid rgba(110,240,169,.12)}
+    .profit-line.highlight .meta b,.profit-line.highlight .num{color:var(--money)}
+    .profit-line.highlight .num{font-size:38px}
+    .profit-caption{margin-top:14px;color:#70808e;font-size:11px;line-height:1.55}
+
+    .calc-card{padding:31px;display:flex;flex-direction:column;min-height:100%}
+    .calc-card h3{font-size:27px;letter-spacing:-.035em;margin:8px 0 0}
+    .calc-controls{margin-top:30px}
+    .calc-label{display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-size:12px;font-weight:800}
+    .calc-label strong{color:var(--text);font-size:15px}
+    .range{width:100%;accent-color:var(--money);margin:16px 0 7px}
+    .range-labels{display:flex;justify-content:space-between;color:#61707d;font-size:10px}
+    .income-panel{margin-top:auto;padding-top:28px}
+    .income-panel small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:950}
+    .income-value{font-size:58px;line-height:1;font-weight:950;letter-spacing:-.065em;color:var(--money);margin-top:7px}
+    .income-value span{font-size:20px;letter-spacing:-.02em;color:#b5cabf}
+    .income-note{color:var(--muted);font-size:12px;margin-top:9px}
+    .volume-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+    .volume-item{border:1px solid var(--line);border-radius:13px;padding:13px;background:rgba(255,255,255,.018)}
+    .volume-item small{display:block;color:#6f7f8d;font-size:10px;text-transform:none;letter-spacing:0;font-weight:700}
+    .volume-item b{display:block;margin-top:4px;font-size:17px;color:var(--soft)}
+
+    .notice{margin-top:16px;border:1px solid rgba(255,210,125,.14);background:rgba(255,210,125,.045);border-radius:15px;padding:16px 18px;color:#d9c79d;font-size:12px}
+
+    .audience{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .audience-card{padding:26px;min-height:265px;display:flex;flex-direction:column}
+    .audience-icon{width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.025);display:flex;align-items:center;justify-content:center;font-weight:950;color:var(--money)}
+    .audience-card h3{font-size:21px;letter-spacing:-.03em;margin:auto 0 8px}
+    .audience-card p{margin:0;color:var(--muted);font-size:14px}
+
+    .noncustody{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+    .flow-visual{padding:28px;min-height:430px;background:
+      radial-gradient(360px 220px at 12% 16%,rgba(85,183,255,.055),transparent 68%),
+      linear-gradient(180deg,rgba(255,255,255,.028),rgba(255,255,255,.012))}
+    .visual-title{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:950;color:var(--muted)}
+    .flow-stack{display:grid;gap:10px;margin-top:24px}
+    .flow-node{display:grid;grid-template-columns:42px 1fr auto;gap:13px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:13px;background:rgba(3,9,12,.48)}
+    .node-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.035);border:1px solid var(--line);font-size:13px;font-weight:900;color:var(--soft)}
+    .flow-node b{display:block;font-size:13px}
+    .flow-node span{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+    .node-right{font-size:11px;font-weight:900;color:var(--money);text-align:right}
+    .flow-arrow{height:13px;margin-left:20px;border-left:1px dashed rgba(110,240,169,.35)}
+    .key-note{margin-top:18px;display:flex;gap:11px;border:1px solid rgba(110,240,169,.12);background:rgba(110,240,169,.04);border-radius:14px;padding:14px;color:#bcd5c7;font-size:12px}
+    .key-note b{color:var(--money)}
+
+    .ownership-card{padding:29px}
+    .ownership-card h3{font-size:27px;letter-spacing:-.035em;margin:8px 0 22px}
+    .ownership{display:grid;gap:9px}
+    .own-row{display:grid;grid-template-columns:30px 1fr;gap:11px;align-items:start;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+    .own-row:last-child{border-bottom:0}
+    .own-check{width:26px;height:26px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(110,240,169,.07);border:1px solid rgba(110,240,169,.1);color:var(--money);font-size:12px;font-weight:950}
+    .own-row p{margin:1px 0 0;color:var(--soft);font-size:13px}
+
+    .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .rule{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:22px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.018)}
+    .rule-badge{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(85,183,255,.06);border:1px solid rgba(85,183,255,.10);color:var(--blue);font-weight:950}
+    .rule.bad .rule-badge{background:rgba(255,111,124,.06);border-color:rgba(255,111,124,.11);color:var(--danger)}
+    .rule h3{font-size:16px;margin:0 0 5px;letter-spacing:-.01em}
+    .rule p{margin:0;color:var(--muted);font-size:13px}
+
+    .cta{padding:94px 0 112px}
+    .cta-box{position:relative;overflow:hidden;padding:50px;border:1px solid rgba(110,240,169,.14);border-radius:28px;background:
+      radial-gradient(600px 300px at 82% 25%,rgba(110,240,169,.115),transparent 70%),
+      linear-gradient(180deg,rgba(18,30,37,.95),rgba(8,14,18,.97));box-shadow:var(--shadow)}
+    .cta-box:after{content:"+0.5 TRX";position:absolute;right:48px;bottom:-24px;font-size:108px;font-weight:950;letter-spacing:-.07em;color:rgba(110,240,169,.035);white-space:nowrap;pointer-events:none}
+    .cta-box h2{max-width:760px;margin-top:12px}
+    .cta-box p{color:var(--muted);font-size:18px;max-width:720px;margin:18px 0 28px}
+
+    footer{padding:34px 0 46px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    .footer-row{display:flex;justify-content:space-between;gap:24px;align-items:center}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+
+    @media(max-width:1000px){
+      .hero-grid{grid-template-columns:1fr;gap:42px}
+      .business-card{max-width:650px}
+      .money-strip,.flow{grid-template-columns:1fr 1fr}
+      .money-stat:nth-child(2){border-right:0}
+      .money-stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .economics,.noncustody{grid-template-columns:1fr}
+      .section-head{grid-template-columns:1fr;gap:12px}
+    }
+
+    @media(max-width:760px){
+      .nav-links{display:none}
+      .audience,.rules{grid-template-columns:1fr}
+      .hero{padding-top:66px}
+      h1{font-size:58px}
+      .cta-box:after{font-size:68px;right:18px}
+    }
+
+    @media(max-width:560px){
+      .container{width:min(var(--max),calc(100% - 24px))}
+      nav{height:64px;gap:10px}.brand{font-size:18px}.nav-actions .btn{display:none}
+      .hero{padding:50px 0 48px}.hero-grid{gap:32px}h1{font-size:46px}.hero-copy>p{font-size:16px}.hero-actions{margin-top:25px}
+      .business-card{min-height:auto;border-radius:22px}.business-body{padding:20px}.earnings strong{font-size:46px}.floating-profit{display:none}
+      .money-strip,.flow{grid-template-columns:1fr}.money-stat{border-right:0;border-bottom:1px solid var(--line)}.money-stat:nth-child(2){border-right:0}.money-stat:last-child{border-bottom:0}.money-stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      section{padding:64px 0}.section-head{margin-bottom:28px}h2{font-size:38px}.section-intro{font-size:16px}
+      .step{min-height:250px}.profit-card,.calc-card,.flow-visual,.ownership-card{padding:22px}
+      .profit-line .num{font-size:25px}.profit-line.highlight .num{font-size:31px}.income-value{font-size:48px}
+      .volume-grid{grid-template-columns:1fr}.cta{padding:64px 0 76px}.cta-box{padding:28px 22px}.cta-box:after{display:none}.footer-row{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a class="brand" href="https://www.gasfree4you.com/">GasFree<span>4you</span></a>
+        <div class="nav-links">
+          <a href="#how" data-en="How it works" data-ru="Как это работает">How it works</a>
+          <a href="#profit" data-en="Profit" data-ru="Доход">Profit</a>
+          <a href="#wallet" data-en="Non-custodial" data-ru="Non-custodial">Non-custodial</a>
+          <a href="#rules" data-en="Rules" data-ru="Ограничения">Rules</a>
+        </div>
+        <div class="nav-actions">
+          <div class="lang" aria-label="Language switcher">
+            <button id="enBtn" class="active" type="button">EN</button>
+            <button id="ruBtn" type="button">RU</button>
+          </div>
+          <a class="btn primary" href="https://user.gasfree4you.com/" target="_blank" rel="noopener" data-en="Open the app" data-ru="Открыть кабинет">Open the app</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <header class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow" data-en="ENERGY SUB-RENTAL · BUILT FOR RESELLERS" data-ru="САБАРЕНДА ENERGY · ДЛЯ РЕСЕЛЛЕРОВ">ENERGY SUB-RENTAL · BUILT FOR RESELLERS</div>
+            <h1 data-en="Sell Energy. Keep the spread." data-ru="Продавайте Energy. Разницу оставляйте себе.">Sell Energy. <span class="money-word">Keep the spread.</span></h1>
+            <p data-en="Launch your own TRON Energy service without owning Energy or building infrastructure. Set your customer price, share your dedicated wallet, and earn on every completed order." data-ru="Запустите свой сервис аренды TRON Energy без собственного запаса Energy и без разработки инфраструктуры. Установите цену, дайте клиентам свой отдельный кошелёк и зарабатывайте на каждом выполненном заказе.">Launch your own TRON Energy service without owning Energy or building infrastructure. Set your customer price, share your dedicated wallet, and earn on every completed order.</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="https://user.gasfree4you.com/" target="_blank" rel="noopener" data-en="Start with 10 TRX →" data-ru="Начать с 10 TRX →">Start with 10 TRX →</a>
+              <a class="btn secondary" href="#profit" data-en="See the economics" data-ru="Посмотреть экономику">See the economics</a>
+            </div>
+            <div class="hero-note" data-en="No private keys. No custody of customer USDT. No delegation infrastructure to maintain." data-ru="Без приватных ключей. Без хранения USDT клиентов. Без собственной инфраструктуры делегирования.">No private keys. No custody of customer USDT. No delegation infrastructure to maintain.</div>
+          </div>
+
+          <div class="business-card" aria-label="Example completed Energy order">
+            <div class="business-top">
+              <div class="live"><span class="live-dot"></span><span data-en="RESELLER BUSINESS" data-ru="БИЗНЕС РЕСЕЛЛЕРА">RESELLER BUSINESS</span></div>
+              <div class="status-pill" data-en="Automatic fulfillment" data-ru="Автовыполнение">Automatic fulfillment</div>
+            </div>
+            <div class="floating-profit"><small data-en="your margin" data-ru="ваша прибыль">your margin</small><b>+0.5 TRX</b></div>
+            <div class="business-body">
+              <div class="balance-label" data-en="Example gross earnings · 100 orders" data-ru="Пример валового дохода · 100 заказов">Example gross earnings · 100 orders</div>
+              <div class="earnings"><strong>+50</strong><span>TRX</span></div>
+              <div class="earnings-sub" data-en="at 0.5 TRX gross profit per completed order" data-ru="при 0.5 TRX валовой прибыли с выполненного заказа">at 0.5 TRX gross profit per completed order</div>
+
+              <div class="order-card">
+                <div class="order-head">
+                  <strong data-en="Latest Energy order" data-ru="Последний заказ Energy">Latest Energy order</strong>
+                  <span class="complete" data-en="COMPLETED" data-ru="ВЫПОЛНЕН">COMPLETED</span>
+                </div>
+                <div class="ledger">
+                  <div class="ledger-row">
+                    <div class="ledger-label" data-en="Customer pays" data-ru="Клиент платит"><b data-en="Your retail price" data-ru="Ваша цена">Your retail price</b></div>
+                    <div class="ledger-value">3.00 TRX</div>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="ledger-label" data-en="GasFree4you charges" data-ru="GasFree4you списывает"><b data-en="Your reseller cost" data-ru="Ваша себестоимость">Your reseller cost</b></div>
+                    <div class="ledger-value">2.50 TRX</div>
+                  </div>
+                  <div class="ledger-row yours">
+                    <div class="ledger-label" data-en="You keep" data-ru="Остаётся вам"><b data-en="Gross profit" data-ru="Валовая прибыль">Gross profit</b></div>
+                    <div class="ledger-value">+0.50 TRX</div>
+                  </div>
+                </div>
+                <div class="order-foot"><span data-en="Energy delegated automatically" data-ru="Energy делегирована автоматически">Energy delegated automatically</span><span>65,000 Energy</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="money-strip">
+          <div class="money-stat"><strong class="green">10 TRX</strong><span data-en="Minimum practical starting balance" data-ru="Практический стартовый баланс">Minimum practical starting balance</span></div>
+          <div class="money-stat"><strong class="green" data-en="up to 25%" data-ru="до 25%">up to 25%</strong><span data-en="Potential gross profit per order*" data-ru="Потенциальная валовая прибыль с заказа*">Potential gross profit per order*</span></div>
+          <div class="money-stat"><strong>0 keys</strong><span data-en="Private keys and seed phrases stay with you" data-ru="Приватные ключи и seed-фразы остаются у вас">Private keys and seed phrases stay with you</span></div>
+          <div class="money-stat"><strong>24/7</strong><span data-en="On-chain payment detection and fulfillment" data-ru="Отслеживание платежей и выполнение заказов">On-chain payment detection and fulfillment</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="how">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-en="HOW IT WORKS" data-ru="КАК ЭТО РАБОТАЕТ">HOW IT WORKS</div>
+          <div>
+            <h2 data-en="Four steps from zero to your first paid order." data-ru="Четыре шага до первого платного заказа.">Four steps from zero to your first paid order.</h2>
+            <p class="section-intro" data-en="You bring the customers and set the price. GasFree4you handles the infrastructure behind the order — payment detection, checks and Energy delegation." data-ru="Вы приводите клиентов и устанавливаете цену. GasFree4you берёт на себя инфраструктуру заказа — отслеживание платежа, проверки и делегирование Energy.">You bring the customers and set the price. GasFree4you handles the infrastructure behind the order — payment detection, checks and Energy delegation.</p>
+          </div>
+        </div>
+
+        <div class="flow">
+          <article class="card step">
+            <div class="step-top"><span class="step-no">STEP 01</span><span class="step-icon">W</span></div><div class="step-line"></div>
+            <h3 data-en="Create a dedicated wallet" data-ru="Создайте отдельный кошелёк">Create a dedicated wallet</h3>
+            <p data-en="Create a separate non-custodial TRON wallet that you fully control. This wallet becomes the payment point for your Energy customers." data-ru="Создайте отдельный non-custodial TRON-кошелёк, который полностью контролируете вы. На него ваши клиенты будут оплачивать Energy.">Create a separate non-custodial TRON wallet that you fully control. This wallet becomes the payment point for your Energy customers.</p>
+          </article>
+          <article class="card step">
+            <div class="step-top"><span class="step-no">STEP 02</span><span class="step-icon">+</span></div><div class="step-line"></div>
+            <h3 data-en="Add it to Sub-rental" data-ru="Добавьте его в Сабаренду">Add it to Sub-rental</h3>
+            <p data-en="Add the public address in your GasFree4you dashboard and set the price your customers will pay for an Energy order." data-ru="Добавьте публичный адрес в разделе Сабаренда и установите цену, которую клиент будет платить за заказ Energy.">Add the public address in your GasFree4you dashboard and set the price your customers will pay for an Energy order.</p>
+          </article>
+          <article class="card step">
+            <div class="step-top"><span class="step-no">STEP 03</span><span class="step-icon">₮</span></div><div class="step-line"></div>
+            <h3 data-en="Fund from 10 TRX" data-ru="Пополните от 10 TRX">Fund from 10 TRX</h3>
+            <p data-en="Keep a reseller balance in GasFree4you. The wholesale cost of fulfilled Energy orders is deducted from this balance." data-ru="Пополните баланс реселлера в GasFree4you. С него списывается ваша себестоимость каждого выполненного заказа Energy.">Keep a reseller balance in GasFree4you. The wholesale cost of fulfilled Energy orders is deducted from this balance.</p>
+          </article>
+          <article class="card step">
+            <div class="step-top"><span class="step-no">STEP 04</span><span class="step-icon">→</span></div><div class="step-line"></div>
+            <h3 data-en="Share the wallet. Earn." data-ru="Дайте адрес клиентам. Зарабатывайте.">Share the wallet. Earn.</h3>
+            <p data-en="A customer pays your wallet, the order is detected on-chain, GasFree4you fulfills it, and your margin stays with you." data-ru="Клиент платит на ваш кошелёк, система видит заказ в сети, GasFree4you выполняет его, а ваша маржа остаётся у вас.">A customer pays your wallet, the order is detected on-chain, GasFree4you fulfills it, and your margin stays with you.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="profit" class="money-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-en="UNIT ECONOMICS" data-ru="ЭКОНОМИКА">UNIT ECONOMICS</div>
+          <div>
+            <h2 data-en="Every completed order has a spread." data-ru="В каждом выполненном заказе есть ваша маржа.">Every completed order has a spread.</h2>
+            <p class="section-intro" data-en="You set the retail price. GasFree4you charges the current reseller rate. The difference is your gross profit." data-ru="Вы устанавливаете розничную цену. GasFree4you списывает текущую цену для реселлера. Разница — ваша валовая прибыль.">You set the retail price. GasFree4you charges the current reseller rate. The difference is your gross profit.</p>
+          </div>
+        </div>
+
+        <div class="economics">
+          <div class="card profit-card">
+            <div class="mini-kicker" data-en="EXAMPLE · ONE 65K ENERGY ORDER" data-ru="ПРИМЕР · ОДИН ЗАКАЗ 65K ENERGY">EXAMPLE · ONE 65K ENERGY ORDER</div>
+            <h3 data-en="One simple order. Three numbers." data-ru="Один заказ. Три цифры.">One simple order. Three numbers.</h3>
+            <div class="profit-stack">
+              <div class="profit-line"><div class="meta" data-en="Customer payment" data-ru="Платёж клиента"><b data-en="Your selling price" data-ru="Ваша цена продажи">Your selling price</b></div><div class="num">3.00 TRX</div></div>
+              <div class="profit-line"><div class="meta" data-en="Fulfillment cost" data-ru="Себестоимость"><b data-en="GasFree4you reseller price" data-ru="Цена GasFree4you для реселлера">GasFree4you reseller price</b></div><div class="num">2.50 TRX</div></div>
+              <div class="profit-line highlight"><div class="meta" data-en="Gross profit" data-ru="Валовая прибыль"><b data-en="Stays with you" data-ru="Остаётся у вас">Stays with you</b></div><div class="num">+0.50 TRX</div></div>
+            </div>
+            <div class="profit-caption" data-en="Example only. Actual reseller cost and gross profit can vary by order type, market conditions and the customer price you configure." data-ru="Это пример. Фактическая себестоимость и валовая прибыль могут отличаться в зависимости от типа заказа, рыночной стоимости Energy и установленной вами цены.">Example only. Actual reseller cost and gross profit can vary by order type, market conditions and the customer price you configure.</div>
+          </div>
+
+          <div class="card calc-card">
+            <div class="mini-kicker" data-en="EARNINGS CALCULATOR" data-ru="КАЛЬКУЛЯТОР ДОХОДА">EARNINGS CALCULATOR</div>
+            <h3 data-en="What if your audience uses it regularly?" data-ru="Что если клиенты пользуются регулярно?">What if your audience uses it regularly?</h3>
+            <div class="calc-controls">
+              <div class="calc-label"><span data-en="Completed orders" data-ru="Выполненных заказов">Completed orders</span><strong id="ordersLabel">100</strong></div>
+              <input id="orders" class="range" type="range" min="10" max="2000" step="10" value="100" />
+              <div class="range-labels"><span>10</span><span>500</span><span>1,000</span><span>2,000</span></div>
+            </div>
+            <div class="income-panel">
+              <small data-en="Example gross profit" data-ru="Пример валовой прибыли">Example gross profit</small>
+              <div class="income-value"><span id="profitValue">50</span> <span>TRX</span></div>
+              <div class="income-note" data-en="Calculated at 0.5 TRX gross profit per completed order." data-ru="Расчёт при 0.5 TRX валовой прибыли с каждого выполненного заказа.">Calculated at 0.5 TRX gross profit per completed order.</div>
+              <div class="volume-grid">
+                <div class="volume-item"><small data-en="100 orders" data-ru="100 заказов">100 orders</small><b>50 TRX</b></div>
+                <div class="volume-item"><small data-en="500 orders" data-ru="500 заказов">500 orders</small><b>250 TRX</b></div>
+                <div class="volume-item"><small data-en="1,000 orders" data-ru="1 000 заказов">1,000 orders</small><b>500 TRX</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="notice" data-en="*“Up to 25%” is a potential gross profit figure, not a guaranteed return. Actual results depend on the price you set, current reseller pricing, order type and your own operating costs. Reseller pricing may change from order to order." data-ru="*«До 25%» — потенциальная валовая прибыль, а не гарантированная доходность. Фактический результат зависит от установленной вами цены, текущего тарифа реселлера, типа заказа и ваших расходов. Цена для реселлера может меняться от заказа к заказу.">*“Up to 25%” is a potential gross profit figure, not a guaranteed return. Actual results depend on the price you set, current reseller pricing, order type and your own operating costs. Reseller pricing may change from order to order.</div>
+      </div>
+    </section>
+
+    <section id="audience">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-en="WHO IT IS FOR" data-ru="ДЛЯ КОГО">WHO IT IS FOR</div>
+          <div>
+            <h2 data-en="Best when you already have access to demand." data-ru="Лучше всего работает, когда у вас уже есть спрос.">Best when you already have access to demand.</h2>
+            <p class="section-intro" data-en="Sub-rental is for people who know users making USDT-TRC20 transfers and want to turn that existing flow into a simple paid service." data-ru="Сабаренда подходит тем, кто знает пользователей, регулярно переводящих USDT-TRC20, и хочет превратить этот существующий поток в простой платный сервис.">Sub-rental is for people who know users making USDT-TRC20 transfers and want to turn that existing flow into a simple paid service.</p>
+          </div>
+        </div>
+        <div class="audience">
+          <article class="card audience-card"><div class="audience-icon">A</div><h3 data-en="You have an audience" data-ru="У вас есть аудитория">You have an audience</h3><p data-en="Telegram channel, community, crypto chat, blog or other audience where people regularly transfer USDT on TRON." data-ru="Telegram-канал, сообщество, крипто-чат, блог или другая аудитория, где люди регулярно переводят USDT в сети TRON.">Telegram channel, community, crypto chat, blog or other audience where people regularly transfer USDT on TRON.</p></article>
+          <article class="card audience-card"><div class="audience-icon">C</div><h3 data-en="You have clients or contacts" data-ru="У вас есть клиенты или знакомые">You have clients or contacts</h3><p data-en="Friends, clients or counterparties frequently send USDT-TRC20 and currently pay the standard network fee." data-ru="Друзья, клиенты или контрагенты часто отправляют USDT-TRC20 и сейчас платят стандартную комиссию сети.">Friends, clients or counterparties frequently send USDT-TRC20 and currently pay the standard network fee.</p></article>
+          <article class="card audience-card"><div class="audience-icon">B</div><h3 data-en="You run a crypto business" data-ru="У вас есть крипто-бизнес">You run a crypto business</h3><p data-en="An exchanger, OTC desk, payments service or community can add Energy as another revenue line without building a backend." data-ru="Обменник, OTC, платёжный сервис или сообщество может добавить Energy как дополнительный источник выручки без разработки своего backend.">An exchanger, OTC desk, payments service or community can add Energy as another revenue line without building a backend.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="wallet">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-en="NON-CUSTODIAL BY DESIGN" data-ru="NON-CUSTODIAL ПО УМОЛЧАНИЮ">NON-CUSTODIAL BY DESIGN</div>
+          <div>
+            <h2 data-en="Your wallet. Your keys. Your money." data-ru="Ваш кошелёк. Ваши ключи. Ваши деньги.">Your wallet. Your keys. Your money.</h2>
+            <p class="section-intro" data-en="GasFree4you does not need access to your wallet. We monitor the public address, detect qualifying payments and delegate Energy. Private keys, signing rights and customer funds remain outside our control." data-ru="GasFree4you не нужен доступ к вашему кошельку. Мы отслеживаем публичный адрес, определяем подходящие платежи и делегируем Energy. Приватные ключи, право подписи и деньги клиентов остаются вне нашего контроля.">GasFree4you does not need access to your wallet. We monitor the public address, detect qualifying payments and delegate Energy. Private keys, signing rights and customer funds remain outside our control.</p>
+          </div>
+        </div>
+
+        <div class="noncustody">
+          <div class="card flow-visual">
+            <div class="visual-title" data-en="WHAT HAPPENS TO THE MONEY" data-ru="КАК ДВИГАЮТСЯ ДЕНЬГИ">WHAT HAPPENS TO THE MONEY</div>
+            <div class="flow-stack">
+              <div class="flow-node"><div class="node-icon">1</div><div><b data-en="Customer sends TRX" data-ru="Клиент отправляет TRX">Customer sends TRX</b><span data-en="Payment for your Energy service" data-ru="Оплата вашей услуги Energy">Payment for your Energy service</span></div><div class="node-right" data-en="TO YOU" data-ru="ВАМ">TO YOU</div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-node"><div class="node-icon">2</div><div><b data-en="Your dedicated wallet" data-ru="Ваш отдельный кошелёк">Your dedicated wallet</b><span data-en="Non-custodial · fully controlled by you" data-ru="Non-custodial · полностью под вашим контролем">Non-custodial · fully controlled by you</span></div><div class="node-right" data-en="YOUR KEYS" data-ru="ВАШИ КЛЮЧИ">YOUR KEYS</div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-node"><div class="node-icon">3</div><div><b data-en="GasFree4you detects the payment" data-ru="GasFree4you видит платёж">GasFree4you detects the payment</b><span data-en="Public blockchain monitoring only" data-ru="Только мониторинг публичного блокчейна">Public blockchain monitoring only</span></div><div class="node-right" data-en="NO ACCESS" data-ru="БЕЗ ДОСТУПА">NO ACCESS</div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-node"><div class="node-icon">4</div><div><b data-en="Energy is delegated" data-ru="Energy делегируется">Energy is delegated</b><span data-en="To the wallet that needs the USDT transfer" data-ru="На кошелёк, которому нужна Energy для перевода USDT">To the wallet that needs the USDT transfer</span></div><div class="node-right" data-en="FULFILLED" data-ru="ГОТОВО">FULFILLED</div></div>
+            </div>
+            <div class="key-note"><span>◆</span><span data-en="Customer USDT stays in the customer wallet. GasFree4you does not move it, hold it or sign transactions on behalf of the customer." data-ru="USDT клиента остаются в кошельке клиента. GasFree4you не переводит их, не хранит и не подписывает транзакции от имени клиента.">Customer USDT stays in the customer wallet. GasFree4you does not move it, hold it or sign transactions on behalf of the customer.</span></div>
+          </div>
+
+          <div class="card ownership-card">
+            <div class="mini-kicker" data-en="CONTROL MATRIX" data-ru="КТО ЧТО КОНТРОЛИРУЕТ">CONTROL MATRIX</div>
+            <h3 data-en="We automate fulfillment, not your wallet." data-ru="Мы автоматизируем заказ, а не контролируем ваш кошелёк.">We automate fulfillment, not your wallet.</h3>
+            <div class="ownership">
+              <div class="own-row"><div class="own-check">✓</div><p data-en="The reseller wallet is created and controlled entirely by you." data-ru="Кошелёк реселлера создаётся и полностью контролируется вами.">The reseller wallet is created and controlled entirely by you.</p></div>
+              <div class="own-row"><div class="own-check">✓</div><p data-en="Customer TRX payments go directly to your wallet." data-ru="TRX-платежи клиентов поступают напрямую на ваш кошелёк.">Customer TRX payments go directly to your wallet.</p></div>
+              <div class="own-row"><div class="own-check">✓</div><p data-en="GasFree4you sees only the public address and public on-chain activity." data-ru="GasFree4you видит только публичный адрес и публичную on-chain активность.">GasFree4you sees only the public address and public on-chain activity.</p></div>
+              <div class="own-row"><div class="own-check">✓</div><p data-en="We never request your private key, seed phrase or signing rights." data-ru="Мы никогда не запрашиваем приватный ключ, seed-фразу или право подписи.">We never request your private key, seed phrase or signing rights.</p></div>
+              <div class="own-row"><div class="own-check">✓</div><p data-en="GasFree4you only triggers Energy delegation when an order meets the configured rules." data-ru="GasFree4you только запускает делегирование Energy, когда заказ соответствует заданным правилам.">GasFree4you only triggers Energy delegation when an order meets the configured rules.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-en="SERVICE RULES" data-ru="ОГРАНИЧЕНИЯ">SERVICE RULES</div>
+          <div>
+            <h2 data-en="Automated does not mean uncontrolled." data-ru="Автоматически — не значит без проверок.">Automated does not mean uncontrolled.</h2>
+            <p class="section-intro" data-en="Orders must satisfy the service rules before Energy is delegated. This protects the reseller flow and prevents obvious misuse." data-ru="Перед делегированием Energy заказ должен соответствовать правилам сервиса. Это защищает сабаренду и ограничивает очевидные сценарии злоупотребления.">Orders must satisfy the service rules before Energy is delegated. This protects the reseller flow and prevents obvious misuse.</p>
+          </div>
+        </div>
+
+        <div class="rules">
+          <div class="rule bad"><div class="rule-badge">!</div><div><h3 data-en="No Energy to sanctioned wallets" data-ru="Energy не делегируется на санкционные кошельки">No Energy to sanctioned wallets</h3><p data-en="If the target address matches a supported sanctions restriction, the Energy order is not fulfilled." data-ru="Если целевой адрес совпадает с поддерживаемым санкционным ограничением, заказ Energy не выполняется.">If the target address matches a supported sanctions restriction, the Energy order is not fulfilled.</p></div></div>
+          <div class="rule"><div class="rule-badge">N</div><div><h3 data-en="Non-custodial reseller wallets only" data-ru="Только non-custodial кошельки реселлера">Non-custodial reseller wallets only</h3><p data-en="Use a wallet you control. Exchange deposit addresses and other custodial wallets are not suitable as the reseller payment wallet." data-ru="Используйте кошелёк, который контролируете вы. Депозитные адреса бирж и другие custodial-кошельки не подходят как платёжный кошелёк реселлера.">Use a wallet you control. Exchange deposit addresses and other custodial wallets are not suitable as the reseller payment wallet.</p></div></div>
+          <div class="rule"><div class="rule-badge">₮</div><div><h3 data-en="Keep enough reseller balance" data-ru="Поддерживайте баланс реселлера">Keep enough reseller balance</h3><p data-en="An order can only be fulfilled while your GasFree4you reseller balance is sufficient to cover the current order cost." data-ru="Заказ выполняется только если на вашем балансе реселлера GasFree4you достаточно средств для текущей себестоимости.">An order can only be fulfilled while your GasFree4you reseller balance is sufficient to cover the current order cost.</p></div></div>
+          <div class="rule"><div class="rule-badge">↕</div><div><h3 data-en="Reseller pricing can change" data-ru="Цена для реселлера может меняться">Reseller pricing can change</h3><p data-en="Energy market conditions and order parameters can affect fulfillment cost. Profit figures on this page are examples, not a fixed yield." data-ru="Рыночная стоимость Energy и параметры заказа могут влиять на себестоимость. Цифры прибыли на странице — примеры, а не фиксированная доходность.">Energy market conditions and order parameters can affect fulfillment cost. Profit figures on this page are examples, not a fixed yield.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div class="eyebrow" data-en="START SMALL · SCALE WITH DEMAND" data-ru="НАЧНИТЕ С МАЛОГО · РАСТИТЕ СО СПРОСОМ">START SMALL · SCALE WITH DEMAND</div>
+          <h2 data-en="Your first Energy business can start with 10 TRX." data-ru="Ваш Energy-бизнес можно начать с 10 TRX.">Your first Energy business can start with 10 TRX.</h2>
+          <p data-en="Create a dedicated wallet, add it to Sub-rental, set your customer price and share it with people who already transfer USDT-TRC20. GasFree4you handles fulfillment behind the scenes." data-ru="Создайте отдельный кошелёк, добавьте его в Сабаренду, установите свою цену и дайте адрес людям, которые уже переводят USDT-TRC20. GasFree4you выполнит техническую часть заказа.">Create a dedicated wallet, add it to Sub-rental, set your customer price and share it with people who already transfer USDT-TRC20. GasFree4you handles fulfillment behind the scenes.</p>
+          <a class="btn primary" href="https://user.gasfree4you.com/" target="_blank" rel="noopener" data-en="Open Sub-rental →" data-ru="Открыть Сабаренду →">Open Sub-rental →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 GasFree4you</div>
+      <div class="footer-links">
+        <a href="https://www.gasfree4you.com/" data-en="Main site" data-ru="Главный сайт">Main site</a>
+        <a href="https://user.gasfree4you.com/" data-en="Dashboard" data-ru="Личный кабинет">Dashboard</a>
+        <span data-en="TRON · USDT-TRC20 infrastructure" data-ru="Инфраструктура TRON · USDT-TRC20">TRON · USDT-TRC20 infrastructure</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nodes = [...document.querySelectorAll('[data-en][data-ru]')];
+    const enBtn = document.getElementById('enBtn');
+    const ruBtn = document.getElementById('ruBtn');
+    const orders = document.getElementById('orders');
+    const ordersLabel = document.getElementById('ordersLabel');
+    const profitValue = document.getElementById('profitValue');
+
+    function setLang(lang){
+      document.documentElement.lang = lang;
+      nodes.forEach(el => { el.textContent = el.dataset[lang]; });
+      // Restore intentional accent span in hero after translation.
+      const heroH1 = document.querySelector('h1');
+      if(lang === 'en') heroH1.innerHTML = 'Sell Energy. <span class="money-word">Keep the spread.</span>';
+      if(lang === 'ru') heroH1.innerHTML = 'Продавайте Energy. <span class="money-word">Разницу оставляйте себе.</span>';
+      enBtn.classList.toggle('active',lang === 'en');
+      ruBtn.classList.toggle('active',lang === 'ru');
+      document.title = lang === 'ru' ? 'GasFree4you — Сабаренда TRON Energy' : 'GasFree4you — TRON Energy Sub-rental';
+      localStorage.setItem('gf4y-subrent-lang',lang);
+    }
+
+    function updateCalc(){
+      const count = Math.max(0,Number(orders.value || 0));
+      const profit = count * 0.5;
+      ordersLabel.textContent = count.toLocaleString();
+      profitValue.textContent = profit.toLocaleString(undefined,{maximumFractionDigits:2});
+    }
+
+    enBtn.addEventListener('click',()=>setLang('en'));
+    ruBtn.addEventListener('click',()=>setLang('ru'));
+    orders.addEventListener('input',updateCalc);
+    updateCalc();
+
+    const saved = localStorage.getItem('gf4y-subrent-lang');
+    if(saved === 'ru' || saved === 'en') setLang(saved);
+  </script>
+</body>
+</html>
