@@ -275,6 +275,169 @@
       .profit-line .num{font-size:25px}.profit-line.highlight .num{font-size:31px}.income-value{font-size:48px}
       .volume-grid{grid-template-columns:1fr}.cta{padding:64px 0 76px}.cta-box{padding:28px 22px}.cta-box:after{display:none}.footer-row{align-items:flex-start;flex-direction:column}
     }
+
+
+    /* Mobile-first refinements */
+    @media(max-width:680px){
+      html{scroll-padding-top:72px}
+      body{background:
+        radial-gradient(520px 300px at 82% 1%, rgba(54,231,146,.10), transparent 65%),
+        linear-gradient(180deg,#060a0d 0%,#070c10 48%,#060a0d 100%)}
+      body:before{background-size:34px 34px;opacity:.18}
+      .container{width:calc(100% - 28px);max-width:none}
+
+      .nav-wrap{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+      nav{height:62px;gap:8px}
+      .brand{font-size:17px;letter-spacing:-.035em}
+      .nav-actions{gap:7px}
+      .lang{padding:2px;border-radius:10px}
+      .lang button{min-width:38px;min-height:36px;padding:6px 8px}
+      .nav-actions>.btn{display:none}
+
+      .hero{padding:42px 0 36px}
+      .hero-grid{grid-template-columns:1fr;gap:27px}
+      .eyebrow{font-size:9px;letter-spacing:.13em;line-height:1.45;align-items:flex-start}
+      .eyebrow:before{flex:0 0 auto;margin-top:4px}
+      h1{font-size:clamp(39px,11.6vw,52px);line-height:.95;letter-spacing:-.058em;margin-top:15px;overflow-wrap:anywhere}
+      .hero-copy>p{font-size:15px;line-height:1.62;margin-top:20px}
+      .hero-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:24px}
+      .hero-actions .btn{width:100%;min-height:49px;padding:13px 16px}
+      .hero-note{font-size:11px;line-height:1.55;margin-top:14px}
+
+      .business-card{width:100%;min-height:0;border-radius:20px;box-shadow:0 18px 58px rgba(0,0,0,.38),0 12px 38px rgba(35,215,124,.10)}
+      .business-top{padding:15px 16px;gap:8px;align-items:flex-start}
+      .live{font-size:9px;letter-spacing:.09em;line-height:1.4}
+      .live-dot{width:7px;height:7px;margin-top:3px}
+      .status-pill{font-size:9px;padding:5px 7px;white-space:nowrap}
+      .business-body{padding:18px 16px 16px}
+      .balance-label{font-size:10px}
+      .earnings{gap:7px;margin-top:5px}
+      .earnings strong{font-size:43px}
+      .earnings span{font-size:14px;padding-bottom:4px}
+      .earnings-sub{font-size:10px;line-height:1.45}
+      .floating-profit{display:none}
+      .order-card{margin-top:19px;border-radius:15px}
+      .order-head{padding:12px;gap:8px}
+      .order-head strong{font-size:9px;letter-spacing:.06em}
+      .complete{font-size:8px;padding:4px 6px}
+      .ledger{padding:2px 12px}
+      .ledger-row{grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:12px 0}
+      .ledger-label{font-size:10px;min-width:0}
+      .ledger-label b{font-size:12px;line-height:1.25}
+      .ledger-value{font-size:15px;white-space:nowrap}
+      .ledger-row.yours{margin:7px -5px;padding:12px 5px}
+      .order-foot{padding:11px 12px;font-size:9px;line-height:1.4;align-items:flex-start}
+      .order-foot span:last-child{white-space:nowrap}
+
+      .money-strip{grid-template-columns:1fr 1fr;margin-top:24px;border-radius:17px}
+      .money-stat{padding:16px 14px;min-height:112px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+      .money-stat:nth-child(2n){border-right:0}
+      .money-stat:nth-last-child(-n+2){border-bottom:0}
+      .money-stat strong{font-size:22px}
+      .money-stat span{font-size:10px;line-height:1.45;margin-top:6px}
+
+      section{padding:54px 0}
+      .section-head{grid-template-columns:1fr;gap:8px;margin-bottom:24px}
+      .section-kicker{font-size:9px;letter-spacing:.14em;padding-top:0}
+      h2{font-size:clamp(32px,9.2vw,40px);line-height:1.02;letter-spacing:-.045em}
+      .section-intro{font-size:14px;line-height:1.6;margin-top:12px}
+
+      .flow{grid-template-columns:1fr;gap:10px}
+      .step{min-height:0;padding:19px}
+      .step-top{align-items:center}
+      .step-icon{width:34px;height:34px;border-radius:10px}
+      .step-line{margin:18px 0 22px}
+      .step h3{font-size:19px;margin:0 0 7px}
+      .step p{font-size:13px;line-height:1.55}
+
+      .economics,.noncustody{grid-template-columns:1fr;gap:11px}
+      .profit-card,.calc-card,.flow-visual,.ownership-card{padding:19px;border-radius:18px}
+      .profit-card h3,.calc-card h3,.ownership-card h3{font-size:23px;line-height:1.15}
+      .profit-stack{margin-top:20px}
+      .profit-line{gap:10px;padding:15px 0}
+      .profit-line .meta{font-size:10px}
+      .profit-line .meta b{font-size:13px}
+      .profit-line .num{font-size:23px;white-space:nowrap}
+      .profit-line.highlight{margin:10px -7px 0;padding:14px 7px}
+      .profit-line.highlight .num{font-size:28px}
+      .profit-caption{font-size:10px}
+      .calc-controls{margin-top:22px}
+      .calc-label{gap:10px;font-size:10px}
+      .calc-label strong{font-size:13px}
+      .range{height:28px;margin:11px 0 3px}
+      .income-panel{padding-top:22px}
+      .income-value{font-size:43px}
+      .income-value span{font-size:16px}
+      .income-note{font-size:10px}
+      .volume-grid{grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+      .volume-item{padding:10px 8px;border-radius:11px;min-width:0}
+      .volume-item small{font-size:8px;line-height:1.25}
+      .volume-item b{font-size:14px;white-space:nowrap}
+      .notice{padding:13px 14px;font-size:10px;line-height:1.5}
+
+      .audience{grid-template-columns:1fr;gap:10px}
+      .audience-card{min-height:0;padding:20px}
+      .audience-icon{width:38px;height:38px;border-radius:11px}
+      .audience-card h3{font-size:19px;margin:24px 0 7px}
+      .audience-card p{font-size:13px;line-height:1.55}
+
+      .flow-visual{min-height:0}
+      .flow-stack{gap:7px;margin-top:18px}
+      .flow-node{grid-template-columns:36px minmax(0,1fr);gap:10px;padding:11px;border-radius:12px}
+      .node-icon{width:34px;height:34px;border-radius:9px}
+      .flow-node b{font-size:12px;line-height:1.3}
+      .flow-node span{font-size:10px;line-height:1.4}
+      .node-right{grid-column:2;font-size:9px;text-align:left;margin-top:-3px}
+      .flow-arrow{height:9px;margin-left:17px}
+      .key-note{margin-top:14px;padding:12px;font-size:10px;line-height:1.5}
+      .ownership-card h3{margin-bottom:16px}
+      .own-row{grid-template-columns:27px 1fr;gap:9px;padding:10px 0}
+      .own-check{width:24px;height:24px;border-radius:8px;font-size:11px}
+      .own-row p{font-size:12px;line-height:1.5}
+
+      .rules{grid-template-columns:1fr;gap:9px}
+      .rule{grid-template-columns:38px minmax(0,1fr);gap:12px;padding:17px;border-radius:15px}
+      .rule-badge{width:36px;height:36px;border-radius:10px;font-size:13px}
+      .rule h3{font-size:14px;line-height:1.3}
+      .rule p{font-size:11px;line-height:1.5}
+
+      .cta{padding:52px 0 66px}
+      .cta-box{padding:24px 18px;border-radius:20px}
+      .cta-box:after{display:none}
+      .cta-box h2{font-size:34px;line-height:1.02;margin-top:10px}
+      .cta-box p{font-size:14px;line-height:1.6;margin:14px 0 20px}
+      .cta-box .btn{width:100%;min-height:50px}
+
+      footer{padding:26px 0 34px;font-size:11px}
+      .footer-row{flex-direction:column;align-items:flex-start;gap:14px}
+      .footer-links{display:grid;gap:8px}
+
+      /* Better touch behavior on iOS/Safari */
+      a,button,input{touch-action:manipulation}
+      .btn{-webkit-tap-highlight-color:transparent}
+      input[type="range"]{width:100%}
+    }
+
+    @media(max-width:390px){
+      .container{width:calc(100% - 22px)}
+      .brand{font-size:16px}
+      .lang button{min-width:35px}
+      h1{font-size:38px}
+      .hero-copy>p{font-size:14px}
+      .business-top{flex-wrap:wrap}
+      .status-pill{margin-left:15px}
+      .money-stat{padding:14px 11px;min-height:104px}
+      .money-stat strong{font-size:20px}
+      h2{font-size:31px}
+      .profit-line .num{font-size:21px}
+      .profit-line.highlight .num{font-size:25px}
+      .income-value{font-size:39px}
+      .volume-grid{grid-template-columns:1fr}
+      .volume-item{display:flex;align-items:center;justify-content:space-between;gap:12px}
+      .volume-item b{margin-top:0}
+      .order-foot{display:grid;grid-template-columns:1fr}
+      .order-foot span:last-child{white-space:normal}
+    }
   </style>
 </head>
 <body>
