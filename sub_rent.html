@@ -160,7 +160,7 @@
     .step p{color:var(--muted);margin:0;font-size:14px}
     .step .step-line{height:1px;background:linear-gradient(90deg,rgba(110,240,169,.55),transparent);margin:24px 0}
 
-    .money-section{position:relative}
+    .money-section{position:relative;overflow:hidden}
     .money-section:after{content:"";position:absolute;left:50%;top:16%;width:760px;height:420px;transform:translateX(-10%);background:radial-gradient(circle,rgba(110,240,169,.055),transparent 67%);pointer-events:none}
     .economics{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;position:relative;z-index:1}
     .profit-card{padding:31px;background:
@@ -280,11 +280,15 @@
     /* Mobile-first refinements */
     @media(max-width:680px){
       html{scroll-padding-top:72px}
+      html,body{width:100%;max-width:100%;overflow-x:hidden}
       body{background:
         radial-gradient(520px 300px at 82% 1%, rgba(54,231,146,.10), transparent 65%),
         linear-gradient(180deg,#060a0d 0%,#070c10 48%,#060a0d 100%)}
       body:before{background-size:34px 34px;opacity:.18}
-      .container{width:calc(100% - 28px);max-width:none}
+      .container{width:calc(100% - 28px);max-width:100%;min-width:0}
+      main,section,.nav-wrap,footer{width:100%;max-width:100%;min-width:0}
+      .hero-grid,.economics,.noncustody,.money-strip,.flow,.audience,.rules,.business-card,.card{min-width:0;max-width:100%}
+      .money-section:after{display:none}
 
       .nav-wrap{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
       nav{height:62px;gap:8px}
@@ -305,10 +309,10 @@
       .hero-note{font-size:11px;line-height:1.55;margin-top:14px}
 
       .business-card{width:100%;min-height:0;border-radius:20px;box-shadow:0 18px 58px rgba(0,0,0,.38),0 12px 38px rgba(35,215,124,.10)}
-      .business-top{padding:15px 16px;gap:8px;align-items:flex-start}
+      .business-top{padding:15px 16px;gap:8px;align-items:flex-start;flex-wrap:wrap}
       .live{font-size:9px;letter-spacing:.09em;line-height:1.4}
       .live-dot{width:7px;height:7px;margin-top:3px}
-      .status-pill{font-size:9px;padding:5px 7px;white-space:nowrap}
+      .status-pill{font-size:9px;padding:5px 7px;white-space:normal;line-height:1.25;max-width:150px;text-align:right}
       .business-body{padding:18px 16px 16px}
       .balance-label{font-size:10px}
       .earnings{gap:7px;margin-top:5px}
@@ -327,7 +331,7 @@
       .ledger-value{font-size:15px;white-space:nowrap}
       .ledger-row.yours{margin:7px -5px;padding:12px 5px}
       .order-foot{padding:11px 12px;font-size:9px;line-height:1.4;align-items:flex-start}
-      .order-foot span:last-child{white-space:nowrap}
+      .order-foot span:last-child{white-space:normal;text-align:right}
 
       .money-strip{grid-template-columns:1fr 1fr;margin-top:24px;border-radius:17px}
       .money-stat{padding:16px 14px;min-height:112px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -354,11 +358,12 @@
       .profit-card,.calc-card,.flow-visual,.ownership-card{padding:19px;border-radius:18px}
       .profit-card h3,.calc-card h3,.ownership-card h3{font-size:23px;line-height:1.15}
       .profit-stack{margin-top:20px}
-      .profit-line{gap:10px;padding:15px 0}
+      .profit-stack{min-width:0;max-width:100%;overflow:hidden}
+      .profit-line{grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:15px 0;min-width:0}
       .profit-line .meta{font-size:10px}
       .profit-line .meta b{font-size:13px}
-      .profit-line .num{font-size:23px;white-space:nowrap}
-      .profit-line.highlight{margin:10px -7px 0;padding:14px 7px}
+      .profit-line .num{font-size:23px;white-space:nowrap;min-width:0}
+      .profit-line.highlight{margin:10px 0 0;padding:14px 10px}
       .profit-line.highlight .num{font-size:28px}
       .profit-caption{font-size:10px}
       .calc-controls{margin-top:22px}
@@ -419,7 +424,7 @@
     }
 
     @media(max-width:390px){
-      .container{width:calc(100% - 22px)}
+      .container{width:calc(100% - 22px);max-width:100%}
       .brand{font-size:16px}
       .lang button{min-width:35px}
       h1{font-size:38px}
