@@ -1569,6 +1569,13 @@
     .modal-close:hover{color:var(--text); border-color:var(--mint);}
   }
 
+header.nav .nav-inner{gap:16px}
+header.nav .logo{white-space:nowrap;flex-shrink:0}
+header.nav nav.links{flex-wrap:nowrap;gap:2px}
+header.nav nav.links a{font-size:13px;padding:8px 9px}
+header.nav .nav-right{flex-shrink:0}
+header.nav .nav-right>.btn{white-space:nowrap}
+@media(min-width:981px) and (max-width:1180px){header.nav .lang-switcher{display:none}header.nav .lang-select-wrap{display:block}}
 /* First screen only — remaining page styles preserved. */
 .hero-clear{padding:64px 0 44px}
 .hero-clear .hero-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:center}
@@ -1600,14 +1607,9 @@
   <div class="nav-inner">
     <a href="#top" class="logo">GasFree4you <span class="dot"></span></a>
     <nav class="links">
-      <a href="#instant-rental">Instant Energy</a>
-      <a href="#transfer-layer">Transfers</a>
-      <a href="#transfer-layer">Energy</a>
-      <a href="#compliance-layer">AML Check</a>
-      <a href="#compliance-layer">Sanctions</a>
-      <a href="#visibility-layer">Dashboard</a>
-      <a href="#visibility-layer">Statements</a>
-      <a href="#growth-layer">Referrals</a>
+      <a href="#instant-rental">Rent Energy</a>
+      <a href="#compliance-layer">AML &amp; sanctions</a>
+      <a href="#visibility-layer">For business</a>
       <a href="#pricing-layer">Pricing</a>
     </nav>
     <div class="nav-right">
@@ -2212,6 +2214,9 @@
 Object.assign(LANDING_RU,{"Transfer USDT TRC20 for": "Переводите USDT TRC20 за", "Instead of the standard 6.4–13 TRX. Energy reaches your wallet in seconds.": "Вместо стандартных 6,4–13 TRX. Energy поступит на ваш кошелёк за несколько секунд.", "Rent Energy": "Арендовать Energy", "Open your account": "Открыть личный кабинет", "No sign-up for a one-off rental": "Разовая аренда без регистрации", "Rent Energy, then send USDT from your wallet as usual.": "Арендуйте Energy, затем отправьте USDT из своего кошелька как обычно.", "Cost per USDT transfer": "Стоимость одного перевода USDT", "Recipient already has USDT": "У получателя уже есть USDT", "Recipient has no USDT": "У получателя ещё нет USDT", "Up to 53% cheaper": "До 53% дешевле", "One transfer · use within 1 hour": "Один перевод · используйте в течение часа", "For your own TRON wallet. No private keys or seed phrase needed.": "Для вашего личного TRON-кошелька. Приватные ключи и seed-фраза не нужны.", "Also available: AML checks, wallet dashboard and statements.": "Также доступны AML-проверки, дашборд кошельков и выписки."});
 Object.assign(LANDING_ID,{"Transfer USDT TRC20 for": "Transfer USDT TRC20 dengan", "Instead of the standard 6.4–13 TRX. Energy reaches your wallet in seconds.": "Alih-alih biaya standar 6,4–13 TRX. Energy tiba di dompet Anda dalam hitungan detik.", "Rent Energy": "Sewa Energy", "Open your account": "Buka akun Anda", "No sign-up for a one-off rental": "Sewa sekali tanpa registrasi", "Rent Energy, then send USDT from your wallet as usual.": "Sewa Energy, lalu kirim USDT dari dompet Anda seperti biasa.", "Cost per USDT transfer": "Biaya per transfer USDT", "Recipient already has USDT": "Penerima sudah memiliki USDT", "Recipient has no USDT": "Penerima belum memiliki USDT", "Up to 53% cheaper": "Hingga 53% lebih hemat", "One transfer · use within 1 hour": "Satu transfer · gunakan dalam 1 jam", "For your own TRON wallet. No private keys or seed phrase needed.": "Untuk dompet TRON Anda sendiri. Tanpa private key atau seed phrase.", "Also available: AML checks, wallet dashboard and statements.": "Tersedia juga pemeriksaan AML, dasbor dompet, dan laporan."});
 Object.assign(LANDING_ES,{"Transfer USDT TRC20 for": "Transfiere USDT TRC20 por", "Instead of the standard 6.4–13 TRX. Energy reaches your wallet in seconds.": "En lugar de los 6,4–13 TRX habituales. La energía llega a tu billetera en segundos.", "Rent Energy": "Alquilar energía", "Open your account": "Abrir mi cuenta", "No sign-up for a one-off rental": "Alquiler puntual sin registro", "Rent Energy, then send USDT from your wallet as usual.": "Alquila energía y envía USDT desde tu billetera como siempre.", "Cost per USDT transfer": "Coste por transferencia USDT", "Recipient already has USDT": "El destinatario ya tiene USDT", "Recipient has no USDT": "El destinatario aún no tiene USDT", "Up to 53% cheaper": "Hasta un 53% más barato", "One transfer · use within 1 hour": "Una transferencia · úsala antes de una hora", "For your own TRON wallet. No private keys or seed phrase needed.": "Para tu propia billetera TRON. No se necesitan claves privadas ni frase semilla.", "Also available: AML checks, wallet dashboard and statements.": "También disponibles: controles AML, panel de billeteras y extractos."});
+  Object.assign(LANDING_RU,{"AML & sanctions":"AML и санкции","For business":"Для бизнеса"});
+  Object.assign(LANDING_ID,{"AML & sanctions":"AML & sanksi","For business":"Untuk bisnis"});
+  Object.assign(LANDING_ES,{"AML & sanctions":"AML y sanciones","For business":"Para empresas"});
   const LANDING_ATTR_ID = {"Language":"Bahasa","Contact us":"Hubungi kami","Close":"Tutup","Transfers per month":"Transfer per bulan"};
   const LANDING_ATTR_RU = {"Language":"Язык","Contact us":"Связаться с нами","Close":"Закрыть","Transfers per month":"Переводов в месяц"};
   const LANDING_ATTR_ES = {"Language":"Idioma","Contact us":"Contáctanos","Close":"Cerrar","Transfers per month":"Transferencias al mes"};
