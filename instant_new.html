@@ -1112,6 +1112,36 @@
 }
 
   </style>
+<style>
+/* Focused rental checkout */
+.rental-focus,.rental-focus *{box-sizing:border-box}
+.rental-focus{max-width:560px;margin:44px auto 64px}
+.rental-heading{text-align:center;margin-bottom:28px}
+.rental-heading .title{font-size:clamp(28px,5vw,38px);letter-spacing:-1px}
+.rental-heading .subtitle{margin-top:10px;font-size:16px}
+.rental-card{padding:32px;border-radius:24px;background:#10172a;box-shadow:0 18px 60px #0002;text-align:center}
+.rental-card h2{margin:0 0 18px;font-size:17px;font-weight:600}
+.rental-card .seg{display:grid;grid-template-columns:1fr 1fr;width:100%;padding:4px;gap:4px;background:#0b1020;border:1px solid var(--border)}
+.rental-card .seg-option{justify-content:center;min-height:48px;padding:10px 8px;font-size:14px;font-weight:600;background:transparent;border:1px solid transparent;box-shadow:none;transform:none}
+.rental-card .seg-option::before,.rental-card .seg-option::after{display:none}
+.rental-card .seg-option.active{background:#203b39;color:#97f0c8;border-color:#66d6ac66;box-shadow:none}
+.rental-price{display:flex;flex-direction:column;gap:4px;margin:30px 0 26px;color:var(--muted);font-size:14px}
+.rental-price strong{font-size:48px;letter-spacing:-2px;font-weight:750;color:var(--text);line-height:1.25}
+.rental-valid{margin-top:5px;font-size:13px}
+.rental-card #buyBtn{width:100%;min-height:54px;font-size:16px;background:#2bd391;color:#04261a;box-shadow:none;border-radius:12px}
+.rental-important{font-size:12px;color:var(--muted);margin:14px 0 20px;line-height:1.5}
+.rental-telegram{color:#a8b8cb;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.rental-details{margin:16px 0 0;background:transparent;border:0;border-radius:0;padding:0 8px;box-shadow:none}
+.rental-details[open]{box-shadow:none}
+.rental-details summary{padding:12px 0;font-size:14px;font-weight:500;color:#a8b8cb;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.rental-details summary::after{content:'+';font-size:19px;line-height:1}
+.rental-details[open] summary::after{content:'−'}
+.rental-details p{font-size:14px;line-height:1.7;color:var(--muted);margin:8px 0 18px}
+.rental-resource{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--muted);border-top:1px solid var(--border);padding-top:14px}
+.rental-resource strong{color:var(--text)}
+.rental-focus button:focus-visible,.rental-focus summary:focus-visible,.rental-focus a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:600px){.rental-focus{margin:24px auto 40px}.rental-card{padding:24px 20px}.rental-heading{margin-bottom:22px}.rental-price strong{font-size:44px}}
+</style>
 </head>
 <body>
  <header>
@@ -1156,97 +1186,33 @@
 
   
   <main class="wrap" id="top">
-    <div style="margin-top:10px">
-      <h1 class="title reveal" data-i18n="title">Аренда энергии TRON</h1>
-      <p class="subtitle reveal" data-i18n="subtitle">Энергия действует только на <b>1 перевод</b>. Переводы USDT/TRC20 без комиссии TRX.</p>
+    <div class="rental-focus">
+      <div class="rental-heading">
+        <h1 class="title" data-i18n="title">Rent TRON Energy</h1>
+        <p class="subtitle" data-i18n="simple_intro">Lower fees for one USDT transfer.</p>
+      </div>
+      <section class="card rental-card" aria-labelledby="recipientQuestion">
+        <h2 id="recipientQuestion" data-i18n="simple_question">Does the recipient have USDT?</h2>
+        <div id="usdtState" class="seg" role="group" aria-labelledby="recipientQuestion">
+          <button type="button" class="seg-option active" data-v="has" aria-pressed="true" data-i18n="simple_has">Yes, has USDT</button>
+          <button type="button" class="seg-option" data-v="none" aria-pressed="false" data-i18n="simple_none">No USDT yet</button>
+        </div>
+        <div class="rental-price" aria-live="polite" aria-atomic="true">
+          <span data-i18n="total_to_pay">Total to pay</span>
+          <strong id="k_total">3.00 TRX</strong>
+          <span class="rental-valid" data-i18n="simple_valid">One transfer · use within 1 hour</span>
+        </div>
+        <button class="btn primary" id="buyBtn" data-i18n="buy_btn">Buy TRON Energy</button>
+        <p class="rental-important" data-i18n="simple_wallet">Energy goes to the wallet you pay from.</p>
+        <a class="rental-telegram" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="tg_cta_short">Via Telegram bot</a>
+      </section>
+      <details class="rental-details" id="whatYouGet">
+        <summary data-i18n="flow_note_title">What happens after payment</summary>
+        <p data-i18n="flow_note_text"></p>
+        <div class="rental-resource"><span data-i18n="energy_per">Energy per transfer</span><strong id="k_energyPer">65,000</strong></div>
+      </details>
     </div>
 
-    <div class="buybar reveal"><div id="buyInfo" data-i18n="buy_info">💡 Здесь можно <b>не только рассчитать</b> стоимость энергии TRON, но и <b>купить её прямо сейчас</b> по выгодной цене!</div></div>
-
-   <div class="badges reveal">
-      <span class="badge" data-i18n="badge_price">3 TRX = 1 перевод (есть USDT) · 6 TRX = 1 перевод (нет USDT)</span>
-      <span class="badge" data-i18n="badge_base">Рынок: 6.5 TRX (есть USDT) · 13 TRX (нет USDT)</span>
-    </div>
-
-    <!-- КАЛЬКУЛЯТОР -->
-    <section class="card calc reveal" aria-label="Калькулятор энергии">
-      <div>
-<label data-i18n="label_wallet">Кошелёк получателя</label>
-
-<div id="usdtState" class="seg" role="group" aria-label="USDT on recipient wallet?" style="margin-bottom:10px">
-  <button type="button" class="seg-option active" data-v="has">
-    <span>💰</span><span data-i18n="has_usdt">На кошельке получателя есть USDT</span>
-  </button>
-  <button type="button" class="seg-option" data-v="none">
-    <span>🚫</span><span data-i18n="no_usdt">На кошельке получателя нет USDT</span>
-  </button>
-</div>
-
-<div class="note" style="color:var(--muted)" data-i18n="note_no_usdt">
-  Если на кошельке получателя <b>нет</b> USDT — на 1 перевод нужно ~130 000 энергии.
-</div>
-
-
-        <div class="beam" aria-hidden="true"></div>
-
-        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn primary" id="buyBtn" data-i18n="buy_btn">Купить энергию TRON</button>
-            <a class="btn tg" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="tg_cta_short">Через Telegram-бота</a>
-            <button class="btn" id="nudgeToFlow" data-i18n="nudge_to_flow">
-  Что будет дальше? ↓
-</button>
-        </div>
-        <p class="note" id="rateInfo" data-i18n="price_note" style="margin-top:10px">Цена указана за 1 перевод. Курс TRX обновляется автоматически.</p>
-      </div>
-
-      <div>
-        <div class="savecard" aria-live="polite">
-          <div class="save-top">
-            <div class="save-title" data-i18n="total_to_pay">Итого к оплате</div>
-            <div class="save-vals">
-              <div class="now" id="k_total">3 TRX</div>
-              <span class="save-badge" id="saveBadge">% </span>
-              <div class="base"><s id="k_totalBase">6.50 TRX</s></div>
-            </div>
-          </div>
-          <div class="save-line" aria-hidden="true"><div id="saveBarIn" class="save-line-in">—</div></div>
-          <div class="kpis">
-                           <div class="kpi">
-              <div class="name" data-i18n="usd_saving_title">Экономия в долларах</div>
-              <div id="k_usdSaveBlock" class="val">≈ 1.50 USDT</div>
-            </div>
-            <div class="kpi">
-              <div class="name" data-i18n="price_per">Цена за 1 перевод</div>
-              <div id="k_pp" class="val">3 TRX</div>
-            </div>
-            <div class="kpi">
-              <div class="name" data-i18n="energy_per">Энергии на 1 перевод</div>
-              <div id="k_energyPer" class="val">65 000</div>
-              <div class="note" id="k_usdSave" style="font-size:12px;color:var(--muted)"></div>
-            </div>
-            <div class="kpi">
-              <div class="name" data-i18n="rent_1h">Действует</div>
-              <div class="val" data-i18n="rent_1h_val">до 1 часа или до 1 перевода</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<!-- EXPLAINER: what happens after payment -->
-<section class="card reveal gap-section" id="whatYouGet" style="border-left:4px solid var(--good);">
-  <h3 class="title" style="font-size:18px;margin:0 0 6px" data-i18n="flow_note_title">
-    Что произойдёт после оплаты
-  </h3>
-  <p data-i18n="flow_note_text">
-    Вы переводите указанную сумму TRX на сервисный кошелёк. Мы <b>сразу делегируем энергию</b> на тот же кошелёк.
-    Эта энергия <b>покроет комиссию за 1 перевод USDT/TRC20</b>, затем энергия будет автоматически <b>отозвана</b>
-    или истечёт по времени (до 1 часа). Ваши USDT и приватные ключи мы не трогаем.
-  </p>
-  <p style="margin:8px 0 0;color:var(--muted)" data-i18n="flow_note_short">
-    Энергия начисляется на тот же кошелёк, с которого пришёл TRX.
-  </p>
-</section>
 <!-- WALLET DASHBOARD BLOCK -->
 <section class="card reveal gap-section dashboard-block" id="walletDashboard">
   <div>
@@ -2238,6 +2204,12 @@ a5:"Send the exact TRX amount to the service wallet. After payment, energy is au
  
 
 
+Object.assign(I18N.en,{"simple_intro": "Lower fees for one USDT transfer.", "simple_question": "Does the recipient have USDT?", "simple_has": "Yes, has USDT", "simple_none": "No USDT yet", "simple_valid": "One transfer · use within 1 hour", "simple_wallet": "Energy goes to the wallet you pay from."});
+Object.assign(I18N.ru,{"simple_intro": "Меньше комиссия за один перевод USDT.", "simple_question": "У получателя уже есть USDT?", "simple_has": "Да, есть USDT", "simple_none": "Нет USDT", "simple_valid": "Один перевод · используйте в течение часа", "simple_wallet": "Энергия поступит на кошелёк, с которого вы оплатите."});
+Object.assign(I18N.id,{"simple_intro": "Biaya lebih rendah untuk satu transfer USDT.", "simple_question": "Apakah penerima sudah memiliki USDT?", "simple_has": "Ya, sudah ada", "simple_none": "Belum ada USDT", "simple_valid": "Satu transfer · gunakan dalam 1 jam", "simple_wallet": "Energi dikirim ke dompet yang Anda gunakan untuk membayar."});
+Object.assign(I18N.zh,{"simple_intro": "降低一笔 USDT 转账的手续费。", "simple_question": "收款钱包已有 USDT 吗？", "simple_has": "已有 USDT", "simple_none": "还没有 USDT", "simple_valid": "一笔转账 · 请在 1 小时内使用", "simple_wallet": "能量将发放到您付款时使用的钱包。"});
+Object.assign(I18N.tr,{"simple_intro": "Tek USDT transferi için daha düşük ücret.", "simple_question": "Alıcının cüzdanında USDT var mı?", "simple_has": "Evet, USDT var", "simple_none": "Henüz USDT yok", "simple_valid": "Tek transfer · 1 saat içinde kullanın", "simple_wallet": "Enerji, ödeme yaptığınız cüzdana gönderilir."});
+
   // ===== Service energy counter (random 10–30s tick, -65,000, daily reset) =====
     const START_ENERGY = 835568252; // 1,335,568,252
     const STEP = 131000;
@@ -2317,10 +2289,7 @@ if (urlLang && ['ru','en','zh','id','tr'].includes(urlLang)) {
     const PRICE_BASE   ={has:6.5, none:13.0};
     const ENERGY_PER_TX={has:65000, none:130000};
 
-    // KPI элементы
-    const k_energyPer=$('k_energyPer'),k_energyTot=$('k_energyTotal'),
-          k_pricePer=$('k_pp'),k_total=$('k_total'),k_totalBase=$('k_totalBase'),
-          saveBarIn=$('saveBarIn'), saveBadge=$('saveBadge');
+    const k_energyPer=$('k_energyPer'), k_total=$('k_total');
 
     let TRX_USD = null;
     const st={usdt:'has'};
@@ -2342,30 +2311,11 @@ function ni(num){
   return new Intl.NumberFormat(loc).format(num);
 }
     function compute(){
-      const ePer = ENERGY_PER_TX[st.usdt];
-      const pp   = PRICE_PER_TX[st.usdt];
-      const base = PRICE_BASE[st.usdt];
-      const save = Math.max(base - pp, 0);
-      k_energyPer.textContent = ni(ePer);
-
-      k_pricePer.textContent  = nf(pp,2) + ' TRX';
-      k_total.textContent     = nf(pp,2) + ' TRX';
-      k_totalBase.textContent = nf(base,2) + ' TRX';
-const pct = base>0 ? Math.round((save/base)*100) : 0;
-saveBarIn.style.width = pct + '%';
-saveBarIn.style.transition = 'width .5s cubic-bezier(.22,.61,.36,1)';
-saveBarIn.textContent =
-  lang==='ru' ? `Экономия ${pct}%` :
-  lang==='zh' ? `节省 ${pct}%` :
-  lang==='id' ? `Hemat ${pct}%` :
-  lang==='tr' ? `Tasarruf ${pct}%` :
-  `Save ${pct}%`;
-saveBadge.textContent = pct + '%';
-      // экономия в USDT
-const rate = TRX_USD || 0.35; // фолбэк на случай, если курс ещё не пришёл
- const usdSave = (save * rate).toFixed(2);
- const saveLine = t('usd_saving').replace('{x}', usdSave);
-document.getElementById('k_usdSaveBlock').textContent = `≈ ${usdSave} USDT`;
+      k_energyPer.textContent = ni(ENERGY_PER_TX[st.usdt]);
+      k_total.textContent = nf(PRICE_PER_TX[st.usdt],2) + ' TRX';
+      document.querySelectorAll('#usdtState .seg-option').forEach(button=>{
+        button.setAttribute('aria-pressed',String(button.dataset.v===st.usdt));
+      });
     }
 
     function t(key){ return (I18N[lang] && I18N[lang][key]) || key; }
