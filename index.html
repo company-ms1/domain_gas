@@ -2271,28 +2271,36 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
       }));
     }
   }
-  function applyLandingLanguage(lang,{save=true}={}){
-    landingLang=["en","ru","id","es"].includes(lang)?lang:"en";
+  const LANDING_LANGUAGES = ["en","ru","id","es"];
+  function applyLandingLanguage(lang,{save=true,updateUrl=false}={}){
+    landingLang=LANDING_LANGUAGES.includes(lang)?lang:"en";
     document.documentElement.lang=landingLang;
     translateLandingNode(document.documentElement);
     document.querySelectorAll(".lang-option").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===landingLang));
     const mobileSelect=document.getElementById("mobileLangSelect"); if(mobileSelect)mobileSelect.value=landingLang;
     const footer=document.getElementById("currentLangLabel"); if(footer)footer.textContent=({en:"EN",ru:"RU",id:"ID",es:"ES"})[landingLang];
     if(save){try{localStorage.setItem("landing_lang",landingLang);}catch(_){}}
+    if(updateUrl){
+      const url=new URL(window.location.href);
+      url.searchParams.set("lang",landingLang);
+      window.history.replaceState(window.history.state,"",url.href);
+    }
     document.dispatchEvent(new CustomEvent("landinglanguagechange",{detail:{lang:landingLang}}));
   }
   function detectLandingLanguage(){
-    let saved=null; try{saved=localStorage.getItem("landing_lang");}catch(_){} if(["en","ru","id","es"].includes(saved))return saved;
-    for(const value of (navigator.languages||[navigator.language||"en"])){
-      const code=String(value).toLowerCase();
-      if(code.startsWith("ru"))return "ru";
-      if(code.startsWith("id"))return "id";
-      if(code.startsWith("es"))return "es";
+    const urlLang=new URL(window.location.href).searchParams.get("lang");
+    if(LANDING_LANGUAGES.includes(urlLang))return urlLang;
+    let saved=null; try{saved=localStorage.getItem("landing_lang");}catch(_){}
+    if(LANDING_LANGUAGES.includes(saved))return saved;
+    const browserLanguages=navigator.languages?.length?navigator.languages:[navigator.language||"en"];
+    for(const value of browserLanguages){
+      const code=String(value).toLowerCase().split(/[-_]/)[0];
+      if(LANDING_LANGUAGES.includes(code))return code;
     }
     return "en";
   }
-  document.querySelectorAll(".lang-option").forEach(btn=>btn.addEventListener("click",()=>applyLandingLanguage(btn.dataset.lang)));
-  document.getElementById("mobileLangSelect")?.addEventListener("change",event=>applyLandingLanguage(event.target.value));
+  document.querySelectorAll(".lang-option").forEach(btn=>btn.addEventListener("click",()=>applyLandingLanguage(btn.dataset.lang,{updateUrl:true})));
+  document.getElementById("mobileLangSelect")?.addEventListener("change",event=>applyLandingLanguage(event.target.value,{updateUrl:true}));
   applyLandingLanguage(detectLandingLanguage(),{save:false});
   new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(translateLandingNode))).observe(document.body,{childList:true,subtree:true});
 
