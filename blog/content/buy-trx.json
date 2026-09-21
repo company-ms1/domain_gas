@@ -1,0 +1,453 @@
+{
+  "ru": {
+    "title": "Как купить TRX: для комиссий сети и управления энергией",
+    "description": "P2P, обменники, биржи, покупка с карты и обмен другой криптовалюты: выбираем способ получить TRX и пополнить личный кабинет GasFree4you.",
+    "category": "Практика",
+    "time": "7 минут",
+    "sourceLabel": "Источники и сервисы",
+    "ctaTitle": "Управляйте энергией из одного кабинета",
+    "ctaText": "Пополните баланс TRX и оформляйте аренду Energy для нужных адресов. Актуальные условия и реквизиты — в вашем аккаунте.",
+    "ctaButton": "Открыть личный кабинет",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Читайте также",
+    "relatedText": "Как завести свой кошелёк",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "Пополнение кабинета заменяет TRX на моём кошельке?",
+    "faqAnswer": "Нет. Баланс кабинета оплачивает услуги сервиса. Energy поступает на адрес, указанный в заказе, а оставшиеся сетевые расходы зависят от ресурсов самого кошелька. Проверьте Energy, Bandwidth и оценку комиссии перед переводом.",
+    "sections": [
+      {
+        "title": "Зачем нужен TRX, если вы переводите USDT",
+        "paragraphs": [
+          "TRX — нативная монета TRON. Для пользователя USDT она прежде всего может понадобиться, чтобы покрывать сетевые расходы: операции используют Bandwidth, а вызовы смарт-контрактов, включая переводы USDT, — ещё и Energy. Если ресурсов недостаточно, сеть может сжечь TRX с баланса отправителя.",
+          "Есть и другой сценарий: пополнить TRX баланс личного кабинета GasFree4you и централизованно управлять арендой энергии для своих адресов. Это отдельный баланс сервиса, а не запас TRX на вашем кошельке.",
+          "Фиат — обычные деньги, например рубли, евро или доллары. «За фиат» описывает, чем вы платите, а P2P, биржа и обменник — где покупаете. Эти варианты могут пересекаться."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "1. P2P: покупка у другого пользователя",
+        "paragraphs": [
+          "Начнём с P2P: вы выбираете предложение продавца и оплачиваете его доступным банковским способом. На площадке с эскроу криптовалюта резервируется на время сделки. Прямые предложения TRX есть не везде: возможен маршрут «фиат → USDT на площадке → TRX через спот или конвертацию → вывод в TRON».",
+          "Сравните рейтинг и историю продавца, лимиты, курс и комиссию последующего вывода. Ведите сделку внутри площадки с эскроу, платите по её правилам со своего счёта и не соглашайтесь на замену реквизитов в стороннем чате.",
+          "Русский язык не означает конкретную страну проживания: доступность P2P, банков и валют проверяйте для своей страны и статуса аккаунта. Если прямого предложения TRX нет, учтите стоимость промежуточного обмена."
+        ]
+      },
+      {
+        "title": "2. Онлайн-обменники и физические пункты",
+        "paragraphs": [
+          "Онлайн-обменник может принять банковскую оплату и отправить TRX на указанный адрес. Физический пункт позволяет обсудить обмен наличных лично. Уточните заранее, выдаёт ли он именно TRX: некоторые работают только с USDT, после чего понадобится ещё одна операция.",
+          "Для читателей из России отдельно отметим BestChange — агрегатор и мониторинг обменников. Выберите, что отдаёте (доступный способ оплаты в рублях или наличные) и что получаете — TRON (TRX). Сравните предложения, резерв, лимиты, отзывы и условия проверки, затем перейдите на сайт выбранного обменника. При обмене наличных уточните город и адрес офиса. Сам BestChange не проводит обмен: расчёт выполняет выбранный сервис, а присутствие в списке не гарантирует результат сделки.",
+          "Сравнивайте итоговую сумму TRX на вашем адресе, а не только красивый курс. До оплаты зафиксируйте условия, сеть TRON, комиссию, минимальную сумму и порядок выдачи. Для физического пункта проверьте оператора и адрес офиса, получите подтверждение сделки; поступление проверяйте в своём кошельке и обозревателе, а не по скриншоту кассира.",
+          "Наличие офиса или место в рейтинге не гарантирует надёжность. Не передавайте сотрудникам разблокированный кошелёк, seed-фразу или приватный ключ."
+        ],
+        "refs": [
+          "bestchange"
+        ]
+      },
+      {
+        "title": "3. Биржа: купить и вывести",
+        "paragraphs": [
+          "Если у вас уже есть аккаунт на доступной бирже, сравните покупку через спотовую пару и простой обмен Convert. Для задачи пополнения нужен реальный TRX с возможностью вывода, а не фьючерс или другой производный инструмент."
+        ],
+        "steps": [
+          "Проверьте доступность биржи в вашей стране, пройдите требуемую проверку личности и включите 2FA.",
+          "Пополните баланс поддерживаемой валютой или криптовалютой и купите TRX.",
+          "В выводе выберите TRX в его родной сети TRON. Проверьте минимальный вывод, комиссию и возможную задержку после покупки.",
+          "Укажите адрес своего кошелька. Начните с небольшой суммы, учитывая минимум и комиссию вывода."
+        ]
+      },
+      {
+        "title": "4. Карта или банковский перевод",
+        "paragraphs": [
+          "Купить за фиат можно через кнопку Buy в кошельке, платёжного провайдера или биржу. Удобство зависит от страны, банка, валюты и поддержки TRX. Кнопка в кошельке нередко открывает стороннего провайдера со своими условиями и проверкой личности.",
+          "Сравните полную стоимость: платёжную комиссию, разницу между курсом покупки и рыночным курсом, конвертацию валюты и доставку TRX на нужный адрес. Для небольшой покупки под комиссию минимальный платёж может оказаться слишком большим."
+        ]
+      },
+      {
+        "title": "5. Уже есть крипта: SunSwap или FixedFloat",
+        "paragraphs": [
+          "Если токены уже находятся в TRON, можно рассмотреть SunSwap — децентрализованную биржу этой сети. Для поддерживаемой пары выбираете исходный токен и TRX, проверяете курс, проскальзывание и запросы на разрешение расходования токенов. Обычный своп в SunSwap не переносит BTC, ETH или USDT из другой сети в TRON.",
+          "FixedFloat (ff.io) — другой механизм: обменный сервис, а не DEX вроде SunSwap. Вы выбираете доступную пару, отправляете исходную монету по реквизитам заявки и получаете TRX на свой адрес. Для другой сети проверьте её точное название, доступность направления, минимум, срок заявки и итоговую сумму."
+        ],
+        "note": "Своп в TRON сам требует ресурсов, а иногда и отдельной операции разрешения. Если на кошельке есть только USDT и нет TRX или доступных ресурсов, обмен может не выполниться. Сначала получите небольшой запас TRX извне или обеспечьте необходимые ресурсы. Отправка монеты в обменник тоже требует комиссии исходной сети.",
+        "refs": [
+          "sunswap",
+          "fixedfloat"
+        ]
+      },
+      {
+        "title": "6. Какие ещё есть варианты",
+        "paragraphs": [
+          "Перевод со своего другого кошелька или от знакомого — самый прямой способ получить немного TRX, если монеты уже есть у вас или у человека, которому доверяете. Адрес можно сообщать, секретные ключи — нельзя.",
+          "OTC-сделка у провайдера может подойти для крупных сумм; заранее уточняйте документы, расчёт и выдачу. Криптоматы — ещё один вариант там, где оператор прямо поддерживает TRX, но доступность и комиссии нужно проверять отдельно.",
+          "Можно получить TRX как оплату или вознаграждение; награды за стейкинг требуют уже имеющихся активов и не решают задачу первой покупки. Тестовые краны выдают монеты тестовой сети: ими нельзя оплатить комиссии основной сети TRON."
+        ]
+      },
+      {
+        "title": "Как пополнить личный кабинет GasFree4you",
+        "paragraphs": [
+          "На своём кошельке TRX служит запасом для сетевых расходов. В кабинете GasFree4you TRX пополняет баланс для оплаты услуг и управления арендой Energy из одного места."
+        ],
+        "steps": [
+          "Откройте личный кабинет и раздел пополнения. Возьмите актуальный адрес и прочитайте условия зачисления, включая минимум, если он указан.",
+          "Отправьте именно TRX в сети TRON. Не заменяйте его USDT или токеном с похожим названием в другой сети.",
+          "Если выводите напрямую с биржи или обменника, сначала убедитесь, что инструкции кабинета допускают такой способ. Учитывайте комиссию вывода, чтобы поступила нужная сумма.",
+          "Дождитесь зачисления на баланс кабинета. Затем оформите аренду энергии, указав адрес кошелька, с которого будете отправлять USDT.",
+          "Перед переводом проверьте поступление Energy, срок её действия и оставшиеся расходы на Bandwidth. Сохраните небольшой резерв TRX на собственном кошельке, если он нужен по оценке комиссии."
+        ],
+        "note": "Адрес пополнения кабинета и адрес, на который заказывается энергия, выполняют разные задачи. Пополнение само по себе не делегирует Energy: нужен заказ. Не копируйте реквизиты из комментариев, переписки или чужой инструкции."
+      },
+      {
+        "title": "Проверка перед покупкой",
+        "steps": [
+          "Сервис обслуживает вашу страну, валюту и способ оплаты; вывод TRX в TRON доступен.",
+          "Вы сравнили конечное количество TRX после всех комиссий и минимальные суммы на каждом шаге.",
+          "Адрес получения верный: собственный кошелёк или актуальные реквизиты вашего кабинета.",
+          "Сеть — TRON. Для первого перевода выбрана небольшая сумма, достаточная с учётом лимитов.",
+          "Никто не просит seed-фразу или приватный ключ. Условия покупки и номер заявки сохранены."
+        ],
+        "note": "Универсального самого дешёвого способа нет. Для небольшого запаса на комиссии зачастую важнее минимумы и стоимость вывода, чем небольшая разница в торговом курсе."
+      }
+    ]
+  },
+  "en": {
+    "title": "How to buy TRX for network fees and Energy management",
+    "description": "Exchanges, bank cards, P2P, cash offices, and crypto swaps: choose a route to TRX and fund your GasFree4you account.",
+    "category": "Practical guides",
+    "time": "7 min read",
+    "sourceLabel": "Sources and services",
+    "ctaTitle": "Manage Energy from one account",
+    "ctaText": "Fund your balance with TRX and order Energy rentals for the addresses you need. Find current terms and deposit details in your account.",
+    "ctaButton": "Open your account",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Read next",
+    "relatedText": "How to create your own wallet",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "Does funding my account replace TRX in my wallet?",
+    "faqAnswer": "No. Your account balance pays for services. Energy goes to the address specified in the order, while remaining network costs depend on that wallet’s resources. Check Energy, Bandwidth, and the fee estimate before sending.",
+    "sections": [
+      {
+        "title": "Why TRX matters when you use USDT",
+        "paragraphs": [
+          "TRX is TRON’s native coin. For a USDT user, its immediate purpose may be covering network costs: transactions use Bandwidth, and smart-contract calls such as USDT transfers also use Energy. When resources are insufficient, the network can burn TRX from the sender’s balance.",
+          "You can also deposit TRX into your GasFree4you account to manage Energy rentals for your addresses centrally. That service balance is separate from the TRX held in your own wallet.",
+          "Fiat means ordinary money such as dollars, euros, or pounds. It describes what you pay with; an exchange, P2P marketplace, or cash office describes where you buy. The categories overlap."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "1. Start with an exchange available in your country",
+        "paragraphs": [
+          "An exchange is a practical starting point if it supports your country, funding method, and native TRX withdrawals. Kraken, for example, has a TRX buying page; that does not guarantee availability for every residency or account. Check your eligibility before depositing.",
+          "Compare spot trading with a simple Convert or instant-buy quote. You need actual withdrawable TRX, not futures or another derivative."
+        ],
+        "steps": [
+          "Create an account, complete required identity checks, and enable 2FA.",
+          "Fund with a supported currency or cryptocurrency, then buy TRX.",
+          "Choose TRX withdrawal over the native TRON network. Check the withdrawal minimum, fee, and any purchase-related hold.",
+          "Enter your own wallet address and test with a small amount that meets the withdrawal limits."
+        ],
+        "refs": [
+          "kraken"
+        ]
+      },
+      {
+        "title": "2. Buy with a card or bank transfer",
+        "paragraphs": [
+          "You may buy through an exchange, a payment provider, or a wallet’s Buy button. Availability depends on your country, bank, currency, and TRX support. A wallet button often opens a third-party provider with its own identity checks and terms.",
+          "Compare the full delivered cost: payment fees, the difference between the quoted and market price, currency conversion, and delivery or withdrawal fees. A small purchase for network costs may fall below the provider’s minimum."
+        ]
+      },
+      {
+        "title": "3. P2P: buy from another user",
+        "paragraphs": [
+          "A P2P marketplace connects buyers and sellers using supported local payments. Prefer an in-platform escrow process that reserves the crypto during the trade. Direct TRX offers may be absent; a possible route is fiat → USDT on the platform → spot conversion to TRX → withdrawal over TRON.",
+          "Check the seller’s history, limits, quote, and eventual withdrawal cost. Keep communication and the trade on-platform, follow its payment rules using your own account, and reject requests to change payment details in an outside chat. Country and banking restrictions still apply."
+        ]
+      },
+      {
+        "title": "4. Online exchange services and physical cash offices",
+        "paragraphs": [
+          "Some exchange services accept bank payments, while physical offices may accept cash. Confirm that the provider delivers TRX rather than only USDT, which would require another exchange.",
+          "Agree on the final TRX amount, TRON network, minimum, fees, and settlement process before paying. Verify the office operator and keep a receipt. Confirm incoming funds in your own wallet and a block explorer, not from an employee’s screenshot. A storefront is not a guarantee of reliability; never hand over your recovery phrase or an unlocked wallet."
+        ]
+      },
+      {
+        "title": "5. Already hold crypto? SunSwap and FixedFloat differ",
+        "paragraphs": [
+          "For supported tokens already on TRON, SunSwap is a decentralized exchange. Select the input token and TRX, review slippage and any token-spending approval. A regular SunSwap swap does not move native BTC, ETH, or USDT from another chain into TRON.",
+          "FixedFloat (ff.io) is an exchange service, not a DEX like SunSwap. Choose an available route, send the input coin to the order address, and receive TRX at your address. Check both networks, route availability, minimums, the order deadline, and the final quote."
+        ],
+        "note": "A TRON swap itself needs resources and may need a separate approval transaction. With only USDT and no TRX or available resources, it may fail. Obtain a little TRX externally or arrange the required resources first. Sending crypto to an exchange service also requires the source network’s fee.",
+        "refs": [
+          "sunswap",
+          "fixedfloat"
+        ]
+      },
+      {
+        "title": "6. Other ways to obtain TRX",
+        "paragraphs": [
+          "Moving TRX from another wallet you own, or receiving a small amount from someone you trust, can solve an immediate fee shortage. Share the public address, never the secret keys.",
+          "An OTC provider can arrange larger trades; confirm documentation and settlement terms first. Crypto ATMs are another possibility only where the operator explicitly supports TRX—check availability and fees rather than assuming support.",
+          "You can receive TRX as payment or rewards. Staking rewards require existing assets and do not solve a first-purchase problem. Testnet faucets provide test coins, which cannot pay mainnet TRON fees."
+        ]
+      },
+      {
+        "title": "Fund your GasFree4you account",
+        "paragraphs": [
+          "TRX in your wallet can cover network costs. TRX deposited into GasFree4you pays for services and lets you manage Energy rentals from one account."
+        ],
+        "steps": [
+          "Open your account’s deposit section. Copy the current address and read the crediting conditions, including any stated minimum.",
+          "Send native TRX over TRON. Do not substitute USDT or a similarly named token on another chain.",
+          "For direct withdrawals from an exchange or swap service, first check that your account’s deposit instructions allow that route. Include the withdrawal fee in your calculation.",
+          "Wait for your account balance to be credited. Then order Energy for the wallet that will send USDT.",
+          "Before transferring, check Energy delivery, its validity period, and remaining Bandwidth costs. Keep a small TRX reserve in your wallet if the fee estimate requires it."
+        ],
+        "note": "The account deposit address and the address receiving Energy serve different purposes. Funding alone does not delegate Energy: you must place an order. Use the deposit details in your account, not addresses from comments or messages."
+      },
+      {
+        "title": "Check before buying",
+        "steps": [
+          "The provider supports your country and payment method, and TRX withdrawals over TRON are available.",
+          "You compared the final TRX amount after every fee and the minimums at every step.",
+          "The destination is your own wallet or the current deposit address shown in your account.",
+          "The selected network is TRON; your first test amount meets the applicable limits.",
+          "Nobody requests your recovery phrase or private key. Keep the order ID and agreed terms."
+        ],
+        "note": "There is no universally cheapest route. For a small fee reserve, minimums and withdrawal costs can matter more than a slightly better trading price."
+      }
+    ]
+  },
+  "es": {
+    "title": "Cómo comprar TRX para las comisiones de red y gestionar Energy",
+    "description": "Exchanges, tarjeta, P2P, casas de cambio y otras criptomonedas: elige cómo obtener TRX y recargar tu cuenta de GasFree4you.",
+    "category": "Guías prácticas",
+    "time": "7 min de lectura",
+    "sourceLabel": "Fuentes y servicios",
+    "ctaTitle": "Gestiona Energy desde una sola cuenta",
+    "ctaText": "Recarga el saldo con TRX y solicita alquileres de Energy para las direcciones que necesites. Consulta las condiciones y los datos de depósito en tu cuenta.",
+    "ctaButton": "Abrir mi cuenta",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "También te puede interesar",
+    "relatedText": "Cómo crear tu propia cartera",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "¿Recargar mi cuenta sustituye al TRX de mi cartera?",
+    "faqAnswer": "No. El saldo de la cuenta paga los servicios. Energy llega a la dirección indicada en el pedido; los demás costes dependen de los recursos de esa cartera. Comprueba Energy, Bandwidth y la comisión estimada antes de enviar.",
+    "sections": [
+      {
+        "title": "Por qué necesitas TRX si utilizas USDT",
+        "paragraphs": [
+          "TRX es la moneda nativa de TRON. Para quien usa USDT, puede servir principalmente para cubrir costes de red: las operaciones consumen Bandwidth y las llamadas a contratos, como las transferencias de USDT, también consumen Energy. Si faltan recursos, la red puede quemar TRX del saldo del remitente.",
+          "También puedes recargar con TRX tu cuenta de GasFree4you y gestionar desde allí el alquiler de Energy para tus direcciones. Ese saldo del servicio es independiente del TRX que guardas en tu cartera.",
+          "Fiat significa dinero convencional, como euros o pesos. Describe con qué pagas; un exchange, P2P o una casa de cambio describe dónde compras. Las categorías se pueden combinar."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "1. Primero, un exchange disponible en tu país",
+        "paragraphs": [
+          "Un exchange es un punto de partida práctico. Para un lector en España, Bit2Me ofrece una página de compra de TRX y pagos por tarjeta o transferencia. Kraken es otro ejemplo con compra de TRX. Comprueba siempre la disponibilidad para tu residencia, tu cuenta y el método de pago.",
+          "Hablar español no implica vivir en España. En Latinoamérica, prioriza un proveedor que atienda tu país, permita usar tu moneda y retire TRX por TRON. No des por hecho que una opción en euros funciona con todos los bancos o países.",
+          "Compara el mercado al contado con la conversión rápida. Necesitas TRX real que puedas retirar, no futuros u otros derivados."
+        ],
+        "steps": [
+          "Regístrate, completa la verificación requerida y activa 2FA.",
+          "Ingresa una moneda admitida o criptomonedas y compra TRX.",
+          "Selecciona la retirada de TRX por la red nativa TRON. Revisa el mínimo, la comisión y posibles periodos de espera.",
+          "Introduce tu dirección y prueba primero con una cantidad pequeña que cumpla los límites."
+        ],
+        "refs": [
+          "bit2me",
+          "kraken"
+        ]
+      },
+      {
+        "title": "2. Compra directa con tarjeta o transferencia",
+        "paragraphs": [
+          "Puedes utilizar un exchange, un proveedor de pagos o el botón Comprar de una cartera. Ese botón suele llevar a un tercero con condiciones y verificaciones propias. La disponibilidad depende del país, banco, moneda y soporte de TRX.",
+          "Compara el coste final: comisión de pago, diferencia entre el precio ofrecido y el de mercado, conversión de moneda y entrega o retirada. Para una pequeña reserva de comisiones, el importe mínimo puede ser decisivo."
+        ]
+      },
+      {
+        "title": "3. P2P y medios de pago locales",
+        "paragraphs": [
+          "En P2P compras a otro usuario con un medio de pago admitido. Utiliza el proceso de custodia temporal de la plataforma, que reserva las criptomonedas durante la operación. Si no hay ofertas directas de TRX, una ruta posible es fiat → USDT en la plataforma → conversión a TRX → retirada por TRON.",
+          "Revisa el historial del vendedor, los límites y el coste total. Mantén la operación dentro de la plataforma, paga desde tu propia cuenta según sus reglas y rechaza cambios de datos de pago por chats externos. Los métodos y restricciones varían entre países."
+        ]
+      },
+      {
+        "title": "4. Casas de cambio online y oficinas físicas",
+        "paragraphs": [
+          "Una casa de cambio online puede aceptar pagos bancarios; una oficina física puede ofrecer cambio de efectivo. Confirma que entrega TRX: si solo entrega USDT, necesitarás otra operación.",
+          "Acuerda el importe neto, la red TRON, los mínimos, las comisiones y el procedimiento antes de pagar. Comprueba quién opera la oficina y guarda el comprobante. Verifica la recepción en tu cartera y en un explorador, no mediante una captura del empleado. Tener un local no garantiza fiabilidad: no entregues la frase de recuperación ni la cartera desbloqueada."
+        ]
+      },
+      {
+        "title": "5. Si ya tienes cripto: SunSwap o FixedFloat",
+        "paragraphs": [
+          "Para tokens compatibles que ya están en TRON, SunSwap es un exchange descentralizado. Elige el token de origen y TRX; revisa el deslizamiento y los permisos de gasto. Un swap habitual en SunSwap no traslada BTC, ETH ni USDT de otra red a TRON.",
+          "FixedFloat (ff.io) es un servicio de intercambio, no un DEX como SunSwap. Seleccionas una ruta disponible, envías la moneda de origen a la dirección del pedido y recibes TRX en tu dirección. Comprueba las redes, el mínimo, el plazo del pedido y el importe final."
+        ],
+        "note": "El swap en TRON necesita recursos y a veces una aprobación adicional. Si solo tienes USDT y no tienes TRX ni recursos disponibles, puede fallar. Recibe primero un poco de TRX desde fuera o consigue los recursos necesarios. Enviar cripto a un servicio de cambio también requiere pagar la comisión de la red de origen.",
+        "refs": [
+          "sunswap",
+          "fixedfloat"
+        ]
+      },
+      {
+        "title": "6. Otras formas de conseguir TRX",
+        "paragraphs": [
+          "Un traslado desde otra cartera propia o una pequeña transferencia de alguien de confianza puede resolver una necesidad puntual. Comparte la dirección pública, nunca las claves secretas.",
+          "Un proveedor OTC puede gestionar importes mayores: confirma la documentación y las condiciones de liquidación. Los cajeros de criptomonedas son otra posibilidad solo si el operador admite expresamente TRX; revisa disponibilidad y costes.",
+          "También puedes recibir TRX como pago o recompensa. El staking requiere activos previos y no resuelve la primera compra. Los faucets de prueba entregan monedas de testnet, que no pagan comisiones en la red principal de TRON."
+        ]
+      },
+      {
+        "title": "Cómo recargar tu cuenta de GasFree4you",
+        "paragraphs": [
+          "El TRX de tu cartera puede cubrir costes de red. El TRX ingresado en GasFree4you paga servicios y permite gestionar alquileres de Energy desde una sola cuenta."
+        ],
+        "steps": [
+          "Abre la sección de depósito de tu cuenta. Copia la dirección actual y revisa las condiciones de abono y el mínimo, si se indica.",
+          "Envía TRX nativo por TRON. No lo sustituyas por USDT ni por un token de nombre parecido en otra red.",
+          "Para retirar directamente desde un exchange o servicio de cambio, comprueba que las instrucciones de tu cuenta admiten esa vía. Incluye la comisión de retirada en el cálculo.",
+          "Espera a que se abone el saldo. Después, solicita Energy para la cartera desde la que enviarás USDT.",
+          "Antes de transferir, comprueba la recepción de Energy, su vigencia y los costes restantes de Bandwidth. Conserva una pequeña reserva de TRX si la estimación de la comisión lo requiere."
+        ],
+        "note": "La dirección de depósito y la dirección que recibe Energy cumplen funciones distintas. Recargar no delega Energy por sí solo: necesitas un pedido. Utiliza los datos que aparecen en tu cuenta, no direcciones recibidas por mensajes o comentarios."
+      },
+      {
+        "title": "Comprobaciones antes de comprar",
+        "steps": [
+          "El proveedor atiende tu país y método de pago, y permite retirar TRX por TRON.",
+          "Has comparado el TRX neto después de todas las comisiones y los mínimos de cada paso.",
+          "El destino es tu cartera o la dirección de depósito actual de tu cuenta.",
+          "La red seleccionada es TRON; la primera prueba cumple los límites aplicables.",
+          "Nadie pide tu frase de recuperación ni tu clave privada. Guarda el número de pedido y las condiciones."
+        ],
+        "note": "No existe una vía universalmente más barata. Para una pequeña reserva destinada a comisiones, los mínimos y el coste de retirada pueden importar más que una ligera diferencia de precio."
+      }
+    ]
+  },
+  "id": {
+    "title": "Cara membeli TRX untuk biaya jaringan dan mengelola Energy",
+    "description": "Bursa Indonesia, pembayaran rupiah, P2P, penukaran tunai, dan swap kripto: pilih cara mendapatkan TRX serta mengisi saldo GasFree4you.",
+    "category": "Panduan praktis",
+    "time": "7 menit baca",
+    "sourceLabel": "Sumber dan layanan",
+    "ctaTitle": "Kelola Energy dari satu akun",
+    "ctaText": "Isi saldo dengan TRX dan pesan sewa Energy untuk alamat yang Anda butuhkan. Periksa ketentuan serta alamat deposit terbaru di akun Anda.",
+    "ctaButton": "Buka akun Anda",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Baca juga",
+    "relatedText": "Cara membuat dompet sendiri",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "Apakah saldo akun menggantikan TRX di dompet saya?",
+    "faqAnswer": "Tidak. Saldo akun membayar layanan. Energy dikirim ke alamat pada pesanan, sedangkan biaya jaringan lainnya bergantung pada sumber daya dompet tersebut. Periksa Energy, Bandwidth, dan estimasi biaya sebelum mengirim.",
+    "sections": [
+      {
+        "title": "Mengapa pengguna USDT membutuhkan TRX",
+        "paragraphs": [
+          "TRX adalah koin asli TRON. Bagi pengguna USDT, kegunaan utamanya bisa untuk menutup biaya jaringan: transaksi memakai Bandwidth, sedangkan panggilan smart contract, termasuk transfer USDT, juga memakai Energy. Jika sumber daya tidak cukup, jaringan dapat membakar TRX dari saldo pengirim.",
+          "TRX juga dapat digunakan untuk mengisi saldo akun GasFree4you dan mengelola sewa Energy bagi alamat-alamat Anda dari satu tempat. Saldo layanan ini berbeda dari TRX di dompet pribadi.",
+          "Fiat adalah uang biasa, misalnya rupiah. Istilah ini menjelaskan alat pembayaran; bursa, P2P, dan penukar menjelaskan tempat pembelian. Kategorinya dapat saling tumpang tindih."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "1. Mulai dari bursa Indonesia",
+        "paragraphs": [
+          "Untuk pengguna di Indonesia, mulai dengan membandingkan bursa lokal dan jalur rupiah. INDODAX menyediakan pasar TRX/IDR. Tokocrypto memiliki pasar TRX/USDT; jangan menganggap ada pasangan langsung rupiah untuk setiap aset. Periksa alur deposit IDR dan konversi yang tersedia di akun Anda.",
+          "Periksa status penyelenggara melalui informasi terbaru OJK serta ketentuan akun. Dukungan perdagangan tidak otomatis berarti penarikan sedang tersedia: cek penarikan TRX melalui jaringan TRON sebelum menyetor dana.",
+          "Pilih TRX yang benar-benar dapat ditarik, bukan kontrak futures atau produk derivatif."
+        ],
+        "steps": [
+          "Daftar, selesaikan verifikasi identitas yang diminta, dan aktifkan 2FA.",
+          "Deposit rupiah melalui metode yang didukung dari rekening sendiri. Periksa biaya dan batasnya.",
+          "Beli TRX di pasangan yang tersedia. Jika melalui aset perantara seperti USDT, hitung biaya kedua tahap.",
+          "Tarik TRX melalui jaringan asli TRON ke dompet Anda. Periksa minimum, biaya, dan kemungkinan penundaan; mulai dengan jumlah uji yang memenuhi batas."
+        ],
+        "refs": [
+          "indodax",
+          "tokocrypto",
+          "ojk"
+        ]
+      },
+      {
+        "title": "2. Pembelian fiat melalui penyedia pembayaran",
+        "paragraphs": [
+          "Selain bursa, tombol Beli di dompet dapat mengarahkan Anda ke penyedia pembayaran pihak ketiga. Dukungan kartu, transfer bank, rupiah, dan TRX bergantung pada penyedia serta domisili. Jangan menganggap semua kartu Indonesia diterima.",
+          "Bandingkan biaya akhir: biaya pembayaran, selisih kurs, konversi mata uang, serta biaya pengiriman atau penarikan. Untuk kebutuhan TRX yang kecil, minimum pembelian bisa menjadi faktor utama."
+        ]
+      },
+      {
+        "title": "3. P2P dengan metode pembayaran yang didukung",
+        "paragraphs": [
+          "P2P mempertemukan pembeli dan penjual. Gunakan proses escrow di dalam platform yang menahan kripto selama transaksi. Jika tidak ada penawaran langsung TRX, rutenya bisa berupa fiat → USDT di platform → konversi ke TRX → penarikan lewat TRON.",
+          "Periksa riwayat penjual, batas transaksi, kurs, dan biaya penarikan. Tetap lakukan transaksi di platform, gunakan rekening sendiri sesuai aturannya, dan tolak perubahan rekening melalui percakapan di luar platform. Pastikan layanan tersedia untuk negara serta akun Anda."
+        ]
+      },
+      {
+        "title": "4. Penukar online dan kantor fisik",
+        "paragraphs": [
+          "Penyedia tertentu menerima pembayaran bank atau menawarkan penukaran tunai di kantor. Ini bukan pilihan otomatis untuk semua wilayah Indonesia. Pastikan layanan yang Anda pilih boleh melayani lokasi Anda dan benar-benar menyerahkan TRX; jika hanya USDT, dibutuhkan penukaran tambahan.",
+          "Sepakati jumlah TRX bersih, jaringan TRON, minimum, biaya, dan proses penyelesaian sebelum membayar. Periksa identitas operator kantor dan simpan bukti transaksi. Verifikasi penerimaan melalui dompet serta penjelajah blockchain, bukan tangkapan layar petugas. Jangan berikan frasa pemulihan atau dompet yang sudah terbuka kepada petugas."
+        ]
+      },
+      {
+        "title": "5. Sudah punya kripto: SunSwap atau FixedFloat",
+        "paragraphs": [
+          "Untuk token yang didukung dan sudah berada di TRON, SunSwap merupakan bursa terdesentralisasi. Pilih token asal dan TRX, periksa slippage serta izin penggunaan token. Swap biasa di SunSwap tidak memindahkan BTC, ETH, atau USDT dari jaringan lain ke TRON.",
+          "FixedFloat (ff.io) adalah layanan penukaran, bukan DEX seperti SunSwap. Pilih rute yang tersedia, kirim koin asal ke alamat pesanan, lalu terima TRX di alamat Anda. Periksa jaringan asal dan tujuan, ketersediaan pasangan, minimum, batas waktu, serta hasil akhir."
+        ],
+        "note": "Swap di TRON membutuhkan sumber daya dan kadang transaksi persetujuan terpisah. Jika hanya ada USDT tanpa TRX atau sumber daya yang tersedia, swap dapat gagal. Terima sedikit TRX dari luar atau siapkan sumber daya terlebih dahulu. Mengirim kripto ke layanan penukaran juga membutuhkan biaya jaringan asal.",
+        "refs": [
+          "sunswap",
+          "fixedfloat"
+        ]
+      },
+      {
+        "title": "6. Cara lain mendapatkan TRX",
+        "paragraphs": [
+          "Memindahkan TRX dari dompet lain milik sendiri atau menerima sedikit dari orang tepercaya dapat memenuhi kebutuhan biaya yang mendesak. Bagikan alamat publik, bukan kunci rahasia.",
+          "Penyedia OTC dapat menangani transaksi besar; periksa dokumen dan ketentuan penyelesaiannya. ATM kripto hanya menjadi pilihan di wilayah dan operator yang secara jelas mendukung TRX—jangan menganggap tersedia di Indonesia.",
+          "TRX juga dapat diterima sebagai pembayaran atau imbalan sesuai ketentuan setempat. Imbalan staking memerlukan aset yang sudah dimiliki sehingga bukan solusi pembelian pertama. Faucet testnet memberikan koin uji yang tidak dapat membayar biaya di jaringan utama TRON."
+        ]
+      },
+      {
+        "title": "Mengisi saldo akun GasFree4you",
+        "paragraphs": [
+          "TRX di dompet pribadi dapat menutup biaya jaringan. TRX yang disetor ke GasFree4you membayar layanan dan memungkinkan pengelolaan sewa Energy dari satu akun."
+        ],
+        "steps": [
+          "Buka bagian deposit akun Anda. Salin alamat terbaru dan baca ketentuan pengkreditan, termasuk minimum jika tercantum.",
+          "Kirim TRX asli melalui TRON. Jangan menggantinya dengan USDT atau token bernama mirip di jaringan lain.",
+          "Jika menarik langsung dari bursa atau layanan penukaran, pastikan petunjuk deposit akun mengizinkan cara tersebut. Perhitungkan biaya penarikan agar jumlah yang diterima cukup.",
+          "Tunggu saldo akun masuk. Setelah itu pesan Energy untuk alamat dompet yang akan mengirim USDT.",
+          "Sebelum transfer, periksa penerimaan Energy, masa berlakunya, dan sisa biaya Bandwidth. Simpan sedikit TRX di dompet jika estimasi biaya memerlukannya."
+        ],
+        "note": "Alamat deposit akun dan alamat penerima Energy memiliki fungsi berbeda. Mengisi saldo saja tidak mendelegasikan Energy: Anda perlu membuat pesanan. Ambil alamat deposit dari akun Anda, bukan komentar atau pesan."
+      },
+      {
+        "title": "Periksa sebelum membeli",
+        "steps": [
+          "Penyedia mendukung negara dan metode pembayaran Anda, serta penarikan TRX melalui TRON tersedia.",
+          "Anda sudah membandingkan TRX bersih setelah seluruh biaya dan minimum di setiap tahap.",
+          "Tujuan adalah dompet pribadi atau alamat deposit terbaru dalam akun Anda.",
+          "Jaringan yang dipilih adalah TRON; jumlah percobaan pertama memenuhi batas yang berlaku.",
+          "Tidak ada pihak yang meminta frasa pemulihan atau kunci privat. Simpan nomor pesanan serta ketentuannya."
+        ],
+        "note": "Tidak ada satu cara yang selalu paling murah. Untuk cadangan biaya yang kecil, minimum dan biaya penarikan dapat lebih berpengaruh daripada sedikit perbedaan harga perdagangan."
+      }
+    ]
+  }
+}

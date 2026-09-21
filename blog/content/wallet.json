@@ -111,7 +111,10 @@
           "security"
         ]
       }
-    ]
+    ],
+    "relatedTitle": "Читайте также",
+    "relatedText": "Как купить TRX",
+    "relatedHref": "how-to-buy-trx.html"
   },
   "en": {
     "title": "How to create your own wallet: from everyday to unconventional",
@@ -225,7 +228,10 @@
           "security"
         ]
       }
-    ]
+    ],
+    "relatedTitle": "Read next",
+    "relatedText": "How to buy TRX",
+    "relatedHref": "how-to-buy-trx.html"
   },
   "es": {
     "title": "Cómo crear tu propia cartera: de lo habitual a lo más inusual",
@@ -339,7 +345,10 @@
           "security"
         ]
       }
-    ]
+    ],
+    "relatedTitle": "También te puede interesar",
+    "relatedText": "Cómo comprar TRX",
+    "relatedHref": "how-to-buy-trx.html"
   },
   "id": {
     "title": "Cara membuat dompet sendiri: dari cara biasa hingga yang tidak biasa",
@@ -453,6 +462,9 @@
           "security"
         ]
       }
-    ]
+    ],
+    "relatedTitle": "Baca juga",
+    "relatedText": "Cara membeli TRX",
+    "relatedHref": "how-to-buy-trx.html"
   }
 }

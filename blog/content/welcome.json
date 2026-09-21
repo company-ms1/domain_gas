@@ -42,7 +42,8 @@
     "ctaText": "Посмотрите доступные услуги и условия на основном сайте.",
     "footer": "О крипте и сервисе — понятным языком.",
     "toc": "В этой статье",
-    "back": "Все материалы"
+    "back": "Все материалы",
+    "moreArticles": "Ещё материалы"
   },
   "en": {
     "blog": "Blog",
@@ -87,7 +88,8 @@
     "ctaText": "See available services and their terms on the main website.",
     "footer": "Crypto and the service, in plain language.",
     "toc": "In this article",
-    "back": "All articles"
+    "back": "All articles",
+    "moreArticles": "More articles"
   },
   "es": {
     "blog": "Blog",
@@ -132,7 +134,8 @@
     "ctaText": "Consulta los servicios disponibles y sus condiciones en la web principal.",
     "footer": "Las criptomonedas y el servicio, explicados con claridad.",
     "toc": "En este artículo",
-    "back": "Todos los artículos"
+    "back": "Todos los artículos",
+    "moreArticles": "Más artículos"
   },
   "id": {
     "blog": "Blog",
@@ -177,6 +180,7 @@
     "ctaText": "Lihat layanan yang tersedia dan ketentuannya di situs utama.",
     "footer": "Kripto dan layanan, dijelaskan dengan bahasa sederhana.",
     "toc": "Dalam artikel ini",
-    "back": "Semua artikel"
+    "back": "Semua artikel",
+    "moreArticles": "Artikel lainnya"
   }
 }
