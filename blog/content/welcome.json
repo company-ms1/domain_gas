@@ -1,0 +1,182 @@
+{
+  "ru": {
+    "blog": "Блог",
+    "service": "Перейти к сервису",
+    "skip": "К содержимому",
+    "language": "Язык",
+    "eyebrow": "GasFree4you · База знаний",
+    "headline": "Разобраться в крипте. Начать с простого.",
+    "intro": "Коротко о переводах в сети TRON, работе GasFree4you и деталях, которые полезно знать до первой операции.",
+    "featured": "Начните здесь",
+    "count": "Первый материал",
+    "draft": "Черновик",
+    "read": "Читать статью",
+    "diagramTitle": "ВАШ МАРШРУТ",
+    "next": "Что разберём дальше",
+    "planned": "В плане редакции",
+    "cards": [
+      [
+        "Крипта простыми словами",
+        "USDT, TRON и TRX: в чём разница?",
+        "Разберём названия, которые встречаются при подготовке перевода."
+      ],
+      [
+        "Инструкции",
+        "Первый заказ: шаг за шагом",
+        "Покажем путь от выбора услуги до проверки результата."
+      ],
+      [
+        "Обновления",
+        "Что нового в GasFree4you",
+        "Расскажем об изменениях сервиса и о том, как ими пользоваться."
+      ]
+    ],
+    "topicsTitle": "Темы блога",
+    "topics": [
+      "Основы крипты",
+      "Инструкции",
+      "О сервисе",
+      "Обновления"
+    ],
+    "ctaTitle": "Познакомьтесь с GasFree4you",
+    "ctaText": "Посмотрите доступные услуги и условия на основном сайте.",
+    "footer": "О крипте и сервисе — понятным языком.",
+    "toc": "В этой статье",
+    "back": "Все материалы"
+  },
+  "en": {
+    "blog": "Blog",
+    "service": "Visit the service",
+    "skip": "Skip to content",
+    "language": "Language",
+    "eyebrow": "GasFree4you · Knowledge base",
+    "headline": "Understand crypto. Start with the basics.",
+    "intro": "Short guides to TRON transfers, GasFree4you, and the details worth knowing before your first transaction.",
+    "featured": "Start here",
+    "count": "Our first article",
+    "draft": "Draft",
+    "read": "Read article",
+    "diagramTitle": "YOUR PATH",
+    "next": "Coming up next",
+    "planned": "Planned article",
+    "cards": [
+      [
+        "Crypto basics",
+        "USDT, TRON and TRX: what’s the difference?",
+        "Get to know the names you will encounter when preparing a transfer."
+      ],
+      [
+        "Guides",
+        "Your first order, step by step",
+        "From choosing a service to checking the result."
+      ],
+      [
+        "Updates",
+        "What’s new at GasFree4you",
+        "Changes to the service and how to use them."
+      ]
+    ],
+    "topicsTitle": "Explore the topics",
+    "topics": [
+      "Crypto basics",
+      "Guides",
+      "About the service",
+      "Updates"
+    ],
+    "ctaTitle": "Explore GasFree4you",
+    "ctaText": "See available services and their terms on the main website.",
+    "footer": "Crypto and the service, in plain language.",
+    "toc": "In this article",
+    "back": "All articles"
+  },
+  "es": {
+    "blog": "Blog",
+    "service": "Ir al servicio",
+    "skip": "Saltar al contenido",
+    "language": "Idioma",
+    "eyebrow": "GasFree4you · Base de conocimiento",
+    "headline": "Entiende las criptomonedas. Empieza por lo básico.",
+    "intro": "Guías breves sobre transferencias en TRON, el uso de GasFree4you y lo que conviene saber antes de tu primera operación.",
+    "featured": "Empieza aquí",
+    "count": "Nuestro primer artículo",
+    "draft": "Borrador",
+    "read": "Leer artículo",
+    "diagramTitle": "TU RECORRIDO",
+    "next": "Próximos temas",
+    "planned": "Artículo previsto",
+    "cards": [
+      [
+        "Conceptos básicos",
+        "USDT, TRON y TRX: ¿en qué se diferencian?",
+        "Los nombres que encontrarás al preparar una transferencia."
+      ],
+      [
+        "Guías",
+        "Tu primer pedido, paso a paso",
+        "Desde la elección del servicio hasta la comprobación del resultado."
+      ],
+      [
+        "Novedades",
+        "Qué hay de nuevo en GasFree4you",
+        "Los cambios del servicio y cómo aprovecharlos."
+      ]
+    ],
+    "topicsTitle": "Temas del blog",
+    "topics": [
+      "Conceptos básicos",
+      "Guías",
+      "Sobre el servicio",
+      "Novedades"
+    ],
+    "ctaTitle": "Conoce GasFree4you",
+    "ctaText": "Consulta los servicios disponibles y sus condiciones en la web principal.",
+    "footer": "Las criptomonedas y el servicio, explicados con claridad.",
+    "toc": "En este artículo",
+    "back": "Todos los artículos"
+  },
+  "id": {
+    "blog": "Blog",
+    "service": "Buka layanan",
+    "skip": "Langsung ke konten",
+    "language": "Bahasa",
+    "eyebrow": "GasFree4you · Pusat pengetahuan",
+    "headline": "Pahami kripto. Mulai dari dasar.",
+    "intro": "Panduan singkat tentang transfer di jaringan TRON, penggunaan GasFree4you, dan hal yang perlu diketahui sebelum transaksi pertama.",
+    "featured": "Mulai di sini",
+    "count": "Artikel pertama kami",
+    "draft": "Draf",
+    "read": "Baca artikel",
+    "diagramTitle": "LANGKAH ANDA",
+    "next": "Topik berikutnya",
+    "planned": "Artikel direncanakan",
+    "cards": [
+      [
+        "Dasar kripto",
+        "USDT, TRON, dan TRX: apa bedanya?",
+        "Kenali istilah yang muncul saat menyiapkan transfer."
+      ],
+      [
+        "Panduan",
+        "Pesanan pertama, langkah demi langkah",
+        "Dari memilih layanan hingga memeriksa hasilnya."
+      ],
+      [
+        "Pembaruan",
+        "Yang baru di GasFree4you",
+        "Perubahan layanan dan cara menggunakannya."
+      ]
+    ],
+    "topicsTitle": "Topik blog",
+    "topics": [
+      "Dasar kripto",
+      "Panduan",
+      "Tentang layanan",
+      "Pembaruan"
+    ],
+    "ctaTitle": "Kenali GasFree4you",
+    "ctaText": "Lihat layanan yang tersedia dan ketentuannya di situs utama.",
+    "footer": "Kripto dan layanan, dijelaskan dengan bahasa sederhana.",
+    "toc": "Dalam artikel ini",
+    "back": "Semua artikel"
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "ru": {
+    "title": "Как завести свой кошелёк: от обычного способа до экзотического",
+    "description": "Приложение, аппаратный кошелёк или Python на компьютере без интернета? Создаём кошелёк для TRON и разбираемся, кому достаются ключи.",
+    "category": "Основы крипты",
+    "time": "8 минут",
+    "route": [
+      "Выбрать тип кошелька",
+      "Создать и сохранить ключи",
+      "Проверить перед переводом"
+    ],
+    "sourceLabel": "Подробнее в документации",
+    "codeTitle": "Код: tron_wallet.py",
+    "download": "Скачать Python-пример",
+    "outputTitle": "Вывод при запуске с --demo",
+    "onlineTitle": "Подготовка на машине с интернетом",
+    "offlineTitle": "Установка и запуск на офлайн-машине",
+    "randomTitle": "Новый случайный ключ, без --demo",
+    "faqTitle": "Нужно ли сообщать seed-фразу GasFree4you?",
+    "faqAnswer": "Нет. Для получения средств или ресурсов сети используется публичный адрес. Seed-фраза и приватный ключ для этого не нужны: их нельзя вводить в формы заказа или отправлять поддержке.",
+    "sections": [
+      {
+        "title": "Кошелёк начинается с ключей",
+        "paragraphs": [
+          "Монеты находятся в блокчейне. Кошелёк помогает просматривать баланс и подписывать операции ключами. Публичный адрес можно передать отправителю; приватный ключ открывает доступ к управлению средствами и должен оставаться секретным.",
+          "Seed-фраза — резервная копия, из которой совместимый кошелёк восстанавливает ключи. Это не пароль от приложения: пароль защищает локальный доступ, а фраза позволяет восстановить кошелёк на другом устройстве. В Python-примере ниже фразы не будет — только один приватный ключ и его адрес."
+        ]
+      },
+      {
+        "title": "Обычный способ: приложение на телефоне",
+        "paragraphs": [
+          "Для повседневных переводов удобен горячий кошелёк: его ключи находятся на телефоне или компьютере, который выходит в интернет. Приложение не обязано быть постоянно онлайн, чтобы считаться горячим. Примеры для TRON — TronLink и Trust Wallet.",
+          "Установка обычно бесплатна, отдельное устройство не требуется. Но комиссии сети остаются, а фишинг и вредоносное ПО могут поставить средства под угрозу."
+        ],
+        "steps": [
+          "Откройте официальный сайт разработчика и перейдите оттуда в магазин приложений. Проверьте издателя.",
+          "Выберите создание нового кошелька, а не импорт чужой фразы. Задайте надёжный пароль или код доступа.",
+          "В стандартном варианте с seed-фразой запишите слова по порядку на бумаге или металле. Пройдите проверку резервной копии в приложении.",
+          "Откройте получение TRX или USDT именно в сети TRON (TRC20). Скопируйте свой адрес и проверьте выбранную сеть у отправителя.",
+          "Начните с небольшой тестовой суммы. Перед исходящим переводом проверьте активацию аккаунта и ресурсы для комиссии."
+        ],
+        "refs": [
+          "tronlink",
+          "trust"
+        ]
+      },
+      {
+        "title": "Аппаратный кошелёк: ключи в отдельном устройстве",
+        "paragraphs": [
+          "Холодное хранение означает, что ключи не попадают в онлайн-среду. Аппаратный кошелёк создаёт и использует их внутри отдельного устройства: компьютер передаёт данные операции, а подтверждение происходит на устройстве. Само подключение по USB не превращает такой кошелёк в горячий.",
+          "Ledger поддерживает TRON и TRC20. У Trezor поддержка зависит от модели: актуальная инструкция перечисляет Safe 7, Safe 5, Safe 3 и Model T. Перед покупкой проверьте конкретную модель, сеть и нужный токен.",
+          "Плюс — изоляция ключей от обычного компьютера. Минусы — стоимость устройства и дополнительные шаги подтверждения. Аппаратный кошелёк не спасёт от утечки резервной копии или вредоносной операции, которую вы сами одобрили."
+        ],
+        "steps": [
+          "Купите устройство у производителя или авторизованного продавца и выполните проверку подлинности по инструкции производителя.",
+          "При настройке создайте новый кошелёк. Не используйте заранее заполненную карточку со словами. Сохраните резервную копию, которую создаст устройство.",
+          "Добавьте аккаунт TRON через официальное приложение, сверьте адрес получения на экране устройства и сделайте небольшой тестовый перевод."
+        ],
+        "refs": [
+          "ledger",
+          "trezor"
+        ]
+      },
+      {
+        "title": "Кастодиальный или свой: кто распоряжается ключами",
+        "paragraphs": [
+          "Горячий или холодный — про хранение ключей. Кастодиальный или некастодиальный — про контроль над ними. Это разные классификации.",
+          "У кастодиального сервиса ключами управляет компания. Вы регистрируете аккаунт, проходите необходимые проверки, включаете 2FA и получаете адрес пополнения. Восстановление доступа может быть проще, но вывод зависит от правил сервиса и может быть приостановлен.",
+          "В некастодиальном кошельке ключами управляете вы. Установка приложения не равна открытию счёта у компании, а поддержка не сможет заменить потерянную резервную копию. Такой вариант даёт самостоятельность и требует бережного обращения с ключами.",
+          "Для изучения собственного адреса и работы с ресурсами TRON в этой статье мы используем некастодиальный вариант."
+        ]
+      },
+      {
+        "title": "Экзотический способ: Python без интернета",
+        "paragraphs": [
+          "Чтобы вычислить пару ключ–адрес, подключение к блокчейну не нужно. Ниже — локальный пример на TronPy 0.6.1: он не обращается к API и не отправляет транзакции. Это демонстрация механики, а не готовая система холодного хранения.",
+          "Подготовьте доверенную офлайн-машину и Python. На отдельном компьютере с такой же ОС, архитектурой и версией Python скачайте TronPy и зависимости из проверенного источника. Перенесите каталог wheelhouse и файл примера на офлайн-машину, проверьте происхождение пакетов и их контрольные суммы. До генерации отключите сеть и общий буфер обмена; не используйте облачный терминал или запись экрана.",
+          "Режим --demo использует заведомо публичный ключ со значением 1, чтобы вывод можно было повторить. Без этого флага библиотека создаёт случайный ключ средствами операционной системы."
+        ],
+        "code": true,
+        "note": "Показанный ключ математически действителен, но известен всем. Никогда не отправляйте деньги на адрес из примера: ими сможет воспользоваться любой читатель.",
+        "after": [
+          "При обычном запуске результат будет другим. Не фотографируйте и не публикуйте вывод, не сохраняйте его в облачные логи. Для этого одноадресного примера резервировать нужно приватный ключ: seed-фраза не создаётся.",
+          "Отключённый интернет не исправляет заражённую ОС, подменённые библиотеки или слабую случайность. Если потом импортировать ключ в онлайн-приложение, он перестанет быть изолированным. Настоящее офлайн-хранение требует также безопасной подписи и переноса подписанной транзакции; этот пример их не реализует."
+        ],
+        "refs": [
+          "tronpy"
+        ]
+      },
+      {
+        "title": "Адрес создан. Аккаунт в сети — ещё нет",
+        "paragraphs": [
+          "Генерация ключей бесплатна и происходит локально. Активация нового аккаунта TRON — отдельная операция в сети, например перевод TRX на новый адрес с существующего аккаунта. До активации обычный поиск аккаунта в обозревателе может его не показывать.",
+          "Не рассчитывайте, что получение USDT само по себе активирует аккаунт. Перед использованием проверьте его статус. Для отправки USDT нужны ресурсы сети; при их нехватке могут расходоваться TRX. Условия и комиссии проверяйте перед операцией, а публичный адрес не путайте с секретным ключом."
+        ],
+        "refs": [
+          "tron",
+          "resources"
+        ]
+      },
+      {
+        "title": "Памятка: пять правил перед первым переводом",
+        "steps": [
+          "Никому не раскрывайте seed-фразу и приватный ключ — в том числе «поддержке», «менеджеру» и знакомым. Не вводите их на сайтах для «проверки» или «активации» кошелька.",
+          "Для резервной копии выбирайте бумагу или металл и защищённое место. Не делайте скриншоты, не отправляйте слова себе в мессенджер и не храните их в обычных заметках или облаке. Берегите копию от потери, огня и посторонних.",
+          "Включите 2FA на биржах и в кастодиальных сервисах: приложение-аутентификатор или аппаратный ключ, если поддерживается. 2FA не защитит некастодиальный кошелёк, если злоумышленник уже получил его ключи.",
+          "Для значимых сбережений рассмотрите аппаратный кошелёк, а для повседневных операций держите отдельный небольшой баланс. Универсального порога в рублях нет: ориентируйтесь на последствия потери для себя.",
+          "Проверяйте сеть, сумму и весь адрес получателя символ за символом после вставки, а на аппаратном кошельке — ещё и на его экране. Не копируйте адрес из подозрительной истории переводов. Для нового получателя сначала отправьте небольшую тестовую сумму."
+        ],
+        "refs": [
+          "security"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "How to create your own wallet: from everyday to unconventional",
+    "description": "A mobile app, a hardware wallet, or Python on an offline computer? Create a TRON wallet and understand who controls the keys.",
+    "category": "Crypto basics",
+    "time": "8 min read",
+    "route": [
+      "Choose a wallet type",
+      "Create and back up the keys",
+      "Check before transferring"
+    ],
+    "sourceLabel": "Read the documentation",
+    "codeTitle": "Code: tron_wallet.py",
+    "download": "Download the Python example",
+    "outputTitle": "Output when run with --demo",
+    "onlineTitle": "Prepare on the online computer",
+    "offlineTitle": "Install and run on the offline computer",
+    "randomTitle": "A new random key, without --demo",
+    "faqTitle": "Does GasFree4you need my recovery phrase?",
+    "faqAnswer": "No. Receiving funds or network resources uses your public address. Your recovery phrase and private key are not needed: never enter them in order forms or send them to support.",
+    "sections": [
+      {
+        "title": "A wallet starts with keys",
+        "paragraphs": [
+          "Coins exist on the blockchain. A wallet helps you view balances and sign transactions with your keys. You can share your public address with a sender; your private key authorizes control of funds and must stay secret.",
+          "A recovery phrase, also called a seed phrase, is a backup from which a compatible wallet can restore keys. It is different from the app password: the password protects local access, while the phrase can restore the wallet on another device. Our Python example creates no phrase, just one private key and its address."
+        ]
+      },
+      {
+        "title": "The everyday route: a phone app",
+        "paragraphs": [
+          "A hot wallet is convenient for regular transfers: its keys live on a phone or computer that goes online. The app does not have to stay connected all the time to count as hot. TRON examples include TronLink and Trust Wallet.",
+          "Installation is usually free and needs no extra device. Network fees still apply, and phishing or malware can put the funds at risk."
+        ],
+        "steps": [
+          "Visit the developer’s official website and follow its app-store link. Check the publisher.",
+          "Choose to create a new wallet, rather than import someone else’s phrase. Set a strong password or access code.",
+          "For the standard recovery-phrase option, write the words in order on paper or metal. Complete the app’s backup check.",
+          "Open Receive for TRX or USDT specifically on TRON (TRC20). Copy your address and check that the sender selects the same network.",
+          "Start with a small test amount. Before sending funds out, check account activation and the resources needed for fees."
+        ],
+        "refs": [
+          "tronlink",
+          "trust"
+        ]
+      },
+      {
+        "title": "A hardware wallet: keys on a separate device",
+        "paragraphs": [
+          "Cold storage keeps keys out of an online environment. A hardware wallet generates and uses them inside a separate device: the computer passes transaction data to it, and you confirm on the device. A USB connection alone does not make it a hot wallet.",
+          "Ledger supports TRON and TRC20. Trezor support depends on the model: its current guide lists Safe 7, Safe 5, Safe 3, and Model T. Before buying, check the exact model, network, and token you need.",
+          "The advantage is key isolation from your everyday computer. The trade-offs are the device cost and additional confirmation steps. Hardware cannot save you from a leaked backup or a malicious transaction you approve yourself."
+        ],
+        "steps": [
+          "Buy from the manufacturer or an authorized reseller and follow the manufacturer’s authenticity checks.",
+          "Create a new wallet during setup. Do not use a pre-filled recovery card. Safely back up the recovery information generated by the device.",
+          "Add a TRON account through the official app, verify the receiving address on the device’s screen, and make a small test transfer."
+        ],
+        "refs": [
+          "ledger",
+          "trezor"
+        ]
+      },
+      {
+        "title": "Custodial or self-custody: who controls the keys?",
+        "paragraphs": [
+          "Hot versus cold describes key storage. Custodial versus self-custody describes key control. These are separate distinctions.",
+          "With a custodial service, the company manages the keys. You register an account, complete required checks, enable 2FA, and obtain a deposit address. Recovering access may be easier, but withdrawals depend on the service’s rules and may be suspended.",
+          "With a self-custody wallet, you manage the keys. Installing the app is not the same as opening an account with a company, and support cannot replace a lost backup. This gives you independence and responsibility for the keys.",
+          "To explore your own address and TRON network resources, this article uses the self-custody approach."
+        ]
+      },
+      {
+        "title": "The unconventional route: offline Python",
+        "paragraphs": [
+          "Computing a key and address does not require a blockchain connection. The local example below uses TronPy 0.6.1: it makes no API requests and sends no transactions. It demonstrates the mechanics; it is not a complete cold-storage system.",
+          "Prepare a trusted offline computer with Python. On a separate online computer with the same OS, architecture, and Python version, download TronPy and its dependencies from a trusted source. Transfer the wheelhouse folder and example file to the offline computer, checking package provenance and checksums. Before generation, disconnect networking and shared clipboards; avoid cloud terminals and screen recording.",
+          "The --demo option uses the deliberately public private key with value 1, making the output reproducible. Without that option, the library generates a random key using the operating system’s randomness."
+        ],
+        "code": true,
+        "note": "The displayed key is mathematically valid but public. Never send funds to the example address: any reader could spend them.",
+        "after": [
+          "A normal run produces a different result. Do not photograph or publish the output or save it to cloud logs. Back up the private key for this single-address example: it does not create a recovery phrase.",
+          "Disconnecting the internet cannot fix an infected OS, tampered libraries, or poor randomness. Importing the key into an online app later ends its isolation. Real offline storage also needs a safe signing process and a way to transfer the signed transaction; this example implements neither."
+        ],
+        "refs": [
+          "tronpy"
+        ]
+      },
+      {
+        "title": "An address exists before an on-chain account does",
+        "paragraphs": [
+          "Key generation is free and local. Activating a new TRON account is a separate on-chain action, for example a TRX transfer to the new address from an existing account. Before activation, a regular account search in a block explorer may not show it.",
+          "Do not assume that receiving USDT alone activates the account. Check its status before use. Sending USDT requires network resources; insufficient resources may lead to TRX being spent. Check current conditions and fees before transferring, and keep the public address distinct from the secret key."
+        ],
+        "refs": [
+          "tron",
+          "resources"
+        ]
+      },
+      {
+        "title": "Five rules before your first transfer",
+        "steps": [
+          "Never share your recovery phrase or private key, including with ‘support’, a ‘manager’, or a friend. Do not enter them on websites offering to ‘verify’ or ‘activate’ a wallet.",
+          "Use paper or metal for the backup and keep it somewhere secure. Avoid screenshots, messages to yourself, ordinary notes apps, and cloud storage. Protect the backup from loss, fire, and other people.",
+          "Enable 2FA on exchanges and custodial services: use an authenticator app or a hardware security key where supported. 2FA cannot protect a self-custody wallet once an attacker has its keys.",
+          "Consider a hardware wallet for meaningful savings and keep a separate small balance for everyday use. There is no universal monetary threshold: consider what a loss would mean to you.",
+          "After pasting, check the network, amount, and the entire recipient address character by character; with hardware, verify them on its screen too. Do not copy addresses from suspicious transaction history. Send a small test amount to a new recipient first."
+        ],
+        "refs": [
+          "security"
+        ]
+      }
+    ]
+  },
+  "es": {
+    "title": "Cómo crear tu propia cartera: de lo habitual a lo más inusual",
+    "description": "¿Una aplicación, una cartera física o Python en un ordenador sin internet? Crea una cartera para TRON y descubre quién controla las claves.",
+    "category": "Conceptos básicos",
+    "time": "8 min de lectura",
+    "route": [
+      "Elige el tipo de cartera",
+      "Crea y respalda las claves",
+      "Comprueba antes de transferir"
+    ],
+    "sourceLabel": "Consulta la documentación",
+    "codeTitle": "Código: tron_wallet.py",
+    "download": "Descargar el ejemplo de Python",
+    "outputTitle": "Resultado al ejecutar con --demo",
+    "onlineTitle": "Preparación en el ordenador con internet",
+    "offlineTitle": "Instalación y ejecución sin conexión",
+    "randomTitle": "Una nueva clave aleatoria, sin --demo",
+    "faqTitle": "¿GasFree4you necesita mi frase de recuperación?",
+    "faqAnswer": "No. Para recibir fondos o recursos de la red se utiliza tu dirección pública. No se necesitan la frase de recuperación ni la clave privada: nunca las introduzcas en formularios de pedido ni las envíes al soporte.",
+    "sections": [
+      {
+        "title": "Una cartera empieza por las claves",
+        "paragraphs": [
+          "Las monedas están en la cadena de bloques. La cartera permite consultar el saldo y firmar operaciones con tus claves. Puedes compartir la dirección pública con quien vaya a enviarte fondos; la clave privada permite controlarlos y debe permanecer secreta.",
+          "La frase de recuperación, también llamada frase semilla, es una copia de seguridad con la que una cartera compatible restaura las claves. No es la contraseña de la aplicación: esta protege el acceso local, mientras que la frase permite recuperar la cartera en otro dispositivo. El ejemplo de Python no crea una frase, sino una sola clave privada y su dirección."
+        ]
+      },
+      {
+        "title": "La opción habitual: una aplicación en el móvil",
+        "paragraphs": [
+          "Una cartera caliente resulta cómoda para transferencias frecuentes: guarda las claves en un móvil u ordenador que se conecta a internet. No necesita estar siempre conectada para considerarse caliente. TronLink y Trust Wallet son ejemplos para TRON.",
+          "La instalación suele ser gratuita y no requiere un dispositivo adicional. Siguen existiendo comisiones de red, y el phishing o el software malicioso pueden poner los fondos en peligro."
+        ],
+        "steps": [
+          "Entra en la web oficial del desarrollador y sigue su enlace a la tienda de aplicaciones. Comprueba quién la publica.",
+          "Elige crear una cartera nueva, no importar la frase de otra persona. Configura una contraseña o código de acceso seguro.",
+          "En la opción habitual con frase de recuperación, anota las palabras en orden en papel o metal. Completa la comprobación de la copia en la aplicación.",
+          "Abre la opción de recibir TRX o USDT específicamente en TRON (TRC20). Copia tu dirección y confirma que el remitente elige la misma red.",
+          "Empieza con una pequeña cantidad de prueba. Antes de enviar fondos, comprueba la activación de la cuenta y los recursos necesarios para las comisiones."
+        ],
+        "refs": [
+          "tronlink",
+          "trust"
+        ]
+      },
+      {
+        "title": "Cartera física: las claves en un dispositivo aparte",
+        "paragraphs": [
+          "El almacenamiento en frío mantiene las claves fuera del entorno conectado. Una cartera física las genera y utiliza dentro de un dispositivo independiente: el ordenador le transmite los datos y tú confirmas la operación en el dispositivo. Conectarlo por USB no lo convierte por sí solo en una cartera caliente.",
+          "Ledger admite TRON y TRC20. En Trezor depende del modelo: su guía actual enumera Safe 7, Safe 5, Safe 3 y Model T. Antes de comprar, comprueba el modelo, la red y el token concretos.",
+          "La ventaja es aislar las claves del ordenador habitual. Las desventajas son el coste y los pasos adicionales de confirmación. El dispositivo no te protege si filtras la copia de seguridad o apruebas una operación maliciosa."
+        ],
+        "steps": [
+          "Compra al fabricante o a un distribuidor autorizado y sigue las comprobaciones de autenticidad del fabricante.",
+          "Crea una cartera nueva durante la configuración. No utilices una tarjeta con palabras ya escritas. Guarda la copia de recuperación generada por el dispositivo.",
+          "Añade una cuenta TRON mediante la aplicación oficial, verifica la dirección de recepción en la pantalla del dispositivo y realiza una pequeña transferencia de prueba."
+        ],
+        "refs": [
+          "ledger",
+          "trezor"
+        ]
+      },
+      {
+        "title": "Con custodia o sin ella: quién controla las claves",
+        "paragraphs": [
+          "Caliente o fría describe dónde se guardan las claves. Con custodia o autocustodia describe quién las controla. Son dos clasificaciones diferentes.",
+          "En un servicio con custodia, la empresa gestiona las claves. Registras una cuenta, completas las verificaciones necesarias, activas 2FA y obtienes una dirección de depósito. Recuperar el acceso puede ser más sencillo, pero las retiradas dependen de las reglas del servicio y pueden suspenderse.",
+          "En una cartera de autocustodia, tú gestionas las claves. Instalar la aplicación no equivale a abrir una cuenta en una empresa, y el soporte no puede sustituir una copia de seguridad perdida. Tienes autonomía y también responsabilidad sobre las claves.",
+          "Para explorar una dirección propia y los recursos de TRON, en este artículo utilizamos la autocustodia."
+        ]
+      },
+      {
+        "title": "La opción inusual: Python sin internet",
+        "paragraphs": [
+          "Calcular una clave y su dirección no requiere conectarse a la cadena de bloques. El ejemplo local utiliza TronPy 0.6.1: no consulta ninguna API ni envía transacciones. Explica el mecanismo; no es un sistema completo de almacenamiento en frío.",
+          "Prepara un ordenador de confianza sin conexión y con Python. En otro ordenador con internet, con el mismo sistema operativo, arquitectura y versión de Python, descarga TronPy y sus dependencias de una fuente fiable. Transfiere la carpeta wheelhouse y el archivo de ejemplo al equipo aislado, comprobando el origen de los paquetes y sus sumas de verificación. Antes de generar claves, desconecta la red y el portapapeles compartido; evita terminales en la nube y grabaciones de pantalla.",
+          "La opción --demo utiliza una clave privada deliberadamente pública de valor 1 para obtener un resultado reproducible. Sin esa opción, la biblioteca genera una clave aleatoria con la fuente de aleatoriedad del sistema operativo."
+        ],
+        "code": true,
+        "note": "La clave mostrada es matemáticamente válida, pero es pública. Nunca envíes fondos a la dirección del ejemplo: cualquier lector podría gastarlos.",
+        "after": [
+          "Una ejecución normal produce otro resultado. No fotografíes ni publiques la salida, ni la guardes en registros en la nube. En este ejemplo de una sola dirección debes respaldar la clave privada: no se genera una frase de recuperación.",
+          "Desconectar internet no corrige un sistema infectado, bibliotecas manipuladas o una aleatoriedad deficiente. Si después importas la clave en una aplicación conectada, deja de estar aislada. El almacenamiento realmente desconectado también necesita una firma segura y un método para trasladar la transacción firmada; este ejemplo no implementa esas funciones."
+        ],
+        "refs": [
+          "tronpy"
+        ]
+      },
+      {
+        "title": "Tener una dirección no es tener una cuenta activada",
+        "paragraphs": [
+          "Generar las claves es gratuito y local. Activar una cuenta nueva de TRON es una operación aparte en la red, por ejemplo, una transferencia de TRX desde una cuenta existente a la nueva dirección. Antes de la activación, una búsqueda habitual de cuentas en un explorador puede no mostrarla.",
+          "No des por hecho que recibir USDT activa la cuenta por sí solo. Comprueba su estado antes de utilizarla. Enviar USDT requiere recursos de red; si no bastan, pueden gastarse TRX. Consulta las condiciones y comisiones antes de operar y distingue siempre la dirección pública de la clave secreta."
+        ],
+        "refs": [
+          "tron",
+          "resources"
+        ]
+      },
+      {
+        "title": "Cinco reglas antes de tu primera transferencia",
+        "steps": [
+          "No compartas la frase de recuperación ni la clave privada con nadie: tampoco con ‘soporte’, un ‘gestor’ o un amigo. No las introduzcas en webs que ofrezcan ‘verificar’ o ‘activar’ la cartera.",
+          "Guarda la copia en papel o metal y en un lugar protegido. Evita capturas, mensajes a ti mismo, notas comunes y almacenamiento en la nube. Protégela de pérdidas, incendios y otras personas.",
+          "Activa 2FA en exchanges y servicios con custodia mediante una aplicación de autenticación o una llave física si se admite. 2FA no protege una cartera de autocustodia si alguien ya tiene sus claves.",
+          "Considera una cartera física para ahorros importantes y un saldo pequeño separado para el uso diario. No existe un umbral monetario universal: piensa en lo que significaría esa pérdida para ti.",
+          "Después de pegar, revisa la red, el importe y toda la dirección del destinatario, carácter por carácter; con una cartera física, compruébalos también en su pantalla. No copies direcciones de historiales sospechosos. Envía primero una pequeña cantidad de prueba a los destinatarios nuevos."
+        ],
+        "refs": [
+          "security"
+        ]
+      }
+    ]
+  },
+  "id": {
+    "title": "Cara membuat dompet sendiri: dari cara biasa hingga yang tidak biasa",
+    "description": "Aplikasi ponsel, dompet perangkat keras, atau Python di komputer tanpa internet? Buat dompet TRON dan pahami siapa yang mengendalikan kuncinya.",
+    "category": "Dasar kripto",
+    "time": "8 menit baca",
+    "route": [
+      "Pilih jenis dompet",
+      "Buat dan cadangkan kunci",
+      "Periksa sebelum transfer"
+    ],
+    "sourceLabel": "Baca dokumentasi",
+    "codeTitle": "Kode: tron_wallet.py",
+    "download": "Unduh contoh Python",
+    "outputTitle": "Hasil saat dijalankan dengan --demo",
+    "onlineTitle": "Persiapan di komputer yang terhubung internet",
+    "offlineTitle": "Instalasi dan menjalankan di komputer offline",
+    "randomTitle": "Kunci acak baru, tanpa --demo",
+    "faqTitle": "Apakah GasFree4you membutuhkan frasa pemulihan saya?",
+    "faqAnswer": "Tidak. Untuk menerima dana atau sumber daya jaringan, yang digunakan adalah alamat publik. Frasa pemulihan dan kunci privat tidak diperlukan: jangan masukkan ke formulir pesanan atau kirim ke dukungan pelanggan.",
+    "sections": [
+      {
+        "title": "Dompet dimulai dari kunci",
+        "paragraphs": [
+          "Koin berada di blockchain. Dompet membantu Anda melihat saldo dan menandatangani transaksi dengan kunci. Alamat publik boleh diberikan kepada pengirim; kunci privat memberikan kendali atas dana dan harus dirahasiakan.",
+          "Frasa pemulihan, atau seed phrase, adalah cadangan untuk memulihkan kunci melalui dompet yang kompatibel. Ini berbeda dari kata sandi aplikasi: kata sandi melindungi akses lokal, sedangkan frasa dapat memulihkan dompet di perangkat lain. Contoh Python di bawah tidak membuat frasa, hanya satu kunci privat beserta alamatnya."
+        ]
+      },
+      {
+        "title": "Cara biasa: aplikasi di ponsel",
+        "paragraphs": [
+          "Dompet panas praktis untuk transfer rutin: kuncinya tersimpan di ponsel atau komputer yang terhubung ke internet. Aplikasi tidak harus terus-menerus online untuk disebut dompet panas. Contoh untuk TRON adalah TronLink dan Trust Wallet.",
+          "Pemasangannya biasanya gratis dan tidak memerlukan perangkat tambahan. Biaya jaringan tetap berlaku, sementara phishing dan perangkat lunak berbahaya dapat membahayakan dana."
+        ],
+        "steps": [
+          "Buka situs resmi pengembang lalu ikuti tautan ke toko aplikasi. Periksa penerbitnya.",
+          "Pilih membuat dompet baru, bukan mengimpor frasa milik orang lain. Atur kata sandi atau kode akses yang kuat.",
+          "Untuk opsi standar dengan frasa pemulihan, tulis kata-katanya secara berurutan di kertas atau logam. Selesaikan pemeriksaan cadangan dalam aplikasi.",
+          "Buka menu terima TRX atau USDT khusus di jaringan TRON (TRC20). Salin alamat Anda dan pastikan pengirim memilih jaringan yang sama.",
+          "Mulai dengan transfer percobaan bernilai kecil. Sebelum mengirim dana keluar, periksa aktivasi akun dan sumber daya untuk biaya jaringan."
+        ],
+        "refs": [
+          "tronlink",
+          "trust"
+        ]
+      },
+      {
+        "title": "Dompet perangkat keras: kunci di perangkat terpisah",
+        "paragraphs": [
+          "Penyimpanan dingin menjaga kunci agar tidak masuk ke lingkungan online. Dompet perangkat keras membuat dan menggunakan kunci di dalam perangkat tersendiri: komputer mengirimkan data transaksi, lalu Anda mengonfirmasinya pada perangkat. Koneksi USB saja tidak menjadikannya dompet panas.",
+          "Ledger mendukung TRON dan TRC20. Dukungan Trezor bergantung pada model: panduan terbarunya mencantumkan Safe 7, Safe 5, Safe 3, dan Model T. Sebelum membeli, periksa model, jaringan, dan token yang dibutuhkan.",
+          "Kelebihannya adalah isolasi kunci dari komputer sehari-hari. Kekurangannya berupa biaya perangkat dan langkah konfirmasi tambahan. Perangkat tidak melindungi Anda jika cadangan bocor atau Anda menyetujui transaksi berbahaya."
+        ],
+        "steps": [
+          "Beli dari produsen atau penjual resmi dan lakukan pemeriksaan keaslian sesuai petunjuk produsen.",
+          "Buat dompet baru saat pengaturan awal. Jangan gunakan kartu yang sudah berisi kata-kata pemulihan. Simpan cadangan yang dibuat oleh perangkat dengan aman.",
+          "Tambahkan akun TRON melalui aplikasi resmi, cocokkan alamat penerimaan pada layar perangkat, lalu lakukan transfer percobaan kecil."
+        ],
+        "refs": [
+          "ledger",
+          "trezor"
+        ]
+      },
+      {
+        "title": "Kustodial atau nonkustodial: siapa mengendalikan kunci?",
+        "paragraphs": [
+          "Panas atau dingin menjelaskan tempat penyimpanan kunci. Kustodial atau nonkustodial menjelaskan siapa yang mengendalikannya. Keduanya merupakan klasifikasi berbeda.",
+          "Pada layanan kustodial, perusahaan mengelola kunci. Anda mendaftarkan akun, menyelesaikan pemeriksaan yang diwajibkan, mengaktifkan 2FA, lalu mendapatkan alamat deposit. Pemulihan akses mungkin lebih mudah, tetapi penarikan bergantung pada aturan layanan dan dapat ditangguhkan.",
+          "Pada dompet nonkustodial, Anda mengelola kunci sendiri. Memasang aplikasi tidak sama dengan membuka akun di perusahaan, dan dukungan pelanggan tidak dapat mengganti cadangan yang hilang. Anda memiliki kemandirian sekaligus tanggung jawab menjaga kunci.",
+          "Untuk mempelajari alamat sendiri dan sumber daya jaringan TRON, artikel ini menggunakan pendekatan nonkustodial."
+        ]
+      },
+      {
+        "title": "Cara tidak biasa: Python tanpa internet",
+        "paragraphs": [
+          "Menghitung pasangan kunci dan alamat tidak memerlukan koneksi ke blockchain. Contoh lokal berikut memakai TronPy 0.6.1: tidak mengakses API dan tidak mengirim transaksi. Ini menunjukkan cara kerjanya, bukan sistem penyimpanan dingin yang lengkap.",
+          "Siapkan komputer offline tepercaya beserta Python. Pada komputer online terpisah dengan sistem operasi, arsitektur, dan versi Python yang sama, unduh TronPy beserta dependensinya dari sumber tepercaya. Pindahkan folder wheelhouse dan berkas contoh ke komputer offline, lalu periksa asal paket dan checksum-nya. Sebelum membuat kunci, putuskan jaringan dan clipboard bersama; hindari terminal cloud serta perekaman layar.",
+          "Opsi --demo memakai kunci privat bernilai 1 yang sengaja dipublikasikan agar hasilnya dapat diulang. Tanpa opsi tersebut, pustaka membuat kunci acak dengan sumber keacakan sistem operasi."
+        ],
+        "code": true,
+        "note": "Kunci yang ditampilkan valid secara matematis, tetapi bersifat publik. Jangan pernah mengirim dana ke alamat contoh: siapa pun yang membacanya dapat menggunakan dana tersebut.",
+        "after": [
+          "Eksekusi biasa menghasilkan keluaran berbeda. Jangan memotret atau memublikasikan hasilnya, maupun menyimpannya ke log cloud. Untuk contoh satu alamat ini, cadangkan kunci privatnya: frasa pemulihan tidak dibuat.",
+          "Memutus internet tidak memperbaiki sistem yang terinfeksi, pustaka yang dimodifikasi, atau keacakan yang buruk. Jika kunci kemudian diimpor ke aplikasi online, isolasinya berakhir. Penyimpanan offline yang sebenarnya juga memerlukan penandatanganan aman dan pemindahan transaksi yang telah ditandatangani; contoh ini tidak menerapkan keduanya."
+        ],
+        "refs": [
+          "tronpy"
+        ]
+      },
+      {
+        "title": "Alamat sudah ada, akun jaringan belum tentu aktif",
+        "paragraphs": [
+          "Pembuatan kunci gratis dan berlangsung lokal. Aktivasi akun TRON baru merupakan tindakan terpisah di jaringan, misalnya transfer TRX ke alamat baru dari akun yang sudah ada. Sebelum aktivasi, pencarian akun biasa di penjelajah blockchain mungkin belum menampilkannya.",
+          "Jangan menganggap penerimaan USDT saja akan mengaktifkan akun. Periksa statusnya sebelum digunakan. Mengirim USDT membutuhkan sumber daya jaringan; jika tidak cukup, TRX dapat terpakai. Periksa ketentuan dan biaya terbaru sebelum transaksi, serta bedakan alamat publik dari kunci rahasia."
+        ],
+        "refs": [
+          "tron",
+          "resources"
+        ]
+      },
+      {
+        "title": "Lima aturan sebelum transfer pertama",
+        "steps": [
+          "Jangan bagikan frasa pemulihan atau kunci privat kepada siapa pun, termasuk ‘dukungan pelanggan’, ‘manajer’, atau teman. Jangan masukkan ke situs yang menawarkan ‘verifikasi’ atau ‘aktivasi’ dompet.",
+          "Gunakan kertas atau logam untuk cadangan dan simpan di tempat aman. Hindari tangkapan layar, pesan ke diri sendiri, aplikasi catatan biasa, dan penyimpanan cloud. Lindungi cadangan dari kehilangan, kebakaran, dan orang lain.",
+          "Aktifkan 2FA pada bursa dan layanan kustodial melalui aplikasi autentikator atau kunci keamanan perangkat keras jika didukung. 2FA tidak melindungi dompet nonkustodial jika penyerang sudah memiliki kuncinya.",
+          "Pertimbangkan dompet perangkat keras untuk tabungan yang berarti bagi Anda, serta saldo kecil terpisah untuk kebutuhan harian. Tidak ada batas nominal universal: pertimbangkan dampak kehilangan bagi diri Anda.",
+          "Setelah menempelkan alamat, periksa jaringan, jumlah, dan seluruh alamat penerima karakter demi karakter; pada dompet perangkat keras, cocokkan juga di layarnya. Jangan menyalin alamat dari riwayat transaksi mencurigakan. Kirim jumlah percobaan kecil terlebih dahulu kepada penerima baru."
+        ],
+        "refs": [
+          "security"
+        ]
+      }
+    ]
+  }
+}
