@@ -110,7 +110,13 @@
         ],
         "note": "Универсального самого дешёвого способа нет. Для небольшого запаса на комиссии зачастую важнее минимумы и стоимость вывода, чем небольшая разница в торговом курсе."
       }
-    ]
+    ],
+    "authorLabel": "Автор",
+    "authorName": "Редакция GasFree4you",
+    "publishedLabel": "Опубликовано",
+    "modifiedLabel": "Обновлено",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22"
   },
   "en": {
     "title": "How to buy TRX for network fees and Energy management",
@@ -221,7 +227,13 @@
         ],
         "note": "There is no universally cheapest route. For a small fee reserve, minimums and withdrawal costs can matter more than a slightly better trading price."
       }
-    ]
+    ],
+    "authorLabel": "Author",
+    "authorName": "GasFree4you Editorial Team",
+    "publishedLabel": "Published",
+    "modifiedLabel": "Updated",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22"
   },
   "es": {
     "title": "Cómo comprar TRX para las comisiones de red y gestionar Energy",
@@ -334,7 +346,13 @@
         ],
         "note": "No existe una vía universalmente más barata. Para una pequeña reserva destinada a comisiones, los mínimos y el coste de retirada pueden importar más que una ligera diferencia de precio."
       }
-    ]
+    ],
+    "authorLabel": "Autor",
+    "authorName": "Equipo editorial de GasFree4you",
+    "publishedLabel": "Publicado",
+    "modifiedLabel": "Actualizado",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22"
   },
   "id": {
     "title": "Cara membeli TRX untuk biaya jaringan dan mengelola Energy",
@@ -448,6 +466,12 @@
         ],
         "note": "Tidak ada satu cara yang selalu paling murah. Untuk cadangan biaya yang kecil, minimum dan biaya penarikan dapat lebih berpengaruh daripada sedikit perbedaan harga perdagangan."
       }
-    ]
+    ],
+    "authorLabel": "Penulis",
+    "authorName": "Tim Editorial GasFree4you",
+    "publishedLabel": "Diterbitkan",
+    "modifiedLabel": "Diperbarui",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22"
   }
 }

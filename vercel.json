@@ -1,14 +1,11 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {"source": "/index.html", "destination": "/", "permanent": true}
+  ],
   "rewrites": [
-    {
-      "source": "/:path((?!api|_next|.*\\..*).*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.gasfree4you.com"
-        }
-      ],
-      "destination": "/new_landing.html"
-    }
+    {"source": "/", "destination": "/index.html"},
+    {"source": "/:lang(en|ru|es|id)/blog", "destination": "/:lang/blog/index.html"},
+    {"source": "/:lang(en|ru|es|id)/blog/", "destination": "/:lang/blog/index.html"}
   ]
 }

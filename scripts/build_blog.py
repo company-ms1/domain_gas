@@ -1,5 +1,7 @@
-"""Build the four static blog prototypes: python3 scripts/build_blog.py."""
+"""Build localized blog pages and update their sitemap entries."""
 import json
+import xml.etree.ElementTree as ET
+from datetime import date
 from html import escape
 from pathlib import Path
 
@@ -37,6 +39,19 @@ def e(value):
 
 
 def shell(lang, d, filename, title, description, body):
+    structured_data = ''
+    if filename != 'index.html':
+        url = f'{DOMAIN}/{lang}/blog/{filename}'
+        schema = {
+            '@context': 'https://schema.org', '@type': 'BlogPosting',
+            '@id': url + '#article', 'url': url,
+            'mainEntityOfPage': {'@type': 'WebPage', '@id': url},
+            'headline': title, 'description': description, 'inLanguage': lang,
+            'datePublished': d['datePublished'], 'dateModified': d['dateModified'],
+            'author': {'@type': 'Organization', 'name': d['authorName'], 'url': DOMAIN + '/'},
+            'publisher': {'@type': 'Organization', 'name': 'GasFree4you', 'url': DOMAIN + '/'},
+        }
+        structured_data = '<script type="application/ld+json">' + json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
     alternatives = ''.join(
         f'<link rel="alternate" hreflang="{code}" href="{DOMAIN}/{code}/blog/{filename}">'
         for code in LANGUAGES
@@ -53,7 +68,7 @@ def shell(lang, d, filename, title, description, body):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)} — GasFree4you</title>
 <meta name="description" content="{e(description)}">
-<meta name="robots" content="noindex,follow">
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="{DOMAIN}/{lang}/blog/{filename}">
 {alternatives}
 <link rel="alternate" hreflang="x-default" href="{DOMAIN}/en/blog/{filename}">
@@ -61,6 +76,7 @@ def shell(lang, d, filename, title, description, body):
 <meta property="og:description" content="{e(description)}">
 <meta property="og:type" content="{'website' if filename == 'index.html' else 'article'}">
 <meta property="og:url" content="{DOMAIN}/{lang}/blog/{filename}">
+{structured_data}
 <link rel="icon" href="../../favicon.png">
 <link rel="stylesheet" href="../../blog/assets/blog.css">
 </head>
@@ -88,11 +104,11 @@ def home(d, second):
     return f'''
 <section class="hero"><div class="eyebrow">{e(d['eyebrow'])}</div><h1>{e(d['headline'])}</h1><p>{e(d['intro'])}</p></section>
 <section aria-labelledby="start"><div class="section-heading"><h2 id="start">{e(d['featured'])}</h2><span>{e(d['count'])}</span></div>
-<article class="featured"><div class="featured-copy"><div class="meta"><span class="tag">{e(d['category'])}</span><span>·</span><span>{e(d['time'])}</span><span class="draft">{e(d['draft'])}</span></div>
+<article class="featured"><div class="featured-copy"><div class="meta"><span class="tag">{e(d['category'])}</span><span>·</span><span>{e(d['time'])}</span></div>
 <h2><a href="{ARTICLE}">{e(d['title'])}</a></h2><p>{e(d['description'])}</p><a class="read" href="{ARTICLE}">{e(d['read'])} <span aria-hidden="true">→</span></a></div>
 <div class="diagram"><div class="diagram-title">{e(d['diagramTitle'])}</div>{route}</div></article></section>
 <section aria-labelledby="more"><div class="section-heading"><h2 id="more">{e(d['moreArticles'])}</h2></div>
-<article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span><span class="draft">{e(d['draft'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article></section>
+<article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article></section>
 <section aria-labelledby="next"><div class="section-heading"><h2 id="next">{e(d['next'])}</h2></div><div class="grid">{cards}</div></section>
 <section aria-labelledby="topics"><div class="section-heading"><h2 id="topics">{e(d['topicsTitle'])}</h2></div><div class="topics">{topics}</div></section>
 {cta(d)}'''
@@ -138,25 +154,58 @@ def article(d):
     related = ''
     if d.get('relatedHref'):
         related = f'<aside class="note"><strong>{e(d["relatedTitle"])}</strong><br><a class="read" href="{e(d["relatedHref"])}">{e(d["relatedText"])} →</a></aside>'
+    byline = f'<p class="byline">{e(d["authorLabel"])}: {e(d["authorName"])}<br>{e(d["publishedLabel"])}: <time datetime="{e(d["datePublished"])}">{e(d["datePublished"])}</time> · {e(d["modifiedLabel"])}: <time datetime="{e(d["dateModified"])}">{e(d["dateModified"])}</time></p>'
     return f'''
 <nav class="breadcrumb" aria-label="{e(d['blog'])}"><a href="index.html">{e(d['blog'])}</a><span aria-hidden="true">/</span><span>{e(d['category'])}</span></nav>
-<header class="hero article-hero"><div class="meta"><span class="tag">{e(d['category'])}</span><span>·</span><span>{e(d['time'])}</span><span class="draft">{e(d['draft'])}</span></div><h1>{e(d['title'])}</h1><p>{e(d['description'])}</p></header>
+<header class="hero article-hero"><div class="meta"><span class="tag">{e(d['category'])}</span><span>·</span><span>{e(d['time'])}</span></div><h1>{e(d['title'])}</h1><p>{e(d['description'])}</p>{byline}</header>
 <div class="article-layout"><nav class="toc" aria-label="{e(d['toc'])}"><strong>{e(d['toc'])}</strong>{toc}</nav>
 <article class="prose">{sections}<details><summary>{e(d['faqTitle'])}</summary><p>{e(d['faqAnswer'])}</p></details>{related}{cta(d)}<a class="back" href="index.html">← {e(d['back'])}</a></article></div>'''
+
+
+def update_sitemap(entries):
+    namespace = 'http://www.sitemaps.org/schemas/sitemap/0.9'
+    ET.register_namespace('', namespace)
+    tag = lambda name: f'{{{namespace}}}{name}'
+    path = ROOT / 'sitemap.xml'
+    tree = ET.parse(path)
+    root = tree.getroot()
+    existing = {}
+    for node in root.findall(tag('url')):
+        loc = node.find(tag('loc'))
+        loc.text = loc.text.replace('https://gasfree4you.com/', DOMAIN + '/')
+        existing[loc.text] = node
+    for url, modified in entries.items():
+        date.fromisoformat(modified)
+        node = existing.get(url)
+        if node is None:
+            node = ET.SubElement(root, tag('url'))
+            ET.SubElement(node, tag('loc')).text = url
+        lastmod = node.find(tag('lastmod'))
+        if lastmod is None:
+            lastmod = ET.SubElement(node, tag('lastmod'))
+        lastmod.text = modified
+    ET.indent(tree, space='  ')
+    tree.write(path, encoding='utf-8', xml_declaration=True)
 
 
 def main():
     content = json.loads(CONTENT.read_text())
     wallet = json.loads(WALLET_CONTENT.read_text())
     buy = json.loads(BUY_CONTENT.read_text())
+    sitemap_entries = {}
     for lang in LANGUAGES:
         d = {**content[lang], **wallet[lang]}
         second = {**content[lang], **buy[lang]}
+        for item in (d, second):
+            assert date.fromisoformat(item['dateModified']) >= date.fromisoformat(item['datePublished'])
         folder = ROOT / lang / 'blog'
         folder.mkdir(parents=True, exist_ok=True)
         (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second)))
         (folder / ARTICLE).write_text(shell(lang, d, ARTICLE, d['title'], d['description'], article(d)))
         (folder / BUY_ARTICLE).write_text(shell(lang, second, BUY_ARTICLE, second['title'], second['description'], article(second)))
+        for filename, modified in [('index.html', max(d['dateModified'], second['dateModified'])), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified'])]:
+            sitemap_entries[f'{DOMAIN}/{lang}/blog/{filename}'] = modified
+    update_sitemap(sitemap_entries)
     print('Built 12 pages: a blog index and two articles in each language.')
 
 
