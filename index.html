@@ -1627,6 +1627,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
       <a href="#compliance-layer">AML &amp; sanctions</a>
       <a href="#visibility-layer">For business</a>
       <a href="#pricing-layer">Pricing</a>
+      <a href="en/blog/index.html" data-blog-link>Blog</a>
     </nav>
     <div class="nav-right">
       <div class="lang-switcher" role="group" aria-label="Language">
@@ -2074,6 +2075,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
       </div>
       <div class="foot-col">
         <h4>Company</h4>
+        <a href="en/blog/index.html" data-blog-link>Blog</a>
         <a href="https://www.gasfree4you.com/terms.html">Terms</a>
         <a href="https://www.gasfree4you.com/privacy.html">Privacy</a>
         <a href="https://www.gasfree4you.com/refund.html">Refund</a>
@@ -2236,6 +2238,9 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
   const LANDING_ATTR_ID = {"Language":"Bahasa","Contact us":"Hubungi kami","Close":"Tutup","Transfers per month":"Transfer per bulan"};
   const LANDING_ATTR_RU = {"Language":"Язык","Contact us":"Связаться с нами","Close":"Закрыть","Transfers per month":"Переводов в месяц"};
   const LANDING_ATTR_ES = {"Language":"Idioma","Contact us":"Contáctanos","Close":"Cerrar","Transfers per month":"Transferencias al mes"};
+  Object.assign(LANDING_RU, {"Blog": "Блог"});
+  Object.assign(LANDING_ID, {"Blog": "Blog"});
+  Object.assign(LANDING_ES, {"Blog": "Blog"});
   const landingOriginalText = new WeakMap();
   const landingOriginalAttrs = new WeakMap();
   let landingLang = "en";
@@ -2276,6 +2281,7 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
     landingLang=LANDING_LANGUAGES.includes(lang)?lang:"en";
     document.documentElement.lang=landingLang;
     translateLandingNode(document.documentElement);
+    document.querySelectorAll("[data-blog-link]").forEach(link=>link.setAttribute("href",`${landingLang}/blog/index.html`));
     document.querySelectorAll(".lang-option").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===landingLang));
     const mobileSelect=document.getElementById("mobileLangSelect"); if(mobileSelect)mobileSelect.value=landingLang;
     const footer=document.getElementById("currentLangLabel"); if(footer)footer.textContent=({en:"EN",ru:"RU",id:"ID",es:"ES"})[landingLang];
