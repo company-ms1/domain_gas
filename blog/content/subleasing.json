@@ -1,0 +1,522 @@
+{
+  "ru": {
+    "title": "Свой сервис аренды Energy: как работает сабаренда GasFree4you",
+    "description": "Вы устанавливаете цену и принимаете TRX на свой кошелёк. GasFree4you отслеживает оплату и выдаёт Energy клиенту. Разбираем механику, доход партнёра и реальный пример в Tronscan.",
+    "category": "Партнёрам",
+    "time": "7 минут",
+    "sourceLabel": "Подробнее",
+    "authorLabel": "Автор",
+    "authorName": "Редакция GasFree4you",
+    "publishedLabel": "Опубликовано",
+    "modifiedLabel": "Обновлено",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22",
+    "ctaTitle": "Начните со своего первого клиента",
+    "ctaText": "Подготовьте отдельный TRON-кошелёк, выберите цену и пополните баланс кабинета. Вы занимаетесь клиентами — GasFree4you обрабатывает оплату и делегирует Energy.",
+    "ctaButton": "Настроить сабаренду",
+    "ctaHref": "../../sub_rent.html",
+    "relatedTitle": "Перед запуском",
+    "relatedText": "Как создать отдельный кошелёк",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "Нужно ли передавать доступ к кошельку?",
+    "faqAnswer": "Нет. Вы добавляете публичный адрес. Seed-фраза и приватный ключ остаются у вас. Не подписывайте транзакции ради «проверки», подключения или активации кошелька в сервисе сабаренды.",
+    "sections": [
+      {
+        "title": "Вы приводите клиентов. Мы выдаём энергию",
+        "paragraphs": [
+          "Сабаренда, или subleasing, позволяет предложить своей аудитории аренду Energy в сети TRON без собственного запаса энергии и разработки системы обработки заказов. Вы создаёте отдельный кошелёк, добавляете его в GasFree4you, назначаете цену и рекламируете адрес.",
+          "Клиент переводит TRX на ваш адрес. Если платёж соответствует условиям заказа, сервис делегирует Energy отправителю платежа и списывает стоимость сабаренды с вашего баланса в личном кабинете. Весь клиентский платёж остаётся на вашем кошельке.",
+          "Такой формат может подойти автору блога, администратору сообщества или специалисту, который уже помогает людям переводить USDT. Вы продаёте понятную услугу своей аудитории и управляете розничной ценой."
+        ],
+        "flow": [
+          "Клиент → TRX на ваш кошелёк",
+          "GasFree4you → Energy отправителю TRX",
+          "Ваш баланс кабинета → оплата сабаренды"
+        ]
+      },
+      {
+        "title": "Два баланса, которые важно различать",
+        "paragraphs": [
+          "Ваш отдельный TRON-кошелёк принимает выручку от клиентов. Ключи от него контролируете вы; полученные TRX не перечисляются автоматически в GasFree4you.",
+          "Баланс личного кабинета оплачивает выполненные заказы по текущему тарифу сабаренды. Его нужно пополнять отдельно. Даже если на вашем кошельке уже накопились клиентские платежи, при пустом балансе кабинета заказы выполняться не смогут.",
+          "Именно поэтому вся сумма платежа остаётся у вас, но не вся является прибылью: у заказа есть себестоимость, которую вы оплачиваете из кабинета."
+        ]
+      },
+      {
+        "title": "Как запустить сабаренду",
+        "steps": [
+          "Создайте отдельный кошелёк TRON, которым управляете сами. Биржевой адрес не подходит. Используйте этот кошелёк только для приёма заказов Energy: личные переводы на него могут быть приняты за оплату.",
+          "Добавьте публичный адрес в раздел сабаренды GasFree4you. Приватный ключ и seed-фраза для этого не нужны.",
+          "Установите клиентскую цену за 65 000 Energy. Сверьте её с текущим тарифом сабаренды и условиями формы, чтобы понимать свою маржу.",
+          "Пополните баланс личного кабинета и поддерживайте запас для новых заказов. Клиентские платежи на кошелёк сами этот баланс не пополняют.",
+          "Опубликуйте адрес, точную сумму оплаты, объём Energy и срок её действия по текущим условиям сервиса. Объясните клиенту, что платить нужно с того собственного кошелька, которому требуется энергия.",
+          "После корректного платежа сервис отслеживает пополнение, проверяет получателя Energy и делегирует ресурс отправителю. Стоимость выполненного заказа списывается из вашего кабинета."
+        ]
+      },
+      {
+        "title": "Что должен знать ваш клиент",
+        "paragraphs": [
+          "Energy получает адрес, с которого пришли TRX, а не адрес, который вы указали где-то в переписке. Клиент должен отправлять оплату из своего TRON-кошелька, с которого затем будет переводить USDT. При выводе с биржи отправителем может оказаться её технический кошелёк: энергия уйдёт не клиенту.",
+          "Сумма платежа должна соответствовать настройкам предложения. Не обещайте, что произвольное пополнение или неверная сумма автоматически превратятся в заказ. Для таких ситуаций сверяйтесь с условиями сервиса и поддержкой.",
+          "Перед переводом USDT клиент проверяет поступление Energy, срок аренды и оценку комиссии. 65 000 Energy — размер предложения, а не гарантия покрытия любого перевода: потребность зависит от операции. Bandwidth учитывается отдельно."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "Как считается ваш доход",
+        "paragraphs": [
+          "Валовая маржа одного выполненного заказа = цена клиента − стоимость сабаренды. Если клиент платит 3 TRX, а текущая стоимость в вашем кабинете равна C TRX, маржа составит 3 − C TRX. При C выше вашей цены заказ не даст положительной маржи.",
+          "Для 100 одинаковых выполненных заказов это 100 × (3 − C) TRX до расходов на рекламу, переводы, налоги и другие затраты. Это формула расчёта, а не обещание количества заказов или доходности.",
+          "Текущий тариф смотрите в форме сабаренды: не фиксируйте себестоимость по старой статье или скриншоту. Три TRX ниже — реальная оплата из примера, а не обязательная цена для всех партнёров."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "Реальный пример: три операции в Tronscan",
+        "paragraphs": [
+          "В примере отправитель — TG1HHfynutuDyCcxog4Z7GthXaBv5MQE2Z. Он платит на адрес TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX, затем получает Energy и переводит USDT. Все три операции подтверждены и имеют статус SUCCESS.",
+          "Сопоставьте адрес отправителя в первой операции, получателя Energy во второй и отправителя USDT в третьей: это один и тот же кошелёк. Адреса приведены только для разбора истории, а не как инструкция по оплате."
+        ],
+        "case": [
+          {
+            "key": "payment",
+            "title": "1. Клиент оплатил аренду: 3 TRX",
+            "text": "Перевод 3 TRX на кошелёк приёма оплаты. В этой операции комиссия Bandwidth равна нулю: использованы доступные ресурсы.",
+            "caption": "Оплата: сумма 3 TRX, адрес отправителя и адрес получателя.",
+            "alt": "Tronscan: успешная оплата аренды Energy, 3 TRX от клиента на кошелёк приёма платежей."
+          },
+          {
+            "key": "delegation",
+            "title": "2. Отправитель получил Energy",
+            "text": "Через 12 секунд после платежа зафиксировано делегирование ресурса ENERGY адресу клиента. API Tronscan показывает около 65 008,56 Energy. Это отдельная операция выдачи ресурса, а не перевод клиенту TRX.",
+            "caption": "Делегирование: ресурс ENERGY и адрес получателя, совпадающий с отправителем оплаты.",
+            "alt": "Tronscan: делегирование Energy кошельку клиента после оплаты аренды."
+          },
+          {
+            "key": "transfer",
+            "title": "3. Клиент перевёл 75 USDT",
+            "text": "Через 36 секунд после делегирования клиент отправил 75 USDT. Израсходовано 64 285 Energy, сжигание TRX за Energy — 0, расход за Bandwidth — 0,345 TRX.",
+            "caption": "Перевод USDT: 75 USDT, 64 285 Energy, Energy fee 0 и Bandwidth fee 0,345 TRX.",
+            "alt": "Tronscan: перевод 75 USDT с расходом 64 285 Energy и платой 0,345 TRX за Bandwidth."
+          }
+        ],
+        "after": [
+          "По этим трём операциям затраты клиента: 3 TRX за аренду + 0,345 TRX за Bandwidth = 3,345 TRX. Поэтому точнее сказать «без сжигания TRX за Energy», а не «полностью без комиссии». Скорость и расходы этого примера не гарантируются для следующих заказов.",
+          "Блокчейн подтверждает платежи, адреса и выдачу ресурса, но не показывает внутреннее списание с кабинета партнёра или его тариф. Точную себестоимость и маржу конкретного заказа проверяют в кабинете."
+        ]
+      },
+      {
+        "title": "Ограничения и контроль кошелька",
+        "paragraphs": [
+          "Перед делегированием GasFree4you проверяет адрес, который должен получить Energy, по санкционным спискам. Адресам, найденным в этих списках, Energy не делегируется. Для ситуаций без исполнения обращайтесь к условиям сервиса и поддержке; сама блокчейн-оплата не означает автоматический возврат.",
+          "Мы отслеживаем поступления и делегируем ресурс, а ваши приватные ключи остаются у вас. Никому не передавайте seed-фразу или приватный ключ и не подписывайте транзакции для «верификации», подключения либо активации кошелька в сервисе."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "Как предложить услугу своей аудитории",
+        "paragraphs": [
+          "Начните с короткой инструкции в блоге или сообществе: кому нужна Energy, сколько стоит заказ, с какого кошелька платить и как проверить результат. Используйте три транзакции выше, чтобы показать механику на конкретном примере.",
+          "Перед широкой рекламой проверьте адрес, настройки цены и запас на балансе кабинета. Проведите первый заказ с собственных кошельков, разделив кошелёк партнёра и кошелёк клиента, и убедитесь, что понимаете весь путь.",
+          "Вы управляете предложением, ценой и отношениями с клиентами. GasFree4you берёт на себя отслеживание оплаты, проверки и выдачу Energy. Так можно начать с небольшой аудитории и расширять услугу по мере спроса."
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Your own Energy rental service: how GasFree4you subleasing works",
+    "description": "Set your price and receive TRX in your own wallet. GasFree4you detects payments and delivers Energy to customers. Explore the workflow, partner margins, and a real Tronscan example.",
+    "category": "For partners",
+    "time": "7 min read",
+    "sourceLabel": "Learn more",
+    "authorLabel": "Author",
+    "authorName": "GasFree4you Editorial Team",
+    "publishedLabel": "Published",
+    "modifiedLabel": "Updated",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22",
+    "ctaTitle": "Start with your first customer",
+    "ctaText": "Prepare a dedicated TRON wallet, choose your price, and fund your service balance. You handle customers; GasFree4you detects payments and delegates Energy.",
+    "ctaButton": "Set up subleasing",
+    "ctaHref": "../../sub_rent.html",
+    "relatedTitle": "Before you start",
+    "relatedText": "Create a dedicated wallet",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "Do I have to give access to my wallet?",
+    "faqAnswer": "No. You add a public address. Your recovery phrase and private key stay with you. Never sign transactions to ‘verify’, connect, or activate your wallet in the subleasing service.",
+    "sections": [
+      {
+        "title": "You bring the customers. We deliver Energy",
+        "paragraphs": [
+          "Subleasing lets you offer TRON Energy rentals to your audience without owning an Energy reserve or building order-processing infrastructure. Create a dedicated wallet, add it to GasFree4you, set your price, and promote the address.",
+          "A customer sends TRX to your address. When the payment matches the order conditions, the service delegates Energy to the payment sender and deducts the subleasing cost from your account balance. The entire customer payment stays in your wallet.",
+          "This can suit a blogger, community administrator, or someone already helping people transfer USDT. You offer a practical service to your audience and control the retail price."
+        ],
+        "flow": [
+          "Customer → TRX to your wallet",
+          "GasFree4you → Energy to the TRX sender",
+          "Your service balance → subleasing cost"
+        ]
+      },
+      {
+        "title": "Two balances with different purposes",
+        "paragraphs": [
+          "Your dedicated TRON wallet receives customer revenue. You control its keys; incoming TRX is not automatically forwarded to GasFree4you.",
+          "Your service account balance pays for completed orders at the current subleasing rate. Fund it separately. Orders cannot run with an empty service balance, even if customer payments have accumulated in your wallet.",
+          "Keeping the whole payment does not mean the whole payment is profit: each order has a cost paid from the service account."
+        ]
+      },
+      {
+        "title": "How to launch",
+        "steps": [
+          "Create a dedicated TRON wallet that you control, never an exchange wallet. Use it only for Energy orders: personal transfers to this address may be treated as payments.",
+          "Add the public address in GasFree4you’s subleasing section. No private key or recovery phrase is needed.",
+          "Set the customer price per 65,000 Energy. Compare it with the current subleasing rate and form conditions to understand your margin.",
+          "Fund your service account and maintain enough balance for new orders. Payments to your wallet do not top it up automatically.",
+          "Share the address, exact payment amount, Energy quantity, and current rental duration. Tell customers to pay from the wallet that needs Energy.",
+          "After an eligible payment, the service detects it, checks the Energy recipient, and delegates to the sender. The completed order’s cost is deducted from your service balance."
+        ]
+      },
+      {
+        "title": "What your customer needs to know",
+        "paragraphs": [
+          "Energy goes to the address that sent the TRX, not an address mentioned in a message. Customers should pay from their own TRON wallet that will later send USDT. An exchange withdrawal may originate from the exchange’s operational wallet, sending the Energy to the wrong place.",
+          "The payment amount must match your offer’s settings. Do not promise that an arbitrary deposit or incorrect amount automatically creates an order; consult the service terms and support for those cases.",
+          "Before sending USDT, the customer checks Energy delivery, rental validity, and the fee estimate. A 65,000 Energy offer does not guarantee coverage for every transfer: requirements depend on the operation. Bandwidth is separate."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "How your margin works",
+        "paragraphs": [
+          "Gross margin per completed order = customer price − subleasing cost. If the customer pays 3 TRX and your current account rate is C TRX, the margin is 3 − C TRX. If C exceeds your price, that order has no positive margin.",
+          "For 100 identical completed orders, the calculation is 100 × (3 − C) TRX before advertising, transfers, taxes, and other expenses. This is a calculation, not a promise of order volume or returns.",
+          "Check the live rate in the subleasing form rather than relying on an old article or screenshot. The 3 TRX below is an actual payment in this example, not a mandatory price for every partner."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "A real example: three Tronscan transactions",
+        "paragraphs": [
+          "The customer is TG1HHfynutuDyCcxog4Z7GthXaBv5MQE2Z. They pay TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX, receive Energy, and then transfer USDT. All three transactions are confirmed with SUCCESS status.",
+          "Compare the payment sender, the Energy recipient, and the USDT sender: they are the same wallet. These addresses illustrate transaction history; they are not payment instructions."
+        ],
+        "case": [
+          {
+            "key": "payment",
+            "title": "1. The customer paid 3 TRX",
+            "text": "A 3 TRX payment reached the receiving wallet. Its Bandwidth fee was zero because available resources covered this transaction.",
+            "caption": "Payment: 3 TRX, the sender, and the receiving wallet.",
+            "alt": "Tronscan: successful 3 TRX Energy rental payment from the customer to the receiving wallet."
+          },
+          {
+            "key": "delegation",
+            "title": "2. The sender received Energy",
+            "text": "Twelve seconds after payment, an ENERGY delegation to the customer’s address was recorded. Tronscan’s API reports approximately 65,008.56 Energy. This delivers a resource, not TRX to the customer.",
+            "caption": "Delegation: ENERGY and the recipient matching the payment sender.",
+            "alt": "Tronscan: Energy delegated to the customer’s wallet after the rental payment."
+          },
+          {
+            "key": "transfer",
+            "title": "3. The customer transferred 75 USDT",
+            "text": "Thirty-six seconds after delegation, the customer sent 75 USDT. The transfer used 64,285 Energy, burned 0 TRX for Energy, and cost 0.345 TRX for Bandwidth.",
+            "caption": "USDT transfer: 75 USDT, 64,285 Energy, zero Energy fee, and a 0.345 TRX Bandwidth fee.",
+            "alt": "Tronscan: 75 USDT transfer using 64,285 Energy with a 0.345 TRX Bandwidth charge."
+          }
+        ],
+        "after": [
+          "Across these three transactions, the customer paid 3 TRX for rental + 0.345 TRX for Bandwidth = 3.345 TRX. The accurate description is ‘no TRX burned for Energy’, not ‘completely free’. This example’s timing and costs are not guarantees for future orders.",
+          "The blockchain confirms payments, addresses, and resource delegation. It does not show the partner’s internal account charge or rate. Check the service account for an order’s actual cost and margin."
+        ]
+      },
+      {
+        "title": "Restrictions and wallet control",
+        "paragraphs": [
+          "Before delegation, GasFree4you checks the intended Energy recipient against sanctions lists. Addresses found on those lists do not receive Energy. For unfulfilled orders, consult the service terms and support; an on-chain payment does not imply an automatic refund.",
+          "We monitor payments and delegate resources while your private keys remain yours. Never share your recovery phrase or private key, and never sign transactions to ‘verify’, connect, or activate your wallet in the service."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "Introduce the service to your audience",
+        "paragraphs": [
+          "Start with a short guide in your blog or community: who needs Energy, the order price, which wallet to pay from, and how to check delivery. Use the three transactions above to demonstrate the process.",
+          "Before broad promotion, check the receiving address, price settings, and service balance. Test a first order using separate wallets you control for the partner and customer roles, so you understand the complete path.",
+          "You manage the offer, pricing, and customer relationships. GasFree4you handles payment detection, checks, and Energy delivery. Begin with a small audience and expand as demand grows."
+        ]
+      }
+    ]
+  },
+  "es": {
+    "title": "Tu propio servicio de alquiler de Energy: cómo funciona el subleasing de GasFree4you",
+    "description": "Fija tu precio y recibe TRX en tu cartera. GasFree4you detecta el pago y entrega Energy al cliente. Explicamos el modelo de subleasing con un ejemplo real en Tronscan.",
+    "category": "Para colaboradores",
+    "time": "7 min de lectura",
+    "sourceLabel": "Más información",
+    "authorLabel": "Autor",
+    "authorName": "Equipo editorial de GasFree4you",
+    "publishedLabel": "Publicado",
+    "modifiedLabel": "Actualizado",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22",
+    "ctaTitle": "Empieza con tu primer cliente",
+    "ctaText": "Prepara una cartera TRON dedicada, elige tu precio y recarga el saldo del servicio. Tú atiendes a tus clientes; GasFree4you detecta los pagos y delega Energy.",
+    "ctaButton": "Configurar subleasing",
+    "ctaHref": "../../sub_rent.html",
+    "relatedTitle": "Antes de empezar",
+    "relatedText": "Cómo crear una cartera dedicada",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "¿Tengo que dar acceso a mi cartera?",
+    "faqAnswer": "No. Añades una dirección pública. La frase de recuperación y la clave privada siguen contigo. No firmes transacciones para «verificar», conectar o activar tu cartera en el servicio de subleasing.",
+    "sections": [
+      {
+        "title": "Tú consigues los clientes. Nosotros entregamos Energy",
+        "paragraphs": [
+          "El subleasing permite ofrecer alquiler de Energy en TRON a tu audiencia sin disponer de una reserva propia ni desarrollar un sistema de pedidos. Creas una cartera dedicada, la añades a GasFree4you, fijas el precio y difundes la dirección.",
+          "El cliente envía TRX a tu dirección. Si el pago cumple las condiciones del pedido, el servicio delega Energy al remitente y descuenta el coste del subleasing de tu saldo en la cuenta. Todo el pago del cliente permanece en tu cartera.",
+          "Puede encajar con un blog, una comunidad o un profesional que ya ayude a transferir USDT. Ofreces un servicio concreto a tu audiencia y controlas el precio de venta."
+        ],
+        "flow": [
+          "Cliente → TRX a tu cartera",
+          "GasFree4you → Energy al remitente de TRX",
+          "Tu saldo del servicio → coste del subleasing"
+        ]
+      },
+      {
+        "title": "Dos saldos con funciones distintas",
+        "paragraphs": [
+          "Tu cartera TRON dedicada recibe los ingresos de clientes. Tú controlas sus claves; los TRX recibidos no se envían automáticamente a GasFree4you.",
+          "El saldo de tu cuenta paga los pedidos completados a la tarifa vigente. Debes recargarlo por separado. Sin fondos en ese saldo, los pedidos no pueden ejecutarse aunque tu cartera haya recibido pagos.",
+          "Conservar todo el pago no significa que todo sea beneficio: cada pedido tiene un coste que abonas desde la cuenta del servicio."
+        ]
+      },
+      {
+        "title": "Cómo ponerlo en marcha",
+        "steps": [
+          "Crea una cartera TRON dedicada que controles tú, nunca una dirección de exchange. Úsala solo para pedidos de Energy: los ingresos personales podrían interpretarse como pagos.",
+          "Añade la dirección pública en la sección de subleasing de GasFree4you. No necesitas proporcionar claves privadas ni frases de recuperación.",
+          "Fija el precio al cliente por 65.000 Energy. Compáralo con la tarifa actual y las condiciones del formulario para conocer tu margen.",
+          "Recarga el saldo de tu cuenta y mantén fondos para nuevos pedidos. Los pagos a tu cartera no recargan ese saldo automáticamente.",
+          "Publica la dirección, el importe exacto, la cantidad de Energy y su duración según las condiciones actuales. Indica que se paga desde la cartera que necesita Energy.",
+          "Tras un pago válido, el servicio lo detecta, comprueba al destinatario y delega Energy al remitente. El coste del pedido completado se descuenta del saldo del servicio."
+        ]
+      },
+      {
+        "title": "Qué debe saber tu cliente",
+        "paragraphs": [
+          "Energy llega a la dirección que envió TRX, no a una dirección mencionada en un mensaje. El cliente debe pagar desde la cartera TRON propia con la que después enviará USDT. Una retirada de exchange puede salir de una cartera operativa del exchange: Energy llegaría allí.",
+          "El importe debe coincidir con la configuración de la oferta. No prometas que cualquier ingreso o una cantidad incorrecta crea automáticamente un pedido; consulta las condiciones y el soporte para esos casos.",
+          "Antes de enviar USDT, el cliente comprueba la recepción de Energy, su vigencia y la comisión estimada. Una oferta de 65.000 Energy no garantiza cubrir cualquier transferencia: depende de la operación. Bandwidth se calcula aparte."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "Cómo se calcula tu margen",
+        "paragraphs": [
+          "Margen bruto por pedido completado = precio al cliente − coste del subleasing. Si el cliente paga 3 TRX y la tarifa actual de tu cuenta es C TRX, el margen es 3 − C TRX. Si C supera tu precio, no hay margen positivo.",
+          "Para 100 pedidos idénticos completados, sería 100 × (3 − C) TRX antes de publicidad, transferencias, impuestos y otros gastos. Es una fórmula, no una promesa de ventas o rentabilidad.",
+          "Consulta la tarifa vigente en el formulario, no en una captura antigua. Los 3 TRX del ejemplo son un pago real, no un precio obligatorio para todos los colaboradores."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "Ejemplo real: tres operaciones en Tronscan",
+        "paragraphs": [
+          "El cliente es TG1HHfynutuDyCcxog4Z7GthXaBv5MQE2Z. Paga a TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX, recibe Energy y envía USDT. Las tres operaciones están confirmadas con estado SUCCESS.",
+          "Compara el remitente del pago, el receptor de Energy y el remitente de USDT: es la misma cartera. Estas direcciones ilustran el historial; no son instrucciones para pagar."
+        ],
+        "case": [
+          {
+            "key": "payment",
+            "title": "1. El cliente pagó 3 TRX",
+            "text": "Llegaron 3 TRX a la cartera de cobro. La comisión de Bandwidth de esa operación fue cero porque se utilizaron recursos disponibles.",
+            "caption": "Pago: 3 TRX, dirección del remitente y cartera receptora.",
+            "alt": "Tronscan: pago confirmado de 3 TRX por el alquiler de Energy."
+          },
+          {
+            "key": "delegation",
+            "title": "2. El remitente recibió Energy",
+            "text": "Doce segundos después del pago se registró una delegación de ENERGY al cliente. La API de Tronscan muestra aproximadamente 65.008,56 Energy. Se entrega un recurso, no TRX al cliente.",
+            "caption": "Delegación: recurso ENERGY y receptor coincidente con el remitente del pago.",
+            "alt": "Tronscan: Energy delegada a la cartera del cliente tras el pago."
+          },
+          {
+            "key": "transfer",
+            "title": "3. El cliente envió 75 USDT",
+            "text": "Treinta y seis segundos después de la delegación, envió 75 USDT. Consumió 64.285 Energy, quemó 0 TRX por Energy y pagó 0,345 TRX por Bandwidth.",
+            "caption": "Transferencia: 75 USDT, 64.285 Energy, coste de Energy cero y 0,345 TRX por Bandwidth.",
+            "alt": "Tronscan: transferencia de 75 USDT con 64.285 Energy y 0,345 TRX de Bandwidth."
+          }
+        ],
+        "after": [
+          "En estas tres operaciones, el cliente pagó 3 TRX de alquiler + 0,345 TRX de Bandwidth = 3,345 TRX. La descripción precisa es «sin quemar TRX por Energy», no «totalmente gratis». Los tiempos y costes del ejemplo no se garantizan para otros pedidos.",
+          "La cadena confirma pagos, direcciones y delegación. No muestra el descuento interno de la cuenta del colaborador ni su tarifa. El coste y margen reales se consultan en la cuenta del servicio."
+        ]
+      },
+      {
+        "title": "Restricciones y control de la cartera",
+        "paragraphs": [
+          "Antes de delegar, GasFree4you comprueba al destinatario de Energy frente a listas de sanciones. Las direcciones incluidas no reciben Energy. Para pedidos no ejecutados, consulta las condiciones y el soporte; un pago en la cadena no implica un reembolso automático.",
+          "Supervisamos pagos y delegamos recursos; tus claves siguen bajo tu control. No compartas la frase de recuperación ni la clave privada y no firmes transacciones para «verificar», conectar o activar la cartera en el servicio."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "Cómo presentar el servicio a tu audiencia",
+        "paragraphs": [
+          "Empieza con una guía breve en tu blog o comunidad: quién necesita Energy, cuánto cuesta, desde qué cartera pagar y cómo comprobar el resultado. Usa las tres operaciones anteriores para mostrar el proceso.",
+          "Antes de anunciarlo ampliamente, comprueba la dirección, el precio y el saldo del servicio. Prueba un primer pedido con carteras propias separadas para el colaborador y el cliente, para comprender todo el recorrido.",
+          "Tú gestionas la oferta, el precio y la relación con los clientes. GasFree4you detecta los pagos, realiza las comprobaciones y entrega Energy. Puedes empezar con una audiencia pequeña y ampliar según la demanda."
+        ]
+      }
+    ]
+  },
+  "id": {
+    "title": "Layanan sewa Energy Anda sendiri: cara kerja subleasing GasFree4you",
+    "description": "Tentukan harga dan terima TRX di dompet sendiri. GasFree4you mendeteksi pembayaran dan memberikan Energy kepada pelanggan. Pelajari alur, margin mitra, dan contoh nyata di Tronscan.",
+    "category": "Untuk mitra",
+    "time": "7 menit baca",
+    "sourceLabel": "Pelajari lebih lanjut",
+    "authorLabel": "Penulis",
+    "authorName": "Tim Editorial GasFree4you",
+    "publishedLabel": "Diterbitkan",
+    "modifiedLabel": "Diperbarui",
+    "datePublished": "2026-09-22",
+    "dateModified": "2026-09-22",
+    "ctaTitle": "Mulai dengan pelanggan pertama Anda",
+    "ctaText": "Siapkan dompet TRON khusus, tentukan harga, dan isi saldo layanan. Anda menangani pelanggan; GasFree4you mendeteksi pembayaran dan mendelegasikan Energy.",
+    "ctaButton": "Siapkan subleasing",
+    "ctaHref": "../../sub_rent.html",
+    "relatedTitle": "Sebelum memulai",
+    "relatedText": "Cara membuat dompet khusus",
+    "relatedHref": "getting-started.html",
+    "faqTitle": "Apakah saya harus memberikan akses dompet?",
+    "faqAnswer": "Tidak. Anda menambahkan alamat publik. Frasa pemulihan dan kunci privat tetap milik Anda. Jangan menandatangani transaksi untuk ‘memverifikasi’, menghubungkan, atau mengaktifkan dompet dalam layanan subleasing.",
+    "sections": [
+      {
+        "title": "Anda mendatangkan pelanggan. Kami menyediakan Energy",
+        "paragraphs": [
+          "Subleasing memungkinkan Anda menawarkan sewa Energy TRON kepada audiens tanpa memiliki cadangan Energy atau membangun sistem pemrosesan pesanan. Buat dompet khusus, tambahkan ke GasFree4you, tentukan harga, lalu promosikan alamatnya.",
+          "Pelanggan mengirim TRX ke alamat Anda. Jika pembayaran memenuhi ketentuan pesanan, layanan mendelegasikan Energy kepada pengirim dan memotong biaya subleasing dari saldo akun Anda. Seluruh pembayaran pelanggan tetap berada di dompet Anda.",
+          "Model ini dapat cocok untuk penulis blog, pengelola komunitas, atau orang yang sudah membantu pengguna mentransfer USDT. Anda menawarkan layanan praktis kepada audiens dan mengendalikan harga jualnya."
+        ],
+        "flow": [
+          "Pelanggan → TRX ke dompet Anda",
+          "GasFree4you → Energy ke pengirim TRX",
+          "Saldo layanan Anda → biaya subleasing"
+        ]
+      },
+      {
+        "title": "Dua saldo dengan fungsi berbeda",
+        "paragraphs": [
+          "Dompet TRON khusus menerima pendapatan pelanggan. Anda mengendalikan kuncinya; TRX masuk tidak otomatis diteruskan ke GasFree4you.",
+          "Saldo akun layanan membayar pesanan yang selesai berdasarkan tarif subleasing saat itu. Isi saldo ini secara terpisah. Pesanan tidak dapat berjalan jika saldo layanan kosong, meskipun pembayaran pelanggan telah terkumpul di dompet.",
+          "Menerima seluruh pembayaran bukan berarti seluruhnya laba: setiap pesanan memiliki biaya yang dibayar dari akun layanan."
+        ]
+      },
+      {
+        "title": "Cara memulai",
+        "steps": [
+          "Buat dompet TRON khusus yang Anda kendalikan, bukan alamat bursa. Gunakan hanya untuk pesanan Energy: transfer pribadi ke alamat ini dapat dianggap sebagai pembayaran.",
+          "Tambahkan alamat publik pada bagian subleasing GasFree4you. Kunci privat dan frasa pemulihan tidak diperlukan.",
+          "Tentukan harga pelanggan per 65.000 Energy. Bandingkan dengan tarif subleasing dan ketentuan formulir saat ini untuk menghitung margin.",
+          "Isi saldo akun layanan dan sediakan cadangan untuk pesanan baru. Pembayaran ke dompet tidak otomatis mengisi saldo akun.",
+          "Bagikan alamat, jumlah pembayaran yang tepat, jumlah Energy, dan masa sewa sesuai ketentuan terbaru. Jelaskan bahwa pembayaran harus berasal dari dompet yang membutuhkan Energy.",
+          "Setelah pembayaran yang sesuai, layanan mendeteksinya, memeriksa penerima Energy, lalu mendelegasikan kepada pengirim. Biaya pesanan yang selesai dipotong dari saldo layanan Anda."
+        ]
+      },
+      {
+        "title": "Hal yang perlu diketahui pelanggan",
+        "paragraphs": [
+          "Energy diterima oleh alamat pengirim TRX, bukan alamat yang disebutkan dalam percakapan. Pelanggan harus membayar dari dompet TRON sendiri yang nantinya mengirim USDT. Penarikan bursa dapat berasal dari dompet operasional bursa sehingga Energy masuk ke alamat yang salah.",
+          "Jumlah pembayaran harus sesuai dengan pengaturan penawaran. Jangan menjanjikan bahwa setoran sembarang atau nominal keliru otomatis menjadi pesanan; periksa ketentuan dan hubungi dukungan untuk kasus tersebut.",
+          "Sebelum mengirim USDT, pelanggan memeriksa penerimaan Energy, masa sewa, dan estimasi biaya. Penawaran 65.000 Energy tidak menjamin setiap transfer tercakup: kebutuhannya bergantung pada operasi. Bandwidth dihitung terpisah."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "Menghitung margin Anda",
+        "paragraphs": [
+          "Margin kotor per pesanan selesai = harga pelanggan − biaya subleasing. Jika pelanggan membayar 3 TRX dan tarif akun saat ini adalah C TRX, marginnya 3 − C TRX. Jika C melebihi harga Anda, margin tidak positif.",
+          "Untuk 100 pesanan identik yang selesai, perhitungannya 100 × (3 − C) TRX sebelum iklan, transfer, pajak, dan biaya lainnya. Ini rumus perhitungan, bukan janji jumlah pesanan atau keuntungan.",
+          "Periksa tarif terbaru dalam formulir subleasing, bukan artikel atau tangkapan layar lama. Nilai 3 TRX di bawah adalah pembayaran nyata dalam contoh, bukan harga wajib bagi semua mitra."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "Contoh nyata: tiga transaksi di Tronscan",
+        "paragraphs": [
+          "Pelanggan adalah TG1HHfynutuDyCcxog4Z7GthXaBv5MQE2Z. Ia membayar ke TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX, menerima Energy, lalu mengirim USDT. Ketiga transaksi terkonfirmasi dengan status SUCCESS.",
+          "Cocokkan pengirim pembayaran, penerima Energy, dan pengirim USDT: semuanya dompet yang sama. Alamat ini hanya untuk menjelaskan riwayat, bukan petunjuk pembayaran."
+        ],
+        "case": [
+          {
+            "key": "payment",
+            "title": "1. Pelanggan membayar 3 TRX",
+            "text": "Pembayaran 3 TRX masuk ke dompet penerima. Biaya Bandwidth transaksi ini nol karena memakai sumber daya yang tersedia.",
+            "caption": "Pembayaran: 3 TRX, alamat pengirim, dan dompet penerima.",
+            "alt": "Tronscan: pembayaran sewa Energy sebesar 3 TRX yang berhasil dari pelanggan."
+          },
+          {
+            "key": "delegation",
+            "title": "2. Pengirim menerima Energy",
+            "text": "Dua belas detik setelah pembayaran, delegasi ENERGY ke alamat pelanggan tercatat. API Tronscan menampilkan sekitar 65.008,56 Energy. Ini pemberian sumber daya, bukan transfer TRX kepada pelanggan.",
+            "caption": "Delegasi: sumber daya ENERGY dan penerima yang sama dengan pengirim pembayaran.",
+            "alt": "Tronscan: delegasi Energy ke dompet pelanggan setelah pembayaran sewa."
+          },
+          {
+            "key": "transfer",
+            "title": "3. Pelanggan mengirim 75 USDT",
+            "text": "Tiga puluh enam detik setelah delegasi, pelanggan mengirim 75 USDT. Transaksi memakai 64.285 Energy, membakar 0 TRX untuk Energy, dan dikenai 0,345 TRX untuk Bandwidth.",
+            "caption": "Transfer: 75 USDT, 64.285 Energy, biaya Energy nol, dan biaya Bandwidth 0,345 TRX.",
+            "alt": "Tronscan: transfer 75 USDT memakai 64.285 Energy dengan biaya Bandwidth 0,345 TRX."
+          }
+        ],
+        "after": [
+          "Pada tiga transaksi ini, pelanggan membayar 3 TRX untuk sewa + 0,345 TRX untuk Bandwidth = 3,345 TRX. Istilah yang tepat adalah ‘tanpa pembakaran TRX untuk Energy’, bukan ‘sepenuhnya gratis’. Waktu dan biaya contoh ini tidak menjamin hasil pesanan berikutnya.",
+          "Blockchain membuktikan pembayaran, alamat, dan delegasi sumber daya. Pemotongan internal saldo mitra serta tarifnya tidak terlihat di sana. Periksa akun layanan untuk biaya dan margin aktual suatu pesanan."
+        ]
+      },
+      {
+        "title": "Pembatasan dan kendali dompet",
+        "paragraphs": [
+          "Sebelum delegasi, GasFree4you memeriksa calon penerima Energy terhadap daftar sanksi. Alamat yang ditemukan dalam daftar tidak menerima Energy. Untuk pesanan yang tidak terpenuhi, lihat ketentuan dan hubungi dukungan; pembayaran on-chain tidak berarti pengembalian otomatis.",
+          "Kami memantau pembayaran dan mendelegasikan sumber daya; kunci privat tetap Anda kendalikan. Jangan bagikan frasa pemulihan atau kunci privat dan jangan menandatangani transaksi untuk ‘verifikasi’, menghubungkan, atau mengaktifkan dompet dalam layanan."
+        ],
+        "refs": [
+          "subleasing"
+        ]
+      },
+      {
+        "title": "Memperkenalkan layanan kepada audiens",
+        "paragraphs": [
+          "Mulailah dengan panduan singkat di blog atau komunitas: siapa yang membutuhkan Energy, harga pesanan, dompet asal pembayaran, dan cara memeriksa hasilnya. Gunakan tiga transaksi di atas untuk memperlihatkan prosesnya.",
+          "Sebelum promosi luas, periksa alamat penerima, pengaturan harga, dan saldo layanan. Uji pesanan pertama dengan dompet sendiri yang terpisah untuk peran mitra dan pelanggan agar seluruh alurnya jelas.",
+          "Anda mengelola penawaran, harga, dan hubungan pelanggan. GasFree4you menangani deteksi pembayaran, pemeriksaan, dan pemberian Energy. Mulai dari audiens kecil dan kembangkan sesuai permintaan."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "payment": {
+    "hash": "e5799b29e6d91ebc5a19239674f49c2ae1a17f26f0669e7edfb992e0db30bb83",
+    "time": "2026-09-21T19:27:18Z",
+    "image": "01-client-payment-3-trx.png",
+    "from": "TG1HHfynutuDyCcxog4Z7GthXaBv5MQE2Z",
+    "to": "TUztHVcVVwsvzXTWxFADQFhUUUMN3BuTRX",
+    "amount_sun": 3000000,
+    "net_fee_sun": 0,
+    "status": "SUCCESS"
+  },
+  "delegation": {
+    "hash": "587d002556458a8ff559aac356185043ac1f9e8cb77e474fd8e4caa485dd81b7",
+    "time": "2026-09-21T19:27:30Z",
+    "image": "02-energy-delegation.png",
+    "from": "TCqZkyExhEMjaLQXjy9sUqJ43qinqUbYnP",
+    "to": "TG1HHfynutuDyCcxog4Z7GthXaBv5MQE2Z",
+    "resource": "ENERGY",
+    "resourceValue_at_check": 65008.56,
+    "status": "SUCCESS"
+  },
+  "transfer": {
+    "hash": "2378593a461953cd7a55cd2122e32d6219eabf595d879c1b4d471914a9685841",
+    "time": "2026-09-21T19:28:06Z",
+    "image": "03-usdt-transfer-fees.png",
+    "from": "TG1HHfynutuDyCcxog4Z7GthXaBv5MQE2Z",
+    "to": "TQM2kqMjUaXHNadGtivZ4JDA8hkMGh8aKK",
+    "token_contract": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+    "amount_usdt": 75,
+    "energy_usage": 64285,
+    "energy_fee_sun": 0,
+    "net_fee_sun": 345000,
+    "status": "SUCCESS"
+  }
+}

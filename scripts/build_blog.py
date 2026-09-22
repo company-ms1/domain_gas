@@ -9,11 +9,14 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / 'blog/content/welcome.json'
 WALLET_CONTENT = ROOT / 'blog/content/wallet.json'
 BUY_CONTENT = ROOT / 'blog/content/buy-trx.json'
+SUB_CONTENT = ROOT / 'blog/content/subleasing.json'
 EXAMPLE = ROOT / 'blog/assets/tron_wallet.py'
 LANGUAGES = {'en': 'English', 'ru': 'Русский', 'es': 'Español', 'id': 'Bahasa Indonesia'}
 DOMAIN = 'https://www.gasfree4you.com'
 ARTICLE = 'getting-started.html'
 BUY_ARTICLE = 'how-to-buy-trx.html'
+SUB_ARTICLE = 'tron-energy-subleasing.html'
+TRANSACTIONS = json.loads((ROOT / 'blog/content/subleasing-transactions.json').read_text())
 SOURCES = {
     'tronlink': ('TronLink', 'https://support.tronlink.org/hc/en-us/articles/5012004270361-How-to-Create-an-Account-in-TronLink-Extension'),
     'trust': ('Trust Wallet · TRON', 'https://trustwallet.com/tron-wallet'),
@@ -31,6 +34,7 @@ SOURCES = {
     'tokocrypto': ('Tokocrypto · TRX/USDT', 'https://www.tokocrypto.com/en/trade/TRX_USDT'),
     'ojk': ('OJK · Daftar penyelenggara', 'https://ojk.go.id/id/Fungsi-Utama/ITSK/Perizinan-ITSK-Aset-Keuangan-Digital-Aset-Kripto/Pages/Daftar-Penyelenggara-Perdagangan-Aset-Keuangan-Digital-Posisi-25-Mei-2026.aspx'),
     'bestchange': ('BestChange', 'https://www.bestchange.ru/'),
+    'subleasing': ('GasFree4you · Subleasing', '../../sub_rent.html'),
 }
 
 
@@ -97,7 +101,7 @@ def cta(d):
     return f'''<aside class="cta"><div><h2>{e(d['ctaTitle'])}</h2><p>{e(d['ctaText'])}</p></div><a class="button" href="{e(d.get('ctaHref', '../../index.html'))}">{e(d.get('ctaButton', d['service']))} ↗</a></aside>'''
 
 
-def home(d, second):
+def home(d, second, third):
     route = ''.join(f'<div class="diagram-row"><b>0{i}</b><span>{e(s)}</span></div>' for i, s in enumerate(d['route'], 1))
     cards = ''.join(f'''<article class="card"><span class="number">0{i} / {e(category)}</span><h3>{e(title)}</h3><p>{e(desc)}</p><div class="planned">{e(d['planned'])}</div></article>''' for i, (category, title, desc) in enumerate(d['cards'], 1))
     topics = ''.join(f'<span>{e(t)}</span>' for t in d['topics'])
@@ -108,7 +112,8 @@ def home(d, second):
 <h2><a href="{ARTICLE}">{e(d['title'])}</a></h2><p>{e(d['description'])}</p><a class="read" href="{ARTICLE}">{e(d['read'])} <span aria-hidden="true">→</span></a></div>
 <div class="diagram"><div class="diagram-title">{e(d['diagramTitle'])}</div>{route}</div></article></section>
 <section aria-labelledby="more"><div class="section-heading"><h2 id="more">{e(d['moreArticles'])}</h2></div>
-<article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article></section>
+<div class="more-grid"><article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article>
+<article class="card partner-card"><div class="meta"><span class="tag">{e(third['category'])}</span><span>·</span><span>{e(third['time'])}</span></div><h3><a href="{SUB_ARTICLE}">{e(third['title'])}</a></h3><p>{e(third['description'])}</p><a class="read" href="{SUB_ARTICLE}">{e(d['read'])} →</a></article></div></section>
 <section aria-labelledby="next"><div class="section-heading"><h2 id="next">{e(d['next'])}</h2></div><div class="grid">{cards}</div></section>
 <section aria-labelledby="topics"><div class="section-heading"><h2 id="topics">{e(d['topicsTitle'])}</h2></div><div class="topics">{topics}</div></section>
 {cta(d)}'''
@@ -135,11 +140,29 @@ def example(d):
             + code_block(d['randomTitle'], '.venv/bin/python tron_wallet.py'))
 
 
+def transaction_case(items):
+    result = '<div class="transaction-case">'
+    for item in items:
+        tx = TRANSACTIONS[item['key']]
+        url = f'https://tronscan.org/transaction/{tx["hash"]}/overview'
+        path = Path('blog/assets/subleasing') / tx['image']
+        # User supplies screenshots later; never emit broken image URLs.
+        screenshot = ''
+        if (ROOT / path).is_file():
+            screenshot = f'<a href="../../{path.as_posix()}"><img src="../../{path.as_posix()}" alt="{e(item["alt"])}" loading="lazy" decoding="async"></a>'
+        result += f'''<figure class="transaction-step"><h3>{e(item['title'])}</h3><p>{e(item['text'])}</p>{screenshot}<figcaption>{e(item['caption'])}</figcaption><a class="tx-link" href="{url}">Tronscan ↗ <span>{tx['hash']}</span></a><time datetime="{tx['time']}">{tx['time'].replace('T', ' ').replace('Z', ' UTC')}</time></figure>'''
+    return result + '</div>'
+
+
 def article(d):
     toc = ''.join(f'<a href="#section-{i}">{e(section["title"])}</a>' for i, section in enumerate(d['sections'], 1))
     sections = ''
     for i, section in enumerate(d['sections'], 1):
         body = ''.join(f'<p>{e(p)}</p>' for p in section.get('paragraphs', []))
+        if section.get('flow'):
+            body += '<ul class="payment-flow">' + ''.join(f'<li>{e(step)}</li>' for step in section['flow']) + '</ul>'
+        if section.get('case'):
+            body += transaction_case(section['case'])
         if section.get('steps'):
             body += '<ol>' + ''.join(f'<li>{e(step)}</li>' for step in section['steps']) + '</ol>'
         if section.get('note'):
@@ -192,21 +215,24 @@ def main():
     content = json.loads(CONTENT.read_text())
     wallet = json.loads(WALLET_CONTENT.read_text())
     buy = json.loads(BUY_CONTENT.read_text())
+    subleasing = json.loads(SUB_CONTENT.read_text())
     sitemap_entries = {}
     for lang in LANGUAGES:
         d = {**content[lang], **wallet[lang]}
         second = {**content[lang], **buy[lang]}
-        for item in (d, second):
+        third = {**content[lang], **subleasing[lang]}
+        for item in (d, second, third):
             assert date.fromisoformat(item['dateModified']) >= date.fromisoformat(item['datePublished'])
         folder = ROOT / lang / 'blog'
         folder.mkdir(parents=True, exist_ok=True)
-        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second)))
+        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second, third)))
         (folder / ARTICLE).write_text(shell(lang, d, ARTICLE, d['title'], d['description'], article(d)))
         (folder / BUY_ARTICLE).write_text(shell(lang, second, BUY_ARTICLE, second['title'], second['description'], article(second)))
-        for filename, modified in [('index.html', max(d['dateModified'], second['dateModified'])), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified'])]:
+        (folder / SUB_ARTICLE).write_text(shell(lang, third, SUB_ARTICLE, third['title'], third['description'], article(third)))
+        for filename, modified in [('index.html', max(d['dateModified'], second['dateModified'], third['dateModified'])), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified']), (SUB_ARTICLE, third['dateModified'])]:
             sitemap_entries[f'{DOMAIN}/{lang}/blog/{filename}'] = modified
     update_sitemap(sitemap_entries)
-    print('Built 12 pages: a blog index and two articles in each language.')
+    print('Built 16 pages: a blog index and three articles in each language.')
 
 
 if __name__ == '__main__':
