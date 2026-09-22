@@ -3,7 +3,7 @@
     "title": "Свой сервис аренды Energy: как работает сабаренда GasFree4you",
     "description": "Вы устанавливаете цену и принимаете TRX на свой кошелёк. GasFree4you отслеживает оплату и выдаёт Energy клиенту. Разбираем механику, доход партнёра и реальный пример в Tronscan.",
     "category": "Партнёрам",
-    "time": "7 минут",
+    "time": "10 минут",
     "sourceLabel": "Подробнее",
     "authorLabel": "Автор",
     "authorName": "Редакция GasFree4you",
@@ -51,6 +51,49 @@
           "Пополните баланс личного кабинета и поддерживайте запас для новых заказов. Клиентские платежи на кошелёк сами этот баланс не пополняют.",
           "Опубликуйте адрес, точную сумму оплаты, объём Energy и срок её действия по текущим условиям сервиса. Объясните клиенту, что платить нужно с того собственного кошелька, которому требуется энергия.",
           "После корректного платежа сервис отслеживает пополнение, проверяет получателя Energy и делегирует ресурс отправителю. Стоимость выполненного заказа списывается из вашего кабинета."
+        ]
+      },
+      {
+        "title": "Добавляем кошелёк в личном кабинете",
+        "paragraphs": [
+          "Откройте личный кабинет GasFree4you и перейдите на вкладку «Сабаренда» (Subleasing). Откройте форму добавления кошелька — Add wallet. На скриншоте показан пример заполнения; для настройки используйте свой адрес."
+        ],
+        "steps": [
+          "В поле Service wallet address вставьте публичный адрес своего отдельного TRON-кошелька. Проверьте адрес целиком. Не используйте адрес биржи и не копируйте кошелёк со скриншота.",
+          "В поле Price per 65k Energy (TRX) укажите, сколько клиент платит за 65 000 Energy. На примере установлено 3,00 TRX. Это ваша розничная цена, а не сумма пополнения баланса кабинета.",
+          "Посмотрите блок Your earnings per order: при показанной цене клиента 3,00 TRX и себестоимости 2,45 TRX разница составляет 0,55 TRX. Подсказки, допустимый диапазон цены и тариф проверяйте в актуальной форме.",
+          "Нажмите Save wallet. Проверьте сохранённый адрес и цену, пополните баланс кабинета и только затем передавайте адрес клиентам."
+        ],
+        "image": {
+          "alt": "Форма Add wallet: адрес TRON, цена 3 TRX за 65 000 Energy, расчёт 0,55 TRX и кнопка Save wallet.",
+          "caption": "Добавление кошелька. Введите свой адрес и цену за 65 000 Energy; цифры и адрес на скриншоте служат примером.",
+          "path": "blog/assets/subleasing/04-add-wallet.jpeg",
+          "width": 783,
+          "height": 1280
+        }
+      },
+      {
+        "title": "Где увидеть оплату и статус заказа",
+        "paragraphs": [
+          "После поступления TRX операция появится в ленте сабаренды вместе со своим статусом. Найдите её по времени, номеру Order и адресам From / To. From — отправитель платежа, которому предназначена Energy; To — ваш кошелёк приёма оплаты.",
+          "На скриншоте верхняя операция имеет статус Completed — заказ выполнен. У неё Amount 3,00 TRX, Subleasing amount 2,45 TRX, Profit / return 0,55 TRX и Requested Energy 65 000. Так лента позволяет сопоставить платёж клиента, стоимость сабаренды и результат заказа."
+        ],
+        "steps": [
+          "Amount — сколько клиент отправил на ваш кошелёк. Эти TRX остаются у вас.",
+          "Subleasing amount — стоимость заказа, оплаченная с баланса личного кабинета. Она не вычитается из клиентского платежа на вашем кошельке.",
+          "Profit / return — разница между платежом и себестоимостью. В показанном примере 0,55 / 2,45 × 100 ≈ 22,45%: процент считается от себестоимости, а не от выручки. Это показатель конкретного заказа, не годовая доходность.",
+          "Requested Energy — объём энергии в заказе. Статус проверяйте отдельно: появление операции в ленте ещё не означает, что выдача завершена."
+        ],
+        "image": {
+          "alt": "Лента сабаренды со статусами Completed: верхний заказ 3 TRX, стоимость 2,45 TRX, разница 0,55 TRX, 65 000 Energy.",
+          "caption": "Лента операций в кабинете партнёра: платёж, стоимость сабаренды, валовая разница и статус каждого заказа.",
+          "path": "blog/assets/subleasing/05-order-feed.jpeg",
+          "width": 646,
+          "height": 1280
+        },
+        "after": [
+          "Если операция ещё не имеет статуса Completed, не сообщайте клиенту, что энергия уже выдана. Проверьте баланс кабинета и сведения о заказе; при вопросах передайте поддержке номер Order и хеш платежа, без seed-фразы и приватного ключа.",
+          "Значения 2,45 TRX, 0,55 TRX и 22,45% относятся к показанному заказу. Это пример из кабинета, а не обещание постоянного тарифа или дохода."
         ]
       },
       {
@@ -133,7 +176,7 @@
     "title": "Your own Energy rental service: how GasFree4you subleasing works",
     "description": "Set your price and receive TRX in your own wallet. GasFree4you detects payments and delivers Energy to customers. Explore the workflow, partner margins, and a real Tronscan example.",
     "category": "For partners",
-    "time": "7 min read",
+    "time": "10 min read",
     "sourceLabel": "Learn more",
     "authorLabel": "Author",
     "authorName": "GasFree4you Editorial Team",
@@ -181,6 +224,49 @@
           "Fund your service account and maintain enough balance for new orders. Payments to your wallet do not top it up automatically.",
           "Share the address, exact payment amount, Energy quantity, and current rental duration. Tell customers to pay from the wallet that needs Energy.",
           "After an eligible payment, the service detects it, checks the Energy recipient, and delegates to the sender. The completed order’s cost is deducted from your service balance."
+        ]
+      },
+      {
+        "title": "Add your wallet in the account dashboard",
+        "paragraphs": [
+          "Open your GasFree4you account and go to the Subleasing tab. Open Add wallet. The screenshot shows a completed example; use your own address when setting up your service."
+        ],
+        "steps": [
+          "Paste your dedicated TRON wallet’s public address into Service wallet address. Check the full address. Do not use an exchange address or copy the wallet from the screenshot.",
+          "In Price per 65k Energy (TRX), enter what customers pay for 65,000 Energy. The example uses 3.00 TRX. This is your retail price, not the amount to deposit into your service balance.",
+          "Review Your earnings per order: the displayed customer price of 3.00 TRX minus a 2.45 TRX cost leaves 0.55 TRX. Check the current form for guidance, permitted price range, and rates.",
+          "Click Save wallet. Verify the saved address and price, fund your service balance, and then share the address with customers."
+        ],
+        "image": {
+          "alt": "Add wallet form showing a TRON address, 3 TRX per 65,000 Energy, a 0.55 TRX difference, and Save wallet.",
+          "caption": "Add your own wallet address and price per 65,000 Energy. The address and amounts shown are examples.",
+          "path": "blog/assets/subleasing/04-add-wallet.jpeg",
+          "width": 783,
+          "height": 1280
+        }
+      },
+      {
+        "title": "Find the payment and order status",
+        "paragraphs": [
+          "After TRX arrives, the operation appears in the subleasing feed with its status. Locate it using the time, Order ID, and From / To addresses. From is the payment sender who should receive Energy; To is your payment-receiving wallet.",
+          "The top operation in the screenshot is Completed, meaning the order has been fulfilled. It shows Amount 3.00 TRX, Subleasing amount 2.45 TRX, Profit / return 0.55 TRX, and Requested Energy 65,000. The feed connects the customer payment, subleasing cost, and order outcome."
+        ],
+        "steps": [
+          "Amount is the customer payment to your wallet. That TRX stays with you.",
+          "Subleasing amount is the order cost paid from your service account balance. It is not deducted from the customer payment in your wallet.",
+          "Profit / return is the difference between payment and cost. Here, 0.55 / 2.45 × 100 ≈ 22.45%: the percentage is based on cost, not revenue. It describes this order, not an annual yield.",
+          "Requested Energy is the amount of Energy in the order. Check the status separately: an entry appearing in the feed does not by itself mean delivery is complete."
+        ],
+        "image": {
+          "alt": "Subleasing feed with Completed orders: the top order shows 3 TRX paid, 2.45 TRX cost, 0.55 TRX difference, and 65,000 Energy.",
+          "caption": "The partner’s operation feed shows each payment, subleasing cost, gross difference, and order status.",
+          "path": "blog/assets/subleasing/05-order-feed.jpeg",
+          "width": 646,
+          "height": 1280
+        },
+        "after": [
+          "If an order is not yet Completed, do not tell the customer that Energy has already arrived. Check your service balance and order details; for help, send support the Order ID and payment hash, never your recovery phrase or private key.",
+          "The 2.45 TRX cost, 0.55 TRX difference, and 22.45% apply to the displayed order. They illustrate an account record, not a guaranteed ongoing rate or income."
         ]
       },
       {
@@ -263,7 +349,7 @@
     "title": "Tu propio servicio de alquiler de Energy: cómo funciona el subleasing de GasFree4you",
     "description": "Fija tu precio y recibe TRX en tu cartera. GasFree4you detecta el pago y entrega Energy al cliente. Explicamos el modelo de subleasing con un ejemplo real en Tronscan.",
     "category": "Para colaboradores",
-    "time": "7 min de lectura",
+    "time": "10 min de lectura",
     "sourceLabel": "Más información",
     "authorLabel": "Autor",
     "authorName": "Equipo editorial de GasFree4you",
@@ -311,6 +397,49 @@
           "Recarga el saldo de tu cuenta y mantén fondos para nuevos pedidos. Los pagos a tu cartera no recargan ese saldo automáticamente.",
           "Publica la dirección, el importe exacto, la cantidad de Energy y su duración según las condiciones actuales. Indica que se paga desde la cartera que necesita Energy.",
           "Tras un pago válido, el servicio lo detecta, comprueba al destinatario y delega Energy al remitente. El coste del pedido completado se descuenta del saldo del servicio."
+        ]
+      },
+      {
+        "title": "Añade tu cartera desde la cuenta",
+        "paragraphs": [
+          "Abre tu cuenta de GasFree4you y entra en la pestaña Subleasing. Abre el formulario Add wallet. La captura muestra un ejemplo rellenado; utiliza tu propia dirección para configurar el servicio."
+        ],
+        "steps": [
+          "Pega la dirección pública de tu cartera TRON dedicada en Service wallet address. Comprueba la dirección completa. No utilices una dirección de exchange ni copies la de la captura.",
+          "En Price per 65k Energy (TRX), indica cuánto paga el cliente por 65.000 Energy. El ejemplo muestra 3,00 TRX. Es tu precio de venta, no el importe de recarga del saldo del servicio.",
+          "Revisa Your earnings per order: con un precio de 3,00 TRX y un coste de 2,45 TRX, la diferencia es 0,55 TRX. Consulta las recomendaciones, el intervalo permitido y la tarifa en el formulario actual.",
+          "Pulsa Save wallet. Comprueba la dirección y el precio guardados, recarga el saldo del servicio y después comparte la dirección con tus clientes."
+        ],
+        "image": {
+          "alt": "Formulario Add wallet con dirección TRON, precio de 3 TRX por 65.000 Energy, diferencia de 0,55 TRX y botón Save wallet.",
+          "caption": "Introduce tu propia dirección y precio por 65.000 Energy. La dirección y las cantidades de la captura son ejemplos.",
+          "path": "blog/assets/subleasing/04-add-wallet.jpeg",
+          "width": 783,
+          "height": 1280
+        }
+      },
+      {
+        "title": "Dónde consultar el pago y el estado del pedido",
+        "paragraphs": [
+          "Cuando llega TRX, la operación aparece en el historial de subleasing con su estado. Localízala por la hora, el identificador Order y las direcciones From / To. From es el remitente del pago que debe recibir Energy; To es tu cartera de cobro.",
+          "La primera operación de la captura está Completed: el pedido se ha completado. Muestra Amount 3,00 TRX, Subleasing amount 2,45 TRX, Profit / return 0,55 TRX y Requested Energy 65.000. El historial relaciona el pago, el coste y el resultado del pedido."
+        ],
+        "steps": [
+          "Amount es el pago del cliente a tu cartera. Esos TRX permanecen contigo.",
+          "Subleasing amount es el coste pagado desde el saldo de tu cuenta del servicio. No se resta del pago recibido en tu cartera.",
+          "Profit / return es la diferencia entre pago y coste. En este caso, 0,55 / 2,45 × 100 ≈ 22,45%: el porcentaje se calcula sobre el coste, no sobre los ingresos. Describe ese pedido, no una rentabilidad anual.",
+          "Requested Energy es la cantidad de Energy del pedido. Comprueba el estado por separado: aparecer en el historial no significa por sí solo que la entrega haya finalizado."
+        ],
+        "image": {
+          "alt": "Historial con pedidos Completed: el primero muestra 3 TRX, coste de 2,45 TRX, diferencia de 0,55 TRX y 65.000 Energy.",
+          "caption": "Historial del colaborador: pago, coste del subleasing, diferencia bruta y estado de cada pedido.",
+          "path": "blog/assets/subleasing/05-order-feed.jpeg",
+          "width": 646,
+          "height": 1280
+        },
+        "after": [
+          "Si el pedido aún no está Completed, no digas al cliente que ya recibió Energy. Comprueba el saldo del servicio y los detalles; si necesitas ayuda, envía a soporte el identificador Order y el hash del pago, nunca tu frase de recuperación ni tu clave privada.",
+          "El coste de 2,45 TRX, la diferencia de 0,55 TRX y el 22,45% corresponden al pedido mostrado. Son un ejemplo del historial, no una promesa de tarifa o ingresos constantes."
         ]
       },
       {
@@ -393,7 +522,7 @@
     "title": "Layanan sewa Energy Anda sendiri: cara kerja subleasing GasFree4you",
     "description": "Tentukan harga dan terima TRX di dompet sendiri. GasFree4you mendeteksi pembayaran dan memberikan Energy kepada pelanggan. Pelajari alur, margin mitra, dan contoh nyata di Tronscan.",
     "category": "Untuk mitra",
-    "time": "7 menit baca",
+    "time": "10 menit baca",
     "sourceLabel": "Pelajari lebih lanjut",
     "authorLabel": "Penulis",
     "authorName": "Tim Editorial GasFree4you",
@@ -441,6 +570,49 @@
           "Isi saldo akun layanan dan sediakan cadangan untuk pesanan baru. Pembayaran ke dompet tidak otomatis mengisi saldo akun.",
           "Bagikan alamat, jumlah pembayaran yang tepat, jumlah Energy, dan masa sewa sesuai ketentuan terbaru. Jelaskan bahwa pembayaran harus berasal dari dompet yang membutuhkan Energy.",
           "Setelah pembayaran yang sesuai, layanan mendeteksinya, memeriksa penerima Energy, lalu mendelegasikan kepada pengirim. Biaya pesanan yang selesai dipotong dari saldo layanan Anda."
+        ]
+      },
+      {
+        "title": "Menambahkan dompet di akun Anda",
+        "paragraphs": [
+          "Buka akun GasFree4you dan masuk ke tab Subleasing. Buka formulir Add wallet. Tangkapan layar menunjukkan contoh pengisian; gunakan alamat Anda sendiri saat menyiapkan layanan."
+        ],
+        "steps": [
+          "Tempel alamat publik dompet TRON khusus Anda pada Service wallet address. Periksa seluruh alamat. Jangan gunakan alamat bursa atau menyalin alamat dari tangkapan layar.",
+          "Pada Price per 65k Energy (TRX), masukkan harga yang dibayar pelanggan untuk 65.000 Energy. Contoh menunjukkan 3,00 TRX. Ini harga jual Anda, bukan jumlah deposit saldo layanan.",
+          "Periksa Your earnings per order: harga 3,00 TRX dikurangi biaya 2,45 TRX menghasilkan selisih 0,55 TRX. Lihat panduan, rentang harga yang diizinkan, dan tarif pada formulir terbaru.",
+          "Klik Save wallet. Periksa alamat serta harga yang tersimpan, isi saldo layanan, lalu bagikan alamat kepada pelanggan."
+        ],
+        "image": {
+          "alt": "Formulir Add wallet dengan alamat TRON, harga 3 TRX per 65.000 Energy, selisih 0,55 TRX, dan tombol Save wallet.",
+          "caption": "Masukkan alamat sendiri dan harga per 65.000 Energy. Alamat serta angka pada tangkapan layar adalah contoh.",
+          "path": "blog/assets/subleasing/04-add-wallet.jpeg",
+          "width": 783,
+          "height": 1280
+        }
+      },
+      {
+        "title": "Melihat pembayaran dan status pesanan",
+        "paragraphs": [
+          "Setelah TRX masuk, operasi muncul di daftar transaksi subleasing beserta statusnya. Cari berdasarkan waktu, ID Order, dan alamat From / To. From adalah pengirim pembayaran yang akan menerima Energy; To adalah dompet penerima pembayaran Anda.",
+          "Operasi paling atas pada tangkapan layar berstatus Completed: pesanan telah diselesaikan. Tercantum Amount 3,00 TRX, Subleasing amount 2,45 TRX, Profit / return 0,55 TRX, serta Requested Energy 65.000. Daftar ini menghubungkan pembayaran, biaya, dan hasil pesanan."
+        ],
+        "steps": [
+          "Amount adalah pembayaran pelanggan ke dompet Anda. TRX tersebut tetap milik Anda.",
+          "Subleasing amount adalah biaya pesanan yang dibayar dari saldo akun layanan. Biaya tidak dipotong dari pembayaran pelanggan di dompet Anda.",
+          "Profit / return adalah selisih pembayaran dan biaya. Dalam contoh, 0,55 / 2,45 × 100 ≈ 22,45%: persentasenya dihitung dari biaya, bukan pendapatan. Ini angka untuk satu pesanan, bukan imbal hasil tahunan.",
+          "Requested Energy adalah jumlah Energy dalam pesanan. Periksa status secara terpisah: munculnya operasi di daftar belum berarti pemberian Energy selesai."
+        ],
+        "image": {
+          "alt": "Daftar subleasing berstatus Completed: pesanan teratas menampilkan 3 TRX, biaya 2,45 TRX, selisih 0,55 TRX, dan 65.000 Energy.",
+          "caption": "Daftar operasi mitra menampilkan pembayaran, biaya subleasing, selisih kotor, dan status setiap pesanan.",
+          "path": "blog/assets/subleasing/05-order-feed.jpeg",
+          "width": 646,
+          "height": 1280
+        },
+        "after": [
+          "Jika status belum Completed, jangan memberi tahu pelanggan bahwa Energy sudah diterima. Periksa saldo layanan dan rincian pesanan; jika perlu bantuan, kirim ID Order dan hash pembayaran kepada dukungan, bukan frasa pemulihan atau kunci privat.",
+          "Biaya 2,45 TRX, selisih 0,55 TRX, dan 22,45% berlaku untuk pesanan yang ditampilkan. Ini contoh catatan akun, bukan jaminan tarif tetap atau penghasilan."
         ]
       },
       {

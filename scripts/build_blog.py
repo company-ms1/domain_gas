@@ -165,6 +165,13 @@ def article(d):
             body += transaction_case(section['case'])
         if section.get('steps'):
             body += '<ol>' + ''.join(f'<li>{e(step)}</li>' for step in section['steps']) + '</ol>'
+        if section.get('image'):
+            picture = section['image']
+            path = ROOT / picture['path']
+            if not path.is_file():
+                raise FileNotFoundError(f'Missing article image: {path}')
+            src = '../../' + picture['path']
+            body += f'<figure class="guide-screenshot"><a href="{e(src)}"><img src="{e(src)}" alt="{e(picture["alt"])}" width="{int(picture["width"])}" height="{int(picture["height"])}" loading="lazy" decoding="async"></a><figcaption>{e(picture["caption"])}</figcaption></figure>'
         if section.get('note'):
             body += f'<aside class="note">{e(section["note"])}</aside>'
         if section.get('code'):
