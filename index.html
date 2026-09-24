@@ -1990,7 +1990,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
           <div><h3>Blockchain consultations</h3><p>We can explain how blockchain works and help you understand wallets, transactions, TRON fees and integration options for your product.</p></div>
         </div>
         <div class="startup-actions">
-          <a class="btn btn-primary" href="mailto:lina@gasfree4you.com?subject=GasFree4you%20Startup">Discuss your project</a>
+          <button type="button" class="btn btn-primary" data-contact-open aria-controls="contactPopover" aria-expanded="false">Discuss your project</button>
           <p>Tell us about your idea and expected volume. We agree on discounts and support individually.</p>
         </div>
       </div>
@@ -2067,7 +2067,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
             <div class="price-amount">Custom</div>
           </div>
           <p style="font-size:14px; color:var(--text-muted); margin-bottom:20px; flex:1;">Built around your volume and team — energy, AML, dashboard limits and API terms, scoped to how you actually run your business.</p>
-          <button type="button" class="btn btn-ghost" onclick="document.getElementById('contactPopover').classList.add('open');document.getElementById('contactToggle').classList.add('open');" style="width:100%; justify-content:center;">Talk to us</button>
+          <button type="button" class="btn btn-ghost" data-contact-open aria-controls="contactPopover" aria-expanded="false" style="width:100%; justify-content:center;">Talk to us</button>
         </div>
       </div>
     </div>
@@ -2079,7 +2079,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
       <p>Open the dashboard and run your first transfer in under a minute — energy delegated, screening on standby, statement waiting at the end of the month.</p>
       <div class="hero-ctas">
         <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=closing_open_dashboard" class="btn btn-primary">Open the dashboard</a>
-        <button type="button" class="btn btn-ghost" onclick="document.getElementById('contactPopover').classList.add('open');document.getElementById('contactToggle').classList.add('open');">Talk to us</button>
+        <button type="button" class="btn btn-ghost" data-contact-open aria-controls="contactPopover" aria-expanded="false">Talk to us</button>
       </div>
     </div>
   </section>
@@ -2140,7 +2140,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
       </span>
     </a>
   </div>
-  <button type="button" class="float-btn" id="contactToggle" aria-label="Contact us">
+  <button type="button" class="float-btn" id="contactToggle" aria-controls="contactPopover" aria-expanded="false" aria-label="Contact us">
     <span class="icon-open">💬</span>
     <span class="icon-close">✕</span>
   </button>
@@ -2346,18 +2346,33 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
   applyLandingLanguage(detectLandingLanguage(),{save:false});
   new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(translateLandingNode))).observe(document.body,{childList:true,subtree:true});
 
-  // floating contact toggle
+  // Contact panel: shared state for every contact button.
   const contactToggle = document.getElementById('contactToggle');
   const contactPopover = document.getElementById('contactPopover');
-  contactToggle.addEventListener('click', () => {
-    const isOpen = contactPopover.classList.toggle('open');
+  const contactOpeners = document.querySelectorAll('[data-contact-open]');
+  let contactReturnFocus = contactToggle;
+  function setContactOpen(isOpen) {
+    contactPopover.classList.toggle('open', isOpen);
     contactToggle.classList.toggle('open', isOpen);
-    contactToggle.setAttribute('aria-expanded', isOpen);
+    contactToggle.setAttribute('aria-expanded', String(isOpen));
+    contactOpeners.forEach(button => button.setAttribute('aria-expanded', String(isOpen)));
+  }
+  contactToggle.addEventListener('click', () => {
+    contactReturnFocus = contactToggle;
+    setContactOpen(!contactPopover.classList.contains('open'));
   });
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.float-contact')) {
-      contactPopover.classList.remove('open');
-      contactToggle.classList.remove('open');
+  contactOpeners.forEach(button => button.addEventListener('click', () => {
+    contactReturnFocus = button;
+    setContactOpen(true);
+    contactPopover.querySelector('a').focus({preventScroll: true});
+  }));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.float-contact, [data-contact-open]')) setContactOpen(false);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && contactPopover.classList.contains('open')) {
+      setContactOpen(false);
+      contactReturnFocus.focus({preventScroll: true});
     }
   });
 
