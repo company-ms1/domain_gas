@@ -1617,6 +1617,18 @@ header.nav .nav-right>.btn{white-space:nowrap}
 @media(max-width:1000px){.earn-grid{gap:16px}.earn-card{padding:22px}.earn-equation strong{font-size:18px}.earn-commission{gap:12px}.earn-commission>strong{font-size:32px}}
 @media(max-width:760px){.earn-grid{grid-template-columns:1fr}.earn-heading h2{font-size:30px}.earn-card h3{font-size:25px}.earn-description{min-height:0}.earn-flow{gap:16px}.earn-commission>strong{font-size:36px}}
 @media(max-width:380px){.earn-card{padding:17px}.earn-equation{gap:5px}.earn-equation strong{font-size:16px}.earn-card h3{font-size:23px}.earn-category{font-size:14px}.earn-commission{flex-direction:column;align-items:flex-start;gap:10px}}
+
+  /* Startup support */
+  .startup-panel{padding:36px;border:1px solid rgba(87,232,166,.24);border-radius:var(--radius-lg);background:linear-gradient(120deg,rgba(87,232,166,.09),rgba(86,112,255,.12));}
+  .startup-panel h2{font-family:var(--font-display);font-size:clamp(26px,3.5vw,38px);line-height:1.15;letter-spacing:-.02em;margin:18px 0 14px;max-width:760px;}
+  .startup-intro{color:var(--text-muted);max-width:720px;font-size:16px;}
+  .startup-benefits{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:28px 0;}
+  .startup-benefits h3{font-size:17px;margin-bottom:8px;color:var(--mint);}
+  .startup-benefits p{font-size:14px;line-height:1.65;color:var(--text-muted);}
+  .startup-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .startup-actions p{font-size:12px;color:var(--text-muted);max-width:420px;}
+  @media(max-width:640px){.startup-panel{padding:24px 20px;}.startup-benefits{grid-template-columns:1fr;gap:20px;margin:24px 0;}.startup-actions .btn{width:100%;justify-content:center;}}
+
 </style>
 </head>
 <body>
@@ -1966,6 +1978,25 @@ header.nav .nav-right>.btn{white-space:nowrap}
     </div>
   </section>
 
+  <!-- STARTUP SUPPORT -->
+  <section class="layer-section" id="startups" aria-labelledby="startup-title">
+    <div class="wrap">
+      <div class="startup-panel">
+        <span class="eyebrow">FOR STARTUPS</span>
+        <h2 id="startup-title">Test your idea. Spend less on fees.</h2>
+        <p class="startup-intro">Building a product with USDT payments? We offer special terms to help you launch an MVP and test your hypotheses with a smaller budget.</p>
+        <div class="startup-benefits">
+          <div><h3>Startup discounts</h3><p>Get special discounts on our services while you test your idea and onboard your first users.</p></div>
+          <div><h3>Blockchain consultations</h3><p>We can explain how blockchain works and help you understand wallets, transactions, TRON fees and integration options for your product.</p></div>
+        </div>
+        <div class="startup-actions">
+          <a class="btn btn-primary" href="mailto:lina@gasfree4you.com?subject=GasFree4you%20Startup">Discuss your project</a>
+          <p>Tell us about your idea and expected volume. We agree on discounts and support individually.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- LAYER 4 — GROWTH -->
   <section class="layer-section earn-section" id="growth-layer" aria-labelledby="earn-title">
     <div class="wrap"><div class="earn-heading"><span class="eyebrow">EARN WITH GASFREE4YOU</span><h2 id="earn-title">Two ways to earn</h2><p>Run your own Energy service or invite users to ours.</p></div>
@@ -2243,6 +2274,9 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
   Object.assign(LANDING_RU, {"Blog": "Блог"});
   Object.assign(LANDING_ID, {"Blog": "Blog"});
   Object.assign(LANDING_ES, {"Blog": "Blog"});
+  Object.assign(LANDING_RU, {"FOR STARTUPS": "ДЛЯ СТАРТАПОВ", "Test your idea. Spend less on fees.": "Проверяйте идеи. Тратьте меньше на комиссии.", "Building a product with USDT payments? We offer special terms to help you launch an MVP and test your hypotheses with a smaller budget.": "Создаёте продукт с платежами в USDT? Предлагаем особые условия, чтобы вы могли запустить MVP и проверить гипотезы с меньшим бюджетом.", "Startup discounts": "Скидки для стартапов", "Get special discounts on our services while you test your idea and onboard your first users.": "Предоставим специальные скидки на наши услуги на этапе проверки идеи и привлечения первых пользователей.", "Blockchain consultations": "Консультации по блокчейну", "We can explain how blockchain works and help you understand wallets, transactions, TRON fees and integration options for your product.": "Объясним, как работает блокчейн, поможем разобраться с кошельками, транзакциями, комиссиями TRON и вариантами интеграции в ваш продукт.", "Discuss your project": "Обсудить проект", "Tell us about your idea and expected volume. We agree on discounts and support individually.": "Расскажите об идее и ожидаемом объёме операций. Скидки и формат поддержки обсудим индивидуально."});
+  Object.assign(LANDING_ES, {"FOR STARTUPS": "PARA STARTUPS", "Test your idea. Spend less on fees.": "Valida tu idea. Gasta menos en comisiones.", "Building a product with USDT payments? We offer special terms to help you launch an MVP and test your hypotheses with a smaller budget.": "¿Estás creando un producto con pagos en USDT? Ofrecemos condiciones especiales para lanzar tu MVP y validar tus hipótesis con un presupuesto menor.", "Startup discounts": "Descuentos para startups", "Get special discounts on our services while you test your idea and onboard your first users.": "Obtén descuentos especiales en nuestros servicios mientras validas tu idea y consigues tus primeros usuarios.", "Blockchain consultations": "Consultas sobre blockchain", "We can explain how blockchain works and help you understand wallets, transactions, TRON fees and integration options for your product.": "Te explicamos cómo funciona blockchain y te ayudamos a entender las billeteras, las transacciones, las comisiones de TRON y las opciones de integración para tu producto.", "Discuss your project": "Hablemos de tu proyecto", "Tell us about your idea and expected volume. We agree on discounts and support individually.": "Cuéntanos tu idea y el volumen previsto. Acordamos los descuentos y el apoyo de forma individual."});
+  Object.assign(LANDING_ID, {"FOR STARTUPS": "UNTUK STARTUP", "Test your idea. Spend less on fees.": "Uji ide Anda. Hemat biaya transaksi.", "Building a product with USDT payments? We offer special terms to help you launch an MVP and test your hypotheses with a smaller budget.": "Membangun produk dengan pembayaran USDT? Kami menawarkan ketentuan khusus agar Anda dapat meluncurkan MVP dan menguji hipotesis dengan anggaran lebih kecil.", "Startup discounts": "Diskon untuk startup", "Get special discounts on our services while you test your idea and onboard your first users.": "Dapatkan diskon khusus untuk layanan kami saat menguji ide dan mendapatkan pengguna pertama Anda.", "Blockchain consultations": "Konsultasi blockchain", "We can explain how blockchain works and help you understand wallets, transactions, TRON fees and integration options for your product.": "Kami dapat menjelaskan cara kerja blockchain dan membantu Anda memahami dompet, transaksi, biaya TRON, serta pilihan integrasi untuk produk Anda.", "Discuss your project": "Diskusikan proyek Anda", "Tell us about your idea and expected volume. We agree on discounts and support individually.": "Ceritakan ide dan perkiraan volume transaksi Anda. Diskon dan dukungan disepakati secara individual."});
   const landingOriginalText = new WeakMap();
   const landingOriginalAttrs = new WeakMap();
   let landingLang = "en";
