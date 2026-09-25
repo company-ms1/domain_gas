@@ -1629,29 +1629,6 @@ header.nav .nav-right>.btn{white-space:nowrap}
   .startup-actions p{font-size:12px;color:var(--text-muted);max-width:420px;}
   @media(max-width:640px){.startup-panel{padding:24px 20px;}.startup-benefits{grid-template-columns:1fr;gap:20px;margin:24px 0;}.startup-actions .btn{width:100%;justify-content:center;}}
 
-
-/* Public transfer calculator */
-.fee-card{min-width:0;padding:26px;background:linear-gradient(145deg,#142c32,#10152b 65%);border:1px solid #57e8a645;border-radius:24px;box-shadow:0 20px 60px #0002}
-.fee-card h2{font:700 25px/1.2 var(--font-display);margin:10px 0}
-.fee-card p{font-size:13px;color:#b4bdd4;line-height:1.6}
-.fee-card label{display:block;font-size:13px;font-weight:600;margin:16px 0 7px}
-.fee-card input{display:block;width:100%;min-width:0;background:#080e1d;border:1px solid #ffffff26;border-radius:10px;padding:13px 12px;color:var(--text);font:13px var(--font-mono)}
-.fee-card input:focus{outline:2px solid var(--mint);outline-offset:2px}
-.fee-card input[aria-invalid=true]{border-color:var(--coral)}
-.fee-card .btn{width:100%;justify-content:center;margin-top:18px;white-space:normal;text-align:center}
-.fee-card button:disabled{opacity:.65;cursor:wait}
-.fee-card .fee-note{font-size:11px;margin-top:12px}
-.fee-status{margin-top:12px;color:var(--coral)!important}
-.fee-result{margin-top:18px;padding-top:18px;border-top:1px solid #ffffff20}
-.fee-result h3{font-size:18px;color:var(--mint);margin-bottom:10px}
-.fee-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
-.fee-stat{background:#ffffff06;padding:12px;border-radius:10px;min-width:0}
-.fee-stat span{display:block;color:#b4bdd4;font-size:11px}
-.fee-stat strong{display:block;font-size:20px;margin-top:4px}
-.fee-result .fee-warning{color:var(--amber);margin-top:10px}
-.fee-card [hidden]{display:none!important}
-@media(max-width:520px){.fee-card{padding:20px}.fee-card h2{font-size:23px}}
-
 </style>
 </head>
 <body>
@@ -1702,20 +1679,12 @@ header.nav .nav-right>.btn{white-space:nowrap}
         <p class="hero-assurance"><span aria-hidden="true">✓</span> <span>No sign-up for a one-off rental</span></p>
         <p class="hero-fine">For your own TRON wallet. No private keys or seed phrase needed.</p>
       </div>
-      <aside class="fee-card" id="transfer-calculator" aria-labelledby="fee-title">
-        <span class="eyebrow" data-fee="eyebrow"></span>
-        <h2 id="fee-title" data-fee="title"></h2>
-        <p data-fee="intro"></p>
-        <form id="fee-form" novalidate>
-          <label for="fee-sender" data-fee="sender"></label>
-          <input id="fee-sender" name="sender_wallet" placeholder="T…" autocomplete="off" autocapitalize="off" spellcheck="false" required maxlength="34" aria-describedby="fee-status">
-          <label for="fee-recipient" data-fee="recipient"></label>
-          <input id="fee-recipient" name="recipient_wallet" placeholder="T…" autocomplete="off" autocapitalize="off" spellcheck="false" required maxlength="34" aria-describedby="fee-status">
-          <button class="btn btn-primary" id="fee-submit" type="submit" data-fee="calculate"></button>
-        </form>
-        <p class="fee-note" data-fee="privacy"></p>
-        <p id="fee-status" class="fee-status" role="status" aria-live="polite"></p>
-        <div id="fee-result" class="fee-result" aria-live="polite" hidden></div>
+      <aside class="hero-prices">
+        <h2>Cost per USDT transfer</h2>
+        <div class="hero-price-row"><p>Recipient already has USDT</p><div><s>6.4 TRX</s><span aria-hidden="true">→</span><strong>3 TRX</strong></div></div>
+        <div class="hero-price-row"><p>Recipient has no USDT</p><div><s>13 TRX</s><span aria-hidden="true">→</span><strong>6 TRX</strong></div></div>
+        <p class="hero-saving">Up to 53% cheaper</p>
+        <p class="hero-fine">One transfer · use within 1 hour</p>
       </aside>
     </div><a class="hero-more" href="#compliance-layer">Also available: AML checks, wallet dashboard and statements.</a></div>
   </section>
@@ -2316,7 +2285,7 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
     const textMap = landingLang === "ru" ? LANDING_RU : landingLang === "id" ? LANDING_ID : landingLang === "es" ? LANDING_ES : null;
     const attrMap = landingLang === "ru" ? LANDING_ATTR_RU : landingLang === "id" ? LANDING_ATTR_ID : landingLang === "es" ? LANDING_ATTR_ES : null;
     const visit = node => {
-      if (node.nodeType !== Node.TEXT_NODE || node.parentElement?.closest("script,style,noscript,.lang-switcher,.fee-card")) return;
+      if (node.nodeType !== Node.TEXT_NODE || node.parentElement?.closest("script,style,noscript,.lang-switcher")) return;
       const value = node.nodeValue.trim();
       if (landingLang === "en" && landingOriginalText.has(node)) {
         node.nodeValue = node.nodeValue.replace(value,landingOriginalText.get(node)); landingOriginalText.delete(node); return;
@@ -2760,72 +2729,6 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
   document.addEventListener('keydown', (e) => {
     if(e.key === 'Escape' && modalOverlay.classList.contains('open')) closeServiceModal();
   });
-</script>
-
-
-<script>
-(() => {
-  const messages = {"en": {"eyebrow": "FREE TRANSFER CHECK", "title": "How much will your transfer cost?", "intro": "Enter two TRON addresses to check the Energy needed for your USDT transfer.", "sender": "Sender address", "recipient": "Recipient address", "calculate": "Check my transfer", "privacy": "Public addresses only. No wallet connection or signature required.", "loading": "Checking…", "invalid": "Enter a valid TRON address: T followed by 33 Base58 characters.", "error": "Could not check the wallets. Please try again.", "rate": "Too many requests. Please try again later.", "enough": "Your wallet already has enough Energy", "rent": "Rent Energy to reduce your fee", "required": "Energy needed", "available": "Energy available", "price": "Estimated rental price", "noRent": "Energy rental is not needed.", "bandwidth": "Bandwidth available", "balance": "TRX balance", "topup": "Recommended TRX top-up for Bandwidth:", "burn": "Your Bandwidth is insufficient; additional TRX may be burned.", "bandOk": "Bandwidth is sufficient for this estimate.", "cta": "Rent Energy →", "disclaimer": "Estimate based on the advertised 3 / 6 TRX packages, not a live price quote. Bandwidth costs are separate.", "next": "After renting, return to your wallet and send USDT on TRON within 1 hour. Resources may change before you send.", "unknown": "Check Bandwidth before sending."}, "ru": {"eyebrow": "БЕСПЛАТНАЯ ПРОВЕРКА", "title": "Сколько будет стоить перевод?", "intro": "Укажите два адреса TRON — проверим, сколько энергии нужно для перевода USDT.", "sender": "Адрес отправителя", "recipient": "Адрес получателя", "calculate": "Проверить мой перевод", "privacy": "Только публичные адреса. Подключать кошелёк и подписывать транзакции не нужно.", "loading": "Проверяем…", "invalid": "Введите адрес TRON: T и ещё 33 символа Base58.", "error": "Не удалось проверить кошельки. Попробуйте ещё раз.", "rate": "Слишком много запросов. Попробуйте немного позже.", "enough": "В вашем кошельке уже достаточно энергии", "rent": "Арендуйте энергию и снизьте комиссию", "required": "Нужно энергии", "available": "Доступно энергии", "price": "Ориентир стоимости аренды", "noRent": "Арендовать энергию не нужно.", "bandwidth": "Доступно Bandwidth", "balance": "Баланс TRX", "topup": "Рекомендуемое пополнение TRX для Bandwidth:", "burn": "Bandwidth не хватает: сеть может дополнительно списать TRX.", "bandOk": "По расчёту Bandwidth достаточно.", "cta": "Арендовать энергию →", "disclaimer": "Ориентир по тарифам страницы: 3 / 6 TRX за пакет, а не актуальная котировка API. Расходы на Bandwidth — отдельно.", "next": "После аренды вернитесь в свой кошелёк и отправьте USDT в сети TRON в течение 1 часа. Ресурсы могут измениться до отправки.", "unknown": "Перед переводом проверьте Bandwidth."}, "es": {"eyebrow": "COMPROBACIÓN GRATUITA", "title": "¿Cuánto costará tu transferencia?", "intro": "Introduce dos direcciones TRON para comprobar la energía necesaria para enviar USDT.", "sender": "Dirección del remitente", "recipient": "Dirección del destinatario", "calculate": "Comprobar transferencia", "privacy": "Solo direcciones públicas. No necesitas conectar tu billetera ni firmar.", "loading": "Comprobando…", "invalid": "Introduce una dirección TRON: T y 33 caracteres Base58.", "error": "No se pudieron comprobar las billeteras. Inténtalo de nuevo.", "rate": "Demasiadas solicitudes. Inténtalo más tarde.", "enough": "Tu billetera ya tiene suficiente energía", "rent": "Alquila energía y reduce la comisión", "required": "Energía necesaria", "available": "Energía disponible", "price": "Precio estimado del alquiler", "noRent": "No necesitas alquilar energía.", "bandwidth": "Bandwidth disponible", "balance": "Saldo TRX", "topup": "Recarga de TRX recomendada para Bandwidth:", "burn": "Falta Bandwidth; la red puede consumir TRX adicionales.", "bandOk": "Hay suficiente Bandwidth según esta estimación.", "cta": "Alquilar energía →", "disclaimer": "Estimación según los paquetes anunciados de 3 / 6 TRX, no una cotización en tiempo real. Bandwidth se cobra aparte.", "next": "Después del alquiler, vuelve a tu billetera y envía USDT en TRON en 1 hora. Los recursos pueden cambiar antes del envío.", "unknown": "Comprueba el Bandwidth antes de enviar."}, "id": {"eyebrow": "CEK TRANSFER GRATIS", "title": "Berapa biaya transfer Anda?", "intro": "Masukkan dua alamat TRON untuk memeriksa energi yang diperlukan untuk transfer USDT.", "sender": "Alamat pengirim", "recipient": "Alamat penerima", "calculate": "Periksa transfer", "privacy": "Hanya alamat publik. Tidak perlu menghubungkan dompet atau menandatangani transaksi.", "loading": "Memeriksa…", "invalid": "Masukkan alamat TRON: T diikuti 33 karakter Base58.", "error": "Tidak dapat memeriksa dompet. Silakan coba lagi.", "rate": "Terlalu banyak permintaan. Coba lagi nanti.", "enough": "Energi dompet Anda sudah cukup", "rent": "Sewa energi untuk mengurangi biaya", "required": "Energi diperlukan", "available": "Energi tersedia", "price": "Perkiraan harga sewa", "noRent": "Tidak perlu menyewa energi.", "bandwidth": "Bandwidth tersedia", "balance": "Saldo TRX", "topup": "Isi ulang TRX yang disarankan untuk Bandwidth:", "burn": "Bandwidth tidak cukup; jaringan dapat membakar TRX tambahan.", "bandOk": "Bandwidth cukup berdasarkan perkiraan ini.", "cta": "Sewa energi →", "disclaimer": "Perkiraan berdasarkan paket 3 / 6 TRX yang diiklankan, bukan harga langsung. Biaya Bandwidth terpisah.", "next": "Setelah menyewa, kembali ke dompet dan kirim USDT di TRON dalam 1 jam. Sumber daya dapat berubah sebelum pengiriman.", "unknown": "Periksa Bandwidth sebelum mengirim."}};
-  const form = document.getElementById('fee-form'), sender = document.getElementById('fee-sender'), recipient = document.getElementById('fee-recipient');
-  const button = document.getElementById('fee-submit'), status = document.getElementById('fee-status'), result = document.getElementById('fee-result');
-  let response = null, busy = false, errorKey = '', controller = null, revision = 0;
-  const t = () => messages[document.documentElement.lang] || messages.en;
-  const numeric = value => value !== null && value !== '' && ['number','string'].includes(typeof value) && Number.isFinite(Number(value)) && Number(value) >= 0;
-  const number = value => numeric(value) ? Number(value).toLocaleString(document.documentElement.lang, {maximumFractionDigits:6}) : '—';
-  function render() {
-    const m = t();
-    document.querySelectorAll('[data-fee]').forEach(el => el.textContent = m[el.dataset.fee]);
-    button.textContent = busy ? m.loading : m.calculate;
-    button.disabled = busy;
-    form.setAttribute('aria-busy',String(busy));
-    status.textContent = errorKey ? m[errorKey] : busy ? m.loading : '';
-    result.replaceChildren(); result.hidden = !response;
-    if (!response) return;
-    const d = response;
-    const add = (tag, text, parent = result, cls = '') => { const el = document.createElement(tag); el.textContent = text; el.className = cls; parent.append(el); return el; };
-    add('h3', d.has_enough_energy ? m.enough : m.rent);
-    const stats = add('div','',result,'fee-stats');
-    for (const [label,value] of [[m.required,number(d.required_energy)],[m.available,number(d.sender_energy_available)],[m.bandwidth,number(d.sender_bandwidth_available)],[m.balance,number(d.sender_trx_balance)+' TRX']]) {
-      const cell = add('div','',stats,'fee-stat'); add('span',label,cell); add('strong',value,cell);
-    }
-    if (d.has_enough_energy) add('p',m.noRent);
-    else {
-      add('p',m.price+': '+(d.required_energy === 65000 ? '3' : '6')+' TRX');
-      add('p',m.disclaimer,result,'fee-note');
-    }
-    if (numeric(d.recommended_trx_topup) && Number(d.recommended_trx_topup)>0) add('p',m.topup+' '+number(d.recommended_trx_topup)+' TRX',result,'fee-warning');
-    else add('p',d.has_enough_bandwidth === true ? m.bandOk : d.has_enough_bandwidth === false ? m.burn : m.unknown,result,d.has_enough_bandwidth === true ? '' : 'fee-warning');
-    if (!d.has_enough_energy) {
-      const a = add('a',m.cta,result,'btn btn-primary'); a.href = 'https://www.gasfree4you.com/instant_new.html';
-      add('p',m.next,result,'fee-note');
-    }
-  }
-  form.addEventListener('input', () => {
-    revision++; controller?.abort(); busy=false; response=null; errorKey='';
-    [sender,recipient].forEach(el=>el.removeAttribute('aria-invalid')); render();
-  });
-  form.addEventListener('submit', async event => {
-    event.preventDefault(); if (busy) return;
-    response=null; errorKey='';
-    const invalid = [sender,recipient].filter(el=>!/^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(el.value.trim()));
-    [sender,recipient].forEach(el=>el.setAttribute('aria-invalid',String(invalid.includes(el))));
-    if(invalid.length){errorKey='invalid';render();invalid[0].focus();return;}
-    const current = ++revision; controller = new AbortController(); const activeController = controller;
-    const timeout = setTimeout(()=>activeController.abort(),15000);
-    busy=true;render();
-    try {
-      const url = new URL('https://connector.gasfree4you.com/v1/public/fee-estimate');
-      url.searchParams.set('recipient_wallet',recipient.value.trim()); url.searchParams.set('sender_wallet',sender.value.trim());
-      const res = await fetch(url,{signal:activeController.signal,credentials:'omit',headers:{Accept:'application/json'},cache:'no-store'});
-      if(!res.ok) throw new Error(res.status===429?'rate':'error');
-      const data = await res.json();
-      if (![65000,130000].includes(data.required_energy) || typeof data.has_enough_energy !== 'boolean' || !numeric(data.sender_energy_available) || !numeric(data.sender_bandwidth_available) || !numeric(data.sender_trx_balance)) throw new Error('error');
-      if(current===revision) response=data;
-    } catch(error) { if(current===revision) errorKey=error.message==='rate'?'rate':'error'; }
-    finally { clearTimeout(timeout); if(current===revision){busy=false;render();} }
-  });
-  document.addEventListener('landinglanguagechange',render); render();
-})();
 </script>
 
 </body>
