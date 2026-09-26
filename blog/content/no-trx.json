@@ -1,0 +1,406 @@
+{
+  "ru": {
+    "category": "Практика",
+    "sourceLabel": "Источники и сервисы",
+    "ctaButton": "Открыть личный кабинет",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Читайте также",
+    "authorLabel": "Автор",
+    "authorName": "Редакция GasFree4you",
+    "publishedLabel": "Опубликовано",
+    "modifiedLabel": "Обновлено",
+    "title": "Нет TRX в кошельке: как отправить USDT без TRX",
+    "description": "USDT есть, а перевод не проходит из-за комиссии? Разбираем, как подготовить Energy и Bandwidth, на какой адрес заказать энергию и что проверить перед отправкой.",
+    "time": "6 минут",
+    "ctaTitle": "Подготовьте кошелёк к переводу",
+    "ctaText": "Откройте кабинет GasFree4you, рассчитайте Energy и оформите аренду на адрес, с которого отправляете USDT. Перед подтверждением проверьте условия заказа.",
+    "relatedText": "Как купить TRX для комиссий и аренды энергии",
+    "relatedHref": "how-to-buy-trx.html",
+    "faqTitle": "Можно ли просто вычесть комиссию из суммы USDT?",
+    "faqAnswer": "При обычном переводе USDT TRC-20 сеть не превращает часть ваших USDT в оплату ресурсов автоматически. Оплата в USDT возможна в отдельных сервисах с такой функцией и по их условиям. Наличие USDT само по себе не гарантирует, что обычный перевод пройдёт.",
+    "sections": [
+      {
+        "title": "USDT на месте, но кнопка «Отправить» не помогает",
+        "paragraphs": [
+          "Знакомая ситуация: на балансе есть USDT, вы вводите адрес получателя, а кошелёк просит пополнить TRX. Это не значит, что токены пропали или заблокированы. Для отправки нужны сетевые ресурсы, а остаток USDT и возможность оплатить операцию — разные вещи.",
+          "Эта инструкция относится к USDT в сети TRON (TRC-20) на кошельке, которым вы управляете сами. Для вывода с биржи действуют её комиссии и правила."
+        ],
+        "note": "Отправить USDT с нулевым балансом TRX возможно, если адресу заранее доступны достаточные Energy и Bandwidth, нет дополнительных сборов и кошелёк поддерживает такую отправку. Аренда ресурсов при этом может быть платной."
+      },
+      {
+        "title": "Что именно оплачивает отправитель",
+        "paragraphs": [
+          "Energy нужна для выполнения смарт-контракта USDT, а Bandwidth — для данных транзакции. Если ресурсов не хватает, для покрытия нехватки могут потребоваться TRX.",
+          "Аренда Energy закрывает только одну часть задачи. Проверьте доступный Bandwidth отдельно: если его недостаточно, одна покупка энергии не обеспечит перевод при 0 TRX."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "Выберите путь по своей ситуации",
+        "paragraphs": [
+          "Есть TRX на другом кошельке? Можно перевести небольшой запас на адрес с USDT или оплатить аренду через кабинет, указав нужный адрес для Energy. Сравните итоговые расходы обоих вариантов.",
+          "Уже пополнен кабинет GasFree4you? Оформите заказ энергии для кошелька с USDT. Деньги на балансе кабинета сами по себе не становятся ресурсами вашего адреса.",
+          "Нет TRX ни на одном кошельке и нет оплаченного баланса? Понадобится внешний источник ресурсов: например, делегирование от человека, которому вы доверяете, либо сервис с явно заявленной оплатой в USDT. Не пытайтесь сначала обменять USDT на TRX обычным свопом без ресурсов: сам обмен тоже требует операции в сети."
+        ]
+      },
+      {
+        "title": "Как подготовить перевод через GasFree4you",
+        "paragraphs": [],
+        "steps": [
+          "Откройте USDT в своём кошельке и убедитесь, что выбрана сеть TRON (TRC-20). Скопируйте публичный адрес отправителя.",
+          "В личном кабинете GasFree4you проверьте баланс для оплаты услуг. При необходимости пополните его по актуальным реквизитам и условиям кабинета.",
+          "Рассчитайте потребность в Energy для предстоящего перевода. В заказе укажите адрес своего кошелька с USDT, выберите подходящий объём и срок аренды.",
+          "Дождитесь выполнения заказа. Проверьте Energy на адресе отправителя в кошельке или Tronscan и отдельно убедитесь, что хватает Bandwidth.",
+          "Вернитесь в кошелёк, укажите адрес получателя и сумму USDT. Проверьте сеть, адрес и итоговую оценку расходов перед подтверждением.",
+          "После отправки откройте транзакцию в Tronscan и проверьте её результат. Сохраните хеш перевода."
+        ],
+        "note": "В быстрой покупке с оплатой переводом TRX энергия поступает на адрес плательщика. Если заплатить с другого кошелька, Energy получит именно он. Для заказа на отдельный адрес используйте кабинет с выбором адреса."
+      },
+      {
+        "title": "Два адреса, которые нельзя перепутать",
+        "paragraphs": [
+          "Допустим, USDT лежат на кошельке А, а вы отправляете их на кошелёк Б. Energy нужна кошельку А: именно он инициирует перевод. Заказ энергии для Б не решит проблему отправителя.",
+          "Есть и третий адрес — реквизиты пополнения кабинета. Они нужны для оплаты услуг, а не для хранения ваших USDT. Не отправляйте туда токены вместо заказа энергии."
+        ]
+      },
+      {
+        "title": "Почему нет одной цифры Energy на все случаи",
+        "paragraphs": [
+          "Расход зависит от выполнения контракта, его текущих параметров и состояния адресов. Оценивайте конкретный перевод непосредственно перед заказом; пакет из старого скриншота не является гарантией.",
+          "Не рассчитывайте потребность как процент от суммы USDT. Уточните срок аренды и учитывайте другие операции с того же адреса: они могут израсходовать ресурс до нужного перевода."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Если кошелёк всё ещё просит TRX",
+        "paragraphs": [],
+        "steps": [
+          "Сверьте адрес заказа с адресом отправителя USDT. Затем обновите данные кошелька и проверьте ресурсы в Tronscan.",
+          "Проверьте статус заказа, срок аренды, доступный остаток Energy и Bandwidth.",
+          "Повторите оценку расходов. Если ресурсы есть, а приложение блокирует отправку, уточните причину в поддержке кошелька; не подтверждайте перевод вслепую.",
+          "Если транзакция уже отправлена, сначала проверьте её статус. При OUT_OF_ENERGY выясните причину перед повтором: неудачная операция тоже может расходовать ресурсы."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Что проверить перед подтверждением",
+        "paragraphs": [
+          "Для делегирования достаточно публичного адреса. Арендодателю не нужны seed-фраза, приватный ключ или разрешение тратить ваши USDT. Подписывайте сам перевод только в своём кошельке.",
+          "Сверьте адрес получателя целиком и убедитесь, что получатель принимает USDT TRC-20. Если делаете тестовый перевод, предусмотрите ресурсы отдельно для теста и для основной суммы."
+        ],
+        "note": "Главное: заказывайте Energy отправителю, проверяйте оба ресурса и отправляйте USDT после выполнения заказа. «Без TRX на кошельке» не означает «без затрат на перевод»."
+      }
+    ],
+    "datePublished": "2026-09-26",
+    "dateModified": "2026-09-26"
+  },
+  "en": {
+    "category": "Practical guides",
+    "sourceLabel": "Sources and services",
+    "ctaButton": "Open your account",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Read next",
+    "authorLabel": "Author",
+    "authorName": "GasFree4you Editorial Team",
+    "publishedLabel": "Published",
+    "modifiedLabel": "Updated",
+    "title": "No TRX in your wallet? How to send USDT without TRX",
+    "description": "USDT is available but the transfer is blocked by fees? Learn where to rent Energy, why Bandwidth matters, and what to check before sending.",
+    "time": "5 min read",
+    "ctaTitle": "Prepare your wallet for a transfer",
+    "ctaText": "Open your GasFree4you account, estimate Energy and rent it for the address sending USDT. Check the order terms before confirming.",
+    "relatedText": "How to buy TRX for fees and Energy rentals",
+    "relatedHref": "how-to-buy-trx.html",
+    "faqTitle": "Can the fee simply be deducted from my USDT?",
+    "faqAnswer": "A regular USDT TRC-20 transfer does not automatically convert some of your USDT into network resources. Paying in USDT requires a service that explicitly supports it, under its own terms. A USDT balance alone does not guarantee that a regular transfer can proceed.",
+    "sections": [
+      {
+        "title": "Your USDT is there, but the transfer will not start",
+        "paragraphs": [
+          "A wallet asking for TRX does not necessarily mean your USDT is lost or locked. Holding tokens and having the resources to send them are separate things.",
+          "This guide covers USDT on TRON (TRC-20) in a wallet you control. Exchange withdrawals follow the exchange’s own rules and fees."
+        ],
+        "note": "Sending with a zero TRX balance is possible when enough Energy and Bandwidth are available, no additional fees apply, and the wallet supports the transaction. Renting resources can still cost money."
+      },
+      {
+        "title": "What the transfer needs",
+        "paragraphs": [
+          "Energy pays for executing the USDT contract; Bandwidth covers transaction data. A resource shortfall can require TRX.",
+          "Renting Energy addresses only one part of the cost. Check available Bandwidth separately before trying to send with zero TRX."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "Choose a route that fits your situation",
+        "paragraphs": [
+          "Have TRX in another wallet? Send a small reserve to the USDT wallet, or fund your service account and order Energy for the intended address. Compare the total costs.",
+          "Already have a funded GasFree4you account? Place an Energy order for your USDT wallet. An account balance does not automatically become resources on that address.",
+          "Have neither TRX nor a funded account? You need an external source of resources, such as delegation from someone you trust or a service explicitly offering payment in USDT. A normal swap from USDT to TRX also needs network resources."
+        ]
+      },
+      {
+        "title": "Prepare the transfer with GasFree4you",
+        "paragraphs": [],
+        "steps": [
+          "Select USDT on TRON (TRC-20) in your wallet and copy the public sending address.",
+          "Check your GasFree4you account balance. If needed, fund it using the current deposit instructions.",
+          "Estimate Energy for the planned transfer. Enter the USDT sending address in the order and choose the amount and rental duration.",
+          "Wait for fulfillment. Check Energy on the sending address in your wallet or Tronscan, and check Bandwidth separately.",
+          "Return to your wallet, enter the recipient and USDT amount, then review the network, address and estimated costs before confirming.",
+          "Check the transaction result in Tronscan and save its hash."
+        ],
+        "note": "With a quick purchase paid by a TRX transfer, Energy goes to the paying address. Paying from another wallet gives that wallet the Energy. Use the account flow with address selection to order for a separate address."
+      },
+      {
+        "title": "Keep the addresses separate",
+        "paragraphs": [
+          "If wallet A sends USDT to wallet B, order Energy for A. Renting it for B does not supply the sender.",
+          "The account deposit address has a different purpose: funding services. Do not send your USDT there instead of placing an Energy order."
+        ]
+      },
+      {
+        "title": "How much Energy should you order?",
+        "paragraphs": [
+          "Estimate the actual transfer just before ordering. Contract execution, current parameters and address state affect consumption; an old screenshot is not a guarantee.",
+          "Do not calculate Energy as a percentage of the USDT amount. Check the rental duration and allow for other operations that may use the resource first."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "If the wallet still asks for TRX",
+        "paragraphs": [],
+        "steps": [
+          "Compare the order address with the USDT sending address, refresh the wallet and check resources in Tronscan.",
+          "Check fulfillment, rental expiry and remaining Energy and Bandwidth.",
+          "Estimate costs again. If the app still blocks sending, ask its support to explain the restriction before confirming.",
+          "If a transaction was broadcast, check its status first. Investigate OUT_OF_ENERGY before retrying: a failed transaction may also consume resources."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Before you confirm",
+        "paragraphs": [
+          "Delegation needs your public address, not your recovery phrase, private key or permission to spend your USDT. Sign the transfer in your own wallet.",
+          "Check the full recipient address and confirm support for USDT TRC-20. A test transfer needs its own resources, separate from the main transfer."
+        ],
+        "note": "Order Energy for the sender, check both resources and wait for fulfillment. No TRX in the wallet does not mean no cost."
+      }
+    ],
+    "datePublished": "2026-09-26",
+    "dateModified": "2026-09-26"
+  },
+  "es": {
+    "category": "Guías prácticas",
+    "sourceLabel": "Fuentes y servicios",
+    "ctaButton": "Abrir mi cuenta",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "También te puede interesar",
+    "authorLabel": "Autor",
+    "authorName": "Equipo editorial de GasFree4you",
+    "publishedLabel": "Publicado",
+    "modifiedLabel": "Actualizado",
+    "title": "¿No tienes TRX en tu cartera? Cómo enviar USDT sin TRX",
+    "description": "Tienes USDT, pero la comisión impide enviarlos. Aprende a preparar Energy y Bandwidth, elegir la dirección correcta y comprobar la transferencia.",
+    "time": "5 minutos",
+    "ctaTitle": "Prepara tu cartera para el envío",
+    "ctaText": "Abre tu cuenta de GasFree4you, calcula la Energy y alquílala para la dirección que envía USDT. Revisa las condiciones antes de confirmar.",
+    "relatedText": "Cómo comprar TRX para comisiones y alquiler de energía",
+    "relatedHref": "how-to-buy-trx.html",
+    "faqTitle": "¿Se puede descontar la comisión directamente de mis USDT?",
+    "faqAnswer": "Un envío normal de USDT TRC-20 no convierte automáticamente parte de tus USDT en recursos de red. Pagar en USDT requiere un servicio que admita expresamente esa opción, con sus propias condiciones. Tener USDT no garantiza que puedas realizar un envío normal.",
+    "sections": [
+      {
+        "title": "Hay USDT, pero el envío no avanza",
+        "paragraphs": [
+          "Que la cartera pida TRX no significa necesariamente que tus USDT estén perdidos o bloqueados. Tener tokens y disponer de recursos para enviarlos son cosas distintas.",
+          "Esta guía trata de USDT en TRON (TRC-20) en una cartera que controlas. Los retiros desde un exchange siguen sus propias reglas y comisiones."
+        ],
+        "note": "Es posible enviar con un saldo de cero TRX si hay suficiente Energy y Bandwidth, no se aplican cargos adicionales y la cartera admite la operación. Alquilar recursos puede tener un coste."
+      },
+      {
+        "title": "Qué necesita la transferencia",
+        "paragraphs": [
+          "Energy cubre la ejecución del contrato de USDT; Bandwidth cubre los datos de la transacción. Si faltan recursos, pueden hacer falta TRX.",
+          "Alquilar Energy resuelve solo una parte. Comprueba por separado el Bandwidth disponible antes de enviar con cero TRX."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "Elige según tu situación",
+        "paragraphs": [
+          "¿Tienes TRX en otra cartera? Puedes enviar una pequeña reserva a la cartera con USDT o financiar tu cuenta del servicio y pedir Energy para la dirección deseada. Compara el coste total.",
+          "¿Ya tienes saldo en GasFree4you? Crea un pedido de Energy para tu cartera con USDT. El saldo de la cuenta no se convierte por sí solo en recursos de esa dirección.",
+          "Si no tienes TRX ni saldo en el servicio, necesitas recursos externos: por ejemplo, una delegación de alguien de confianza o un servicio que admita el pago en USDT. Un swap normal de USDT a TRX también necesita recursos de red."
+        ]
+      },
+      {
+        "title": "Cómo preparar el envío con GasFree4you",
+        "paragraphs": [],
+        "steps": [
+          "Selecciona USDT en TRON (TRC-20) y copia la dirección pública de la cartera emisora.",
+          "Comprueba el saldo de tu cuenta de GasFree4you. Si necesitas recargarlo, usa las instrucciones de depósito actuales.",
+          "Calcula la Energy del envío. Indica la dirección emisora de USDT y elige la cantidad de recursos y la duración del alquiler.",
+          "Espera a que se complete el pedido. Comprueba la Energy en tu cartera o Tronscan y revisa el Bandwidth por separado.",
+          "Vuelve a la cartera, introduce el destinatario y el importe. Revisa la red, la dirección y los costes estimados antes de confirmar.",
+          "Comprueba el resultado en Tronscan y guarda el hash."
+        ],
+        "note": "En la compra rápida pagada mediante un envío de TRX, la Energy llega a la dirección que paga. Si pagas desde otra cartera, esa cartera recibe la Energy. Para elegir una dirección distinta, usa el pedido desde tu cuenta."
+      },
+      {
+        "title": "No confundas las direcciones",
+        "paragraphs": [
+          "Si la cartera A envía USDT a la B, pide Energy para A. Alquilarla para B no aporta recursos al emisor.",
+          "La dirección de depósito de tu cuenta sirve para financiar servicios. No envíes allí tus USDT en lugar de crear un pedido de Energy."
+        ]
+      },
+      {
+        "title": "Cuánta Energy pedir",
+        "paragraphs": [
+          "Estima el envío concreto justo antes de hacer el pedido. El consumo depende de la ejecución del contrato, sus parámetros actuales y el estado de las direcciones. Una captura antigua no es una garantía.",
+          "No calcules la Energy como un porcentaje del importe de USDT. Revisa la duración del alquiler y otras operaciones que puedan consumir los recursos antes."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Si la cartera sigue pidiendo TRX",
+        "paragraphs": [],
+        "steps": [
+          "Compara la dirección del pedido con la emisora, actualiza la cartera y consulta los recursos en Tronscan.",
+          "Comprueba el estado del pedido, el vencimiento del alquiler y la Energy y el Bandwidth restantes.",
+          "Calcula de nuevo los costes. Si la aplicación bloquea el envío, consulta su soporte antes de confirmar.",
+          "Si ya enviaste una transacción, revisa primero su estado. Investiga OUT_OF_ENERGY antes de reintentar: una operación fallida también puede consumir recursos."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Antes de confirmar",
+        "paragraphs": [
+          "Para delegar basta con tu dirección pública. No hacen falta tu frase de recuperación, clave privada ni permiso para gastar tus USDT. Firma el envío en tu propia cartera.",
+          "Revisa la dirección completa y confirma que el destinatario acepta USDT TRC-20. Un envío de prueba requiere recursos adicionales a los del envío principal."
+        ],
+        "note": "Pide Energy para el emisor, comprueba ambos recursos y espera a recibirlos. No tener TRX en la cartera no significa enviar sin coste."
+      }
+    ],
+    "datePublished": "2026-09-26",
+    "dateModified": "2026-09-26"
+  },
+  "id": {
+    "category": "Panduan praktis",
+    "sourceLabel": "Sumber dan layanan",
+    "ctaButton": "Buka akun Anda",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Baca juga",
+    "authorLabel": "Penulis",
+    "authorName": "Tim Editorial GasFree4you",
+    "publishedLabel": "Diterbitkan",
+    "modifiedLabel": "Diperbarui",
+    "title": "Tidak ada TRX di dompet? Cara mengirim USDT tanpa TRX",
+    "description": "Saldo USDT ada, tetapi biaya menghalangi transfer? Pelajari cara menyiapkan Energy dan Bandwidth serta memilih alamat penerima Energy yang tepat.",
+    "time": "5 menit",
+    "ctaTitle": "Siapkan dompet untuk transfer",
+    "ctaText": "Buka akun GasFree4you, perkirakan kebutuhan Energy, lalu sewa untuk alamat pengirim USDT. Periksa ketentuan pesanan sebelum konfirmasi.",
+    "relatedText": "Cara membeli TRX untuk biaya dan sewa Energy",
+    "relatedHref": "how-to-buy-trx.html",
+    "faqTitle": "Bisakah biaya langsung dipotong dari USDT?",
+    "faqAnswer": "Transfer USDT TRC-20 biasa tidak otomatis mengubah sebagian USDT menjadi pembayaran sumber daya jaringan. Pembayaran dalam USDT memerlukan layanan yang secara jelas mendukungnya, sesuai ketentuannya. Saldo USDT saja tidak menjamin transfer biasa bisa dilakukan.",
+    "sections": [
+      {
+        "title": "USDT ada, tetapi transfer tidak berjalan",
+        "paragraphs": [
+          "Permintaan TRX dari dompet tidak selalu berarti USDT hilang atau terkunci. Memiliki token dan memiliki sumber daya untuk mengirimnya adalah dua hal berbeda.",
+          "Panduan ini membahas USDT di TRON (TRC-20) dalam dompet yang Anda kendalikan. Penarikan dari bursa mengikuti biaya dan ketentuan bursa tersebut."
+        ],
+        "note": "Transfer dengan saldo nol TRX dimungkinkan jika Energy dan Bandwidth mencukupi, tidak ada biaya tambahan, dan dompet mendukungnya. Penyewaan sumber daya tetap dapat berbayar."
+      },
+      {
+        "title": "Apa yang dibutuhkan transfer",
+        "paragraphs": [
+          "Energy digunakan untuk menjalankan kontrak USDT, sedangkan Bandwidth untuk data transaksi. Kekurangan sumber daya dapat memerlukan TRX.",
+          "Menyewa Energy hanya memenuhi satu bagian kebutuhan. Periksa Bandwidth secara terpisah sebelum mengirim dengan nol TRX."
+        ],
+        "refs": [
+          "resources"
+        ]
+      },
+      {
+        "title": "Pilih sesuai kondisi Anda",
+        "paragraphs": [
+          "Ada TRX di dompet lain? Kirim sedikit cadangan ke dompet USDT, atau danai akun layanan lalu pesan Energy untuk alamat yang dituju. Bandingkan total biayanya.",
+          "Akun GasFree4you sudah memiliki saldo? Buat pesanan Energy untuk dompet USDT. Saldo akun tidak otomatis menjadi sumber daya pada alamat tersebut.",
+          "Jika tidak ada TRX maupun saldo layanan, Anda perlu sumber daya dari luar: misalnya delegasi dari orang tepercaya atau layanan yang secara jelas menerima pembayaran USDT. Swap USDT ke TRX biasa juga membutuhkan sumber daya jaringan."
+        ]
+      },
+      {
+        "title": "Menyiapkan transfer melalui GasFree4you",
+        "paragraphs": [],
+        "steps": [
+          "Pilih USDT di jaringan TRON (TRC-20) dan salin alamat publik dompet pengirim.",
+          "Periksa saldo akun GasFree4you. Jika perlu, isi saldo sesuai petunjuk deposit terbaru.",
+          "Perkirakan Energy untuk transfer. Masukkan alamat pengirim USDT, lalu pilih jumlah sumber daya dan masa sewa.",
+          "Tunggu pesanan selesai. Periksa Energy pada alamat pengirim melalui dompet atau Tronscan, lalu periksa Bandwidth secara terpisah.",
+          "Kembali ke dompet, masukkan penerima dan jumlah USDT. Periksa jaringan, alamat, dan perkiraan biaya sebelum konfirmasi.",
+          "Periksa hasil transaksi di Tronscan dan simpan hash-nya."
+        ],
+        "note": "Pada pembelian cepat yang dibayar melalui transfer TRX, Energy masuk ke alamat pembayar. Jika membayar dari dompet lain, dompet itulah yang menerima Energy. Gunakan pemesanan melalui akun dengan pilihan alamat untuk mengirim Energy ke alamat berbeda."
+      },
+      {
+        "title": "Jangan tertukar alamat",
+        "paragraphs": [
+          "Jika dompet A mengirim USDT ke dompet B, pesan Energy untuk A. Menyewakannya untuk B tidak menyediakan sumber daya bagi pengirim.",
+          "Alamat deposit akun digunakan untuk membayar layanan. Jangan mengirim USDT ke sana sebagai pengganti pesanan Energy."
+        ]
+      },
+      {
+        "title": "Berapa Energy yang perlu dipesan?",
+        "paragraphs": [
+          "Perkirakan transfer yang akan dilakukan tepat sebelum memesan. Eksekusi kontrak, parameter terkini, dan keadaan alamat memengaruhi pemakaian. Tangkapan layar lama bukan jaminan.",
+          "Jangan menghitung Energy sebagai persentase jumlah USDT. Periksa masa sewa dan operasi lain yang dapat menghabiskan sumber daya lebih dahulu."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Jika dompet masih meminta TRX",
+        "paragraphs": [],
+        "steps": [
+          "Cocokkan alamat pesanan dengan alamat pengirim USDT, perbarui data dompet, dan periksa sumber daya di Tronscan.",
+          "Periksa status pesanan, masa berlaku sewa, serta sisa Energy dan Bandwidth.",
+          "Hitung ulang perkiraan biaya. Jika aplikasi tetap memblokir transfer, tanyakan penyebabnya kepada dukungan dompet sebelum konfirmasi.",
+          "Jika transaksi sudah dikirim, periksa statusnya terlebih dahulu. Cari penyebab OUT_OF_ENERGY sebelum mencoba lagi: transaksi gagal juga dapat memakai sumber daya."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Sebelum konfirmasi",
+        "paragraphs": [
+          "Delegasi hanya membutuhkan alamat publik. Penyedia tidak memerlukan frasa pemulihan, kunci privat, atau izin membelanjakan USDT Anda. Tanda tangani transfer di dompet sendiri.",
+          "Periksa seluruh alamat penerima dan pastikan penerima mendukung USDT TRC-20. Transfer percobaan memerlukan sumber daya tersendiri di luar transfer utama."
+        ],
+        "note": "Pesan Energy untuk pengirim, periksa kedua sumber daya, dan tunggu pesanan selesai. Tanpa TRX di dompet bukan berarti tanpa biaya."
+      }
+    ],
+    "datePublished": "2026-09-26",
+    "dateModified": "2026-09-26"
+  }
+}
