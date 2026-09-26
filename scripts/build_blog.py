@@ -84,7 +84,10 @@ def shell(lang, d, filename, title, description, body):
 <meta property="og:type" content="{'website' if filename == 'index.html' else 'article'}">
 <meta property="og:url" content="{DOMAIN}/{lang}/blog/{filename}">
 {structured_data}
-<link rel="icon" href="../../favicon.png">
+<link rel="icon" href="/favicon.ico?v=stingray-1" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=stingray-1">
+<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=stingray-1">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=stingray-1">
 <link rel="stylesheet" href="../../blog/assets/blog.css">
 </head>
 <body>
