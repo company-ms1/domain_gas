@@ -1707,6 +1707,13 @@ header.nav .nav-right>.btn{white-space:nowrap}
 .fee-card [hidden]{display:none!important}
 @media(max-width:520px){.fee-card{padding:20px}.fee-card h2{font-size:23px}}
 
+
+  /* Compact website availability badge */
+  .site-uptime{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;width:fit-content;max-width:100%;margin-top:22px;padding:12px 16px;border:1px solid var(--border-strong);border-radius:14px;background:rgba(255,255,255,.025)}
+  .site-uptime-copy{display:flex;flex-direction:column;gap:2px}
+  .site-uptime-label{font-size:13px;font-weight:600;color:var(--text)}
+  .site-uptime-note{font-size:11px;color:var(--text-muted)}
+  .site-uptime iframe{display:block;flex:0 0 181px;width:181px;height:24px;border:0;color-scheme:dark}
 </style>
 </head>
 <body>
@@ -1756,6 +1763,13 @@ header.nav .nav-right>.btn{white-space:nowrap}
         </div>
         <p class="hero-assurance"><span aria-hidden="true">✓</span> <span>No sign-up for a one-off rental</span></p>
         <p class="hero-fine">For your own TRON wallet. No private keys or seed phrase needed.</p>
+        <div class="site-uptime">
+          <div class="site-uptime-copy">
+            <span class="site-uptime-label">Website availability</span>
+            <span class="site-uptime-note">Monitored by UptimeRobot</span>
+          </div>
+          <iframe src="https://badge.uptimerobot.com/psp/69ca595df69ac3d869dc73fdf0a7656c?style=logo&amp;theme=dark" title="GasFree4you" width="181" height="24" style="border:0;color-scheme:dark"></iframe>
+        </div>
       </div>
       <aside class="fee-card" id="transfer-calculator" aria-labelledby="fee-title">
         <span class="eyebrow" data-fee="eyebrow"></span>
@@ -2464,6 +2478,9 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
   "Your branded service wallet": "Dompet layanan bermerek Anda",
   "Launch an Energy rental service under your own brand with our white-label solution.": "Luncurkan layanan sewa Energy dengan merek Anda sendiri melalui solusi white-label kami."
 });
+  Object.assign(LANDING_RU, {"Website availability": "Доступность сайта", "Monitored by UptimeRobot": "Мониторинг UptimeRobot"});
+  Object.assign(LANDING_ES, {"Website availability": "Disponibilidad del sitio", "Monitored by UptimeRobot": "Monitorizado por UptimeRobot"});
+  Object.assign(LANDING_ID, {"Website availability": "Ketersediaan situs", "Monitored by UptimeRobot": "Dipantau oleh UptimeRobot"});
   const landingOriginalText = new WeakMap();
   const landingOriginalAttrs = new WeakMap();
   let landingLang = "en";
