@@ -1,0 +1,526 @@
+{
+  "ru": {
+    "category": "Практика",
+    "sourceLabel": "Источники и сервисы",
+    "ctaButton": "Открыть личный кабинет",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Читайте также",
+    "authorLabel": "Автор",
+    "authorName": "Редакция GasFree4you",
+    "publishedLabel": "Опубликовано",
+    "modifiedLabel": "Обновлено",
+    "time": "6 минут",
+    "relatedHref": "send-usdt-without-trx.html",
+    "datePublished": "2026-09-30",
+    "dateModified": "2026-09-30",
+    "title": "Как пользоваться TRONSCAN: кошелёк, перевод USDT и ресурсы",
+    "description": "Пошаговый туториал: найти адрес, проверить USDT, Energy и Bandwidth, прочитать результат транзакции и понять, что отправить в поддержку.",
+    "faqTitle": "Нужно ли подключать кошелёк к TRONSCAN?",
+    "faqAnswer": "Для просмотра баланса, ресурсов и транзакций подключение не требуется. Достаточно публичного адреса или TxID. Подключение и подпись нужны для действий с кошельком; этот туториал посвящён просмотру данных.",
+    "ctaTitle": "Проверьте ресурсы перед отправкой USDT",
+    "ctaText": "Если планируете арендовать Energy в GasFree4you, укажите адрес отправителя USDT. После выполнения заказа проверьте доступные ресурсы в TRONSCAN; Bandwidth учитывайте отдельно.",
+    "relatedText": "Нет TRX в кошельке: как отправить USDT без TRX",
+    "sections": [
+      {
+        "title": "Что приготовим для проверки",
+        "paragraphs": [
+          "TRONSCAN — обозреватель сети TRON. Через него можно посмотреть публичные данные адреса и результат конкретной операции. Баланс личного кабинета GasFree4you и внутренние операции биржи здесь не отображаются.",
+          "Приготовьте публичный адрес кошелька или TxID — хеш конкретной транзакции. Адрес нужен для обзора кошелька, TxID — для проверки одного перевода. В интерфейсе кошелька хеш часто доступен в истории операции."
+        ],
+        "steps": [
+          "Откройте https://tronscan.org/ и проверьте домен. Для обычных переводов используйте основную сеть TRON, а не тестовую.",
+          "Найдите строку поиска. Вставьте полный адрес или TxID и откройте соответствующий результат."
+        ],
+        "note": "Для этого туториала не нужны seed-фраза, приватный ключ, подключение кошелька или подпись. Названия разделов зависят от языка и версии интерфейса.",
+        "refs": [
+          "tronscan"
+        ]
+      },
+      {
+        "title": "Шаг 1. Найдите кошелёк и проверьте баланс",
+        "paragraphs": [
+          "Скопируйте адрес из раздела получения TRON в своём кошельке. После поиска сверьте полный адрес на странице аккаунта: короткие начало и конец не заменяют полную проверку."
+        ],
+        "steps": [
+          "Посмотрите баланс TRX: это нативная монета сети, а не USDT.",
+          "В списке токенов найдите USDT. Проверьте не только название и значок, но и адрес контракта токена.",
+          "Сверьте контракт USDT в TRON с официальным списком Tether: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t."
+        ],
+        "note": "Посторонний токен с названием USDT не становится настоящим USDT. Не переходите по рекламным ссылкам из неизвестных токенов.",
+        "refs": [
+          "tronscan_account",
+          "tether_protocols"
+        ]
+      },
+      {
+        "title": "Шаг 2. Проверьте Energy и Bandwidth",
+        "paragraphs": [
+          "На странице адреса найдите сведения о ресурсах: Energy и Bandwidth. Смотрите доступный остаток, учитывая уже использованную часть, а не только общий лимит. Energy используется при выполнении смарт-контрактов, Bandwidth — для данных транзакций."
+        ],
+        "steps": [
+          "Откройте страницу адреса, с которого будете отправлять USDT.",
+          "Проверьте доступную Energy после выполнения заказа аренды. Если данные ещё не обновились, обновите страницу и проверьте статус заказа в кабинете.",
+          "Отдельно проверьте Bandwidth. Наличие Energy само по себе не означает, что ресурсов хватит на всю операцию."
+        ],
+        "note": "Текущий остаток ресурсов — не расчёт стоимости будущего перевода. Оцените предстоящую операцию отдельно; расход предыдущей транзакции не гарантирует тот же расход следующей.",
+        "refs": [
+          "tronscan_account",
+          "resources"
+        ]
+      },
+      {
+        "title": "Шаг 3. Найдите нужный перевод USDT",
+        "paragraphs": [
+          "Самый короткий путь — скопировать TxID из кошелька или истории вывода биржи и вставить его в поиск TRONSCAN. Если TxID нет, откройте историю переводов токенов на странице своего адреса и найдите USDT по времени, сумме и направлению.",
+          "Для USDT ищите переводы TRC-20. Общий список транзакций может включать вызовы контрактов, делегирование ресурсов и другие действия: это не всегда обычные платежи."
+        ],
+        "steps": [
+          "Откройте подробности найденной операции.",
+          "Сверьте хеш, время и запись о переводе токена: отправитель, получатель, сумма и контракт USDT.",
+          "Если внутри транзакции несколько переводов, найдите именно нужную запись."
+        ],
+        "note": "При вызове контракта поле верхнего уровня To может указывать на контракт USDT. Получателя денег проверяйте в записи перевода токена, а не только в верхнем поле To.",
+        "refs": [
+          "tronscan_tx"
+        ]
+      },
+      {
+        "title": "Шаг 4. Прочитайте результат транзакции",
+        "paragraphs": [
+          "Проверьте отдельно подтверждение в сети и результат выполнения. Включение в блок не означает, что вызов контракта завершился успешно. Ищите результат SUCCESS и нужную запись перевода USDT.",
+          "Если операция успешна и получатель совпадает, перевод выполнен в сети. Биржа может зачислить депозит позже по своим правилам подтверждений; TRONSCAN не показывает состояние её внутреннего баланса."
+        ],
+        "steps": [
+          "Если транзакция не найдена, проверьте полный TxID и сеть. Обновите страницу позже и уточните у отправителя, была ли операция передана в сеть.",
+          "Если есть ошибка, например OUT_OF_ENERGY, сначала выясните причину. Она может быть связана с доступными ресурсами и ограничением расходов операции.",
+          "Не отправляйте платёж повторно, пока не проверили результат первого: можно сделать дублирующий перевод."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Шаг 5. Посмотрите расход ресурсов и комиссию",
+        "paragraphs": [
+          "В деталях операции найдите расход Energy, Bandwidth и фактическую комиссию в TRX. Это разные величины: число единиц Energy нельзя читать как сумму списанных TRX. При недостатке ресурсов TRX могут сжигаться для оплаты.",
+          "Fee Limit, если он показан, — ограничение для расходов на выполнение контракта, а не фактически уплаченная комиссия. Неудачная операция тоже может расходовать ресурсы.",
+          "Цена аренды Energy оплачивается отдельно и может не входить в комиссию проверяемого перевода USDT. Для сравнения расходов учитывайте и аренду, и фактическую комиссию сети."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Практика: проверьте один свой перевод",
+        "paragraphs": [
+          "Возьмите перевод из истории своего кошелька и пройдите весь маршрут. Для упражнения не нужно отправлять новый платёж."
+        ],
+        "steps": [
+          "Найдите транзакцию по TxID.",
+          "Проверьте подтверждение и результат выполнения.",
+          "Сверьте контракт USDT, отправителя, получателя и сумму в записи перевода токена.",
+          "Посмотрите расход Energy, Bandwidth и фактическую комиссию TRX.",
+          "Откройте адрес отправителя и проверьте текущие доступные ресурсы — они могут отличаться от состояния на момент перевода."
+        ],
+        "note": "Для поддержки сохраните TxID или ссылку на транзакцию и описание проблемы. По заказу Energy добавьте номер заказа и адрес, указанный в нём. Эти сведения публичны или нужны для проверки; seed-фразу и приватный ключ не отправляйте.",
+        "refs": [
+          "tronscan"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "category": "Practical guides",
+    "sourceLabel": "Sources and services",
+    "ctaButton": "Open your account",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Read next",
+    "authorLabel": "Author",
+    "authorName": "GasFree4you Editorial Team",
+    "publishedLabel": "Published",
+    "modifiedLabel": "Updated",
+    "time": "5 min read",
+    "relatedHref": "send-usdt-without-trx.html",
+    "datePublished": "2026-09-30",
+    "dateModified": "2026-09-30",
+    "title": "How to use TRONSCAN: wallets, USDT transfers and resources",
+    "description": "A step-by-step guide to finding an address, checking USDT and resources, reading a transaction result and preparing details for support.",
+    "faqTitle": "Do I need to connect my wallet?",
+    "faqAnswer": "No connection is required to view balances, resources or transactions. A public address or TxID is enough. Connecting and signing are for wallet actions; this tutorial only covers viewing data.",
+    "ctaTitle": "Check resources before sending USDT",
+    "ctaText": "When renting Energy through GasFree4you, specify the USDT sending address. After fulfillment, check available resources in TRONSCAN and check Bandwidth separately.",
+    "relatedText": "No TRX in your wallet? How to send USDT without TRX",
+    "sections": [
+      {
+        "title": "Before you start",
+        "paragraphs": [
+          "TRONSCAN is an explorer for public TRON blockchain data. It does not show your GasFree4you account balance or an exchange’s internal ledger.",
+          "Prepare a public wallet address to inspect an account, or a TxID (transaction hash) to inspect one operation. Find the hash in your wallet’s transaction history."
+        ],
+        "steps": [
+          "Open https://tronscan.org/ and verify the domain. Use TRON mainnet for regular transfers, rather than a test network.",
+          "Paste the full address or TxID into search and open the matching result."
+        ],
+        "note": "You do not need a recovery phrase, private key, wallet connection or signature. Section names can vary with language and interface updates.",
+        "refs": [
+          "tronscan"
+        ]
+      },
+      {
+        "title": "Step 1. Check the address and balances",
+        "paragraphs": [
+          "Copy the address from your wallet’s TRON receiving screen. Compare the full address on the account page; matching only its beginning and end is insufficient."
+        ],
+        "steps": [
+          "Check TRX, the network’s native coin, separately from USDT.",
+          "Find USDT in the token holdings and inspect its contract, not just its name or icon.",
+          "Compare with Tether’s official TRON USDT contract: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t."
+        ],
+        "note": "An unrelated token named USDT is not genuine USDT. Avoid promotional links from unfamiliar tokens.",
+        "refs": [
+          "tronscan_account",
+          "tether_protocols"
+        ]
+      },
+      {
+        "title": "Step 2. Check Energy and Bandwidth",
+        "paragraphs": [
+          "Find Energy and Bandwidth in the address’s resource information. Check what remains available after usage, rather than just the total limit. Energy covers smart-contract execution and Bandwidth covers transaction data."
+        ],
+        "steps": [
+          "Open the address that will send USDT.",
+          "Check available Energy after rental fulfillment. Refresh if needed and check your service order status.",
+          "Check Bandwidth separately; Energy alone does not cover every resource requirement."
+        ],
+        "note": "A resource balance does not estimate your next transfer. Estimate that operation separately; past usage does not guarantee the same future usage.",
+        "refs": [
+          "tronscan_account",
+          "resources"
+        ]
+      },
+      {
+        "title": "Step 3. Find a USDT transfer",
+        "paragraphs": [
+          "Search the TxID from your wallet or exchange withdrawal history. Without a TxID, use the address’s token transfer history and match USDT by time, amount and direction.",
+          "Look for TRC-20 transfers. The general transaction list can also contain contract calls and resource delegation."
+        ],
+        "steps": [
+          "Open transaction details.",
+          "Compare the hash, time and token transfer record: sender, recipient, amount and USDT contract.",
+          "If there are several token transfers, identify the relevant record."
+        ],
+        "note": "For a contract call, the top-level To field may identify the USDT contract. Check the token transfer record for the actual recipient.",
+        "refs": [
+          "tronscan_tx"
+        ]
+      },
+      {
+        "title": "Step 4. Read the result",
+        "paragraphs": [
+          "Check confirmation and execution result separately. Inclusion in a block does not guarantee a successful contract call. Look for SUCCESS and the expected USDT transfer record.",
+          "A successful transfer to the correct recipient is an on-chain result. Exchanges may credit deposits later according to their confirmation rules."
+        ],
+        "steps": [
+          "If not found, verify the full TxID and network. Refresh later and ask the sender whether the transaction was broadcast.",
+          "For an error such as OUT_OF_ENERGY, investigate resources and execution spending limits before retrying.",
+          "Check the first result before sending again to avoid duplicate payment."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Step 5. Read usage and fees",
+        "paragraphs": [
+          "Inspect Energy usage, Bandwidth usage and the actual TRX fee separately. Energy units are not TRX amounts; resource shortages can burn TRX.",
+          "Fee Limit, when shown, limits contract execution spending; it is not the actual fee paid. Failed operations can also consume resources.",
+          "Energy rental payment is separate and may not appear in the USDT transaction fee. Include rental cost and actual network fees when comparing expenses."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Practice with an existing transfer",
+        "paragraphs": [
+          "Use a transfer already in your wallet history. No new payment is needed for this exercise."
+        ],
+        "steps": [
+          "Search its TxID.",
+          "Check confirmation and execution result.",
+          "Compare the USDT contract, sender, recipient and amount in the token record.",
+          "Inspect Energy, Bandwidth and actual TRX fees.",
+          "Open the sender address to check resources available now; they can differ from the balance at transfer time."
+        ],
+        "note": "For support, keep the TxID or transaction link and a description of the problem. For an Energy order, include its order number and specified address. Never send a recovery phrase or private key.",
+        "refs": [
+          "tronscan"
+        ]
+      }
+    ]
+  },
+  "es": {
+    "category": "Guías prácticas",
+    "sourceLabel": "Fuentes y servicios",
+    "ctaButton": "Abrir mi cuenta",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "También te puede interesar",
+    "authorLabel": "Autor",
+    "authorName": "Equipo editorial de GasFree4you",
+    "publishedLabel": "Publicado",
+    "modifiedLabel": "Actualizado",
+    "time": "5 minutos",
+    "relatedHref": "send-usdt-without-trx.html",
+    "datePublished": "2026-09-30",
+    "dateModified": "2026-09-30",
+    "title": "Cómo usar TRONSCAN: cartera, envíos de USDT y recursos",
+    "description": "Tutorial para buscar una dirección, comprobar USDT y recursos, leer el resultado de una transacción y preparar los datos para soporte.",
+    "faqTitle": "¿Tengo que conectar mi cartera?",
+    "faqAnswer": "Para consultar saldos, recursos y transacciones basta con la dirección pública o el TxID. Conectar y firmar sirve para realizar acciones; este tutorial solo explica la consulta de datos.",
+    "ctaTitle": "Comprueba los recursos antes de enviar USDT",
+    "ctaText": "Al alquilar Energy en GasFree4you, indica la dirección que envía los USDT. Tras completarse el pedido, comprueba los recursos en TRONSCAN y revisa Bandwidth por separado.",
+    "relatedText": "Cómo enviar USDT sin TRX",
+    "sections": [
+      {
+        "title": "Antes de empezar",
+        "paragraphs": [
+          "TRONSCAN permite consultar datos públicos de la red TRON. No muestra el saldo de tu cuenta de GasFree4you ni la contabilidad interna de un exchange.",
+          "Prepara una dirección pública para consultar la cartera o un TxID (hash) para consultar una operación. Puedes obtener el hash en el historial de tu cartera."
+        ],
+        "steps": [
+          "Abre https://tronscan.org/ y verifica el dominio. Para envíos normales utiliza la red principal de TRON, no una red de pruebas.",
+          "Pega la dirección completa o el TxID en la búsqueda y abre el resultado correspondiente."
+        ],
+        "note": "No necesitas frase de recuperación, clave privada, conexión ni firma. Los nombres de los apartados pueden cambiar según el idioma y la versión.",
+        "refs": [
+          "tronscan"
+        ]
+      },
+      {
+        "title": "Paso 1. Dirección y saldos",
+        "paragraphs": [
+          "Copia la dirección desde la pantalla de recepción de TRON de tu cartera. Comprueba la dirección completa en la página de la cuenta."
+        ],
+        "steps": [
+          "Consulta TRX, la moneda nativa, por separado de USDT.",
+          "Busca USDT entre los tokens y comprueba su contrato, además del nombre y el icono.",
+          "Compáralo con el contrato oficial de USDT en TRON publicado por Tether: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t."
+        ],
+        "note": "Un token ajeno llamado USDT no es USDT auténtico. Evita los enlaces promocionales de tokens desconocidos.",
+        "refs": [
+          "tronscan_account",
+          "tether_protocols"
+        ]
+      },
+      {
+        "title": "Paso 2. Energy y Bandwidth",
+        "paragraphs": [
+          "Busca los recursos de la dirección y consulta lo que queda disponible después del consumo, no solo el límite total. Energy se utiliza para ejecutar contratos y Bandwidth para los datos de la transacción."
+        ],
+        "steps": [
+          "Abre la dirección que enviará USDT.",
+          "Comprueba la Energy disponible tras completarse el alquiler. Actualiza la página y revisa el estado del pedido si hace falta.",
+          "Revisa Bandwidth por separado. Tener Energy no cubre todos los recursos necesarios."
+        ],
+        "note": "El saldo de recursos no estima el próximo envío. Calcula esa operación por separado; el consumo anterior no garantiza el mismo consumo futuro.",
+        "refs": [
+          "tronscan_account",
+          "resources"
+        ]
+      },
+      {
+        "title": "Paso 3. Busca el envío de USDT",
+        "paragraphs": [
+          "Busca el TxID del historial de tu cartera o del retiro del exchange. Sin TxID, busca en los movimientos de tokens de la dirección por fecha, importe y dirección del envío.",
+          "Busca transferencias TRC-20. La lista general también puede incluir llamadas a contratos y delegaciones."
+        ],
+        "steps": [
+          "Abre los detalles de la operación.",
+          "Comprueba hash, hora y registro del token: remitente, destinatario, importe y contrato USDT.",
+          "Si hay varios movimientos, identifica el que necesitas."
+        ],
+        "note": "En una llamada a contrato, To puede indicar el contrato USDT. Comprueba el destinatario del dinero en el registro de transferencia del token.",
+        "refs": [
+          "tronscan_tx"
+        ]
+      },
+      {
+        "title": "Paso 4. Lee el resultado",
+        "paragraphs": [
+          "Comprueba la confirmación y el resultado de ejecución por separado. Estar en un bloque no garantiza que el contrato se ejecutara correctamente. Busca SUCCESS y la transferencia USDT esperada.",
+          "Un envío correcto al destinatario esperado se ha realizado en la red. Un exchange puede acreditar el depósito después según sus reglas."
+        ],
+        "steps": [
+          "Si no aparece, verifica TxID y red. Actualiza más tarde y pregunta al remitente si la operación se transmitió.",
+          "Si aparece OUT_OF_ENERGY, investiga los recursos y límites de gasto antes de repetir.",
+          "Comprueba el primer envío antes de hacer otro para evitar un pago duplicado."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Paso 5. Consumo y comisión",
+        "paragraphs": [
+          "Consulta por separado Energy, Bandwidth y la comisión real en TRX. Las unidades de Energy no son importes de TRX; si faltan recursos pueden quemarse TRX.",
+          "Fee Limit, si aparece, limita el gasto de ejecución; no es la comisión realmente pagada. Una operación fallida también puede consumir recursos.",
+          "El alquiler de Energy se paga aparte y puede no aparecer en la comisión del envío USDT. Incluye ambos costes al comparar."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Practica con una operación existente",
+        "paragraphs": [
+          "Utiliza un envío del historial de tu cartera. No hace falta realizar un nuevo pago."
+        ],
+        "steps": [
+          "Busca su TxID.",
+          "Comprueba confirmación y ejecución.",
+          "Verifica contrato USDT, remitente, destinatario e importe.",
+          "Consulta Energy, Bandwidth y comisión TRX real.",
+          "Abre la dirección del remitente y revisa los recursos actuales; pueden diferir de los del momento del envío."
+        ],
+        "note": "Guarda el TxID o enlace y describe el problema para soporte. Para un pedido de Energy, añade el número de pedido y la dirección indicada. Nunca envíes frase de recuperación ni clave privada.",
+        "refs": [
+          "tronscan"
+        ]
+      }
+    ]
+  },
+  "id": {
+    "category": "Panduan praktis",
+    "sourceLabel": "Sumber dan layanan",
+    "ctaButton": "Buka akun Anda",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Baca juga",
+    "authorLabel": "Penulis",
+    "authorName": "Tim Editorial GasFree4you",
+    "publishedLabel": "Diterbitkan",
+    "modifiedLabel": "Diperbarui",
+    "time": "5 menit",
+    "relatedHref": "send-usdt-without-trx.html",
+    "datePublished": "2026-09-30",
+    "dateModified": "2026-09-30",
+    "title": "Cara menggunakan TRONSCAN: dompet, transfer USDT dan resource",
+    "description": "Tutorial mencari alamat, memeriksa USDT dan resource, membaca hasil transaksi, serta menyiapkan informasi untuk dukungan.",
+    "faqTitle": "Apakah dompet harus dihubungkan?",
+    "faqAnswer": "Tidak perlu menghubungkan dompet untuk melihat saldo, resource atau transaksi. Cukup alamat publik atau TxID. Menghubungkan dan menandatangani diperlukan untuk tindakan dompet; tutorial ini hanya membahas pemeriksaan data.",
+    "ctaTitle": "Periksa resource sebelum mengirim USDT",
+    "ctaText": "Saat menyewa Energy di GasFree4you, masukkan alamat pengirim USDT. Setelah pesanan selesai, periksa resource di TRONSCAN dan periksa Bandwidth secara terpisah.",
+    "relatedText": "Cara mengirim USDT tanpa TRX",
+    "sections": [
+      {
+        "title": "Sebelum mulai",
+        "paragraphs": [
+          "TRONSCAN menampilkan data publik blockchain TRON. Saldo akun GasFree4you dan pembukuan internal bursa tidak ditampilkan di sini.",
+          "Siapkan alamat publik untuk memeriksa dompet atau TxID (hash transaksi) untuk satu operasi. Hash dapat ditemukan dalam riwayat dompet."
+        ],
+        "steps": [
+          "Buka https://tronscan.org/ dan periksa domain. Gunakan mainnet TRON untuk transfer biasa, bukan jaringan uji.",
+          "Tempel alamat lengkap atau TxID pada pencarian dan buka hasil yang sesuai."
+        ],
+        "note": "Tidak perlu seed phrase, private key, koneksi dompet atau tanda tangan. Nama bagian dapat berubah sesuai bahasa dan versi antarmuka.",
+        "refs": [
+          "tronscan"
+        ]
+      },
+      {
+        "title": "Langkah 1. Alamat dan saldo",
+        "paragraphs": [
+          "Salin alamat dari layar penerimaan TRON di dompet. Cocokkan seluruh alamat pada halaman akun, bukan hanya awal dan akhirnya."
+        ],
+        "steps": [
+          "Periksa saldo TRX, koin asli jaringan, terpisah dari USDT.",
+          "Temukan USDT dalam daftar token dan periksa kontraknya, bukan hanya nama atau ikon.",
+          "Cocokkan dengan kontrak USDT TRON resmi dari Tether: TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t."
+        ],
+        "note": "Token lain bernama USDT bukan USDT asli. Hindari tautan promosi dari token yang tidak dikenal.",
+        "refs": [
+          "tronscan_account",
+          "tether_protocols"
+        ]
+      },
+      {
+        "title": "Langkah 2. Energy dan Bandwidth",
+        "paragraphs": [
+          "Cari informasi resource pada alamat. Periksa sisa yang tersedia setelah pemakaian, bukan hanya batas total. Energy digunakan untuk eksekusi smart contract; Bandwidth untuk data transaksi."
+        ],
+        "steps": [
+          "Buka alamat yang akan mengirim USDT.",
+          "Periksa Energy yang tersedia setelah sewa selesai. Muat ulang halaman dan periksa status pesanan bila diperlukan.",
+          "Periksa Bandwidth secara terpisah. Energy saja tidak mencakup seluruh kebutuhan resource."
+        ],
+        "note": "Saldo resource bukan estimasi transfer berikutnya. Estimasikan operasi tersebut secara terpisah; pemakaian sebelumnya tidak menjamin pemakaian berikutnya sama.",
+        "refs": [
+          "tronscan_account",
+          "resources"
+        ]
+      },
+      {
+        "title": "Langkah 3. Temukan transfer USDT",
+        "paragraphs": [
+          "Cari TxID dari riwayat dompet atau penarikan bursa. Tanpa TxID, cari pada riwayat transfer token alamat berdasarkan waktu, jumlah dan arah transfer.",
+          "Cari transfer TRC-20. Daftar transaksi umum juga dapat memuat panggilan kontrak dan delegasi resource."
+        ],
+        "steps": [
+          "Buka detail transaksi.",
+          "Cocokkan hash, waktu serta catatan token: pengirim, penerima, jumlah dan kontrak USDT.",
+          "Jika ada beberapa transfer, temukan catatan yang relevan."
+        ],
+        "note": "Dalam panggilan kontrak, kolom To tingkat atas dapat berisi alamat kontrak USDT. Periksa penerima dana pada catatan transfer token.",
+        "refs": [
+          "tronscan_tx"
+        ]
+      },
+      {
+        "title": "Langkah 4. Baca hasil",
+        "paragraphs": [
+          "Periksa konfirmasi dan hasil eksekusi secara terpisah. Masuk ke blok tidak menjamin kontrak berhasil. Cari SUCCESS dan catatan transfer USDT yang sesuai.",
+          "Transfer berhasil ke penerima yang benar merupakan hasil on-chain. Bursa mungkin mengkreditkan deposit kemudian sesuai aturan konfirmasinya."
+        ],
+        "steps": [
+          "Jika tidak ditemukan, periksa TxID lengkap dan jaringan. Muat ulang nanti dan tanyakan apakah pengirim sudah menyiarkan transaksi.",
+          "Untuk OUT_OF_ENERGY, periksa resource dan batas biaya eksekusi sebelum mencoba lagi.",
+          "Periksa hasil pertama sebelum mengirim ulang agar tidak membayar dua kali."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Langkah 5. Pemakaian dan biaya",
+        "paragraphs": [
+          "Periksa pemakaian Energy, Bandwidth dan biaya TRX aktual secara terpisah. Unit Energy bukan jumlah TRX; kekurangan resource dapat membakar TRX.",
+          "Fee Limit, jika ditampilkan, membatasi biaya eksekusi kontrak; bukan biaya yang benar-benar dibayar. Operasi gagal juga dapat memakai resource.",
+          "Biaya sewa Energy dibayar terpisah dan mungkin tidak muncul pada biaya transaksi USDT. Sertakan biaya sewa dan biaya jaringan saat membandingkan pengeluaran."
+        ],
+        "refs": [
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Latihan dengan transfer yang sudah ada",
+        "paragraphs": [
+          "Gunakan transfer dalam riwayat dompet. Tidak perlu membuat pembayaran baru."
+        ],
+        "steps": [
+          "Cari TxID.",
+          "Periksa konfirmasi dan hasil eksekusi.",
+          "Cocokkan kontrak USDT, pengirim, penerima dan jumlah.",
+          "Periksa Energy, Bandwidth dan biaya TRX aktual.",
+          "Buka alamat pengirim dan periksa resource saat ini; nilainya dapat berbeda dari saat transfer."
+        ],
+        "note": "Untuk dukungan, simpan TxID atau tautan transaksi dan jelaskan masalahnya. Untuk pesanan Energy, sertakan nomor pesanan dan alamat yang dimasukkan. Jangan kirim seed phrase atau private key.",
+        "refs": [
+          "tronscan"
+        ]
+      }
+    ]
+  }
+}
