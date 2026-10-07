@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico?v=stingray-1" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=stingray-1">
+<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=stingray-1">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=stingray-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AML &amp; Sanctions Policy — GasFree4you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#060912;--surface:#10152b;
+    --border:rgba(255,255,255,0.07);--border-strong:rgba(255,255,255,0.14);
+    --text:#f4f6fc;--text-muted:#8c93ae;--text-faint:#5b6280;
+    --indigo:#5670ff;--indigo-glow:rgba(86,112,255,0.35);
+    --mint:#57e8a6;--mint-soft:rgba(87,232,166,0.13);
+    --radius-lg:24px;--radius-md:16px;--radius-sm:10px;
+    --font-display:'Archivo','Inter',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;z-index:0;opacity:0.6;}
+  body::after{content:"";position:fixed;top:-20%;left:50%;width:900px;height:600px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(86,112,255,0.12),rgba(87,232,166,0.04) 45%,transparent 70%);pointer-events:none;z-index:0;}
+  a{color:var(--mint);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,9,18,0.78);border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1180px;margin:0 auto;}
+  .logo{font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--indigo);box-shadow:0 0 10px var(--indigo-glow);}
+  .back-link{font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:6px;}
+  .back-link:hover{color:var(--text);text-decoration:none;}
+
+  .page-header{padding:64px 0 48px;border-bottom:1px solid var(--border);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);padding:6px 14px;border:1px solid var(--border-strong);border-radius:999px;background:rgba(255,255,255,0.02);margin-bottom:20px;}
+  .page-header h1{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-0.02em;margin-bottom:12px;}
+  .page-header .updated{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);}
+
+  /* doc links strip */
+  .doc-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0;}
+  .doc-link-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;display:flex;flex-direction:column;gap:4px;}
+  .doc-link-card .dlc-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);}
+  .doc-link-card a{font-size:13px;font-weight:600;color:var(--mint);}
+  @media(max-width:540px){.doc-links{grid-template-columns:1fr;}}
+
+  .toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:24px 28px;margin:40px 0;}
+  .toc-title{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;}
+  .toc ol{list-style:none;counter-reset:toc-counter;display:flex;flex-direction:column;gap:6px;}
+  .toc ol li{counter-increment:toc-counter;}
+  .toc ol li a{display:flex;align-items:baseline;gap:10px;font-size:14px;color:var(--text-muted);}
+  .toc ol li a::before{content:counter(toc-counter,decimal-leading-zero);font-family:var(--font-mono);font-size:11px;color:var(--text-faint);flex-shrink:0;}
+  .toc ol li a:hover{color:var(--mint);text-decoration:none;}
+
+  .legal-body{padding:0 0 80px;}
+  .legal-section{padding:44px 0 0;border-top:1px solid var(--border);margin-top:44px;}
+  .legal-section:first-child{border-top:none;margin-top:0;padding-top:40px;}
+  .section-number{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--indigo);margin-bottom:8px;}
+  .legal-section h2{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:-0.01em;margin-bottom:18px;}
+  .legal-section p{font-size:14.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.7;}
+  .legal-section p:last-child{margin-bottom:0;}
+
+  .legal-list{margin:4px 0 18px;padding:0;display:flex;flex-direction:column;}
+  .legal-list li{font-size:14px;color:var(--text-muted);padding:10px 0;border-top:1px solid var(--border);display:flex;gap:12px;line-height:1.55;}
+  .legal-list li:first-child{border-top:none;padding-top:0;}
+  .legal-list li::before{content:"→";color:var(--mint);flex-shrink:0;font-size:13px;margin-top:1px;}
+
+  .info-box{background:var(--mint-soft);border:1px solid rgba(87,232,166,0.22);border-radius:var(--radius-sm);padding:14px 18px;margin:18px 0;}
+  .info-box p{font-size:13.5px;color:rgba(87,232,166,0.85);margin-bottom:0;}
+  .warn-box{background:rgba(243,185,77,0.06);border:1px solid rgba(243,185,77,0.22);border-radius:var(--radius-sm);padding:14px 18px;margin:18px 0;}
+  .warn-box p{font-size:13.5px;color:rgba(243,185,77,0.85);margin-bottom:0;}
+
+  /* registry list */
+  .registry-list{margin:16px 0 8px;padding:0;display:flex;flex-direction:column;}
+  .registry-list li{display:flex;align-items:center;gap:10px;font-size:13px;padding:9px 0;border-top:1px solid var(--border);color:var(--text-muted);}
+  .registry-list li:first-child{border-top:none;}
+  .registry-list li b{margin-left:auto;font-size:11px;font-family:var(--font-mono);color:var(--text-faint);white-space:nowrap;}
+  .reg-flag{font-size:16px;flex-shrink:0;}
+
+  /* contact cards */
+  .contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+  .contact-card{background:rgba(255,255,255,0.02);border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:16px 18px;}
+  .contact-card .cc-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:6px;display:block;}
+  .contact-card a{font-size:14px;font-weight:600;color:var(--mint);}
+  @media(max-width:540px){.contact-cards{grid-template-columns:1fr;}}
+
+  footer{border-top:1px solid var(--border);padding:32px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1180px;margin:0 auto;font-size:12.5px;color:var(--text-faint);position:relative;z-index:1;}
+  footer a{color:var(--text-faint);}
+  footer a:hover{color:var(--text);}
+  .foot-links{display:flex;gap:20px;flex-wrap:wrap;}
+
+  .legal-section{scroll-margin-top:90px;}
+  .page-intro{font-size:14.5px;color:var(--text-muted);max-width:660px;margin-bottom:18px;}
+  .legal-section strong{color:var(--text);}
+  .contact-card a{overflow-wrap:anywhere;}
+  a:focus-visible{outline:2px solid var(--mint);outline-offset:4px;}
+  @media(max-width:540px){.nav-inner{padding:14px 18px;gap:16px;}.back-link{font-size:11px;}.wrap{padding:0 20px;}.toc{padding:22px 20px;}.page-header{padding:42px 0 32px;}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">GasFree4you <span class="dot"></span></a>
+    <a href="index.html" class="back-link">← Back to main page</a>
+  </div>
+</header>
+
+<!--
+PUBLICATION NOTES
+1. Operator remains GasFree4you as instructed; no incorporated entity, registration or licence is claimed.
+2. The public policy permits different screening depths and timing. Confirmed initial sanctions/fraud blocking remains explicit; enhanced analysis is not promised before every credit.
+3. Recipient checks use the internal sanctions database, blockchain-related blacklists and participant-supplied labels. Appeals and refund enquiries go to lina@gasfree4you.com.
+4. Implement the stated rolling 12-month deletion/anonymisation period from collection or record creation, including handling of backups and documented lawful holds. The policy text alone does not configure retention.
+5. Elliptic and BitOK receive public addresses for screening, directly or via an intermediary. Law-enforcement disclosures require lawful requests. Resource-provider disclosures necessary for delegation are also described.
+6. Align privacy.html with this retention and disclosure wording. Reconcile legal.html and refund.html with prepaid balances and individual refund review; those files have not been edited.
+7. Set the effective date and remove the Draft label when adopting this policy. The date below is the preparation date.
+-->
+<main><div class="wrap">
+<div class="page-header">
+<div class="eyebrow">LEGAL · DRAFT</div>
+<h1>AML &amp; Sanctions Policy</h1>
+<p class="page-intro">Anti-money laundering, counter-terrorist financing, sanctions and prohibited use.</p>
+<p class="updated">Draft version 1.2 · Prepared: 7 October 2026 · Not yet effective</p>
+<div class="doc-links">
+<div class="doc-link-card"><span class="dlc-label">Related document</span><a href="terms.html">Terms of Service →</a></div>
+<div class="doc-link-card"><span class="dlc-label">Related document</span><a href="privacy.html">Privacy Policy →</a></div>
+<div class="doc-link-card"><span class="dlc-label">Related document</span><a href="refund.html">Refund Policy →</a></div>
+</div></div>
+<nav class="toc" aria-label="Policy contents"><p class="toc-title">Contents</p><ol>
+<li><a href="#scope">Purpose &amp; Scope</a></li>
+<li><a href="#service-model">Service &amp; Payment Model</a></li>
+<li><a href="#prohibited-use">Prohibited Use</a></li>
+<li><a href="#risk-approach">Risk-Based Assessment</a></li>
+<li><a href="#sanctions">Sanctions &amp; Address Restrictions</a></li>
+<li><a href="#payments">Top-Ups &amp; Service Payments</a></li>
+<li><a href="#receivers">Energy Recipients &amp; Resource Providers</a></li>
+<li><a href="#verification">Additional Information &amp; Business Checks</a></li>
+<li><a href="#alerts">Restrictions &amp; Review Outcomes</a></li>
+<li><a href="#refunds">Payments Under Review &amp; Refunds</a></li>
+<li><a href="#reconsideration">Requesting Reconsideration</a></li>
+<li><a href="#partners">Business Customers &amp; Intermediaries</a></li>
+<li><a href="#data">Screening Data &amp; Records</a></li>
+<li><a href="#limitations">Limits of Screening Tools</a></li>
+<li><a href="#updates">Policy Updates</a></li>
+<li><a href="#contact">Contact Information</a></li>
+</ol></nav><div class="legal-body">
+<section class="legal-section" id="scope" aria-labelledby="scope-heading"><p class="section-number">01 — Purpose &amp; Scope</p><h2 id="scope-heading">Purpose &amp; Scope</h2>
+<p><strong>Service operator:</strong> GasFree4you.</p>
+<p>This Anti-Money Laundering, Counter-Terrorist Financing, Sanctions and Prohibited Use Policy describes the safeguards applicable to GasFree4you (the “service”, “we”, “us”). Its purpose is to reduce misuse of our services for unlawful activity.</p>
+<p>It covers the website, customer portal, API, supported bot interfaces, TRON resource rental and delegation, service payments, prepaid balances, and blockchain screening tools. Read it together with our <a href="terms.html">Terms of Service</a>, <a href="privacy.html">Privacy Policy</a> and <a href="refund.html">Refund Policy</a>. Mandatory legal requirements prevail.</p>
+</section>
+<section class="legal-section" id="service-model" aria-labelledby="service-model-heading"><p class="section-number">02 — Service &amp; Payment Model</p><h2 id="service-model-heading">Service &amp; Payment Model</h2>
+<p>GasFree4you provides technical tools and access to TRON network resources. Resource delegation does not give us permission to transfer tokens from the receiving wallet. We do not request your private keys or seed phrase and do not sign token transfers from your external wallet as part of energy rental.</p>
+<p>Payments for services may be received at service-controlled blockchain addresses. Where prepayment is supported, the available service credit is recorded in our internal system. That credit is separate from the on-chain balance of a particular address. Control of your external wallet should not be confused with our receipt and processing of service payments.</p>
+<p>This Policy does not represent a financial licence or determine the regulatory classification of the service. Applicable requirements depend on the actual activities and jurisdictions involved.</p>
+</section>
+<section class="legal-section" id="prohibited-use" aria-labelledby="prohibited-use-heading"><p class="section-number">03 — Prohibited Use</p><h2 id="prohibited-use-heading">Prohibited Use</h2>
+<p>You must not use the service, directly or through another person, to support:</p>
+<ul class="legal-list">
+<li>Money laundering, terrorist financing or sanctions evasion.</li>
+<li>Theft, fraud, phishing, address poisoning, impersonation or misuse of another person’s credentials.</li>
+<li>Ransomware, extortion, malware, stolen assets or unlawful goods and services.</li>
+<li>Deliberate concealment of criminal proceeds or attacks on blockchain networks and their users.</li>
+<li>Circumvention of service restrictions, including misleading information or splitting activity to evade controls.</li>
+</ul>
+<p>You must provide accurate information when requested and must not act for another party to bypass a restriction applicable to that party.</p>
+</section>
+<section class="legal-section" id="risk-approach" aria-labelledby="risk-approach-heading"><p class="section-number">04 — Risk-Based Assessment</p><h2 id="risk-approach-heading">Risk-Based Assessment</h2>
+<p>The scope of a review may depend on payment history, address information, requested services, transaction amounts and frequency, business activity, relevant jurisdictions, and unusual behaviour. Related activity may be considered together.</p>
+<p>Automated indicators may be supplemented by manual review and further information. Detailed detection thresholds are not published. A small payment or previously accepted address does not guarantee that future activity will be accepted.</p>
+<div class="info-box"><p>A risk score is an indicator, not proof of wrongdoing. Indirect blockchain exposure requires context; it is not automatically equivalent to a direct sanctions designation. A low score does not guarantee lawful activity.</p></div>
+</section>
+<section class="legal-section" id="sanctions" aria-labelledby="sanctions-heading"><p class="section-number">05 — Sanctions &amp; Address Restrictions</p><h2 id="sanctions-heading">Sanctions &amp; Address Restrictions</h2>
+<p>GasFree4you screens wallet addresses against sanctions data as part of its controls. Sources used for address screening include:</p>
+<ul class="registry-list">
+<li><span>OFAC Specially Designated Nationals and Blocked Persons List</span><b>OFAC SDN</b></li>
+<li><span>EU Consolidated Financial Sanctions List</span><b>EU</b></li>
+<li><span>National Bureau for Counter Terror Financing designations</span><b>NBCTF</b></li>
+</ul>
+<p>These sources support risk assessment; their inclusion does not mean that every foreign sanctions regime applies identically to every user. Applicable prohibitions, ownership or control restrictions, available evidence, and provider requirements may also affect a decision. An address not appearing in a dataset is not a guarantee of eligibility.</p>
+<p>We may refuse a request involving a restricted address. Token-issuer restrictions, including a USDT issuer blacklist, may also lead to refusal; these are distinct from government sanctions designations.</p>
+<p>Geographic service restrictions are addressed in our <a href="terms.html">Terms of Service</a> and <a href="legal.html">Legal Information</a>. This Policy does not expand access to an otherwise excluded location.</p>
+</section>
+<section class="legal-section" id="payments" aria-labelledby="payments-heading"><p class="section-number">06 — Top-Ups &amp; Service Payments</p><h2 id="payments-heading">Top-Ups &amp; Service Payments</h2>
+<p>GasFree4you applies sanctions, fraud-indicator and blockchain-risk controls to service payments and top-ups. Screening may consider the sending address, transaction identifier, amount, transaction history and related customer activity.</p>
+<p><strong>The depth and timing of checks may vary</strong> according to the payment type, service, available risk indicators and customer activity. Checks may take place before or after crediting, and further review may be triggered by new information. We do not represent that every top-up undergoes enhanced blockchain analysis before it is credited.</p>
+<p>Where the initial address check identifies a sanctions-listed or fraud-labelled sending address, crediting is automatically blocked. A payment, available service credit or account may be placed under review while a concern is assessed. We may request supporting information and restrict further use of the remaining balance pending that review.</p>
+<p>Blocking credit in our system does not reject or reverse an incoming blockchain transfer. Crediting a top-up does not guarantee approval of a later energy order or prevent action on a subsequent risk alert.</p>
+<p>If a required check cannot be completed, the affected payment or request may be delayed or referred for review. An unavailable provider or failed technical check is not evidence that an address is low risk.</p>
+</section>
+<section class="legal-section" id="receivers" aria-labelledby="receivers-heading"><p class="section-number">07 — Energy Recipients &amp; Resource Providers</p><h2 id="receivers-heading">Energy Recipients &amp; Resource Providers</h2>
+<p>Addresses submitted to receive energy are checked against our internal database of sanctions lists, blockchain-related address blacklists, and adverse address labels supplied by blockchain ecosystem participants. These labels and blacklists are screening inputs; they are not necessarily records stored directly on the blockchain or official sanctions designations.</p>
+<p>Matches may lead to refusal or review. A participant-supplied label is a risk signal rather than a conclusive finding of wrongdoing, and an affected user may request reconsideration. Additional blockchain analysis may be requested where an address, customer activity or resource provider raises a concern; this is separate from the standard list and label checks.</p>
+<p>A resource provider may apply its own controls and decline a delegation. Approval of a top-up does not guarantee approval of every recipient or order. Ordering through an API or intermediary does not exempt an address from restrictions.</p>
+</section>
+<section class="legal-section" id="verification" aria-labelledby="verification-heading"><p class="section-number">08 — Additional Information &amp; Business Checks</p><h2 id="verification-heading">Additional Information &amp; Business Checks</h2>
+<p>We may request information proportionate to an identified concern, such as an explanation of the intended use, transaction records, evidence of wallet control, or the source of a service payment. Where appropriate and lawfully handled, identity or business documents may be requested.</p>
+<p>For business relationships, requested information may include registration details, authorised representatives, beneficial ownership, expected activity, and relevant regulatory status. We may decline or suspend a service if information necessary to resolve a material concern is missing or cannot be verified.</p>
+<div class="warn-box"><p>Never send a private key or seed phrase. If documents are requested, confirm the request through our published contact details and obtain instructions for an appropriate submission method.</p></div>
+</section>
+<section class="legal-section" id="alerts" aria-labelledby="alerts-heading"><p class="section-number">09 — Restrictions &amp; Review Outcomes</p><h2 id="alerts-heading">Restrictions &amp; Review Outcomes</h2>
+<p>Depending on the evidence and applicable requirements, we may:</p>
+<ul class="legal-list">
+<li>Decline or cancel a pending order, or temporarily restrict an account, API key, recipient address or use of service credit.</li>
+<li>Request supporting information and review the matter manually.</li>
+<li>Restore access when a concern is resolved, or end the service relationship where the risk remains unacceptable.</li>
+<li>Preserve relevant records or provide information to competent authorities where legally required or permitted.</li>
+</ul>
+<p>Where legally and operationally possible, we will explain the restriction and the next step. Certain information may be withheld where disclosure is prohibited or could undermine security or an investigation. A restriction within GasFree4you does not freeze assets in your independently controlled wallet.</p>
+</section>
+<section class="legal-section" id="refunds" aria-labelledby="refunds-heading"><p class="section-number">10 — Payments Under Review &amp; Refunds</p><h2 id="refunds-heading">Payments Under Review &amp; Refunds</h2>
+<p>Refund eligibility is addressed in the <a href="refund.html">Refund Policy</a>, subject to applicable law. A refund connected with a risk alert may require verification of the payment, the claimant and a lawful return destination.</p>
+<p>We will not automatically return a payment to an address where doing so would be prohibited. A change of destination does not bypass this review. A compliance hold is not, by itself, a declaration that the payment has been forfeited or may be retained indefinitely at our discretion.</p>
+<p>Any release, return or continued restriction will depend on the review outcome and applicable legal requirements. This section does not create a general cash-withdrawal feature for prepaid service credit.</p>
+</section>
+<section class="legal-section" id="reconsideration" aria-labelledby="reconsideration-heading"><p class="section-number">11 — Requesting Reconsideration</p><h2 id="reconsideration-heading">Requesting Reconsideration</h2>
+<p>If you believe a restriction is based on an error, contact <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a> with the subject “AML review”. Include your account identifier, affected wallet address, relevant order or transaction hash, and a brief explanation.</p>
+<p>We will review the information and may ask for evidence needed to resolve the concern. You may use the same contact to request a status update. There is no guaranteed completion time: external-provider responses or legal restrictions may affect the review. Where we can do so, we will communicate the outcome or the reason further review is needed.</p>
+</section>
+<section class="legal-section" id="partners" aria-labelledby="partners-heading"><p class="section-number">12 — Business Customers &amp; Intermediaries</p><h2 id="partners-heading">Business Customers &amp; Intermediaries</h2>
+<p>A customer ordering for other users or businesses remains subject to this Policy. We may ask for information about the intermediary, the intended service use, designated addresses, or a relevant end customer when needed to assess a concern.</p>
+<p>Intermediaries must not conceal the beneficiary of a request to bypass a restriction. Use of GasFree4you does not transfer an intermediary’s own legal or contractual responsibilities to us.</p>
+</section>
+<section class="legal-section" id="data" aria-labelledby="data-heading"><p class="section-number">13 — Screening Data &amp; Records</p><h2 id="data-heading">Screening Data &amp; Records</h2>
+<p>Data processed in connection with service access and risk controls includes IP addresses, browser information, public blockchain addresses, and Telegram or Google account identifiers, depending on the sign-in method used. Relevant review records may also include payment and order details, screening results, correspondence and decisions.</p>
+<p><strong>Blockchain analytics:</strong> public blockchain addresses are submitted to Elliptic and BitOK, directly or through a service intermediary, to obtain risk assessments. We do not submit IP addresses, browser information, Telegram or Google identifiers, or identity documents to those analytics providers as part of address screening.</p>
+<p><strong>Resource delivery:</strong> a resource provider receives the public recipient address and the minimum order information needed to fulfil a delegation.</p>
+<p><strong>Law-enforcement requests:</strong> relevant information may be disclosed to competent law-enforcement authorities in response to a lawful request, subject to applicable law. Disclosure is limited to the information required or lawfully authorised for that request.</p>
+<p><strong>Retention:</strong> the off-chain data and records described in this section are retained for up to 12 months from collection or creation and are then deleted or anonymised. They may be deleted sooner when no longer needed. Longer retention is permitted only where required by applicable law or necessary for a specific ongoing investigation, legal claim or binding preservation requirement. Any extension must be limited to the relevant records and the period needed for that purpose.</p>
+<p>Further details about personal-data processing and user rights are provided in our <a href="privacy.html">Privacy Policy</a>. Blockchain records are public and permanent; deleting information from our systems does not erase a transaction from the blockchain.</p>
+</section>
+<section class="legal-section" id="limitations" aria-labelledby="limitations-heading"><p class="section-number">14 — Limits of Screening Tools</p><h2 id="limitations-heading">Limits of Screening Tools</h2>
+<p>Third-party datasets may be incomplete, delayed or inaccurate. Results may change as providers update address labels and transaction information. We cannot identify every prohibited user or transaction.</p>
+<p>A screening report purchased or viewed through GasFree4you is informational. It is not a certificate of clean funds, approval of a future transaction, or a substitute for your own assessment and any obligations applicable to your activity.</p>
+</section>
+<section class="legal-section" id="updates" aria-labelledby="updates-heading"><p class="section-number">15 — Policy Updates</p><h2 id="updates-heading">Policy Updates</h2>
+<p>We may revise this Policy when our services, controls or applicable requirements change. An adopted version will show its effective date. Material changes will be communicated through the website or other available customer channels as appropriate.</p>
+<p>Changes do not override mandatory user rights or create a retrospective right to confiscate payments.</p>
+</section>
+<section class="legal-section" id="contact" aria-labelledby="contact-heading"><p class="section-number">16 — Contact Information</p><h2 id="contact-heading">Contact Information</h2>
+<p>For a payment review, a suspected false match, or questions about this Policy, use:</p>
+<div class="contact-cards">
+<div class="contact-card"><span class="cc-label">Compliance &amp; Review</span><a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a></div>
+<div class="contact-card"><span class="cc-label">Support</span><a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener noreferrer">@trx2_9_support_bot</a></div>
+</div>
+</section>
+</div></div></main>
+<footer>
+  <span>© 2026 GasFree4you.</span>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="refund.html">Refund</a>
+    <a href="legal.html">Legal</a>
+    <a href="aml.html" aria-current="page">AML</a>
+  </div>
+</footer>
+
+</body>
+</html>
