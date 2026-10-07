@@ -45,7 +45,7 @@
   .page-header .updated{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);}
 
   /* doc links strip */
-  .doc-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0;}
+  .doc-links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:28px 0 0;}
   .doc-link-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;display:flex;flex-direction:column;gap:4px;}
   .doc-link-card .dlc-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-faint);}
   .doc-link-card a{font-size:13px;font-weight:600;color:var(--mint);}
@@ -95,6 +95,7 @@
   footer a{color:var(--text-faint);}
   footer a:hover{color:var(--text);}
   .foot-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .legal-section{scroll-margin-top:90px;}
 </style>
 </head>
 <body>
@@ -112,7 +113,7 @@
     <div class="page-header">
       <div class="eyebrow">LEGAL</div>
       <h1>Legal Information</h1>
-      <p class="updated">Last updated: March 2026</p>
+      <p class="updated">Last updated: 7 October 2026</p>
       <div class="doc-links">
         <div class="doc-link-card">
           <span class="dlc-label">Full document</span>
@@ -126,6 +127,10 @@
           <span class="dlc-label">Full document</span>
           <a href="refund.html">Refund Policy →</a>
         </div>
+        <div class="doc-link-card">
+          <span class="dlc-label">Full document</span>
+          <a href="aml.html">AML &amp; Sanctions Policy →</a>
+        </div>
       </div>
     </div>
 
@@ -133,11 +138,11 @@
       <p class="toc-title">Contents</p>
       <ol>
         <li><a href="#terms">Terms of Service</a></li>
-        <li><a href="#non-custodial">Non-Custodial Service</a></li>
+        <li><a href="#non-custodial">External Wallets &amp; Service Payments</a></li>
         <li><a href="#privacy">Privacy Policy</a></li>
         <li><a href="#refunds">Refund Policy</a></li>
         <li><a href="#risks">Risk Disclaimer</a></li>
-        <li><a href="#aml">KYC / AML Compliance</a></li>
+        <li><a href="#aml">AML &amp; Risk Controls</a></li>
         <li><a href="#liability">Liability Limitation</a></li>
         <li><a href="#indemnification">Indemnification</a></li>
         <li><a href="#force-majeure">Force Majeure</a></li>
@@ -156,9 +161,9 @@
       <div class="legal-section" id="terms">
         <p class="section-number">01 — Terms of Service</p>
         <h2>Terms of Service</h2>
-        <p>By accessing or using GasFree4you — including the web portal, Telegram bot, API, and any related tools — you agree to be bound by our <a href="terms.html">Terms of Service</a> and this Legal Information page.</p>
+        <p>By accessing or using GasFree4you — including the web portal, Telegram bot, API, and any related tools — you agree to be bound by our <a href="terms.html">Terms of Service</a> and this Legal Information page. Our <a href="aml.html">AML &amp; Sanctions Policy</a> describes payment screening, address restrictions and review procedures.</p>
         <ul class="legal-list">
-          <li>The service provides TRON energy delegation, AML screening, wallet tools, and related utilities. We do not custody or store user funds.</li>
+          <li>The service provides TRON energy delegation, AML screening, wallet tools, and related utilities. We do not control your external wallet or its private keys. Service payments may be received at service-controlled addresses and recorded as prepaid service credit.</li>
           <li>You must be at least 18 years old or the age of majority in your jurisdiction.</li>
           <li>You are solely responsible for ensuring your use of the service complies with local laws and regulations.</li>
           <li>You agree not to use the service for illegal transactions, money laundering, fraud, sanctions evasion, or any activity prohibited by law.</li>
@@ -168,35 +173,37 @@
       </div>
 
       <div class="legal-section" id="non-custodial">
-        <p class="section-number">02 — Non-Custodial Service</p>
-        <h2>Non-Custodial Service</h2>
-        <p>GasFree4you is a non-custodial service. Users maintain full control of their wallets and private keys at all times. The platform never stores, manages, or has access to user funds, private keys, or seed phrases.</p>
-        <div class="info-box">
-          <p>We interact with the TRON network using only the public wallet addresses you provide. No signing authority or custody over your assets is ever transferred to GasFree4you.</p>
-        </div>
-        <p>Certain services — such as instant energy rental — may involve blockchain transactions executed through service-controlled wallets solely for the technical delivery of the requested service. In these cases, no user funds pass through or are held in service wallets.</p>
+        <p class="section-number">02 — External Wallets &amp; Service Payments</p>
+        <h2>External Wallets &amp; Service Payments</h2>
+        <p>You retain control of your external wallet. GasFree4you does not request private keys or seed phrases and does not sign token transfers from your external wallet as part of energy rental.</p>
+        <div class="info-box"><p>Delegation to a public wallet address does not give GasFree4you authority to transfer the tokens held in that wallet.</p></div>
+        <p>Payments for services may be received at service-controlled blockchain addresses. Where prepayment is supported, your available service credit is recorded in our internal system and is separate from the on-chain balance of a particular address.</p>
+        <p>Control of your external wallet is distinct from our receipt and processing of service payments. Crediting and use of service balances are subject to the checks and restrictions described in the <a href="aml.html">AML &amp; Sanctions Policy</a>. Prepaid service credit does not create a general cash-withdrawal feature.</p>
       </div>
 
       <div class="legal-section" id="privacy">
         <p class="section-number">03 — Privacy Policy</p>
         <h2>Privacy Policy</h2>
-        <p>We respect your privacy and process only minimal data necessary to provide the service. A summary of our data practices:</p>
+        <p>We process data needed to operate the service, assess risks, handle enquiries and meet applicable requirements. The following summary aligns with our <a href="aml.html">AML &amp; Sanctions Policy</a>:</p>
         <ul class="legal-list">
-          <li><strong style="color:var(--text);">Data collected:</strong> account identifiers (e.g. email address), technical logs (IP address, browser version), wallet addresses submitted to the service, AML check results, support correspondence.</li>
-          <li><strong style="color:var(--text);">Purpose:</strong> service operation, fraud prevention, AML screening, compliance with applicable law.</li>
-          <li><strong style="color:var(--text);">Storage:</strong> data is stored securely and retained only as long as necessary. Technical logs up to 90 days; support correspondence and AML results up to 12 months.</li>
-          <li><strong style="color:var(--text);">Disclosure:</strong> we do not sell or share personal data with third parties, except as required by law, for AML screening, or for service infrastructure.</li>
-          <li><strong style="color:var(--text);">User rights:</strong> you may request access, correction, deletion, restriction, objection, or data portability where applicable. Certain data may be retained where required for legal, fraud-prevention, security, or compliance purposes.</li>
+          <li><span><strong style="color:var(--text);">Data collected:</strong> IP addresses, browser information, public blockchain addresses, and Telegram or Google account identifiers, depending on the sign-in method. Relevant records may also include payment and order details, screening results, correspondence and review decisions.</span></li>
+          <li><span><strong style="color:var(--text);">Purpose:</strong> service operation, security, fraud prevention, AML and sanctions screening, dispute handling and applicable legal requirements.</span></li>
+          <li><span><strong style="color:var(--text);">Storage:</strong> the off-chain data and records described here are retained for up to 12 months from collection or creation, then deleted or anonymised; they may be deleted sooner when no longer needed. Longer retention applies only where required by law or necessary for a specific ongoing investigation, legal claim or binding preservation requirement, limited to the relevant records and period.</span></li>
+          <li><span><strong style="color:var(--text);">Blockchain analytics:</strong> public addresses are submitted to Elliptic and BitOK, directly or through a service intermediary. IP addresses, browser information, Telegram or Google identifiers and identity documents are not submitted to those analytics providers as part of address screening.</span></li>
+          <li><span><strong style="color:var(--text);">Resource delivery:</strong> providers receive the public recipient address and minimum order information needed to fulfil delegation.</span></li>
+          <li><span><strong style="color:var(--text);">Law enforcement:</strong> relevant information may be disclosed to competent authorities in response to lawful requests, limited to what is required or lawfully authorised. Other processing by service infrastructure is described in the Privacy Policy.</span></li>
+          <li><span><strong style="color:var(--text);">User rights:</strong> you may request access, correction, deletion, restriction, objection or portability where applicable. Requests and any necessary retention are assessed under applicable requirements.</span></li>
         </ul>
-        <p>For the full Privacy Policy including analytics, blockchain data handling, and detailed retention periods, see <a href="privacy.html">privacy.html</a>.</p>
+        <p>We do not sell personal data. Public blockchain records cannot be erased by GasFree4you. For further details, see the <a href="privacy.html">Privacy Policy</a>.</p>
       </div>
 
       <div class="legal-section" id="refunds">
         <p class="section-number">04 — Refund Policy</p>
         <h2>Refund Policy</h2>
-        <p>Due to the nature of blockchain services, all transactions are final once executed on-chain. Energy delegation is applied instantly and therefore refunds are generally not possible.</p>
-        <p>Exceptions may be granted only in cases of proven technical errors on our side. Users are responsible for entering the correct wallet addresses and verifying all details before confirming transactions. No refunds will be issued in cases of sanctions matches or prohibited use.</p>
-        <p>For the full Refund Policy and how to submit a request, see <a href="refund.html">refund.html</a>.</p>
+        <p>Completed blockchain transactions cannot simply be reversed. Refund eligibility for delivered services, failed orders and unused service credit is considered under the <a href="refund.html">Refund Policy</a> and applicable law. Users should verify wallet addresses and order details before confirming a request.</p>
+        <p>A payment or balance associated with a risk alert may be held for review. A refund may require verification of the payment, the claimant and a lawful return destination. We will not automatically return funds to an address where doing so would be prohibited; changing the destination does not bypass review.</p>
+        <p>A sanctions match, risk label or service restriction does not by itself mean that funds are forfeited or may be retained indefinitely at our discretion. Release, return or continued restriction depends on the review outcome and applicable requirements.</p>
+        <p>For a refund or reconsideration request, contact <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a> with your account identifier, address and relevant order or transaction hash. See the <a href="aml.html#reconsideration">AML review procedure</a>. No fixed review completion time is guaranteed.</p>
       </div>
 
       <div class="legal-section" id="risks">
@@ -210,17 +217,18 @@
           <li>The price of TRX and USDT is volatile and may affect the effective cost of the service in fiat terms.</li>
           <li>Smart contract limitations or on-chain errors may result in failed or partial execution outside our control.</li>
         </ul>
-        <p>GasFree4you provides a technical blockchain infrastructure service only. We do not provide financial services, investment products, investment advice, or any form of regulated financial activity.</p>
+        <p>GasFree4you provides technical blockchain tools and access to network resources. This description does not constitute a financial licence or determine the regulatory classification of the service. Applicable requirements depend on the actual activities and jurisdictions involved.</p>
       </div>
 
       <div class="legal-section" id="aml">
-        <p class="section-number">06 — KYC / AML Compliance</p>
-        <h2>KYC / AML Compliance</h2>
-        <p>GasFree4you actively screens wallet addresses against international sanctions registries as part of its standard operation. We may request additional information or verification before providing certain services, where permitted or required by applicable law, risk controls, or third-party provider requirements.</p>
-        <p>We reserve the right to refuse or terminate service without prior notice if a wallet or user presents unacceptable risk indicators or matches a sanctions list entry. Users who request AML screening through our platform acknowledge that wallet addresses will be submitted to third-party screening providers.</p>
-        <div class="warn-box">
-          <p>AML screening results are informational risk indicators only and do not constitute legal, compliance, financial, or investigative advice. Results are stored for up to 12 months for compliance and audit purposes.</p>
-        </div>
+        <p class="section-number">06 — AML &amp; Risk Controls</p>
+        <h2>AML &amp; Risk Controls</h2>
+        <p>Energy recipient addresses are checked against our internal sanctions database, blockchain-related address blacklists and adverse labels supplied by blockchain ecosystem participants. These labels are not necessarily official sanctions designations or records stored directly on-chain.</p>
+        <p>Service payments and top-ups are subject to sanctions, fraud-indicator and blockchain-risk controls. The depth and timing of checks may vary by payment type, service, risk indicators and customer activity. Checks may occur before or after crediting; enhanced analysis is not guaranteed before every top-up is credited.</p>
+        <p>Where the initial address check identifies a sanctions-listed or fraud-labelled sender, crediting is automatically blocked. A payment, available service credit, account or API access may be restricted while an alert is reviewed. Blocking credit does not reject or reverse the underlying blockchain transfer.</p>
+        <p>We may request an explanation, transaction records, evidence of wallet control, source-of-payment information or appropriate identity or business information. Never provide a private key or seed phrase. An unavailable screening provider or failed check is not evidence of low risk.</p>
+        <div class="warn-box"><p>Screening results and participant-supplied labels are risk indicators, not conclusive proof of wrongdoing. Indirect exposure is not automatically equivalent to a direct sanctions designation. Low risk does not guarantee lawful activity, and a credited top-up does not guarantee approval of every order.</p></div>
+        <p>For detailed rules, including prohibited use, restrictions and reconsideration, see our <a href="aml.html">AML &amp; Sanctions Policy</a>. Send review requests to <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a>.</p>
       </div>
 
       <div class="legal-section" id="liability">
@@ -253,7 +261,7 @@
       <div class="legal-section" id="ip">
         <p class="section-number">10 — Intellectual Property</p>
         <h2>Intellectual Property</h2>
-        <p>All content, interfaces, logos, branding, documentation, and source code associated with GasFree4you are the intellectual property of the operating entity and are protected by applicable copyright, trademark, and other intellectual property laws.</p>
+        <p>All content, interfaces, logos, branding, documentation, and source code associated with GasFree4you belong to GasFree4you or their respective rights holders and are protected by applicable copyright, trademark, and other intellectual property laws.</p>
         <p>You may refer to GasFree4you by name in factual, non-commercial contexts — for example, when describing your use of the service. You may not use the GasFree4you name, logo, or brand in any way that creates an impression of official partnership, endorsement, affiliation, or sponsorship without prior written permission.</p>
         <p>You may not copy, reproduce, modify, distribute, or create derivative works from any part of the service or its content without prior written permission.</p>
       </div>
@@ -262,14 +270,14 @@
         <p class="section-number">11 — Severability &amp; Entire Agreement</p>
         <h2>Severability &amp; Entire Agreement</h2>
         <p>If any provision of this document is found to be invalid or unenforceable, it shall be modified to the minimum extent necessary or severed, and the remaining provisions shall continue in full force and effect.</p>
-        <p>This Legal Information page, together with our <a href="terms.html">Terms of Service</a>, <a href="privacy.html">Privacy Policy</a>, and <a href="refund.html">Refund Policy</a>, constitute the entire legal agreement between you and GasFree4you. They supersede any prior agreements, representations, or understandings.</p>
+        <p>This Legal Information page, together with our <a href="terms.html">Terms of Service</a>, <a href="privacy.html">Privacy Policy</a>, <a href="refund.html">Refund Policy</a>, and <a href="aml.html">AML &amp; Sanctions Policy</a>, constitute the entire legal agreement between you and GasFree4you. They supersede any prior agreements, representations, or understandings.</p>
       </div>
 
       <div class="legal-section" id="governing">
         <p class="section-number">12 — Governing Law</p>
         <h2>Governing Law</h2>
-        <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which the operating entity behind GasFree4you is incorporated, without regard to its conflict of law provisions.</p>
-        <p>Any dispute arising out of or in connection with this document shall be subject to the exclusive jurisdiction of the courts of that jurisdiction, unless mandatory laws of the user's country of residence require otherwise.</p>
+        <p>The service operator is identified on this page as GasFree4you. This page does not assert incorporation in a particular jurisdiction or select an unspecified jurisdiction of incorporation.</p>
+        <p>Applicable law and the competent courts are determined under the rules applicable to the parties and their relationship, subject to any valid choice expressly stated in the Terms of Service. Nothing in this page overrides mandatory rights or protections.</p>
       </div>
 
       <div class="legal-section" id="excluded">
@@ -277,7 +285,7 @@
         <h2>Excluded Jurisdictions &amp; EU Notice</h2>
         <p>This service is not directed at, and is not available to, residents of the European Union or European Economic Area. By accessing the service, you confirm that you are not a resident of the EU/EEA. If you are located in the EU/EEA, you must discontinue use immediately.</p>
         <div class="warn-box">
-          <p><strong style="color:rgba(243,185,77,0.95);">Reason:</strong> GasFree4you has not registered as a Crypto-Asset Service Provider (CASP) under MiCA Regulation (EU) 2023/1114 and does not hold any equivalent license required to offer services to EU/EEA residents.</p>
+          <p><strong style="color:rgba(243,185,77,0.95);">Service availability:</strong> GasFree4you does not represent that it holds a CASP authorisation under MiCA. Geographic exclusions define service availability; they do not by themselves determine the legal classification of the service or remove requirements otherwise applicable to the operator.</p>
         </div>
         <p>Access to the service is also restricted from the following jurisdictions. This list is indicative and subject to confirmation with legal counsel:</p>
         <ul class="legal-list">
@@ -287,20 +295,20 @@
           <li>United Kingdom, Singapore, Hong Kong</li>
           <li>Iran, DPRK, Syria, Cuba, Crimea/Sevastopol</li>
         </ul>
-        <p>GasFree4you reserves the right to terminate access without notice if a user is identified as residing in an excluded jurisdiction. No refunds will be issued in such cases.</p>
+        <p>GasFree4you may restrict or terminate access if a user is identified as residing in an excluded jurisdiction. Any remaining service credit or refund request is assessed under the Refund Policy, the AML &amp; Sanctions Policy and applicable law; exclusion alone is not an automatic forfeiture of funds.</p>
       </div>
 
       <div class="legal-section" id="sanctions">
         <p class="section-number">14 — Sanctions Compliance</p>
         <h2>Sanctions Compliance</h2>
-        <p>GasFree4you actively screens wallet addresses and, where applicable, user identifiers against international sanctions registries. Current sources include:</p>
+        <p>GasFree4you screens wallet addresses using its internal database of sanctions data. Current sources include:</p>
         <ul class="registry-list">
           <li><span class="reg-flag">🇺🇸</span><span>OFAC SDN</span><b>USA</b></li>
           <li><span class="reg-flag">🇪🇺</span><span>EU Consolidated Financial Sanctions List</span><b>European Union</b></li>
           <li><span class="reg-flag">🇮🇱</span><span>NBCTF</span><b>Israel</b></li>
         </ul>
-        <p>We reserve the right to refuse, suspend, or terminate access at any time and without prior notice if a wallet address or user matches a sanctions list entry. No refunds will be issued in such cases. Sanctions list coverage may be updated as regulatory requirements evolve.</p>
-        <p>Users are responsible for ensuring that their own counterparties are not sanctioned entities before initiating transfers.</p>
+        <p>Matches may lead to refusal, suspension or review under the <a href="aml.html">AML &amp; Sanctions Policy</a>. The applicability of restrictions depends on the relevant law and circumstances; listing these sources does not mean every foreign sanctions regime applies identically to every user. An address absent from a dataset is not a guarantee of eligibility. Token-issuer blacklists and participant-supplied risk labels are distinct from government sanctions designations.</p>
+        <p>Users remain responsible for the requirements applicable to their own activity. If you believe a match or restriction is incorrect, request reconsideration at <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a>. Refunds and any continued payment restrictions are subject to review and applicable law.</p>
       </div>
 
       <div class="legal-section" id="amendments">
@@ -313,7 +321,7 @@
       <div class="legal-section" id="contact">
         <p class="section-number">16 — Contact Information</p>
         <h2>Contact Information</h2>
-        <p>For compliance, legal inquiries, data requests, or general questions about this document, please reach out through:</p>
+        <p>Service operator: GasFree4you. For AML reviews, refund enquiries, data requests or questions about this document, please reach out through:</p>
         <div class="contact-cards">
           <div class="contact-card">
             <span class="cc-label">Legal &amp; Compliance</span>
@@ -338,6 +346,7 @@
     <a href="privacy.html">Privacy</a>
     <a href="refund.html">Refund</a>
     <a href="legal.html">Legal</a>
+    <a href="aml.html">AML</a>
   </div>
 </footer>
 
