@@ -11,6 +11,7 @@ WALLET_CONTENT = ROOT / 'blog/content/wallet.json'
 BUY_CONTENT = ROOT / 'blog/content/buy-trx.json'
 SUB_CONTENT = ROOT / 'blog/content/subleasing.json'
 NO_TRX_CONTENT = ROOT / 'blog/content/no-trx.json'
+TRONSCAN_CONTENT = ROOT / 'blog/content/tronscan.json'
 EXAMPLE = ROOT / 'blog/assets/tron_wallet.py'
 LANGUAGES = {'en': 'English', 'ru': 'Русский', 'es': 'Español', 'id': 'Bahasa Indonesia'}
 DOMAIN = 'https://www.gasfree4you.com'
@@ -18,8 +19,13 @@ ARTICLE = 'getting-started.html'
 BUY_ARTICLE = 'how-to-buy-trx.html'
 SUB_ARTICLE = 'tron-energy-subleasing.html'
 NO_TRX_ARTICLE = 'send-usdt-without-trx.html'
+TRONSCAN_ARTICLE = 'how-to-use-tronscan.html'
 TRANSACTIONS = json.loads((ROOT / 'blog/content/subleasing-transactions.json').read_text())
 SOURCES = {
+    'tronscan': ('TRONSCAN', 'https://tronscan.org/'),
+    'tronscan_account': ('TRONSCAN · Account details', 'https://docs.tronscan.org/en/api/account/account-detail'),
+    'tronscan_tx': ('TRONSCAN · Transaction details', 'https://docs.tronscan.org/en/skills/tronscan-transaction-info'),
+    'tether_protocols': ('Tether · Supported protocols', 'https://tether.to/en/supported-protocols/'),
     'tronlink': ('TronLink', 'https://support.tronlink.org/hc/en-us/articles/5012004270361-How-to-Create-an-Account-in-TronLink-Extension'),
     'trust': ('Trust Wallet · TRON', 'https://trustwallet.com/tron-wallet'),
     'ledger': ('Ledger · TRC20', 'https://www.ledger.com/coin/wallet/trc20'),
@@ -72,6 +78,10 @@ def shell(lang, d, filename, title, description, body):
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="/favicon.ico?v=stingray-1" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=stingray-1">
+<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=stingray-1">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=stingray-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)} — GasFree4you</title>
 <meta name="description" content="{e(description)}">
@@ -84,10 +94,6 @@ def shell(lang, d, filename, title, description, body):
 <meta property="og:type" content="{'website' if filename == 'index.html' else 'article'}">
 <meta property="og:url" content="{DOMAIN}/{lang}/blog/{filename}">
 {structured_data}
-<link rel="icon" href="/favicon.ico?v=stingray-1" sizes="16x16 32x32 48x48 64x64">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=stingray-1">
-<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=stingray-1">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=stingray-1">
 <link rel="stylesheet" href="../../blog/assets/blog.css">
 </head>
 <body>
@@ -107,7 +113,7 @@ def cta(d):
     return f'''<aside class="cta"><div><h2>{e(d['ctaTitle'])}</h2><p>{e(d['ctaText'])}</p></div><a class="button" href="{e(d.get('ctaHref', '../../index.html'))}">{e(d.get('ctaButton', d['service']))} ↗</a></aside>'''
 
 
-def home(d, second, third, fourth):
+def home(d, second, third, fourth, fifth):
     route = ''.join(f'<div class="diagram-row"><b>0{i}</b><span>{e(s)}</span></div>' for i, s in enumerate(d['route'], 1))
     cards = ''.join(f'''<article class="card"><span class="number">0{i} / {e(category)}</span><h3>{e(title)}</h3><p>{e(desc)}</p><div class="planned">{e(d['planned'])}</div></article>''' for i, (category, title, desc) in enumerate(d['cards'], 1))
     topics = ''.join(f'<span>{e(t)}</span>' for t in d['topics'])
@@ -118,7 +124,7 @@ def home(d, second, third, fourth):
 <h2><a href="{ARTICLE}">{e(d['title'])}</a></h2><p>{e(d['description'])}</p><a class="read" href="{ARTICLE}">{e(d['read'])} <span aria-hidden="true">→</span></a></div>
 <div class="diagram"><div class="diagram-title">{e(d['diagramTitle'])}</div>{route}</div></article></section>
 <section aria-labelledby="more"><div class="section-heading"><h2 id="more">{e(d['moreArticles'])}</h2></div>
-<div class="more-grid"><article class="card"><div class="meta"><span class="tag">{e(fourth['category'])}</span><span>·</span><span>{e(fourth['time'])}</span></div><h3><a href="{NO_TRX_ARTICLE}">{e(fourth['title'])}</a></h3><p>{e(fourth['description'])}</p><a class="read" href="{NO_TRX_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article>
+<div class="more-grid"><article class="card"><div class="meta"><span class="tag">{e(fifth['category'])}</span><span>·</span><span>{e(fifth['time'])}</span></div><h3><a href="{TRONSCAN_ARTICLE}">{e(fifth['title'])}</a></h3><p>{e(fifth['description'])}</p><a class="read" href="{TRONSCAN_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(fourth['category'])}</span><span>·</span><span>{e(fourth['time'])}</span></div><h3><a href="{NO_TRX_ARTICLE}">{e(fourth['title'])}</a></h3><p>{e(fourth['description'])}</p><a class="read" href="{NO_TRX_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article>
 <article class="card partner-card"><div class="meta"><span class="tag">{e(third['category'])}</span><span>·</span><span>{e(third['time'])}</span></div><h3><a href="{SUB_ARTICLE}">{e(third['title'])}</a></h3><p>{e(third['description'])}</p><a class="read" href="{SUB_ARTICLE}">{e(d['read'])} →</a></article></div></section>
 <section aria-labelledby="next"><div class="section-heading"><h2 id="next">{e(d['next'])}</h2></div><div class="grid">{cards}</div></section>
 <section aria-labelledby="topics"><div class="section-heading"><h2 id="topics">{e(d['topicsTitle'])}</h2></div><div class="topics">{topics}</div></section>
@@ -230,25 +236,28 @@ def main():
     buy = json.loads(BUY_CONTENT.read_text())
     subleasing = json.loads(SUB_CONTENT.read_text())
     no_trx = json.loads(NO_TRX_CONTENT.read_text())
+    tronscan = json.loads(TRONSCAN_CONTENT.read_text())
     sitemap_entries = {}
     for lang in LANGUAGES:
         d = {**content[lang], **wallet[lang]}
         second = {**content[lang], **buy[lang]}
         third = {**content[lang], **subleasing[lang]}
         fourth = {**content[lang], **no_trx[lang]}
-        for item in (d, second, third, fourth):
+        fifth = {**content[lang], **tronscan[lang]}
+        for item in (d, second, third, fourth, fifth):
             assert date.fromisoformat(item['dateModified']) >= date.fromisoformat(item['datePublished'])
         folder = ROOT / lang / 'blog'
         folder.mkdir(parents=True, exist_ok=True)
-        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second, third, fourth)))
+        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second, third, fourth, fifth)))
         (folder / ARTICLE).write_text(shell(lang, d, ARTICLE, d['title'], d['description'], article(d)))
         (folder / BUY_ARTICLE).write_text(shell(lang, second, BUY_ARTICLE, second['title'], second['description'], article(second)))
         (folder / SUB_ARTICLE).write_text(shell(lang, third, SUB_ARTICLE, third['title'], third['description'], article(third)))
         (folder / NO_TRX_ARTICLE).write_text(shell(lang, fourth, NO_TRX_ARTICLE, fourth['title'], fourth['description'], article(fourth)))
-        for filename, modified in [('index.html', max(d['dateModified'], second['dateModified'], third['dateModified'], fourth['dateModified'])), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified']), (SUB_ARTICLE, third['dateModified']), (NO_TRX_ARTICLE, fourth['dateModified'])]:
+        (folder / TRONSCAN_ARTICLE).write_text(shell(lang, fifth, TRONSCAN_ARTICLE, fifth['title'], fifth['description'], article(fifth)))
+        for filename, modified in [('index.html', max(d['dateModified'], second['dateModified'], third['dateModified'], fourth['dateModified'], fifth['dateModified'])), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified']), (SUB_ARTICLE, third['dateModified']), (NO_TRX_ARTICLE, fourth['dateModified']), (TRONSCAN_ARTICLE, fifth['dateModified'])]:
             sitemap_entries[f'{DOMAIN}/{lang}/blog/{filename}'] = modified
     update_sitemap(sitemap_entries)
-    print('Built 20 pages: a blog index and four articles in each language.')
+    print('Built 24 pages: a blog index and five articles in each language.')
 
 
 if __name__ == '__main__':
