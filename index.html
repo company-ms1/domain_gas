@@ -1648,7 +1648,10 @@ header.nav .nav-right>.btn{white-space:nowrap}
 
 
 /* Public Energy savings check */
-.hero-clear .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start;gap:40px}
+.hero-clear .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"intro form" "followup form";grid-template-rows:auto 1fr;align-items:start;gap:0 40px}
+.hero-message{grid-area:intro}
+.hero-followup{grid-area:followup}
+.hero-grid>.fee-card{grid-area:form}
 .fee-card{min-width:0;padding:30px;background:radial-gradient(ellipse at top right,#57e8a612,transparent 65%),#101628;border:1px solid #57e8a640;border-radius:24px;box-shadow:0 20px 60px #0002;scroll-margin-top:100px}
 .fee-card h2{font:700 clamp(25px,3vw,34px)/1.15 var(--font-display);letter-spacing:-.025em;margin:14px 0}
 .fee-card p{font-size:13px;color:#b4bdd4;line-height:1.6}
@@ -1682,7 +1685,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
 .fee-details dt{color:var(--text-muted)}
 .fee-details dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
 .fee-card [hidden]{display:none!important}
-@media(max-width:1000px){.hero-clear .hero-grid{grid-template-columns:1fr}.fee-card{order:-1;width:100%;max-width:620px}}
+@media(max-width:1000px){.hero-clear .hero-grid{grid-template-columns:1fr;grid-template-areas:"intro" "form" "followup";grid-template-rows:auto;gap:30px}.fee-card{width:100%;max-width:620px}.hero-followup .hero-explanation{margin-top:0}}
 @media(max-width:520px){.fee-card{padding:22px}.fee-card h2{font-size:28px}}
 
   /* Compact website availability badge */
@@ -1733,20 +1736,6 @@ header.nav .nav-right>.btn{white-space:nowrap}
         <span class="eyebrow">USDT · TRC20</span>
         <h1>Transfer USDT TRC20 for <span class="grad">3–6 TRX</span></h1>
         <p class="lede">Instead of the standard 6.4–13 TRX. Energy reaches your wallet in seconds.</p>
-        <p class="hero-explanation">Rent Energy, then send USDT from your wallet as usual.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="https://www.gasfree4you.com/instant_new.html">Rent Energy</a>
-          <a class="btn btn-ghost" href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=hero_open_dashboard">Open your account</a>
-        </div>
-        <p class="hero-assurance"><span aria-hidden="true">✓</span> <span>No sign-up for a one-off rental</span></p>
-        <p class="hero-fine">For your own TRON wallet. No private keys or seed phrase needed.</p>
-        <div class="site-uptime">
-          <div class="site-uptime-copy">
-            <span class="site-uptime-label">Website availability</span>
-            <span class="site-uptime-note">Monitored by UptimeRobot</span>
-          </div>
-          <iframe src="https://badge.uptimerobot.com/psp/69ca595df69ac3d869dc73fdf0a7656c?style=logo&amp;theme=dark" title="GasFree4you" width="181" height="24" style="border:0;color-scheme:dark"></iframe>
-        </div>
       </div>
       <aside class="fee-card" id="savings-calculator" aria-labelledby="fee-title">
         <span class="eyebrow" data-fee="eyebrow">CHECK YOUR SAVINGS</span>
@@ -1762,6 +1751,22 @@ header.nav .nav-right>.btn{white-space:nowrap}
         <p id="fee-status" class="fee-status" role="status" aria-live="polite"></p>
         <div id="fee-result" class="fee-result" aria-live="polite" hidden></div>
       </aside>
+      <div class="hero-followup">
+        <p class="hero-explanation">Rent Energy, then send USDT from your wallet as usual.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://www.gasfree4you.com/instant_new.html">Rent Energy</a>
+          <a class="btn btn-ghost" href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=hero_open_dashboard">Open your account</a>
+        </div>
+        <p class="hero-assurance"><span aria-hidden="true">✓</span> <span>No sign-up for a one-off rental</span></p>
+        <p class="hero-fine">For your own TRON wallet. No private keys or seed phrase needed.</p>
+        <div class="site-uptime">
+          <div class="site-uptime-copy">
+            <span class="site-uptime-label">Website availability</span>
+            <span class="site-uptime-note">Monitored by UptimeRobot</span>
+          </div>
+          <iframe src="https://badge.uptimerobot.com/psp/69ca595df69ac3d869dc73fdf0a7656c?style=logo&amp;theme=dark" title="GasFree4you" width="181" height="24" style="border:0;color-scheme:dark"></iframe>
+        </div>
+      </div>
     </div><a class="hero-more" href="#compliance-layer">Also available: AML checks, wallet dashboard and statements.</a></div>
   </section>
 
