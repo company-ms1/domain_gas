@@ -1688,7 +1688,33 @@ header.nav .nav-right>.btn{white-space:nowrap}
 @media(max-width:1000px){.hero-clear .hero-grid{grid-template-columns:1fr;grid-template-areas:"intro" "form" "followup";grid-template-rows:auto;gap:30px}.fee-card{width:100%;max-width:620px}.hero-followup .hero-explanation{margin-top:0}}
 @media(max-width:520px){.fee-card{padding:22px}.fee-card h2{font-size:28px}}
 
-  /* Compact website availability badge */
+
+/* Daily Energy paid for by burning TRX. */
+.fee-chart{margin-top:20px;border:1px solid #57e8a630;border-radius:14px;background:#080e1d66;padding:14px;min-width:0}
+.fee-chart summary{cursor:pointer;color:var(--mint);font-size:13px;font-weight:600;line-height:1.5}
+.fee-chart h4{font-size:14px;line-height:1.5;margin:20px 0 4px;color:var(--text)}
+.fee-chart .fee-note{margin:5px 0 12px}
+.fee-chart-scroll{overflow-x:auto;scrollbar-width:thin;scrollbar-color:#57e8a644 transparent;margin-top:14px}
+.fee-chart svg{display:block;height:224px;max-width:none}
+.fee-chart-grid{stroke:#ffffff0f;stroke-dasharray:3 5}
+.fee-chart-tick{fill:#a5afc7;font:10px var(--font-body)}
+.fee-chart-bar{fill:var(--mint);opacity:.8}
+.fee-chart-zero{fill:#a5afc7}
+.fee-chart-missing{fill:#67728c}
+.fee-chart-hit{fill:transparent}
+.fee-chart-day{cursor:pointer;outline:none}
+.fee-chart-day:is(:hover,:focus,.selected) .fee-chart-hit{fill:#57e8a614;stroke:#57e8a66b;stroke-width:1}
+.fee-chart-day:is(:hover,:focus,.selected) .fee-chart-bar{opacity:1}
+.fee-chart-tooltip{min-height:94px;margin-top:10px;padding:12px;border:1px solid #ffffff12;background:#0d1425;border-radius:10px;font-variant-numeric:tabular-nums}
+.fee-chart-tooltip strong{font-size:12px;color:var(--text)}
+.fee-chart-tooltip p{font-size:12px;margin:3px 0 0}
+.fee-chart-empty{padding:16px 0 6px}
+.fee-chart-skeleton{height:150px;display:flex;align-items:flex-end;gap:7px;padding:20px 14px;border:1px solid #ffffff10;border-radius:14px;background:#080e1d66;overflow:hidden}
+.fee-chart-skeleton span{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(90deg,#57e8a610,#57e8a630,#57e8a610);background-size:200% 100%;animation:fee-shimmer 1.6s linear infinite}
+@keyframes fee-shimmer{to{background-position:-200% 0}}
+@media(prefers-reduced-motion:reduce){.fee-chart-skeleton span{animation:none}}
+
+/* Compact website availability badge */
   .site-uptime{display:flex;align-items:center;flex-wrap:wrap;gap:12px 18px;width:fit-content;max-width:100%;margin-top:22px;padding:12px 16px;border:1px solid var(--border-strong);border-radius:14px;background:rgba(255,255,255,.025)}
   .site-uptime-copy{display:flex;flex-direction:column;gap:2px}
   .site-uptime-label{font-size:13px;font-weight:600;color:var(--text)}
@@ -2860,9 +2886,10 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
 </script>
 
 
+<script src="assets/vendor/decimal.js"></script>
 <script>
 (() => {
-  const messages = {"en": {"eyebrow": "CHECK YOUR SAVINGS", "title": "How much TRX could you have saved?", "intro": "Find out with just your public TRON wallet address.", "address": "TRON address", "period": "We check your wallet over the last 30 days.", "calculate": "Calculate savings", "privacy": "No wallet connection required.", "loading": "Calculating…", "invalid": "Check the TRON address and selected period.", "error": "Could not calculate savings. Please try again.", "rate": "Too many requests. Please try again later.", "retry": "Too many requests. Try again in {n} seconds.", "upstream": "Could not get TRONSCAN data. Please try later.", "unavailable": "Calculation is temporarily unavailable. Please try later.", "noData": "No data found for the selected period.", "zero": "No Energy paid for by burning TRX was recorded for this period.", "saved": "You could have saved", "negative": "At the current tariff, renting would have cost more by", "account": "Start saving in the portal →", "service": "Start saving via service wallet", "details": "Estimate · calculation details", "burnedEnergy": "Energy paid for by burning TRX", "burnedTrx": "Estimated TRX burned", "rental": "The same Energy with us", "tariff": "Current tariff", "note": "This is an estimate. Assumes 100 SUN per Energy and the current public tariff for the 65,000 Energy package, without personal discounts. Rental cost is proportional to usage, without rounding to whole packages. Bandwidth and other fees are excluded. The period covers full UTC days, excluding today.", "percent": "{value}% savings"}, "ru": {"eyebrow": "ПРОВЕРЬТЕ ЭКОНОМИЮ", "title": "Сколько TRX вы могли сэкономить?", "intro": "Укажите только публичный адрес вашего TRON-кошелька.", "address": "Адрес TRON", "period": "Проверяем кошелёк за последние 30 дней.", "calculate": "Рассчитать экономию", "privacy": "Подключать кошелёк не нужно.", "loading": "Считаем экономию…", "invalid": "Проверьте адрес TRON и выбранный период", "error": "Не удалось выполнить расчёт. Попробуйте ещё раз", "rate": "Слишком много запросов. Попробуйте позже", "retry": "Слишком много запросов. Попробуйте через {n} секунд", "upstream": "Не удалось получить данные TRONSCAN. Попробуйте позже", "unavailable": "Расчёт временно недоступен. Попробуйте позже", "noData": "За выбранный период данных не найдено", "zero": "За выбранный период расход Energy за счёт сжигания TRX не зафиксирован", "saved": "Вы могли сэкономить", "negative": "По текущему тарифу аренда была бы дороже на", "account": "Начать экономить в портале →", "service": "Начать экономить через сервисный кошелёк", "details": "Примерный расчёт · подробнее", "burnedEnergy": "Energy, оплаченная сжиганием TRX", "burnedTrx": "Расчётно сожжено TRX", "rental": "Такая же Energy у нас", "tariff": "Использованный тариф", "note": "Расчёт приблизительный. Используется допущение 100 SUN за единицу Energy и текущий публичный тариф пакета 65 000 Energy без персональных скидок. Стоимость аренды рассчитана пропорционально объёму, без округления до целых пакетов. Bandwidth и другие комиссии не учитываются. Период включает полные дни UTC, без текущего дня.", "percent": "{value}% экономии"}, "es": {"eyebrow": "COMPRUEBA TU AHORRO", "title": "¿Cuánto TRX podrías haber ahorrado?", "intro": "Solo necesitas la dirección pública de tu billetera TRON.", "address": "Dirección TRON", "period": "Revisamos tu billetera durante los últimos 30 días.", "calculate": "Calcular ahorro", "privacy": "No necesitas conectar tu billetera.", "loading": "Calculando…", "invalid": "Comprueba la dirección TRON y el período.", "error": "No se pudo calcular. Inténtalo de nuevo.", "rate": "Demasiadas solicitudes. Inténtalo más tarde.", "retry": "Demasiadas solicitudes. Inténtalo en {n} segundos.", "upstream": "No se pudieron obtener datos de TRONSCAN. Inténtalo más tarde.", "unavailable": "Cálculo no disponible temporalmente. Inténtalo más tarde.", "noData": "No hay datos para el período seleccionado.", "zero": "No se registró Energy pagada quemando TRX en este período.", "saved": "Podrías haber ahorrado", "negative": "Con la tarifa actual, el alquiler habría costado más por", "account": "Empieza a ahorrar en el portal →", "service": "Empieza a ahorrar con la billetera del servicio", "details": "Estimación · detalles del cálculo", "burnedEnergy": "Energy pagada quemando TRX", "burnedTrx": "TRX quemados estimados", "rental": "La misma Energy con nosotros", "tariff": "Tarifa actual", "note": "Cálculo aproximado. Se asumen 100 SUN por Energy y la tarifa pública actual del paquete de 65.000 Energy, sin descuentos personales. Coste proporcional al uso, sin redondear a paquetes enteros. No incluye Bandwidth ni otras comisiones. El período incluye días UTC completos, sin el día actual.", "percent": "{value}% de ahorro"}, "id": {"eyebrow": "PERIKSA PENGHEMATAN", "title": "Berapa TRX yang bisa Anda hemat?", "intro": "Cukup masukkan alamat publik dompet TRON Anda.", "address": "Alamat TRON", "period": "Kami memeriksa dompet Anda selama 30 hari terakhir.", "calculate": "Hitung penghematan", "privacy": "Tidak perlu menghubungkan dompet.", "loading": "Menghitung…", "invalid": "Periksa alamat TRON dan periode yang dipilih.", "error": "Tidak dapat menghitung. Silakan coba lagi.", "rate": "Terlalu banyak permintaan. Coba lagi nanti.", "retry": "Terlalu banyak permintaan. Coba lagi dalam {n} detik.", "upstream": "Tidak dapat mengambil data TRONSCAN. Coba lagi nanti.", "unavailable": "Perhitungan sementara tidak tersedia. Coba lagi nanti.", "noData": "Tidak ada data untuk periode yang dipilih.", "zero": "Tidak tercatat Energy yang dibayar dengan membakar TRX pada periode ini.", "saved": "Anda bisa menghemat", "negative": "Dengan tarif saat ini, biaya sewa akan lebih mahal sebesar", "account": "Mulai berhemat di portal →", "service": "Mulai berhemat melalui dompet layanan", "details": "Perkiraan · detail perhitungan", "burnedEnergy": "Energy dibayar dengan membakar TRX", "burnedTrx": "Perkiraan TRX yang dibakar", "rental": "Energy yang sama dari kami", "tariff": "Tarif saat ini", "note": "Perhitungan perkiraan. Menggunakan asumsi 100 SUN per Energy dan tarif publik saat ini untuk paket 65.000 Energy tanpa diskon pribadi. Biaya sewa proporsional dengan penggunaan, tanpa pembulatan ke paket penuh. Bandwidth dan biaya lain tidak termasuk. Periode mencakup hari UTC penuh, tidak termasuk hari ini.", "percent": "Hemat {value}%"}};
+  const messages = {"en": {"eyebrow": "CHECK YOUR SAVINGS", "title": "How much TRX could you have saved?", "intro": "Find out with just your public TRON wallet address.", "address": "TRON address", "period": "We check your wallet over the last 30 days.", "calculate": "Calculate savings", "privacy": "No wallet connection required.", "loading": "Calculating…", "invalid": "Check the TRON address and selected period.", "error": "Could not calculate savings. Please try again.", "rate": "Too many requests. Please try again later.", "retry": "Too many requests. Try again in {n} seconds.", "upstream": "Could not get TRONSCAN data. Please try later.", "unavailable": "Calculation is temporarily unavailable. Please try later.", "noData": "No data found for the selected period.", "zero": "No Energy paid for by burning TRX was recorded for this period.", "saved": "You could have saved", "negative": "At the current tariff, renting would have cost more by", "account": "Start saving in the portal →", "service": "Start saving via service wallet", "details": "Estimate · calculation details", "burnedEnergy": "Energy paid for by burning TRX", "burnedTrx": "Estimated TRX burned", "rental": "The same Energy with us", "tariff": "Current tariff", "note": "This is an estimate. Assumes 100 SUN per Energy and the current public tariff for the 65,000 Energy package, without personal discounts. Rental cost is proportional to usage, without rounding to whole packages. Bandwidth and other fees are excluded. The period covers full UTC days, excluding today.", "percent": "{value}% savings", "chartOpen": "View daily chart", "chartScope": "Only Energy paid for by burning TRX, not all wallet Energy usage.", "chartHint": "Hover or tap a day. Scroll to see more days.", "chartMissing": "No record", "chartMissingNote": "A dot means no daily record, not zero usage.", "chartZero": "No TRX burned for Energy was recorded for this period.", "chartUnavailable": "Daily data is unavailable.", "chartBurn": "Estimated TRX burned"}, "ru": {"eyebrow": "ПРОВЕРЬТЕ ЭКОНОМИЮ", "title": "Сколько TRX вы могли сэкономить?", "intro": "Укажите только публичный адрес вашего TRON-кошелька.", "address": "Адрес TRON", "period": "Проверяем кошелёк за последние 30 дней.", "calculate": "Рассчитать экономию", "privacy": "Подключать кошелёк не нужно.", "loading": "Считаем экономию…", "invalid": "Проверьте адрес TRON и выбранный период", "error": "Не удалось выполнить расчёт. Попробуйте ещё раз", "rate": "Слишком много запросов. Попробуйте позже", "retry": "Слишком много запросов. Попробуйте через {n} секунд", "upstream": "Не удалось получить данные TRONSCAN. Попробуйте позже", "unavailable": "Расчёт временно недоступен. Попробуйте позже", "noData": "За выбранный период данных не найдено", "zero": "За выбранный период расход Energy за счёт сжигания TRX не зафиксирован", "saved": "Вы могли сэкономить", "negative": "По текущему тарифу аренда была бы дороже на", "account": "Начать экономить в портале →", "service": "Начать экономить через сервисный кошелёк", "details": "Примерный расчёт · подробнее", "burnedEnergy": "Energy, оплаченная сжиганием TRX", "burnedTrx": "Расчётно сожжено TRX", "rental": "Такая же Energy у нас", "tariff": "Использованный тариф", "note": "Расчёт приблизительный. Используется допущение 100 SUN за единицу Energy и текущий публичный тариф пакета 65 000 Energy без персональных скидок. Стоимость аренды рассчитана пропорционально объёму, без округления до целых пакетов. Bandwidth и другие комиссии не учитываются. Период включает полные дни UTC, без текущего дня.", "percent": "{value}% экономии", "chartOpen": "Посмотреть график по дням", "chartScope": "Только Energy за счёт сжигания TRX, не весь расход кошелька.", "chartHint": "Наведите или нажмите на день. График можно прокрутить.", "chartMissing": "Нет записи", "chartMissingNote": "Точка — нет записи за день, а не нулевой расход.", "chartZero": "За выбранный период сжигание TRX на Energy не зафиксировано", "chartUnavailable": "Данные по дням недоступны", "chartBurn": "Расчётно сожжено"}, "es": {"eyebrow": "COMPRUEBA TU AHORRO", "title": "¿Cuánto TRX podrías haber ahorrado?", "intro": "Solo necesitas la dirección pública de tu billetera TRON.", "address": "Dirección TRON", "period": "Revisamos tu billetera durante los últimos 30 días.", "calculate": "Calcular ahorro", "privacy": "No necesitas conectar tu billetera.", "loading": "Calculando…", "invalid": "Comprueba la dirección TRON y el período.", "error": "No se pudo calcular. Inténtalo de nuevo.", "rate": "Demasiadas solicitudes. Inténtalo más tarde.", "retry": "Demasiadas solicitudes. Inténtalo en {n} segundos.", "upstream": "No se pudieron obtener datos de TRONSCAN. Inténtalo más tarde.", "unavailable": "Cálculo no disponible temporalmente. Inténtalo más tarde.", "noData": "No hay datos para el período seleccionado.", "zero": "No se registró Energy pagada quemando TRX en este período.", "saved": "Podrías haber ahorrado", "negative": "Con la tarifa actual, el alquiler habría costado más por", "account": "Empieza a ahorrar en el portal →", "service": "Empieza a ahorrar con la billetera del servicio", "details": "Estimación · detalles del cálculo", "burnedEnergy": "Energy pagada quemando TRX", "burnedTrx": "TRX quemados estimados", "rental": "La misma Energy con nosotros", "tariff": "Tarifa actual", "note": "Cálculo aproximado. Se asumen 100 SUN por Energy y la tarifa pública actual del paquete de 65.000 Energy, sin descuentos personales. Coste proporcional al uso, sin redondear a paquetes enteros. No incluye Bandwidth ni otras comisiones. El período incluye días UTC completos, sin el día actual.", "percent": "{value}% de ahorro", "chartOpen": "Ver gráfico diario", "chartScope": "Solo Energy pagada quemando TRX, no todo el consumo de la billetera.", "chartHint": "Pasa el cursor o toca un día. Desplaza el gráfico para ver más.", "chartMissing": "Sin registro", "chartMissingNote": "Un punto indica que no hay registro, no un consumo cero.", "chartZero": "No se registró quema de TRX para Energy en este período.", "chartUnavailable": "Los datos diarios no están disponibles.", "chartBurn": "Quema estimada"}, "id": {"eyebrow": "PERIKSA PENGHEMATAN", "title": "Berapa TRX yang bisa Anda hemat?", "intro": "Cukup masukkan alamat publik dompet TRON Anda.", "address": "Alamat TRON", "period": "Kami memeriksa dompet Anda selama 30 hari terakhir.", "calculate": "Hitung penghematan", "privacy": "Tidak perlu menghubungkan dompet.", "loading": "Menghitung…", "invalid": "Periksa alamat TRON dan periode yang dipilih.", "error": "Tidak dapat menghitung. Silakan coba lagi.", "rate": "Terlalu banyak permintaan. Coba lagi nanti.", "retry": "Terlalu banyak permintaan. Coba lagi dalam {n} detik.", "upstream": "Tidak dapat mengambil data TRONSCAN. Coba lagi nanti.", "unavailable": "Perhitungan sementara tidak tersedia. Coba lagi nanti.", "noData": "Tidak ada data untuk periode yang dipilih.", "zero": "Tidak tercatat Energy yang dibayar dengan membakar TRX pada periode ini.", "saved": "Anda bisa menghemat", "negative": "Dengan tarif saat ini, biaya sewa akan lebih mahal sebesar", "account": "Mulai berhemat di portal →", "service": "Mulai berhemat melalui dompet layanan", "details": "Perkiraan · detail perhitungan", "burnedEnergy": "Energy dibayar dengan membakar TRX", "burnedTrx": "Perkiraan TRX yang dibakar", "rental": "Energy yang sama dari kami", "tariff": "Tarif saat ini", "note": "Perhitungan perkiraan. Menggunakan asumsi 100 SUN per Energy dan tarif publik saat ini untuk paket 65.000 Energy tanpa diskon pribadi. Biaya sewa proporsional dengan penggunaan, tanpa pembulatan ke paket penuh. Bandwidth dan biaya lain tidak termasuk. Periode mencakup hari UTC penuh, tidak termasuk hari ini.", "percent": "Hemat {value}%", "chartOpen": "Lihat grafik harian", "chartScope": "Hanya Energy yang dibayar dengan membakar TRX, bukan seluruh penggunaan dompet.", "chartHint": "Arahkan kursor atau ketuk hari. Geser untuk melihat hari lainnya.", "chartMissing": "Tidak ada catatan", "chartMissingNote": "Titik berarti tidak ada catatan harian, bukan penggunaan nol.", "chartZero": "Tidak tercatat pembakaran TRX untuk Energy pada periode ini.", "chartUnavailable": "Data harian tidak tersedia.", "chartBurn": "Perkiraan TRX dibakar"}};
   const form = document.getElementById('fee-form'), address = document.getElementById('fee-address');
   const button = document.getElementById('fee-submit'), status = document.getElementById('fee-status'), result = document.getElementById('fee-result');
   let response = null, busy = false, errorKey = '', retrySeconds = null, controller = null, revision = 0;
@@ -2880,6 +2907,92 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
       Number(data.energy_burned) >= 0 && Number(data.trx_burned_estimate) >= 0 && Number(data.rental_cost_estimate) >= 0 &&
       data.rental_tariff && numeric(data.rental_tariff.price_trx) && Number(data.rental_tariff.price_trx) >= 0 && numeric(data.rental_tariff.energy) && Number(data.rental_tariff.energy) > 0;
   }
+  // Calendar-only UTC dates: never format these in the visitor's local timezone.
+  const calendarDay = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value+'T00:00:00Z').toISOString().slice(0,10) === value;
+  const shortDay = day => { const [,month,date] = day.split('-'); return date+'.'+month; };
+  const fullDay = day => shortDay(day)+'.'+day.slice(0,4)+' · UTC';
+  function renderChart(d, add) {
+    const m = t();
+    const panel = add('details','',result,'fee-chart');
+    add('summary',m.chartOpen,panel);
+    add('h4',m.burnedEnergy,panel);
+    add('p',m.chartScope,panel,'fee-note');
+    const start = d.date_from?.slice(0,10), end = d.date_to?.slice(0,10);
+    const rows = d.data;
+    const span = (Date.parse(end)-Date.parse(start))/86400000;
+    if (!calendarDay(start) || !calendarDay(end) || !Number.isInteger(span) || span < 0 || span > 3660 ||
+        !Array.isArray(rows) || rows.some(row => !row || !calendarDay(row.day) || !numeric(row.energy_burn) || Number(row.energy_burn) < 0 || row.day < start || row.day > end) || new Set(rows.map(row=>row.day)).size !== rows.length) {
+      add('p',m.chartUnavailable,panel,'fee-chart-empty'); return;
+    }
+    if (!rows.length) { add('p',m.noData,panel,'fee-chart-empty'); return; }
+    if (rows.every(row=>Number(row.energy_burn) === 0)) { add('p',m.chartZero,panel,'fee-chart-empty'); return; }
+    const records = new Map(rows.map(({day,energy_burn})=>[day,energy_burn]));
+    const chartData = Array.from({length:span+1},(_,i)=>{
+      const day = new Date(Date.parse(start)+i*86400000).toISOString().slice(0,10);
+      return {day,energy:records.has(day)?records.get(day):null};
+    });
+    const scroll = add('div','',panel,'fee-chart-scroll');
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS,'svg'); scroll.append(svg);
+    const width = Math.max(480,chartData.length*16+74), height = 224, left = 66, top = 22, bottom = 182;
+    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
+    svg.style.width = width+'px'; svg.style.minWidth = '100%';
+    svg.setAttribute('role','group'); svg.setAttribute('aria-label',m.burnedEnergy+' · UTC');
+    function shape(tag,attrs,text) {
+      const node = document.createElementNS(svgNS,tag);
+      Object.entries(attrs).forEach(([key,value])=>node.setAttribute(key,String(value)));
+      if (text !== undefined) node.textContent=text;
+      svg.append(node); return node;
+    }
+    const maximum = Math.max(...chartData.map(row=>Number(row.energy)||0));
+    const compact = value => new Intl.NumberFormat(document.documentElement.lang,{notation:'compact',maximumFractionDigits:1}).format(value);
+    for (let tick=0;tick<=4;tick++) {
+      const y=bottom-(bottom-top)*tick/4;
+      shape('line',{x1:left,y1:y,x2:width-8,y2:y,class:'fee-chart-grid'});
+      shape('text',{x:left-9,y:y+4,'text-anchor':'end',class:'fee-chart-tick'},compact(maximum*tick/4));
+    }
+    shape('text',{x:left,y:12,class:'fee-chart-tick'},'Energy');
+    const tooltip = add('div','',panel,'fee-chart-tooltip');
+    tooltip.setAttribute('aria-live','polite'); tooltip.setAttribute('aria-atomic','true');
+    add('p',m.chartHint,tooltip);
+    let selected = null;
+    function describe(row) {
+      const lines=[fullDay(row.day),row.energy === null ? m.chartMissing : 'Energy: '+number(row.energy,0)];
+      if (row.energy !== null && numeric(d.network_energy_price_sun) && Number(d.network_energy_price_sun)>=0 && typeof Decimal !== 'undefined') {
+        // Decimal arithmetic only; the price is supplied by the API.
+        const estimated = new Decimal(String(row.energy)).times(String(d.network_energy_price_sun)).div(1000000);
+        const exact = estimated.toFixed(6);
+        const text = estimated.gt(0) && estimated.lt('0.000001') ? '< '+number(.000001,6) : number(exact,6);
+        lines.push(m.chartBurn+': '+text+' TRX');
+      }
+      return lines;
+    }
+    const step=(width-left-8)/chartData.length, labelEvery=Math.max(1,Math.ceil(chartData.length/6));
+    chartData.forEach((row,index)=>{
+      const x=left+step*index, value=Number(row.energy), barHeight=row.energy === null ? 0 : (bottom-top)*value/maximum;
+      const group=shape('g',{class:'fee-chart-day',tabindex:0,role:'button','aria-label':describe(row).join('. ')});
+      const hit=shape('rect',{x:x+1,y:top,width:Math.max(1,step-2),height:bottom-top,rx:3,class:'fee-chart-hit'});group.append(hit);
+      if(row.energy === null){
+        group.append(shape('circle',{cx:x+step/2,cy:bottom-3,r:2,class:'fee-chart-missing'}));
+      } else {
+        group.append(shape('rect',{x:x+3,y:bottom-Math.max(2,barHeight),width:Math.max(1,step-6),height:Math.max(2,barHeight),rx:2,class:value===0?'fee-chart-zero':'fee-chart-bar'}));
+      }
+      if (index%labelEvery===0) shape('text',{x:x+step/2,y:bottom+23,'text-anchor':'middle',class:'fee-chart-tick'},shortDay(row.day));
+      function select() {
+        selected?.classList.remove('selected'); selected=group; group.classList.add('selected');
+        tooltip.replaceChildren(); describe(row).forEach((line,i)=>add(i===0?'strong':'p',line,tooltip));
+      }
+      group.addEventListener('pointerenter',select); group.addEventListener('focus',select); group.addEventListener('click',select);
+      group.addEventListener('keydown',event=>{
+        if(event.key==='Enter'||event.key===' '){event.preventDefault();select();}
+        if(event.key==='ArrowRight'||event.key==='ArrowLeft'){
+          event.preventDefault(); const next=svg.querySelectorAll('.fee-chart-day')[index+(event.key==='ArrowRight'?1:-1)];next?.focus();
+        }
+      });
+    });
+    if(chartData.some(row=>row.energy===null)) add('p','• '+m.chartMissingNote,panel,'fee-note');
+  }
+
   function render() {
     const m = t();
     document.querySelectorAll('[data-fee]').forEach(el => el.textContent = m[el.dataset.fee]);
@@ -2887,8 +3000,13 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
     button.disabled = busy;
     form.setAttribute('aria-busy',String(busy));
     status.textContent = errorKey ? (errorKey === 'rate' && retrySeconds !== null ? m.retry.replace('{n}',number(retrySeconds,0)) : m[errorKey]) : busy ? m.loading : '';
-    result.replaceChildren(); result.hidden = !response;
+    result.replaceChildren(); result.hidden = !response && !busy;
     result.classList.remove('fee-negative');
+    if (busy) {
+      const skeleton=document.createElement('div'); skeleton.className='fee-chart-skeleton'; skeleton.setAttribute('aria-hidden','true');
+      [32,55,40,78,60,95,48,70,42,85,62,36].forEach(height=>{const bar=document.createElement('span');bar.style.height=height+'%';skeleton.append(bar);});
+      result.append(skeleton); return;
+    }
     if (!response) return;
     const d = response;
     const add = (tag, text, parent = result, cls = '') => { const el = document.createElement(tag); el.textContent = text; el.className = cls; parent.append(el); return el; };
@@ -2913,6 +3031,7 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
     const service = add('a',m.service,actions,'btn btn-ghost');
     service.href = 'https://www.gasfree4you.com/instant_new.html';
     if (d.no_data) return;
+    renderChart(d,add);
     const details = add('details','',result,'fee-details');
     add('summary',m.details,details);
     const list = add('dl','',details);
