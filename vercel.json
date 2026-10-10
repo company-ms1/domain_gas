@@ -19,6 +19,10 @@
   ],
   "rewrites": [
     {
+      "source": "/mcp",
+      "destination": "https://connector.gasfree4you.com/mcp"
+    },
+    {
       "source": "/",
       "destination": "/index.html"
     },
