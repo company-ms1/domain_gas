@@ -15,6 +15,36 @@
       "source": "/ru/mcp.html",
       "destination": "/ru/mcp",
       "permanent": true
+    },
+    {
+      "source": "/en/mcp/",
+      "destination": "/en/mcp",
+      "permanent": true
+    },
+    {
+      "source": "/en/mcp.html",
+      "destination": "/en/mcp",
+      "permanent": true
+    },
+    {
+      "source": "/es/mcp/",
+      "destination": "/es/mcp",
+      "permanent": true
+    },
+    {
+      "source": "/es/mcp.html",
+      "destination": "/es/mcp",
+      "permanent": true
+    },
+    {
+      "source": "/id/mcp/",
+      "destination": "/id/mcp",
+      "permanent": true
+    },
+    {
+      "source": "/id/mcp.html",
+      "destination": "/id/mcp",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -37,6 +67,18 @@
     {
       "source": "/ru/mcp",
       "destination": "/ru/mcp.html"
+    },
+    {
+      "source": "/en/mcp",
+      "destination": "/en/mcp.html"
+    },
+    {
+      "source": "/es/mcp",
+      "destination": "/es/mcp.html"
+    },
+    {
+      "source": "/id/mcp",
+      "destination": "/id/mcp.html"
     }
   ]
 }

@@ -1,0 +1,682 @@
+{
+  "GasFree4You MCP — энергия TRON в вашем AI-агенте": {
+    "en": "GasFree4You MCP — TRON energy in your AI agent",
+    "es": "GasFree4You MCP — energía TRON en tu agente de IA",
+    "id": "GasFree4You MCP — energi TRON di agen AI Anda"
+  },
+  "Подключите GasFree4You к Cursor, Claude Code или Codex через MCP: цены, расчёт ресурсов USDT TRC20, баланс и заказ энергии TRON.": {
+    "en": "Connect GasFree4You to Cursor, Claude Code or Codex via MCP: prices, USDT TRC20 resource estimates, balance and TRON energy orders.",
+    "es": "Conecta GasFree4You a Cursor, Claude Code o Codex mediante MCP: precios, estimaciones de recursos para USDT TRC20, saldo y pedidos de energía TRON.",
+    "id": "Hubungkan GasFree4You ke Cursor, Claude Code, atau Codex melalui MCP: harga, estimasi sumber daya USDT TRC20, saldo, dan pemesanan energi TRON."
+  },
+  "Подключите GasFree4You к своему AI-агенту": {
+    "en": "Connect GasFree4You to your AI agent",
+    "es": "Conecta GasFree4You a tu agente de IA",
+    "id": "Hubungkan GasFree4You ke agen AI Anda"
+  },
+  "Цены и расчёт без ключа. Баланс и заказ энергии TRON — с API-ключом.": {
+    "en": "Prices and estimates without a key. Balance and TRON energy orders with an API key.",
+    "es": "Precios y estimaciones sin clave. Saldo y pedidos de energía TRON con una clave API.",
+    "id": "Harga dan estimasi tanpa kunci. Saldo dan pemesanan energi TRON dengan kunci API."
+  },
+  "К содержимому": {
+    "en": "Skip to content",
+    "es": "Ir al contenido",
+    "id": "Langsung ke konten"
+  },
+  "GasFree4You — главная": {
+    "en": "GasFree4You — home",
+    "es": "GasFree4You — inicio",
+    "id": "GasFree4You — beranda"
+  },
+  "Основная навигация": {
+    "en": "Main navigation",
+    "es": "Navegación principal",
+    "id": "Navigasi utama"
+  },
+  "Возможности": {
+    "en": "Features",
+    "es": "Funciones",
+    "id": "Fitur"
+  },
+  "Подключение": {
+    "en": "Setup",
+    "es": "Conexión",
+    "id": "Pengaturan"
+  },
+  "Разработчикам": {
+    "en": "Developers",
+    "es": "Desarrolladores",
+    "id": "Pengembang"
+  },
+  "Язык страницы": {
+    "en": "Page language",
+    "es": "Idioma de la página",
+    "id": "Bahasa halaman"
+  },
+  "Открыть приложение": {
+    "en": "Open the app",
+    "es": "Abrir la aplicación",
+    "id": "Buka aplikasi"
+  },
+  "Подключите GasFree4You к своему": {
+    "en": "Connect GasFree4You to your",
+    "es": "Conecta GasFree4You a tu",
+    "id": "Hubungkan GasFree4You ke"
+  },
+  "AI-агенту": {
+    "en": "AI agent",
+    "es": "agente de IA",
+    "id": "agen AI Anda"
+  },
+  "Узнавайте цены, рассчитывайте ресурсы для перевода USDT TRC20 и заказывайте энергию TRON прямо из AI-ассистента.": {
+    "en": "Check prices, estimate resources for USDT TRC20 transfers and order TRON energy directly from your AI assistant.",
+    "es": "Consulta precios, estima los recursos para transferir USDT TRC20 y pide energía TRON directamente desde tu asistente de IA.",
+    "id": "Cek harga, perkirakan sumber daya untuk transfer USDT TRC20, dan pesan energi TRON langsung dari asisten AI Anda."
+  },
+  "Подключить агента": {
+    "en": "Connect your agent",
+    "es": "Conectar agente",
+    "id": "Hubungkan agen"
+  },
+  "Посмотреть возможности": {
+    "en": "Explore features",
+    "es": "Ver funciones",
+    "id": "Lihat fitur"
+  },
+  "Цены и расчёт доступны без ключа.": {
+    "en": "Prices and estimates work without a key.",
+    "es": "Los precios y las estimaciones están disponibles sin clave.",
+    "id": "Harga dan estimasi tersedia tanpa kunci."
+  },
+  "Для баланса и заказов подключите API-ключ.": {
+    "en": "Add an API key for balance and orders.",
+    "es": "Añade una clave API para consultar el saldo y hacer pedidos.",
+    "id": "Tambahkan kunci API untuk saldo dan pemesanan."
+  },
+  "Схема работы MCP": {
+    "en": "MCP conversation demo",
+    "es": "Demostración de conversación MCP",
+    "id": "Demo percakapan MCP"
+  },
+  "Ваш AI-ассистент": {
+    "en": "Your AI assistant",
+    "es": "Tu asistente de IA",
+    "id": "Asisten AI Anda"
+  },
+  "Какие сейчас цены на энергию TRON в GasFree4You?": {
+    "en": "What are the current TRON energy prices at GasFree4You?",
+    "es": "¿Cuáles son los precios actuales de energía TRON en GasFree4You?",
+    "id": "Berapa harga energi TRON saat ini di GasFree4You?"
+  },
+  "Публичный прайс сервиса": {
+    "en": "Public service prices",
+    "es": "Precios públicos del servicio",
+    "id": "Harga publik layanan"
+  },
+  "Агент получает цены напрямую из GasFree4You.": {
+    "en": "The agent retrieves prices directly from GasFree4You.",
+    "es": "El agente obtiene los precios directamente de GasFree4You.",
+    "id": "Agen mengambil harga langsung dari GasFree4You."
+  },
+  "AI-агент": {
+    "en": "AI agent",
+    "es": "Agente de IA",
+    "id": "Agen AI"
+  },
+  "Демонстрация · не текущие данные": {
+    "en": "Demo · not live data",
+    "es": "Demo · no son datos en tiempo real",
+    "id": "Demo · bukan data langsung"
+  },
+  "Приостановить": {
+    "en": "Pause",
+    "es": "Pausar",
+    "id": "Jeda"
+  },
+  "инструмента": {
+    "en": "tools",
+    "es": "herramientas",
+    "id": "alat"
+  },
+  "транспорт": {
+    "en": "transport",
+    "es": "transporte",
+    "id": "transport"
+  },
+  "Без ключа": {
+    "en": "No key needed",
+    "es": "Sin clave",
+    "id": "Tanpa kunci"
+  },
+  "для первых запросов": {
+    "en": "for your first queries",
+    "es": "para tus primeras consultas",
+    "id": "untuk kueri pertama"
+  },
+  "ВОЗМОЖНОСТИ": {
+    "en": "FEATURES",
+    "es": "FUNCIONES",
+    "id": "FITUR"
+  },
+  "От вопроса — к действию": {
+    "en": "From questions to action",
+    "es": "De la pregunta a la acción",
+    "id": "Dari pertanyaan ke tindakan"
+  },
+  "Используйте привычный чат.": {
+    "en": "Use your usual chat.",
+    "es": "Usa tu chat habitual.",
+    "id": "Gunakan chat yang biasa Anda pakai."
+  },
+  "Агент обратится к нужному инструменту.": {
+    "en": "Your agent calls the right tool.",
+    "es": "Tu agente utilizará la herramienta adecuada.",
+    "id": "Agen akan memanggil alat yang sesuai."
+  },
+  "01 / ЦЕНЫ": {
+    "en": "01 / PRICES",
+    "es": "01 / PRECIOS",
+    "id": "01 / HARGA"
+  },
+  "Узнайте стоимость энергии": {
+    "en": "Check energy prices",
+    "es": "Consulta el precio de la energía",
+    "id": "Cek harga energi"
+  },
+  "Публичные цены пакетов GasFree4You. Фактическая цена вашего аккаунта может отличаться.": {
+    "en": "Public GasFree4You package prices. Your account’s actual price may differ.",
+    "es": "Precios públicos de los paquetes de GasFree4You. El precio real de tu cuenta puede ser diferente.",
+    "id": "Harga publik paket GasFree4You. Harga sebenarnya untuk akun Anda bisa berbeda."
+  },
+  "Без API-ключа": {
+    "en": "No API key needed",
+    "es": "Sin clave API",
+    "id": "Tanpa kunci API"
+  },
+  "02 / РАСЧЁТ": {
+    "en": "02 / ESTIMATE",
+    "es": "02 / ESTIMACIÓN",
+    "id": "02 / ESTIMASI"
+  },
+  "Оцените ресурсы перевода": {
+    "en": "Estimate transfer resources",
+    "es": "Estima los recursos de una transferencia",
+    "id": "Perkirakan sumber daya transfer"
+  },
+  "Расчёт ресурсов и комиссии для USDT TRC20 по адресам отправителя и получателя. Не отправляет средства.": {
+    "en": "Estimate USDT TRC20 resources and fees using the sender and recipient addresses. Does not send funds.",
+    "es": "Estima los recursos y la comisión de USDT TRC20 con las direcciones del emisor y del destinatario. No envía fondos.",
+    "id": "Perkirakan sumber daya dan biaya USDT TRC20 berdasarkan alamat pengirim dan penerima. Tidak mengirim dana."
+  },
+  "03 / АККАУНТ": {
+    "en": "03 / ACCOUNT",
+    "es": "03 / CUENTA",
+    "id": "03 / AKUN"
+  },
+  "Проверьте баланс": {
+    "en": "Check your balance",
+    "es": "Consulta tu saldo",
+    "id": "Cek saldo Anda"
+  },
+  "Баланс вашего аккаунта GasFree4You и адрес для его пополнения — прямо в диалоге.": {
+    "en": "Your GasFree4You account balance and deposit address, right in the conversation.",
+    "es": "El saldo de tu cuenta GasFree4You y la dirección para recargarla, directamente en el chat.",
+    "id": "Saldo akun GasFree4You dan alamat untuk mengisinya, langsung di percakapan."
+  },
+  "С API-ключом": {
+    "en": "With an API key",
+    "es": "Con clave API",
+    "id": "Dengan kunci API"
+  },
+  "04 / ЭНЕРГИЯ": {
+    "en": "04 / ENERGY",
+    "es": "04 / ENERGÍA",
+    "id": "04 / ENERGI"
+  },
+  "Закажите один пакет": {
+    "en": "Order one package",
+    "es": "Pide un paquete",
+    "id": "Pesan satu paket"
+  },
+  "Энергия для указанного TRON-адреса. Один вызов — один пакет, без дополнительного пополнения TRX.": {
+    "en": "Energy for the specified TRON address. One call buys one package, with no additional TRX top-up.",
+    "es": "Energía para la dirección TRON indicada. Una llamada compra un paquete, sin recarga adicional de TRX.",
+    "id": "Energi untuk alamat TRON yang ditentukan. Satu panggilan membeli satu paket, tanpa tambahan isi ulang TRX."
+  },
+  "Платное действие": {
+    "en": "Paid action",
+    "es": "Acción de pago",
+    "id": "Tindakan berbayar"
+  },
+  "ПОДКЛЮЧЕНИЕ": {
+    "en": "SETUP",
+    "es": "CONEXIÓN",
+    "id": "PENGATURAN"
+  },
+  "Настройте один раз.": {
+    "en": "Set up once.",
+    "es": "Configura una vez.",
+    "id": "Cukup atur sekali."
+  },
+  "Спрашивайте в своём AI-клиенте.": {
+    "en": "Ask from your AI client.",
+    "es": "Pregunta desde tu cliente de IA.",
+    "id": "Tanyakan dari klien AI Anda."
+  },
+  "Выберите режим": {
+    "en": "Choose a mode",
+    "es": "Elige un modo",
+    "id": "Pilih mode"
+  },
+  "Начните без ключа с цен и расчёта. Для баланса и заказов создайте ключ в разделе": {
+    "en": "Start with prices and estimates without a key. For balance and orders, create a key in the",
+    "es": "Empieza con precios y estimaciones sin clave. Para consultar el saldo y hacer pedidos, crea una clave en la sección",
+    "id": "Mulai dengan harga dan estimasi tanpa kunci. Untuk saldo dan pemesanan, buat kunci di bagian"
+  },
+  "нашего приложения.": {
+    "en": "section of our app.",
+    "es": "de nuestra aplicación.",
+    "id": "aplikasi kami."
+  },
+  "Добавьте конфигурацию": {
+    "en": "Add the configuration",
+    "es": "Añade la configuración",
+    "id": "Tambahkan konfigurasi"
+  },
+  "Выберите свой клиент и скопируйте его настройки. В режиме с ключом замените": {
+    "en": "Choose your client and copy its configuration. In API key mode, replace",
+    "es": "Elige tu cliente y copia su configuración. En el modo con clave, sustituye",
+    "id": "Pilih klien Anda dan salin konfigurasinya. Dalam mode kunci API, ganti"
+  },
+  "на свой ключ только в настройках клиента.": {
+    "en": "with your key only in the client settings.",
+    "es": "por tu clave únicamente en los ajustes del cliente.",
+    "id": "dengan kunci Anda hanya di pengaturan klien."
+  },
+  "Проверьте подключение": {
+    "en": "Check the connection",
+    "es": "Comprueba la conexión",
+    "id": "Periksa koneksi"
+  },
+  "Убедитесь, что клиент видит четыре инструмента. Начните с вопроса о ценах — он не создаёт заказ.": {
+    "en": "Make sure your client lists four tools. Start with a price query — it does not create an order.",
+    "es": "Comprueba que tu cliente muestre cuatro herramientas. Empieza preguntando por los precios: no se creará ningún pedido.",
+    "id": "Pastikan klien menampilkan empat alat. Mulai dengan pertanyaan harga — ini tidak membuat pesanan."
+  },
+  "Скопировать адрес MCP": {
+    "en": "Copy MCP address",
+    "es": "Copiar dirección MCP",
+    "id": "Salin alamat MCP"
+  },
+  "Скопировать адрес": {
+    "en": "Copy address",
+    "es": "Copiar dirección",
+    "id": "Salin alamat"
+  },
+  "AI-клиент": {
+    "en": "AI client",
+    "es": "Cliente de IA",
+    "id": "Klien AI"
+  },
+  "Режим подключения": {
+    "en": "Connection mode",
+    "es": "Modo de conexión",
+    "id": "Mode koneksi"
+  },
+  "Доступны цены и расчёт ресурсов. Аккаунт не нужен.": {
+    "en": "Prices and resource estimates are available. No account needed.",
+    "es": "Precios y estimaciones de recursos disponibles. No necesitas una cuenta.",
+    "id": "Harga dan estimasi sumber daya tersedia. Tidak perlu akun."
+  },
+  "Личная конфигурация Cursor": {
+    "en": "Personal Cursor configuration",
+    "es": "Configuración personal de Cursor",
+    "id": "Konfigurasi pribadi Cursor"
+  },
+  "Добавьте сервер в": {
+    "en": "Add the server to",
+    "es": "Añade el servidor a",
+    "id": "Tambahkan server ke"
+  },
+  ". Если файл уже существует, добавьте запись": {
+    "en": ". If the file already exists, add the",
+    "es": ". Si el archivo ya existe, añade la entrada",
+    "id": ". Jika file sudah ada, tambahkan entri"
+  },
+  "в его объект": {
+    "en": "entry to its",
+    "es": "al objeto",
+    "id": "ke objek"
+  },
+  ", сохранив остальные серверы.": {
+    "en": " object, keeping your other servers.",
+    "es": ", conservando los demás servidores.",
+    "id": ", dengan tetap mempertahankan server lain."
+  },
+  "Скопировать конфигурацию Cursor": {
+    "en": "Copy Cursor configuration",
+    "es": "Copiar configuración de Cursor",
+    "id": "Salin konfigurasi Cursor"
+  },
+  "Скопировать": {
+    "en": "Copy",
+    "es": "Copiar",
+    "id": "Salin"
+  },
+  "Сохраните файл, перезапустите Cursor и проверьте сервер в настройках MCP.": {
+    "en": "Save the file, restart Cursor and check the server in MCP settings.",
+    "es": "Guarda el archivo, reinicia Cursor y comprueba el servidor en los ajustes de MCP.",
+    "id": "Simpan file, mulai ulang Cursor, dan periksa server di pengaturan MCP."
+  },
+  "Документация Cursor ↗": {
+    "en": "Cursor documentation ↗",
+    "es": "Documentación de Cursor ↗",
+    "id": "Dokumentasi Cursor ↗"
+  },
+  "Добавление через Claude Code CLI": {
+    "en": "Add via Claude Code CLI",
+    "es": "Añadir desde Claude Code CLI",
+    "id": "Tambahkan melalui Claude Code CLI"
+  },
+  "Выполните команду в терминале. Область": {
+    "en": "Run the command in your terminal. The",
+    "es": "Ejecuta el comando en tu terminal. El ámbito",
+    "id": "Jalankan perintah di terminal. Cakupan"
+  },
+  "делает сервер доступным в ваших проектах.": {
+    "en": "scope makes the server available across your projects.",
+    "es": "hace que el servidor esté disponible en tus proyectos.",
+    "id": "membuat server tersedia di seluruh proyek Anda."
+  },
+  "Терминал": {
+    "en": "Terminal",
+    "es": "Terminal",
+    "id": "Terminal"
+  },
+  "Скопировать команду Claude Code": {
+    "en": "Copy Claude Code command",
+    "es": "Copiar comando de Claude Code",
+    "id": "Salin perintah Claude Code"
+  },
+  "Откройте новую сессию Claude Code и выполните": {
+    "en": "Open a new Claude Code session and run",
+    "es": "Abre una nueva sesión de Claude Code y ejecuta",
+    "id": "Buka sesi Claude Code baru dan jalankan"
+  },
+  "для проверки подключения. При смене режима сначала удалите прежнюю запись:": {
+    "en": "to check the connection. To switch modes, first remove the existing entry:",
+    "es": "para comprobar la conexión. Para cambiar de modo, elimina primero la entrada existente:",
+    "id": "untuk memeriksa koneksi. Untuk mengganti mode, hapus entri lama terlebih dahulu:"
+  },
+  ", затем добавьте её заново.": {
+    "en": ", then add it again.",
+    "es": " y luego añádela de nuevo.",
+    "id": ", lalu tambahkan kembali."
+  },
+  "Документация Claude Code ↗": {
+    "en": "Claude Code documentation ↗",
+    "es": "Documentación de Claude Code ↗",
+    "id": "Dokumentasi Claude Code ↗"
+  },
+  "Конфигурация Codex": {
+    "en": "Codex configuration",
+    "es": "Configuración de Codex",
+    "id": "Konfigurasi Codex"
+  },
+  "Добавьте блок в": {
+    "en": "Add this block to",
+    "es": "Añade este bloque a",
+    "id": "Tambahkan blok ini ke"
+  },
+  ". Если запись": {
+    "en": ". If the",
+    "es": ". Si la entrada",
+    "id": ". Jika entri"
+  },
+  "уже есть, обновите её, не создавая дубликат.": {
+    "en": "entry already exists, update it instead of creating a duplicate.",
+    "es": "ya existe, actualízala sin crear un duplicado.",
+    "id": "sudah ada, perbarui tanpa membuat duplikat."
+  },
+  "Скопировать конфигурацию Codex": {
+    "en": "Copy Codex configuration",
+    "es": "Copiar configuración de Codex",
+    "id": "Salin konfigurasi Codex"
+  },
+  "Перезапустите клиент. В Codex CLI выполните": {
+    "en": "Restart your client. In Codex CLI, run",
+    "es": "Reinicia el cliente. En Codex CLI, ejecuta",
+    "id": "Mulai ulang klien. Di Codex CLI, jalankan"
+  },
+  "и проверьте доступные инструменты.": {
+    "en": "and check the available tools.",
+    "es": "y comprueba las herramientas disponibles.",
+    "id": "dan periksa alat yang tersedia."
+  },
+  "Документация Codex ↗": {
+    "en": "Codex documentation ↗",
+    "es": "Documentación de Codex ↗",
+    "id": "Dokumentasi Codex ↗"
+  },
+  "Используйте клиент с поддержкой Streamable HTTP и пользовательских HTTP-заголовков. API-ключ настраивается вручную, без OAuth.": {
+    "en": "Use a client that supports Streamable HTTP and custom HTTP headers. Configure your API key manually; OAuth is not used.",
+    "es": "Usa un cliente compatible con Streamable HTTP y cabeceras HTTP personalizadas. La clave API se configura manualmente, sin OAuth.",
+    "id": "Gunakan klien yang mendukung Streamable HTTP dan header HTTP kustom. Kunci API diatur secara manual, tanpa OAuth."
+  },
+  "Передавайте ключ только в заголовке подключения:": {
+    "en": "Send your key only in a connection header:",
+    "es": "Envía la clave únicamente en una cabecera de conexión:",
+    "id": "Kirim kunci hanya melalui header koneksi:"
+  },
+  "либо": {
+    "en": "or",
+    "es": "o",
+    "id": "atau"
+  },
+  ". Используйте один из них. Не отправляйте ключ в чат, URL или параметры инструментов и не публикуйте конфигурацию с ключом.": {
+    "en": ". Use just one of them. Never send your key in chat, URLs or tool arguments, and never publish a configuration containing your key.",
+    "es": ". Usa solo una de ellas. No envíes la clave en el chat, la URL ni los parámetros de las herramientas, y no publiques una configuración que la contenga.",
+    "id": ". Gunakan salah satunya saja. Jangan kirim kunci di chat, URL, atau parameter alat, dan jangan publikasikan konfigurasi yang berisi kunci."
+  },
+  "Для переключения клиентов и копирования включите JavaScript. Выше доступна конфигурация Cursor без ключа; её можно скопировать вручную.": {
+    "en": "Enable JavaScript to switch clients and use copy buttons. The Cursor configuration without a key is shown above and can be copied manually.",
+    "es": "Activa JavaScript para cambiar de cliente y usar los botones de copia. Arriba tienes la configuración de Cursor sin clave; puedes copiarla manualmente.",
+    "id": "Aktifkan JavaScript untuk berganti klien dan menggunakan tombol salin. Konfigurasi Cursor tanpa kunci ditampilkan di atas dan dapat disalin secara manual."
+  },
+  "НАЧНИТЕ С ДИАЛОГА": {
+    "en": "START A CONVERSATION",
+    "es": "INICIA UNA CONVERSACIÓN",
+    "id": "MULAI PERCAKAPAN"
+  },
+  "Попробуйте спросить агента": {
+    "en": "Try asking your agent",
+    "es": "Prueba a preguntarle al agente",
+    "id": "Coba tanyakan kepada agen"
+  },
+  "Скопируйте запрос в свой AI-клиент.": {
+    "en": "Copy a prompt into your AI client.",
+    "es": "Copia una consulta en tu cliente de IA.",
+    "id": "Salin prompt ke klien AI Anda."
+  },
+  "Замените адреса в квадратных скобках.": {
+    "en": "Replace the addresses in square brackets.",
+    "es": "Sustituye las direcciones entre corchetes.",
+    "id": "Ganti alamat di dalam tanda kurung siku."
+  },
+  "Скопировать запрос о ценах": {
+    "en": "Copy price prompt",
+    "es": "Copiar consulta de precios",
+    "id": "Salin prompt harga"
+  },
+  "Скопировать запрос": {
+    "en": "Copy prompt",
+    "es": "Copiar consulta",
+    "id": "Salin prompt"
+  },
+  "Оцени ресурсы для перевода USDT TRC20 с адреса [отправитель] на адрес [получатель].": {
+    "en": "Estimate the resources for a USDT TRC20 transfer from [sender] to [recipient].",
+    "es": "Estima los recursos para transferir USDT TRC20 de la dirección [emisor] a la dirección [destinatario].",
+    "id": "Perkirakan sumber daya untuk transfer USDT TRC20 dari alamat [pengirim] ke alamat [penerima]."
+  },
+  "Скопировать запрос расчёта": {
+    "en": "Copy estimate prompt",
+    "es": "Copiar consulta de estimación",
+    "id": "Salin prompt estimasi"
+  },
+  "Покажи мой баланс GasFree4You и адрес для пополнения.": {
+    "en": "Show my GasFree4You balance and deposit address.",
+    "es": "Muéstrame mi saldo de GasFree4You y la dirección de depósito.",
+    "id": "Tampilkan saldo GasFree4You saya dan alamat untuk mengisi saldo."
+  },
+  "Скопировать запрос о балансе": {
+    "en": "Copy balance prompt",
+    "es": "Copiar consulta de saldo",
+    "id": "Salin prompt saldo"
+  },
+  "Закажи один пакет на 65 000 энергии для адреса [адрес].": {
+    "en": "Order one 65,000 energy package for [address].",
+    "es": "Pide un paquete de 65.000 de energía para la dirección [dirección].",
+    "id": "Pesan satu paket 65.000 energi untuk alamat [alamat]."
+  },
+  "Скопировать запрос платного заказа": {
+    "en": "Copy paid order prompt",
+    "es": "Copiar consulta de pedido de pago",
+    "id": "Salin prompt pesanan berbayar"
+  },
+  "Важно при заказе": {
+    "en": "Important when ordering",
+    "es": "Importante al hacer un pedido",
+    "id": "Penting saat memesan"
+  },
+  "Заказ энергии списывает средства с баланса вашего аккаунта. Подключайте ключ только к доверенным приложениям и проверяйте адрес и параметры покупки.": {
+    "en": "Ordering energy spends funds from your account balance. Connect your key only to trusted applications, and check the address and purchase parameters.",
+    "es": "Los pedidos de energía descuentan fondos del saldo de tu cuenta. Conecta tu clave solo a aplicaciones de confianza y revisa la dirección y los parámetros de la compra.",
+    "id": "Pemesanan energi memotong dana dari saldo akun Anda. Hubungkan kunci hanya ke aplikasi tepercaya dan periksa alamat serta parameter pembelian."
+  },
+  "Если агент сообщает, что результат заказа неизвестен или истекло время ожидания, сначала проверьте историю операций в GasFree4You. Не создавайте новый заказ, пока не выяснен результат предыдущего.": {
+    "en": "If the agent reports an unknown order result or a timeout, first check your transaction history in GasFree4You. Do not create another order until the outcome of the previous one is clear.",
+    "es": "Si el agente indica que el resultado del pedido es desconocido o que se agotó el tiempo de espera, revisa primero el historial de operaciones en GasFree4You. No crees otro pedido hasta conocer el resultado del anterior.",
+    "id": "Jika agen melaporkan hasil pesanan tidak diketahui atau waktu tunggu habis, periksa riwayat transaksi di GasFree4You terlebih dahulu. Jangan buat pesanan baru sebelum hasil pesanan sebelumnya diketahui."
+  },
+  "Поведение подтверждения зависит от AI-клиента и его настроек: отдельное окно подтверждения может не появиться.": {
+    "en": "Confirmation behavior depends on the AI client and its settings: a separate confirmation dialog may not appear.",
+    "es": "El comportamiento de la confirmación depende del cliente de IA y de sus ajustes: puede que no aparezca una ventana de confirmación independiente.",
+    "id": "Perilaku konfirmasi bergantung pada klien AI dan pengaturannya: jendela konfirmasi terpisah mungkin tidak muncul."
+  },
+  "Открыть GasFree4You ↗": {
+    "en": "Open GasFree4You ↗",
+    "es": "Abrir GasFree4You ↗",
+    "id": "Buka GasFree4You ↗"
+  },
+  "Для разработчиков": {
+    "en": "For developers",
+    "es": "Para desarrolladores",
+    "id": "Untuk pengembang"
+  },
+  "Четыре существующих инструмента. Авторизация задаётся в HTTP-заголовках подключения, а не в аргументах вызова.": {
+    "en": "Four available tools. Set authentication in the connection’s HTTP headers, not in tool arguments.",
+    "es": "Cuatro herramientas disponibles. La autenticación se configura en las cabeceras HTTP de la conexión, no en los argumentos de la llamada.",
+    "id": "Empat alat yang tersedia. Atur autentikasi di header HTTP koneksi, bukan di argumen panggilan alat."
+  },
+  "Таблица инструментов MCP": {
+    "en": "MCP tools table",
+    "es": "Tabla de herramientas MCP",
+    "id": "Tabel alat MCP"
+  },
+  "Инструменты и параметры MCP GasFree4You": {
+    "en": "GasFree4You MCP tools and parameters",
+    "es": "Herramientas y parámetros MCP de GasFree4You",
+    "id": "Alat dan parameter MCP GasFree4You"
+  },
+  "Инструмент": {
+    "en": "Tool",
+    "es": "Herramienta",
+    "id": "Alat"
+  },
+  "Параметры": {
+    "en": "Parameters",
+    "es": "Parámetros",
+    "id": "Parameter"
+  },
+  "Доступ": {
+    "en": "Access",
+    "es": "Acceso",
+    "id": "Akses"
+  },
+  "Нет": {
+    "en": "None",
+    "es": "Ninguno",
+    "id": "Tidak ada"
+  },
+  "API-ключ": {
+    "en": "API key",
+    "es": "Clave API",
+    "id": "Kunci API"
+  },
+  "API-ключ · платно": {
+    "en": "API key · paid",
+    "es": "Clave API · de pago",
+    "id": "Kunci API · berbayar"
+  },
+  "или": {
+    "en": "or",
+    "es": "o",
+    "id": "atau"
+  },
+  ". Значение": {
+    "en": ". The value",
+    "es": ". El valor",
+    "id": ". Nilai"
+  },
+  "нормализуется в": {
+    "en": "is normalized to",
+    "es": "se normaliza a",
+    "id": "dinormalisasi menjadi"
+  },
+  "Один вызов заказа покупает один пакет, без дополнительного пополнения TRX. Длительность определяется сервисом.": {
+    "en": "One order call buys one package, with no additional TRX top-up. The service determines the duration.",
+    "es": "Cada llamada de pedido compra un paquete, sin recarga adicional de TRX. El servicio determina la duración.",
+    "id": "Satu panggilan pesanan membeli satu paket, tanpa tambahan isi ulang TRX. Durasi ditentukan oleh layanan."
+  },
+  ": уникальный UUID для нового заказа. При повторе того же заказа нужно сохранять этот UUID и параметры.": {
+    "en": ": a unique UUID for a new order. Reuse this UUID and the same parameters when retrying that order.",
+    "es": ": un UUID único para cada pedido nuevo. Conserva ese UUID y los mismos parámetros al reintentar el mismo pedido.",
+    "id": ": UUID unik untuk pesanan baru. Gunakan kembali UUID dan parameter yang sama saat mengulangi pesanan tersebut."
+  },
+  ": проверить историю в приложении или обратиться в поддержку; не повторять с новым UUID.": {
+    "en": ": check the history in the app or contact support; do not retry with a new UUID.",
+    "es": ": revisa el historial en la aplicación o contacta con soporte; no reintentes con un UUID nuevo.",
+    "id": ": periksa riwayat di aplikasi atau hubungi dukungan; jangan ulangi dengan UUID baru."
+  },
+  ": настроить ключ в заголовках подключения.": {
+    "en": ": configure your key in the connection headers.",
+    "es": ": configura la clave en las cabeceras de conexión.",
+    "id": ": atur kunci di header koneksi."
+  },
+  "MCP не предоставляет историю и отслеживание заказов, проверку адресов на санкции или отдельные ончейн-запросы. Инструмент цен возвращает публичный прайс, а не точную персональную стоимость перед заказом.": {
+    "en": "MCP does not provide order history or tracking, sanctions screening of addresses, or standalone on-chain queries. The price tool returns public prices, not an exact account-specific quote before an order.",
+    "es": "MCP no ofrece historial ni seguimiento de pedidos, comprobación de sanciones para direcciones ni consultas independientes a la cadena. La herramienta de precios devuelve tarifas públicas, no una cotización personalizada exacta antes de un pedido.",
+    "id": "MCP tidak menyediakan riwayat atau pelacakan pesanan, pemeriksaan sanksi alamat, maupun kueri on-chain terpisah. Alat harga mengembalikan harga publik, bukan harga khusus akun yang pasti sebelum pemesanan."
+  },
+  "Энергия TRON. В вашем рабочем процессе.": {
+    "en": "TRON energy. Part of your workflow.",
+    "es": "Energía TRON. En tu flujo de trabajo.",
+    "id": "Energi TRON. Dalam alur kerja Anda."
+  },
+  "Ссылки в подвале": {
+    "en": "Footer links",
+    "es": "Enlaces del pie de página",
+    "id": "Tautan footer"
+  },
+  "Блог": {
+    "en": "Blog",
+    "es": "Blog",
+    "id": "Blog"
+  },
+  "Конфиденциальность": {
+    "en": "Privacy",
+    "es": "Privacidad",
+    "id": "Privasi"
+  }
+}

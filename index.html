@@ -2224,7 +2224,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
         <a href="#visibility-layer">Statements</a>
         <a href="#growth-layer">Referral program</a>
         <a href="#pricing-layer">Pricing</a>
-        <a href="/ru/mcp" lang="ru">MCP · AI-агенты</a>
+        <a href="/en/mcp" data-mcp-link>MCP · AI agents</a>
       </div>
       <div class="foot-col">
         <h4>Company</h4>
@@ -2519,6 +2519,7 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
     document.querySelectorAll("[data-blog-link]").forEach(link=>link.setAttribute("href",`${landingLang}/blog/index.html`));
     document.querySelectorAll(".lang-option").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===landingLang));
     const mobileSelect=document.getElementById("mobileLangSelect"); if(mobileSelect)mobileSelect.value=landingLang;
+    document.querySelectorAll("[data-mcp-link]").forEach(link=>{link.href="/"+landingLang+"/mcp";link.textContent=({en:"MCP · AI agents",ru:"MCP · AI-агенты",es:"MCP · Agentes de IA",id:"MCP · Agen AI"})[landingLang];});
     const footer=document.getElementById("currentLangLabel"); if(footer)footer.textContent=({en:"EN",ru:"RU",id:"ID",es:"ES"})[landingLang];
     if(save){try{localStorage.setItem("landing_lang",landingLang);}catch(_){}}
     if(updateUrl){

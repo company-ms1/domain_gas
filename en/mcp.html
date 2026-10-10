@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GasFree4You MCP — TRON energy in your AI agent</title>
+  <meta name="description" content="Connect GasFree4You to Cursor, Claude Code or Codex via MCP: prices, USDT TRC20 resource estimates, balance and TRON energy orders.">
+  <meta name="theme-color" content="#060912">
+  <link rel="canonical" href="https://www.gasfree4you.com/en/mcp">
+  <link rel="alternate" hreflang="ru" href="https://www.gasfree4you.com/ru/mcp">
+  <link rel="alternate" hreflang="en" href="https://www.gasfree4you.com/en/mcp">
+  <link rel="alternate" hreflang="es" href="https://www.gasfree4you.com/es/mcp">
+  <link rel="alternate" hreflang="id" href="https://www.gasfree4you.com/id/mcp">
+  <link rel="alternate" hreflang="x-default" href="https://www.gasfree4you.com/en/mcp">
+  <meta property="og:title" content="Connect GasFree4You to your AI agent">
+  <meta property="og:description" content="Prices and estimates without a key. Balance and TRON energy orders with an API key.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.gasfree4you.com/en/mcp">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=stingray-1">
+  <link rel="stylesheet" href="/assets/mcp/page.css">
+  <script src="/assets/mcp/page.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="/?lang=en" aria-label="GasFree4You — home"><img src="/favicon.svg?v=stingray-1" width="34" height="34" alt="">GasFree<span>4You</span></a>
+      <nav aria-label="Main navigation"><a href="#capabilities">Features</a><a href="#connect">Setup</a><a href="#developers">Developers</a></nav>
+      <div class="nav-actions"><nav class="languages" aria-label="Page language"><a href="/ru/mcp" lang="ru" hreflang="ru">RU</a><a href="/en/mcp" lang="en" hreflang="en" aria-current="page">EN</a><a href="/es/mcp" lang="es" hreflang="es">ES</a><a href="/id/mcp" lang="id" hreflang="id">ID</a></nav><a class="button small" href="https://user.gasfree4you.com/">Open the app <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> GASFREE4YOU × MCP</p>
+        <h1 id="hero-title">Connect GasFree4You to your <span>AI agent</span></h1>
+        <p class="lead">Check prices, estimate resources for USDT TRC20 transfers and order TRON energy directly from your AI assistant.</p>
+        <div class="actions"><a class="button primary" href="#connect">Connect your agent <span aria-hidden="true">↗</span></a><a class="button" href="#capabilities">Explore features</a></div>
+        <p class="fine">Prices and estimates work without a key.<br>Add an API key for balance and orders.</p>
+      </div>
+      <div class="agent-card" aria-label="MCP conversation demo">
+        <div class="chat-aura" aria-hidden="true"></div>
+        <div class="agent-top"><span class="dot"></span><span>Your AI assistant</span><span class="mono muted">MCP</span></div>
+        <div class="chat-stage" aria-live="off"><div class="message" id="demo-question">What are the current TRON energy prices at GasFree4You?</div>
+        <div class="agent-thinking" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="tool-call" id="demo-tool"><span aria-hidden="true">↳</span> <span id="demo-method">get_energy_prices()</span><span class="tool-check" aria-hidden="true">✓</span></div>
+        <div class="agent-response" id="demo-response"><span class="response-icon" aria-hidden="true">↗</span><div><strong id="demo-response-title">Public service prices</strong><p id="demo-response-text">The agent retrieves prices directly from GasFree4You.</p></div></div>
+        </div>
+        <div class="connection-line"><span>AI agent</span><i aria-hidden="true"></i><span>MCP</span><i aria-hidden="true"></i><span>GasFree4You</span></div>
+        <div class="demo-controls"><p class="demo-note">Demo · not live data</p><button type="button" id="demo-toggle" class="demo-toggle" aria-pressed="false" hidden>Pause</button></div>
+      </div>
+    </section>
+    <div class="facts"><span><b>4</b> tools</span><span><b>Streamable HTTP</b> transport</span><span><b>No key needed</b> for your first queries</span></div>
+
+    <section id="capabilities" class="section" aria-labelledby="capabilities-title">
+      <div class="section-head"><div><p class="eyebrow">FEATURES</p><h2 id="capabilities-title">From questions to action</h2></div><p>Use your usual chat.<br>Your agent calls the right tool.</p></div>
+      <div class="capabilities">
+        <article class="feature"><span class="feature-number">01 / PRICES</span><h3>Check energy prices</h3><p>Public GasFree4You package prices. Your account’s actual price may differ.</p><span class="badge">No API key needed</span></article>
+        <article class="feature"><span class="feature-number">02 / ESTIMATE</span><h3>Estimate transfer resources</h3><p>Estimate USDT TRC20 resources and fees using the sender and recipient addresses. Does not send funds.</p><span class="badge">No API key needed</span></article>
+        <article class="feature"><span class="feature-number">03 / ACCOUNT</span><h3>Check your balance</h3><p>Your GasFree4You account balance and deposit address, right in the conversation.</p><span class="badge keyed">With an API key</span></article>
+        <article class="feature"><span class="feature-number">04 / ENERGY</span><h3>Order one package</h3><p>Energy for the specified TRON address. One call buys one package, with no additional TRX top-up.</p><span class="badge paid">Paid action</span> <span class="key-label">With an API key</span></article>
+      </div>
+    </section>
+
+    <section id="connect" class="section" aria-labelledby="connect-title">
+      <div class="section-head"><div><p class="eyebrow">SETUP</p><h2 id="connect-title">Set up once.<br>Ask from your AI client.</h2></div></div>
+      <div class="setup-grid">
+        <div class="setup-intro">
+          <ol class="steps">
+            <li><h3>Choose a mode</h3><p>Start with prices and estimates without a key. For balance and orders, create a key in the <strong>API</strong> section of our app.</p><a href="https://user.gasfree4you.com/">Open the app <span aria-hidden="true">↗</span></a></li>
+            <li><h3>Add the configuration</h3><p>Choose your client and copy its configuration. In API key mode, replace <code>YOUR_API_KEY</code> with your key only in the client settings.</p></li>
+            <li><h3>Check the connection</h3><p>Make sure your client lists four tools. Start with a price query — it does not create an order.</p></li>
+          </ol>
+          <div class="endpoint"><span class="eyebrow">STREAMABLE HTTP</span><code id="endpoint">https://www.gasfree4you.com/mcp</code><button class="copy text-button" type="button" data-copy="endpoint" aria-label="Copy MCP address">Copy address <span aria-hidden="true">⧉</span></button></div>
+        </div>
+        <div class="config-card">
+          <div class="tabs" role="tablist" aria-label="AI client">
+            <button type="button" role="tab" id="tab-cursor" aria-controls="panel-cursor" aria-selected="true" tabindex="0">Cursor</button>
+            <button type="button" role="tab" id="tab-claude" aria-controls="panel-claude" aria-selected="false" tabindex="-1">Claude Code</button>
+            <button type="button" role="tab" id="tab-codex" aria-controls="panel-codex" aria-selected="false" tabindex="-1">Codex</button>
+          </div>
+          <fieldset class="auth-mode"><legend>Connection mode</legend><label><input type="radio" name="auth" value="public" checked> No key needed</label><label><input type="radio" name="auth" value="key"> With an API key</label></fieldset>
+          <p class="auth-hint" id="auth-hint">Prices and resource estimates are available. No account needed.</p>
+          <div id="panel-cursor" role="tabpanel" aria-labelledby="tab-cursor" tabindex="0" class="client-panel">
+            <h3>Personal Cursor configuration</h3>
+            <p>Add the server to <code>~/.cursor/mcp.json</code>. If the file already exists, add the <code>gasfree4you</code> entry to its <code>mcpServers</code> object, keeping your other servers.</p>
+            <div class="code-head"><span>mcp.json</span><button type="button" class="copy" data-copy="config-cursor" aria-label="Copy Cursor configuration">Copy <span aria-hidden="true">⧉</span></button></div>
+            <pre><code id="config-cursor">{
+  "mcpServers": {
+    "gasfree4you": {
+      "url": "https://www.gasfree4you.com/mcp"
+    }
+  }
+}</code></pre>
+            <p class="client-check">Save the file, restart Cursor and check the server in MCP settings.</p>
+            <a class="doc-link" href="https://cursor.com/docs/mcp" target="_blank" rel="noopener noreferrer">Cursor documentation ↗</a>
+          </div>
+          <div id="panel-claude" role="tabpanel" aria-labelledby="tab-claude" tabindex="0" class="client-panel" hidden>
+            <h3>Add via Claude Code CLI</h3><p>Run the command in your terminal. The <code>user</code> scope makes the server available across your projects.</p>
+            <div class="code-head"><span>Terminal</span><button type="button" class="copy" data-copy="config-claude" aria-label="Copy Claude Code command">Copy <span aria-hidden="true">⧉</span></button></div>
+            <pre><code id="config-claude">claude mcp add --transport http --scope user gasfree4you https://www.gasfree4you.com/mcp</code></pre>
+            <p class="client-check">Open a new Claude Code session and run <code>/mcp</code> to check the connection. To switch modes, first remove the existing entry: <code>claude mcp remove --scope user gasfree4you</code>, then add it again.</p>
+            <a class="doc-link" href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener noreferrer">Claude Code documentation ↗</a>
+          </div>
+          <div id="panel-codex" role="tabpanel" aria-labelledby="tab-codex" tabindex="0" class="client-panel" hidden>
+            <h3>Codex configuration</h3><p>Add this block to <code>~/.codex/config.toml</code>. If the <code>gasfree4you</code> entry already exists, update it instead of creating a duplicate.</p>
+            <div class="code-head"><span>config.toml</span><button type="button" class="copy" data-copy="config-codex" aria-label="Copy Codex configuration">Copy <span aria-hidden="true">⧉</span></button></div>
+            <pre><code id="config-codex">[mcp_servers.gasfree4you]
+url = "https://www.gasfree4you.com/mcp"</code></pre>
+            <p class="client-check">Restart your client. In Codex CLI, run <code>/mcp</code> and check the available tools.</p>
+            <a class="doc-link" href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener noreferrer">Codex documentation ↗</a>
+          </div>
+          <p class="config-note">Use a client that supports Streamable HTTP and custom HTTP headers. Configure your API key manually; OAuth is not used.</p>
+        </div>
+      </div>
+      <p class="security-note">Send your key only in a connection header: <code>X-API-Key: YOUR_API_KEY</code> or <code>Authorization: Bearer YOUR_API_KEY</code>. Use just one of them. Never send your key in chat, URLs or tool arguments, and never publish a configuration containing your key.</p>
+      <noscript><p class="notice">Enable JavaScript to switch clients and use copy buttons. The Cursor configuration without a key is shown above and can be copied manually.</p></noscript>
+    </section>
+
+    <section id="examples" class="section" aria-labelledby="examples-title">
+      <div class="section-head"><div><p class="eyebrow">START A CONVERSATION</p><h2 id="examples-title">Try asking your agent</h2></div><p>Copy a prompt into your AI client.<br>Replace the addresses in square brackets.</p></div>
+      <div class="prompts">
+        <article class="prompt"><span class="badge">No API key needed</span><p id="prompt-prices">What are the current TRON energy prices at GasFree4You?</p><button type="button" class="copy text-button" data-copy="prompt-prices" aria-label="Copy price prompt">Copy prompt <span aria-hidden="true">⧉</span></button></article>
+        <article class="prompt"><span class="badge">No API key needed</span><p id="prompt-estimate">Estimate the resources for a USDT TRC20 transfer from [sender] to [recipient].</p><button type="button" class="copy text-button" data-copy="prompt-estimate" aria-label="Copy estimate prompt">Copy prompt <span aria-hidden="true">⧉</span></button></article>
+        <article class="prompt"><span class="badge keyed">With an API key</span><p id="prompt-balance">Show my GasFree4You balance and deposit address.</p><button type="button" class="copy text-button" data-copy="prompt-balance" aria-label="Copy balance prompt">Copy prompt <span aria-hidden="true">⧉</span></button></article>
+        <article class="prompt paid-prompt"><span class="badge paid">Paid action</span><p id="prompt-order">Order one 65,000 energy package for [address].</p><button type="button" class="copy text-button" data-copy="prompt-order" aria-label="Copy paid order prompt">Copy prompt <span aria-hidden="true">⧉</span></button></article>
+      </div>
+    </section>
+
+    <aside class="notice" aria-labelledby="order-note-title"><div class="notice-mark" aria-hidden="true">!</div><div><h2 id="order-note-title">Important when ordering</h2><p>Ordering energy spends funds from your account balance. Connect your key only to trusted applications, and check the address and purchase parameters.</p><p>If the agent reports an unknown order result or a timeout, first check your transaction history in GasFree4You. Do not create another order until the outcome of the previous one is clear.</p><p>Confirmation behavior depends on the AI client and its settings: a separate confirmation dialog may not appear.</p><a href="https://user.gasfree4you.com/">Open GasFree4You ↗</a></div></aside>
+
+    <section id="developers" class="section">
+      <details class="developer-details"><summary><span><span class="eyebrow">MCP REFERENCE</span><span class="summary-title">For developers</span></span><span class="expand" aria-hidden="true">+</span></summary>
+        <div class="developer-body"><p>Four available tools. Set authentication in the connection’s HTTP headers, not in tool arguments.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="MCP tools table"><table><caption class="sr-only">GasFree4You MCP tools and parameters</caption><thead><tr><th scope="col">Tool</th><th scope="col">Parameters</th><th scope="col">Access</th></tr></thead><tbody>
+            <tr><td><code>estimate_transfer_fee</code></td><td><code>sender_wallet</code>, <code>recipient_wallet</code></td><td>No key needed</td></tr>
+            <tr><td><code>get_energy_prices</code></td><td>None</td><td>No key needed</td></tr>
+            <tr><td><code>get_account_balance</code></td><td>None</td><td>API key</td></tr>
+            <tr><td><code>order_energy</code></td><td><code>wallet</code>, <code>energy</code>, <code>request_id</code></td><td>API key · paid</td></tr>
+          </tbody></table></div>
+          <ul class="developer-notes"><li><code>energy</code>: <code>65000</code>, <code>130000</code> or <code>131000</code>. The value <code>130000</code> is normalized to <code>131000</code>.</li><li>One order call buys one package, with no additional TRX top-up. The service determines the duration.</li><li><code>request_id</code>: a unique UUID for a new order. Reuse this UUID and the same parameters when retrying that order.</li><li><code>ORDER_PENDING_OR_UNKNOWN</code>: check the history in the app or contact support; do not retry with a new UUID.</li><li><code>API_KEY_REQUIRED</code>: configure your key in the connection headers.</li></ul>
+          <p class="reference-limit">MCP does not provide order history or tracking, sanctions screening of addresses, or standalone on-chain queries. The price tool returns public prices, not an exact account-specific quote before an order.</p>
+        </div>
+      </details>
+    </section>
+  </main>
+  <footer class="wrap footer"><a class="brand" href="/?lang=en">GasFree<span>4You</span></a><span>TRON energy. Part of your workflow.</span><nav aria-label="Footer links"><a href="/api.html">API</a><a href="/en/blog">Blog</a><a href="/privacy.html">Privacy</a></nav></footer>
+  <div id="copy-status" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

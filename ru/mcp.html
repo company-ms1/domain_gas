@@ -7,6 +7,11 @@
   <meta name="description" content="Подключите GasFree4You к Cursor, Claude Code или Codex через MCP: цены, расчёт ресурсов USDT TRC20, баланс и заказ энергии TRON.">
   <meta name="theme-color" content="#060912">
   <link rel="canonical" href="https://www.gasfree4you.com/ru/mcp">
+  <link rel="alternate" hreflang="ru" href="https://www.gasfree4you.com/ru/mcp">
+  <link rel="alternate" hreflang="en" href="https://www.gasfree4you.com/en/mcp">
+  <link rel="alternate" hreflang="es" href="https://www.gasfree4you.com/es/mcp">
+  <link rel="alternate" hreflang="id" href="https://www.gasfree4you.com/id/mcp">
+  <link rel="alternate" hreflang="x-default" href="https://www.gasfree4you.com/en/mcp">
   <meta property="og:title" content="Подключите GasFree4You к своему AI-агенту">
   <meta property="og:description" content="Цены и расчёт без ключа. Баланс и заказ энергии TRON — с API-ключом.">
   <meta property="og:type" content="website">
@@ -21,7 +26,7 @@
     <div class="wrap nav">
       <a class="brand" href="/?lang=ru" aria-label="GasFree4You — главная"><img src="/favicon.svg?v=stingray-1" width="34" height="34" alt="">GasFree<span>4You</span></a>
       <nav aria-label="Основная навигация"><a href="#capabilities">Возможности</a><a href="#connect">Подключение</a><a href="#developers">Разработчикам</a></nav>
-      <a class="button small" href="https://user.gasfree4you.com/">Открыть приложение <span aria-hidden="true">↗</span></a>
+      <div class="nav-actions"><nav class="languages" aria-label="Язык страницы"><a href="/ru/mcp" lang="ru" hreflang="ru" aria-current="page">RU</a><a href="/en/mcp" lang="en" hreflang="en">EN</a><a href="/es/mcp" lang="es" hreflang="es">ES</a><a href="/id/mcp" lang="id" hreflang="id">ID</a></nav><a class="button small" href="https://user.gasfree4you.com/">Открыть приложение <span aria-hidden="true">↗</span></a></div>
     </div>
   </header>
   <main id="main" class="wrap">
@@ -34,12 +39,15 @@
         <p class="fine">Цены и расчёт доступны без ключа.<br>Для баланса и заказов подключите API-ключ.</p>
       </div>
       <div class="agent-card" aria-label="Схема работы MCP">
+        <div class="chat-aura" aria-hidden="true"></div>
         <div class="agent-top"><span class="dot"></span><span>Ваш AI-ассистент</span><span class="mono muted">MCP</span></div>
-        <div class="message">Какие сейчас цены на энергию TRON в GasFree4You?</div>
-        <div class="tool-call"><span aria-hidden="true">↳</span> get_energy_prices<span>()</span></div>
-        <div class="agent-response"><span class="response-icon" aria-hidden="true">↗</span><div><strong>Публичный прайс сервиса</strong><p>Агент получает цены напрямую<br>из GasFree4You.</p></div></div>
+        <div class="chat-stage" aria-live="off"><div class="message" id="demo-question">Какие сейчас цены на энергию TRON в GasFree4You?</div>
+        <div class="agent-thinking" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="tool-call" id="demo-tool"><span aria-hidden="true">↳</span> <span id="demo-method">get_energy_prices()</span><span class="tool-check" aria-hidden="true">✓</span></div>
+        <div class="agent-response" id="demo-response"><span class="response-icon" aria-hidden="true">↗</span><div><strong id="demo-response-title">Публичный прайс сервиса</strong><p id="demo-response-text">Агент получает цены напрямую из GasFree4You.</p></div></div>
+        </div>
         <div class="connection-line"><span>AI-агент</span><i aria-hidden="true"></i><span>MCP</span><i aria-hidden="true"></i><span>GasFree4You</span></div>
-        <p class="demo-note">Схема запроса · не текущие данные</p>
+        <div class="demo-controls"><p class="demo-note">Демонстрация · не текущие данные</p><button type="button" id="demo-toggle" class="demo-toggle" aria-pressed="false" hidden>Приостановить</button></div>
       </div>
     </section>
     <div class="facts"><span><b>4</b> инструмента</span><span><b>Streamable HTTP</b> транспорт</span><span><b>Без ключа</b> для первых запросов</span></div>
