@@ -127,4 +127,9 @@
     <loc>https://www.gasfree4you.com/id/blog/how-to-use-tronscan.html</loc>
     <lastmod>2026-09-30</lastmod>
   </url>
+  <url>
+    <loc>https://www.gasfree4you.com/ru/mcp</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>

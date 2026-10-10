@@ -1,11 +1,38 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
-    {"source": "/index.html", "destination": "/", "permanent": true}
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ru/mcp/",
+      "destination": "/ru/mcp",
+      "permanent": true
+    },
+    {
+      "source": "/ru/mcp.html",
+      "destination": "/ru/mcp",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    {"source": "/", "destination": "/index.html"},
-    {"source": "/:lang(en|ru|es|id)/blog", "destination": "/:lang/blog/index.html"},
-    {"source": "/:lang(en|ru|es|id)/blog/", "destination": "/:lang/blog/index.html"}
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/:lang(en|ru|es|id)/blog",
+      "destination": "/:lang/blog/index.html"
+    },
+    {
+      "source": "/:lang(en|ru|es|id)/blog/",
+      "destination": "/:lang/blog/index.html"
+    },
+    {
+      "source": "/ru/mcp",
+      "destination": "/ru/mcp.html"
+    }
   ]
 }

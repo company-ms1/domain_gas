@@ -1,0 +1,17 @@
+Generated using the built-in image_gen tool.
+
+Use case: ads-marketing. Create a finished premium Telegram advertisement for GasFree4you's TRON wallet savings calculator, landscape EXACT 16:9 aspect ratio, 2048x1152 pixels. Input image is a style and factual example reference, not a layout to copy. Recompose its dark navy, mint green, indigo financial interface into a striking minimalist editorial ad. Sophisticated crisp typography with perfectly spelled Russian Cyrillic, generous margins, strong readability on mobile. Dark navy background #0d1425 with restrained mint glow on right and subtle indigo light. No coins, rockets, people, crypto clichés or clutter.
+Composition: left 52% contains brand small at top, large white headline on 3 lines, one short muted explanatory line and a wide indigo rounded CTA. Right 43% contains a beautiful floating straight-on dark result card with thin mint border, soft glow and elegant understated green daily bars at its bottom, decorative not labelled with invented data. Visual hierarchy: headline and large mint savings amount. Ensure no overflow.
+Exact text ONLY:
+brand: "GasFree4you"
+headline: "Сколько TRX вы могли сэкономить?"
+support: "Проверьте свой кошелёк за 30 дней"
+CTA: "Рассчитать экономию →"
+small reassurance under CTA: "Только публичный адрес. Без подключения кошелька."
+URL lower left: "gasfree4you.com"
+right card small eyebrow: "ПРИМЕР РАСЧЁТА"
+right card subheading: "Вы могли сэкономить"
+right card hero amount: "≈ 1 180,23" with "TRX" slightly smaller on next line or beside if legible
+right card small green badge: "59,38% экономии"
+right card fine print, clearly readable: "Расчёт приблизительный"
+Treat savings numbers as an example explicitly labelled ПРИМЕР РАСЧЁТА, not a promise for all wallets. Do not include the wallet address or date range from the screenshot. No other text. Professional polished advertising design, not a screenshot pasted on a canvas. No outer device frame. Full bleed 16:9.

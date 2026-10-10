@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GasFree4You MCP — энергия TRON в вашем AI-агенте</title>
+  <meta name="description" content="Подключите GasFree4You к Cursor, Claude Code или Codex через MCP: цены, расчёт ресурсов USDT TRC20, баланс и заказ энергии TRON.">
+  <meta name="theme-color" content="#060912">
+  <link rel="canonical" href="https://www.gasfree4you.com/ru/mcp">
+  <meta property="og:title" content="Подключите GasFree4You к своему AI-агенту">
+  <meta property="og:description" content="Цены и расчёт без ключа. Баланс и заказ энергии TRON — с API-ключом.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.gasfree4you.com/ru/mcp">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=stingray-1">
+  <link rel="stylesheet" href="/assets/mcp/page.css">
+  <script src="/assets/mcp/page.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="/?lang=ru" aria-label="GasFree4You — главная"><img src="/favicon.svg?v=stingray-1" width="34" height="34" alt="">GasFree<span>4You</span></a>
+      <nav aria-label="Основная навигация"><a href="#capabilities">Возможности</a><a href="#connect">Подключение</a><a href="#developers">Разработчикам</a></nav>
+      <a class="button small" href="https://user.gasfree4you.com/">Открыть приложение <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow"><span class="dot"></span> GASFREE4YOU × MCP</p>
+        <h1 id="hero-title">Подключите GasFree4You к своему <span>AI-агенту</span></h1>
+        <p class="lead">Узнавайте цены, рассчитывайте ресурсы для перевода USDT TRC20 и заказывайте энергию TRON прямо из AI-ассистента.</p>
+        <div class="actions"><a class="button primary" href="#connect">Подключить агента <span aria-hidden="true">↗</span></a><a class="button" href="#capabilities">Посмотреть возможности</a></div>
+        <p class="fine">Цены и расчёт доступны без ключа.<br>Для баланса и заказов подключите API-ключ.</p>
+      </div>
+      <div class="agent-card" aria-label="Схема работы MCP">
+        <div class="agent-top"><span class="dot"></span><span>Ваш AI-ассистент</span><span class="mono muted">MCP</span></div>
+        <div class="message">Какие сейчас цены на энергию TRON в GasFree4You?</div>
+        <div class="tool-call"><span aria-hidden="true">↳</span> get_energy_prices<span>()</span></div>
+        <div class="agent-response"><span class="response-icon" aria-hidden="true">↗</span><div><strong>Публичный прайс сервиса</strong><p>Агент получает цены напрямую<br>из GasFree4You.</p></div></div>
+        <div class="connection-line"><span>AI-агент</span><i aria-hidden="true"></i><span>MCP</span><i aria-hidden="true"></i><span>GasFree4You</span></div>
+        <p class="demo-note">Схема запроса · не текущие данные</p>
+      </div>
+    </section>
+    <div class="facts"><span><b>4</b> инструмента</span><span><b>Streamable HTTP</b> транспорт</span><span><b>Без ключа</b> для первых запросов</span></div>
+
+    <section id="capabilities" class="section" aria-labelledby="capabilities-title">
+      <div class="section-head"><div><p class="eyebrow">ВОЗМОЖНОСТИ</p><h2 id="capabilities-title">От вопроса — к действию</h2></div><p>Используйте привычный чат.<br>Агент обратится к нужному инструменту.</p></div>
+      <div class="capabilities">
+        <article class="feature"><span class="feature-number">01 / ЦЕНЫ</span><h3>Узнайте стоимость энергии</h3><p>Публичные цены пакетов GasFree4You. Фактическая цена вашего аккаунта может отличаться.</p><span class="badge">Без API-ключа</span></article>
+        <article class="feature"><span class="feature-number">02 / РАСЧЁТ</span><h3>Оцените ресурсы перевода</h3><p>Расчёт ресурсов и комиссии для USDT TRC20 по адресам отправителя и получателя. Не отправляет средства.</p><span class="badge">Без API-ключа</span></article>
+        <article class="feature"><span class="feature-number">03 / АККАУНТ</span><h3>Проверьте баланс</h3><p>Баланс вашего аккаунта GasFree4You и адрес для его пополнения — прямо в диалоге.</p><span class="badge keyed">С API-ключом</span></article>
+        <article class="feature"><span class="feature-number">04 / ЭНЕРГИЯ</span><h3>Закажите один пакет</h3><p>Энергия для указанного TRON-адреса. Один вызов — один пакет, без дополнительного пополнения TRX.</p><span class="badge paid">Платное действие</span> <span class="key-label">С API-ключом</span></article>
+      </div>
+    </section>
+
+    <section id="connect" class="section" aria-labelledby="connect-title">
+      <div class="section-head"><div><p class="eyebrow">ПОДКЛЮЧЕНИЕ</p><h2 id="connect-title">Настройте один раз.<br>Спрашивайте в своём AI-клиенте.</h2></div></div>
+      <div class="setup-grid">
+        <div class="setup-intro">
+          <ol class="steps">
+            <li><h3>Выберите режим</h3><p>Начните без ключа с цен и расчёта. Для баланса и заказов создайте ключ в разделе <strong>API</strong> нашего приложения.</p><a href="https://user.gasfree4you.com/">Открыть приложение <span aria-hidden="true">↗</span></a></li>
+            <li><h3>Добавьте конфигурацию</h3><p>Выберите свой клиент и скопируйте его настройки. В режиме с ключом замените <code>YOUR_API_KEY</code> на свой ключ только в настройках клиента.</p></li>
+            <li><h3>Проверьте подключение</h3><p>Убедитесь, что клиент видит четыре инструмента. Начните с вопроса о ценах — он не создаёт заказ.</p></li>
+          </ol>
+          <div class="endpoint"><span class="eyebrow">STREAMABLE HTTP</span><code id="endpoint">https://www.gasfree4you.com/mcp</code><button class="copy text-button" type="button" data-copy="endpoint" aria-label="Скопировать адрес MCP">Скопировать адрес <span aria-hidden="true">⧉</span></button></div>
+        </div>
+        <div class="config-card">
+          <div class="tabs" role="tablist" aria-label="AI-клиент">
+            <button type="button" role="tab" id="tab-cursor" aria-controls="panel-cursor" aria-selected="true" tabindex="0">Cursor</button>
+            <button type="button" role="tab" id="tab-claude" aria-controls="panel-claude" aria-selected="false" tabindex="-1">Claude Code</button>
+            <button type="button" role="tab" id="tab-codex" aria-controls="panel-codex" aria-selected="false" tabindex="-1">Codex</button>
+          </div>
+          <fieldset class="auth-mode"><legend>Режим подключения</legend><label><input type="radio" name="auth" value="public" checked> Без ключа</label><label><input type="radio" name="auth" value="key"> С API-ключом</label></fieldset>
+          <p class="auth-hint" id="auth-hint">Доступны цены и расчёт ресурсов. Аккаунт не нужен.</p>
+          <div id="panel-cursor" role="tabpanel" aria-labelledby="tab-cursor" tabindex="0" class="client-panel">
+            <h3>Личная конфигурация Cursor</h3>
+            <p>Добавьте сервер в <code>~/.cursor/mcp.json</code>. Если файл уже существует, добавьте запись <code>gasfree4you</code> в его объект <code>mcpServers</code>, сохранив остальные серверы.</p>
+            <div class="code-head"><span>mcp.json</span><button type="button" class="copy" data-copy="config-cursor" aria-label="Скопировать конфигурацию Cursor">Скопировать <span aria-hidden="true">⧉</span></button></div>
+            <pre><code id="config-cursor">{
+  "mcpServers": {
+    "gasfree4you": {
+      "url": "https://www.gasfree4you.com/mcp"
+    }
+  }
+}</code></pre>
+            <p class="client-check">Сохраните файл, перезапустите Cursor и проверьте сервер в настройках MCP.</p>
+            <a class="doc-link" href="https://cursor.com/docs/mcp" target="_blank" rel="noopener noreferrer">Документация Cursor ↗</a>
+          </div>
+          <div id="panel-claude" role="tabpanel" aria-labelledby="tab-claude" tabindex="0" class="client-panel" hidden>
+            <h3>Добавление через Claude Code CLI</h3><p>Выполните команду в терминале. Область <code>user</code> делает сервер доступным в ваших проектах.</p>
+            <div class="code-head"><span>Терминал</span><button type="button" class="copy" data-copy="config-claude" aria-label="Скопировать команду Claude Code">Скопировать <span aria-hidden="true">⧉</span></button></div>
+            <pre><code id="config-claude">claude mcp add --transport http --scope user gasfree4you https://www.gasfree4you.com/mcp</code></pre>
+            <p class="client-check">Откройте новую сессию Claude Code и выполните <code>/mcp</code> для проверки подключения. При смене режима сначала удалите прежнюю запись: <code>claude mcp remove --scope user gasfree4you</code>, затем добавьте её заново.</p>
+            <a class="doc-link" href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener noreferrer">Документация Claude Code ↗</a>
+          </div>
+          <div id="panel-codex" role="tabpanel" aria-labelledby="tab-codex" tabindex="0" class="client-panel" hidden>
+            <h3>Конфигурация Codex</h3><p>Добавьте блок в <code>~/.codex/config.toml</code>. Если запись <code>gasfree4you</code> уже есть, обновите её, не создавая дубликат.</p>
+            <div class="code-head"><span>config.toml</span><button type="button" class="copy" data-copy="config-codex" aria-label="Скопировать конфигурацию Codex">Скопировать <span aria-hidden="true">⧉</span></button></div>
+            <pre><code id="config-codex">[mcp_servers.gasfree4you]
+url = "https://www.gasfree4you.com/mcp"</code></pre>
+            <p class="client-check">Перезапустите клиент. В Codex CLI выполните <code>/mcp</code> и проверьте доступные инструменты.</p>
+            <a class="doc-link" href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener noreferrer">Документация Codex ↗</a>
+          </div>
+          <p class="config-note">Используйте клиент с поддержкой Streamable HTTP и пользовательских HTTP-заголовков. API-ключ настраивается вручную, без OAuth.</p>
+        </div>
+      </div>
+      <p class="security-note">Передавайте ключ только в заголовке подключения: <code>X-API-Key: YOUR_API_KEY</code> либо <code>Authorization: Bearer YOUR_API_KEY</code>. Используйте один из них. Не отправляйте ключ в чат, URL или параметры инструментов и не публикуйте конфигурацию с ключом.</p>
+      <noscript><p class="notice">Для переключения клиентов и копирования включите JavaScript. Выше доступна конфигурация Cursor без ключа; её можно скопировать вручную.</p></noscript>
+    </section>
+
+    <section id="examples" class="section" aria-labelledby="examples-title">
+      <div class="section-head"><div><p class="eyebrow">НАЧНИТЕ С ДИАЛОГА</p><h2 id="examples-title">Попробуйте спросить агента</h2></div><p>Скопируйте запрос в свой AI-клиент.<br>Замените адреса в квадратных скобках.</p></div>
+      <div class="prompts">
+        <article class="prompt"><span class="badge">Без API-ключа</span><p id="prompt-prices">Какие сейчас цены на энергию TRON в GasFree4You?</p><button type="button" class="copy text-button" data-copy="prompt-prices" aria-label="Скопировать запрос о ценах">Скопировать запрос <span aria-hidden="true">⧉</span></button></article>
+        <article class="prompt"><span class="badge">Без API-ключа</span><p id="prompt-estimate">Оцени ресурсы для перевода USDT TRC20 с адреса [отправитель] на адрес [получатель].</p><button type="button" class="copy text-button" data-copy="prompt-estimate" aria-label="Скопировать запрос расчёта">Скопировать запрос <span aria-hidden="true">⧉</span></button></article>
+        <article class="prompt"><span class="badge keyed">С API-ключом</span><p id="prompt-balance">Покажи мой баланс GasFree4You и адрес для пополнения.</p><button type="button" class="copy text-button" data-copy="prompt-balance" aria-label="Скопировать запрос о балансе">Скопировать запрос <span aria-hidden="true">⧉</span></button></article>
+        <article class="prompt paid-prompt"><span class="badge paid">Платное действие</span><p id="prompt-order">Закажи один пакет на 65 000 энергии для адреса [адрес].</p><button type="button" class="copy text-button" data-copy="prompt-order" aria-label="Скопировать запрос платного заказа">Скопировать запрос <span aria-hidden="true">⧉</span></button></article>
+      </div>
+    </section>
+
+    <aside class="notice" aria-labelledby="order-note-title"><div class="notice-mark" aria-hidden="true">!</div><div><h2 id="order-note-title">Важно при заказе</h2><p>Заказ энергии списывает средства с баланса вашего аккаунта. Подключайте ключ только к доверенным приложениям и проверяйте адрес и параметры покупки.</p><p>Если агент сообщает, что результат заказа неизвестен или истекло время ожидания, сначала проверьте историю операций в GasFree4You. Не создавайте новый заказ, пока не выяснен результат предыдущего.</p><p>Поведение подтверждения зависит от AI-клиента и его настроек: отдельное окно подтверждения может не появиться.</p><a href="https://user.gasfree4you.com/">Открыть GasFree4You ↗</a></div></aside>
+
+    <section id="developers" class="section">
+      <details class="developer-details"><summary><span><span class="eyebrow">MCP REFERENCE</span><span class="summary-title">Для разработчиков</span></span><span class="expand" aria-hidden="true">+</span></summary>
+        <div class="developer-body"><p>Четыре существующих инструмента. Авторизация задаётся в HTTP-заголовках подключения, а не в аргументах вызова.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Таблица инструментов MCP"><table><caption class="sr-only">Инструменты и параметры MCP GasFree4You</caption><thead><tr><th scope="col">Инструмент</th><th scope="col">Параметры</th><th scope="col">Доступ</th></tr></thead><tbody>
+            <tr><td><code>estimate_transfer_fee</code></td><td><code>sender_wallet</code>, <code>recipient_wallet</code></td><td>Без ключа</td></tr>
+            <tr><td><code>get_energy_prices</code></td><td>Нет</td><td>Без ключа</td></tr>
+            <tr><td><code>get_account_balance</code></td><td>Нет</td><td>API-ключ</td></tr>
+            <tr><td><code>order_energy</code></td><td><code>wallet</code>, <code>energy</code>, <code>request_id</code></td><td>API-ключ · платно</td></tr>
+          </tbody></table></div>
+          <ul class="developer-notes"><li><code>energy</code>: <code>65000</code>, <code>130000</code> или <code>131000</code>. Значение <code>130000</code> нормализуется в <code>131000</code>.</li><li>Один вызов заказа покупает один пакет, без дополнительного пополнения TRX. Длительность определяется сервисом.</li><li><code>request_id</code>: уникальный UUID для нового заказа. При повторе того же заказа нужно сохранять этот UUID и параметры.</li><li><code>ORDER_PENDING_OR_UNKNOWN</code>: проверить историю в приложении или обратиться в поддержку; не повторять с новым UUID.</li><li><code>API_KEY_REQUIRED</code>: настроить ключ в заголовках подключения.</li></ul>
+          <p class="reference-limit">MCP не предоставляет историю и отслеживание заказов, проверку адресов на санкции или отдельные ончейн-запросы. Инструмент цен возвращает публичный прайс, а не точную персональную стоимость перед заказом.</p>
+        </div>
+      </details>
+    </section>
+  </main>
+  <footer class="wrap footer"><a class="brand" href="/?lang=ru">GasFree<span>4You</span></a><span>Энергия TRON. В вашем рабочем процессе.</span><nav aria-label="Ссылки в подвале"><a href="/api.html">API</a><a href="/ru/blog">Блог</a><a href="/privacy.html">Конфиденциальность</a></nav></footer>
+  <div id="copy-status" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
