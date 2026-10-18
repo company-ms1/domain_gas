@@ -1,0 +1,16 @@
+Generated using the built-in image_gen tool.
+
+Use case: text-localization. Create ONE Indonesian version of this GasFree4you Telegram ad. Preserve the reference's 16:9 landscape layout, dark navy background, mint glow, indigo CTA, brand, large savings amount and decorative bars. Replace all Russian text with idiomatic Indonesian, exact copy below. Reflow text for professional readable typography without clipping. All letters sharp.
+Brand: "GasFree4you"
+Large left headline: "Berapa TRX yang bisa Anda hemat?"
+Left supporting text: "Periksa dompet Anda selama 30 hari terakhir"
+CTA: "Hitung penghematan →"
+Small reassurance below: "Cukup alamat publik. Tanpa menghubungkan dompet."
+Bottom URL: "gasfree4you.com"
+Right card top label: "CONTOH PERHITUNGAN"
+Right card heading: "Anda bisa menghemat"
+Large mint amount using Indonesian number formatting: "≈ 1.180,23"
+Currency: "TRX"
+Mint badge: "Hemat 59,38%"
+Right small footnote: "Perkiraan penghematan"
+Preserve savings as an explicitly labelled example, not a guarantee. No other text. No Russian or English text except brand, URL and TRX. One polished finished advertisement, no variants or contact sheet.

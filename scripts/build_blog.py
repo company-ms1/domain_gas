@@ -12,6 +12,7 @@ BUY_CONTENT = ROOT / 'blog/content/buy-trx.json'
 SUB_CONTENT = ROOT / 'blog/content/subleasing.json'
 NO_TRX_CONTENT = ROOT / 'blog/content/no-trx.json'
 TRONSCAN_CONTENT = ROOT / 'blog/content/tronscan.json'
+BUSINESS_CONTENT = ROOT / 'blog/content/business-series.json'
 EXAMPLE = ROOT / 'blog/assets/tron_wallet.py'
 LANGUAGES = {'en': 'English', 'ru': 'Русский', 'es': 'Español', 'id': 'Bahasa Indonesia'}
 DOMAIN = 'https://www.gasfree4you.com'
@@ -43,6 +44,7 @@ SOURCES = {
     'ojk': ('OJK · Daftar penyelenggara', 'https://ojk.go.id/id/Fungsi-Utama/ITSK/Perizinan-ITSK-Aset-Keuangan-Digital-Aset-Kripto/Pages/Daftar-Penyelenggara-Perdagangan-Aset-Keuangan-Digital-Posisi-25-Mei-2026.aspx'),
     'bestchange': ('BestChange', 'https://www.bestchange.ru/'),
     'resource_fees': ('TRON · Paying for resources', 'https://developers.tron.network/docs/paying-for-resources'),
+    'delegation': ('TRON · Delegating resources', 'https://developers.tron.network/docs/delegation'),
     'subleasing': ('GasFree4you · Subleasing', '../../sub_rent.html'),
 }
 
@@ -113,10 +115,16 @@ def cta(d):
     return f'''<aside class="cta"><div><h2>{e(d['ctaTitle'])}</h2><p>{e(d['ctaText'])}</p></div><a class="button" href="{e(d.get('ctaHref', '../../index.html'))}">{e(d.get('ctaButton', d['service']))} ↗</a></aside>'''
 
 
-def home(d, second, third, fourth, fifth):
+def home(d, second, third, fourth, fifth, business):
     route = ''.join(f'<div class="diagram-row"><b>0{i}</b><span>{e(s)}</span></div>' for i, s in enumerate(d['route'], 1))
     cards = ''.join(f'''<article class="card"><span class="number">0{i} / {e(category)}</span><h3>{e(title)}</h3><p>{e(desc)}</p><div class="planned">{e(d['planned'])}</div></article>''' for i, (category, title, desc) in enumerate(d['cards'], 1))
     topics = ''.join(f'<span>{e(t)}</span>' for t in d['topics'])
+    business_cards = ''.join(
+        f'<article class="card"><div class="meta"><span class="tag">{e(item["category"])}</span><span>·</span><span>{e(item["time"])}</span></div>'
+        f'<h3><a href="{e(filename)}">{e(item["title"])}</a></h3><p>{e(item["description"])}</p>'
+        f'<a class="read" href="{e(filename)}">{e(d["read"])} →</a></article>'
+        for filename, item in business
+    )
     return f'''
 <section class="hero"><div class="eyebrow">{e(d['eyebrow'])}</div><h1>{e(d['headline'])}</h1><p>{e(d['intro'])}</p></section>
 <section aria-labelledby="start"><div class="section-heading"><h2 id="start">{e(d['featured'])}</h2><span>{e(d['count'])}</span></div>
@@ -126,6 +134,7 @@ def home(d, second, third, fourth, fifth):
 <section aria-labelledby="more"><div class="section-heading"><h2 id="more">{e(d['moreArticles'])}</h2></div>
 <div class="more-grid"><article class="card"><div class="meta"><span class="tag">{e(fifth['category'])}</span><span>·</span><span>{e(fifth['time'])}</span></div><h3><a href="{TRONSCAN_ARTICLE}">{e(fifth['title'])}</a></h3><p>{e(fifth['description'])}</p><a class="read" href="{TRONSCAN_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(fourth['category'])}</span><span>·</span><span>{e(fourth['time'])}</span></div><h3><a href="{NO_TRX_ARTICLE}">{e(fourth['title'])}</a></h3><p>{e(fourth['description'])}</p><a class="read" href="{NO_TRX_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article>
 <article class="card partner-card"><div class="meta"><span class="tag">{e(third['category'])}</span><span>·</span><span>{e(third['time'])}</span></div><h3><a href="{SUB_ARTICLE}">{e(third['title'])}</a></h3><p>{e(third['description'])}</p><a class="read" href="{SUB_ARTICLE}">{e(d['read'])} →</a></article></div></section>
+<section aria-labelledby="business"><div class="section-heading"><h2 id="business">{e(business[0][1]['category'])}</h2></div><div class="more-grid">{business_cards}</div></section>
 <section aria-labelledby="next"><div class="section-heading"><h2 id="next">{e(d['next'])}</h2></div><div class="grid">{cards}</div></section>
 <section aria-labelledby="topics"><div class="section-heading"><h2 id="topics">{e(d['topicsTitle'])}</h2></div><div class="topics">{topics}</div></section>
 {cta(d)}'''
@@ -237,6 +246,7 @@ def main():
     subleasing = json.loads(SUB_CONTENT.read_text())
     no_trx = json.loads(NO_TRX_CONTENT.read_text())
     tronscan = json.loads(TRONSCAN_CONTENT.read_text())
+    business_series = json.loads(BUSINESS_CONTENT.read_text())
     sitemap_entries = {}
     for lang in LANGUAGES:
         d = {**content[lang], **wallet[lang]}
@@ -244,20 +254,28 @@ def main():
         third = {**content[lang], **subleasing[lang]}
         fourth = {**content[lang], **no_trx[lang]}
         fifth = {**content[lang], **tronscan[lang]}
-        for item in (d, second, third, fourth, fifth):
+        business = [(entry['filename'], {**content[lang], **{
+            key: tronscan[lang][key] for key in (
+                'sourceLabel', 'authorLabel', 'authorName', 'publishedLabel', 'modifiedLabel'
+            )}, **entry['translations'][lang]}) for entry in business_series]
+        for item in (d, second, third, fourth, fifth, *(item for _, item in business)):
             assert date.fromisoformat(item['dateModified']) >= date.fromisoformat(item['datePublished'])
         folder = ROOT / lang / 'blog'
         folder.mkdir(parents=True, exist_ok=True)
-        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second, third, fourth, fifth)))
+        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second, third, fourth, fifth, business)))
         (folder / ARTICLE).write_text(shell(lang, d, ARTICLE, d['title'], d['description'], article(d)))
         (folder / BUY_ARTICLE).write_text(shell(lang, second, BUY_ARTICLE, second['title'], second['description'], article(second)))
         (folder / SUB_ARTICLE).write_text(shell(lang, third, SUB_ARTICLE, third['title'], third['description'], article(third)))
         (folder / NO_TRX_ARTICLE).write_text(shell(lang, fourth, NO_TRX_ARTICLE, fourth['title'], fourth['description'], article(fourth)))
         (folder / TRONSCAN_ARTICLE).write_text(shell(lang, fifth, TRONSCAN_ARTICLE, fifth['title'], fifth['description'], article(fifth)))
-        for filename, modified in [('index.html', max(d['dateModified'], second['dateModified'], third['dateModified'], fourth['dateModified'], fifth['dateModified'])), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified']), (SUB_ARTICLE, third['dateModified']), (NO_TRX_ARTICLE, fourth['dateModified']), (TRONSCAN_ARTICLE, fifth['dateModified'])]:
+        for filename, item in business:
+            (folder / filename).write_text(shell(lang, item, filename, item['title'], item['description'], article(item)))
+            sitemap_entries[f'{DOMAIN}/{lang}/blog/{filename}'] = item['dateModified']
+        latest = max(item['dateModified'] for item in (d, second, third, fourth, fifth, *(item for _, item in business)))
+        for filename, modified in [('index.html', latest), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified']), (SUB_ARTICLE, third['dateModified']), (NO_TRX_ARTICLE, fourth['dateModified']), (TRONSCAN_ARTICLE, fifth['dateModified'])]:
             sitemap_entries[f'{DOMAIN}/{lang}/blog/{filename}'] = modified
     update_sitemap(sitemap_entries)
-    print('Built 24 pages: a blog index and five articles in each language.')
+    print(f'Built {len(LANGUAGES) * (6 + len(business_series))} pages: a blog index and {5 + len(business_series)} articles in each language.')
 
 
 if __name__ == '__main__':
