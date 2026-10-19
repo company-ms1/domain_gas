@@ -2,23 +2,7 @@
         <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1109761751454293');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1109761751454293&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+
         
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=stingray-1" sizes="16x16 32x32 48x48 64x64">
@@ -1745,12 +1729,29 @@ header.nav .nav-right>.btn{white-space:nowrap}
   .site-uptime-note{font-size:11px;color:var(--text-muted)}
   .site-uptime iframe{display:block;flex:0 0 181px;width:181px;height:24px;border:0;color-scheme:dark}
 </style>
+
+<style id="cookie-styles">
+  body{padding-bottom:var(--cookie-space,0px)}
+  #cookie-banner[hidden]{display:none}
+  #cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:1000;background:#10152b;border-top:1px solid #56617e;padding:18px max(20px,calc((100vw - 1180px)/2));max-height:45vh;overflow:auto;box-shadow:0 -10px 40px #0005;color:#f4f6fc;font-size:14px}
+  #cookie-banner p{margin:0 0 12px;max-width:1050px}
+  .cookie-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  [data-cookie-ui] button{font:inherit;color:#f4f6fc;background:#202c52;border:1px solid #8091c0;border-radius:10px;padding:10px 16px;cursor:pointer;line-height:1.4}
+  [data-cookie-ui] a{color:#a9bcff;text-decoration:underline}
+  [data-cookie-ui] :focus-visible,#cookie-settings-link:focus-visible{outline:3px solid #57e8a6;outline-offset:4px}
+  #cookie-dialog{margin:auto;width:min(540px,calc(100% - 32px));max-height:85dvh;overflow:auto;padding:26px;border:1px solid #8091c0;border-radius:20px;background:#10152b;color:#f4f6fc;font:inherit}
+  #cookie-dialog::backdrop{background:#02050bd9}
+  #cookie-dialog h2{font-size:24px;margin-bottom:16px}
+  #cookie-dialog label{display:flex;gap:12px;align-items:center;font-weight:600;margin-top:18px}
+  #cookie-dialog input{width:20px;height:20px;accent-color:#5670ff}
+  #cookie-dialog p{font-size:14px;color:#b9c2d9;margin:8px 0 18px}
+  #cookie-dialog .cookie-actions{margin-top:20px}
+  body:has(#cookie-banner:not([hidden])) .float-contact{bottom:calc(var(--cookie-space,0px) + 16px)}
+  @media(max-width:600px){#cookie-banner{padding:14px 16px;font-size:13px}.cookie-actions button{flex:1 1 130px}#cookie-dialog{padding:20px}}
+</style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB9RFKFH"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
 <header class="nav">
   <div class="nav-inner">
     <a href="#top" class="logo">GasFree4you <span class="dot"></span></a>
@@ -2273,6 +2274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="en/blog/index.html" data-blog-link>Blog</a>
         <a href="https://www.gasfree4you.com/terms.html">Terms</a>
         <a href="https://www.gasfree4you.com/privacy.html">Privacy</a>
+        <a href="#cookie-settings" data-cookie-ui id="cookie-settings-link">Cookie settings</a>
         <a href="https://www.gasfree4you.com/refund.html">Refund</a>
         <a href="https://www.gasfree4you.com/legal.html">Legal</a>
       </div>
@@ -2572,7 +2574,7 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
     const textMap = landingLang === "ru" ? LANDING_RU : landingLang === "id" ? LANDING_ID : landingLang === "es" ? LANDING_ES : null;
     const attrMap = landingLang === "ru" ? LANDING_ATTR_RU : landingLang === "id" ? LANDING_ATTR_ID : landingLang === "es" ? LANDING_ATTR_ES : null;
     const visit = node => {
-      if (node.nodeType !== Node.TEXT_NODE || node.parentElement?.closest("script,style,noscript,.lang-switcher,.fee-card")) return;
+      if (node.nodeType !== Node.TEXT_NODE || node.parentElement?.closest("script,style,noscript,.lang-switcher,.fee-card,[data-cookie-ui]")) return;
       const value = node.nodeValue.trim();
       if (landingLang === "en" && landingOriginalText.has(node)) {
         node.nodeValue = node.nodeValue.replace(value,landingOriginalText.get(node)); landingOriginalText.delete(node); return;
@@ -3215,5 +3217,164 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
 })();
 </script>
 
+
+<section id="cookie-banner" data-cookie-ui hidden aria-label="Cookies">
+  <p data-cookie-text="intro"></p>
+  <div class="cookie-actions">
+    <button type="button" data-cookie-action="all" data-cookie-text="all"></button>
+    <button type="button" data-cookie-action="necessary" data-cookie-text="only"></button>
+    <button type="button" data-cookie-action="settings" data-cookie-text="settings"></button>
+    <a href="privacy.html#cookies" data-cookie-text="policy"></a>
+  </div>
+</section>
+<dialog id="cookie-dialog" data-cookie-ui aria-labelledby="cookie-title">
+  <h2 id="cookie-title" data-cookie-text="settings"></h2>
+  <label><input type="checkbox" checked disabled aria-describedby="cookie-necessary-description"><span data-cookie-text="necessary"></span></label>
+  <p id="cookie-necessary-description" data-cookie-text="necessaryDescription"></p>
+  <label><input id="cookie-marketing" type="checkbox" aria-describedby="cookie-marketing-description"><span data-cookie-text="marketing"></span></label>
+  <p id="cookie-marketing-description" data-cookie-text="marketingDescription"></p>
+  <a href="privacy.html#cookies" data-cookie-text="policy"></a>
+  <div class="cookie-actions">
+    <button type="button" data-cookie-action="save" data-cookie-text="save"></button>
+    <button type="button" data-cookie-action="close" data-cookie-text="close"></button>
+  </div>
+</dialog>
+
+<script>
+/* Audit 2026-10-19 (scope: index.html + privacy.html only):
+   Homepage: direct Meta Pixel 1109761751454293, now marketing-gated.
+   GTM-MB9RFKFH: former noscript iframe removed; publicly fetched container
+   resource had tags:[], predicates:[], rules:[] on the audit date.
+   No direct analytics on homepage. Unchanged other pages contain Metrica
+   (tr, id, ph, vn, how-it-works, refund, instant / instant_new and legacy
+   index_01/02/03); instant_new and legacy index_02/03 also have Google Ads,
+   legacy index_02 has GA + another GTM; landing has a guarded fbq event.
+   Browser QA: isolated Chrome, external responses mocked (not a production
+   delivery test). Initial/refusal/reload/close: zero tracker requests.
+   Marketing/accept all: one Pixel script per document and one queued PageView;
+   repeat save: no duplicate. Withdrawal: accessible _fbp removed, reload and
+   no new tracker request. Expiry/version changes prompt again. Storage denied:
+   initially off, explicit memory-only consent works, next load off. EN/RU/ES/ID
+   and 390px viewport checked; native dialog Escape works; no JS exceptions.
+   Cookie services: only audited direct integrations belong here. Do not load an
+   unaudited GTM container. When services/purposes change, bump POLICY_VERSION,
+   update translations + privacy.html#cookies, and test all consent paths. */
+(() => {
+  'use strict';
+  const KEY = 'gasfree4you_cookie_consent', POLICY_VERSION = '2026-10-19.1';
+  const messages = {"en": {"intro": "We use necessary cookies to operate the website. With your consent, we also use advertising technologies to measure advertising effectiveness. You can accept all cookies, keep only necessary cookies, or customise your choice.", "all": "Accept all", "only": "Necessary only", "settings": "Cookie settings", "policy": "Cookies Policy", "necessary": "Necessary — always on", "necessaryDescription": "GasFree4you: stores your cookie choice for 6 months and your selected language until you clear browser storage.", "marketing": "Marketing", "marketingDescription": "Meta (Facebook) Pixel: measures advertising effectiveness and may support personalised ads. Off until you consent.", "save": "Save choice", "close": "Close without saving"}, "ru": {"intro": "Мы используем необходимые cookies для работы сайта. С вашего согласия мы также используем рекламные технологии для оценки эффективности рекламы. Вы можете принять все cookies, оставить только необходимые или настроить выбор.", "all": "Принять все", "only": "Только необходимые", "settings": "Настройки cookies", "policy": "Политика cookies", "necessary": "Необходимые — всегда включены", "necessaryDescription": "GasFree4you: хранит ваш выбор cookies 6 месяцев и выбранный язык до очистки хранилища браузера.", "marketing": "Маркетинг", "marketingDescription": "Meta (Facebook) Pixel: оценка эффективности рекламы и возможная персонализация объявлений. Выключен до вашего согласия.", "save": "Сохранить выбор", "close": "Закрыть без сохранения"}, "es": {"intro": "Utilizamos cookies necesarias para que el sitio funcione. Con tu consentimiento, también utilizamos tecnologías publicitarias para medir la eficacia de la publicidad. Puedes aceptar todas las cookies, conservar solo las necesarias o personalizar tu elección.", "all": "Aceptar todas", "only": "Solo necesarias", "settings": "Ajustes de cookies", "policy": "Política de cookies", "necessary": "Necesarias — siempre activas", "necessaryDescription": "GasFree4you: guarda tu elección durante 6 meses y el idioma elegido hasta que borres el almacenamiento del navegador.", "marketing": "Marketing", "marketingDescription": "Meta (Facebook) Pixel: mide la eficacia publicitaria y puede permitir anuncios personalizados. Desactivado hasta que des tu consentimiento.", "save": "Guardar elección", "close": "Cerrar sin guardar"}, "id": {"intro": "Kami menggunakan cookie yang diperlukan agar situs berfungsi. Dengan persetujuan Anda, kami juga menggunakan teknologi periklanan untuk mengukur efektivitas iklan. Anda dapat menerima semua cookie, hanya menyimpan yang diperlukan, atau mengatur pilihan.", "all": "Terima semua", "only": "Hanya yang diperlukan", "settings": "Pengaturan cookie", "policy": "Kebijakan cookie", "necessary": "Diperlukan — selalu aktif", "necessaryDescription": "GasFree4you: menyimpan pilihan cookie selama 6 bulan dan bahasa pilihan hingga penyimpanan browser dihapus.", "marketing": "Pemasaran", "marketingDescription": "Meta (Facebook) Pixel: mengukur efektivitas iklan dan dapat mendukung iklan yang dipersonalisasi. Nonaktif hingga Anda menyetujui.", "save": "Simpan pilihan", "close": "Tutup tanpa menyimpan"}};
+  const banner = document.getElementById('cookie-banner');
+  const dialog = document.getElementById('cookie-dialog');
+  const marketing = document.getElementById('cookie-marketing');
+  let pixelStarted = false, expiryTimer, returnFocus;
+  function readChoice() {
+    try {
+      const c = JSON.parse(localStorage.getItem(KEY));
+      const now = Date.now();
+      if (c && c.version === POLICY_VERSION && c.necessary === true && c.analytics === false &&
+          typeof c.marketing === 'boolean' && Number.isFinite(c.chosenAt) &&
+          Number.isFinite(c.expiresAt) && c.chosenAt <= now && c.expiresAt > now &&
+          c.expiresAt > c.chosenAt && c.expiresAt - c.chosenAt <= 184 * 86400000) return c;
+    } catch (_) {}
+    return null;
+  }
+  let choice = readChoice();
+  function removeMarketingCookies() {
+    const parts = location.hostname.split('.');
+    const domains = ['', ...parts.map((_, i) => parts.slice(i).join('.'))];
+    const paths = ['/', ...location.pathname.split('/').map((_, i, a) => a.slice(0, i + 1).join('/') || '/')];
+    for (const name of document.cookie.split(';').map(c => c.trim().split('=')[0])) {
+      if (!/^_fb[pc]$/.test(name)) continue;
+      for (const domain of domains) for (const path of paths) {
+        document.cookie = name + '=; Max-Age=0; path=' + path + (domain ? '; domain=' + domain : '') + '; SameSite=Lax';
+      }
+    }
+  }
+  function startMarketing() {
+    if (pixelStarted || !choice?.marketing) return;
+    pixelStarted = true;
+    // Consent is origin-scoped in localStorage and is never read by the portal.
+    const n = window.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+    window._fbq = n; n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+    n('set', 'autoConfig', false, '1109761751454293');
+    n('init', '1109761751454293');
+    n('consent', 'grant');
+    n('track', 'PageView');
+    const script = document.createElement('script'); script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js'; document.head.appendChild(script);
+  }
+  function reserveSpace() {
+    document.body.style.setProperty('--cookie-space', banner.hidden ? '0px' : banner.getBoundingClientRect().height + 'px');
+  }
+  function sync() {
+    clearTimeout(expiryTimer);
+    banner.hidden = !!choice;
+    reserveSpace();
+    if (choice?.marketing) startMarketing(); else removeMarketingCookies();
+    if (choice) expiryTimer = setTimeout(checkExpiry, Math.min(choice.expiresAt - Date.now(), 2147483647));
+  }
+  function checkExpiry() {
+    if (choice && choice.expiresAt <= Date.now()) {
+      choice = null;
+      stopMarketing();
+    }
+    sync();
+  }
+  function stopMarketing() {
+    if (pixelStarted && window.fbq) window.fbq('consent', 'revoke');
+    removeMarketingCookies();
+    if (pixelStarted) location.reload();
+  }
+  function save(allow) {
+    const now = new Date(), expires = new Date(now);
+    expires.setMonth(expires.getMonth() + 6);
+    choice = {necessary:true, analytics:false, marketing:allow, chosenAt:now.getTime(), expiresAt:expires.getTime(), version:POLICY_VERSION};
+    // Memory-only consent remains valid for this page if browser storage is blocked.
+    try { localStorage.setItem(KEY, JSON.stringify(choice)); } catch (_) {}
+    if (dialog.open) dialog.close();
+    else if (banner.contains(document.activeElement)) document.getElementById('cookie-settings-link').focus({preventScroll:true});
+    if (!allow) stopMarketing();
+    sync();
+  }
+  function openSettings() {
+    returnFocus = document.activeElement;
+    marketing.checked = choice?.marketing === true;
+    if (!dialog.open) dialog.showModal();
+  }
+  function translate() {
+    const t = messages[document.documentElement.lang] || messages.en;
+    document.querySelectorAll('[data-cookie-text]').forEach(el => el.textContent = t[el.dataset.cookieText]);
+    document.getElementById('cookie-settings-link').textContent = t.settings;
+    banner.setAttribute('aria-label', t.settings);
+    reserveSpace();
+  }
+  document.querySelectorAll('[data-cookie-action]').forEach(button => button.addEventListener('click', () => {
+    switch (button.dataset.cookieAction) {
+      case 'all': save(true); break;
+      case 'necessary': save(false); break;
+      case 'save': save(marketing.checked); break;
+      case 'settings': openSettings(); break;
+      case 'close': dialog.close(); break;
+    }
+  }));
+  dialog.addEventListener('close', () => {
+    const target = banner.hidden && banner.contains(returnFocus) ? document.getElementById('cookie-settings-link') : returnFocus;
+    target?.focus({preventScroll:true});
+  });
+  document.getElementById('cookie-settings-link').addEventListener('click', event => { event.preventDefault(); openSettings(); });
+  document.addEventListener('landinglanguagechange', translate);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) checkExpiry(); });
+  window.addEventListener('storage', event => {
+    if (event.key !== KEY && event.key !== null) return;
+    choice = readChoice();
+    if (!choice?.marketing) stopMarketing();
+    sync();
+  });
+  window.addEventListener('pageshow', event => { if (event.persisted) { choice = readChoice(); if (!choice?.marketing) stopMarketing(); sync(); } });
+  new ResizeObserver(reserveSpace).observe(banner);
+  translate(); sync();
+  if (location.hash === '#cookie-settings') openSettings();
+})();
+</script>
 </body>
 </html>
