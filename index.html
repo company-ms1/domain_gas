@@ -469,6 +469,25 @@
     .proof-grid{grid-template-columns:1fr;}
   }
 
+  /* ---------- WHY GASFREE4YOU ---------- */
+  .why-section{padding:56px 0 72px;border-top:1px solid var(--border);scroll-margin-top:100px}
+  .why-heading{margin-bottom:26px}
+  .why-heading h2{font-family:var(--font-display);font-size:clamp(26px,3vw,36px);line-height:1.2;letter-spacing:-.025em}
+  .why-heading > p{margin-top:10px;color:#b4bdd5;font-size:16px}
+  .why-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .why-card{--why-accent:var(--mint);--why-tint:rgba(87,232,166,.1);padding:26px;border:1px solid var(--border-strong);border-radius:20px;background:linear-gradient(145deg,var(--why-tint),transparent 65%),var(--surface)}
+  .why-indigo{--why-accent:#92a3ff;--why-tint:rgba(86,112,255,.12)}
+  .why-violet{--why-accent:#b69dff;--why-tint:rgba(155,123,255,.12)}
+  .why-amber{--why-accent:var(--amber);--why-tint:rgba(243,185,77,.1)}
+  .why-coral{--why-accent:#ff9696;--why-tint:rgba(255,107,107,.1)}
+  .why-featured{border-color:rgba(87,232,166,.42);background:linear-gradient(145deg,rgba(87,232,166,.16),rgba(87,232,166,.025)),var(--surface)}
+  .why-icon{display:grid;place-items:center;width:44px;height:44px;margin-bottom:18px;border-radius:13px;color:var(--why-accent);background:var(--why-tint)}
+  .why-icon svg{width:25px;height:25px}
+  .why-card h3{font-family:var(--font-display);font-size:20px;line-height:1.3;letter-spacing:-.015em;margin-bottom:10px;overflow-wrap:anywhere}
+  .why-card p{font-size:15px;line-height:1.65;color:#b4bdd5}
+  @media(max-width:980px){.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:600px){.why-section{padding-bottom:48px}.why-grid{grid-template-columns:1fr;gap:12px}.why-card{padding:22px}.why-icon{margin-bottom:14px}.why-heading h2{font-size:28px}}
+
   /* ---------- LAYER SECTIONS ---------- */
   .layer-section{
     padding:56px 0;
@@ -1782,7 +1801,7 @@ header.nav .nav-right>.btn{white-space:nowrap}
       <a href="https://user.gasfree4you.com/?utm_source=landing&amp;utm_medium=cta&amp;utm_campaign=operational_layer&amp;utm_content=nav_open_app" class="btn btn-primary btn-sm">Open the app</a>
     </div>
   </div>
-<div class="mega-panel" id="products-menu" hidden><div class="mega-grid"><section class="mega-group"><h3>Energy &amp; transfers</h3><a class="mega-item" href="#instant-rental"><span class="mega-icon" aria-hidden="true">ϟ</span><span><strong>Energy rental</strong><span class="mega-description">For a one-off USDT transfer. No sign-up.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#auto-energy"><span class="mega-icon" aria-hidden="true">↻</span><span><strong>Auto Energy</strong><span class="mega-description">Automatic replenishment for frequent transfers.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#savings-calculator"><span class="mega-icon" aria-hidden="true">≈</span><span><strong>Savings calculator</strong><span class="mega-description">See how much TRX you could have saved.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section><section class="mega-group"><h3>Wallet checks</h3><a class="mega-item" href="#compliance-layer"><span class="mega-icon" aria-hidden="true">◇</span><span><strong>AML check</strong><span class="mega-description">Assess wallet risks before a transaction.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#sanctions-screening"><span class="mega-icon" aria-hidden="true">✓</span><span><strong>Sanctions screening</strong><span class="mega-description">Check sanctions lists for free.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section><section class="mega-group"><h3>Monitoring &amp; reports</h3><a class="mega-item" href="#visibility-layer"><span class="mega-icon" aria-hidden="true">▦</span><span><strong>Wallet dashboard</strong><span class="mega-description">Your TRON and ETH wallets in one place.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#wallet-statements"><span class="mega-icon" aria-hidden="true">≡</span><span><strong>Wallet statements</strong><span class="mega-description">Transaction history and balances in PDF.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section><section class="mega-group"><h3>Business &amp; earnings</h3><a class="mega-item" href="sub_rent.html"><span class="mega-icon" aria-hidden="true">⇄</span><span><strong>Energy sub-rental</strong><span class="mega-description">Your service, your price, your margin.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#growth-layer"><span class="mega-icon" aria-hidden="true">↗</span><span><strong>Referral program</strong><span class="mega-description">Earn on Energy rentals by invited users.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#startups"><span class="mega-icon" aria-hidden="true">✧</span><span><strong>For startups</strong><span class="mega-description">Special terms and help with your launch.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section></div><div class="mega-footer"><span>Less on fees. More possibilities.</span><a href="#product-guide">Explore all products <span aria-hidden="true">→</span></a></div></div><div class="mega-panel mega-developers" id="developers-menu" hidden><section class="mega-group"><h3>Build with GasFree4you</h3><a class="mega-item" href="api.html"><span class="mega-icon" aria-hidden="true">⌘</span><span><strong>Energy API</strong><span class="mega-description">Integrate Energy rental into your product.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="docs.html"><span class="mega-icon" aria-hidden="true">≡</span><span><strong>API documentation</strong><span class="mega-description">Explore the integration documentation.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="en/mcp"><span class="mega-icon" aria-hidden="true">✳</span><span><strong>MCP for AI agents</strong><span class="mega-description">Connect AI assistants to GasFree4you tools.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section></div>
+<div class="mega-panel" id="products-menu" hidden><div class="mega-grid"><section class="mega-group"><h3>Energy &amp; transfers</h3><a class="mega-item" href="#instant-rental"><span class="mega-icon" aria-hidden="true">ϟ</span><span><strong>Energy rental</strong><span class="mega-description">For a one-off USDT transfer. No sign-up.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#auto-energy"><span class="mega-icon" aria-hidden="true">↻</span><span><strong>Auto Energy</strong><span class="mega-description">Automatic replenishment for frequent transfers.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#savings-calculator"><span class="mega-icon" aria-hidden="true">≈</span><span><strong>Savings calculator</strong><span class="mega-description">See how much TRX you could have saved.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section><section class="mega-group"><h3>Wallet checks</h3><a class="mega-item" href="#compliance-layer"><span class="mega-icon" aria-hidden="true">◇</span><span><strong>AML check</strong><span class="mega-description">Assess wallet risks before a transaction.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#sanctions-screening"><span class="mega-icon" aria-hidden="true">✓</span><span><strong>Sanctions screening</strong><span class="mega-description">Check sanctions lists for free.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section><section class="mega-group"><h3>Monitoring &amp; reports</h3><a class="mega-item" href="#visibility-layer"><span class="mega-icon" aria-hidden="true">▦</span><span><strong>Wallet dashboard</strong><span class="mega-description">Your TRON and ETH wallets in one place.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#wallet-statements"><span class="mega-icon" aria-hidden="true">≡</span><span><strong>Wallet statements</strong><span class="mega-description">Transaction history and balances in PDF.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section><section class="mega-group"><h3>Business &amp; earnings</h3><a class="mega-item" href="sub_rent.html"><span class="mega-icon" aria-hidden="true">⇄</span><span><strong>Energy sub-rental</strong><span class="mega-description">Your service, your price, your margin.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#growth-layer"><span class="mega-icon" aria-hidden="true">↗</span><span><strong>Referral program</strong><span class="mega-description">Earn on Energy rentals by invited users.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="#startups"><span class="mega-icon" aria-hidden="true">✧</span><span><strong>For startups</strong><span class="mega-description">Special terms and help with your launch.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section></div><div class="mega-footer"><span>Less on fees. More possibilities.</span><a href="#product-guide">Explore all products <span aria-hidden="true">→</span></a></div></div><div class="mega-panel mega-developers" id="developers-menu" hidden><section class="mega-group"><h3>Build with GasFree4you</h3><a class="mega-item" href="docs.html"><span class="mega-icon" aria-hidden="true">≡</span><span><strong>API documentation</strong><span class="mega-description">Explore the integration documentation.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a><a class="mega-item" href="en/mcp"><span class="mega-icon" aria-hidden="true">✳</span><span><strong>MCP for AI agents</strong><span class="mega-description">Connect AI assistants to GasFree4you tools.</span></span><span class="mega-arrow" aria-hidden="true">↗</span></a></section></div>
 </header>
 
 <main id="top">
@@ -2238,6 +2257,48 @@ header.nav .nav-right>.btn{white-space:nowrap}
     </div>
   </section>
 
+  <!-- WHY GASFREE4YOU -->
+  <section class="why-section" id="why-us" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="why-heading">
+        <h2 id="why-title">Why choose GasFree4you</h2>
+        <p>Less on fees. More confidence.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why-card why-mint why-featured">
+          <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6l8-3Z"/><path d="m8 12 3 3 5-6"/></svg></span>
+          <h3>Reliability comes first</h3>
+          <p>We do not chase the lowest price at the expense of quality. Our priority is timely Energy delivery for your transfers.</p>
+        </article>
+        <article class="why-card why-indigo">
+          <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="7" rx="2"/><rect x="4" y="14" width="16" height="7" rx="2"/><path d="M8 6.5h.01M8 17.5h.01M12 6.5h4M12 17.5h4"/></svg></span>
+          <h3>Infrastructure &amp; Energy reserve</h3>
+          <p>We invest in infrastructure and maintain an Energy reserve for one-off and regular transfers.</p>
+        </article>
+        <article class="why-card why-violet">
+          <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span>
+          <h3>All your tools, together</h3>
+          <p>Energy rental, fee and address checks, wallet balances and statements — in one place.</p>
+        </article>
+        <article class="why-card why-amber">
+          <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-9 12h7l-1 8 10-12h-7l1-8Z"/></svg></span>
+          <h3>Manual or automatic</h3>
+          <p>Rent Energy for a single transfer, enable Auto Energy or connect through the API.</p>
+        </article>
+        <article class="why-card why-mint">
+          <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg></span>
+          <h3>Your keys stay yours</h3>
+          <p>Only your public address is needed. No seed phrase or private key — you stay in control.</p>
+        </article>
+        <article class="why-card why-coral">
+          <span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1M20 17v1a3 3 0 0 1-3 3h-3"/><rect x="2" y="11" width="4" height="7" rx="2"/><rect x="18" y="11" width="4" height="7" rx="2"/></svg></span>
+          <h3>Support that helps</h3>
+          <p>Issues can happen. Our priority is to understand the problem quickly and help you resolve it.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="closing">
     <div class="wrap">
       <h2>Stop fighting TRON's plumbing.</h2>
@@ -2572,6 +2633,55 @@ Object.assign(LANDING_ES,{"EARN WITH GASFREE4YOU": "GANA CON GASFREE4YOU", "Two 
   Object.assign(LANDING_RU, {"Products": "Продукты", "Developers": "Разработчикам", "Menu": "Меню", "Energy & transfers": "Энергия и переводы", "Energy rental": "Аренда энергии", "For a one-off USDT transfer. No sign-up.": "Для разового перевода USDT. Без регистрации.", "Auto Energy": "Автоэнергия", "Automatic replenishment for frequent transfers.": "Автопополнение для частых переводов.", "Savings calculator": "Калькулятор экономии", "See how much TRX you could have saved.": "Узнайте, сколько TRX вы могли сэкономить.", "Wallet checks": "Проверки кошельков", "AML check": "AML-проверка", "Assess wallet risks before a transaction.": "Оценка рисков кошелька перед переводом.", "Sanctions screening": "Проверка санкций", "Check sanctions lists for free.": "Бесплатная проверка по санкционным спискам.", "Monitoring & reports": "Мониторинг и отчёты", "Wallet dashboard": "Дашборд кошельков", "Your TRON and ETH wallets in one place.": "Ваши кошельки TRON и ETH в одном месте.", "Wallet statements": "Выписки по кошельку", "Transaction history and balances in PDF.": "История операций и остатки в PDF.", "Business & earnings": "Бизнес и заработок", "Energy sub-rental": "Субаренда энергии", "Your service, your price, your margin.": "Ваш сервис, ваша цена, ваша прибыль.", "Referral program": "Реферальная программа", "Earn on Energy rentals by invited users.": "Доход с аренды энергии приглашёнными пользователями.", "For startups": "Для стартапов", "Special terms and help with your launch.": "Особые условия и помощь с запуском.", "Less on fees. More possibilities.": "Меньше комиссий. Больше возможностей.", "Explore all products": "Все продукты", "Build with GasFree4you": "Создавайте с GasFree4you", "Energy API": "API аренды энергии", "Integrate Energy rental into your product.": "Встройте аренду энергии в свой продукт.", "API documentation": "Документация API", "Explore the integration documentation.": "Изучите документацию по интеграции.", "MCP for AI agents": "MCP для AI-агентов", "Connect AI assistants to GasFree4you tools.": "Подключите AI-ассистентов к инструментам GasFree4you."});
   Object.assign(LANDING_ES, {"Products": "Productos", "Developers": "Desarrolladores", "Menu": "Menú", "Energy & transfers": "Energía y transferencias", "Energy rental": "Alquiler de energía", "For a one-off USDT transfer. No sign-up.": "Para un envío puntual de USDT. Sin registro.", "Auto Energy": "Energía automática", "Automatic replenishment for frequent transfers.": "Recarga automática para envíos frecuentes.", "Savings calculator": "Calculadora de ahorro", "See how much TRX you could have saved.": "Descubre cuánto TRX podrías haber ahorrado.", "Wallet checks": "Verificación de billeteras", "AML check": "Verificación AML", "Assess wallet risks before a transaction.": "Evalúa los riesgos antes de una transacción.", "Sanctions screening": "Control de sanciones", "Check sanctions lists for free.": "Consulta gratuita de listas de sanciones.", "Monitoring & reports": "Seguimiento e informes", "Wallet dashboard": "Panel de billeteras", "Your TRON and ETH wallets in one place.": "Tus billeteras TRON y ETH en un solo lugar.", "Wallet statements": "Extractos de billetera", "Transaction history and balances in PDF.": "Historial de operaciones y saldos en PDF.", "Business & earnings": "Negocio e ingresos", "Energy sub-rental": "Subalquiler de energía", "Your service, your price, your margin.": "Tu servicio, tu precio, tu margen.", "Referral program": "Programa de referidos", "Earn on Energy rentals by invited users.": "Gana con el alquiler de energía de tus referidos.", "For startups": "Para startups", "Special terms and help with your launch.": "Condiciones especiales y ayuda para tu lanzamiento.", "Less on fees. More possibilities.": "Menos comisiones. Más posibilidades.", "Explore all products": "Ver todos los productos", "Build with GasFree4you": "Crea con GasFree4you", "Energy API": "API de energía", "Integrate Energy rental into your product.": "Integra el alquiler de energía en tu producto.", "API documentation": "Documentación API", "Explore the integration documentation.": "Consulta la documentación de integración.", "MCP for AI agents": "MCP para agentes de IA", "Connect AI assistants to GasFree4you tools.": "Conecta asistentes de IA a GasFree4you."});
   Object.assign(LANDING_ID, {"Products": "Produk", "Developers": "Pengembang", "Menu": "Menu", "Energy & transfers": "Energy & transfer", "Energy rental": "Sewa Energy", "For a one-off USDT transfer. No sign-up.": "Untuk sekali transfer USDT. Tanpa daftar.", "Auto Energy": "Energy otomatis", "Automatic replenishment for frequent transfers.": "Isi ulang otomatis untuk transfer rutin.", "Savings calculator": "Kalkulator penghematan", "See how much TRX you could have saved.": "Lihat berapa TRX yang bisa Anda hemat.", "Wallet checks": "Pemeriksaan dompet", "AML check": "Pemeriksaan AML", "Assess wallet risks before a transaction.": "Nilai risiko dompet sebelum transaksi.", "Sanctions screening": "Pemeriksaan sanksi", "Check sanctions lists for free.": "Periksa daftar sanksi secara gratis.", "Monitoring & reports": "Pemantauan & laporan", "Wallet dashboard": "Dasbor dompet", "Your TRON and ETH wallets in one place.": "Dompet TRON dan ETH di satu tempat.", "Wallet statements": "Laporan dompet", "Transaction history and balances in PDF.": "Riwayat transaksi dan saldo dalam PDF.", "Business & earnings": "Bisnis & penghasilan", "Energy sub-rental": "Subsewa Energy", "Your service, your price, your margin.": "Layanan, harga, dan margin Anda.", "Referral program": "Program referal", "Earn on Energy rentals by invited users.": "Hasilkan dari sewa Energy pengguna undangan.", "For startups": "Untuk startup", "Special terms and help with your launch.": "Ketentuan khusus dan bantuan peluncuran.", "Less on fees. More possibilities.": "Biaya lebih rendah. Lebih banyak peluang.", "Explore all products": "Lihat semua produk", "Build with GasFree4you": "Bangun dengan GasFree4you", "Energy API": "API Energy", "Integrate Energy rental into your product.": "Integrasikan sewa Energy ke produk Anda.", "API documentation": "Dokumentasi API", "Explore the integration documentation.": "Baca dokumentasi integrasi.", "MCP for AI agents": "MCP untuk agen AI", "Connect AI assistants to GasFree4you tools.": "Hubungkan asisten AI ke alat GasFree4you."});
+  // Why choose us: reuse the landing page language switcher.
+  Object.assign(LANDING_RU, {
+  "Why choose GasFree4you": "Почему выбирают GasFree4you",
+  "Less on fees. More confidence.": "Меньше комиссий. Больше уверенности.",
+  "Reliability comes first": "Надёжность важнее низкой цены",
+  "We do not chase the lowest price at the expense of quality. Our priority is timely Energy delivery for your transfers.": "Мы не гонимся за минимальной ценой в ущерб качеству. Наш приоритет — своевременная подача Energy для ваших переводов.",
+  "Infrastructure & Energy reserve": "Инфраструктура и запас Energy",
+  "We invest in infrastructure and maintain an Energy reserve for one-off and regular transfers.": "Вкладываемся в инфраструктуру и поддерживаем запас Energy для разовых и регулярных переводов.",
+  "All your tools, together": "Все инструменты рядом",
+  "Energy rental, fee and address checks, wallet balances and statements — in one place.": "Аренда Energy, проверка комиссий и адресов, балансы кошельков и выписки — в одном месте.",
+  "Manual or automatic": "Вручную или автоматически",
+  "Rent Energy for a single transfer, enable Auto Energy or connect through the API.": "Арендуйте Energy для одного перевода, подключайте Auto Energy или используйте API.",
+  "Your keys stay yours": "Ваши ключи — только у вас",
+  "Only your public address is needed. No seed phrase or private key — you stay in control.": "Нужен только публичный адрес. Без seed-фразы и приватного ключа — кошелёк под вашим контролем.",
+  "Support that helps": "Поддержка, которая помогает",
+  "Issues can happen. Our priority is to understand the problem quickly and help you resolve it.": "Проблемы могут возникнуть. Для нас важно быстро разобраться в ситуации и помочь вам её решить."
+});
+  Object.assign(LANDING_ES, {
+  "Why choose GasFree4you": "Por qué elegir GasFree4you",
+  "Less on fees. More confidence.": "Menos comisiones. Más confianza.",
+  "Reliability comes first": "La fiabilidad es lo primero",
+  "We do not chase the lowest price at the expense of quality. Our priority is timely Energy delivery for your transfers.": "No buscamos el precio más bajo a costa de la calidad. Nuestra prioridad es entregar Energy a tiempo para tus transferencias.",
+  "Infrastructure & Energy reserve": "Infraestructura y reserva de Energy",
+  "We invest in infrastructure and maintain an Energy reserve for one-off and regular transfers.": "Invertimos en infraestructura y mantenemos una reserva de Energy para transferencias puntuales y habituales.",
+  "All your tools, together": "Todas tus herramientas juntas",
+  "Energy rental, fee and address checks, wallet balances and statements — in one place.": "Alquiler de Energy, consulta de comisiones y direcciones, saldos y extractos — en un solo lugar.",
+  "Manual or automatic": "Manual o automático",
+  "Rent Energy for a single transfer, enable Auto Energy or connect through the API.": "Alquila Energy para una transferencia, activa Auto Energy o conecta tu servicio mediante la API.",
+  "Your keys stay yours": "Tus claves siguen siendo tuyas",
+  "Only your public address is needed. No seed phrase or private key — you stay in control.": "Solo necesitamos tu dirección pública. Sin frase semilla ni clave privada: tú mantienes el control.",
+  "Support that helps": "Soporte que te ayuda",
+  "Issues can happen. Our priority is to understand the problem quickly and help you resolve it.": "Pueden surgir problemas. Nuestra prioridad es entenderlos rápidamente y ayudarte a resolverlos."
+});
+  Object.assign(LANDING_ID, {
+  "Why choose GasFree4you": "Mengapa memilih GasFree4you",
+  "Less on fees. More confidence.": "Biaya lebih rendah. Lebih tenang.",
+  "Reliability comes first": "Keandalan adalah prioritas",
+  "We do not chase the lowest price at the expense of quality. Our priority is timely Energy delivery for your transfers.": "Kami tidak mengejar harga termurah dengan mengorbankan kualitas. Prioritas kami adalah menyediakan Energy tepat waktu untuk transfer Anda.",
+  "Infrastructure & Energy reserve": "Infrastruktur dan cadangan Energy",
+  "We invest in infrastructure and maintain an Energy reserve for one-off and regular transfers.": "Kami berinvestasi pada infrastruktur dan menjaga cadangan Energy untuk transfer sesekali maupun rutin.",
+  "All your tools, together": "Semua alat di satu tempat",
+  "Energy rental, fee and address checks, wallet balances and statements — in one place.": "Sewa Energy, cek biaya dan alamat, saldo dompet serta laporan transaksi — di satu tempat.",
+  "Manual or automatic": "Manual atau otomatis",
+  "Rent Energy for a single transfer, enable Auto Energy or connect through the API.": "Sewa Energy untuk satu transfer, aktifkan Auto Energy, atau integrasikan melalui API.",
+  "Your keys stay yours": "Kunci tetap milik Anda",
+  "Only your public address is needed. No seed phrase or private key — you stay in control.": "Hanya alamat publik yang diperlukan. Tanpa seed phrase atau kunci privat — kendali tetap di tangan Anda.",
+  "Support that helps": "Dukungan yang membantu",
+  "Issues can happen. Our priority is to understand the problem quickly and help you resolve it.": "Masalah bisa terjadi. Prioritas kami adalah segera memahami masalah dan membantu Anda menyelesaikannya."
+});
   const landingOriginalText = new WeakMap();
   const landingOriginalAttrs = new WeakMap();
   let landingLang = "en";
