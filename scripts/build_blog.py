@@ -13,6 +13,8 @@ SUB_CONTENT = ROOT / 'blog/content/subleasing.json'
 NO_TRX_CONTENT = ROOT / 'blog/content/no-trx.json'
 TRONSCAN_CONTENT = ROOT / 'blog/content/tronscan.json'
 BUSINESS_CONTENT = ROOT / 'blog/content/business-series.json'
+FEES_CONTENT = ROOT / 'blog/content/tron-fees.json'
+FEES_ARTICLE = 'tron-transaction-fees.html'
 EXAMPLE = ROOT / 'blog/assets/tron_wallet.py'
 LANGUAGES = {'en': 'English', 'ru': 'Русский', 'es': 'Español', 'id': 'Bahasa Indonesia'}
 DOMAIN = 'https://www.gasfree4you.com'
@@ -46,6 +48,15 @@ SOURCES = {
     'resource_fees': ('TRON · Paying for resources', 'https://developers.tron.network/docs/paying-for-resources'),
     'delegation': ('TRON · Delegating resources', 'https://developers.tron.network/docs/delegation'),
     'subleasing': ('GasFree4you · Subleasing', '../../sub_rent.html'),
+    'bandwidth_energy': ('TRON · Bandwidth and Energy', 'https://developers.tron.network/docs/bandwidth-and-energy'),
+    'tronweb_resources': ('TronWeb · Energy and Bandwidth', 'https://tronweb.network/docu/docs/advanced/energy-bandwidth'),
+    'network_parameters': ('TRON · Network parameters', 'https://developers.tron.network/docs/network-parameters'),
+    'dynamic_energy': ('TRON · Dynamic Energy Model', 'https://developers.tron.network/docs/paying-for-resources#dynamic-energy-model'),
+    'estimate_energy': ('TRON · EstimateEnergy', 'https://developers.tron.network/reference/estimateenergy'),
+    'staking': ('TRON · Stake 2.0', 'https://developers.tron.network/docs/staking-on-tron-network'),
+    'feelimit': ('TRON · FeeLimit and Energy cost', 'https://developers.tron.network/docs/set-feelimit'),
+    'failed_transactions': ('TronLink · Failed transaction fees', 'https://support.tronlink.org/hc/en-us/articles/17664699393049-Why-does-a-failed-transaction-still-incur-fee'),
+    'transaction_receipt': ('TRON · Transaction receipt', 'https://developers.tron.network/reference/gettransactioninfobyid'),
 }
 
 
@@ -115,7 +126,7 @@ def cta(d):
     return f'''<aside class="cta"><div><h2>{e(d['ctaTitle'])}</h2><p>{e(d['ctaText'])}</p></div><a class="button" href="{e(d.get('ctaHref', '../../index.html'))}">{e(d.get('ctaButton', d['service']))} ↗</a></aside>'''
 
 
-def home(d, second, third, fourth, fifth, business):
+def home(d, second, third, fourth, fifth, business, fees):
     route = ''.join(f'<div class="diagram-row"><b>0{i}</b><span>{e(s)}</span></div>' for i, s in enumerate(d['route'], 1))
     cards = ''.join(f'''<article class="card"><span class="number">0{i} / {e(category)}</span><h3>{e(title)}</h3><p>{e(desc)}</p><div class="planned">{e(d['planned'])}</div></article>''' for i, (category, title, desc) in enumerate(d['cards'], 1))
     topics = ''.join(f'<span>{e(t)}</span>' for t in d['topics'])
@@ -132,7 +143,7 @@ def home(d, second, third, fourth, fifth, business):
 <h2><a href="{ARTICLE}">{e(d['title'])}</a></h2><p>{e(d['description'])}</p><a class="read" href="{ARTICLE}">{e(d['read'])} <span aria-hidden="true">→</span></a></div>
 <div class="diagram"><div class="diagram-title">{e(d['diagramTitle'])}</div>{route}</div></article></section>
 <section aria-labelledby="more"><div class="section-heading"><h2 id="more">{e(d['moreArticles'])}</h2></div>
-<div class="more-grid"><article class="card"><div class="meta"><span class="tag">{e(fifth['category'])}</span><span>·</span><span>{e(fifth['time'])}</span></div><h3><a href="{TRONSCAN_ARTICLE}">{e(fifth['title'])}</a></h3><p>{e(fifth['description'])}</p><a class="read" href="{TRONSCAN_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(fourth['category'])}</span><span>·</span><span>{e(fourth['time'])}</span></div><h3><a href="{NO_TRX_ARTICLE}">{e(fourth['title'])}</a></h3><p>{e(fourth['description'])}</p><a class="read" href="{NO_TRX_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article>
+<div class="more-grid"><article class="card"><div class="meta"><span class="tag">{e(fees['category'])}</span><span>·</span><span>{e(fees['time'])}</span></div><h3><a href="{FEES_ARTICLE}">{e(fees['title'])}</a></h3><p>{e(fees['description'])}</p><a class="read" href="{FEES_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(fifth['category'])}</span><span>·</span><span>{e(fifth['time'])}</span></div><h3><a href="{TRONSCAN_ARTICLE}">{e(fifth['title'])}</a></h3><p>{e(fifth['description'])}</p><a class="read" href="{TRONSCAN_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(fourth['category'])}</span><span>·</span><span>{e(fourth['time'])}</span></div><h3><a href="{NO_TRX_ARTICLE}">{e(fourth['title'])}</a></h3><p>{e(fourth['description'])}</p><a class="read" href="{NO_TRX_ARTICLE}">{e(d['read'])} →</a></article><article class="card"><div class="meta"><span class="tag">{e(second['category'])}</span><span>·</span><span>{e(second['time'])}</span></div><h3><a href="{BUY_ARTICLE}">{e(second['title'])}</a></h3><p>{e(second['description'])}</p><a class="read" href="{BUY_ARTICLE}">{e(d['read'])} →</a></article>
 <article class="card partner-card"><div class="meta"><span class="tag">{e(third['category'])}</span><span>·</span><span>{e(third['time'])}</span></div><h3><a href="{SUB_ARTICLE}">{e(third['title'])}</a></h3><p>{e(third['description'])}</p><a class="read" href="{SUB_ARTICLE}">{e(d['read'])} →</a></article></div></section>
 <section aria-labelledby="business"><div class="section-heading"><h2 id="business">{e(business[0][1]['category'])}</h2></div><div class="more-grid">{business_cards}</div></section>
 <section aria-labelledby="next"><div class="section-heading"><h2 id="next">{e(d['next'])}</h2></div><div class="grid">{cards}</div></section>
@@ -180,6 +191,11 @@ def article(d):
     sections = ''
     for i, section in enumerate(d['sections'], 1):
         body = ''.join(f'<p>{e(p)}</p>' for p in section.get('paragraphs', []))
+        if section.get('table'):
+            table = section['table']
+            headers = ''.join(f'<th scope="col">{e(cell)}</th>' for cell in table['headers'])
+            rows = ''.join('<tr>' + ''.join(f'<td>{e(cell)}</td>' for cell in row) + '</tr>' for row in table['rows'])
+            body += f'<div class="table-scroll" role="region" aria-label="{e(table["caption"])}" tabindex="0"><table><caption>{e(table["caption"])}</caption><thead><tr>{headers}</tr></thead><tbody>{rows}</tbody></table></div>'
         if section.get('flow'):
             body += '<ul class="payment-flow">' + ''.join(f'<li>{e(step)}</li>' for step in section['flow']) + '</ul>'
         if section.get('case'):
@@ -202,6 +218,12 @@ def article(d):
             refs = ', '.join(f'<a href="{e(SOURCES[key][1])}">{e(SOURCES[key][0])}</a>' for key in section['refs'])
             body += f'<p class="sources">{e(d["sourceLabel"])}: {refs}.</p>'
         sections += f'<section id="section-{i}"><h2>{e(section["title"])}</h2>{body}</section>'
+    if d.get('faqs'):
+        questions = ''.join(f'<details><summary>{e(question)}</summary><p>{e(answer)}</p></details>' for question, answer in d['faqs'])
+        faq = f'<section id="faq"><h2>{e(d["faqHeading"])}</h2>{questions}</section>'
+        toc += f'<a href="#faq">{e(d["faqHeading"])}</a>'
+    else:
+        faq = f'<details><summary>{e(d["faqTitle"])}</summary><p>{e(d["faqAnswer"])}</p></details>'
     related = ''
     if d.get('relatedHref'):
         related = f'<aside class="note"><strong>{e(d["relatedTitle"])}</strong><br><a class="read" href="{e(d["relatedHref"])}">{e(d["relatedText"])} →</a></aside>'
@@ -210,7 +232,7 @@ def article(d):
 <nav class="breadcrumb" aria-label="{e(d['blog'])}"><a href="index.html">{e(d['blog'])}</a><span aria-hidden="true">/</span><span>{e(d['category'])}</span></nav>
 <header class="hero article-hero"><div class="meta"><span class="tag">{e(d['category'])}</span><span>·</span><span>{e(d['time'])}</span></div><h1>{e(d['title'])}</h1><p>{e(d['description'])}</p>{byline}</header>
 <div class="article-layout"><nav class="toc" aria-label="{e(d['toc'])}"><strong>{e(d['toc'])}</strong>{toc}</nav>
-<article class="prose">{sections}<details><summary>{e(d['faqTitle'])}</summary><p>{e(d['faqAnswer'])}</p></details>{related}{cta(d)}<a class="back" href="index.html">← {e(d['back'])}</a></article></div>'''
+<article class="prose">{sections}{faq}{related}{cta(d)}<a class="back" href="index.html">← {e(d['back'])}</a></article></div>'''
 
 
 def update_sitemap(entries):
@@ -247,6 +269,7 @@ def main():
     no_trx = json.loads(NO_TRX_CONTENT.read_text())
     tronscan = json.loads(TRONSCAN_CONTENT.read_text())
     business_series = json.loads(BUSINESS_CONTENT.read_text())
+    fees_content = json.loads(FEES_CONTENT.read_text())
     sitemap_entries = {}
     for lang in LANGUAGES:
         d = {**content[lang], **wallet[lang]}
@@ -254,28 +277,33 @@ def main():
         third = {**content[lang], **subleasing[lang]}
         fourth = {**content[lang], **no_trx[lang]}
         fifth = {**content[lang], **tronscan[lang]}
+        fees = {**content[lang], **{
+            key: tronscan[lang][key] for key in (
+                'authorLabel', 'authorName', 'publishedLabel', 'modifiedLabel'
+            )}, **fees_content[lang]}
         business = [(entry['filename'], {**content[lang], **{
             key: tronscan[lang][key] for key in (
                 'sourceLabel', 'authorLabel', 'authorName', 'publishedLabel', 'modifiedLabel'
             )}, **entry['translations'][lang]}) for entry in business_series]
-        for item in (d, second, third, fourth, fifth, *(item for _, item in business)):
+        for item in (d, second, third, fourth, fifth, fees, *(item for _, item in business)):
             assert date.fromisoformat(item['dateModified']) >= date.fromisoformat(item['datePublished'])
         folder = ROOT / lang / 'blog'
         folder.mkdir(parents=True, exist_ok=True)
-        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second, third, fourth, fifth, business)))
+        (folder / 'index.html').write_text(shell(lang, d, 'index.html', d['headline'], d['intro'], home(d, second, third, fourth, fifth, business, fees)))
         (folder / ARTICLE).write_text(shell(lang, d, ARTICLE, d['title'], d['description'], article(d)))
         (folder / BUY_ARTICLE).write_text(shell(lang, second, BUY_ARTICLE, second['title'], second['description'], article(second)))
         (folder / SUB_ARTICLE).write_text(shell(lang, third, SUB_ARTICLE, third['title'], third['description'], article(third)))
         (folder / NO_TRX_ARTICLE).write_text(shell(lang, fourth, NO_TRX_ARTICLE, fourth['title'], fourth['description'], article(fourth)))
         (folder / TRONSCAN_ARTICLE).write_text(shell(lang, fifth, TRONSCAN_ARTICLE, fifth['title'], fifth['description'], article(fifth)))
+        (folder / FEES_ARTICLE).write_text(shell(lang, fees, FEES_ARTICLE, fees['title'], fees['description'], article(fees)))
         for filename, item in business:
             (folder / filename).write_text(shell(lang, item, filename, item['title'], item['description'], article(item)))
             sitemap_entries[f'{DOMAIN}/{lang}/blog/{filename}'] = item['dateModified']
-        latest = max(item['dateModified'] for item in (d, second, third, fourth, fifth, *(item for _, item in business)))
-        for filename, modified in [('index.html', latest), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified']), (SUB_ARTICLE, third['dateModified']), (NO_TRX_ARTICLE, fourth['dateModified']), (TRONSCAN_ARTICLE, fifth['dateModified'])]:
+        latest = max(item['dateModified'] for item in (d, second, third, fourth, fifth, fees, *(item for _, item in business)))
+        for filename, modified in [('index.html', latest), (ARTICLE, d['dateModified']), (BUY_ARTICLE, second['dateModified']), (SUB_ARTICLE, third['dateModified']), (NO_TRX_ARTICLE, fourth['dateModified']), (TRONSCAN_ARTICLE, fifth['dateModified']), (FEES_ARTICLE, fees['dateModified'])]:
             sitemap_entries[f'{DOMAIN}/{lang}/blog/{filename}'] = modified
     update_sitemap(sitemap_entries)
-    print(f'Built {len(LANGUAGES) * (6 + len(business_series))} pages: a blog index and {5 + len(business_series)} articles in each language.')
+    print(f'Built {len(LANGUAGES) * (7 + len(business_series))} pages: a blog index and {6 + len(business_series)} articles in each language.')
 
 
 if __name__ == '__main__':

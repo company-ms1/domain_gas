@@ -1,0 +1,1174 @@
+{
+  "en": {
+    "title": "TRON transaction fees: Bandwidth, Energy and wallet costs",
+    "description": "Understand TRON transaction fees for TRX and USDT TRC-20: Bandwidth, Energy, fee calculations, wallet charges and practical ways to reduce costs.",
+    "category": "Network fees",
+    "time": "12 min read",
+    "sourceLabel": "Official documentation",
+    "ctaTitle": "Compare Energy rental with burning TRX",
+    "ctaText": "Check the Energy estimate for your transfer, then compare it with the current rental quote in GasFree4you. Include Bandwidth and any remaining network charges in your total.",
+    "ctaButton": "Check Energy rental",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Read next",
+    "relatedText": "How to check transactions and resources on TRONSCAN",
+    "relatedHref": "how-to-use-tronscan.html",
+    "faqHeading": "Frequently asked questions about TRON fees",
+    "sections": [
+      {
+        "title": "How TRON transaction fees work",
+        "paragraphs": [
+          "TRON has no single flat fee for every transfer. An ordinary native TRX transfer uses Bandwidth; a USDT TRC-20 transfer calls a smart contract and uses both Bandwidth and Energy. If the required resources are available, the resource part of the transaction can be covered without burning additional TRX. Otherwise the network charges TRX according to its resource rules.",
+          "The amount sent is not a percentage-based fee input. Sending 10 USDT and 1,000 USDT through the same contract can require similar resources. What matters is the transaction size, the executed contract instructions, current contract state and the sender’s available resources."
+        ],
+        "table": {
+          "headers": [
+            "Operation",
+            "Bandwidth",
+            "Energy",
+            "What to check"
+          ],
+          "rows": [
+            [
+              "Native TRX transfer to an activated account",
+              "Yes",
+              "No",
+              "Available Bandwidth and transaction size"
+            ],
+            [
+              "USDT or another TRC-20 transfer",
+              "Yes",
+              "Yes",
+              "Energy estimate, Bandwidth and sender balance"
+            ],
+            [
+              "Swap or token approval",
+              "Yes, per transaction",
+              "Yes, per contract call",
+              "Whether approval and swap are separate transactions"
+            ],
+            [
+              "Read a balance without sending a transaction",
+              "No on-chain charge",
+              "No on-chain charge",
+              "A data provider may have its own API pricing"
+            ]
+          ],
+          "caption": "Resources used by common TRON operations"
+        },
+        "refs": [
+          "resources",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Bandwidth: the cost of transaction data",
+        "paragraphs": [
+          "Bandwidth pays for the size of a transaction recorded on-chain. Addresses, contract parameters, signatures and additional data affect that size. It is a network resource, not your internet connection speed. More signatures or extra transaction data can increase consumption.",
+          "Under the parameters checked on 24 October 2026, an activated account has a renewable allowance of 600 free Bandwidth. This is a limited resource allowance, not a promise of 600 free transfers. A transaction must fit the available quota, and use of the free allowance also depends on the network’s shared free quota.",
+          "For an ordinary transaction, TRON first tries Bandwidth obtained through staking or delegation. That source must cover the whole transaction. If it cannot, the network tries the free quota, which must also cover the whole transaction. If neither source suffices, TRX is burned for the full Bandwidth requirement. The two quotas are not added together to pay for one ordinary transaction.",
+          "For example, a transaction requiring 350 Bandwidth is not covered by 200 staked plus 200 free Bandwidth. Neither source covers 350, so the full 350 is billed in TRX under the ordinary fallback rule. Account creation has a separate charging rule described below."
+        ],
+        "refs": [
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "Energy: the cost of executing a smart contract",
+        "paragraphs": [
+          "Energy measures computation performed by the TRON Virtual Machine. USDT transfers execute the token contract, so they need Energy even though the wallet interface looks like a simple send form. Swaps, approvals and other contract operations also consume Energy; their requirements need separate estimates.",
+          "There is no protocol-level daily free Energy allowance. You can obtain Energy by staking TRX for Energy or receive it through delegation, including a rental service. Merely holding liquid TRX does not produce Energy: the network may burn that balance when resources are missing.",
+          "Energy can cover part of the caller’s requirement. If your share of a call requires 65,000 Energy and you have 40,000 available, the remaining 25,000 can be paid by burning TRX, provided the balance and transaction limits allow execution.",
+          "Some contracts let their deployer cover a share of Energy. This depends on contract settings, the deployer’s available resources and its per-call limit. Do not assume that a wallet, token issuer or rental service automatically pays every part of your transaction."
+        ],
+        "refs": [
+          "resource_fees",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Resource prices: distinguish units from TRX fees",
+        "paragraphs": [
+          "The reference values below were checked against official TRON documentation on 24 October 2026. Governance can change network parameters. Check the current Mainnet parameters before estimating a payment; an old screenshot or a wallet’s previous quote is not a current tariff.",
+          "One TRX equals 1,000,000 sun. Bandwidth and Energy are resource units, not token balances. Their burn prices apply when the network has to charge TRX instead of consuming sufficient resources."
+        ],
+        "table": {
+          "headers": [
+            "Parameter",
+            "Reference value",
+            "Where to verify"
+          ],
+          "rows": [
+            [
+              "Bandwidth burn price",
+              "1,000 sun = 0.001 TRX per unit",
+              "getTransactionFee"
+            ],
+            [
+              "Energy burn price",
+              "100 sun = 0.0001 TRX per unit",
+              "getEnergyFee"
+            ],
+            [
+              "Free Bandwidth allowance",
+              "600 per activated account",
+              "getFreeNetLimit"
+            ],
+            [
+              "Free Energy allowance",
+              "None",
+              "Resource model"
+            ]
+          ],
+          "caption": "Reference resource prices, checked 24 October 2026"
+        },
+        "refs": [
+          "network_parameters",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "How to calculate a TRON transaction fee",
+        "paragraphs": [
+          "For an ordinary transfer, estimate the Energy shortfall on the caller’s side and determine whether either Bandwidth quota covers the complete transaction. Then add any operation-specific charges. The simplified calculation below assumes the caller pays all Energy and there is no activation, multisignature or other extra charge.",
+          "Energy burn in TRX = max(required caller Energy − available Energy, 0) × Energy price in sun ÷ 1,000,000. Bandwidth burn is zero when one eligible quota covers the full transaction; otherwise it is the full required Bandwidth × Bandwidth price in sun ÷ 1,000,000.",
+          "These are arithmetic examples, not fixed USDT transfer tariffs. They use 350 Bandwidth and the reference prices above. The 65,000 and 130,000 Energy figures are illustrative inputs; estimate your actual transaction rather than treating either number as guaranteed."
+        ],
+        "table": {
+          "headers": [
+            "Example",
+            "Energy paid by burning TRX",
+            "Bandwidth paid in TRX",
+            "Total TRX burned"
+          ],
+          "rows": [
+            [
+              "TRX transfer; no quota covers 350 Bandwidth",
+              "0",
+              "350 × 0.001 = 0.35",
+              "0.35 TRX"
+            ],
+            [
+              "Contract needs 65,000 Energy; none available; Bandwidth covered",
+              "65,000 × 0.0001 = 6.5",
+              "0",
+              "6.5 TRX"
+            ],
+            [
+              "Same call; 40,000 Energy available; Bandwidth not covered",
+              "25,000 × 0.0001 = 2.5",
+              "0.35",
+              "2.85 TRX"
+            ],
+            [
+              "Contract needs 130,000 Energy; no resources available",
+              "130,000 × 0.0001 = 13",
+              "0.35",
+              "13.35 TRX"
+            ],
+            [
+              "Both resource requirements fully covered",
+              "0",
+              "0",
+              "0 additional TRX for resources"
+            ]
+          ],
+          "caption": "Worked examples under explicitly stated assumptions"
+        },
+        "after": [
+          "A zero resource burn does not mean zero economic cost: rented Energy has a service price, while staking ties up capital. To express a TRX charge in dollars, multiply it by the TRX exchange rate at the relevant time; a fixed resource requirement does not guarantee a fixed dollar fee."
+        ]
+      },
+      {
+        "title": "Why USDT TRC-20 transfer fees differ",
+        "paragraphs": [
+          "A token transfer changes records inside a contract. The recipient’s token balance and the storage changes required by the contract can affect Energy consumption. A recipient with no USDT balance can therefore produce a different estimate from one already holding USDT. This is a token storage issue and must be distinguished from activating a TRON account.",
+          "TRON’s Dynamic Energy Model can increase the Energy requirement of heavily used contracts. The relevant contract factor and its execution path matter, so a past transfer to the same address is useful history but not a binding quote for the next transfer.",
+          "A larger USDT amount does not by itself imply a proportionally larger fee. Changing the recipient, using a different token contract, performing an approval or swapping through several contracts can change the work performed. Obtain a fresh estimate for the exact sender, recipient, contract and amount."
+        ],
+        "refs": [
+          "dynamic_energy",
+          "estimate_energy"
+        ]
+      },
+      {
+        "title": "TRON wallet fees versus network and exchange charges",
+        "paragraphs": [
+          "A self-custody wallet generally displays an estimate of the network resources needed for the operation. That estimate is not necessarily an additional payment to the wallet company. Check the confirmation screen for separate service, resource-rental, swap or sponsored-payment charges.",
+          "An exchange withdrawal fee is set by the exchange and can differ from the fee of the transaction it broadcasts. A service may batch withdrawals, use its own resources or quote the withdrawal in USDT. Compare the amount the recipient actually receives, the withdrawal minimum and any separate service charge.",
+          "The network fallback described here burns TRX, not the USDT balance in your wallet. If an app offers payment in USDT, review how that app handles the resource payment and what it charges. A TRC-20 token balance alone does not provide native Energy or Bandwidth."
+        ]
+      },
+      {
+        "title": "Staking, delegation or Energy rental: which cost are you paying?",
+        "paragraphs": [
+          "Staking TRX allocates it to a selected resource: Energy or Bandwidth. The resource limit depends on your share of the TRX staked for that resource across the network, so there is no permanent universal “one TRX gives X Energy” ratio. Staking for Energy does not automatically supply a matching Bandwidth quota.",
+          "Delegation lets another account provide resource capacity to your activated address. Energy rental is a paid service built around that mechanism: compare the quote, amount of Energy, delivery time and duration. The resource must reach the wallet that sends the transaction, not the recipient of your USDT.",
+          "Consumed resource usage recovers gradually over roughly 24 hours; it does not reset at midnight. Continued activity affects the available balance. Rental duration and protocol recovery are separate: a one-hour rental does not grant a permanent 24-hour allocation.",
+          "Staked TRX is not burned as a transaction fee, but it is unavailable as liquid capital. Stake 2.0 unstaking has a waiting period, currently 14 days under the documented parameters. Check that period and your ongoing transfer volume before committing capital."
+        ],
+        "refs": [
+          "staking",
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "How to reduce TRON transaction fees",
+        "paragraphs": [],
+        "steps": [
+          "Check your sender address in the wallet or TRONSCAN: available Energy, staked or delegated Bandwidth, free Bandwidth and liquid TRX.",
+          "Prepare the exact transfer and get a fresh Energy estimate. For a swap, include any separate approval and other contract calls.",
+          "Calculate the TRX burn for the missing resources. Compare that total with a rental quote, including Bandwidth and any service charges left outside the rental.",
+          "For recurring transfers, compare staking and delegation with your actual daily consumption and the capital you can keep staked.",
+          "If timing is flexible, check resource recovery before sending. Waiting helps depleted resources recover; it does not guarantee a lower contract factor or a cheaper rental quote.",
+          "After receiving delegated Energy, verify the available amount on the sender address and review the wallet’s updated estimate before signing."
+        ],
+        "note": "Energy rental reduces a specific resource expense. It does not automatically cover Bandwidth, account activation or a wallet’s separate service fee, and a savings percentage is not guaranteed."
+      },
+      {
+        "title": "fee_limit, OUT_OF_ENERGY and failed transactions",
+        "paragraphs": [
+          "For smart-contract transactions, fee_limit is the caller’s Energy budget expressed in sun. It is a ceiling, not the fee that every successful transfer will pay. It can constrain usable caller Energy even when the account has staked or delegated resources. Bandwidth and operation-specific charges must be considered separately.",
+          "A budget that is too low, or insufficient available Energy and TRX, can cause OUT_OF_ENERGY. Raising fee_limit does not add resources or fund the account. A larger limit should come from an estimate with a reasonable allowance for state changes, not an arbitrary maximum.",
+          "A failed on-chain call can still consume resources and burn TRX for work already performed. The amount depends on the failure type. Before retrying, check the execution result, resource receipt and token balances; repeatedly broadcasting the same failing operation can create repeated costs."
+        ],
+        "refs": [
+          "feelimit",
+          "failed_transactions"
+        ]
+      },
+      {
+        "title": "How to verify the actual fee in TRONSCAN",
+        "paragraphs": [],
+        "steps": [
+          "Open the transaction hash on the official TRONSCAN explorer. Confirm the sender, recipient, token contract, amount and execution status.",
+          "Review the Energy and Bandwidth usage alongside the TRX fee. Resource consumption and TRX burned are different figures: a resource-funded call can consume Energy while showing no Energy burn.",
+          "For integrations, query wallet/gettransactioninfobyid after execution. The fee field reports the transaction’s TRX charges in sun; receipt fields such as energy_usage_total, energy_fee, net_usage and net_fee help explain resource use and burn.",
+          "Divide sun-denominated fee values by 1,000,000 to obtain TRX. Do not add a total fee to its component charges, and do not count a wallet’s separate off-chain service payment twice."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "transaction_receipt"
+        ]
+      },
+      {
+        "title": "New addresses and other extra charges",
+        "paragraphs": [
+          "Generating a wallet address locally and activating an account on TRON are separate actions. A standard activation by sending TRX or TRC-10, or using the account-creation operation, currently has a 1 TRX creation charge. Free Bandwidth does not cover this activation path; if staked or delegated Bandwidth is insufficient, the documented fixed fallback is another 0.1 TRX.",
+          "A USDT transfer to a recipient with no token balance is not the same operation as standard TRX account activation. Do not automatically add 1 TRX to every first USDT transfer. Check account status and the actual transaction type. Contract-driven activation has its own Energy rules.",
+          "Multisignature transactions and certain account-management operations can have additional protocol charges. For these operations, an ordinary “Energy plus Bandwidth” estimate alone is incomplete. Review the current network parameters and the wallet’s confirmation details."
+        ],
+        "refs": [
+          "tron",
+          "network_parameters"
+        ]
+      }
+    ],
+    "faqs": [
+      [
+        "What is the current TRON transaction fee?",
+        "There is no single fixed fee. It depends on Bandwidth, caller Energy, available resources and any special charges. At the reference rates checked on 24 October 2026, missing Energy costs 0.0001 TRX per unit and ordinary Bandwidth fallback costs 0.001 TRX per unit. Verify current parameters before sending."
+      ],
+      [
+        "Can I send USDT without holding TRX?",
+        "An activated sender can sometimes transfer without burning TRX if its Energy and Bandwidth requirements are covered, or if a service handles the payment. Holding only USDT does not itself provide these resources. Check remaining charges and the wallet’s support for the operation."
+      ],
+      [
+        "Does TRON give free Energy every day?",
+        "No. The protocol provides a limited renewable free Bandwidth quota, currently 600, but no daily free Energy. Energy comes from staking or delegation; missing Energy can be paid by burning TRX."
+      ],
+      [
+        "Are TRON wallet fees the same in every app?",
+        "Network resource rules are shared, but wallet estimates, service fees, rental offers and exchange withdrawal charges can differ. Compare the full cost of the same operation."
+      ],
+      [
+        "Will renting Energy make every transfer free?",
+        "No. The rental has a price and covers only the supplied Energy. Bandwidth, resource shortfalls and operation-specific or app charges can remain."
+      ],
+      [
+        "Is a failed transfer refunded?",
+        "An on-chain failure does not automatically refund resources already consumed. Check the receipt and failure reason before retrying. A transaction rejected before on-chain execution is a different case."
+      ]
+    ],
+    "datePublished": "2026-10-24",
+    "dateModified": "2026-10-24"
+  },
+  "ru": {
+    "title": "Комиссии TRON: Bandwidth, Energy и стоимость переводов",
+    "description": "Как рассчитать комиссию TRON для TRX и USDT TRC-20: Bandwidth, Energy, расходы кошелька, примеры расчётов и способы снизить стоимость перевода.",
+    "category": "Комиссии сети",
+    "time": "12 минут",
+    "sourceLabel": "Официальная документация",
+    "ctaTitle": "Сравните аренду Energy со сжиганием TRX",
+    "ctaText": "Узнайте потребность перевода в Energy и сравните расходы с актуальной ценой аренды в GasFree4you. Прибавьте Bandwidth и другие оставшиеся комиссии.",
+    "ctaButton": "Посмотреть аренду Energy",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Читайте также",
+    "relatedText": "Как проверить транзакции и ресурсы в TRONSCAN",
+    "relatedHref": "how-to-use-tronscan.html",
+    "faqHeading": "Частые вопросы о комиссиях TRON",
+    "sections": [
+      {
+        "title": "Из чего складывается комиссия сети TRON",
+        "paragraphs": [
+          "В TRON нет одной фиксированной комиссии на любой перевод. Обычный перевод нативного TRX расходует Bandwidth. Перевод USDT TRC-20 вызывает смарт-контракт и расходует Bandwidth и Energy. При достаточных ресурсах эту часть расходов можно покрыть без дополнительного сжигания TRX. При нехватке ресурсов сеть списывает TRX по своим правилам.",
+          "Комиссия не рассчитывается как процент от отправленной суммы. Переводы 10 и 1 000 USDT через один контракт могут требовать близкого количества ресурсов. Важны размер транзакции, выполненные инструкции контракта, его текущее состояние и доступные ресурсы отправителя."
+        ],
+        "table": {
+          "headers": [
+            "Операция",
+            "Bandwidth",
+            "Energy",
+            "Что проверить"
+          ],
+          "rows": [
+            [
+              "TRX на активированный адрес",
+              "Да",
+              "Нет",
+              "Запас Bandwidth и размер транзакции"
+            ],
+            [
+              "USDT и другие TRC-20",
+              "Да",
+              "Да",
+              "Оценку Energy, Bandwidth и баланс отправителя"
+            ],
+            [
+              "Обмен или разрешение approve",
+              "Для каждой транзакции",
+              "Для каждого вызова",
+              "Необходимость отдельных approve и swap"
+            ],
+            [
+              "Просмотр баланса без отправки транзакции",
+              "Нет сетевого расхода",
+              "Нет сетевого расхода",
+              "У API-провайдера могут быть собственные тарифы"
+            ]
+          ],
+          "caption": "Какие ресурсы нужны разным операциям TRON"
+        },
+        "refs": [
+          "resources",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Bandwidth: оплата размера транзакции",
+        "paragraphs": [
+          "Bandwidth покрывает объём данных транзакции, записываемых в блокчейн. На размер влияют адреса, параметры вызова, подписи и дополнительные данные. Это ресурс сети TRON, а не скорость вашего интернета. Дополнительные подписи или данные могут увеличить расход.",
+          "По параметрам, проверенным 24 октября 2026 года, активированному аккаунту доступна возобновляемая квота 600 бесплатных Bandwidth. Это не 600 бесплатных переводов: каждый перевод расходует несколько сотен единиц или другой объём в зависимости от размера. Для использования квоты должны выполняться и ограничения общего бесплатного пула сети.",
+          "Обычная транзакция сначала пытается использовать Bandwidth от стейкинга или делегирования: этого источника должно хватать на весь её размер. Если не хватает, сеть проверяет бесплатную квоту: она тоже должна целиком покрывать транзакцию. Если ни один источник не подходит, TRX сжигается за весь необходимый Bandwidth. Две квоты не складываются для оплаты одной обычной транзакции.",
+          "Пример: нужно 350 Bandwidth, а доступно 200 от стейкинга и 200 бесплатных. Ни один источник не покрывает 350 целиком, поэтому сеть оплачивает все 350 за TRX. Для создания аккаунта действуют отдельные правила, разобранные ниже."
+        ],
+        "refs": [
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "Energy: оплата выполнения смарт-контракта",
+        "paragraphs": [
+          "Energy измеряет вычисления виртуальной машины TRON. Отправка USDT исполняет код токена, даже если в кошельке выглядит как обычная форма перевода. Обмены, approve и другие контрактные операции тоже потребляют Energy; для каждой нужна своя оценка.",
+          "Ежедневной бесплатной Energy на уровне протокола нет. Её получают через стейкинг TRX под Energy или делегирование, в том числе при аренде. Просто хранить ликвидный TRX недостаточно для получения Energy: при нехватке ресурса сеть может сжечь этот баланс.",
+          "Energy допускает частичное покрытие. Если доля отправителя требует 65 000 Energy, а доступно 40 000, недостающие 25 000 можно оплатить сжиганием TRX при достаточном балансе и допустимых лимитах транзакции.",
+          "Разработчик контракта может покрывать часть Energy пользователей. Это зависит от настроек контракта, ресурсов разработчика и лимита на вызов. Не следует считать, что кошелёк, эмитент токена или сервис аренды автоматически оплачивает все расходы."
+        ],
+        "refs": [
+          "resource_fees",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Тарифы ресурсов: сколько стоят Bandwidth и Energy",
+        "paragraphs": [
+          "Значения ниже проверены по официальной документации TRON 24 октября 2026 года. Параметры меняются через управление сетью. Перед отправкой проверьте текущие параметры Mainnet: старый скриншот или прошлый расчёт кошелька не фиксирует цену следующего перевода.",
+          "1 TRX = 1 000 000 sun. Energy и Bandwidth — единицы ресурсов, а не монеты на балансе. Тариф сжигания применяется, когда сеть должна списать TRX вместо использования достаточного ресурса."
+        ],
+        "table": {
+          "headers": [
+            "Параметр",
+            "Справочное значение",
+            "Где проверить"
+          ],
+          "rows": [
+            [
+              "Сжигание за Bandwidth",
+              "1 000 sun = 0,001 TRX за единицу",
+              "getTransactionFee"
+            ],
+            [
+              "Сжигание за Energy",
+              "100 sun = 0,0001 TRX за единицу",
+              "getEnergyFee"
+            ],
+            [
+              "Бесплатная квота Bandwidth",
+              "600 на активированный аккаунт",
+              "getFreeNetLimit"
+            ],
+            [
+              "Бесплатная квота Energy",
+              "Отсутствует",
+              "Модель ресурсов"
+            ]
+          ],
+          "caption": "Справочные параметры на 24 октября 2026 года"
+        },
+        "refs": [
+          "network_parameters",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Как рассчитать комиссию TRON: формула и примеры",
+        "paragraphs": [
+          "Для обычной операции сначала оцените дефицит Energy на стороне отправителя и проверьте, покрывает ли один из источников Bandwidth транзакцию целиком. Затем добавьте специальные сборы операции. Упрощённый расчёт ниже предполагает, что всю Energy оплачивает отправитель, а активации, мультиподписи и других дополнительных сборов нет.",
+          "Сжигание за Energy в TRX = max(нужная Energy отправителя − доступная Energy, 0) × цена Energy в sun ÷ 1 000 000. Сжигание за Bandwidth равно нулю, если подходящая квота покрывает транзакцию целиком; иначе оплачивается весь нужный Bandwidth × цена в sun ÷ 1 000 000.",
+          "Это учебные расчёты, а не фиксированные тарифы перевода USDT. Для наглядности взяты 350 Bandwidth и цены из предыдущего раздела. 65 000 и 130 000 Energy — условные исходные данные, а не гарантированный расход любого перевода."
+        ],
+        "table": {
+          "headers": [
+            "Сценарий",
+            "Сжигание TRX за Energy",
+            "TRX за Bandwidth",
+            "Всего сожжено"
+          ],
+          "rows": [
+            [
+              "Перевод TRX; квоты не покрывают 350 Bandwidth",
+              "0",
+              "350 × 0,001 = 0,35",
+              "0,35 TRX"
+            ],
+            [
+              "Нужно 65 000 Energy; доступно 0; Bandwidth покрыт",
+              "65 000 × 0,0001 = 6,5",
+              "0",
+              "6,5 TRX"
+            ],
+            [
+              "Тот же вызов; есть 40 000 Energy; Bandwidth не покрыт",
+              "25 000 × 0,0001 = 2,5",
+              "0,35",
+              "2,85 TRX"
+            ],
+            [
+              "Нужно 130 000 Energy; доступных ресурсов нет",
+              "130 000 × 0,0001 = 13",
+              "0,35",
+              "13,35 TRX"
+            ],
+            [
+              "Оба ресурса полностью покрыты",
+              "0",
+              "0",
+              "0 дополнительных TRX за ресурсы"
+            ]
+          ],
+          "caption": "Примеры при явно заданных условиях"
+        },
+        "after": [
+          "Нулевое сжигание не означает отсутствие экономических расходов: у аренды есть цена, а стейкинг связывает капитал. Для оценки в долларах умножьте комиссию в TRX на курс в нужный момент. Одинаковое число ресурсов не гарантирует одинаковую долларовую стоимость."
+        ]
+      },
+      {
+        "title": "Почему комиссия за USDT TRC-20 различается",
+        "paragraphs": [
+          "Перевод токена изменяет записи внутри контракта. Баланс USDT у получателя и необходимые изменения хранилища могут влиять на Energy. Поэтому перевод на адрес без USDT может получить другую оценку, чем перевод на адрес с балансом. Изменение хранилища токена и активация аккаунта TRON — разные операции.",
+          "Dynamic Energy Model может повышать расход Energy у активно используемых контрактов. Важны текущий коэффициент контракта и исполняемый путь. Предыдущий перевод на тот же адрес полезен для сравнения, но не фиксирует цену следующего.",
+          "Большая сумма USDT сама по себе не означает пропорционально большую комиссию. Смена получателя, другого контракта токена, необходимость approve или обмен через несколько контрактов меняют выполняемую работу. Запрашивайте свежую оценку для конкретных отправителя, получателя, контракта и суммы."
+        ],
+        "refs": [
+          "dynamic_energy",
+          "estimate_energy"
+        ]
+      },
+      {
+        "title": "Комиссия кошелька, сети и биржи: что вы оплачиваете",
+        "paragraphs": [
+          "Некастодиальный кошелёк обычно показывает оценку ресурсов сети для выбранной операции. Это не обязательно дополнительная плата разработчику кошелька. На экране подтверждения отдельно проверьте сервисный сбор, аренду ресурсов, комиссию обмена или услугу оплаты комиссии за вас.",
+          "Комиссию вывода с биржи назначает сама биржа: она может отличаться от комиссии транзакции в блокчейне. Площадка может объединять выводы, использовать свои ресурсы и указывать сбор в USDT. Сравнивайте сумму получения, минимальный вывод и отдельные платежи сервиса.",
+          "Описанный сетевой механизм сжигает TRX, а не USDT с баланса кошелька. Если приложение предлагает оплату в USDT, изучите, как оно обеспечивает ресурсы и сколько берёт за услугу. Сам по себе баланс токена TRC-20 не предоставляет Energy или Bandwidth."
+        ]
+      },
+      {
+        "title": "Стейкинг, делегирование и аренда Energy",
+        "paragraphs": [
+          "При стейкинге TRX выбирают ресурс: Energy или Bandwidth. Лимит зависит от вашей доли в общем стейкинге сети под этот ресурс, поэтому постоянного курса «1 TRX даёт X Energy» нет. Стейкинг под Energy автоматически не обеспечивает нужный запас Bandwidth.",
+          "Делегирование позволяет другому аккаунту предоставить ресурсы вашему активированному адресу. Аренда Energy — платная услуга на основе этого механизма. Сравните объём, цену, срок действия и время поступления. Ресурс должен получить кошелёк отправителя, а не адрес, на который вы отправляете USDT.",
+          "Использованные ресурсы восстанавливаются постепенно примерно за 24 часа, а не обнуляются в полночь. Новая активность влияет на доступный остаток. Срок аренды и восстановление — разные вещи: аренда на час не означает постоянное выделение ресурса на сутки.",
+          "TRX в стейкинге не сжигается как комиссия, но становится недоступным для свободного использования. Вывод из Stake 2.0 связан с ожиданием: по текущим документированным параметрам это 14 дней. Сопоставьте этот срок и свои объёмы переводов до размещения капитала."
+        ],
+        "refs": [
+          "staking",
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "Как снизить комиссию сети TRON",
+        "paragraphs": [],
+        "steps": [
+          "Проверьте адрес отправителя в кошельке или TRONSCAN: доступную Energy, Bandwidth от стейкинга или делегирования, бесплатный Bandwidth и ликвидный TRX.",
+          "Подготовьте конкретный перевод и получите свежую оценку Energy. Для обмена учтите отдельный approve и другие вызовы контракта, если они нужны.",
+          "Рассчитайте сжигание TRX при дефиците ресурсов и сравните с ценой аренды. Добавьте Bandwidth и сервисные платежи, которые аренда не покрывает.",
+          "При регулярных переводах сопоставьте стейкинг и делегирование с реальным суточным расходом и капиталом, который можете разместить.",
+          "Если перевод можно отложить, проверьте восстановление ресурса. Ожидание помогает восстановить использованную квоту, но не гарантирует снижение коэффициента контракта или цены аренды.",
+          "После делегирования проверьте доступную Energy именно у отправителя и пересчитайте комиссию в кошельке перед подписью."
+        ],
+        "note": "Аренда Energy снижает отдельную статью расходов. Она не оплачивает автоматически Bandwidth, активацию аккаунта или комиссию приложения. Фиксированный процент экономии не гарантирован."
+      },
+      {
+        "title": "fee_limit, OUT_OF_ENERGY и неуспешные транзакции",
+        "paragraphs": [
+          "В контрактной транзакции fee_limit задаёт бюджет Energy отправителя в sun. Это верхний предел, а не комиссия, которая целиком спишется при каждом успешном переводе. Он может ограничивать используемую Energy даже при наличии ресурсов от стейкинга или делегирования. Bandwidth и специальные сборы учитываются отдельно.",
+          "Слишком низкий бюджет или нехватка Energy и TRX могут привести к OUT_OF_ENERGY. Увеличение fee_limit не пополняет баланс и не добавляет ресурс. Лимит стоит выбирать по оценке с разумным запасом на изменения состояния, а не выставлять произвольный максимум.",
+          "Неуспешный вызов, попавший в блокчейн, всё равно может потратить ресурсы и сжечь TRX за уже выполненную работу. Размер зависит от причины сбоя. Перед повтором проверьте статус исполнения, квитанцию и баланс токенов: повторные неудачные попытки создают новые расходы."
+        ],
+        "refs": [
+          "feelimit",
+          "failed_transactions"
+        ]
+      },
+      {
+        "title": "Как проверить фактическую комиссию в TRONSCAN",
+        "paragraphs": [],
+        "steps": [
+          "Откройте хеш операции в официальном TRONSCAN. Проверьте отправителя, получателя, контракт токена, сумму и статус исполнения.",
+          "Посмотрите расход Energy и Bandwidth вместе с комиссией в TRX. Расход ресурса и сжигание TRX — разные показатели: транзакция может потреблять Energy без списания TRX за эту часть.",
+          "Для интеграции запросите wallet/gettransactioninfobyid после исполнения. Поле fee показывает сетевые списания TRX в sun, а поля receipt, например energy_usage_total, energy_fee, net_usage и net_fee, помогают разобрать ресурсы и сжигание.",
+          "Разделите сумму в sun на 1 000 000 для перевода в TRX. Не прибавляйте общую fee к уже входящим в неё составляющим и не учитывайте отдельную оплату сервиса дважды."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "transaction_receipt"
+        ]
+      },
+      {
+        "title": "Новые адреса и дополнительные сетевые сборы",
+        "paragraphs": [
+          "Создать адрес в приложении и активировать аккаунт в TRON — разные действия. Стандартная активация переводом TRX или TRC-10 либо операцией создания аккаунта сейчас требует 1 TRX. Бесплатный Bandwidth на этот путь не распространяется; при нехватке ресурса от стейкинга или делегирования документированный фиксированный сбор составляет ещё 0,1 TRX.",
+          "Перевод USDT получателю без баланса токена не равен стандартной активации через TRX. Не добавляйте автоматически 1 TRX к любому первому переводу USDT. Проверяйте статус аккаунта и тип операции. Активация из контракта имеет свои правила Energy.",
+          "Для мультиподписи и некоторых операций управления аккаунтом действуют дополнительные сборы протокола. Обычной оценки «Energy плюс Bandwidth» для них недостаточно: нужны текущие параметры сети и подробности подтверждения в кошельке."
+        ],
+        "refs": [
+          "tron",
+          "network_parameters"
+        ]
+      }
+    ],
+    "faqs": [
+      [
+        "Сколько сейчас стоит перевод в TRON?",
+        "Единого тарифа нет: нужны расход Bandwidth, Energy отправителя, доступные ресурсы и специальные сборы. В справочных параметрах, проверенных 24 октября 2026 года, недостающая Energy стоит 0,0001 TRX за единицу, обычная оплата Bandwidth — 0,001 TRX за единицу. Перед переводом проверьте актуальные параметры."
+      ],
+      [
+        "Можно отправить USDT без TRX на кошельке?",
+        "Иногда активированный отправитель может обойтись без сжигания TRX, если Energy и Bandwidth полностью обеспечены либо платёж организует сервис. Один лишь баланс USDT ресурсов не даёт. Проверьте остальные сборы и поддержку операции в приложении."
+      ],
+      [
+        "Выдают ли бесплатную Energy каждый день?",
+        "Нет. Протокол даёт ограниченную возобновляемую квоту бесплатного Bandwidth, сейчас 600, но не ежедневную Energy. Её получают через стейкинг или делегирование; дефицит можно оплатить сжиганием TRX."
+      ],
+      [
+        "Одинаковы ли комиссии во всех кошельках TRON?",
+        "Правила ресурсов сети общие, но оценки, сервисные сборы, предложения аренды и комиссии вывода площадок различаются. Сравнивайте полную стоимость одной и той же операции."
+      ],
+      [
+        "Любой перевод с арендованной Energy будет бесплатным?",
+        "Нет. У аренды есть цена, она покрывает только предоставленную Energy. Могут остаться Bandwidth, дефицит ресурса, специальные сборы и комиссия приложения."
+      ],
+      [
+        "Вернут ли комиссию за неуспешный перевод?",
+        "Ошибка в блокчейне не означает автоматический возврат уже потраченных ресурсов. Проверьте квитанцию и причину сбоя до повторной отправки. Отклонение до исполнения в сети — другой случай."
+      ]
+    ],
+    "datePublished": "2026-10-24",
+    "dateModified": "2026-10-24"
+  },
+  "es": {
+    "title": "Comisiones TRON: Bandwidth, Energy y costes del monedero",
+    "description": "Cómo calcular las comisiones TRON de TRX y USDT TRC-20: Bandwidth, Energy, cargos del monedero, ejemplos y formas de reducir el coste de cada envío.",
+    "category": "Comisiones de red",
+    "time": "12 min de lectura",
+    "sourceLabel": "Documentación oficial",
+    "ctaTitle": "Compara alquilar Energy con quemar TRX",
+    "ctaText": "Consulta la estimación de Energy de tu envío y compárala con la cotización actual de GasFree4you. Incluye Bandwidth y los demás cargos pendientes en el coste total.",
+    "ctaButton": "Consultar alquiler de Energy",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Lee también",
+    "relatedText": "Cómo comprobar transacciones y recursos en TRONSCAN",
+    "relatedHref": "how-to-use-tronscan.html",
+    "faqHeading": "Preguntas frecuentes sobre las comisiones TRON",
+    "sections": [
+      {
+        "title": "Cómo funcionan las comisiones de TRON",
+        "paragraphs": [
+          "TRON no tiene una tarifa única para todos los envíos. Una transferencia normal de TRX nativo utiliza Bandwidth; un envío de USDT TRC-20 ejecuta un contrato y utiliza Bandwidth y Energy. Si los recursos necesarios están disponibles, esa parte del coste se cubre sin quemar TRX adicional. Cuando faltan, la red cobra TRX según sus reglas.",
+          "La comisión no es un porcentaje del importe enviado. Transferir 10 o 1.000 USDT mediante el mismo contrato puede exigir recursos similares. Influyen el tamaño de la transacción, las instrucciones ejecutadas, el estado del contrato y los recursos del remitente."
+        ],
+        "table": {
+          "headers": [
+            "Operación",
+            "Bandwidth",
+            "Energy",
+            "Qué comprobar"
+          ],
+          "rows": [
+            [
+              "TRX a una cuenta activada",
+              "Sí",
+              "No",
+              "Recursos disponibles y tamaño de la transacción"
+            ],
+            [
+              "USDT u otro TRC-20",
+              "Sí",
+              "Sí",
+              "Estimación de Energy, Bandwidth y saldo"
+            ],
+            [
+              "Swap o autorización approve",
+              "Por transacción",
+              "Por llamada",
+              "Si approve y swap requieren operaciones separadas"
+            ],
+            [
+              "Consultar un saldo sin enviar una transacción",
+              "Sin coste en cadena",
+              "Sin coste en cadena",
+              "El proveedor de API puede cobrar su servicio"
+            ]
+          ],
+          "caption": "Recursos utilizados por operaciones habituales"
+        },
+        "refs": [
+          "resources",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Bandwidth: el tamaño de los datos",
+        "paragraphs": [
+          "Bandwidth cubre los datos de la transacción almacenados en la cadena. Direcciones, parámetros del contrato, firmas y datos adicionales afectan a su tamaño. No representa la velocidad de tu conexión a internet. Añadir firmas o información puede aumentar el consumo.",
+          "Los parámetros consultados el 24 de octubre de 2026 contemplan 600 Bandwidth gratuitos renovables para una cuenta activada. No equivalen a 600 envíos: cada transacción consume los recursos correspondientes a su tamaño. También debe haber capacidad en la cuota gratuita compartida de la red.",
+          "Para una transacción normal, la red intenta usar primero Bandwidth procedente de staking o delegación; ese origen debe cubrir toda la operación. Si no alcanza, prueba la cuota gratuita, que también debe cubrirla por completo. Si ninguna basta, se quema TRX por todo el Bandwidth requerido. Las dos cuotas no se suman para una misma transacción normal.",
+          "Si hacen falta 350 Bandwidth y tienes 200 de staking y 200 gratuitos, ninguna cuota cubre los 350: se cobra en TRX la totalidad. La creación de cuentas sigue reglas específicas."
+        ],
+        "refs": [
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "Energy: ejecutar un contrato inteligente",
+        "paragraphs": [
+          "Energy mide el trabajo de la máquina virtual de TRON. Enviar USDT ejecuta el contrato del token aunque la pantalla parezca un envío sencillo. Los swaps, las autorizaciones y otras llamadas también requieren Energy y deben estimarse por separado.",
+          "El protocolo no concede una cuota diaria gratuita de Energy. Puedes obtenerla haciendo staking de TRX para Energy o mediante delegación, incluido el alquiler. Mantener TRX líquido no genera Energy: la red puede quemarlo cuando falten recursos.",
+          "Energy permite cobertura parcial. Si tu parte de la ejecución necesita 65.000 Energy y tienes 40.000, las 25.000 restantes pueden pagarse quemando TRX si el saldo y los límites de la operación lo permiten.",
+          "Algunos contratos permiten que su desarrollador asuma una parte. Depende de la configuración, los recursos disponibles y el límite por llamada. No presupongas que el monedero, el emisor del token o el servicio de alquiler paga todos los conceptos."
+        ],
+        "refs": [
+          "resource_fees",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Precios de referencia de los recursos",
+        "paragraphs": [
+          "Los valores siguientes se comprobaron en la documentación oficial el 24 de octubre de 2026. La gobernanza puede modificarlos. Antes de enviar, consulta los parámetros actuales de Mainnet; una captura antigua o una cotización anterior no fija el coste de la siguiente operación.",
+          "Un TRX equivale a 1.000.000 sun. Energy y Bandwidth son unidades de recursos, no saldos de tokens. El precio de quema se utiliza cuando la red debe cobrar TRX en lugar de consumir recursos suficientes."
+        ],
+        "table": {
+          "headers": [
+            "Parámetro",
+            "Valor de referencia",
+            "Dónde comprobarlo"
+          ],
+          "rows": [
+            [
+              "Quema por Bandwidth",
+              "1.000 sun = 0,001 TRX por unidad",
+              "getTransactionFee"
+            ],
+            [
+              "Quema por Energy",
+              "100 sun = 0,0001 TRX por unidad",
+              "getEnergyFee"
+            ],
+            [
+              "Cuota gratuita de Bandwidth",
+              "600 por cuenta activada",
+              "getFreeNetLimit"
+            ],
+            [
+              "Cuota gratuita de Energy",
+              "No existe",
+              "Modelo de recursos"
+            ]
+          ],
+          "caption": "Valores de referencia comprobados el 24 de octubre de 2026"
+        },
+        "refs": [
+          "network_parameters",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Cómo calcular una comisión TRON",
+        "paragraphs": [
+          "Estima la Energy que debe aportar el remitente y comprueba si una cuota de Bandwidth cubre toda la transacción. Añade después los cargos específicos. Los ejemplos suponen que el remitente paga toda la Energy y que no hay activación, multifirma ni otros recargos.",
+          "TRX quemado por Energy = max(Energy necesaria del remitente − Energy disponible, 0) × precio en sun ÷ 1.000.000. El cargo por Bandwidth es cero cuando una cuota válida cubre toda la operación; de lo contrario se cobra todo el Bandwidth necesario × precio en sun ÷ 1.000.000.",
+          "Son ejemplos aritméticos, no tarifas fijas de USDT. Usan 350 Bandwidth y los precios anteriores. Las cifras de 65.000 y 130.000 Energy son supuestos ilustrativos: estima tu operación concreta."
+        ],
+        "table": {
+          "headers": [
+            "Ejemplo",
+            "TRX por Energy",
+            "TRX por Bandwidth",
+            "Total quemado"
+          ],
+          "rows": [
+            [
+              "Envío de TRX; ninguna cuota cubre 350 Bandwidth",
+              "0",
+              "350 × 0,001 = 0,35",
+              "0,35 TRX"
+            ],
+            [
+              "65.000 Energy; ninguna disponible; Bandwidth cubierto",
+              "65.000 × 0,0001 = 6,5",
+              "0",
+              "6,5 TRX"
+            ],
+            [
+              "Misma llamada; 40.000 Energy disponibles; sin Bandwidth suficiente",
+              "25.000 × 0,0001 = 2,5",
+              "0,35",
+              "2,85 TRX"
+            ],
+            [
+              "130.000 Energy; sin recursos disponibles",
+              "130.000 × 0,0001 = 13",
+              "0,35",
+              "13,35 TRX"
+            ],
+            [
+              "Ambos recursos cubiertos",
+              "0",
+              "0",
+              "0 TRX adicional por recursos"
+            ]
+          ],
+          "caption": "Ejemplos con condiciones explícitas"
+        },
+        "after": [
+          "No quemar TRX no elimina el coste económico: el alquiler tiene un precio y el staking inmoviliza capital. Para convertir una comisión a dólares, multiplícala por el tipo de cambio de TRX del momento. Un consumo igual no garantiza un coste igual en dólares."
+        ]
+      },
+      {
+        "title": "Por qué varía el coste de enviar USDT TRC-20",
+        "paragraphs": [
+          "El contrato modifica registros de almacenamiento al transferir tokens. El saldo de USDT del destinatario y las escrituras necesarias pueden cambiar la Energy requerida. Una dirección sin USDT puede dar una estimación distinta de otra con saldo. Esto no debe confundirse con activar una cuenta TRON.",
+          "El modelo de Energy dinámica puede aumentar el consumo de contratos muy utilizados. Importan el factor actual y el camino de ejecución. Una transferencia anterior al mismo destinatario sirve como referencia, pero no garantiza el siguiente precio.",
+          "Enviar más USDT no implica por sí mismo una comisión proporcionalmente mayor. Cambiar de destinatario, contrato o ruta de swap, o necesitar una autorización, puede modificar el trabajo. Solicita una estimación actual para el remitente, destinatario, contrato e importe exactos."
+        ],
+        "refs": [
+          "dynamic_energy",
+          "estimate_energy"
+        ]
+      },
+      {
+        "title": "Comisión del monedero, de la red y del exchange",
+        "paragraphs": [
+          "Un monedero de autocustodia suele mostrar una estimación del coste de red. Esa cifra no es necesariamente un pago adicional a su desarrollador. Comprueba si la confirmación incluye cargos separados por servicio, alquiler, swap o pago patrocinado.",
+          "La comisión de retirada la fija el exchange y puede diferir de lo pagado en cadena. La plataforma puede agrupar retiradas, usar sus propios recursos o expresar el cargo en USDT. Compara cuánto recibe el destinatario, el mínimo de retirada y cualquier otro pago.",
+          "El mecanismo de red descrito quema TRX, no los USDT de tu saldo. Si una aplicación permite pagar en USDT, revisa cómo proporciona los recursos y cuánto cobra. Tener tokens TRC-20 no genera Energy ni Bandwidth."
+        ]
+      },
+      {
+        "title": "Staking, delegación y alquiler de Energy",
+        "paragraphs": [
+          "Al hacer staking eliges Energy o Bandwidth. Tu límite depende de tu proporción del TRX bloqueado para ese recurso en la red, por lo que no existe una conversión permanente de un TRX a una cantidad fija de Energy. El staking para Energy no proporciona automáticamente el Bandwidth necesario.",
+          "La delegación permite a otra cuenta proporcionar recursos a tu dirección activada. El alquiler es un servicio de pago basado en este mecanismo: compara cantidad, precio, plazo de entrega y duración. La Energy debe llegar al monedero remitente, no al destinatario de los USDT.",
+          "Los recursos consumidos se recuperan gradualmente durante unas 24 horas; no se reinician a medianoche. Las nuevas operaciones afectan al saldo disponible. El plazo del alquiler es independiente: alquilar durante una hora no garantiza una asignación permanente durante todo el día.",
+          "El TRX en staking no se quema como comisión, pero deja de estar líquido. La retirada en Stake 2.0 tiene un periodo de espera, actualmente de 14 días según los parámetros documentados. Considera ese plazo y tu volumen habitual antes de inmovilizar capital."
+        ],
+        "refs": [
+          "staking",
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "Cómo reducir las comisiones de TRON",
+        "paragraphs": [],
+        "steps": [
+          "Consulta los recursos del remitente: Energy, Bandwidth de staking o delegación, Bandwidth gratuito y TRX líquido.",
+          "Prepara el envío exacto y obtén una estimación reciente. En un swap, incluye approve y otras llamadas separadas si hacen falta.",
+          "Calcula la quema de TRX prevista y compárala con el alquiler, añadiendo Bandwidth y los cargos que este no cubra.",
+          "Para uso habitual, compara staking y delegación con tu consumo diario real y el capital que puedes inmovilizar.",
+          "Si puedes esperar, comprueba la recuperación de recursos. Esperar no garantiza un factor de contrato ni un precio de alquiler menor.",
+          "Después de la delegación, verifica la Energy disponible del remitente y revisa la nueva estimación antes de firmar."
+        ],
+        "note": "Alquilar Energy reduce un componente del coste. No cubre automáticamente Bandwidth, activación ni cargos de la aplicación. No hay un porcentaje de ahorro garantizado."
+      },
+      {
+        "title": "fee_limit, OUT_OF_ENERGY y transacciones fallidas",
+        "paragraphs": [
+          "fee_limit es el presupuesto de Energy del remitente expresado en sun. Es un límite, no la comisión completa que se cobra siempre. Puede limitar la Energy utilizable incluso con recursos en staking o delegados. Bandwidth y otros cargos se consideran por separado.",
+          "Un presupuesto demasiado bajo, o la falta de Energy y TRX, puede provocar OUT_OF_ENERGY. Aumentar fee_limit no aporta recursos ni saldo. Elige el límite a partir de una estimación y un margen razonable para cambios de estado.",
+          "Una llamada fallida que se ejecuta en cadena puede consumir recursos y quemar TRX por el trabajo realizado. El importe depende del tipo de fallo. Comprueba resultado, recibo y saldos antes de repetir: los nuevos intentos pueden generar nuevos costes."
+        ],
+        "refs": [
+          "feelimit",
+          "failed_transactions"
+        ]
+      },
+      {
+        "title": "Cómo comprobar la comisión real en TRONSCAN",
+        "paragraphs": [],
+        "steps": [
+          "Abre el hash en TRONSCAN y verifica remitente, destinatario, contrato, importe y resultado de ejecución.",
+          "Revisa Energy y Bandwidth junto con la comisión TRX. Consumir recursos no equivale a quemar TRX: los recursos disponibles pueden cubrir esa parte.",
+          "Para una integración, consulta wallet/gettransactioninfobyid tras la ejecución. fee muestra los cargos TRX en sun; energy_usage_total, energy_fee, net_usage y net_fee del recibo ayudan a explicar consumo y quema.",
+          "Divide los importes en sun por 1.000.000 para obtener TRX. No sumes el total fee a sus componentes ni dupliques un pago separado al servicio."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "transaction_receipt"
+        ]
+      },
+      {
+        "title": "Direcciones nuevas y cargos adicionales",
+        "paragraphs": [
+          "Generar una dirección localmente y activar una cuenta en TRON son acciones diferentes. La activación estándar mediante TRX, TRC-10 o la operación de creación cuesta actualmente 1 TRX. La cuota gratuita de Bandwidth no cubre este caso; si el recurso de staking o delegación no alcanza, el recargo fijo documentado es de 0,1 TRX.",
+          "Enviar USDT a una dirección sin saldo del token no equivale a esa activación estándar. No añadas automáticamente 1 TRX a todo primer envío de USDT. Comprueba el estado de la cuenta y el tipo de operación; la activación desde un contrato tiene otras reglas de Energy.",
+          "La multifirma y ciertas operaciones de gestión de cuentas pueden tener cargos de protocolo adicionales. Para ellas, calcular solo Energy y Bandwidth resulta incompleto: consulta los parámetros actuales y el detalle de confirmación."
+        ],
+        "refs": [
+          "tron",
+          "network_parameters"
+        ]
+      }
+    ],
+    "faqs": [
+      [
+        "¿Cuál es la comisión actual de TRON?",
+        "No hay una tarifa única. Depende de los recursos y los cargos especiales. Los precios de referencia comprobados el 24 de octubre de 2026 son 0,0001 TRX por Energy faltante y 0,001 TRX por Bandwidth en el cobro ordinario. Consulta los parámetros actuales antes de enviar."
+      ],
+      [
+        "¿Puedo enviar USDT sin tener TRX?",
+        "A veces una cuenta activada puede hacerlo si Energy y Bandwidth están cubiertos o un servicio gestiona el pago. El saldo USDT por sí solo no proporciona recursos. Comprueba otros cargos y la compatibilidad del monedero."
+      ],
+      [
+        "¿TRON regala Energy cada día?",
+        "No. Existe una cuota renovable limitada de Bandwidth gratuito, actualmente 600, pero no Energy gratuita diaria. La Energy procede de staking o delegación; su déficit puede pagarse quemando TRX."
+      ],
+      [
+        "¿Todos los monederos cobran lo mismo?",
+        "Las reglas de red son comunes, pero las estimaciones, servicios, alquileres y retiradas de exchanges pueden tener costes distintos. Compara la operación completa."
+      ],
+      [
+        "¿El alquiler hace gratis el envío?",
+        "No. Pagas el alquiler y solo cubre la Energy suministrada. Pueden quedar Bandwidth, déficit de recursos, cargos especiales y comisiones de la aplicación."
+      ],
+      [
+        "¿Se devuelve la comisión de un envío fallido?",
+        "Un fallo en cadena no devuelve automáticamente los recursos ya consumidos. Revisa el recibo y la causa antes de repetir. Un rechazo anterior a la ejecución en cadena es un caso diferente."
+      ]
+    ],
+    "datePublished": "2026-10-24",
+    "dateModified": "2026-10-24"
+  },
+  "id": {
+    "title": "Biaya transaksi TRON: Bandwidth, Energy dan biaya dompet",
+    "description": "Pahami biaya transaksi TRON untuk TRX dan USDT TRC-20: Bandwidth, Energy, contoh perhitungan, biaya dompet, dan cara mengurangi biaya transfer.",
+    "category": "Biaya jaringan",
+    "time": "12 menit baca",
+    "sourceLabel": "Dokumentasi resmi",
+    "ctaTitle": "Bandingkan sewa Energy dengan pembakaran TRX",
+    "ctaText": "Periksa estimasi Energy transfer Anda, lalu bandingkan dengan penawaran sewa GasFree4you saat ini. Tambahkan Bandwidth dan biaya lain yang masih harus dibayar.",
+    "ctaButton": "Lihat sewa Energy",
+    "ctaHref": "https://user.gasfree4you.com/",
+    "relatedTitle": "Baca juga",
+    "relatedText": "Cara memeriksa transaksi dan sumber daya di TRONSCAN",
+    "relatedHref": "how-to-use-tronscan.html",
+    "faqHeading": "Pertanyaan umum tentang biaya TRON",
+    "sections": [
+      {
+        "title": "Cara kerja biaya transaksi TRON",
+        "paragraphs": [
+          "TRON tidak menerapkan satu biaya tetap untuk semua transfer. Transfer TRX native biasa memakai Bandwidth; transfer USDT TRC-20 memanggil smart contract sehingga memakai Bandwidth dan Energy. Jika sumber daya mencukupi, bagian biaya ini dapat ditanggung tanpa membakar TRX tambahan. Jika tidak, jaringan membebankan TRX sesuai aturan sumber dayanya.",
+          "Biaya bukan persentase dari jumlah yang dikirim. Pengiriman 10 dan 1.000 USDT melalui kontrak yang sama dapat membutuhkan sumber daya serupa. Faktor pentingnya adalah ukuran transaksi, instruksi yang dijalankan, kondisi kontrak dan sumber daya pengirim."
+        ],
+        "table": {
+          "headers": [
+            "Operasi",
+            "Bandwidth",
+            "Energy",
+            "Yang perlu diperiksa"
+          ],
+          "rows": [
+            [
+              "TRX ke akun yang sudah aktif",
+              "Ya",
+              "Tidak",
+              "Bandwidth tersedia dan ukuran transaksi"
+            ],
+            [
+              "USDT atau TRC-20 lain",
+              "Ya",
+              "Ya",
+              "Estimasi Energy, Bandwidth dan saldo"
+            ],
+            [
+              "Swap atau persetujuan approve",
+              "Setiap transaksi",
+              "Setiap pemanggilan",
+              "Apakah approve dan swap terpisah"
+            ],
+            [
+              "Membaca saldo tanpa mengirim transaksi",
+              "Tanpa biaya on-chain",
+              "Tanpa biaya on-chain",
+              "Penyedia API dapat menetapkan tarif layanan"
+            ]
+          ],
+          "caption": "Sumber daya untuk operasi TRON yang umum"
+        },
+        "refs": [
+          "resources",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Bandwidth: ukuran data transaksi",
+        "paragraphs": [
+          "Bandwidth membayar ukuran data transaksi yang disimpan di blockchain. Alamat, parameter kontrak, tanda tangan dan data tambahan memengaruhi ukuran ini. Ini bukan kecepatan koneksi internet Anda. Tanda tangan atau data tambahan dapat meningkatkan pemakaian.",
+          "Parameter yang diperiksa pada 24 Oktober 2026 memberikan kuota 600 Bandwidth gratis yang dapat pulih untuk akun aktif. Artinya bukan 600 transfer gratis: setiap transaksi memakai sumber daya sesuai ukurannya. Penggunaannya juga bergantung pada ketersediaan kuota gratis bersama di jaringan.",
+          "Untuk transaksi biasa, jaringan mencoba Bandwidth dari staking atau delegasi terlebih dahulu. Sumber ini harus menutup seluruh transaksi. Jika tidak cukup, jaringan mencoba kuota gratis yang juga harus menutup seluruhnya. Jika keduanya tidak cukup, TRX dibakar untuk seluruh kebutuhan Bandwidth. Kedua kuota tidak digabungkan untuk membayar satu transaksi biasa.",
+          "Contoh: kebutuhan 350 Bandwidth tidak dapat ditutup oleh 200 dari staking ditambah 200 gratis. Tidak ada satu kuota yang mencapai 350, sehingga seluruh 350 dibayar dengan TRX. Pembuatan akun memakai aturan khusus."
+        ],
+        "refs": [
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "Energy: menjalankan smart contract",
+        "paragraphs": [
+          "Energy mengukur pekerjaan komputasi TRON Virtual Machine. Transfer USDT menjalankan kontrak token walaupun tampilannya menyerupai pengiriman biasa. Swap, approve dan operasi kontrak lain juga memerlukan Energy dengan estimasi masing-masing.",
+          "Protokol tidak memberikan kuota Energy gratis harian. Energy diperoleh dengan staking TRX untuk Energy atau melalui delegasi, termasuk layanan sewa. Menyimpan TRX likuid tidak menghasilkan Energy: saldo tersebut dapat dibakar saat sumber daya kurang.",
+          "Energy dapat menutup sebagian kebutuhan. Jika bagian pemanggil memerlukan 65.000 Energy dan tersedia 40.000, kekurangan 25.000 dapat dibayar dengan membakar TRX jika saldo dan batas transaksi memungkinkan.",
+          "Sebagian kontrak memungkinkan pengembang menanggung sebagian Energy. Hal itu bergantung pada pengaturan kontrak, sumber daya pengembang dan batas per pemanggilan. Jangan menganggap dompet, penerbit token atau layanan sewa otomatis menanggung semua biaya."
+        ],
+        "refs": [
+          "resource_fees",
+          "tronweb_resources"
+        ]
+      },
+      {
+        "title": "Harga acuan sumber daya TRON",
+        "paragraphs": [
+          "Nilai berikut diperiksa melalui dokumentasi resmi pada 24 Oktober 2026. Tata kelola jaringan dapat mengubahnya. Periksa parameter Mainnet terbaru sebelum mengirim; tangkapan layar atau estimasi lama tidak mengunci biaya transaksi berikutnya.",
+          "Satu TRX sama dengan 1.000.000 sun. Energy dan Bandwidth merupakan satuan sumber daya, bukan saldo token. Harga pembakaran berlaku ketika jaringan membebankan TRX karena sumber daya tidak mencukupi."
+        ],
+        "table": {
+          "headers": [
+            "Parameter",
+            "Nilai acuan",
+            "Tempat memeriksa"
+          ],
+          "rows": [
+            [
+              "Pembakaran untuk Bandwidth",
+              "1.000 sun = 0,001 TRX per unit",
+              "getTransactionFee"
+            ],
+            [
+              "Pembakaran untuk Energy",
+              "100 sun = 0,0001 TRX per unit",
+              "getEnergyFee"
+            ],
+            [
+              "Kuota Bandwidth gratis",
+              "600 per akun aktif",
+              "getFreeNetLimit"
+            ],
+            [
+              "Kuota Energy gratis",
+              "Tidak ada",
+              "Model sumber daya"
+            ]
+          ],
+          "caption": "Nilai acuan yang diperiksa pada 24 Oktober 2026"
+        },
+        "refs": [
+          "network_parameters",
+          "resource_fees"
+        ]
+      },
+      {
+        "title": "Cara menghitung biaya transaksi TRON",
+        "paragraphs": [
+          "Perkirakan kekurangan Energy di sisi pengirim dan tentukan apakah salah satu kuota Bandwidth menutup seluruh transaksi. Tambahkan biaya khusus operasinya. Perhitungan berikut mengasumsikan pengirim membayar semua Energy, tanpa aktivasi, multisignature atau biaya tambahan lain.",
+          "Pembakaran Energy dalam TRX = max(Energy pengirim yang diperlukan − Energy tersedia, 0) × harga dalam sun ÷ 1.000.000. Pembakaran Bandwidth nol jika satu kuota yang memenuhi syarat menutup seluruh transaksi; jika tidak, seluruh Bandwidth yang diperlukan × harga dalam sun ÷ 1.000.000.",
+          "Ini contoh matematika, bukan tarif tetap USDT. Contoh memakai 350 Bandwidth dan harga acuan di atas. Angka 65.000 dan 130.000 Energy hanyalah asumsi ilustratif: estimasikan transaksi yang benar-benar akan Anda kirim."
+        ],
+        "table": {
+          "headers": [
+            "Contoh",
+            "TRX untuk Energy",
+            "TRX untuk Bandwidth",
+            "Total dibakar"
+          ],
+          "rows": [
+            [
+              "Transfer TRX; kuota tidak menutup 350 Bandwidth",
+              "0",
+              "350 × 0,001 = 0,35",
+              "0,35 TRX"
+            ],
+            [
+              "Perlu 65.000 Energy; tersedia 0; Bandwidth tertutup",
+              "65.000 × 0,0001 = 6,5",
+              "0",
+              "6,5 TRX"
+            ],
+            [
+              "Pemanggilan sama; tersedia 40.000 Energy; Bandwidth kurang",
+              "25.000 × 0,0001 = 2,5",
+              "0,35",
+              "2,85 TRX"
+            ],
+            [
+              "Perlu 130.000 Energy; tanpa sumber daya tersedia",
+              "130.000 × 0,0001 = 13",
+              "0,35",
+              "13,35 TRX"
+            ],
+            [
+              "Kedua kebutuhan sumber daya tertutup",
+              "0",
+              "0",
+              "0 TRX tambahan untuk sumber daya"
+            ]
+          ],
+          "caption": "Contoh dengan asumsi yang dinyatakan jelas"
+        },
+        "after": [
+          "Tidak membakar TRX bukan berarti tidak ada biaya ekonomi: sewa tetap berbayar dan staking mengikat modal. Untuk mengonversi biaya ke dolar, kalikan dengan kurs TRX pada waktu terkait. Kebutuhan sumber daya yang sama tidak menjamin biaya dolar yang sama."
+        ]
+      },
+      {
+        "title": "Mengapa biaya transfer USDT TRC-20 berbeda",
+        "paragraphs": [
+          "Transfer token mengubah catatan penyimpanan di dalam kontrak. Saldo USDT penerima dan perubahan penyimpanan yang diperlukan dapat memengaruhi Energy. Alamat tanpa USDT bisa menghasilkan estimasi berbeda dari alamat yang sudah memiliki saldo. Ini berbeda dari aktivasi akun TRON.",
+          "Dynamic Energy Model dapat menaikkan kebutuhan Energy kontrak yang sering digunakan. Faktor kontrak saat ini dan jalur eksekusi turut menentukan biaya. Riwayat transfer ke alamat sama berguna sebagai acuan, tetapi bukan jaminan harga berikutnya.",
+          "Jumlah USDT yang lebih besar tidak otomatis berarti biaya naik sebanding. Penerima, kontrak token, persetujuan atau rute swap yang berbeda dapat mengubah pekerjaan kontrak. Minta estimasi baru dengan pengirim, penerima, kontrak dan jumlah yang tepat."
+        ],
+        "refs": [
+          "dynamic_energy",
+          "estimate_energy"
+        ]
+      },
+      {
+        "title": "Biaya dompet, jaringan dan penarikan exchange",
+        "paragraphs": [
+          "Dompet nonkustodial biasanya menampilkan estimasi sumber daya jaringan. Angka itu belum tentu pembayaran tambahan kepada pengembang dompet. Periksa biaya layanan, sewa, swap atau pembayaran bersponsor yang dicantumkan terpisah pada konfirmasi.",
+          "Biaya penarikan ditentukan exchange dan dapat berbeda dari biaya transaksi di blockchain. Platform dapat menggabungkan penarikan, memakai sumber dayanya sendiri atau membebankan biaya dalam USDT. Bandingkan jumlah bersih yang diterima, minimum penarikan dan biaya layanan lain.",
+          "Mekanisme jaringan yang dijelaskan membakar TRX, bukan USDT di saldo dompet. Jika aplikasi menawarkan pembayaran dalam USDT, periksa mekanisme dan biaya layanannya. Saldo token TRC-20 sendiri tidak menyediakan Energy maupun Bandwidth."
+        ]
+      },
+      {
+        "title": "Staking, delegasi dan sewa Energy",
+        "paragraphs": [
+          "Saat staking TRX, Anda memilih Energy atau Bandwidth. Batas sumber daya bergantung pada proporsi staking Anda terhadap total jaringan untuk sumber daya itu. Tidak ada rasio tetap selamanya berupa satu TRX menghasilkan sejumlah Energy tertentu. Staking untuk Energy tidak otomatis menyediakan Bandwidth yang sesuai.",
+          "Delegasi memungkinkan akun lain menyediakan sumber daya untuk alamat aktif Anda. Sewa Energy merupakan layanan berbayar dengan mekanisme tersebut. Bandingkan jumlah, harga, waktu pengiriman dan masa berlaku. Energy harus tersedia di dompet pengirim, bukan penerima USDT.",
+          "Sumber daya yang terpakai pulih bertahap selama sekitar 24 jam, bukan direset tengah malam. Aktivitas berikutnya memengaruhi jumlah tersedia. Durasi sewa berbeda dari pemulihan protokol: sewa satu jam tidak menjamin alokasi tetap selama sehari.",
+          "TRX dalam staking tidak dibakar sebagai biaya transaksi, tetapi tidak tersedia sebagai saldo likuid. Unstaking Stake 2.0 memiliki masa tunggu, saat ini 14 hari menurut parameter terdokumentasi. Pertimbangkan jangka waktu dan kebutuhan transfer sebelum mengikat modal."
+        ],
+        "refs": [
+          "staking",
+          "bandwidth_energy"
+        ]
+      },
+      {
+        "title": "Cara mengurangi biaya jaringan TRON",
+        "paragraphs": [],
+        "steps": [
+          "Periksa Energy pengirim, Bandwidth staking atau delegasi, Bandwidth gratis dan saldo TRX likuid melalui dompet atau TRONSCAN.",
+          "Siapkan transaksi tepat yang akan dikirim lalu dapatkan estimasi terbaru. Untuk swap, hitung approve dan pemanggilan terpisah jika diperlukan.",
+          "Hitung pembakaran TRX akibat kekurangan sumber daya dan bandingkan dengan harga sewa, termasuk Bandwidth serta biaya layanan yang belum tercakup.",
+          "Untuk transfer rutin, bandingkan staking dan delegasi dengan pemakaian harian nyata serta modal yang bisa Anda ikat.",
+          "Jika waktu fleksibel, periksa pemulihan sumber daya. Menunggu tidak menjamin faktor kontrak atau harga sewa yang lebih rendah.",
+          "Setelah delegasi, pastikan Energy tersedia di alamat pengirim dan tinjau kembali estimasi dompet sebelum menandatangani."
+        ],
+        "note": "Sewa Energy mengurangi satu komponen biaya. Bandwidth, aktivasi akun dan biaya aplikasi tidak otomatis tertutup. Persentase penghematan tertentu tidak dijamin."
+      },
+      {
+        "title": "fee_limit, OUT_OF_ENERGY dan transaksi gagal",
+        "paragraphs": [
+          "fee_limit adalah anggaran Energy pemanggil dalam sun. Ini batas, bukan biaya penuh yang selalu ditagihkan. Batas ini dapat membatasi Energy yang bisa digunakan walaupun tersedia sumber daya staking atau delegasi. Bandwidth dan biaya khusus tetap dihitung terpisah.",
+          "Anggaran terlalu rendah atau kurangnya Energy dan TRX dapat memicu OUT_OF_ENERGY. Menaikkan fee_limit tidak menambah sumber daya atau saldo. Tentukan batas dari estimasi dengan cadangan wajar untuk perubahan kondisi.",
+          "Pemanggilan gagal yang sudah dieksekusi di blockchain tetap dapat memakai sumber daya dan membakar TRX untuk pekerjaan yang dilakukan. Besarnya bergantung pada jenis kegagalan. Periksa hasil, receipt dan saldo token sebelum mengulang agar tidak menimbulkan biaya berulang."
+        ],
+        "refs": [
+          "feelimit",
+          "failed_transactions"
+        ]
+      },
+      {
+        "title": "Memeriksa biaya sebenarnya di TRONSCAN",
+        "paragraphs": [],
+        "steps": [
+          "Buka hash transaksi di TRONSCAN resmi. Periksa pengirim, penerima, kontrak token, jumlah dan status eksekusi.",
+          "Tinjau pemakaian Energy dan Bandwidth bersama biaya TRX. Pemakaian sumber daya berbeda dari pembakaran TRX: sumber daya yang cukup dapat menutup biaya tersebut.",
+          "Untuk integrasi, gunakan wallet/gettransactioninfobyid setelah eksekusi. fee melaporkan biaya TRX dalam sun; energy_usage_total, energy_fee, net_usage dan net_fee pada receipt membantu menjelaskan pemakaian serta pembakaran.",
+          "Bagi nilai dalam sun dengan 1.000.000 untuk mendapatkan TRX. Jangan menambahkan total fee ke komponen yang sudah termasuk di dalamnya atau menghitung pembayaran layanan terpisah dua kali."
+        ],
+        "refs": [
+          "tronscan_tx",
+          "transaction_receipt"
+        ]
+      },
+      {
+        "title": "Alamat baru dan biaya tambahan",
+        "paragraphs": [
+          "Membuat alamat lokal dan mengaktifkan akun di TRON merupakan tindakan berbeda. Aktivasi standar melalui transfer TRX, TRC-10 atau operasi pembuatan akun saat ini dikenakan 1 TRX. Bandwidth gratis tidak berlaku untuk jalur ini; jika sumber daya staking atau delegasi tidak cukup, biaya tetap tambahan yang didokumentasikan adalah 0,1 TRX.",
+          "Transfer USDT ke penerima tanpa saldo token tidak sama dengan aktivasi standar melalui TRX. Jangan otomatis menambahkan 1 TRX ke setiap transfer USDT pertama. Periksa status akun dan jenis transaksi; aktivasi dari kontrak memiliki aturan Energy sendiri.",
+          "Multisignature dan sebagian operasi pengelolaan akun dapat memiliki biaya protokol tambahan. Estimasi Energy ditambah Bandwidth saja tidak lengkap untuk operasi tersebut. Periksa parameter jaringan terbaru dan rincian konfirmasi dompet."
+        ],
+        "refs": [
+          "tron",
+          "network_parameters"
+        ]
+      }
+    ],
+    "faqs": [
+      [
+        "Berapa biaya transaksi TRON saat ini?",
+        "Tidak ada satu tarif tetap. Biaya bergantung pada sumber daya dan biaya khusus. Harga acuan yang diperiksa pada 24 Oktober 2026 adalah 0,0001 TRX per Energy yang kurang dan 0,001 TRX per Bandwidth pada pembayaran biasa. Periksa parameter terbaru sebelum mengirim."
+      ],
+      [
+        "Bisakah mengirim USDT tanpa TRX?",
+        "Akun aktif terkadang dapat mengirim jika Energy dan Bandwidth tercukupi atau layanan mengatur pembayarannya. Saldo USDT saja tidak menyediakan sumber daya. Periksa sisa biaya dan dukungan dompet."
+      ],
+      [
+        "Apakah ada Energy gratis setiap hari?",
+        "Tidak. Protokol menyediakan kuota Bandwidth gratis yang terbatas dan dapat pulih, saat ini 600, tetapi tidak Energy gratis harian. Energy berasal dari staking atau delegasi; kekurangan dapat dibayar dengan membakar TRX."
+      ],
+      [
+        "Apakah semua dompet TRON mengenakan biaya sama?",
+        "Aturan jaringan sama, tetapi estimasi, layanan, sewa dan biaya penarikan exchange dapat berbeda. Bandingkan seluruh biaya operasi yang sama."
+      ],
+      [
+        "Apakah sewa Energy membuat transfer gratis?",
+        "Tidak. Sewa tetap berbayar dan hanya menutup Energy yang disediakan. Bandwidth, kekurangan sumber daya, biaya khusus atau biaya aplikasi dapat tetap ada."
+      ],
+      [
+        "Apakah biaya transaksi gagal dikembalikan?",
+        "Kegagalan on-chain tidak otomatis mengembalikan sumber daya yang sudah digunakan. Periksa receipt dan penyebabnya sebelum mengulang. Penolakan sebelum eksekusi di blockchain adalah kasus berbeda."
+      ]
+    ],
+    "datePublished": "2026-10-24",
+    "dateModified": "2026-10-24"
+  }
+}
