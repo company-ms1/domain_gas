@@ -30,15 +30,15 @@
 </header>
 <main id="main">
 <section class="wrap hero">
-<div>
+<div class="hero-copy">
 <div class="eyebrow">
 <span class="dot">
 </span> WALLET PREPARATION API <span class="badge">EARLY ACCESS</span>
 </div>
-<h1>One API Call.<br>Your Wallet Ready<br>for <em>USDT Transfers.</em>
+<h1>One API call.<br><em>Your wallet, prepared.</em>
 </h1>
-<p class="lead">Stop managing TRON Energy, estimating network resources, and building complex fee-handling logic.</p>
-<p>The planned Wallet Preparation API brings resource preparation into one integration. You keep full control of transaction signing and broadcasting.</p>
+<p class="lead">Wallet preparation infrastructure for USDT on TRON.</p>
+<p class="hero-description">One API call to prepare your wallet for a USDT transfer. We handle the resource workflow. You retain control of signing, broadcasting, and your private keys.</p>
 <div class="actions">
 <a class="button primary" href="#contact" data-event="wallet_prepare_hero_cta">Talk to Our Team <span>↗</span>
 </a>
@@ -51,51 +51,22 @@
 <li>Automated Energy provisioning</li>
 </ul>
 </div>
-<div class="demo">
-<div class="demo-top">
-<span>PREPARATION WORKFLOW</span>
-<span class="badge">PREVIEW</span>
+<div class="architecture" aria-label="Planned wallet preparation architecture">
+<div class="architecture-heading"><span>THE PREPARATION LAYER</span><span class="architecture-caption">Conceptual architecture / Early access</span></div>
+<div class="architecture-grid">
+<div class="architecture-endpoint"><span class="system-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><rect x="6" y="7" width="28" height="11" rx="2"/><rect x="6" y="23" width="28" height="11" rx="2"/><path d="M11 12h2m4 0h12M11 28h2m4 0h12"/></svg></span><small>YOUR INFRASTRUCTURE</small><h3>Your backend</h3><p>Sender + recipient<br>One preparation request</p></div>
+<div class="architecture-link" aria-hidden="true"><span>REQUEST</span><div></div></div>
+<div class="architecture-core"><div class="core-top"><span class="core-mark" aria-hidden="true">G<span>↗</span></span><span>GasFree4you<small>RESOURCE ORCHESTRATION</small></span></div><div class="core-stages"><span>Estimate</span><span>Provision</span><span>Confirm</span></div><div class="core-bottom"><span class="dot"></span> Wallet Preparation API <span class="badge">EARLY ACCESS</span></div></div>
+<div class="architecture-link" aria-hidden="true"><span>RESULT</span><div></div></div>
+<div class="architecture-endpoint"><span class="system-icon" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 10h24v23H8zM8 10V7h20v3M25 19h10v8H25zM29 23h2"/></svg></span><small>YOUR TRANSACTION LAYER</small><h3>You sign &amp; send</h3><p>Resources confirmed.<br>Control stays with you.</p></div>
 </div>
-<div class="flow-node">
-<span class="node-icon">⌘</span>
-<div>
-<small>01 / YOUR INFRASTRUCTURE</small>
-<strong>Your backend</strong>
-<p>Sender + recipient addresses</p>
-</div>
-</div>
-<div class="connector">
-<span>↓</span> ONE API CALL</div>
-<div class="flow-node service">
-<span class="node-icon">ϟ</span>
-<div>
-<small>02 / GASFREE4YOU</small>
-<strong>Prepare wallet resources</strong>
-<ul>
-<li>Estimate required Energy</li>
-<li>Check available resources</li>
-<li>Provision Energy if needed</li>
-<li>Confirm delegation</li>
-</ul>
-</div>
-</div>
-<div class="connector">
-<span>↓</span> CONTROL RETURNS TO YOU</div>
-<div class="flow-node ready">
-<span class="node-icon">✓</span>
-<div>
-<small>03 / RESOURCES CONFIRMED</small>
-<strong>Wallet ready</strong>
-</div>
-</div>
-<div class="your-control">YOU SIGN &amp; SEND USDT <span>↗</span>
-</div>
-<p class="demo-note">Illustrative workflow · In development<br>GasFree4you does not sign or send your USDT.</p>
+<div class="architecture-foot"><span>01 — REQUEST</span><span>02 — PREPARE &amp; CONFIRM</span><span>03 — SIGN &amp; BROADCAST</span></div>
+<p class="demo-note">Planned workflow. Readiness is returned only after resource confirmation. GasFree4you does not sign or send USDT.</p>
 </div>
 </section>
 <section class="statement">
 <div class="wrap">
-<span>BUILT AROUND YOUR PAYMENT FLOW</span>
+<span>INFRASTRUCTURE, WITH CLEAR BOUNDARIES</span>
 <p>You build the payment flow.<br>
 <em>We handle the TRON Energy.</em>
 </p>
@@ -179,7 +150,7 @@
 </section>
 <section class="wrap section" id="workflow">
 <div class="eyebrow">HOW IT WORKS</div>
-<h2>Three Steps.<br>No Energy Management Headaches.</h2>
+<h2>A Clear Path.<br>From Request to Readiness.</h2>
 <div class="steps">
 <article>
 <span class="step">1</span>
@@ -199,7 +170,7 @@
 </div>
 <p class="keys">Your keys stay with you. Your transactions stay under your control.</p>
 </section>
-<section class="wrap section bordered">
+<section class="wrap section bordered audiences">
 <div class="eyebrow">BUILT FOR YOUR OPERATIONS</div>
 <h2>Built for High-Volume TRON Operations</h2>
 <div class="grid four">
@@ -221,7 +192,7 @@
 </article>
 </div>
 </section>
-<section class="wrap section bordered">
+<section class="wrap section bordered toolkit">
 <div class="eyebrow">THE GASFREE4YOU TOOLKIT</div>
 <h2>More Than Wallet Preparation</h2>
 <div class="grid four products">
@@ -247,29 +218,29 @@
 </a>
 </div>
 </section>
-<section class="section tinted">
+<section class="section tinted principles">
 <div class="wrap">
 <div class="eyebrow">FOCUS ON WHAT YOU BUILD</div>
 <h2>Less Code. Less Maintenance.<br>More Focus on Payments.</h2>
 <div class="benefits">
 <article>
-<h3>✓ Simpler Integration</h3>
+<h3>Simpler Integration</h3>
 <p>One preparation workflow instead of multiple resource-management integrations.</p>
 </article>
 <article>
-<h3>✓ Reduced Maintenance</h3>
+<h3>Reduced Maintenance</h3>
 <p>Less custom logic for estimation, provider orchestration, and delegation tracking.</p>
 </article>
 <article>
-<h3>✓ Optimized Resource Costs</h3>
+<h3>Optimized Resource Costs</h3>
 <p>Provision Energy according to transfer requirements and available resources.</p>
 </article>
 <article>
-<h3>✓ Non-Custodial by Design</h3>
+<h3>Non-Custodial by Design</h3>
 <p>No private key access and no signing of customer transactions.</p>
 </article>
 <article>
-<h3>✓ Built for Automation</h3>
+<h3>Built for Automation</h3>
 <p>Designed for backend services and recurring transaction workflows.</p>
 </article>
 </div>
@@ -404,6 +375,7 @@
 </section>
 </main>
 <footer class="wrap">
+<div class="footer-wordmark" aria-hidden="true">GasFree4you<span> / B</span></div>
 <a class="brand" href="/">GasFree4you <span>●</span>
 </a>
 <p>TRON resources. Your transactions.</p>
