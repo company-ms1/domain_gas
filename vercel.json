@@ -50,12 +50,26 @@
       "source": "/id/mcp.html",
       "destination": "/id/mcp",
       "permanent": true
+    },
+    {
+      "source": "/business.html",
+      "destination": "/business",
+      "permanent": true
+    },
+    {
+      "source": "/business/",
+      "destination": "/business",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/mcp",
       "destination": "https://connector.gasfree4you.com/mcp"
+    },
+    {
+      "source": "/business",
+      "destination": "/business.html"
     },
     {
       "source": "/",

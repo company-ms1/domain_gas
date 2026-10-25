@@ -1,399 +1,417 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-<link rel="icon" href="/favicon.ico?v=stingray-1" sizes="16x16 32x32 48x48 64x64">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=stingray-1">
-<link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=stingray-1">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=stingray-1">
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title data-i18n-head="title">GasFree4you — TRON Energy for Business</title>
-  <meta name="description" content="Dashboard, API and automated TRON energy top-ups for businesses" data-i18n-head="desc"/>
-  <meta name="theme-color" content="#0b1020">
-  <style>
-    :root{
-      --bg:#0b1020; --card:#0f152a; --elev:#0c1226; --muted:#8ea1b2; --text:#eaf2ff;
-      --accent:#6ee7ff; --accent2:#7df1b7; --border:rgba(255,255,255,.08);
-      --danger:#ff6b6b; --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
-      --radius:18px; --line:rgba(255,255,255,.12); --ring:rgba(110,231,255,.25);
-      --good:#16c784; --good2:#5fe3b6;
-    }
-    @media(prefers-color-scheme:light){
-      :root{ --bg:#f7fafc; --card:#ffffff; --elev:#fff; --muted:#5b7083; --text:#0b1020;
-        --accent:#007aff; --accent2:#16a34a; --border:rgba(15,21,42,.08); --line:rgba(15,21,42,.12);
-        --shadow:0 10px 25px rgba(2,6,23,.08), inset 0 1px 0 #fff; --ring:rgba(0,122,255,.25);
-      }
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(109,186,255,.12), transparent 60%),
-        radial-gradient(1000px 600px at -10% 110%, rgba(125,241,183,.12), transparent 60%),
-        var(--bg);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-    }
-    a{color:var(--accent); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:1040px; margin:0 auto; padding:16px 16px 28px}
-
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(6px);
-      background:linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)), var(--bg);
-      border-bottom:1px solid var(--border);
-    }
-    .top{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:10px 0}
-    .brand{display:flex; align-items:center; gap:10px; min-width:0}
-    .logo{width:40px; height:40px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:var(--shadow); display:grid; place-items:center; color:#001b1b; font-weight:800}
-    .name{font-weight:800; letter-spacing:.2px}
-    .tag{font-size:12px; opacity:.85}
-
-    .top-right{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-    .btn{display:inline-flex; gap:8px; align-items:center; justify-content:center; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.06)); color:var(--text); font-weight:800; letter-spacing:.2px; cursor:pointer; transition:background .2s,transform .2s}
-    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#001b1b; border:none}
-    .btn:hover{transform:translateY(-2px)}
-    .btn:focus{outline:none; box-shadow:0 0 0 6px var(--ring)}
-    .flags{display:flex; gap:8px; align-items:center}
-    .flag-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:34px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(180deg,var(--elev),#101622); cursor:pointer; font-size:18px; color:var(--text)}
-    .flag-btn[aria-pressed="true"]{outline:2px solid var(--accent)}
-
-    .title{margin:0; font-weight:800; letter-spacing:.2px; font-size:clamp(22px,4.8vw,34px)}
-    .subtitle{margin:6px 0 0; color:var(--muted); font-size:14px}
-
-    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); margin-top:16px; transition:transform .3s, box-shadow .3s; opacity:0; animation:fadeUp .6s ease forwards}
-    .card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.4)}
-    .card:nth-of-type(1){animation-delay:.1s}
-    .card:nth-of-type(2){animation-delay:.2s}
-    .card:nth-of-type(3){animation-delay:.3s}
-    .card:nth-of-type(4){animation-delay:.4s}
-    .feat-grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:8px}
-    .feat-item{background:var(--elev); border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow:var(--shadow)}
-    .benefit-grid{display:grid; gap:16px; align-items:center; grid-template-columns:1fr}
-    @media(min-width:700px){.benefit-grid{grid-template-columns:1fr 1fr}}
-    .benefit-grid canvas{width:100%; background:var(--elev); border:1px solid var(--border); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.4); padding:10px}
-    .stake-grid{display:grid; gap:16px; align-items:center; grid-template-columns:1fr}
-    @media(min-width:700px){.stake-grid{grid-template-columns:1fr 1fr}}
-    .diagram{display:block; width:100%; background:var(--elev); border:1px solid var(--border); border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.4); padding:10px; transition:transform .3s; margin-top:8px}
-    .diagram:hover{transform:scale(1.03)}
-    @keyframes fadeUp{from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)}}
-
-    table{width:100%; border-collapse:collapse; border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:8px}
-    th,td{padding:10px 14px; border-bottom:1px solid var(--border)}
-    th{text-align:left; background:var(--elev)}
-    tr:last-child td{border-bottom:none}
-    tbody tr:nth-child(even){background:var(--elev)}
-
-    .footer{background:linear-gradient(0deg,rgba(255,255,255,0.02),transparent),var(--card); border-top:1px solid var(--border); margin-top:18px}
-    .footer .foot-grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr); padding:18px 16px}
-    .footer .col{grid-column:span 12}
-    @media (min-width:860px){ .footer .col.span4{grid-column:span 4}.footer .col.span3{grid-column:span 3}.footer .col.span5{grid-column:span 5} }
-    .foot-list{list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px}
-    .foot-list a{color:var(--text); text-decoration:none}
-    .foot-list a:hover{color:var(--accent)}
-    .foot-bottom{border-top:1px dashed var(--border); padding:10px 16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between}
-    .foot-links{display:flex; gap:14px; flex-wrap:wrap}
-    .foot-links a{display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--muted)}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRON Wallet Preparation API for Business | GasFree4you</title>
+<meta name="description" content="Prepare TRON wallets for USDT TRC20 transfers with one API integration. Simplify Energy provisioning, reduce infrastructure complexity, and automate your workflows.">
+<link rel="canonical" href="https://www.gasfree4you.com/business">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#060912">
+<link rel="stylesheet" href="/assets/business/business.css">
+<script defer src="/assets/business/business.js">
+</script>
 </head>
 <body>
-  <header>
-    <div class="wrap top">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">⚡️</div>
-        <div>
-          <div class="name">GasFree4you</div>
-          <div class="tag" data-i18n="biz_tagline">TRON Energy for Business</div>
-        </div>
-      </div>
-      <div class="top-right">
-        <a class="btn" href="how-it-works.html" data-i18n="how_link">How it works</a>
-        <a class="btn primary" href="/api.html">API</a>
-        <div class="flags" role="group" aria-label="Language">
-          <button class="flag-btn" data-lang="en" aria-pressed="true" title="English">🇬🇧</button>
-          <button class="flag-btn" data-lang="ru" aria-pressed="false" title="Русский">🇷🇺</button>
-          <button class="flag-btn" data-lang="zh" aria-pressed="false" title="中文">🇨🇳</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap" id="top">
-    <h1 class="title" data-i18n="h1">TRON Energy for Business</h1>
-
-    <section class="card">
-      <h2 data-i18n="feat_title">Our capabilities</h2>
-      <div class="feat-grid">
-        <div class="feat-item" data-i18n="feat1">Energy distribution dashboard</div>
-        <div class="feat-item" data-i18n="feat2">API for integration into existing systems</div>
-        <div class="feat-item" data-i18n="feat3">Maintaining constant energy levels on wallets so you don’t have to think about delegation</div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2 data-i18n="benefit_title">Why delegate energy</h2>
-      <div class="benefit-grid">
-        <p data-i18n="benefit_text">A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.</p>
-        <canvas id="savingsChart" height="200"></canvas>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2 data-i18n="stake_title">Staking facts</h2>
-      <div class="stake-grid">
-        <div>
-          <p data-i18n="stake1">By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.</p>
-          <p data-i18n="stake2">You may delegate idle resources to others and can reclaim the resources anytime.</p>
-          <p><a href="https://tronscan.org/#/sr/wallet-stake-home" target="_blank" rel="noopener" data-i18n="stake_link">More about staking on TRONSCAN</a></p>
-        </div>
-        <div>
-          <img src="images/stake.svg" alt="Stake TRX diagram" class="diagram">
-          <img src="images/delegate.svg" alt="Delegate resources diagram" class="diagram">
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2 data-i18n="discount_title">Volume discounts</h2>
-      <table>
-        <thead>
-          <tr><th data-i18n="vol_header">Volume per month</th><th data-i18n="disc_header">Discount</th><th data-i18n="price_header">Price TRX</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>&ge;10</td><td>2%</td><td>2.94 TRX</td></tr>
-          <tr><td>&ge;50</td><td>5%</td><td>2.85 TRX</td></tr>
-          <tr><td>&ge;100</td><td>10%</td><td>2.70 TRX</td></tr>
-        </tbody>
-      </table>
-    </section>
-  </main>
-
-  <footer class="footer" role="contentinfo">
-    <div class="wrap foot-grid">
-      <div class="col span4">
-        <div class="brand">
-          <div class="logo" aria-hidden="true">⚡</div>
-          <div>
-            <div class="name">GasFree4you</div>
-            <div class="tag" data-i18n="foot_tagline">TRON Energy · Zero-fee transfers</div>
-          </div>
-        </div>
-        <p class="subtitle" style="margin-top:8px" data-i18n="foot_desc">3 TRX with USDT or 6 TRX without USDT. Energy for 1 transfer. Instant delivery.</p>
-        <div style="display:flex; gap:10px; margin-top:8px">
-          <a class="btn" href="https://t.me/saving_trx_bot" target="_blank" rel="noopener" data-i18n="foot_telegram_btn">Telegram</a>
-          <a class="btn" href="/api.html" data-i18n="foot_api_btn">API</a>
-        </div>
-      </div>
-      <div class="col span3">
-        <h4 style="margin:0 0 8px" data-i18n="foot_contacts">Contacts</h4>
-        <ul class="foot-list">
-          <li><span data-i18n="contact_telegram">Telegram</span>: <a href="https://t.me/saving_trx_bot" target="_blank" rel="noopener">@saving_trx_bot</a></li>
-          <li><span data-i18n="contact_support">Support</span>: <a href="https://t.me/trx2_9_support_bot" target="_blank" rel="noopener">@trx2_9_support_bot</a></li>
-          <li><span data-i18n="contact_site">Website</span>: <a href="https://gasfree4you.com" target="_blank" rel="noopener">gasfree4you.com</a></li>
-        </ul>
-      </div>
-      <div class="col span3">
-        <h4 style="margin:0 0 8px" data-i18n="foot_nav">Navigation</h4>
-        <ul class="foot-list">
-          <li><a href="#top" data-i18n="foot_calc">Calculator</a></li>
-          <li><a href="how-it-works.html" data-i18n="foot_how">How it works</a></li>
-          <li><a href="#" data-i18n="foot_faq">FAQ</a></li>
-          <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" data-i18n="foot_top">Back to top ↑</a></li>
-        </ul>
-      </div>
-      <div class="col span5">
-        <h4 style="margin:0 0 8px" data-i18n="foot_legal">Legal information</h4>
-        <p class="subtitle" style="margin:8px 0" data-i18n="legal_desc">GasFree4you is a TRON energy delegation service. We do not store your funds and are not affiliated with TRON Foundation. Using blockchain involves risks.</p>
-        <ul class="foot-list">
-          <li><a href="/terms.html" data-i18n="terms_link">Terms of Service</a></li>
-          <li><a href="/privacy.html" data-i18n="privacy_link">Privacy Policy</a></li>
-          <li><a href="/refund.html" data-i18n="refund_link">Refund Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <small>© <span id="y"></span> GasFree4you. <span data-i18n="foot_all">All rights reserved.</span></small>
-      <div class="foot-links">
-        <a href="/terms.html" data-i18n="terms_link">Terms of Service</a>
-        <a href="/privacy.html" data-i18n="privacy_link">Privacy Policy</a>
-        <a href="/refund.html" data-i18n="refund_link">Refund Policy</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-  const I18N = {
-    en:{
-      head:{title:"GasFree4you — TRON Energy for Business",desc:"Dashboard, API and automated TRON energy top-ups for businesses"},
-      biz_tagline:"TRON Energy for Business",
-      how_link:"How it works",
-      h1:"TRON Energy for Business",
-      feat_title:"Our capabilities",
-      feat1:"Energy distribution dashboard",
-      feat2:"API for integration into existing systems",
-      feat3:"Maintaining constant energy levels on wallets so you don’t have to think about delegation",
-      benefit_title:"Why delegate energy",
-      benefit_text:"A single transfer normally costs 13 TRX if the recipient wallet has USDT or 27 TRX if not. With our service price is 3 TRX and 6 TRX respectively. 1 TRX = 0.35 USDT.",
-      chart_regular:"Without service",
-      chart_service:"With GasFree4you",
-      stake_title:"Staking facts",
-      stake1:"By staking TRX, you can obtain free resources on the network to cover the fee of transactions. The resources used will dynamically recover to the original amount after a certain period.",
-      stake2:"You may delegate idle resources to others and can reclaim the resources anytime.",
-      stake_link:"More about staking on TRONSCAN",
-      discount_title:"Volume discounts",
-      vol_header:"Volume per month",
-      disc_header:"Discount",
-      price_header:"Price TRX",
-      foot_tagline:"TRON Energy · Zero-fee transfers",
-      foot_desc:"3 TRX with USDT or 6 TRX without USDT. Energy for 1 transfer. Instant delivery.",
-      foot_telegram_btn:"Telegram",
-      foot_api_btn:"API",
-      foot_contacts:"Contacts",
-      contact_telegram:"Telegram",
-      contact_support:"Support",
-      contact_site:"Website",
-      foot_nav:"Navigation",
-      foot_calc:"Calculator",
-      foot_how:"How it works",
-      foot_faq:"FAQ",
-      foot_top:"Back to top ↑",
-      foot_legal:"Legal information",
-      legal_desc:"GasFree4you is a TRON energy delegation service. We do not store your funds and are not affiliated with TRON Foundation. Using blockchain involves risks.",
-      terms_link:"Terms of Service",
-      privacy_link:"Privacy Policy",
-      refund_link:"Refund Policy",
-      foot_all:"All rights reserved."
-    },
-    ru:{
-      head:{title:"GasFree4you — Энергия TRON для бизнеса",desc:"Кабинет, API и автоматическое поддержание энергии для компаний"},
-      biz_tagline:"Энергия TRON для бизнеса",
-      how_link:"Как это работает",
-      h1:"Энергия TRON для бизнеса",
-      feat_title:"Наши возможности",
-      feat1:"Кабинет для распределения энергии",
-      feat2:"API для встраивания в существующие системы",
-      feat3:"Поддержание постоянного уровня энергии на кошельках, чтобы не думать о делегировании",
-      benefit_title:"Выгода от делегирования энергии",
-      benefit_text:"Для одного перевода нужно 13 TRX если на кошельке получателя есть USDT или 27 TRX если нет. С нашим сервисом цена будет 3 TRX и 6 TRX соответственно. 1 TRX = 0.35 USDT.",
-      chart_regular:"Без сервиса",
-      chart_service:"С GasFree4you",
-      stake_title:"Информация о стейкинге",
-      stake1:"Замораживая TRX, вы получаете бесплатные ресурсы сети для покрытия комиссии. Использованные ресурсы со временем восстанавливаются.",
-      stake2:"Вы можете делегировать свободные ресурсы другим и забрать их обратно в любое время.",
-      stake_link:"Подробнее о стейкинге на TRONSCAN",
-      discount_title:"Система скидок",
-      vol_header:"Объём в месяц",
-      disc_header:"Скидка",
-      price_header:"Цена в TRX",
-      foot_tagline:"Энергия TRON · Переводы без комиссий",
-      foot_desc:"3 TRX при наличии USDT или 6 TRX без USDT. Энергия на 1 перевод. Моментальное начисление.",
-      foot_telegram_btn:"Telegram",
-      foot_api_btn:"API",
-      foot_contacts:"Контакты",
-      contact_telegram:"Telegram",
-      contact_support:"Поддержка",
-      contact_site:"Сайт",
-      foot_nav:"Навигация",
-      foot_calc:"Калькулятор",
-      foot_how:"Как это работает",
-      foot_faq:"FAQ",
-      foot_top:"Наверх ↑",
-      foot_legal:"Юридическая информация",
-      legal_desc:"GasFree4you — сервис делегирования энергии TRON. Мы не храним ваши средства и не аффилированы с TRON Foundation. Использование блокчейна связано с рисками.",
-      terms_link:"Пользовательское соглашение",
-      privacy_link:"Политика конфиденциальности",
-      refund_link:"Политика возврата",
-      foot_all:"Все права защищены."
-    },
-    zh:{
-      head:{title:"GasFree4you — 面向企业的 TRON 能量",desc:"面板、API 和自动能量补充"},
-      biz_tagline:"面向企业的 TRON 能量",
-      how_link:"如何运作",
-      h1:"用于企业的 TRON 能量",
-      feat_title:"我们的能力",
-      feat1:"用于分配能量的控制面板",
-      feat2:"可嵌入现有系统的 API",
-      feat3:"保持钱包能量恒定，无需再考虑委托",
-      benefit_title:"使用能量委托的优势",
-      benefit_text:"一次转账通常需要 13 TRX（若收款钱包已有 USDT）或 27 TRX（否则）。通过我们的服务仅需 3 TRX 或 6 TRX。1 TRX = 0.35 USDT。",
-      chart_regular:"未使用服务",
-      chart_service:"使用 GasFree4you",
-      stake_title:"质押信息",
-      stake1:"质押 TRX 可获得免费资源以支付交易费用，消耗的资源会在一段时间后恢复。",
-      stake2:"可将空闲资源委托给他人，并可随时收回。",
-      stake_link:"在 TRONSCAN 了解更多质押信息",
-      discount_title:"折扣体系",
-      vol_header:"每月数量",
-      disc_header:"折扣",
-      price_header:"价格(TRX)",
-      foot_tagline:"TRON 能量 · 零手续费转账",
-      foot_desc:"若有 USDT 为 3 TRX，无 USDT 为 6 TRX。单笔转账能量，立即到账。",
-      foot_telegram_btn:"Telegram",
-      foot_api_btn:"API",
-      foot_contacts:"联系方式",
-      contact_telegram:"Telegram",
-      contact_support:"客服",
-      contact_site:"网站",
-      foot_nav:"导航",
-      foot_calc:"计算器",
-      foot_how:"如何运作",
-      foot_faq:"常见问题",
-      foot_top:"返回顶部 ↑",
-      foot_legal:"法律信息",
-      legal_desc:"GasFree4you 是 TRON 能量委托服务。我们不存储您的资金且与 TRON 基金会无关联。使用区块链存在风险。",
-      terms_link:"服务条款",
-      privacy_link:"隐私政策",
-      refund_link:"退款政策",
-      foot_all:"版权所有。"
-    }
-  };
-  let chart;
-  function renderChart(lang){
-    const labels=[1,10,50,100];
-    const regular=labels.map(n=>n*13);
-    const service=labels.map(n=>n*3);
-    const ctx=document.getElementById('savingsChart').getContext('2d');
-    if(chart) chart.destroy();
-    chart=new Chart(ctx,{
-      type:'line',
-      data:{
-        labels:labels,
-        datasets:[
-          {label:I18N[lang].chart_regular,data:regular,borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent'),backgroundColor:'rgba(110,231,255,.3)',tension:.1},
-          {label:I18N[lang].chart_service,data:service,borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent2'),backgroundColor:'rgba(125,241,183,.3)',tension:.1}
-        ]
-      },
-      options:{
-        responsive:true,
-        scales:{y:{beginAtZero:true,title:{display:true,text:'TRX'}}},
-        plugins:{legend:{labels:{color: getComputedStyle(document.documentElement).getPropertyValue('--text')}}}
-      }
-    });
-  }
-  function setLang(l){
-    const dict=I18N[l]||I18N.en;
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key=el.getAttribute('data-i18n');
-      if(dict[key]) el.textContent=dict[key];
-    });
-    const head=dict.head||{};
-    if(head.title) document.title=head.title;
-    if(head.desc) document.querySelector('meta[name="description"]').setAttribute('content',head.desc);
-    document.documentElement.lang=l;
-    document.querySelectorAll('.flag-btn').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false'));
-    try{localStorage.setItem('biz_lang',l);}catch(e){}
-    renderChart(l);
-  }
-  function init(){
-    const saved=localStorage.getItem('biz_lang');
-    const lang=saved&&I18N[saved]?saved:'en';
-    setLang(lang);
-    document.querySelectorAll('.flag-btn').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
-  }
-  document.getElementById('y').textContent=new Date().getFullYear();
-  init();
-  </script>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+<div class="wrap nav">
+<a class="brand" href="/">GasFree4you <span>●</span>
+<small>BUSINESS</small>
+</a>
+<nav aria-label="Main navigation">
+<a href="#workflow">How it works</a>
+<a href="#pricing">Pricing</a>
+<a href="/docs.html" data-event="wallet_prepare_docs_click">API docs ↗</a>
+</nav>
+<a class="button small" href="#contact">Talk to Our Team <span>↗</span>
+</a>
+</div>
+</header>
+<main id="main">
+<section class="wrap hero">
+<div>
+<div class="eyebrow">
+<span class="dot">
+</span> WALLET PREPARATION API <span class="badge">EARLY ACCESS</span>
+</div>
+<h1>One API Call.<br>Your Wallet Ready<br>for <em>USDT Transfers.</em>
+</h1>
+<p class="lead">Stop managing TRON Energy, estimating network resources, and building complex fee-handling logic.</p>
+<p>The planned Wallet Preparation API brings resource preparation into one integration. You keep full control of transaction signing and broadcasting.</p>
+<div class="actions">
+<a class="button primary" href="#contact" data-event="wallet_prepare_hero_cta">Talk to Our Team <span>↗</span>
+</a>
+<a class="text-link" href="#api" data-event="wallet_prepare_api_interest">Explore the API <span>↓</span>
+</a>
+</div>
+<ul class="trust">
+<li>One API integration</li>
+<li>No private keys required</li>
+<li>Automated Energy provisioning</li>
+</ul>
+</div>
+<div class="demo">
+<div class="demo-top">
+<span>PREPARATION WORKFLOW</span>
+<span class="badge">PREVIEW</span>
+</div>
+<div class="flow-node">
+<span class="node-icon">⌘</span>
+<div>
+<small>01 / YOUR INFRASTRUCTURE</small>
+<strong>Your backend</strong>
+<p>Sender + recipient addresses</p>
+</div>
+</div>
+<div class="connector">
+<span>↓</span> ONE API CALL</div>
+<div class="flow-node service">
+<span class="node-icon">ϟ</span>
+<div>
+<small>02 / GASFREE4YOU</small>
+<strong>Prepare wallet resources</strong>
+<ul>
+<li>Estimate required Energy</li>
+<li>Check available resources</li>
+<li>Provision Energy if needed</li>
+<li>Confirm delegation</li>
+</ul>
+</div>
+</div>
+<div class="connector">
+<span>↓</span> CONTROL RETURNS TO YOU</div>
+<div class="flow-node ready">
+<span class="node-icon">✓</span>
+<div>
+<small>03 / RESOURCES CONFIRMED</small>
+<strong>Wallet ready</strong>
+</div>
+</div>
+<div class="your-control">YOU SIGN &amp; SEND USDT <span>↗</span>
+</div>
+<p class="demo-note">Illustrative workflow · In development<br>GasFree4you does not sign or send your USDT.</p>
+</div>
+</section>
+<section class="statement">
+<div class="wrap">
+<span>BUILT AROUND YOUR PAYMENT FLOW</span>
+<p>You build the payment flow.<br>
+<em>We handle the TRON Energy.</em>
+</p>
+</div>
+</section>
+<section class="wrap section">
+<div class="eyebrow">LESS RESOURCE COMPLEXITY</div>
+<h2>Your Business Sends USDT.<br>We Handle the TRON Resources.</h2>
+<div class="compare">
+<article class="panel muted-panel">
+<h3>Without GasFree4you</h3>
+<ul class="checklist minus">
+<li>Estimate required Energy.</li>
+<li>Check sender wallet resources.</li>
+<li>Handle different recipient states.</li>
+<li>Select Energy packages.</li>
+<li>Integrate resource providers.</li>
+<li>Monitor delegation status.</li>
+<li>Handle resource-related errors.</li>
+</ul>
+</article>
+<article class="panel positive">
+<div class="eyebrow">THE PLANNED WORKFLOW</div>
+<h3>With GasFree4you</h3>
+<ol class="big-list">
+<li>Send one API request.</li>
+<li>Get wallet preparation status.</li>
+<li>Sign and broadcast your USDT transaction.</li>
+</ol>
+<p>Keep your payment infrastructure simple. Let GasFree4you handle the Energy complexity.</p>
+</article>
+</div>
+</section>
+<section class="section tinted" id="api">
+<div class="wrap">
+<div class="eyebrow">WALLET PREPARATION API · EARLY ACCESS</div>
+<h2>One Endpoint.<br>Less Infrastructure to Maintain.</h2>
+<p class="intro">Instead of maintaining your own TRON resource management system, integrate one endpoint designed to handle the wallet preparation workflow.</p>
+<div class="features">
+<article>
+<span class="number">01</span>
+<h3>Resource Estimation</h3>
+<p>Determine the Energy required for the intended USDT transfer.</p>
+</article>
+<article>
+<span class="number">02</span>
+<h3>Wallet Resource Check</h3>
+<p>Check available Energy and identify any shortfall.</p>
+</article>
+<article>
+<span class="number">03</span>
+<h3>Energy Provisioning</h3>
+<p>Request additional Energy when necessary.</p>
+</article>
+<article>
+<span class="number">04</span>
+<h3>Delegation Confirmation</h3>
+<p>Track provisioning until the required resources are confirmed.</p>
+</article>
+<article>
+<span class="number">05</span>
+<h3>Clear Preparation Result</h3>
+<p>Return a structured status before your backend signs the transaction.</p>
+</article>
+</div>
+<div class="api-note">
+<div>
+<h3>Designed for real backend workflows.</h3>
+<p>Target behavior includes idempotent requests, safe retries without duplicate Energy orders, resource sufficiency checks, structured errors, status rechecks, and provider timeouts.</p>
+<p>Preparation is not a guarantee of transfer success: parallel transactions may consume resources. Your platform remains responsible for signing, broadcasting, and monitoring transfers.</p>
+</div>
+<div class="statuses">
+<small>PLANNED PREPARATION STATES</small>
+<code>pending <span>→</span> ready</code>
+<code class="failed">↳ failed</code>
+<p>Ready only after required resources are confirmed.</p>
+</div>
+</div>
+<a href="/docs.html" class="text-link" data-event="wallet_prepare_docs_click">Explore the existing Energy API documentation ↗</a>
+</div>
+</section>
+<section class="wrap section" id="workflow">
+<div class="eyebrow">HOW IT WORKS</div>
+<h2>Three Steps.<br>No Energy Management Headaches.</h2>
+<div class="steps">
+<article>
+<span class="step">1</span>
+<h3>Request Wallet Preparation</h3>
+<p>Send the sender and recipient wallet addresses to GasFree4you.</p>
+</article>
+<article>
+<span class="step">2</span>
+<h3>We Prepare the Resources</h3>
+<p>GasFree4you evaluates requirements and provisions additional Energy when needed.</p>
+</article>
+<article>
+<span class="step">3</span>
+<h3>Send USDT From Your Platform</h3>
+<p>Your existing infrastructure signs and broadcasts the transfer.</p>
+</article>
+</div>
+<p class="keys">Your keys stay with you. Your transactions stay under your control.</p>
+</section>
+<section class="wrap section bordered">
+<div class="eyebrow">BUILT FOR YOUR OPERATIONS</div>
+<h2>Built for High-Volume TRON Operations</h2>
+<div class="grid four">
+<article>
+<h3>Crypto Exchanges</h3>
+<p>Prepare withdrawal wallets before outgoing USDT transfers.</p>
+</article>
+<article>
+<h3>Payment Platforms</h3>
+<p>Simplify resource management for recurring stablecoin payouts.</p>
+</article>
+<article>
+<h3>Wallet Providers</h3>
+<p>Integrate wallet preparation without developing a separate Energy management engine.</p>
+</article>
+<article>
+<h3>OTC & Crypto Businesses</h3>
+<p>Reduce manual resource operations across multiple wallets.</p>
+</article>
+</div>
+</section>
+<section class="wrap section bordered">
+<div class="eyebrow">THE GASFREE4YOU TOOLKIT</div>
+<h2>More Than Wallet Preparation</h2>
+<div class="grid four products">
+<a class="panel" href="/docs.html">
+<span class="product-arrow">↗</span>
+<h3>Energy Rental API</h3>
+<p>Direct access to TRON Energy provisioning for teams requiring granular control.</p>
+</a>
+<a class="panel" href="/#auto-energy">
+<span class="product-arrow">↗</span>
+<h3>Auto Energy</h3>
+<p>Automated Energy provisioning for connected wallets.</p>
+</a>
+<a class="panel" href="https://user.gasfree4you.com/">
+<span class="product-arrow">↗</span>
+<h3>Wallet Management</h3>
+<p>Monitor supported wallet balances, resources, and operational status.</p>
+</a>
+<a class="panel" href="/aml.html">
+<span class="product-arrow">↗</span>
+<h3>Analytics & AML Tools</h3>
+<p>Resource analytics and supported address-screening capabilities.</p>
+</a>
+</div>
+</section>
+<section class="section tinted">
+<div class="wrap">
+<div class="eyebrow">FOCUS ON WHAT YOU BUILD</div>
+<h2>Less Code. Less Maintenance.<br>More Focus on Payments.</h2>
+<div class="benefits">
+<article>
+<h3>✓ Simpler Integration</h3>
+<p>One preparation workflow instead of multiple resource-management integrations.</p>
+</article>
+<article>
+<h3>✓ Reduced Maintenance</h3>
+<p>Less custom logic for estimation, provider orchestration, and delegation tracking.</p>
+</article>
+<article>
+<h3>✓ Optimized Resource Costs</h3>
+<p>Provision Energy according to transfer requirements and available resources.</p>
+</article>
+<article>
+<h3>✓ Non-Custodial by Design</h3>
+<p>No private key access and no signing of customer transactions.</p>
+</article>
+<article>
+<h3>✓ Built for Automation</h3>
+<p>Designed for backend services and recurring transaction workflows.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="wrap section" id="pricing">
+<div class="eyebrow">GROW AT YOUR PACE</div>
+<h2>Flexible Pricing for<br>Your Transaction Volume</h2>
+<div class="compare pricing">
+<article class="panel">
+<span class="eyebrow">AVAILABLE TODAY</span>
+<h3>Self-Service</h3>
+<p>For developers and smaller teams.</p>
+<ul class="checklist">
+<li>Public Energy pricing</li>
+<li>Existing Energy API</li>
+<li>TRX prepaid balance</li>
+<li>Self-service dashboard</li>
+</ul>
+<a class="button" href="https://user.gasfree4you.com/">Get Started ↗</a>
+</article>
+<article class="panel positive">
+<span class="eyebrow">LET’S BUILD YOUR INTEGRATION</span>
+<h3>Business <span class="badge">EARLY ACCESS</span>
+</h3>
+<p>For companies automating recurring USDT TRC20 transfers.</p>
+<ul class="checklist">
+<li>Wallet Preparation API — planned / early access</li>
+<li>Volume-based pricing discussions</li>
+<li>Integration consultation</li>
+<li>Custom commercial arrangements</li>
+<li>Corporate billing requirements under evaluation</li>
+</ul>
+<a class="button primary" href="#contact" data-interest="High-Volume Energy API" data-event="business_lead_volume_pricing">Discuss Integration ↗</a>
+</article>
+</div>
+</section>
+<section class="section contact-section" id="contact">
+<div class="wrap contact">
+<div>
+<div class="eyebrow">LET’S TALK</div>
+<h2>Ready to Simplify<br>Your TRON Integration?</h2>
+<p>Tell us how your platform handles USDT TRC20 transfers. We’ll explore how GasFree4you can simplify your Energy workflow.</p>
+<a class="text-link" href="mailto:lina@gasfree4you.com">lina@gasfree4you.com ↗</a>
+<p class="note">Wallet Preparation API is in development. Contact us about early access and integration requirements.</p>
+</div>
+<form id="lead-form" class="panel">
+<div class="form-grid">
+<label>Work Email <span>*</span>
+<input type="email" name="email" autocomplete="email" required maxlength="254">
+</label>
+<label>Company Name <span>*</span>
+<input name="company" autocomplete="organization" required maxlength="150">
+</label>
+<label class="full">Company Website <small>(optional)</small>
+<input type="url" name="website" placeholder="https://" autocomplete="url" maxlength="300">
+</label>
+<label>Business Type <span>*</span>
+<select name="business_type" required>
+<option value="">Select type</option>
+<option>Crypto Exchange</option>
+<option>Payment Platform</option>
+<option>Wallet Provider</option>
+<option>OTC / Crypto Business</option>
+<option>Other</option>
+</select>
+</label>
+<label>Monthly TRC20 Transfers <small>(optional)</small>
+<select name="monthly_transfers">
+<option value="">Select volume</option>
+<option>Under 1,000</option>
+<option>1,000–10,000</option>
+<option>10,000–100,000</option>
+<option>100,000+</option>
+</select>
+</label>
+<label class="full">Interested In <span>*</span>
+<select name="interest" required>
+<option>Wallet Preparation API</option>
+<option>High-Volume Energy API</option>
+<option>Auto Energy</option>
+<option>Corporate Billing</option>
+<option>Other</option>
+</select>
+</label>
+<label class="full">Message <small>(optional)</small>
+<textarea name="message" rows="3" maxlength="1200">
+</textarea>
+</label>
+</div>
+<p class="note">This form opens an email draft. No submission is saved on this website. Send the draft from your email app to request a consultation. See our <a href="/privacy.html">privacy policy</a>.</p>
+<button class="button primary" type="submit">Request API Consultation ↗</button>
+<p id="form-status" role="status">
+</p>
+<noscript>
+<p>JavaScript is needed to prepare a draft. Email <a href="mailto:lina@gasfree4you.com">lina@gasfree4you.com</a> directly.</p>
+</noscript>
+</form>
+</div>
+</section>
+<section class="wrap section faq">
+<div>
+<div class="eyebrow">A FEW MORE DETAILS</div>
+<h2>Questions,<br>Answered.</h2>
+</div>
+<div>
+<details>
+<summary>Does GasFree4you send USDT on our behalf?</summary>
+<p>No. GasFree4you prepares TRON wallet resources. Your infrastructure signs and broadcasts transactions.</p>
+</details>
+<details>
+<summary>Do you need access to our private keys?</summary>
+<p>No. GasFree4you does not require your private keys.</p>
+</details>
+<details>
+<summary>Do we need to manage Energy packages ourselves?</summary>
+<p>The planned Wallet Preparation API is designed to handle resource estimation and provisioning through one workflow.</p>
+</details>
+<details>
+<summary>Can we use the API with our existing backend?</summary>
+<p>Yes. The API is designed for server-side integration with existing applications.</p>
+</details>
+<details>
+<summary>Is the Wallet Preparation API available now?</summary>
+<p>The universal preparation workflow is being developed. Contact us to discuss early access and integration requirements.</p>
+</details>
+<details>
+<summary>Can we use your existing Energy API today?</summary>
+<p>Yes. Existing supported Energy operations remain available through GasFree4you.</p>
+</details>
+</div>
+</section>
+</main>
+<footer class="wrap">
+<a class="brand" href="/">GasFree4you <span>●</span>
+</a>
+<p>TRON resources. Your transactions.</p>
+<div>
+<a href="/docs.html">API documentation</a>
+<a href="/terms.html">Terms</a>
+<a href="/privacy.html">Privacy</a>
+</div>
+</footer>
 </body>
 </html>
