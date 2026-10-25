@@ -99,5 +99,16 @@
       "source": "/id/mcp",
       "destination": "/id/mcp.html"
     }
+  ],
+  "headers": [
+    {
+      "source": "/assets/business/:file*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
   ]
 }

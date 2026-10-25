@@ -19,3 +19,7 @@ Events are pushed to the in-memory `window.dataLayer`; no analytics collector is
 - `business_lead_volume_pricing`
 
 Lead events from the form have `delivery: email_draft` and `confirmed: false`; they measure intent, not a delivered or qualified lead. The pricing CTA also emits `business_lead_volume_pricing` without those properties. Do not count either as a completed lead submission.
+
+## Stylesheet cache
+
+The stylesheet URL in `business.html` includes the first 12 characters of its SHA-256 hash. Update this version after stylesheet changes. Business assets also use `Cache-Control: public, max-age=0, must-revalidate` on Vercel, so browsers revalidate their cached copy.
