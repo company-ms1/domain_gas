@@ -8,3 +8,20 @@
 
 /* Resource comparisons and fee calculations. */
 .table-scroll{max-width:100%;overflow-x:auto;margin:24px 0;border:1px solid var(--line);border-radius:10px;overscroll-behavior-x:contain}.table-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.prose table{width:100%;border-collapse:collapse;min-width:580px;font-size:14px;line-height:1.6}.prose caption{text-align:left;padding:15px 18px;color:var(--muted);font-size:13px;background:#0c1120}.prose th,.prose td{padding:13px 16px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}.prose th{background:#101d2b;color:var(--text);font-weight:650}.prose td{color:#bbc3d8}.prose tbody tr:nth-child(even){background:#0c1120}
+
+/* Incident reports: scoped technical layout, static and accessible without JS. */
+.technical-article .article-hero{max-width:1040px;background:radial-gradient(ellipse at 90% 20%,#17324288,transparent 65%)}
+.technical-article .article-hero h1{max-width:960px}
+.incident-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:32px 0 0}
+.incident-stats>div{display:flex;flex-direction:column-reverse;padding:23px;border:1px solid #34515c;border-radius:12px;background:linear-gradient(135deg,#102930,#10152b)}
+.incident-stats dt{font-size:13px;color:#b5c6d2}.incident-stats dd{margin:0;font:700 clamp(25px,4vw,40px)/1.3 ui-monospace,monospace;color:#78edc0}
+.technical-article .prose h2{border-top:1px solid var(--line);padding-top:24px}
+.prose .incident-timeline{list-style:none;counter-reset:step;padding:0;margin:28px 0;border-left:2px solid #426b78}
+.prose .incident-timeline li{position:relative;margin:0 0 12px 20px;padding:16px 20px;border:1px solid #304657;border-radius:8px;background:#101d2b;font-size:14px}
+.incident-timeline li::before{content:'';position:absolute;left:-27px;top:24px;width:10px;height:10px;border-radius:50%;background:#78edc0}
+.prose .incident-timeline li:last-child{border-color:#775744;background:#2a201e}
+.energy-chart{margin:28px 0;padding:24px;border:1px solid #34515c;border-radius:14px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(25% - 1px),#24354755 25%),#0b1520}
+.energy-chart figcaption{font-weight:650;margin-bottom:24px;line-height:1.5}.energy-row{margin:18px 0}.energy-row>span{display:block;font-size:13px;color:#c5d1dd;margin-bottom:7px}
+.energy-track{height:42px;border-radius:5px;background:#1b2838;overflow:hidden}.energy-bar{height:100%;background:#69e3b0;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;color:#08231a;font:700 18px ui-monospace,monospace}.energy-row:nth-of-type(2) .energy-bar{background:#f4b484;color:#2a160a}.energy-chart p{margin-bottom:0;font-size:13px}
+.incident-card{border-color:#34515c;background:linear-gradient(135deg,#102930,#0c1120)}
+@media(max-width:480px){.incident-stats{grid-template-columns:1fr}.incident-stats>div{padding:16px;gap:5px}.energy-chart{padding:17px}.technical-article .article-hero h1{font-size:34px;overflow-wrap:anywhere}}
