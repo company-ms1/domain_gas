@@ -397,3 +397,23 @@ b.ok{color:var(--acc);background:linear-gradient(90deg,var(--acc),var(--sky));-w
 .ba.in .before li:nth-child(6)::after,.ba.in .before li:nth-child(6){transition-delay:2s}
 .ba.in .after li:nth-child(1){transition-delay:2.4s}.ba.in .after li:nth-child(2){transition-delay:2.65s}.ba.in .after li:nth-child(3){transition-delay:2.9s}
 .save-card:not(.calc) h3{padding-right:92px;min-height:2.8em}
+
+/* ===================== v3: frameless, full-bleed stage ===================== */
+.stage-shell{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;margin-inline:calc(50% - 50vw)}
+.stage{height:min(80vh,740px);min-height:540px}
+#scene{-webkit-mask-image:radial-gradient(ellipse 60% 56% at 50% 44%,#000 58%,transparent 98%);mask-image:radial-gradient(ellipse 60% 56% at 50% 44%,#000 58%,transparent 98%)}
+.console{right:max(16px,calc((100vw - 1360px) / 2 + 48px));top:24px;background:#13132ab3}
+.stage-hint{left:50%;transform:translateX(-50%);bottom:10px;text-align:center}
+.controls{max-width:1360px;margin:0 auto;padding:4px 48px 0;border:0;background:none;justify-content:center}
+.controls .control-group{justify-items:center;text-align:center}
+.controls .chips{justify-content:center}
+.run{margin-left:0}
+@media (max-width:1100px){
+  .stage{height:auto;min-height:0}
+  #scene{-webkit-mask-image:radial-gradient(ellipse 85% 52% at 50% 46%,#000 62%,transparent 98%);mask-image:radial-gradient(ellipse 85% 52% at 50% 46%,#000 62%,transparent 98%)}
+  .console{right:auto;margin:0 48px 8px}
+}
+@media (max-width:820px){
+  .console{margin:0 16px 8px}
+  .controls{padding:4px 16px 0}
+}

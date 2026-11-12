@@ -362,11 +362,11 @@ let scene3d = null;
 function makeScene() {
   const stage = $('#stage'), canvas = $('#scene');
   let renderer;
-  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' }); }
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' }); }
   catch (e) { return null; }
   if (!renderer.getContext()) return null;
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
-  renderer.setClearColor(0x0b0b1a, 1);
+  renderer.setClearColor(0x000000, 0); // transparent: the scene sits directly on the page
 
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x0b0b1a, 0.042);
