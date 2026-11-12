@@ -103,6 +103,8 @@ let lang = (() => {
   const q = new URLSearchParams(location.search).get('lang');
   if (q === 'en' || q === 'ru') return q;
   try { const s = localStorage.getItem('gf4u-lang'); if (s === 'en' || s === 'ru') return s; } catch (e) {}
+  // visitors coming from the homepage keep its language (id/es fall back to English)
+  try { const h = localStorage.getItem('landing_lang'); if (h) return h === 'ru' ? 'ru' : 'en'; } catch (e) {}
   return (navigator.language || '').toLowerCase().startsWith('ru') ? 'ru' : 'en';
 })();
 const t = k => (lang === 'en' ? EN : RU)[k] ?? RU[k] ?? k;
