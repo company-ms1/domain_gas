@@ -57,6 +57,11 @@
       "permanent": true
     },
     {
+      "source": "/transfer-check.html",
+      "destination": "/transfer-check",
+      "permanent": true
+    },
+    {
       "source": "/business/",
       "destination": "/business",
       "permanent": true
@@ -70,6 +75,10 @@
     {
       "source": "/business",
       "destination": "/business.html"
+    },
+    {
+      "source": "/transfer-check",
+      "destination": "/transfer-check.html"
     },
     {
       "source": "/",
