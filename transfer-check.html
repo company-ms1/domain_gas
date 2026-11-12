@@ -10,8 +10,8 @@
 <meta name="theme-color" content="#0b0b1a">
 <meta property="og:title" content="Один вызов — и кошелёк готов. До 60% дешевле комиссии сети — GasFree4you">
 <meta property="og:description" content="Вызвали — мы подготовили кошелёк и делегировали ресурсы — вы переводите USDT. Без TRX, активации, энергии и bandwidth.">
-<link rel="stylesheet" href="/assets/check/check.css?v=3">
-<script type="module" src="/assets/check/check.js?v=4"></script>
+<link rel="stylesheet" href="/assets/check/check.css?v=4">
+<script type="module" src="/assets/check/check.js?v=5"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -23,6 +23,7 @@
       <a href="#how" data-i18n="nav.how">Как работает</a>
       <a href="#save" data-i18n="nav.save">Экономия</a>
       <a href="#who" data-i18n="nav.who">Кому подходит</a>
+      <a href="#responses" data-i18n="nav.resp">Ответы API</a>
       <a href="#faq" data-i18n="nav.faq">Вопросы</a>
     </nav>
     <div class="nav-right">
@@ -208,6 +209,106 @@
       </ul>
       <div class="answer-next" data-i18n="ans.stop.next">→ Показываете пользователю понятное сообщение</div>
     </article>
+  </div>
+</section>
+
+<!-- ============ REAL RESPONSES ============ -->
+<section class="section wrap" id="responses">
+  <div class="eyebrow" data-i18n="resp.eyebrow">РЕАЛЬНЫЕ ОТВЕТЫ</div>
+  <h2 data-i18n="resp.title">Как выглядит ответ <em>на самом деле</em></h2>
+  <p class="section-lead" data-i18n="resp.p">Один вызов — один понятный ответ. Если всё в порядке, кошелёк готов и можно отправлять. Если нет — сразу видно, кто не прошёл проверку и почему.</p>
+  <div class="resp reveal">
+    <div class="resp-tabs" role="tablist" aria-label="Response examples">
+      <button type="button" role="tab" class="resp-tab active" data-tab="ok" aria-selected="true"><span class="pip ok"></span><span data-i18n="resp.tab.ok">МОЖНО</span></button>
+      <button type="button" role="tab" class="resp-tab" data-tab="sanctions" aria-selected="false"><span class="pip stop"></span><span data-i18n="resp.tab.sanctions">СТОП · санкционный список</span></button>
+      <button type="button" role="tab" class="resp-tab" data-tab="spam" aria-selected="false"><span class="pip stop"></span><span data-i18n="resp.tab.spam">СТОП · спам-рассылка</span></button>
+    </div>
+
+    <div class="resp-panel active" data-panel="ok" role="tabpanel">
+      <div class="resp-code">
+        <div class="resp-bar"><span class="resp-status ok">OK</span><span class="resp-note" data-i18n="resp.ok.status">фрагмент успешного ответа</span><button type="button" class="resp-copy" data-i18n="resp.copy">Копировать</button></div>
+<pre><code class="json">{
+  …
+  "sender_energy_available": 130999,
+  "sender_bandwidth_available": 600,
+  "energy_tx_id": null,
+  "topup_tx_id": null,
+  "error_code": null,
+  "message": null,
+  "created_at": "2026-11-12T21:04:50.070890",
+  "completed_at": "2026-11-12T21:04:50.070890"
+}</code></pre>
+        <div class="resp-human ok"><b>OK:</b> <span data-i18n="resp.ok.human">отправитель готов — перевод USDT можно отправлять прямо сейчас.</span></div>
+      </div>
+      <dl class="resp-notes">
+        <div><dt><code>sender_energy_available</code></dt><dd data-i18n="resp.ok.n1">Сколько энергии доступно на кошельке отправителя для перевода.</dd></div>
+        <div><dt><code>sender_bandwidth_available</code></dt><dd data-i18n="resp.ok.n2">Сколько bandwidth доступно отправителю.</dd></div>
+        <div><dt><code>energy_tx_id</code> · <code>topup_tx_id</code></dt><dd data-i18n="resp.ok.n3">ID транзакций делегирования энергии и пополнения. <code>null</code> — новых транзакций не понадобилось.</dd></div>
+        <div><dt><code>error_code</code> · <code>message</code></dt><dd data-i18n="resp.ok.n4"><code>null</code> — ошибок нет, можно переводить.</dd></div>
+        <div><dt><code>created_at</code> · <code>completed_at</code></dt><dd data-i18n="resp.ok.n5">Когда запрос создан и когда подготовка завершена.</dd></div>
+      </dl>
+    </div>
+
+    <div class="resp-panel" data-panel="sanctions" role="tabpanel" hidden>
+      <div class="resp-code">
+        <div class="resp-bar"><span class="resp-status stop">HTTP 451</span><span class="resp-note" data-i18n="resp.s.status">отклонено синхронно</span><button type="button" class="resp-copy" data-i18n="resp.copy">Копировать</button></div>
+<pre><code class="json">{
+  "detail": {
+    "error": "RECIPIENT_SANCTIONED",
+    "message": "Address is present in sanctions lists.",
+    "party": "recipient",
+    "reason": "sanctions_hit",
+    "matches": [
+      {
+        "source": "ofac_sdn",
+        "asset": "TRX",
+        "list_version": "11/09/2026"
+      }
+    ]
+  }
+}</code></pre>
+        <div class="resp-human stop"><b data-i18n="resp.stopword">СТОП:</b> <span data-i18n="resp.s.human">получатель в санкционном списке. Ресурсы не делегируются, перевод не отправляйте.</span></div>
+      </div>
+      <dl class="resp-notes">
+        <div><dt>HTTP <code>451</code></dt><dd data-i18n="resp.s.n1">Запрос отклонён сразу, в том же вызове — без ожидания и без подготовки кошелька.</dd></div>
+        <div><dt><code>error</code></dt><dd data-i18n="resp.s.n2">Код ошибки <code>RECIPIENT_SANCTIONED</code>: получатель не прошёл проверку.</dd></div>
+        <div><dt><code>party</code></dt><dd data-i18n="resp.s.n3">Кто именно не прошёл — <code>recipient</code> (получатель) или отправитель.</dd></div>
+        <div><dt><code>matches[].source</code></dt><dd data-i18n="resp.s.n4">Где найдено совпадение: санкционный список OFAC SDN, а в <code>list_version</code> — дата версии списка.</dd></div>
+      </dl>
+    </div>
+
+    <div class="resp-panel" data-panel="spam" role="tabpanel" hidden>
+      <div class="resp-code">
+        <div class="resp-bar"><span class="resp-status stop">STOP</span><span class="resp-note" data-i18n="resp.p.status">стоп-фактор по данным блокчейна</span><button type="button" class="resp-copy" data-i18n="resp.copy">Копировать</button></div>
+<pre><code class="json">{
+  "detail": {
+    "error": "RECIPIENT_SANCTIONED",
+    "message": "Address is identified as a mass-spam sender.",
+    "party": "recipient",
+    "reason": "sanctions_hit",
+    "matches": [
+      {
+        "source": "blockchain_data",
+        "asset": "TRX",
+        "list_version": null,
+        "category": "spam_sender",
+        "reason_code": "SPAM_SENDER",
+        "reason": "Address is identified as a mass-spam sender.",
+        "label": null
+      }
+    ]
+  }
+}</code></pre>
+        <div class="resp-human stop"><b data-i18n="resp.stopword">СТОП:</b> <span data-i18n="resp.p.human">получатель — массовый спам-отправитель. Перевод не отправляйте.</span></div>
+      </div>
+      <dl class="resp-notes">
+        <div><dt><code>reason_code</code> · <code>category</code></dt><dd data-i18n="resp.p.n1">Стоп-фактор — не только санкции: адрес определён как массовый спам-отправитель (<code>SPAM_SENDER</code>).</dd></div>
+        <div><dt><code>source</code></dt><dd data-i18n="resp.p.n2"><code>blockchain_data</code> — совпадение найдено по поведению адреса в блокчейне, а не по списку.</dd></div>
+        <div><dt><code>message</code></dt><dd data-i18n="resp.p.n3">Причина готовым текстом — её можно показать пользователю или записать в лог.</dd></div>
+        <div><dt><code>error</code></dt><dd data-i18n="resp.p.n4">Код ошибки тот же — <code>RECIPIENT_SANCTIONED</code>, поэтому все отказы обрабатываются одинаково.</dd></div>
+      </dl>
+    </div>
+    <a class="text-link resp-docs" href="/docs.html" data-i18n="resp.docs">Полное описание полей — в документации API →</a>
   </div>
 </section>
 

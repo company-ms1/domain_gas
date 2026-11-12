@@ -61,6 +61,28 @@ const EN = {
   'q5': 'What if the answer is STOP?', 'a5': 'The recipient is on a sanctions list or another stop factor was found. No resources are delegated and nothing is charged — just don’t send the transfer and show your user a clear message.',
   'q6': 'Do I need to change my app or wallet?', 'a6': 'No. You add one call before the transfer. You send the transfer as before — same app, script or banking system.',
   'cta.title': 'One call before the transfer. <em>No hassle, no doubts.</em>', 'cta.p': 'TRX, activation, Energy, bandwidth and checks are on us. You just send USDT — and pay up to 60% less.', 'cta.btn': 'Discuss integration', 'cta.docs': 'API docs →',
+  'nav.resp': 'API responses',
+  'resp.eyebrow': 'REAL RESPONSES', 'resp.title': 'What the response <em>actually looks like</em>',
+  'resp.p': 'One call, one clear answer. If everything is fine, the wallet is ready and you can send. If not, you see right away who failed the check and why.',
+  'resp.tab.ok': 'GO', 'resp.tab.sanctions': 'STOP · sanctions list', 'resp.tab.spam': 'STOP · spam sender',
+  'resp.copy': 'Copy', 'resp.stopword': 'STOP:',
+  'resp.ok.status': 'success response (fragment)', 'resp.ok.human': 'sender is ready, the USDT transfer can be sent now.',
+  'resp.ok.n1': 'How much Energy is available on the sender wallet for the transfer.',
+  'resp.ok.n2': 'How much bandwidth is available to the sender.',
+  'resp.ok.n3': 'IDs of the Energy delegation and top-up transactions. <code>null</code> means no new transactions were needed.',
+  'resp.ok.n4': '<code>null</code> — no errors, go ahead and send.',
+  'resp.ok.n5': 'When the request was created and when preparation finished.',
+  'resp.s.status': 'rejected synchronously', 'resp.s.human': 'the recipient is on a sanctions list. No resources are delegated — don’t send the transfer.',
+  'resp.s.n1': 'Rejected immediately, in the same call — no waiting and no wallet preparation.',
+  'resp.s.n2': 'Error code <code>RECIPIENT_SANCTIONED</code>: the recipient failed the check.',
+  'resp.s.n3': 'Which party failed — <code>recipient</code> or the sender.',
+  'resp.s.n4': 'Where the match was found: the OFAC SDN sanctions list; <code>list_version</code> is the list version date.',
+  'resp.p.status': 'stop factor from blockchain data', 'resp.p.human': 'the recipient is a mass-spam sender. Don’t send the transfer.',
+  'resp.p.n1': 'A stop factor isn’t only sanctions: the address is identified as a mass-spam sender (<code>SPAM_SENDER</code>).',
+  'resp.p.n2': '<code>blockchain_data</code> — the match comes from the address’s on-chain behaviour, not from a list.',
+  'resp.p.n3': 'The reason as ready-made text — show it to your user or write it to your logs.',
+  'resp.p.n4': 'Same error code — <code>RECIPIENT_SANCTIONED</code> — so every rejection is handled the same way.',
+  'resp.docs': 'Full field reference in the API docs →',
   'f.terms': 'Terms', 'f.privacy': 'Privacy',
 };
 
@@ -877,4 +899,29 @@ if (!REDUCED && matchMedia('(hover: hover)').matches) {
     });
     scenePh.addEventListener('pointerleave', () => { phone.style.transform = ''; });
   }
+})();
+
+/* =====================================================================
+   Real API responses: tabs, JSON highlighting, copy
+   ===================================================================== */
+(() => {
+  const tabs = $$('.resp-tab'), panels = $$('.resp-panel');
+  tabs.forEach(tb => tb.addEventListener('click', () => {
+    tabs.forEach(x => { const on = x === tb; x.classList.toggle('active', on); x.setAttribute('aria-selected', on); });
+    panels.forEach(pn => { const on = pn.dataset.panel === tb.dataset.tab; pn.classList.toggle('active', on); pn.hidden = !on; });
+  }));
+  const esc = v => v.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  $$('.resp code.json').forEach(el => {
+    const src = el.textContent; el.dataset.src = src;
+    el.innerHTML = esc(src)
+      .replace(/("(?:[^"\\]|\\.)*")(\s*:)/g, '<span class="j-key">$1</span>$2')
+      .replace(/:\s*("(?:[^"\\]|\\.)*")/g, (m, v) => m.replace(v, `<span class="j-str">${v}</span>`))
+      .replace(/^(\s*)("(?:[^"\\]|\\.)*")(,?)$/gm, '$1<span class="j-str">$2</span>$3')
+      .replace(/\b(-?\d+(?:\.\d+)?)\b(?=[,\n]|$)/g, '<span class="j-num">$1</span>')
+      .replace(/\bnull\b/g, '<span class="j-null">null</span>');
+  });
+  $$('.resp-copy').forEach(btn => btn.addEventListener('click', async () => {
+    const code = btn.closest('.resp-code').querySelector('code');
+    try { await navigator.clipboard.writeText(code.dataset.src); btn.classList.add('done'); setTimeout(() => btn.classList.remove('done'), 1400); } catch (e) {}
+  }));
 })();
