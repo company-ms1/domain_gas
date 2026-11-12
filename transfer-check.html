@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title data-i18n="meta.title">Проверка и подготовка перевода USDT — как это работает | GasFree4you</title>
-<meta name="description" content="Передайте адрес отправителя и получателя — получите ответ ГОТОВО или СТОП. Проверка по санкционным спискам и подготовка сети TRON к переводу USDT без TRX и энергии.">
+<title data-i18n="meta.title">Подготовка кошелька к переводу USDT — до 60% дешевле комиссии сети | GasFree4you</title>
+<meta name="description" content="Один вызов — и кошелёк отправителя готов к переводу USDT: проверка адресов, энергия, bandwidth и активация. Стоимость списывается с баланса кабинета — до 60% дешевле комиссии сети TRON.">
 <link rel="canonical" href="https://www.gasfree4you.com/transfer-check">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#070a0c">
-<meta property="og:title" content="Спросите перед отправкой. Отправляйте без забот. — GasFree4you">
-<meta property="og:description" content="Один вопрос перед переводом USDT: получатель чист и перевод подготовлен — или стоп.">
-<link rel="stylesheet" href="/assets/check/check.css?v=1">
-<script type="module" src="/assets/check/check.js?v=1"></script>
+<meta name="theme-color" content="#0b0b1a">
+<meta property="og:title" content="Один вызов — и кошелёк готов. До 60% дешевле комиссии сети — GasFree4you">
+<meta property="og:description" content="Вызвали — мы подготовили кошелёк и делегировали ресурсы — вы переводите USDT. Без TRX, активации, энергии и bandwidth.">
+<link rel="stylesheet" href="/assets/check/check.css?v=2">
+<script type="module" src="/assets/check/check.js?v=2"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
   <div class="wrap nav">
-    <a class="brand" href="/">GasFree4you <span>●</span><small data-i18n="nav.badge">ПРОВЕРКА ПЕРЕВОДА</small></a>
+    <a class="brand" href="/">GasFree4you <span>●</span><small data-i18n="nav.badge">ПОДГОТОВКА ПЕРЕВОДА</small></a>
     <nav aria-label="Навигация">
       <a href="#how" data-i18n="nav.how">Как работает</a>
-      <a href="#try" data-i18n="nav.try">Попробовать</a>
+      <a href="#save" data-i18n="nav.save">Экономия</a>
       <a href="#who" data-i18n="nav.who">Кому подходит</a>
       <a href="#faq" data-i18n="nav.faq">Вопросы</a>
     </nav>
@@ -40,9 +40,14 @@
 <!-- ============ HERO + 3D STAGE ============ -->
 <section class="hero" id="try">
   <div class="wrap hero-copy">
-    <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">НОВЫЙ МЕТОД · ПРОВЕРКА И ПОДГОТОВКА ПЕРЕВОДА</span></div>
-    <h1 data-i18n="hero.title">Спросите перед отправкой.<br><em>Отправляйте без забот.</em></h1>
-    <p class="lead" data-i18n="hero.lead">Вы передаёте два адреса — отправителя и получателя. Мы отвечаем одним словом: <b class="ok">ГОТОВО</b> или <b class="stop">СТОП</b>. Если готово — вы отправляете USDT своим привычным способом, не думая о TRX, энергии и комиссиях сети.</p>
+    <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">НОВЫЙ МЕТОД · ПОДГОТОВКА КОШЕЛЬКА К ПЕРЕВОДУ USDT</span></div>
+    <h1 data-i18n="hero.title">Один вызов — и кошелёк готов.<br><em>До 60% дешевле комиссии сети.</em></h1>
+    <p class="lead" data-i18n="hero.lead">Ваш сервис передаёт нам кошелёк отправителя и получателя. Мы проверяем адреса, делегируем энергию и bandwidth, списываем стоимость с баланса вашего кабинета и отвечаем: <b class="ok">МОЖНО</b> — и сколько это стоило. Вам остаётся только перевести USDT.</p>
+    <ul class="hero-stats">
+      <li><b class="gold">−60%</b><span data-i18n="hero.s1">к комиссии сети</span></li>
+      <li><b>1</b><span data-i18n="hero.s2">вызов вместо пяти забот</span></li>
+      <li><b>0 TRX</b><span data-i18n="hero.s3">на кошельке отправителя</span></li>
+    </ul>
   </div>
 
   <div class="wrap">
@@ -54,22 +59,27 @@
           <div class="lbl lbl-actor" data-l="actor"><small data-dyn="sender"></small><b data-dyn="actor.name"></b><code>TJ8q…k3Pz</code></div>
           <div class="lbl lbl-recip" data-l="recip"><small data-dyn="recipient"></small><code data-dyn="recip.addr"></code><span class="recip-state" data-dyn="recip.state"></span></div>
           <div class="tag tag-packet" data-l="packet"></div>
+          <div class="tag tag-res" data-l="res"></div>
+          <div class="tag tag-debit" data-l="debit"></div>
           <div class="tag tag-coin" data-l="coin">250 USDT</div>
+          <div class="tag tag-save" data-l="save"></div>
           <div class="tag tag-hover" data-l="hover"></div>
         </div>
-        <div class="stage-hint" id="stageHint" data-i18n="stage.hint">Кликните по любому участнику в 3D-сцене — или выберите ниже</div>
-        <div class="nogl" id="nogl" hidden data-i18n="stage.nogl">3D недоступно в этом браузере — но проверка ниже работает.</div>
+        <div class="stage-hint" data-i18n="stage.hint">Кликните по любому участнику в 3D-сцене — или выберите ниже</div>
+        <div class="nogl" id="nogl" hidden data-i18n="stage.nogl">3D недоступно в этом браузере — но панель ответа ниже работает.</div>
 
         <aside class="console" id="console" aria-live="polite">
           <div class="console-head"><span class="dot"></span><span data-i18n="console.title">Ответ метода</span></div>
           <dl class="req">
             <div><dt data-i18n="console.from">Отправитель</dt><dd><code>TJ8q…k3Pz</code></dd></div>
             <div><dt data-i18n="console.to">Получатель</dt><dd><code id="reqTo">TQx7…9a2M</code></dd></div>
+            <div><dt data-i18n="console.balance">Баланс кабинета</dt><dd><code id="balance">120.00 TRX</code></dd></div>
           </dl>
           <ol class="checks">
-            <li data-check="sanctions"><i></i><span data-i18n="check.sanctions">Санкционные списки</span><em></em></li>
-            <li data-check="risk"><i></i><span data-i18n="check.risk">Другие стоп-факторы</span><em></em></li>
-            <li data-check="prep"><i></i><span data-i18n="check.prep">Подготовка сети к переводу</span><em></em></li>
+            <li data-check="wallets"><i></i><span data-i18n="check.wallets">Проверка кошельков</span><em></em></li>
+            <li data-check="calc"><i></i><span data-i18n="check.calc">Расчёт энергии и bandwidth</span><em></em></li>
+            <li data-check="deleg"><i></i><span data-i18n="check.deleg">Делегирование на кошелёк отправителя</span><em></em></li>
+            <li data-check="debit"><i></i><span data-i18n="check.debit">Списание с баланса кабинета</span><em></em></li>
           </ol>
           <div class="verdict" id="verdict" data-state="idle">
             <strong id="verdictTitle"></strong>
@@ -80,7 +90,7 @@
 
       <div class="controls">
         <div class="control-group">
-          <span class="control-label" data-i18n="stage.who">1 · Кто отправляет</span>
+          <span class="control-label" data-i18n="stage.who">1 · Какой сервис вызывает метод</span>
           <div class="chips" id="actorChips">
             <button type="button" class="chip" data-actor="app" data-i18n="actor.app">Ваше приложение</button>
             <button type="button" class="chip" data-actor="wallet" data-i18n="actor.wallet">Кошелёк</button>
@@ -91,14 +101,14 @@
           </div>
         </div>
         <div class="control-group">
-          <span class="control-label" data-i18n="stage.to">2 · Кому</span>
+          <span class="control-label" data-i18n="stage.to">2 · Кому перевод</span>
           <div class="chips" id="recipChips">
-            <button type="button" class="chip" data-recip="clean"><span class="pip ok"></span><span data-i18n="recip.clean">Обычный адрес</span></button>
-            <button type="button" class="chip" data-recip="sanctioned"><span class="pip stop"></span><span data-i18n="recip.sanctioned">В санкционном списке</span></button>
-            <button type="button" class="chip" data-recip="risk"><span class="pip warn"></span><span data-i18n="recip.risk">Другой стоп-фактор</span></button>
+            <button type="button" class="chip" data-recip="holder"><span class="pip ok"></span><span data-i18n="recip.holder">Получатель с USDT</span></button>
+            <button type="button" class="chip" data-recip="fresh"><span class="pip sky"></span><span data-i18n="recip.fresh">Новый получатель</span></button>
+            <button type="button" class="chip" data-recip="sanctioned"><span class="pip stop"></span><span data-i18n="recip.sanctioned">Под санкциями</span></button>
           </div>
         </div>
-        <button type="button" class="button primary run" id="run"><span data-i18n="stage.run">Проверить и отправить</span> <span aria-hidden="true">▶</span></button>
+        <button type="button" class="button primary run" id="run"><span data-i18n="stage.run">Подготовить и перевести</span> <span aria-hidden="true">▶</span></button>
       </div>
     </div>
   </div>
@@ -107,67 +117,97 @@
 <!-- ============ HOW ============ -->
 <section class="section wrap" id="how">
   <div class="eyebrow" data-i18n="how.eyebrow">КАК ЭТО РАБОТАЕТ</div>
-  <h2 data-i18n="how.title">Три шага. <em>Только один из них — наш.</em></h2>
+  <h2 data-i18n="how.title">Вызвал. Подготовилось. <em>Перевёл.</em></h2>
   <div class="steps">
     <article class="step reveal">
       <div class="step-visual v-ask" aria-hidden="true">
         <span class="addr a1">TJ8q…k3Pz</span><span class="addr a2">TQx7…9a2M</span><span class="ask-arrow"></span>
       </div>
       <div class="step-num">01</div>
-      <h3 data-i18n="step1.t">Спросить</h3>
-      <p data-i18n="step1.p">Ваше приложение, кошелёк, скрипт или банк передаёт нам адрес отправителя и адрес получателя. Больше ничего — ни ключей, ни подписи.</p>
+      <h3 data-i18n="step1.t">Вызвать метод</h3>
+      <p data-i18n="step1.p">Ваш сервис передаёт адрес отправителя и адрес получателя. Один запрос — без ключей и без подписи.</p>
       <span class="who-tag" data-i18n="step1.who">ВЫ</span>
     </article>
     <article class="step reveal">
-      <div class="step-visual v-check" aria-hidden="true">
-        <span class="orb"></span><span class="ring r1"></span><span class="ring r2"></span><span class="scanline"></span>
+      <div class="step-visual v-prep" aria-hidden="true">
+        <span class="orb"></span><span class="ring r1"></span><span class="ring r2"></span>
+        <span class="bolt b1">⚡</span><span class="bolt b2">⚡</span><span class="bolt b3">⚡</span>
+        <span class="wal"></span>
       </div>
       <div class="step-num">02</div>
-      <h3 data-i18n="step2.t">Получить ответ</h3>
-      <p data-i18n="step2.p">Мы проверяем получателя по санкционным спискам и другим стоп-факторам. Если всё чисто — сразу готовим сеть к переводу. Ответ — <b class="ok">ГОТОВО</b> или <b class="stop">СТОП</b>.</p>
-      <span class="who-tag mint" data-i18n="step2.who">МЫ</span>
+      <h3 data-i18n="step2.t">Мы готовим кошелёк</h3>
+      <p data-i18n="step2.p">Проверяем оба адреса, считаем нужную энергию и bandwidth, делегируем их на кошелёк отправителя и списываем стоимость с баланса вашего кабинета. Ответ — <b class="ok">МОЖНО</b> и точная сумма.</p>
+      <span class="who-tag acc" data-i18n="step2.who">МЫ</span>
     </article>
     <article class="step reveal">
       <div class="step-visual v-send" aria-hidden="true">
         <span class="coin">₮</span><span class="track"></span><span class="target"></span>
       </div>
       <div class="step-num">03</div>
-      <h3 data-i18n="step3.t">Отправить</h3>
-      <p data-i18n="step3.p">Получили ГОТОВО — отправляете USDT своим обычным способом. Комиссия сети уже закрыта, TRX на кошельке не нужен.</p>
+      <h3 data-i18n="step3.t">Перевести USDT</h3>
+      <p data-i18n="step3.p">Отправляете USDT как обычно. Комиссия сети уже покрыта делегированными ресурсами — дешевле до 60%.</p>
       <span class="who-tag" data-i18n="step3.who">ВЫ</span>
     </article>
   </div>
 </section>
 
-<!-- ============ TWO ANSWERS ============ -->
-<section class="section answers-wrap">
+<!-- ============ SAVINGS ============ -->
+<section class="section save-wrap" id="save">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="ans.eyebrow">ДВА ОТВЕТА — И ВСЁ</div>
-    <h2 data-i18n="ans.title">Никаких «может быть».</h2>
-    <div class="answers">
-      <article class="answer tilt ok reveal">
-        <div class="answer-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28"/><path d="M19 33l9 9 18-20"/></svg></div>
-        <div class="answer-word" data-i18n="ans.ok.t">ГОТОВО</div>
-        <p class="answer-sub" data-i18n="ans.ok.sub">Перевод разрешён и подготовлен</p>
-        <ul>
-          <li data-i18n="ans.ok.l1">Получатель чист</li>
-          <li data-i18n="ans.ok.l2">Сеть подготовлена к переводу</li>
-          <li data-i18n="ans.ok.l3">Можно отправлять прямо сейчас</li>
-        </ul>
-        <div class="answer-next" data-i18n="ans.ok.next">→ Отправляете USDT</div>
+    <div class="eyebrow" data-i18n="save.eyebrow">ЭКОНОМИЯ</div>
+    <h2 data-i18n="save.title">До 60% меньше, <em class="gold">чем комиссия сети.</em></h2>
+    <p class="section-lead" data-i18n="save.p">Без ресурсов сеть TRON сжигает TRX с кошелька отправителя. Мы закрываем перевод делегированной энергией и bandwidth — это заметно дешевле, и сумма всегда приходит в ответе.</p>
+    <div class="save-grid">
+      <article class="save-card reveal">
+        <h3 data-i18n="save.c1">Получатель уже держит USDT</h3>
+        <div class="bar-row"><span data-i18n="save.net">Комиссия сети</span><div class="bar net" style="--w:100%"><b>6.4 TRX</b></div></div>
+        <div class="bar-row"><span data-i18n="save.us">Через нас</span><div class="bar us" style="--w:41%"><b>2.6 TRX</b></div></div>
+        <div class="save-badge">−59%</div>
       </article>
-      <article class="answer tilt stop reveal">
-        <div class="answer-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M22 6h20l16 16v20L42 58H22L6 42V22z"/><path d="M23 23l18 18M41 23L23 41"/></svg></div>
-        <div class="answer-word" data-i18n="ans.stop.t">СТОП</div>
-        <p class="answer-sub" data-i18n="ans.stop.sub">Получатель в санкционном списке или есть другой стоп-фактор</p>
-        <ul>
-          <li data-i18n="ans.stop.l1">Перевод не подготовлен</li>
-          <li data-i18n="ans.stop.l2">Ничего не отправляется</li>
-          <li data-i18n="ans.stop.l3">USDT остаются у вас</li>
-        </ul>
-        <div class="answer-next" data-i18n="ans.stop.next">→ Показываете пользователю понятное сообщение</div>
+      <article class="save-card reveal">
+        <h3 data-i18n="save.c2">Новый получатель без USDT</h3>
+        <div class="bar-row"><span data-i18n="save.net">Комиссия сети</span><div class="bar net" style="--w:100%"><b>13 TRX</b></div></div>
+        <div class="bar-row"><span data-i18n="save.us">Через нас</span><div class="bar us" style="--w:40%"><b>5.2 TRX</b></div></div>
+        <div class="save-badge">−60%</div>
+      </article>
+      <article class="save-card calc reveal">
+        <h3 data-i18n="save.calc">Сколько вы сэкономите</h3>
+        <label class="calc-label" for="calcN"><span data-i18n="save.per">Переводов в месяц</span><output id="calcNOut">1 000</output></label>
+        <input type="range" id="calcN" min="0" max="100" value="50">
+        <div class="calc-out"><span data-i18n="save.month">Экономия в месяц</span><b id="calcSave">3 800 TRX</b></div>
+        <p class="calc-note" data-i18n="save.note">Пример для получателей с USDT: 6.4 → 2.6 TRX. Итоговая цена зависит от тарифа и состояния сети — точная сумма приходит в ответе метода.</p>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ============ TWO ANSWERS ============ -->
+<section class="section wrap">
+  <div class="eyebrow" data-i18n="ans.eyebrow">ОТВЕТ МЕТОДА</div>
+  <h2 data-i18n="ans.title">Никаких сомнений: <em>можно или нельзя.</em></h2>
+  <div class="answers">
+    <article class="answer tilt ok reveal">
+      <div class="answer-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28"/><path d="M19 33l9 9 18-20"/></svg></div>
+      <div class="answer-word" data-i18n="ans.ok.t">МОЖНО</div>
+      <p class="answer-sub" data-i18n="ans.ok.sub">Кошелёк подготовлен, стоимость известна</p>
+      <ul>
+        <li data-i18n="ans.ok.l1">Энергия и bandwidth делегированы</li>
+        <li data-i18n="ans.ok.l2">Стоимость списана с баланса кабинета и указана в ответе</li>
+        <li data-i18n="ans.ok.l3">Переводите USDT сразу</li>
+      </ul>
+      <div class="answer-next" data-i18n="ans.ok.next">→ Например: «МОЖНО · 2.6 TRX»</div>
+    </article>
+    <article class="answer tilt stop reveal">
+      <div class="answer-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M22 6h20l16 16v20L42 58H22L6 42V22z"/><path d="M23 23l18 18M41 23L23 41"/></svg></div>
+      <div class="answer-word" data-i18n="ans.stop.t">СТОП</div>
+      <p class="answer-sub" data-i18n="ans.stop.sub">Получатель в санкционном списке или есть другой стоп-фактор</p>
+      <ul>
+        <li data-i18n="ans.stop.l1">Ресурсы не делегируются</li>
+        <li data-i18n="ans.stop.l2">С баланса ничего не списывается</li>
+        <li data-i18n="ans.stop.l3">Перевод не отправляется</li>
+      </ul>
+      <div class="answer-next" data-i18n="ans.stop.next">→ Показываете пользователю понятное сообщение</div>
+    </article>
   </div>
 </section>
 
@@ -175,17 +215,17 @@
 <section class="section wrap user" id="user">
   <div class="user-copy">
     <div class="eyebrow" data-i18n="user.eyebrow">ГЛАЗАМИ ПОЛЬЗОВАТЕЛЯ</div>
-    <h2 data-i18n="user.title">Для человека это <em>одна лишняя секунда.</em></h2>
-    <p data-i18n="user.p">Пользователь вашего приложения не видит ни энергии, ни TRX, ни проверок. Он видит адрес, сумму и кнопку «Отправить». Всё остальное происходит, пока крутится индикатор.</p>
+    <h2 data-i18n="user.title">Пользователь видит <em>только перевод.</em></h2>
+    <p data-i18n="user.p">Ни TRX, ни энергии, ни bandwidth, ни активации. Адрес, сумма, кнопка «Отправить» — и комиссия ниже, чем у сети.</p>
     <div class="chips" id="phoneMode">
       <button type="button" class="chip active" data-mode="ok"><span class="pip ok"></span><span data-i18n="user.mode.ok">Обычный получатель</span></button>
       <button type="button" class="chip" data-mode="stop"><span class="pip stop"></span><span data-i18n="user.mode.stop">Получатель под санкциями</span></button>
     </div>
     <ol class="phone-steps" id="phoneSteps">
       <li data-i18n="user.s1">Вводит адрес и сумму</li>
-      <li data-i18n="user.s2">Ваше приложение задаёт нам вопрос</li>
-      <li data-i18n="user.s3">Получает ответ</li>
-      <li data-i18n="user.s4">Отправляет — или видит, почему нельзя</li>
+      <li data-i18n="user.s2">Ваш сервис вызывает метод</li>
+      <li data-i18n="user.s3">Кошелёк подготовлен, цена известна</li>
+      <li data-i18n="user.s4">Перевод отправлен</li>
     </ol>
   </div>
   <div class="phone-scene" id="phoneScene">
@@ -199,27 +239,27 @@
       </div>
       <div class="screen s2">
         <div class="spinner"></div>
-        <div class="ph-mid" data-i18n="ph.checking">Проверяем получателя…</div>
+        <div class="ph-mid" data-i18n="ph.checking">Готовим перевод…</div>
         <div class="ph-tiny">GasFree4you</div>
       </div>
       <div class="screen s3 s3-ok">
         <div class="ph-badge ok">✓</div>
-        <div class="ph-title center" data-i18n="ph.ready">Готово к отправке</div>
+        <div class="ph-title center" data-i18n="ph.ready">Можно отправлять</div>
         <div class="ph-row"><span data-i18n="ph.amount">Сумма</span><b>250.00 USDT</b></div>
-        <div class="ph-row"><span data-i18n="ph.fee">Комиссия сети</span><b class="mint" data-i18n="ph.feeval">уже подготовлена</b></div>
-        <div class="ph-row"><span>TRX</span><b class="mint" data-i18n="ph.notrx">не нужен</b></div>
+        <div class="ph-row"><span data-i18n="ph.fee">Комиссия</span><b class="acc">2.6 TRX <s>6.4</s></b></div>
+        <div class="ph-row"><span data-i18n="ph.saving">Экономия</span><b class="gold">−59%</b></div>
         <div class="ph-btn" data-i18n="ph.sendbtn">Отправить</div>
       </div>
       <div class="screen s3 s3-stop">
         <div class="ph-badge stop">!</div>
         <div class="ph-title center" data-i18n="ph.blocked">Перевод невозможен</div>
-        <p class="ph-text" data-i18n="ph.blockedp">Этот получатель в санкционном списке. Средства остались на вашем счёте.</p>
+        <p class="ph-text" data-i18n="ph.blockedp">Этот получатель в санкционном списке. Ничего не списано, средства на месте.</p>
         <div class="ph-btn ghost" data-i18n="ph.ok">Понятно</div>
       </div>
       <div class="screen s4">
         <div class="ph-badge ok big">✓</div>
         <div class="ph-title center" data-i18n="ph.sent">Отправлено</div>
-        <p class="ph-text" data-i18n="ph.sentp">250 USDT ушли получателю. Без TRX на балансе.</p>
+        <p class="ph-text" data-i18n="ph.sentp">250 USDT ушли получателю. Комиссия на 59% ниже сети.</p>
       </div>
     </div>
     <div class="phone-shadow"></div>
@@ -229,25 +269,26 @@
 <!-- ============ BEFORE / AFTER ============ -->
 <section class="section wrap" id="ba">
   <div class="eyebrow" data-i18n="ba.eyebrow">БЫЛО / СТАЛО</div>
-  <h2 data-i18n="ba.title">Всё, о чём <em>больше не нужно думать</em></h2>
+  <h2 data-i18n="ba.title">Один сервис — <em>и никаких забот.</em></h2>
   <div class="ba reveal">
     <div class="ba-col before">
-      <h3 data-i18n="ba.before">Без метода</h3>
+      <h3 data-i18n="ba.before">Без нас</h3>
       <ul>
-        <li data-i18n="ba.b1">Держать TRX на каждом кошельке</li>
-        <li data-i18n="ba.b2">Считать энергию и bandwidth под каждый перевод</li>
-        <li data-i18n="ba.b3">Отдельно арендовать или стейкать энергию</li>
-        <li data-i18n="ba.b4">Отдельно проверять получателя по санкционным спискам</li>
-        <li data-i18n="ba.b5">Разбирать упавшие транзакции из-за нехватки ресурсов</li>
+        <li data-i18n="ba.b1">Покупать и держать TRX на каждом кошельке</li>
+        <li data-i18n="ba.b2">Активировать новые адреса</li>
+        <li data-i18n="ba.b3">Считать энергию и bandwidth под каждый перевод</li>
+        <li data-i18n="ba.b4">Арендовать или стейкать энергию у разных поставщиков</li>
+        <li data-i18n="ba.b5">Отдельно проверять адреса по санкционным спискам</li>
+        <li data-i18n="ba.b6">Переплачивать сети до 60% за сжигание TRX</li>
       </ul>
     </div>
     <div class="ba-arrow" aria-hidden="true"><span></span></div>
     <div class="ba-col after">
-      <h3 data-i18n="ba.after">С методом</h3>
+      <h3 data-i18n="ba.after">С нами</h3>
       <ul>
-        <li data-i18n="ba.a1">Один вопрос перед отправкой</li>
-        <li data-i18n="ba.a2"><b class="ok">ГОТОВО</b> → отправляете</li>
-        <li data-i18n="ba.a3"><b class="stop">СТОП</b> → не отправляете</li>
+        <li data-i18n="ba.a1">Один вызов</li>
+        <li data-i18n="ba.a2"><b class="ok">МОЖНО</b> + стоимость</li>
+        <li data-i18n="ba.a3">Перевод USDT — и всё</li>
       </ul>
     </div>
   </div>
@@ -255,39 +296,39 @@
 
 <!-- ============ WHO ============ -->
 <section class="section wrap" id="who">
-  <div class="eyebrow" data-i18n="who.eyebrow">КОМУ ПОДХОДИТ</div>
-  <h2 data-i18n="who.title">Любому, кто отправляет <em>USDT в TRON</em></h2>
-  <p class="section-lead" data-i18n="who.p">Метод не привязан к конкретному приложению. Кто бы ни отправлял — он задаёт вопрос, получает ответ и отправляет сам. Нажмите на карточку — увидите этот сценарий в 3D.</p>
+  <div class="eyebrow" data-i18n="who.eyebrow">УНИВЕРСАЛЬНО</div>
+  <h2 data-i18n="who.title">Один метод для <em>любого отправителя</em></h2>
+  <p class="section-lead" data-i18n="who.p">Неважно, кто переводит USDT — приложение, кошелёк, скрипт, банк или биржа. Вызов одинаковый, подготовка одинаковая, экономия одинаковая. Нажмите на карточку — увидите этот сценарий в 3D.</p>
   <div class="who-grid">
-    <button type="button" class="who-card tilt reveal" data-go="app"><span class="who-ico" data-icon="app"></span><b data-i18n="actor.app">Ваше приложение</b><span data-i18n="who.app">Встройте вопрос перед кнопкой «Отправить».</span></button>
-    <button type="button" class="who-card tilt reveal" data-go="wallet"><span class="who-ico" data-icon="wallet"></span><b data-i18n="actor.wallet">Кошелёк</b><span data-i18n="who.wallet">Пользователь отправляет USDT, даже если на балансе ноль TRX.</span></button>
-    <button type="button" class="who-card tilt reveal" data-go="script"><span class="who-ico" data-icon="script"></span><b data-i18n="actor.script">Скрипт / бот</b><span data-i18n="who.script">Выплаты и автоматизации: один вопрос перед каждой транзакцией.</span></button>
-    <button type="button" class="who-card tilt reveal" data-go="bank"><span class="who-ico" data-icon="bank"></span><b data-i18n="actor.bank">Банк / платёжка</b><span data-i18n="who.bank">Проверка получателя и подготовка перевода до того, как платёж клиента уйдёт.</span></button>
-    <button type="button" class="who-card tilt reveal" data-go="tronlink"><span class="who-ico" data-icon="tronlink"></span><b data-i18n="actor.tronlink">TronLink</b><span data-i18n="who.tronlink">Подготовили — и подписали перевод в привычном кошельке.</span></button>
-    <button type="button" class="who-card tilt reveal" data-go="exchange"><span class="who-ico" data-icon="exchange"></span><b data-i18n="actor.exchange">Биржа / обменник</b><span data-i18n="who.exchange">Выводы клиентов без управления энергией на горячих кошельках.</span></button>
+    <button type="button" class="who-card tilt reveal" data-go="app"><span class="who-ico" data-icon="app"></span><b data-i18n="actor.app">Ваше приложение</b><span data-i18n="who.app">Вызов перед кнопкой «Отправить» — пользователь платит меньше и не видит TRX.</span></button>
+    <button type="button" class="who-card tilt reveal" data-go="wallet"><span class="who-ico" data-icon="wallet"></span><b data-i18n="actor.wallet">Кошелёк</b><span data-i18n="who.wallet">USDT уходит, даже если на балансе ноль TRX.</span></button>
+    <button type="button" class="who-card tilt reveal" data-go="script"><span class="who-ico" data-icon="script"></span><b data-i18n="actor.script">Скрипт / бот</b><span data-i18n="who.script">Массовые выплаты: один вызов на перевод, расходы видны построчно.</span></button>
+    <button type="button" class="who-card tilt reveal" data-go="bank"><span class="who-ico" data-icon="bank"></span><b data-i18n="actor.bank">Банк / платёжка</b><span data-i18n="who.bank">Проверка адресов и подготовка до того, как платёж клиента уйдёт.</span></button>
+    <button type="button" class="who-card tilt reveal" data-go="tronlink"><span class="who-ico" data-icon="tronlink"></span><b data-i18n="actor.tronlink">TronLink</b><span data-i18n="who.tronlink">Подготовили кошелёк — подписали перевод в привычном приложении.</span></button>
+    <button type="button" class="who-card tilt reveal" data-go="exchange"><span class="who-ico" data-icon="exchange"></span><b data-i18n="actor.exchange">Биржа / обменник</b><span data-i18n="who.exchange">Выводы клиентов без собственного запаса TRX и энергии на горячих кошельках.</span></button>
   </div>
 </section>
 
 <!-- ============ BOUNDARIES ============ -->
 <section class="section boundary-wrap">
   <div class="wrap">
-    <div class="eyebrow" data-i18n="b.eyebrow">ГРАНИЦЫ</div>
-    <h2 data-i18n="b.title">Ваши деньги — <em>в ваших руках.</em></h2>
+    <div class="eyebrow" data-i18n="b.eyebrow">ПРОЗРАЧНО</div>
+    <h2 data-i18n="b.title">Мы готовим. <em>Переводите вы.</em></h2>
     <div class="bounds">
       <article class="bound reveal">
         <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="20" r="7"/><path d="M21 20h15M30 20v6M35 20v4"/></svg>
         <h3 data-i18n="b1.t">Ключи — у вас</h3>
-        <p data-i18n="b1.p">Мы не просим приватные ключи и seed-фразы. Никогда. Нужны только два публичных адреса.</p>
+        <p data-i18n="b1.p">Нам нужны только два публичных адреса. Приватные ключи и seed-фразы мы не просим никогда.</p>
       </article>
       <article class="bound reveal">
         <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 32c6-2 8-14 13-14s3 10 8 10 5-6 7-6"/><path d="M6 36h28"/></svg>
-        <h3 data-i18n="b2.t">Подпись — у вас</h3>
-        <p data-i18n="b2.p">Транзакцию подписывает и отправляет ваше приложение, скрипт или банк — а не мы.</p>
+        <h3 data-i18n="b2.t">Перевод — ваш</h3>
+        <p data-i18n="b2.p">USDT подписывает и отправляет ваш сервис. Мы не принимаем и не пересылаем средства.</p>
       </article>
       <article class="bound reveal">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14"/><path d="M13 14h14M20 14v15M14 19c3 1.4 9 1.4 12 0"/></svg>
-        <h3 data-i18n="b3.t">Средства — у вас</h3>
-        <p data-i18n="b3.p">Мы не принимаем и не пересылаем ваши USDT. Мы отвечаем «можно или нельзя» и готовим сеть к переводу.</p>
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M6 16h28M11 24h7"/></svg>
+        <h3 data-i18n="b3.t">Оплата — с баланса кабинета</h3>
+        <p data-i18n="b3.p">Стоимость каждой подготовки списывается с баланса вашего личного кабинета и возвращается в ответе метода.</p>
       </article>
     </div>
   </div>
@@ -298,11 +339,12 @@
   <div class="eyebrow" data-i18n="faq.eyebrow">ВОПРОСЫ</div>
   <h2 data-i18n="faq.title">Коротко о главном</h2>
   <div class="faq-list">
-    <details><summary data-i18n="q1">Нужно ли менять приложение или кошелёк?</summary><p data-i18n="a1">Нет. Вы добавляете один вопрос перед отправкой. Всё остальное работает как раньше — тем же приложением, скриптом или банковской системой.</p></details>
-    <details><summary data-i18n="q2">Что значит «перевод подготовлен»?</summary><p data-i18n="a2">Мы заранее обеспечиваем ресурсы сети TRON, которые нужны для перевода USDT. Поэтому TRX на комиссию держать не нужно, а транзакция не упадёт из-за нехватки энергии.</p></details>
-    <details><summary data-i18n="q3">Что делать, если пришёл ответ СТОП?</summary><p data-i18n="a3">Не отправлять. Перевод не подготовлен, средства остаются у отправителя. Лучше всего показать пользователю понятное сообщение, что перевод на этот адрес невозможен.</p></details>
-    <details><summary data-i18n="q4">Вы видите мои деньги или ключи?</summary><p data-i18n="a4">Нет. Нам нужны только два публичных адреса. Подписывать и отправлять — всегда ваша сторона.</p></details>
-    <details><summary data-i18n="q5">Как подключиться?</summary><p data-i18n="a5">Напишите нам — подскажем, как подключить метод под ваш сценарий и объём переводов.</p></details>
+    <details><summary data-i18n="q1">Что именно делает метод?</summary><p data-i18n="a1">Проверяет кошельки отправителя и получателя, считает, сколько энергии и bandwidth нужно для перевода, делегирует ресурсы на кошелёк отправителя, списывает стоимость с баланса вашего кабинета и отвечает: МОЖНО и сколько это стоило.</p></details>
+    <details><summary data-i18n="q2">Нужны ли TRX на кошельке отправителя?</summary><p data-i18n="a2">Нет. Энергию и bandwidth для перевода делегируем мы. Не нужно ни покупать TRX, ни думать об активации адресов — всё делается за один вызов.</p></details>
+    <details><summary data-i18n="q3">Сколько это стоит?</summary><p data-i18n="a3">Стоимость считается под каждый перевод — она зависит от того, есть ли у получателя USDT, и от состояния сети. Это до 60% дешевле, чем сжигать TRX на комиссию. Точная сумма всегда приходит в ответе.</p></details>
+    <details><summary data-i18n="q4">Как происходит оплата?</summary><p data-i18n="a4">Вы пополняете баланс личного кабинета, а стоимость каждой подготовки списывается с него автоматически. Никаких отдельных платежей под каждый перевод.</p></details>
+    <details><summary data-i18n="q5">Что если ответ СТОП?</summary><p data-i18n="a5">Получатель в санкционном списке или найден другой стоп-фактор. Ресурсы не делегируются, с баланса ничего не списывается — просто не отправляйте перевод и покажите пользователю понятное сообщение.</p></details>
+    <details><summary data-i18n="q6">Нужно ли менять приложение или кошелёк?</summary><p data-i18n="a6">Нет. Вы добавляете один вызов перед переводом. Сам перевод отправляете как раньше — тем же приложением, скриптом или банковской системой.</p></details>
   </div>
 </section>
 
@@ -310,8 +352,8 @@
 <section class="section wrap cta">
   <div class="cta-box reveal">
     <div class="cta-glow" aria-hidden="true"></div>
-    <h2 data-i18n="cta.title">Добавьте один вопрос <em>перед отправкой.</em></h2>
-    <p data-i18n="cta.p">Остальное — санкционные проверки, энергия, TRX на комиссию — мы берём на себя.</p>
+    <h2 data-i18n="cta.title">Один вызов перед переводом. <em>Никаких забот и сомнений.</em></h2>
+    <p data-i18n="cta.p">TRX, активация, энергия, bandwidth и проверки — на нас. Вам остаётся перевести USDT и заплатить до 60% меньше.</p>
     <div class="actions">
       <a class="button primary" href="/business#contact"><span data-i18n="cta.btn">Обсудить подключение</span> <span aria-hidden="true">↗</span></a>
       <a class="text-link" href="/docs.html" data-i18n="cta.docs">Документация API →</a>

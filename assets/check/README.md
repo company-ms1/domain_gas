@@ -1,12 +1,13 @@
 # Transfer check landing (`/transfer-check`)
 
-Interactive explainer for the "check & prepare" method: the caller passes a sender
-and a recipient address and gets one of two answers:
+Interactive explainer for the wallet preparation method: the calling service passes the
+sender and recipient addresses; we check both wallets, delegate Energy and bandwidth to the
+sender wallet, charge the cost to the caller's account balance and answer:
 
-- **READY** — recipient is clean, the transfer is allowed and the network is prepared
-  (no TRX / Energy needed on the sender side);
+- **GO (МОЖНО)** + price — the sender wallet is prepared, send USDT (up to 60% cheaper
+  than burning TRX for the network fee);
 - **STOP** — the recipient is on a sanctions list or another stop factor was found;
-  nothing is prepared or sent.
+  nothing is delegated or charged.
 
 The page is written for end users, not developers, and does not publish an API contract.
 
@@ -23,5 +24,8 @@ The page is written for end users, not developers, and does not publish an API c
 - Language: `?lang=ru|en`, then the saved choice, then the browser language.
 - Without WebGL the 3D canvas is replaced by a note; the response panel still runs.
 - `prefers-reduced-motion` disables autoplay, camera sway and CSS loops.
-- Addresses and the 250 USDT amount are illustrative only.
+- Addresses, the 250 USDT amount, Energy figures and prices (6.4 → 2.6 TRX, 13 → 5.2 TRX)
+  are illustrative; they live in `RECIPS` in `check.js`.
+- Palette tokens are at the top of `check.css` (`--acc`, `--sky`, `--gold`, `--red`) and
+  the matching 3D colors at the top of `check.js`.
 - Bump `?v=` on the CSS/JS links in `transfer-check.html` after changing them.

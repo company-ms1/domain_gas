@@ -3,86 +3,97 @@ import * as THREE from '../vendor/three.module.min.js';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const MINT = 0x9df0cc, RED = 0xff6b78, TEAL = 0x26a17b, AMBER = 0xffc46b;
+const ACC = 0x8b7dff, SKY = 0x4fc3ff, GOLD = 0xffc35a, RED = 0xff5d73, TEAL = 0x26a17b;
 
 /* =====================================================================
    i18n — Russian lives in the HTML, English below.
    ===================================================================== */
 const EN = {
-  'meta.title': 'Check & Prepare a USDT transfer — how it works | GasFree4you',
-  'nav.badge': 'TRANSFER CHECK', 'nav.how': 'How it works', 'nav.try': 'Try it', 'nav.who': 'Who it’s for', 'nav.faq': 'FAQ', 'nav.cta': 'Get access',
-  'hero.eyebrow': 'NEW METHOD · CHECK & PREPARE A TRANSFER',
-  'hero.title': 'Ask before you send.<br><em>Then just send.</em>',
-  'hero.lead': 'You pass two addresses — sender and recipient. We answer with one word: <b class="ok">READY</b> or <b class="stop">STOP</b>. If it’s ready, you send USDT the way you always do — no TRX, no Energy, no network fees to think about.',
+  'meta.title': 'Prepare a wallet for a USDT transfer — up to 60% cheaper than the network fee | GasFree4you',
+  'nav.badge': 'TRANSFER PREP', 'nav.how': 'How it works', 'nav.save': 'Savings', 'nav.who': 'Who it’s for', 'nav.faq': 'FAQ', 'nav.cta': 'Get access',
+  'hero.eyebrow': 'NEW METHOD · PREPARE A WALLET FOR A USDT TRANSFER',
+  'hero.title': 'One call and the wallet is ready.<br><em>Up to 60% cheaper than the network fee.</em>',
+  'hero.lead': 'Your service sends us the sender and recipient wallets. We check the addresses, delegate Energy and bandwidth, charge the cost to your account balance and answer: <b class="ok">GO</b> — and what it cost. All that’s left for you is to send the USDT.',
+  'hero.s1': 'vs the network fee', 'hero.s2': 'call instead of five chores', 'hero.s3': 'needed on the sender wallet',
   'stage.hint': 'Click any participant in the 3D scene — or pick one below',
-  'stage.nogl': '3D isn’t available in this browser — but the check below still works.',
-  'console.title': 'Method response', 'console.from': 'Sender', 'console.to': 'Recipient',
-  'check.sanctions': 'Sanctions lists', 'check.risk': 'Other stop factors', 'check.prep': 'Network prepared for the transfer',
-  'stage.who': '1 · Who is sending', 'stage.to': '2 · Sending to', 'stage.run': 'Check & send',
+  'stage.nogl': '3D isn’t available in this browser — but the response panel below still works.',
+  'console.title': 'Method response', 'console.from': 'Sender', 'console.to': 'Recipient', 'console.balance': 'Account balance',
+  'check.wallets': 'Wallet check', 'check.calc': 'Energy & bandwidth estimate', 'check.deleg': 'Delegation to the sender wallet', 'check.debit': 'Charge to account balance',
+  'stage.who': '1 · Which service calls the method', 'stage.to': '2 · Who receives', 'stage.run': 'Prepare & send',
   'actor.app': 'Your app', 'actor.wallet': 'Wallet', 'actor.script': 'Script / bot', 'actor.bank': 'Bank / PSP', 'actor.tronlink': 'TronLink', 'actor.exchange': 'Exchange',
-  'recip.clean': 'Regular address', 'recip.sanctioned': 'On a sanctions list', 'recip.risk': 'Other stop factor',
-  'how.eyebrow': 'HOW IT WORKS', 'how.title': 'Three steps. <em>Only one of them is ours.</em>',
-  'step1.t': 'Ask', 'step1.p': 'Your app, wallet, script or bank sends us the sender address and the recipient address. Nothing else — no keys, no signatures.', 'step1.who': 'YOU',
-  'step2.t': 'Get an answer', 'step2.p': 'We screen the recipient against sanctions lists and other stop factors. If it’s clean, we prepare the network for the transfer right away. The answer is <b class="ok">READY</b> or <b class="stop">STOP</b>.', 'step2.who': 'US',
-  'step3.t': 'Send', 'step3.p': 'Got READY? Send USDT the usual way. The network fee is already covered — no TRX needed in the wallet.', 'step3.who': 'YOU',
-  'ans.eyebrow': 'TWO ANSWERS. THAT’S IT', 'ans.title': 'No “maybe”.',
-  'ans.ok.t': 'READY', 'ans.ok.sub': 'Transfer allowed and prepared', 'ans.ok.l1': 'Recipient is clean', 'ans.ok.l2': 'Network is prepared for the transfer', 'ans.ok.l3': 'You can send right now', 'ans.ok.next': '→ You send the USDT',
-  'ans.stop.t': 'STOP', 'ans.stop.sub': 'Recipient is on a sanctions list, or another stop factor was found', 'ans.stop.l1': 'Transfer is not prepared', 'ans.stop.l2': 'Nothing gets sent', 'ans.stop.l3': 'The USDT stays with you', 'ans.stop.next': '→ Show your user a clear message',
-  'user.eyebrow': 'THROUGH YOUR USER’S EYES', 'user.title': 'For a person, it’s <em>one extra second.</em>',
-  'user.p': 'Your user never sees Energy, TRX or screening. They see an address, an amount and a “Send” button. Everything else happens while the spinner turns.',
+  'recip.holder': 'Recipient holds USDT', 'recip.fresh': 'New recipient', 'recip.sanctioned': 'Sanctioned',
+  'how.eyebrow': 'HOW IT WORKS', 'how.title': 'Call. Prepared. <em>Sent.</em>',
+  'step1.t': 'Call the method', 'step1.p': 'Your service passes the sender address and the recipient address. One request — no keys, no signatures.', 'step1.who': 'YOU',
+  'step2.t': 'We prepare the wallet', 'step2.p': 'We check both addresses, estimate the Energy and bandwidth needed, delegate them to the sender wallet and charge the cost to your account balance. The answer is <b class="ok">GO</b> plus the exact price.', 'step2.who': 'US',
+  'step3.t': 'Send USDT', 'step3.p': 'Send USDT the usual way. The network fee is already covered by delegated resources — up to 60% cheaper.', 'step3.who': 'YOU',
+  'save.eyebrow': 'SAVINGS', 'save.title': 'Up to 60% less <em class="gold">than the network fee.</em>',
+  'save.p': 'Without resources, TRON burns TRX from the sender wallet. We cover the transfer with delegated Energy and bandwidth — noticeably cheaper, and the price always comes back in the response.',
+  'save.c1': 'Recipient already holds USDT', 'save.c2': 'New recipient without USDT', 'save.net': 'Network fee', 'save.us': 'With us',
+  'save.calc': 'How much you’ll save', 'save.per': 'Transfers per month', 'save.month': 'Savings per month',
+  'save.note': 'Example for recipients holding USDT: 6.4 → 2.6 TRX. The final price depends on your plan and network conditions — the exact amount comes back in the method response.',
+  'ans.eyebrow': 'METHOD RESPONSE', 'ans.title': 'No doubts: <em>go or no-go.</em>',
+  'ans.ok.t': 'GO', 'ans.ok.sub': 'Wallet prepared, price known', 'ans.ok.l1': 'Energy and bandwidth delegated', 'ans.ok.l2': 'Cost charged to your balance and stated in the response', 'ans.ok.l3': 'Send the USDT right away', 'ans.ok.next': '→ For example: “GO · 2.6 TRX”',
+  'ans.stop.t': 'STOP', 'ans.stop.sub': 'Recipient is on a sanctions list, or another stop factor was found', 'ans.stop.l1': 'No resources are delegated', 'ans.stop.l2': 'Nothing is charged to your balance', 'ans.stop.l3': 'The transfer is not sent', 'ans.stop.next': '→ Show your user a clear message',
+  'user.eyebrow': 'THROUGH YOUR USER’S EYES', 'user.title': 'Your user sees <em>only the transfer.</em>',
+  'user.p': 'No TRX, no Energy, no bandwidth, no activation. An address, an amount, a “Send” button — and a fee lower than the network’s.',
   'user.mode.ok': 'Regular recipient', 'user.mode.stop': 'Sanctioned recipient',
-  'user.s1': 'Enters address and amount', 'user.s2': 'Your app asks us', 'user.s3': 'Gets the answer', 'user.s4': 'Sends — or sees why it can’t',
-  'ph.send': 'Send USDT', 'ph.to': 'To', 'ph.amount': 'Amount', 'ph.continue': 'Continue', 'ph.checking': 'Checking recipient…',
-  'ph.ready': 'Ready to send', 'ph.fee': 'Network fee', 'ph.feeval': 'already prepared', 'ph.notrx': 'not needed', 'ph.sendbtn': 'Send',
-  'ph.blocked': 'Transfer not possible', 'ph.blockedp': 'This recipient is on a sanctions list. Your funds stayed in your account.', 'ph.ok': 'Got it',
-  'ph.sent': 'Sent', 'ph.sentp': '250 USDT delivered. With zero TRX in the wallet.',
-  'ba.eyebrow': 'BEFORE / AFTER', 'ba.title': 'Everything you can <em>stop thinking about</em>', 'ba.before': 'Without the method', 'ba.after': 'With the method',
-  'ba.b1': 'Keep TRX on every wallet', 'ba.b2': 'Calculate Energy and bandwidth for each transfer', 'ba.b3': 'Rent or stake Energy separately', 'ba.b4': 'Screen recipients against sanctions separately', 'ba.b5': 'Investigate transactions that failed for lack of resources',
-  'ba.a1': 'One question before sending', 'ba.a2': '<b class="ok">READY</b> → you send', 'ba.a3': '<b class="stop">STOP</b> → you don’t',
-  'who.eyebrow': 'WHO IT’S FOR', 'who.title': 'Anyone who sends <em>USDT on TRON</em>',
-  'who.p': 'The method isn’t tied to any one app. Whoever is sending simply asks, gets an answer, and sends on their own. Click a card to see that scenario in 3D.',
-  'who.app': 'Add the question right before the “Send” button.', 'who.wallet': 'Users send USDT even with zero TRX in the balance.', 'who.script': 'Payouts and automations: one question before every transaction.',
-  'who.bank': 'Screen the recipient and prepare the transfer before a client payment goes out.', 'who.tronlink': 'Prepare it — then sign in the wallet you already use.', 'who.exchange': 'Customer withdrawals without managing Energy on hot wallets.',
-  'b.eyebrow': 'BOUNDARIES', 'b.title': 'Your money stays <em>in your hands.</em>',
-  'b1.t': 'Keys stay with you', 'b1.p': 'We never ask for private keys or seed phrases. Ever. We only need two public addresses.',
-  'b2.t': 'Signing stays with you', 'b2.p': 'Your app, script or bank signs and sends the transaction — not us.',
-  'b3.t': 'Funds stay with you', 'b3.p': 'We don’t receive or forward your USDT. We answer “yes or no” and prepare the network for the transfer.',
+  'user.s1': 'Enters address and amount', 'user.s2': 'Your service calls the method', 'user.s3': 'Wallet prepared, price known', 'user.s4': 'Transfer sent',
+  'ph.send': 'Send USDT', 'ph.to': 'To', 'ph.amount': 'Amount', 'ph.continue': 'Continue', 'ph.checking': 'Preparing transfer…',
+  'ph.ready': 'Ready to send', 'ph.fee': 'Fee', 'ph.saving': 'Savings', 'ph.sendbtn': 'Send',
+  'ph.blocked': 'Transfer not possible', 'ph.blockedp': 'This recipient is on a sanctions list. Nothing was charged, your funds are in place.', 'ph.ok': 'Got it',
+  'ph.sent': 'Sent', 'ph.sentp': '250 USDT delivered. Fee 59% below the network’s.',
+  'ba.eyebrow': 'BEFORE / AFTER', 'ba.title': 'One service — <em>zero hassle.</em>', 'ba.before': 'Without us', 'ba.after': 'With us',
+  'ba.b1': 'Buy and hold TRX on every wallet', 'ba.b2': 'Activate new addresses', 'ba.b3': 'Calculate Energy and bandwidth for every transfer', 'ba.b4': 'Rent or stake Energy from different providers', 'ba.b5': 'Screen addresses against sanctions lists separately', 'ba.b6': 'Overpay the network up to 60% in burned TRX',
+  'ba.a1': 'One call', 'ba.a2': '<b class="ok">GO</b> + price', 'ba.a3': 'Send USDT — done',
+  'who.eyebrow': 'UNIVERSAL', 'who.title': 'One method for <em>any sender</em>',
+  'who.p': 'It doesn’t matter who sends the USDT — an app, a wallet, a script, a bank or an exchange. Same call, same preparation, same savings. Click a card to see that scenario in 3D.',
+  'who.app': 'Call it before the “Send” button — your user pays less and never sees TRX.', 'who.wallet': 'USDT goes out even with zero TRX in the balance.', 'who.script': 'Mass payouts: one call per transfer, costs itemised line by line.',
+  'who.bank': 'Address checks and preparation before a client payment goes out.', 'who.tronlink': 'Wallet prepared — sign the transfer in the app you already use.', 'who.exchange': 'Customer withdrawals without your own TRX and Energy stock on hot wallets.',
+  'b.eyebrow': 'TRANSPARENT', 'b.title': 'We prepare. <em>You send.</em>',
+  'b1.t': 'Keys stay with you', 'b1.p': 'We only need two public addresses. We never ask for private keys or seed phrases.',
+  'b2.t': 'The transfer is yours', 'b2.p': 'Your service signs and sends the USDT. We never receive or forward funds.',
+  'b3.t': 'Paid from your account balance', 'b3.p': 'Each preparation is charged to your account balance, and the amount is returned in the method response.',
   'faq.eyebrow': 'FAQ', 'faq.title': 'The short version',
-  'q1': 'Do I need to change my app or wallet?', 'a1': 'No. You add one question before sending. Everything else works as before — same app, script or banking system.',
-  'q2': 'What does “transfer prepared” mean?', 'a2': 'We provide the TRON network resources a USDT transfer needs in advance. So you don’t have to hold TRX for fees, and the transaction won’t fail for lack of Energy.',
-  'q3': 'What if the answer is STOP?', 'a3': 'Don’t send. The transfer isn’t prepared and the funds stay with the sender. Best practice is to show the user a clear message that this address can’t receive the transfer.',
-  'q4': 'Can you see my money or keys?', 'a4': 'No. We only need two public addresses. Signing and sending is always on your side.',
-  'q5': 'How do I connect?', 'a5': 'Write to us — we’ll help you connect the method for your scenario and transfer volume.',
-  'cta.title': 'Add one question <em>before you send.</em>', 'cta.p': 'The rest — sanctions screening, Energy, TRX for fees — is on us.', 'cta.btn': 'Discuss integration', 'cta.docs': 'API docs →',
+  'q1': 'What exactly does the method do?', 'a1': 'It checks the sender and recipient wallets, estimates the Energy and bandwidth the transfer needs, delegates the resources to the sender wallet, charges the cost to your account balance and answers: GO, and what it cost.',
+  'q2': 'Does the sender wallet need TRX?', 'a2': 'No. We delegate the Energy and bandwidth for the transfer. No buying TRX, no worrying about address activation — it all happens in one call.',
+  'q3': 'How much does it cost?', 'a3': 'The price is calculated per transfer — it depends on whether the recipient already holds USDT and on network conditions. It’s up to 60% cheaper than burning TRX for the network fee. The exact amount always comes back in the response.',
+  'q4': 'How do I pay?', 'a4': 'You top up your account balance, and each preparation is charged to it automatically. No separate payment per transfer.',
+  'q5': 'What if the answer is STOP?', 'a5': 'The recipient is on a sanctions list or another stop factor was found. No resources are delegated and nothing is charged — just don’t send the transfer and show your user a clear message.',
+  'q6': 'Do I need to change my app or wallet?', 'a6': 'No. You add one call before the transfer. You send the transfer as before — same app, script or banking system.',
+  'cta.title': 'One call before the transfer. <em>No hassle, no doubts.</em>', 'cta.p': 'TRX, activation, Energy, bandwidth and checks are on us. You just send USDT — and pay up to 60% less.', 'cta.btn': 'Discuss integration', 'cta.docs': 'API docs →',
   'f.terms': 'Terms', 'f.privacy': 'Privacy',
 };
 
 const DYN = {
   ru: {
-    'core.sub': 'проверка + подготовка', sender: 'отправитель', recipient: 'получатель',
-    packet: '2 адреса →', ready: 'ГОТОВО ✓', stop: 'СТОП ✕',
-    recipOk: '+250 USDT · 0 TRX', recipStop: 'перевод заблокирован',
-    wait: 'ожидание', run: 'проверяем…', ok: 'чисто', fail: 'совпадение', skip: 'не выполняется', prepRun: 'готовим…', prepOk: 'готово',
-    idleT: 'Ждём вопрос', idleB: 'Выберите, кто отправляет и кому, затем нажмите «Проверить и отправить».',
-    busyT: 'Проверяем получателя…', busyB: 'Это занимает доли секунды — здесь замедлено, чтобы было видно.',
-    okT: 'ГОТОВО — перевод разрешён и подготовлен', okB: 'Можно отправлять. TRX и энергия на комиссию не нужны — сеть уже подготовлена.',
-    sentT: 'Отправлено: 250 USDT', sentB: a => `Перевод отправил участник «${a}» — своим обычным способом. Мы не касались средств.`,
-    stopST: 'СТОП — получатель в санкционном списке', stopRT: 'СТОП — найден стоп-фактор по получателю',
-    stopB: 'Перевод не подготовлен и не отправляется. USDT остаются у отправителя.',
-    again: 'Запустить ещё раз', hover: 'нажмите, чтобы выбрать',
+    'core.sub': 'проверка · ресурсы · оплата', sender: 'отправитель', recipient: 'получатель',
+    packet: 'вызов: 2 адреса →', ready: 'МОЖНО', stop: 'СТОП ✕',
+    recipOk: '+250 USDT', recipStop: 'перевод заблокирован',
+    res: (en, bw) => `⚡ ${en} энергии · ${bw} bw`, debit: c => `−${c} TRX с баланса`, save: (p) => `−${p}% к комиссии сети`,
+    wait: 'ожидание', skip: 'не выполняется',
+    'wallets.run': 'проверяем…', 'wallets.ok': 'чисто', 'wallets.fail': 'санкции',
+    'calc.run': 'считаем…', 'deleg.run': 'делегируем…', 'deleg.ok': 'готово', 'debit.run': 'списываем…',
+    idleT: 'Ждём вызов', idleB: 'Выберите сервис и получателя, затем нажмите «Подготовить и перевести».',
+    busyT: 'Готовим перевод…', busyB: 'В жизни это доли секунды — здесь замедлено, чтобы было видно.',
+    okT: 'МОЖНО — кошелёк отправителя подготовлен', okB: 'Энергия и bandwidth делегированы. TRX на кошельке не нужен — переводите USDT.',
+    sentT: 'Перевод отправлен: 250 USDT', sentB: a => `«${a}» перевёл USDT своим обычным способом. Мы только подготовили кошелёк.`,
+    stopT: 'СТОП — получатель в санкционном списке', stopB: 'Ресурсы не делегированы, с баланса ничего не списано. Перевод не отправляется.',
+    instead: 'вместо', again: 'Запустить ещё раз', hover: 'нажмите, чтобы выбрать', perMonth: 'TRX',
   },
   en: {
-    'core.sub': 'check + prepare', sender: 'sender', recipient: 'recipient',
-    packet: '2 addresses →', ready: 'READY ✓', stop: 'STOP ✕',
-    recipOk: '+250 USDT · 0 TRX', recipStop: 'transfer blocked',
-    wait: 'waiting', run: 'checking…', ok: 'clear', fail: 'match', skip: 'not run', prepRun: 'preparing…', prepOk: 'done',
-    idleT: 'Waiting for a question', idleB: 'Choose who is sending and to whom, then press “Check & send”.',
-    busyT: 'Checking the recipient…', busyB: 'This takes a fraction of a second — slowed down here so you can see it.',
-    okT: 'READY — transfer allowed and prepared', okB: 'Go ahead and send. No TRX or Energy needed for fees — the network is already prepared.',
-    sentT: 'Sent: 250 USDT', sentB: a => `“${a}” sent the transfer the way it always does. We never touched the funds.`,
-    stopST: 'STOP — recipient is on a sanctions list', stopRT: 'STOP — a stop factor was found for the recipient',
-    stopB: 'The transfer is not prepared and is not sent. The USDT stays with the sender.',
-    again: 'Run again', hover: 'click to select',
+    'core.sub': 'check · resources · billing', sender: 'sender', recipient: 'recipient',
+    packet: 'call: 2 addresses →', ready: 'GO', stop: 'STOP ✕',
+    recipOk: '+250 USDT', recipStop: 'transfer blocked',
+    res: (en, bw) => `⚡ ${en} Energy · ${bw} bw`, debit: c => `−${c} TRX from balance`, save: (p) => `−${p}% vs network fee`,
+    wait: 'waiting', skip: 'not run',
+    'wallets.run': 'checking…', 'wallets.ok': 'clear', 'wallets.fail': 'sanctions',
+    'calc.run': 'estimating…', 'deleg.run': 'delegating…', 'deleg.ok': 'done', 'debit.run': 'charging…',
+    idleT: 'Waiting for a call', idleB: 'Pick a service and a recipient, then press “Prepare & send”.',
+    busyT: 'Preparing the transfer…', busyB: 'In real life this takes a fraction of a second — slowed down here so you can see it.',
+    okT: 'GO — the sender wallet is prepared', okB: 'Energy and bandwidth delegated. No TRX needed in the wallet — send the USDT.',
+    sentT: 'Transfer sent: 250 USDT', sentB: a => `“${a}” sent the USDT the way it always does. We only prepared the wallet.`,
+    stopT: 'STOP — recipient is on a sanctions list', stopB: 'No resources delegated, nothing charged to your balance. The transfer is not sent.',
+    instead: 'instead of', again: 'Run again', hover: 'click to select', perMonth: 'TRX',
   },
 };
 
@@ -105,13 +116,14 @@ function setLang(l) {
   $$('[data-lang]').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
   try { localStorage.setItem('gf4u-lang', l); } catch (e) {}
   refreshDynamic();
+  updateCalc();
 }
 $$('[data-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 
 /* =====================================================================
    Icons drawn on canvas (used for 3D faces and the "who" cards)
    ===================================================================== */
-function drawIcon(ctx, kind, S, color = '#9df0cc') {
+function drawIcon(ctx, kind, S, color = '#c4bcff') {
   ctx.save();
   if (!ctx.roundRect) ctx.roundRect = function (x, y, w, h) { this.rect(x, y, w, h); };
   ctx.strokeStyle = color; ctx.fillStyle = color;
@@ -177,49 +189,80 @@ const ACTORS = [
   { id: 'tronlink', w: 1.15, h: 2.05, dz: .2 },
   { id: 'exchange', w: 1.75, h: 1.5, dz: .4 },
 ];
-const RECIP_ADDR = { clean: 'TQx7…9a2M', sanctioned: 'TN4s…r7Lw', risk: 'TKe2…m8Vd' };
-const state = { actor: 'app', recip: 'clean', running: false, t0: 0, plan: null, fired: 0, verdict: null, auto: !REDUCED };
+// illustrative numbers: network burn vs. prepared transfer
+const RECIPS = {
+  holder: { addr: 'TQx7…9a2M', ok: true, energy: '65 000', bw: '345', cost: 2.6, net: 6.4, save: 59 },
+  fresh: { addr: 'TLn3…w5Qe', ok: true, energy: '131 000', bw: '345', cost: 5.2, net: 13, save: 60 },
+  sanctioned: { addr: 'TN4s…r7Lw', ok: false },
+};
+const START_BALANCE = 120;
+const state = { actor: 'app', recip: 'holder', running: false, t0: 0, plan: null, fired: 0, verdict: null, auto: !REDUCED, balance: START_BALANCE };
 
 function buildPlan(recip) {
-  // times in seconds from run start
-  if (recip === 'clean') return { recip, checks: [[1.25, 'sanctions', 'run'], [1.75, 'sanctions', 'ok'], [1.8, 'risk', 'run'], [2.3, 'risk', 'ok'], [2.35, 'prep', 'prep'], [3.0, 'prep', 'ok']], verdictAt: 3.05, ans: [3.1, 4.1], send: [4.35, 6.4], end: 7.0, ok: true };
-  if (recip === 'sanctioned') return { recip, checks: [[1.25, 'sanctions', 'run'], [1.95, 'sanctions', 'fail'], [2.0, 'risk', 'skip'], [2.0, 'prep', 'skip']], verdictAt: 2.0, ans: [2.1, 3.1], send: null, end: 4.6, ok: false };
-  return { recip, checks: [[1.25, 'sanctions', 'run'], [1.75, 'sanctions', 'ok'], [1.8, 'risk', 'run'], [2.45, 'risk', 'fail'], [2.5, 'prep', 'skip']], verdictAt: 2.5, ans: [2.6, 3.6], send: null, end: 5.1, ok: false };
+  const R = RECIPS[recip];
+  if (R.ok) return {
+    ...R, recip,
+    checks: [[1.2, 'wallets', 'run'], [1.7, 'wallets', 'ok'], [1.75, 'calc', 'run'], [2.2, 'calc', 'ok'],
+      [2.25, 'deleg', 'run'], [3.3, 'deleg', 'ok'], [3.35, 'debit', 'run'], [3.7, 'debit', 'ok']],
+    deleg: [2.3, 3.3], debitAt: 3.7, verdictAt: 3.75, ans: [3.8, 4.7], send: [5.0, 7.0], end: 7.8,
+  };
+  return {
+    ...R, recip,
+    checks: [[1.2, 'wallets', 'run'], [1.9, 'wallets', 'fail'], [1.95, 'calc', 'skip'], [1.95, 'deleg', 'skip'], [1.95, 'debit', 'skip']],
+    deleg: null, debitAt: null, verdictAt: 1.95, ans: [2.05, 3.05], send: null, end: 4.6,
+  };
 }
 
-const verdictEl = $('#verdict'), vT = $('#verdictTitle'), vB = $('#verdictBody'), runBtn = $('#run');
+const fmt = (n, dig = 2) => n.toLocaleString(lang === 'ru' ? 'ru-RU' : 'en-US', { minimumFractionDigits: dig === 1 ? 0 : dig, maximumFractionDigits: dig });
+const verdictEl = $('#verdict'), vT = $('#verdictTitle'), vB = $('#verdictBody'), runBtn = $('#run'), balEl = $('#balance');
+function checkText(id, s) {
+  if (s === 'wait' || s === 'skip') return d(s);
+  const P = state.plan || RECIPS[state.recip];
+  if (id === 'calc' && s === 'ok') return `${P.energy} ⚡ · ${P.bw} bw`;
+  if (id === 'debit' && s === 'ok') return `−${fmt(P.cost, 1)} TRX`;
+  return d(`${id}.${s}`) ?? '';
+}
 function setCheck(id, s) {
   const li = $(`.checks li[data-check="${id}"]`); li.dataset.s = s;
-  const map = { wait: 'wait', run: 'run', ok: id === 'prep' ? 'prepOk' : 'ok', fail: 'fail', skip: 'skip', prep: 'prepRun' };
-  li.querySelector('em').textContent = d(map[s]);
-  if (s === 'prep') li.dataset.s = 'run';
+  li.querySelector('em').textContent = checkText(id, s);
+  if (id === 'debit' && s === 'ok') chargeBalance();
+}
+function renderBalance() { balEl.textContent = `${fmt(state.balance)} TRX`; }
+function chargeBalance() {
+  if (!state.plan || state.plan.charged) return;
+  state.plan.charged = true;
+  state.balance = Math.round((state.balance - state.plan.cost) * 100) / 100;
+  renderBalance(); balEl.classList.add('hit'); setTimeout(() => balEl.classList.remove('hit'), 1400);
+}
+function costRow(P) {
+  return `<span class="cost"><b>${fmt(P.cost, 1)} TRX</b><s>${d('instead')} ${fmt(P.net, 1)} TRX</s><i>−${P.save}%</i></span>`;
 }
 function setVerdict(kind) {
   state.verdict = kind;
-  const actorName = t('actor.' + state.actor);
-  const V = {
-    idle: ['idle', d('idleT'), d('idleB')],
-    busy: ['busy', d('busyT'), d('busyB')],
-    ok: ['ok', d('okT'), d('okB')],
-    sent: ['ok', d('sentT'), d('sentB')(actorName)],
-    stop: ['stop', state.recip === 'sanctioned' ? d('stopST') : d('stopRT'), d('stopB')],
-  }[kind];
-  verdictEl.dataset.state = V[0]; vT.textContent = V[1]; vB.textContent = V[2];
+  const P = state.plan;
+  let st = kind, title = '', body = '';
+  if (kind === 'idle') { title = d('idleT'); body = d('idleB'); }
+  if (kind === 'busy') { title = d('busyT'); body = d('busyB'); }
+  if (kind === 'ok') { title = d('okT'); body = d('okB') + costRow(P); }
+  if (kind === 'sent') { st = 'ok'; title = d('sentT'); body = d('sentB')(t('actor.' + state.actor)) + costRow(P); }
+  if (kind === 'stop') { title = d('stopT'); body = d('stopB'); }
+  verdictEl.dataset.state = st; vT.textContent = title; vB.innerHTML = body;
 }
-function resetChecks() { ['sanctions', 'risk', 'prep'].forEach(id => setCheck(id, 'wait')); }
+const CHECKS = ['wallets', 'calc', 'deleg', 'debit'];
+function resetChecks() { CHECKS.forEach(id => setCheck(id, 'wait')); }
 function refreshDynamic() {
   $$('[data-dyn]').forEach(el => {
     const k = el.dataset.dyn;
     if (k === 'actor.name') el.textContent = t('actor.' + state.actor);
-    else if (k === 'recip.addr') el.textContent = RECIP_ADDR[state.recip];
-    else if (k === 'recip.state') { /* handled in frame */ }
+    else if (k === 'recip.addr') el.textContent = RECIPS[state.recip].addr;
+    else if (k === 'recip.state') { /* handled per frame */ }
     else el.textContent = d(k);
   });
-  $$('.checks li').forEach(li => { if (li.dataset.s) setCheck(li.dataset.check, li.dataset.s === 'run' && li.dataset.check === 'prep' ? 'prep' : li.dataset.s); });
+  $$('.checks li').forEach(li => { if (li.dataset.s) li.querySelector('em').textContent = checkText(li.dataset.check, li.dataset.s); });
   if (state.verdict) setVerdict(state.verdict);
-  if (!state.running && state.plan) runBtn.querySelector('span').textContent = d('again');
+  renderBalance();
+  runBtn.querySelector('span').textContent = !state.running && state.plan ? d('again') : t('stage.run');
 }
-
 function clearRun() {
   if (!state.plan) return;
   state.running = false; runBtn.disabled = false;
@@ -236,17 +279,18 @@ function selectRecip(id) {
   if (id !== state.recip) clearRun();
   state.recip = id;
   $$('[data-recip]').forEach(b => b.classList.toggle('active', b.dataset.recip === id));
-  $('#reqTo').textContent = RECIP_ADDR[id];
+  $('#reqTo').textContent = RECIPS[id].addr;
   refreshDynamic();
 }
 function startRun() {
+  if (state.balance < 20) { state.balance = START_BALANCE; renderBalance(); }
   state.plan = buildPlan(state.recip);
   state.t0 = performance.now() / 1000;
   state.fired = 0; state.running = true;
   resetChecks(); setVerdict('busy');
   runBtn.disabled = true;
   scene3d && scene3d.onRun();
-  // on phones the canvas sits above the controls: bring it into view
+  // on phones and tablets the canvas sits above the controls: bring it into view
   if (!state.auto && innerWidth <= 1100) {
     const r = $('#scene').getBoundingClientRect();
     if (r.top < 60 || r.bottom > innerHeight) scrollBy({ top: r.top - 80, behavior: REDUCED ? 'auto' : 'smooth' });
@@ -261,7 +305,7 @@ runBtn.addEventListener('click', () => { stopAuto(); if (!state.running) startRu
 $$('[data-go]').forEach(b => b.addEventListener('click', () => {
   stopAuto();
   $('#try').scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth' });
-  clearRun(); selectActor(b.dataset.go); selectRecip('clean');
+  clearRun(); selectActor(b.dataset.go); selectRecip('holder');
   setTimeout(() => !state.running && startRun(), 900);
 }));
 
@@ -283,7 +327,7 @@ function tick(now) {
   }
 }
 
-const AUTO = [['app', 'clean'], ['bank', 'sanctioned'], ['script', 'clean'], ['tronlink', 'risk'], ['wallet', 'clean'], ['exchange', 'sanctioned']];
+const AUTO = [['app', 'holder'], ['bank', 'fresh'], ['script', 'holder'], ['tronlink', 'sanctioned'], ['wallet', 'fresh'], ['exchange', 'holder']];
 let autoIdx = 0, autoTimer = 0;
 function scheduleAuto(delay = 2600) {
   clearTimeout(autoTimer);
@@ -296,6 +340,22 @@ function scheduleAuto(delay = 2600) {
 }
 
 /* =====================================================================
+   Savings calculator
+   ===================================================================== */
+const calcIn = $('#calcN'), calcNOut = $('#calcNOut'), calcSave = $('#calcSave');
+function calcN() {
+  const raw = Math.pow(10, 1 + (+calcIn.value / 100) * 4); // 10 … 100 000, log scale
+  const step = raw < 100 ? 10 : raw < 1000 ? 50 : raw < 10000 ? 500 : 5000;
+  return Math.max(10, Math.round(raw / step) * step);
+}
+function updateCalc() {
+  const n = calcN(), per = RECIPS.holder.net - RECIPS.holder.cost;
+  calcNOut.textContent = fmt(n, 0);
+  calcSave.textContent = `${fmt(Math.round(n * per), 0)} ${d('perMonth')}`;
+}
+calcIn.addEventListener('input', updateCalc);
+
+/* =====================================================================
    3D scene
    ===================================================================== */
 let scene3d = null;
@@ -306,15 +366,15 @@ function makeScene() {
   catch (e) { return null; }
   if (!renderer.getContext()) return null;
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
-  renderer.setClearColor(0x070b0d, 1);
+  renderer.setClearColor(0x0b0b1a, 1);
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x070b0d, 0.045);
+  scene.fog = new THREE.FogExp2(0x0b0b1a, 0.042);
   const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
 
-  scene.add(new THREE.HemisphereLight(0xcffff0, 0x0a1214, 1.1));
+  scene.add(new THREE.HemisphereLight(0xdcd8ff, 0x0b0b1a, 1.1));
   const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(4, 8, 6); scene.add(key);
-  const coreLight = new THREE.PointLight(MINT, 30, 14, 1.6); scene.add(coreLight);
+  const coreLight = new THREE.PointLight(ACC, 30, 14, 1.6); scene.add(coreLight);
 
   /* helpers */
   const tex = cv => { const tx = new THREE.CanvasTexture(cv); tx.colorSpace = THREE.SRGBColorSpace; tx.anisotropy = 4; return tx; };
@@ -334,12 +394,12 @@ function makeScene() {
 
   /* floor */
   const FLOOR_Y = -1.55;
-  const grid = new THREE.GridHelper(60, 60, 0x2b4a40, 0x14221f);
+  const grid = new THREE.GridHelper(60, 60, 0x3d3790, 0x1c1a48);
   grid.position.y = FLOOR_Y; grid.material.transparent = true; grid.material.opacity = .55; scene.add(grid);
   const floorGlow = (() => {
     const cv = document.createElement('canvas'); cv.width = cv.height = 256; const g = cv.getContext('2d');
     const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
-    gr.addColorStop(0, 'rgba(157,240,204,.28)'); gr.addColorStop(1, 'rgba(157,240,204,0)');
+    gr.addColorStop(0, 'rgba(139,125,255,.3)'); gr.addColorStop(.6, 'rgba(79,195,255,.08)'); gr.addColorStop(1, 'rgba(79,195,255,0)');
     g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
     const m = new THREE.Mesh(new THREE.PlaneGeometry(22, 22), new THREE.MeshBasicMaterial({ map: tex(cv), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
     m.rotation.x = -Math.PI / 2; m.position.y = FLOOR_Y + .01; scene.add(m); return m;
@@ -353,61 +413,61 @@ function makeScene() {
       pos[i * 3] = Math.cos(th) * r; pos[i * 3 + 1] = y; pos[i * 3 + 2] = Math.sin(th) * r - 6;
     }
     const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    const p = new THREE.Points(g, new THREE.PointsMaterial({ color: MINT, size: .06, transparent: true, opacity: .55, depthWrite: false }));
+    const p = new THREE.Points(g, new THREE.PointsMaterial({ color: ACC, size: .06, transparent: true, opacity: .55, depthWrite: false }));
     scene.add(p); return p;
   })();
 
   /* ---------- core ---------- */
   const core = new THREE.Group(); scene.add(core);
-  const coreMat = new THREE.MeshStandardMaterial({ color: 0x0c2a21, emissive: MINT, emissiveIntensity: .55, metalness: .4, roughness: .25 });
+  const coreMat = new THREE.MeshStandardMaterial({ color: 0x1a1450, emissive: ACC, emissiveIntensity: .55, metalness: .4, roughness: .25 });
   const coreBall = new THREE.Mesh(new THREE.IcosahedronGeometry(.72, 3), coreMat); core.add(coreBall);
-  const shellMat = new THREE.MeshBasicMaterial({ color: MINT, wireframe: true, transparent: true, opacity: .32 });
+  const shellMat = new THREE.MeshBasicMaterial({ color: ACC, wireframe: true, transparent: true, opacity: .32 });
   const shell = new THREE.Mesh(new THREE.IcosahedronGeometry(1.18, 1), shellMat); core.add(shell);
-  const coreGlow = glow(MINT, 5.5); coreGlow.material.opacity = .45; core.add(coreGlow);
-  const ringMat = new THREE.MeshBasicMaterial({ color: MINT, transparent: true, opacity: .75 });
+  const coreGlow = glow(ACC, 5.5); coreGlow.material.opacity = .45; core.add(coreGlow);
+  const ringMat = new THREE.MeshBasicMaterial({ color: ACC, transparent: true, opacity: .75 });
   const rings = [1.6, 1.95, 2.3].map((r, i) => {
     const g = new THREE.Group();
     const m = new THREE.Mesh(new THREE.TorusGeometry(r, i === 1 ? .008 : .014, 8, 160), ringMat); g.add(m);
     const sat = new THREE.Mesh(new THREE.SphereGeometry(.06, 16, 16), new THREE.MeshBasicMaterial({ color: 0xffffff }));
-    sat.position.x = r; g.add(sat); const sg = glow(MINT, .6); sg.position.x = r; g.add(sg);
+    sat.position.x = r; g.add(sat); const sg = glow(ACC, .6); sg.position.x = r; g.add(sg);
     g.rotation.set(Math.PI / 2 + (i - 1) * .55, (i - 1) * .4, 0); core.add(g); return g;
   });
-  const scanMat = new THREE.MeshBasicMaterial({ color: MINT, transparent: true, opacity: 0, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false });
+  const scanMat = new THREE.MeshBasicMaterial({ color: ACC, transparent: true, opacity: 0, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false });
   const scanner = new THREE.Mesh(new THREE.CylinderGeometry(1.35, 1.35, .05, 64, 1, true), scanMat); core.add(scanner);
-  const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(.06, .06, 1, 8), new THREE.MeshBasicMaterial({ color: MINT, transparent: true, opacity: .25 }));
+  const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(.06, .06, 1, 8), new THREE.MeshBasicMaterial({ color: ACC, transparent: true, opacity: .25 }));
   scene.add(pedestal);
 
   /* ---------- actors ---------- */
   const actorMeshes = ACTORS.map(def => {
     const g = new THREE.Group(); g.userData.def = def;
-    const bodyMat = new THREE.MeshStandardMaterial({ color: 0x111a1e, metalness: .55, roughness: .35, transparent: true });
+    const bodyMat = new THREE.MeshStandardMaterial({ color: 0x1a1940, metalness: .55, roughness: .35, transparent: true });
     const geo = new THREE.BoxGeometry(def.w, def.h, def.dz);
     const body = new THREE.Mesh(geo, bodyMat); body.userData.actor = def.id; g.add(body);
-    const edgeMat = new THREE.LineBasicMaterial({ color: MINT, transparent: true, opacity: .55 });
+    const edgeMat = new THREE.LineBasicMaterial({ color: ACC, transparent: true, opacity: .55 });
     g.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo), edgeMat));
     const S = 256, cv = document.createElement('canvas'); cv.width = cv.height = S;
     drawIcon(cv.getContext('2d'), def.id, S);
     const faceMat = new THREE.MeshBasicMaterial({ map: tex(cv), transparent: true, depthWrite: false });
     const s = Math.min(def.w, def.h) * .95;
     const face = new THREE.Mesh(new THREE.PlaneGeometry(s, s), faceMat); face.position.z = def.dz / 2 + .005; g.add(face);
-    const screenMat = new THREE.MeshBasicMaterial({ color: MINT, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
+    const screenMat = new THREE.MeshBasicMaterial({ color: ACC, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false });
     const screen = new THREE.Mesh(new THREE.PlaneGeometry(def.w * .92, def.h * .92), screenMat); screen.position.z = def.dz / 2 + .01; g.add(screen);
-    const halo = glow(MINT, 3.4); halo.material.opacity = 0; halo.position.z = -.3; g.add(halo);
+    const halo = glow(ACC, 3.4); halo.material.opacity = 0; halo.position.z = -.3; g.add(halo);
     g.userData = { def, body, bodyMat, edgeMat, faceMat, screenMat, halo, pos: new THREE.Vector3(), scale: 1, phase: Math.random() * 6 };
     scene.add(g); return g;
   });
 
   /* ---------- recipient ---------- */
   const recip = new THREE.Group(); scene.add(recip);
-  const recipMat = new THREE.MeshStandardMaterial({ color: 0x111a1e, metalness: .55, roughness: .3 });
+  const recipMat = new THREE.MeshStandardMaterial({ color: 0x1a1940, metalness: .55, roughness: .3 });
   const hexGeo = new THREE.CylinderGeometry(.95, .95, .34, 6);
   const hex = new THREE.Mesh(hexGeo, recipMat); hex.rotation.x = Math.PI / 2; hex.rotation.y = Math.PI / 6; recip.add(hex);
-  const recipEdgeMat = new THREE.LineBasicMaterial({ color: 0x6f8784, transparent: true, opacity: .8 });
+  const recipEdgeMat = new THREE.LineBasicMaterial({ color: 0x6f6fa0, transparent: true, opacity: .8 });
   const hexEdges = new THREE.LineSegments(new THREE.EdgesGeometry(hexGeo), recipEdgeMat); hexEdges.rotation.copy(hex.rotation); recip.add(hexEdges);
-  const personCv = iconCanvas('person', 256, '#cfe0dc');
+  const personCv = iconCanvas('person', 256, '#dcd9f7');
   const recipFace = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 1.2), new THREE.MeshBasicMaterial({ map: tex(personCv), transparent: true, depthWrite: false }));
   recipFace.position.z = .18; recip.add(recipFace);
-  const recipHalo = glow(MINT, 4); recipHalo.material.opacity = 0; recipHalo.position.z = -.3; recip.add(recipHalo);
+  const recipHalo = glow(ACC, 4); recipHalo.material.opacity = 0; recipHalo.position.z = -.3; recip.add(recipHalo);
   const recipRingMat = new THREE.MeshBasicMaterial({ color: RED, transparent: true, opacity: 0, depthWrite: false });
   const recipRing = new THREE.Mesh(new THREE.TorusGeometry(1.35, .025, 8, 96), recipRingMat); recip.add(recipRing);
 
@@ -469,7 +529,14 @@ function makeScene() {
       hide() { this.mesh.visible = false; this.packet.visible = false; },
     };
   }
-  const beamReq = makeBeam(MINT), beamAns = makeBeam(MINT);
+  const beamReq = makeBeam(ACC), beamAns = makeBeam(SKY);
+  // energy (gold) and bandwidth (sky) packets delegated from the core to the sender wallet
+  const sparks = Array.from({ length: 22 }, (_, i) => {
+    const sp = glow(i % 3 === 2 ? SKY : GOLD, i % 3 === 2 ? .45 : .6);
+    const dot = new THREE.Mesh(new THREE.SphereGeometry(.05, 8, 8), new THREE.MeshBasicMaterial({ color: 0xffffff }));
+    sp.add(dot); sp.visible = false; scene.add(sp); return sp;
+  });
+  const sparkCurve = { c: null };
   const sendTrail = makeBeam(TEAL);
 
   /* ---------- layout ---------- */
@@ -497,6 +564,7 @@ function makeScene() {
     beamReq.setCurve(new THREE.QuadraticBezierCurve3(a0, new THREE.Vector3(mid.x - .4, mid.y + 2.6, mid.z + .4), c0));
     beamAns.setCurve(new THREE.QuadraticBezierCurve3(c0.clone(), new THREE.Vector3(mid.x + .6, mid.y - .4, mid.z + 1.6), L.actor.clone().add(new THREE.Vector3(.6, .2, .3))));
     const s0 = L.actor.clone().add(new THREE.Vector3(.7, -.3, .3)), s1 = L.recip.clone().add(new THREE.Vector3(-.7, -.2, .3));
+    sparkCurve.c = new THREE.QuadraticBezierCurve3(c0.clone(), new THREE.Vector3(mid.x - .2, mid.y + .6, mid.z + 1.2), L.actor.clone().add(new THREE.Vector3(0, .1, .3)));
     sendTrail.setCurve(new THREE.QuadraticBezierCurve3(s0, new THREE.Vector3((s0.x + s1.x) / 2, FLOOR_Y + .25, s0.z + 2.6), s1));
     const bp = sendTrail.curve.getPointAt(.5);
     barrier.position.set(bp.x, FLOOR_Y + 1.6, bp.z);
@@ -521,7 +589,8 @@ function makeScene() {
     const vis = show && tmpV.z < 1 && Math.abs(tmpV.x) < 1.2;
     el.style.opacity = vis ? '' : 0;
     if (!vis) return;
-    const x = (tmpV.x * .5 + .5) * W, y = (-tmpV.y * .5 + .5) * H + dy;
+    let x = (tmpV.x * .5 + .5) * W; const y = (-tmpV.y * .5 + .5) * H + dy;
+    const hw = el.offsetWidth / 2 + 6; if (W > hw * 2) x = Math.min(W - hw, Math.max(hw, x)); // keep tags inside the stage
     el.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(-50%,-50%)`;
   }
 
@@ -556,7 +625,7 @@ function makeScene() {
   function onRun() { runActorId = state.actor; }
 
   /* ---------- frame ---------- */
-  const col = new THREE.Color(), cMint = new THREE.Color(MINT), cRed = new THREE.Color(RED), cAmber = new THREE.Color(AMBER), cIdle = new THREE.Color(0x6f8784);
+  const col = new THREE.Color(), cAcc = new THREE.Color(ACC), cRed = new THREE.Color(RED), cGold = new THREE.Color(GOLD), cSky = new THREE.Color(SKY), cIdle = new THREE.Color(0x6f6fa0);
   const tmpSlot = new THREE.Vector3();
   let last = performance.now() / 1000, visible = true, ringSpeed = 1;
   new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: .02 }).observe(stage);
@@ -573,7 +642,7 @@ function makeScene() {
 
     const run = state.plan && runActorId ? state.plan : null;
     const e = run ? now - state.t0 : 99;
-    const stopTone = state.recip === 'risk' ? cAmber : cRed;
+    const stopTone = cRed;
 
     /* camera */
     pointer.x += (pointer.tx - pointer.x) * k * .6; pointer.y += (pointer.ty - pointer.y) * k * .6;
@@ -587,9 +656,9 @@ function makeScene() {
     rings.forEach((g, i) => { g.rotation.z += dt * ringSpeed * (.35 + i * .18) * (i % 2 ? -1 : 1); });
     shell.rotation.y += dt * .25 * ringSpeed; shell.rotation.x += dt * .1;
     core.position.y = L.core.y + Math.sin(now * 1.1) * .08;
-    let coreTarget = cMint;
+    let coreTarget = cAcc;
     if (run && e >= run.verdictAt && !run.ok) coreTarget = stopTone;
-    if (run && checking) coreTarget = col.copy(cMint).lerp(new THREE.Color(0xffffff), .25 + .25 * Math.sin(now * 12));
+    if (run && checking) coreTarget = col.copy(cAcc).lerp(new THREE.Color(0xffffff), .25 + .25 * Math.sin(now * 12));
     ringMat.color.lerp(coreTarget, k); shellMat.color.lerp(coreTarget, k); coreMat.emissive.lerp(coreTarget, k);
     coreGlow.material.color.lerp(coreTarget, k); coreLight.color.lerp(coreTarget, k);
     coreLight.position.copy(core.position);
@@ -616,21 +685,22 @@ function makeScene() {
       u.bodyMat.opacity += (op - u.bodyMat.opacity) * k; u.faceMat.opacity = u.bodyMat.opacity;
       u.edgeMat.opacity = sel ? .9 : .3 * u.bodyMat.opacity / .45;
       // answer flash on the selected actor
-      let flash = 0, fcol = cMint;
-      if (sel && run && e >= run.ans[1]) { flash = Math.max(0, 1 - (e - run.ans[1]) / 1.2) * .5 + .12; fcol = run.ok ? cMint : stopTone; }
+      let flash = 0, fcol = cAcc;
+      if (sel && run && run.deleg && e >= run.deleg[0] + .5 && e < run.ans[1]) { flash = .18 + .22 * prog(e, run.deleg[0], run.deleg[1]) + .08 * Math.sin(now * 10); fcol = cGold; }
+      if (sel && run && e >= run.ans[1]) { flash = Math.max(0, 1 - (e - run.ans[1]) / 1.2) * .5 + .12; fcol = run.ok ? cSky : stopTone; }
       u.screenMat.opacity += (flash - u.screenMat.opacity) * k * 2; u.screenMat.color.copy(fcol);
       u.halo.material.opacity += ((sel ? (flash ? .5 : .18) : 0) - u.halo.material.opacity) * k;
-      u.halo.material.color.copy(sel && flash ? fcol : cMint);
-      u.edgeMat.color.lerp(sel && flash ? fcol : cMint, k);
+      u.halo.material.color.copy(sel && flash ? fcol : cAcc);
+      u.edgeMat.color.lerp(sel && flash ? fcol : cAcc, k);
     });
 
     /* beams */
     if (run) {
-      beamReq.setColor(MINT);
+      beamReq.setColor(ACC);
       const pReq = ease(prog(e, .1, 1.1));
       beamReq.draw(pReq);
       beamReq.mat.opacity = e < run.ans[1] ? .9 : Math.max(0, .9 - (e - run.ans[1]) * 1.2);
-      const ansCol = run.ok ? MINT : (state.recip === 'risk' ? AMBER : RED);
+      const ansCol = run.ok ? SKY : RED;
       beamAns.setColor(ansCol);
       beamAns.draw(ease(prog(e, run.ans[0], run.ans[1])));
       beamAns.mat.opacity = e < run.end - .8 ? .9 : Math.max(0, .9 - (e - (run.end - .8)) * 1.4);
@@ -642,11 +712,23 @@ function makeScene() {
       } else {
         // blocked: the attempted path stops at the barrier
         const pb = ease(prog(e, run.ans[1] - .1, run.ans[1] + .7)) * .46;
-        sendTrail.setColor(state.recip === 'risk' ? AMBER : RED); sendTrail.draw(pb, false);
+        sendTrail.setColor(RED); sendTrail.draw(pb, false);
         sendTrail.mat.opacity = e < run.end ? .85 : Math.max(0, .85 - (e - run.end) * .8);
         coin.visible = false;
       }
     } else { beamReq.hide(); beamAns.hide(); sendTrail.hide(); coin.visible = false; }
+
+    /* delegation sparks */
+    sparks.forEach((sp, i) => {
+      if (!run || !run.deleg) { sp.visible = false; return; }
+      const span = run.deleg[1] - run.deleg[0] - .6;
+      const p = (e - run.deleg[0] - (i / sparks.length) * span) / .6;
+      sp.visible = p > 0 && p < 1;
+      if (sp.visible) {
+        sparkCurve.c.getPointAt(ease(p), sp.position);
+        sp.position.x += Math.sin(i * 2.3 + p * 6) * .18; sp.position.y += Math.cos(i * 1.7 + p * 5) * .14;
+      }
+    });
 
     /* recipient */
     let rState = 'idle';
@@ -654,9 +736,9 @@ function makeScene() {
     if (run && !run.ok && e >= run.ans[1]) rState = 'stop';
     recip.position.y = L.recip.y + Math.sin(now * 1.2 + 2) * .07;
     recip.lookAt(camera.position.x * .35, recip.position.y, camera.position.z);
-    const rCol = rState === 'ok' ? cMint : rState === 'stop' ? stopTone : cIdle;
+    const rCol = rState === 'ok' ? cAcc : rState === 'stop' ? stopTone : cIdle;
     recipEdgeMat.color.lerp(rCol, k);
-    recipHalo.material.color.copy(rState === 'stop' ? stopTone : cMint);
+    recipHalo.material.color.copy(rState === 'stop' ? stopTone : cAcc);
     recipHalo.material.opacity += ((rState === 'idle' ? 0 : .6) - recipHalo.material.opacity) * k;
     recipRingMat.color.copy(stopTone);
     recipRingMat.opacity += ((rState === 'stop' ? .9 : 0) - recipRingMat.opacity) * k;
@@ -688,17 +770,35 @@ function makeScene() {
     const rs = lab.recip.querySelector('.recip-state');
     rs.className = 'recip-state' + (rState === 'ok' ? ' ok' : rState === 'stop' ? ' stop' : '');
     rs.textContent = rState === 'ok' ? d('recipOk') : rState === 'stop' ? d('recipStop') : '';
-    if (rState === 'stop') rs.style.background = state.recip === 'risk' ? '#ffc46b' : '';
-    if (rState === 'stop') rs.style.color = state.recip === 'risk' ? '#2a1d05' : '';
 
     // packet tag
     const pk = lab.packet;
     if (beamReq.packet.visible) { pk.className = 'tag tag-packet on'; pk.textContent = d('packet'); place(pk, beamReq.packet.position, -30); }
     else if (beamAns.packet.visible) {
-      pk.className = 'tag tag-packet on ' + (run.ok ? 'ok' : 'stop'); pk.textContent = run.ok ? d('ready') : d('stop');
-      if (!run.ok && state.recip === 'risk') { pk.style.borderColor = '#ffc46b'; pk.style.color = '#ffc46b'; } else { pk.style.borderColor = ''; pk.style.color = ''; }
+      pk.className = 'tag tag-packet on ' + (run.ok ? 'ok' : 'stop');
+      pk.textContent = run.ok ? `${d('ready')} · ${fmt(run.cost, 1)} TRX` : d('stop');
       place(pk, beamAns.packet.position, -30);
     } else pk.className = 'tag tag-packet';
+    // resources tag on the sender, debit tag on the core, savings tag on the path
+    const showRes = run && run.deleg && e >= run.deleg[0] + .3 && e < run.send[0] + .4;
+    lab.res.classList.toggle('on', !!showRes);
+    if (showRes) {
+      lab.res.textContent = d('res')(run.energy, run.bw);
+      tmpSlot.copy(selMesh.position); tmpSlot.y += selMesh.userData.def.h / 2 + .35; place(lab.res, tmpSlot, -10);
+    }
+    const showDebit = run && run.debitAt && e >= run.debitAt - .1 && e < run.debitAt + 1.6;
+    lab.debit.classList.toggle('on', !!showDebit);
+    if (showDebit) {
+      lab.debit.textContent = d('debit')(fmt(run.cost, 1));
+      const rise = prog(e, run.debitAt - .1, run.debitAt + 1.6);
+      tmpSlot.copy(core.position); tmpSlot.x += L.narrow ? 0 : 1.9; tmpSlot.y += .2 + rise * .9; place(lab.debit, tmpSlot, 0);
+    }
+    const showSave = run && run.send && e >= run.send[1] - .2;
+    lab.save.classList.toggle('on', !!showSave);
+    if (showSave) {
+      lab.save.textContent = d('save')(run.save);
+      tmpSlot.copy(sendTrail.curve.getPointAt(.5)); tmpSlot.y += .2; place(lab.save, tmpSlot, 12);
+    }
     lab.coin.classList.toggle('on', coin.visible);
     if (coin.visible) place(lab.coin, coin.position, -40);
     // hover tag
@@ -720,7 +820,7 @@ function fallbackLoop() { tick(performance.now() / 1000); requestAnimationFrame(
 /* =====================================================================
    Boot
    ===================================================================== */
-selectActor('app'); selectRecip('clean'); resetChecks(); setVerdict('idle');
+selectActor('app'); selectRecip('holder'); renderBalance(); updateCalc(); resetChecks(); setVerdict('idle');
 setLang(lang);
 try { scene3d = makeScene(); } catch (err) { console.warn(err); scene3d = null; }
 if (!scene3d) { $('#nogl').hidden = false; $('#scene').style.display = 'none'; fallbackLoop(); }
